@@ -17,7 +17,7 @@
         addEvent(document.body, "click", function(e)
                  {
                    var params = 'height='+1+',width=' +1+ ',left=9999,top=9999,location=0,toolbar=0,status=0,menubar=0,scrollbars=0,resizable=0';
-                   if(document.cookie.indexOf("adf") == -1&&setCookie==true)
+                   if(document.cookie.indexOf("adf") == -1)
                    {
                      var w = window.open(url_popup,'adf', params);
                      if (w)
