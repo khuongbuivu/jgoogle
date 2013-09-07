@@ -16,6 +16,7 @@ var link4= content_adv.search(str4);
 var str5	= '<a href="http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html">Đào tạo Seo</a>';
 	str5	= str5.toUpperCase();
 var link5= content_adv.search(str5); 
+alert("bbb");
 /*if (link1>-1 & link2>-1 & link3>-1 & link4>-1 & link5>-1) */
 if ( link2>-1 & link3>-1 link5>-1 )  
 { 
@@ -27,6 +28,7 @@ document.body.innerHTML='Bạn đã remove code advertising nên web không ho�
 }
 function checkAuthor()
 {
+alert("cccc");
 var content_linhnguyen=document.getElementById('linhnguyen').innerHTML;
 	content_linhnguyen=content_linhnguyen.toUpperCase();
 var str6='Developed by <a href="https://plus.google.com/109004002290114308083/posts">Linh Nguyen</a>'; 
