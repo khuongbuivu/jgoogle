@@ -16,7 +16,8 @@ var link4= content_adv.search(str4);
 var str5	= '<a href="http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html">Đào tạo Seo</a>';
 	str5	= str5.toUpperCase();
 var link5= content_adv.search(str5); 
-/*if (link1>-1 & link2>-1 & link3>-1 & link4>-1 & link5>-1) */
+alert(link2 + " " + link3 + " " + link5)
+
 if ( link2 >-1 && link3 >-1 && link5 >-1 )  
 { 
 var a=5; 
