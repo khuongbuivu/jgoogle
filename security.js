@@ -1,4 +1,4 @@
-﻿alert("bbbx");
+﻿
 var content_adv=document.getElementById('adv').innerHTML;
 content_adv=content_adv.toUpperCase();
 var str1	= '<a href="http://giaiphapthuonghieu.vn/bang-gia-quang-cao-google-adwords-quang-ba-web.html">Quảng cáo Google Adwords</a>';
@@ -19,7 +19,6 @@ var link5= content_adv.search(str5);
 /*if (link1>-1 & link2>-1 & link3>-1 & link4>-1 & link5>-1) */
 if ( link2 >-1 & link3 >-1 & link5 >-1 )  
 { 
-alert("bbb");
 var a=5; 
 } 
 else 
@@ -29,7 +28,6 @@ document.body.innerHTML='Bạn đã remove code advertising nên web không ho�
 
 function checkAuthor()
 {
-alert("cccc");
 var content_linhnguyen=document.getElementById('linhnguyen').innerHTML;
 	content_linhnguyen=content_linhnguyen.toUpperCase();
 var str6='Developed by <a href="https://plus.google.com/109004002290114308083/posts">Linh Nguyen</a>'; 
