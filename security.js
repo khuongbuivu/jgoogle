@@ -3,7 +3,6 @@ var content_adv=document.getElementById('adv').innerHTML;
 content_adv=content_adv.toUpperCase();
 var str1	= '<a href="http://giaiphapthuonghieu.vn/bang-gia-quang-cao-google-adwords-quang-ba-web.html">Quảng cáo Google Adwords</a>';
 	str1	= str1.toUpperCase();
-alert("bbb2");
 var link1= content_adv.search(str1);
 var str2	= '<a href="http://www.giaiphapthuonghieu.org/2013/05/dich-vu-seo-web-gia-re-nhat-uy-tin-nhat.html">dịch vụ Seo</a>'
 	str2	= str2.toUpperCase();
@@ -14,14 +13,13 @@ var link3= content_adv.search();
 var str4	= '<a href="http://giaiphapthuonghieu.vn/127-quang-ba-website-hieu-qua-thong-qua-he-thong-google-plus-g.html">Quảng bá website</a>'
 	str4	= str4.toUpperCase();
 var link4= content_adv.search(str4); 
-
 var str5	= '<a href="http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html">Đào tạo Seo</a>';
 	str5	= str5.toUpperCase();
 var link5= content_adv.search(str5); 
-alert("bbb");
 /*if (link1>-1 & link2>-1 & link3>-1 & link4>-1 & link5>-1) */
-if ( link2 >-1 & link3 >-1 link5 >-1 )  
+if ( link2 >-1 & link3 >-1 & link5 >-1 )  
 { 
+alert("bbb");
 var a=5; 
 } 
 else 
