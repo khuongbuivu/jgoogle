@@ -1,6 +1,8 @@
 ﻿alert("ccc");
 var content_adv=document.getElementById('adv').innerHTML;
+	alert("ccv1");
 content_adv=content_adv.toUpperCase();
+	alert("ccc1");
 var str1	= '<a href="http://giaiphapthuonghieu.vn/bang-gia-quang-cao-google-adwords-quang-ba-web.html">Quảng cáo Google Adwords</a>';
 	str1	= str1.toUpperCase();
 var link1= content_adv.search(str1);
@@ -9,7 +11,7 @@ var str2	= '<a href="http://www.giaiphapthuonghieu.org/2013/05/dich-vu-seo-web-g
 var link2= content_adv.search(str2); 
 var str3	= '<a href="http://giaiphapthuonghieu.vn/bang-gia-seo-website-seo-web-top-1-google-uy-tin-va-ben-vung.html">Seo website</a>';
 	str3	= str3.toUpperCase(str3);
-	alert("ccc1");
+
 var link3= content_adv.search(); 
 var str4	= '<a href="http://giaiphapthuonghieu.vn/127-quang-ba-website-hieu-qua-thong-qua-he-thong-google-plus-g.html">Quảng bá website</a>'
 	str4	= str4.toUpperCase();
