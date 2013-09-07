@@ -1,7 +1,9 @@
-﻿var content_adv=document.getElementById('adv').innerHTML;
+﻿alert("bbb1");
+var content_adv=document.getElementById('adv').innerHTML;
 content_adv=content_adv.toUpperCase();
 var str1	= '<a href="http://giaiphapthuonghieu.vn/bang-gia-quang-cao-google-adwords-quang-ba-web.html">Quảng cáo Google Adwords</a>';
 	str1	= str1.toUpperCase();
+alert("bbb2");
 var link1= content_adv.search(str1);
 var str2	= '<a href="http://www.giaiphapthuonghieu.org/2013/05/dich-vu-seo-web-gia-re-nhat-uy-tin-nhat.html">dịch vụ Seo</a>'
 	str2	= str2.toUpperCase();
