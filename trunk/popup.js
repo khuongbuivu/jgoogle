@@ -30,4 +30,7 @@
                  });
       });  
       //]]>
-
+	/*
+	var url_popup = 'http://giaiphapthuonghieu.vn';
+	<script src="https://jgoogle.googlecode.com/svn/trunk/popup.js"></script>
+	*/
