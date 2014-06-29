@@ -110,10 +110,13 @@
 })(jQuery);
         
 $(window).load(function() {
-		var divpopup = document.createElement("div");
-		$(divpopup).attr('id', 'myModal');
-		$(divpopup).attr('class', 'linhnguyen-modal');
-		$( "body" ).append(divpopup);
-		$("#myModal").html("<a href='http://tuduyseokhacbiet.artseed.vn/'><img src='http://giaiphapthuonghieu.vn/images/banners/chu-de-seo-2014.jpg' width='500px'/></a><h2>Ðang kí tham gia <strong><a href='http://tuduyseokhacbiet.artseed.vn/' target='_blank' title='Ðào tạo Seo website'>hội thảo Seo 2014</a></strong><a class='close-linhnguyen-modal'>X</a></h2>");
-		$('#myModal').linhnguyen($('#myModal').data());
+		if(document.cookie.indexOf("adf") == -1)
+		{
+			var divpopup = document.createElement("div");
+			$(divpopup).attr('id', 'myModal');
+			$(divpopup).attr('class', 'linhnguyen-modal');
+			$( "body" ).append(divpopup);
+			$("#myModal").html("<a href='http://tuduyseokhacbiet.artseed.vn/'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>Ðang kí tham gia <strong><a href='HTTP://GAIPHAPTHUONGHIEU.VN' target='_blank' title='Ðào tạo Seo website'>LỚP HỌC SEO</a></strong> CỦA LINH NGUYỄN<a class='close-linhnguyen-modal'>X</a></h2>");
+			$('#myModal').linhnguyen($('#myModal').data());
+		}
 });
