@@ -116,7 +116,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://linhnguyen.vn'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>Ðang kí tham gia <strong><a href='http://linhnguyen.vn' target='_blank' title='Ðào tạo Seo website'>LỚP HỌC SEO</a></strong> CỦA LINH NGUYỄN<a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://linhnguyen.vn'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>Ðang kí tham gia <strong><a href='http://www.giaiphapthuonghieu.net/2014/07/dao-tao-seo-hcm-faceseo.html' target='_blank' title='Ðào tạo Seo website'>HỌC SEO</a></strong> CỦA LINH NGUYỄN<a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
