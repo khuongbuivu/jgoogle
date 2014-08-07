@@ -112,11 +112,12 @@
 $(window).load(function() {
 		if(document.cookie.indexOf("adf") == -1)
 		{
+			document.cookie = "popunder1=adf";
 			var divpopup = document.createElement("div");
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://linhnguyen.vn'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>Ðang kí tham gia <strong><a href='http://www.giaiphapthuonghieu.net/2014/07/dao-tao-seo-hcm-faceseo.html' target='_blank' title='Ðào tạo Seo website'>HỌC SEO</a></strong> CỦA LINH NGUYỄN<a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://giaiphapthuonghieu.vn/dich-vu-seo-website-top-google/'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>KHÓA <strong><a href='http://www.giaiphapthuonghieu.net/2014/07/dao-tao-seo-hcm-faceseo.html' target='_blank' title='Ðào tạo Seo website'>ĐÀO TẠO SEO</a></strong> CHUYÊN SÂU CỦA LINH NGUYỄN<a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
