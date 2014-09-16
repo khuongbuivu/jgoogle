@@ -1,5 +1,5 @@
 ﻿      //<![CDATA[
-	  var url_ppp = 'http://www.google.com.vn/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=31&amp;cad=rja&amp;uact=8&amp;ved=0CBkQFjAAOB4&amp;url=http%3A%2F%2Fwww.giaiphapthuonghieu.net%2F2014%2F07%2Fbang-bao-gia-dich-vu-seo-website-top-google.html&amp;ei=OtzPU-qjBtW48gW0-YGICQ&amp;usg=AFQjCNF3gldy5CRpli-WICB7SZ5Cged2vg&amp;bvm=bv.71667212,d.dGc';
+	  var url_ppp = 'http://www.google.com.vn/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0CE8QFjAC&url=http%3A%2F%2Fgiaiphapthuonghieu.vn%2Fdaotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html&ei=2LIXVJbpKsTM8gWI3YLQBQ&usg=AFQjCNEa_QflR9NqBjpmJa96GnAweqc6aQ&sig2=anxywImKgHOCWa_fNbV-7g&bvm=bv.75097202,d.dGc';
       function addEvent(obj, eventName, func){
         if (obj.attachEvent)
         {
