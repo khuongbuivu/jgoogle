@@ -132,6 +132,15 @@ exit();
 		<div>
 		<div id="mainContainer">
 			<div id="leftCol">
+              <ul class="icon-setting">
+                <li><a href=""><span class="icon-set icon-home"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-gplus"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-connect"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-share"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-acong"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-setpanel"></span> </a></li>
+               </ul>
+              <?php /*
 				<div id="pagelet_welcome_box" data-referrer="pagelet_welcome_box">
 					<!-- login facebook -->
 					<?php if(LOCAL!="TRUE"): ?>		
@@ -267,7 +276,7 @@ exit();
 				</div>
 			<!--	
 			<a target="_blank" href="https://docs.google.com/forms/d/1TMAzaLf2rXzRXzMlnbLFHSxX0Ggv6TtSaBSd07rvfck/viewform?edit_requested=true"><img src="http://faceseo.vn/images/advertising/banner-dang-ki-ao-faceseo.jpg" /></a>
-			-->
+			--> */?>
 			</div>
 			
 			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
