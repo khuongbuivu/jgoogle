@@ -90,6 +90,7 @@ setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ id
 setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
 setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
 setCookie("UIDFACESEO", idUser, 1);
+getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
 </script>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
