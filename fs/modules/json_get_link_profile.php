@@ -6,17 +6,17 @@
 	global $pass;
 	global $db;
 	$idUser = $_POST['idUser'];
-	$link = mysql_connect($host,$user,$pass,$db) or die ("can not connect");
-	mysql_select_db($db,$link);
-	mysql_query("SET NAMES 'utf8'"); 
-	$result=mysql_query("select url from awt_list_url where iduser=".$idUser." order by id DESC limit 20");
+	$con=mysqli_connect($host,$user,$pass,$db);
+	mysqli_set_charset($con, "utf8");
+	$result=mysqli_query($con,"select url from awt_list_url where iduser=".$idUser." order by id DESC limit 20");
 	$listUrl=array();
 	$i=0;
-	while ($row = mysql_fetch_array($result))
+	while ($row = mysqli_fetch_array($result))
 	{
 		$listUrl[$i]=$row['url'];
 		$i++;
 	}
+	mysqli_close($con);	
 	// print_r($listUrl);
 	echo json_encode($listUrl);
 	?>	
