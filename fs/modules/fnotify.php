@@ -1,5 +1,7 @@
 <?php
 	include("../config.php");
+	include_once("../user.php");
+	include_once("../system/function.php");
 	function checkNotify()
 	{
 		global $host;
@@ -8,6 +10,7 @@
 		global $db;
 		$idUser=$_POST['idUser'];
 		$con=mysqli_connect($host,$user,$pass,$db);
+		mysqli_set_charset($con, "utf8");
 		$result_notify=mysqli_query($con,"select check_notify_id_comment  from fs_check_notify where  check_notify_id_user=".$idUser);
 		
 		if($result_notify->num_rows >0)
@@ -23,6 +26,7 @@
 		}
 		else
 			echo 0;
+		mysqli_close($con);
 	}
 	
 	function getNumAnalytics()
@@ -35,10 +39,10 @@
 		// get All Post of User A in today
 		// statastic click of All Post
 		// $idUser=$_POST['idUser'];
-		// $idUser = "100001707050712";
-		$con=mysqli_connect($host,$user,$pass,$db);			
+		$idUser = "100001707050712";
+		$con=mysqli_connect($host,$user,$pass,$db);	
+		mysqli_set_charset($con, "utf8");		
 		$currentDay = date("m/d/y");
-		//echo "select post_full_url   from atw_post where  post_iduser=".$idUser." and post_time like '%".$currentDay."%'";
 		$rsAllPostUser=mysqli_query($con,"select post_full_url   from atw_post where  post_iduser=".$idUser." and post_time like '%".$currentDay."%'");	
 		$link = "";
 		if($rsAllPostUser->num_rows >0)
@@ -74,9 +78,10 @@
 			}
 			
 		}
-		return $countView;
+		echo $countView;
+		mysqli_close($con);
 	}
-	/*
+	
 	function displayAnalytics()
 	{
 		global $host;
@@ -88,9 +93,9 @@
 		// get All Post of User A in today
 		// statastic click of All Post
 		$con=mysqli_connect($host,$user,$pass,$db);	
+		mysqli_set_charset($con, "utf8");
 		$idUser = "100001707050712";
 		$currentDay = date("m/d/y");
-		echo "select post_full_url   from atw_post where  post_iduser=".$idUser." and post_time like '%".$currentDay."%'";
 		$rsAllPostUser=mysqli_query($con,"select post_full_url   from atw_post where  post_iduser=".$idUser." and post_time like '%".$currentDay."%'");	
 		$link = "";
 		if($rsAllPostUser->num_rows >0)
@@ -102,18 +107,21 @@
 		{
 			$link = $link."····".$row['post_full_url']; 
 		}
-		$countView=0;
 		$currentDay = date("d/m/y");
+		$urls=split("····",$link);	
 		for ($ii=0;$ii<count($urls);$ii++)
 		{
 			$urls[$ii]=rtrim($urls[$ii], "/");
 			$jjj=$ii + 1;
 			$q='link =\''.$urls[$ii].'\'';
-			//echo 'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc';
 			$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc');		
-			echo '<li class="fbProfileBrowserListItemTitle">Link '.$jjj  . " :: view: ".$result->num_rows.'</li>';
-			$countView = $countView + $result->num_rows;
+			if (strlen($urls[$ii])>60)
+				$urls[$ii] = substr($urls[$ii],0,60)."...";			
+			echo '<li class="fbProfileBrowserListItemTitle"><div style="float:left;width:78%">Link: '.$urls[$ii]. '</div><div style="float:right;right:0;width:15%"> :: view: '.$result->num_rows.'</div>
+			<div style="clear:both"></div>
+			</li>';
 			if ($result->num_rows>0){
+			
 				while ($row = mysqli_fetch_array($result))
 				{
 					echo '<li class="fbProfileBrowserListItem">';
@@ -191,9 +199,8 @@
 				echo "</h2>";
 			}
 		}
+		mysqli_close($con);
 	}
-	*/
-	echo getNumAnalytics();
 ?>
 
 

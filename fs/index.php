@@ -92,6 +92,7 @@ setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idU
 setCookie("UIDFACESEO", idUser, 1);
 
 getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
+getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
 </script>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -541,6 +542,10 @@ $( "#fbNotificationsJewel" ).click(function() {
 	window.idNotifyStart=0;
 	notifyComment(root_path + "modules/notify.php",idUser,window.idNotifyStart);
 	$("#notify_content_wrapper").slideDown('show');
+});
+
+$( "#fsAnaylyticsButton" ).click(function() {
+	TINY.box.show({url:'modules/statist_inday.php',width:700,height:500},'Thống kê Click','titlepopup'); refreshIntervalId = setInterval(startTime('modules/statist_inday.php',''), 5000); return false;
 });
 
 $(document).on('click', '.addname', function()
