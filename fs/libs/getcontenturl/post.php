@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 // must tag to fix error
 	$IDUSER = $_SESSION['session-user'];
 	require_once('dom.php');

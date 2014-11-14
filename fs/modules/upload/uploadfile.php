@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 	require_once("../../definelocal.php");
 	include_once("../../config.php");
 	global $host;

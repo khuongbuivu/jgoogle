@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 	include("../config.php");
 	include("../user.php");
 	include("../fcomment.php");

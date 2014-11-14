@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 	include("../config.php");
 	include("../user.php");
 	include("../fcomment.php");
@@ -90,7 +92,7 @@ session_start();
 				
 		
 	}
-	// mysqli_close($con);	
+	mysqli_close($con);	
 	// print_r($posts);
 	echo json_encode($posts);
 ?>

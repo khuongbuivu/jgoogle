@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 	include_once("config.php");
 	require_once('system/function.php');
 	function saveComment()

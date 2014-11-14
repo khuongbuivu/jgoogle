@@ -1,5 +1,5 @@
 <?php
-session_start();
+if (!defined('LOCAL')) 
 define("LOCAL", "TRUE", true);
 // define("LOCAL", "FALSE", true);
 require_once('system/function.php');
