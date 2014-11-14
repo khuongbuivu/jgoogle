@@ -2,11 +2,53 @@
     display: block;
 }
 #leftCol {
+ background: url("../images/css/bgleft.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 0 20px 20px 0;
     float: left;
+    margin-top: 20px;
+    opacity: 0.8;
     padding: 20px 0 0 2px;
     position: relative;
-    width: 20%;
+    width: 8%;
     word-wrap: break-word;
+	position: fixed;
+}
+ul.icon-setting li{
+	text-align:center;
+	padding:5px 0;
+}
+ul.icon-setting li a{
+	display:inline-block;
+
+}
+ul.icon-setting li .icon-set{
+	width:56px;
+	height:56px;
+	display:inline-block;
+}
+ul.icon-setting li .icon-home{
+	background:url('../images/css/icon-home.png') no-repeat scroll 0 0;
+
+}
+ul.icon-setting li .icon-gplus{
+	background:url('../images/css/icon-gplus.png') no-repeat scroll 0 0;
+
+}
+ul.icon-setting li .icon-connect{
+	background:url('../images/css/icon-connect.png') no-repeat scroll 0 0;
+
+}
+ul.icon-setting li .icon-share{
+	background:url('../images/css/icon-share.png') no-repeat scroll 0 0;
+
+}
+ul.icon-setting li .icon-acong{
+	background:url('../images/css/icon-acong.png') no-repeat scroll 0 0;
+
+}
+ul.icon-setting li .icon-setpanel{
+	background:url('../images/css/icon-setpanel.png') no-repeat scroll 0 0;
+
 }
 ._42ef {
     overflow: hidden;
@@ -59,15 +101,17 @@ div#contentCol.homeFixedLayout {
 }
 
 #contentCol {
-    border: 1px solid #CCCCCC;
-	border-radius: 0px 0px 5px 5px;
-    margin-left: 21%;
+ border: 1px solid #cccccc;
+    border-radius: 0 0 5px 5px;
+    margin-left: 9%;
     min-height: 600px;
+    width: 74%;
 }
 
 #contentCol {
-    background-color: #FFFFFF;
+
     padding-top: 15px;
+
 }
 
 .composerExpanded .newsFeedComposer #rightCol {
@@ -93,16 +137,22 @@ div#contentCol.homeFixedLayout {
     float: right;
     margin-top: -10000px;
     padding-right: 0;
-    width: 244px;
+    width: 25%;
     word-wrap: break-word;
-	margin-right:1%
+	margin-right:0;
+	background: url("../images/css/bgleft.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+	 opacity: 0.6;
+	 min-height:580px;
 }
 
 
 .hasLeftCol .homeWiderContent div#contentArea {
-    padding-left: 18px;
-    padding-right: 18px;
-    width: 545px;
+  background: url("../images/css/bgleft.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    min-height: 560px;
+    opacity: 0.6;
+    padding-left: 10px;
+    padding-right: 0;
+    width: 73.5%;
 }
 
 .hasLeftCol .hasRightCol #contentArea {
@@ -157,6 +207,7 @@ body {
 	/*font:15px/1.4 tahoma,Verdana,Arial; background:#eee;*/
 	font:normal 16px arial,tahoma, Verdana, Arial, sans-serif !important;
 	color: #333333;
+	background:url("../images/css/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
 	
 }
 
@@ -318,13 +369,13 @@ display: none;
 
 position:fixed; top:0px; margin:0;padding:0; width:100%; z-index:1111;
 /*background:url('../images/css/xmas_bg_n.gif')!important;*/
-background-color: #4C66A4;
+background-color: #475A8E;
 
 }
 .fs #globalContainer {
     position: relative;
-    top: 58px;
-    width: 90%;
+    top: 70px;
+    width: 100%;
 }
 ._2yg{
 	border: 1px solid #B4BBCD;
@@ -456,10 +507,12 @@ position:relative;
 		} 
 	.big-link { display:block; margin-top: 100px; text-align: center; font-size: 70px; color: #06f; }
 #headleft{
-float:left;
-width: 80px;
-left:0px;
-height:58px;
+  float: left;
+    height: 72px;
+    left: 60px;
+    position: absolute;
+    top: 10px;
+    width: 340px;
 }
 
 .moduletable_menu {
@@ -565,3 +618,39 @@ filter:alpha(opacity=1); /* For IE8 and earlier */
 	width: 50px;
 	display:inline;
 }/*ngon bo re*/
+
+._5bfw #fsAnaylyticsButton a.icon-view,._5bfw #fsAnaylyticsButton a.icon-view:hover{
+	background:url(../images/css/icon-view.png) no-repeat scroll 0 center !important; 
+}
+._5bfw #fbNotificationsJewel a.icon-comment:hover,._5bfw #fbNotificationsJewel a.icon-comment{
+	background:url(../images/css/icon-comment.png) no-repeat scroll 0 center !important; 
+}
+._5bfw #fsAnaylyticsButton a.icon-view .jewelCount,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount {
+ border-radius: 49%;
+    color: #ffffff;
+    display: block;
+    font-size: 9px;
+    font-weight: bold;
+    overflow: hidden;
+    padding-bottom: 1px;
+    position: absolute;
+    right:0px;
+    top: 2px;
+    z-index: 101;
+}
+._5bfw #fsAnaylyticsButton a.icon-view .jewelCount span,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount span {
+background-color: red;
+    border: medium none;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,"segoe ui",tahoma,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    height: 20px;
+    line-height: 20px;
+    padding: 2px;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    width: 20px;
+}

@@ -1,5 +1,5 @@
 #blueBar {
-    height: 58px;
+    height: 76px;
 }
 .hasSmurfbar #blueBarHolder #blueBar:after {
    /* background-image: url("../images/line.png");*/
@@ -55,8 +55,9 @@
 }
 
 .hasSmurfbar #headNav #pageNav {
-    height: 22px;
-    margin: 10px 0 10px 5px;
+   height: 48px;
+    margin: 10px 0 0;
+    overflow: hidden;
 }
  
 ._585_ {
@@ -283,3 +284,4 @@ left: 50%;
  font-family: 'MyCustomFont1';
  src: url("../images/css/font/UTM_Facebook.ttf") format("truetype");/* TTF file for CSS3 browsers */
 }
+#pageNav .fbJewel{margin-right:10px;}
