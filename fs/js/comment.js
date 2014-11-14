@@ -855,7 +855,7 @@ function getNewPost(idgroup){
 				var url;
 				var titleStastic='Thống kê Click hôm nay';
 				var classtitlePopup='titlepopup';
-				if( json.post.length>0){
+				if( json.post!=null && json.post.length>0){
 					htmlnewpost=showPost(json);	
 					var tmp = $(htmlnewpost).hide();
 					$("#wrappercontentpost #postcontent"+idCurrentPost).before(tmp);		
