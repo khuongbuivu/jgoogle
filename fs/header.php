@@ -30,6 +30,15 @@ require_once("user.php");
 							<ul id="pageNav" class="clearfix _5bfw" role="navigation">
 								<li id="navJewels" class="navItem">
 									<div id="jewelContainer" class="notifNegativeBase notifCentered notifGentleAppReceipt">
+									
+										
+										<div id="fsAnaylyticsButton" class="uiToggle fbJewel west">
+										<a class="jewelButton">
+										<i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i>
+										<span id="anaylyticsCountWrapper" class="jewelCount"><span id="anaylyticsCountValue">2</span></span>
+										</a>										
+										</div>
+										
 										<div id="fbNotificationsJewel" class="uiToggle fbJewel west">
 										<a class="jewelButton">
 										<i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i>

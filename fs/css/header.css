@@ -197,6 +197,12 @@ ul {
     background-repeat: no-repeat !important;
     background-size: auto auto !important;
 }
+._5bfw #fsAnaylyticsButton a.jewelButton, ._5bfw #fsAnaylyticsButton a.jewelButton:focus, ._5bfw #fsAnaylyticsButton a.jewelButton:hover, ._5bfw #fsAnaylyticsButton a.jewelButton:active {
+    background-image: url("../images/css/icon-push.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: auto auto !important;
+}
+
 
 #pageLogo._5bfh {
     margin-left: -6px;

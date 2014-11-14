@@ -79,6 +79,8 @@ require_once('system/function.php');
 		$id_comment=1;
 		$id_user="100001707050712";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
 		$userFace="Linh Nguyen";//"Linh Nguyen";  // $user_profile['name']
+		// $id_user="100005640848020";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
+		// $userFace="Tran Lai";//"Linh Nguyen";  // $user_profile['name']
 		//$linkLogoFace="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/s32x32/276109_100001707050712_1120857391_q.jpg";
 		$linkLogoFace="https://graph.facebook.com/100008035567201/picture";
 		$PATH_ROOT="http://localhost/faceseo.vn/";
