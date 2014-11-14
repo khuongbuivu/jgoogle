@@ -98,7 +98,7 @@ if(!isset($_SESSION)){
 				
 		
 	}
-	// mysqli_close($con);	
+	mysqli_close($con);	
 	// print_r($posts);
 	echo json_encode($posts);
 ?>

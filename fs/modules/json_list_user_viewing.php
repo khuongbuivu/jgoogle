@@ -35,6 +35,7 @@ while ($row = mysqli_fetch_array($result))
 	}
 	
 }
+mysqli_close($con);	
 header('Content-type: application/json');
 echo json_encode($listIDU);
 ?>
