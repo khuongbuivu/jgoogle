@@ -1076,7 +1076,7 @@ function mylink(idUser){
 					{						
 						htmlnewpost+='<ul id="UFIList-Cmt" class="UFIList-Cmt">';
 						htmlnewpost+="<li>";
-						htmlnewpost+='<a href="'+links[i]+'" onclick="return openUrl(this.href,' + json.post[i].post_mintimeview + ',' + json.post[i].idPost + ');">' + links[i] + '</a>';
+						htmlnewpost+='<a href="'+links[i]+'" onclick="return openUrl(this.href);">' + links[i] + '</a>';
 						htmlnewpost+=' · <b><span ><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(links[i])+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(links[i])+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="20px"/></i></span></b>';
 						htmlnewpost+='<a onclick="dellink(' + idUser + ',\'' + links[i] + '\');">Xóa</a>';
 						htmlnewpost+="</li>";
