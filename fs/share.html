@@ -1,0 +1,67 @@
+<div id="fb-root"></div>
+<script src="http://connect.facebook.com/en_US/all.js" type="text/javascript"></script>
+<script type="text/javascript">
+    FB.init({
+        appId: '731864150162369',
+        status: true,
+        cookie: true,
+        xfbml: true
+    });
+	function shareOnWall()
+	{
+		FB.getLoginStatus(function (response){
+		if (response.status === 'connected')
+		{
+				var idUser = response.authResponse.userID;
+				FB.ui(
+					   {
+						 method: 'feed',
+						 name: 'Post web lên Faceseo. vn hàng trăm người view. Ôi sướng.',
+						 link: 'http://faceseo.vn',
+						 picture: 'http://faceseo.vn/images/css/banner-share-facebook.jpg',
+						 caption: 'Mới có vài ngày hoạt động mà chỉ số alexa giảm đáng kể',
+						 description: 'Faceseo hơn Facebook ở điểm có thống kê lượt view và view tối thiểu 5p',
+					   },
+					   function(response) {
+						 if (response && response.post_id) {
+							addPointShare(idUser);
+						 } else {
+						   alert('Share Faceseo được cộng điểm.');
+						 }
+					   }
+					);
+			
+			}
+		});	
+	};
+	function addPointShare(idUser)
+	{	
+			var url="http://faceseo.vn/modules/add_point_share.php";
+			var point = 500;
+			//var FaceSeo=window.location.href;
+			//if (FaceSeo.search(domain)<0)
+				//return;
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+			  xmlhttp=new XMLHttpRequest();
+			}else{
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			};
+			var params = "idUser=" + idUser + "&point=" +point;
+			xmlhttp.open("POST", url, true);
+			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xmlhttp.setRequestHeader("Content-length", params.length);
+			xmlhttp.setRequestHeader("Connection", "close");
+			xmlhttp.onreadystatechange = function() {
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){	
+					alert(xmlhttp.responseText);
+				}
+			};
+		  xmlhttp.send(params);
+	};
+	
+</script>
+<h1>
+Lần đầu tiên share +500đ. Các lần sau khi bạn thấy nút share hiện lên các share thì số điểm cộng thêm sẽ là 1 số ngẫu nhiên > 100 đ.
+</h1>
+<input type="button" value="SHARE FACESEO" onClick="shareOnWall();">

@@ -1,0 +1,272 @@
+.hasLeftCol #leftCol {
+    display: block;
+}
+#leftCol {
+    float: left;
+    padding: 20px 0 0 2px;
+    position: relative;
+    width: 179px;
+    word-wrap: break-word;
+}
+._42ef {
+    overflow: hidden;
+}
+.prs {
+    padding-right: 5px;
+}
+
+._6a {
+    display: inline-block;
+}
+
+._6b {
+    vertical-align: middle;
+}
+._6a {
+    display: inline-block;
+}
+
+.fbxWelcomeBox .fbxWelcomeBoxName {
+    padding-bottom: 1px;
+}
+.fbxWelcomeBoxName {
+    display: block;
+    font-weight: bold;
+    width: 112px;
+    word-wrap: break-word;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.composerExpanded #content .newsFeedComposer {
+    padding-top: 5px;
+}
+
+div#contentCol.homeWiderContent, .homeWiderContent #bottomContent {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+div#contentCol.homeFixedLayout {
+    padding-top: 5px;
+}
+
+#contentCol {
+    border-left: 1px solid #CCCCCC;
+    margin-left: 181px;
+    min-height: 600px;
+}
+
+#contentCol {
+    background-color: #FFFFFF;
+    padding-top: 15px;
+}
+
+.composerExpanded .newsFeedComposer #rightCol {
+    padding-top: 40px;
+}
+
+.homeWiderContent div#rightCol {
+    padding-right: 0;
+}
+
+.homeFixedLayout #rightCol {
+    padding-top: 30px;
+}
+
+.hasLeftCol #rightCol {
+    padding-right: 20px;
+}
+
+.hasRightCol #rightCol {
+    margin-top: 0;
+}
+#rightCol {
+    float: right;
+    margin-top: -10000px;
+    padding-right: 0;
+    width: 244px;
+    word-wrap: break-word;
+}
+
+
+.hasLeftCol .homeWiderContent div#contentArea {
+    padding-left: 18px;
+    padding-right: 18px;
+    width: 545px;
+}
+
+.hasLeftCol .hasRightCol #contentArea {
+    padding-right: 0;
+    width: 493px;
+}
+
+.homeFixedLayout div#contentArea {
+    padding-bottom: 20px;
+}
+
+.hasRightCol #contentArea {
+    width: 714px;
+}
+
+.hasLeftCol #contentArea {
+    padding: 0 20px;
+    width: 759px;
+}
+
+.hasLeftCol #contentArea, .hasRightCol #contentArea {
+    float: left;
+    margin-right: 0;
+}
+
+.hasLeftCol #contentArea, .hasRightCol #contentArea {
+    float: left;
+    margin-right: 0;
+}
+
+#contentArea {
+    margin-right: -1px;
+    outline: medium none;
+    padding-left: 1px;
+    word-wrap: break-word;
+}
+.fs #globalContainer {
+    width: 1024px;
+}
+#globalContainer {
+    margin: 0 auto;
+}
+
+#content {
+    margin: 0;
+    outline: medium none;
+    padding: 0;
+    width: auto;
+}
+body {
+    overflow-y: scroll;
+}
+.uiStream .uiStreamHeader {
+ background-color: #E9E9E9;
+ height: 1px;
+ padding: 0;
+ position: relative;
+}
+.uiStream .uiStreamHeader {
+    border-top: 0 none;
+    margin-bottom: 10px;
+    margin-left: -20px;
+    margin-top: 10px;
+}
+#point{
+float:left; width:100px;
+display:inline;
+}
+#infopoint{
+font: 150%px bold;
+padding:5px;
+}
+#rule,#warning{ 
+float:left;
+width: 100px;
+}
+
+.addlink,.home{
+
+padding-top:5px;
+padding-bottom:5px;
+padding-left:5px;
+font-weight: bold;
+background-color: #D8DFEA;
+margin-top: 2px;
+
+}
+.home{
+margin-top:15px;
+}
+
+.autoview, .addbanner, .viewclick{
+
+padding-top:5px;
+padding-bottom:5px;
+padding-left:5px;
+font-weight: bold;
+background-color: #D8DFEA;
+margin-top:2px;
+}
+
+.numwarning{
+float:left;
+width: 40px;
+}
+#numpoint{
+color:green;display:inline;
+}
+.uiSideHeader {
+    border-bottom: medium none;
+    border-top: 1px solid #E5E5E5;
+    margin-bottom: 8px;
+    padding: 3px 6px;
+	background-color:#F2F2F2;
+	font-weight: bold;
+}
+#bannerfree img {
+	margin-bottom:4px;
+}
+
+#footer {
+
+    margin-left: 181px;
+	padding:5px;
+	font-weight: bold;
+	
+}
+.listmem{
+    display: block;
+    height: 55px;
+    width: 100%;
+}
+
+#action{
+	width: 450px;
+	margin:0;
+}
+
+.linkneedview {
+    background-color: #FFFFFF;
+    border: medium none;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 0 1px #F9F9F9 inset, 0 1px 0 0 #E5E5E5 inset, 0 -1px 0 0 #2F477A;
+    position: relative;
+    width:540px; 
+	height: auto;
+	margin-top:10px;
+	padding-top:10px;
+	padding-bottom:4px;
+	display:none;
+}
+.linkneedview ul{
+	margin: 0 4px;
+}
+.closelink{
+position:absolute;top:0;right:10px;
+width:30px;
+height:30px;
+text-align:center;
+cursor: pointer;
+}
+#numnotify{
+display: none;
+}
+.messagesystem
+{
+	color:red;
+	white-space: nowrap;
+}

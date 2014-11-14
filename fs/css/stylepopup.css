@@ -1,0 +1,94 @@
+
+h1 {font:30px 'Trebuchet MS',Verdana; margin:0}
+h2 {font-size:12px; font-weight:normal; font-style:italic; margin:0 0 20px}
+p {margin:0 0 14px}
+ul {margin:0; padding-left:20px}
+#testdiv {width:600px; margin:0px auto; border:1px solid #ccc; padding:20px 25px 12px; background:#fff}
+
+#UFIList-Cmt li {font:14px; margin-bottom:1px; padding:8px 10px 9px; border:1px solid #EAEEF3; background:#eee;}
+li:hover {background:#e3e3e3}
+li.fbProfileBrowserListItemTitle{background:#e3e3ed; padding:8px;}
+li.fbProfileBrowserListItemTitle:hover {background:#e3e3cd;padding:8px;}
+
+.tbox {position:absolute; display:none; padding:14px 17px; z-index:900}
+.tinner {-moz-border-radius:5px; border-radius:5px; background:#fff url(../images/preload.gif) no-repeat 50% 50%; border-right:1px solid #333; border-bottom:1px solid #333}
+.tmask {position:absolute; display:none; top:0px; left:0px; height:100%; width:100%; background:#000; z-index:800}
+.tclose {position:absolute; top:15px; right:18px; width:30px; height:30px; cursor:pointer; background:url(../images/close.png) no-repeat}
+.tclose:hover {background-position:0 -30px}
+
+#error {background:#ff6969; color:#fff; text-shadow:1px 1px #cf5454; border-right:1px solid #000; border-bottom:1px solid #000; padding:0}
+#error .tcontent {padding:10px 14px 11px; border:1px solid #ffb8b8; -moz-border-radius:5px; border-radius:5px}
+#success {background:#2ea125; color:#fff; text-shadow:1px 1px #1b6116; border-right:1px solid #000; border-bottom:1px solid #000; padding:10; -moz-border-radius:0; border-radius:0}
+#bluemask {background:#4195aa}
+#frameless {padding:0}
+#frameless .tclose {left:6px}
+.titlepopup {
+    background-color: #F5F6F7;
+    border-bottom: 1px solid #E5E5E5;
+    border-radius: 3px 3px 0 0;
+    color: #4E5665;
+    font-weight: bold;
+    line-height: 19px;
+    padding: 10px 12px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+.contentpopup {
+	margin:10px;
+}
+._5bbv {
+    padding: 4px 4px 0;
+}
+
+.fbProfileBrowserListItem {
+    padding: 8px;
+}
+._4ks > li {
+    border-bottom: 1px solid #E9E9E9;
+}
+.lfloat {
+    float: left;
+}
+._8t {
+    margin-right: 10px;
+}
+._8o, ._8o .img {
+    display: block;
+	/*margin-left: 6px;*/
+}
+#pagelet_welcome_box ._8o .img{
+margin-left: 6px;
+}
+.rfloat {
+    float: right;
+}
+._6a {
+    display: inline-block;
+}
+.uiProfileBlockContent {
+    overflow: hidden;
+}
+._6a {
+    display: inline-block;
+}
+._6b {
+    vertical-align: middle;
+}
+._6a {
+    display: inline-block;
+}
+
+.fcb {
+    color: #333333;
+}
+
+.fwb {
+    font-weight: bold;
+}
+.fsl {
+    font-size: 13px;
+}
+#timeclock{
+	float:right;
+	clear: both;
+	width:50%;
+}
