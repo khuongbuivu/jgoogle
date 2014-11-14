@@ -53,7 +53,7 @@ var timetmp=0;
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
-<!--  <script src="<?php //echo $PATH_ROOT;?>upload/upclick.js"></script> for upload file -->
+<script src="<?php //echo $PATH_ROOT;?>modules/upload/upclick.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/tinybox.js"></script> <!-- for popup -->
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
@@ -90,6 +90,7 @@ setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ id
 setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
 setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
 setCookie("UIDFACESEO", idUser, 1);
+
 getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
 </script>
 <script>(function(d, s, id) {
