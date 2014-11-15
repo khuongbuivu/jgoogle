@@ -1,12 +1,12 @@
 #blueBar {
-    height: 76px;
+    height: 66px;
 }
 .hasSmurfbar #blueBarHolder #blueBar:after {
    /* background-image: url("../images/line.png");*/
     background-position: 0 0;
     background-repeat: repeat-x;
     background-size: auto auto;
-    bottom: -4px;
+    bottom: -4px
     content: "";
     height: 4px;
     left: 0;
@@ -285,3 +285,7 @@ left: 50%;
  src: url("../images/css/font/UTM_Facebook.ttf") format("truetype");/* TTF file for CSS3 browsers */
 }
 #pageNav .fbJewel{margin-right:10px;}
+
+#headleft img{
+width:340px; height:72px; margin-top:0px;
+}
