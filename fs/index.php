@@ -838,11 +838,14 @@ function scrolToComment(idPost,idCmt)
 	if ($(".commentid"+idCmt).length == 0 )
 		getPostById(idPost);		
 	updateNotify(root_path + "modules/update_notify.php",idUser);
-	$('html, body').stop().animate({
-    'scrollTop': $(".commentid"+idCmt).offset().top - 100
-	}, 600, 'swing', function () {
-		window.location.hash = target;
-	});
+	if ($(".commentid"+idCmt).length > 0 )
+	{
+		$('html, body').stop().animate({
+		'scrollTop': $(".commentid"+idCmt).offset().top - 100
+		}, 600, 'swing', function () {
+			window.location.hash = target;
+		});
+	}
 }
 var currentPagePost = 0;
 var currentPageBanner = 0;
@@ -1027,6 +1030,7 @@ function addPoint(url,linkClicked,idUser,point)
 </script>
 <!-- 
 Search upclick.js mo rem de su dung upload file 
+Đá banh về xử scrolToComment. Còn bị lỗi khi post đã được user đó click vào rồi thì không thể nào hiện lên được. Giờ cho nó hiện lên và del tất cả link để không view được nữa.
 -->
 </body>
 </html>

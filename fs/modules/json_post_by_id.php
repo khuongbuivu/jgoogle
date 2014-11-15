@@ -17,7 +17,7 @@
 	$i=0;
 	while ($row = mysqli_fetch_array($result_post))
 	{
-		if (checkAvailableLinks($row['post_url'],$id_user) && checkAvailableLinks($row['post_full_url'],$id_user))
+		
 		{			
 			$post[$i]['idPost']=$row['post_id'];
 			$post[$i]['user_id']=$row['post_iduser'];
@@ -31,7 +31,15 @@
 			$post[$i]['post_url']=$row['post_url'];
 			$post[$i]['post_full_url']=$row['post_full_url'];			
 			$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			
-			$post[$i]['post_num_view']=getNumView($link);	
+			if (!checkAvailableLinks($row['post_url'],$id_user) && !checkAvailableLinks($row['post_full_url'],$id_user))
+			{
+				
+				$post[$i]['post_content'] = preg_replace("/<a[^>]+\>/i", "", $post[$i]['post_content']);
+				$post[$i]['post_url'] = "viewedinday";
+				$post[$i]['post_full_url'] = preg_replace("/<a[^>]+\>/i", "", $post[$i]['post_full_url']);
+				
+			}
+			$post[$i]['post_num_view']=getNumView($link);
 			$post[$i]['post_mintimeview']=$row['post_mintimeviewlink'];	
 			//info comment
 			$con=mysqli_connect($host,$user,$pass,$db);

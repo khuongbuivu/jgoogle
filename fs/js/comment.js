@@ -886,13 +886,14 @@ function getPostById(idPost){
 				var titleStastic='Thống kê Click hôm nay';
 				var classtitlePopup='titlepopup';
 				if(json.post.length>0){
-					htmlnewpost=showPost(json);	
+					htmlnewpost=showPostById(json);					
 					$("#detailpushnotify").html(htmlnewpost);
 					initArrayIdPost();
 				}
 		}
 	});  	
 };
+
 
 function showPost(json)
 {	
@@ -979,6 +980,130 @@ function showPost(json)
 		return 	htmlnewpost;
 };
 
+
+
+function showPostById(json)
+{	
+		var htmlnewpost="";
+		for(var i=0;i<json.post.length;i++){	
+						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
+						{							
+						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:540px" class="postcontent" >';
+						   htmlnewpost+='<div style="float:left; width:50px ; margin:0px; position:relative">';
+						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
+						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
+						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
+						   htmlnewpost+='</div>';
+						   htmlnewpost+='<div style="float:right; width:452px; margin:0px">';
+							if (json.post[i].user_id == idUser || xxyyzz==3)						
+							{
+								if (json.post[i].user_id == idUser)
+								{
+									var aa =$("#mypostid").html();
+									if (aa!="")
+										$("#mypostid").html( aa + ' or post_id=' + json.post[i].idPost );
+									else
+										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
+								};
+								htmlnewpost+="<div style='width:452px; margin:0px' ><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
+								if(xxyyzz==3)
+									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
+								htmlnewpost+="</div>";
+							}									
+							else
+								htmlnewpost+="<div style='width:452px; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
+						   if (json.post[i].user_point>0)
+						   {
+							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
+							   if(json.post[i].post_image.trim ()!="")
+									htmlnewpost+="<div id='imgPost'>"+json.post[i].post_image+"</div>";						
+								if(json.post[i].post_url.trim()!="" && json.post[i].post_url.trim()!="viewedinday")
+								{						
+									htmlnewpost+="<div id='action'>";
+									htmlnewpost+="<div id='titlePost'>";
+									htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
+									htmlnewpost+="</div>";
+									if(json.post[i].post_full_url.trim()=="")
+										url=(json.post[i].post_url);
+									else 
+										url=(json.post[i].post_full_url);							
+									htmlnewpost+="<div style='height:80px;background-color:#D8DFEA'>";
+									htmlnewpost+='<div style="float:left; width:100px;padding-right:10px; margin:4px 4px 4px 4px;height:70px;">';							
+									if (url!="")
+									{				
+										htmlnewpost+='<b><span ><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
+										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div>';
+										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
+										htmlnewpost+='<br/><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a><div style="width: 80px; height:40px; z-index:0; position:relative;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute; left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
+										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
+										htmlnewpost+='</div>';
+										htmlnewpost+='<div style=" clear: both;"></div>';
+										htmlnewpost+='</div></div>';					
+									}
+								};		
+							} 
+							else
+							{
+							htmlnewpost+="<div id='contenpost'><strong>Điểm = 0 => bàiviết không hiển thị</strong></div>";
+							};
+							htmlInputForm='<div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
+							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
+							if(linkLogoFace.trim()!="https://graph.facebook.com//picture")
+								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
+							htmlInputForm+='</div></div>';
+							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
+							htmlInputForm+='<div class="comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
+							htmlInputForm+=showFullCommentOfPost(json.post[i].idPost,json.comment[i]);
+							htmlInputForm+='</div>';
+							htmlInputForm+='</ul></div></div><div class="text-comment"><div id="cmt_content"><div id="comment-content-1"></div><div id="lastCommentPost' + json.post[i].idPost + '" >0</div><div id="num-like">Num Like</div><div id="' + json.post[i].idPost + '"></div><div id="notifyPost' + json.post[i].idPost + '_content"></div>';
+							htmlInputForm+='<div id="loadcmtfull' + json.post[i].idPost + '" >no</div>';						
+							htmlInputForm+='</div></div></div>';					
+							htmlnewpost+=htmlInputForm;
+							htmlnewpost+='</div><div style=" clear: both;"></div><ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul></div>';		
+					};	
+				};		
+		return 	htmlnewpost;
+};
+
+function showFullCommentOfPost(idPost,comment)
+{			
+			var htmlnewpost='';
+			var numCmtDisplay=1000;
+			if(comment.length>0){
+			   for(var j=0;j<comment.length;j++){
+					htmlnewpost+='<li class="UFIRow UFIComment UFILastComment UFILastCommentComponent commentid'+comment[j].cmt_Id+'" >';
+					htmlnewpost+='<div  class="clearfix">';
+					htmlnewpost+='<div class="lfloat"><a  class="img _8o _8s UFIImageBlockImage" aria-hidden="true" tabindex="-1" href="'+comment[j].cmt_imgLogo+'"><img class="img UFIActorImage _rx" src="'+comment[j].cmt_imgLogo+'" /></a></div>';
+					htmlnewpost+='<div ><div class="clearfix UFIImageBlockContent _42ef">';
+					htmlnewpost+='<div class="rfloat"><a class="uiCloseButton UFICommentCloseButton" data-tooltip-alignh="center" data-hover="tooltip" aria-label="Hide as Spam" role="button" href="#" aria-owns="js_2" aria-controls="js_2" aria-haspopup="true"></a></div>';
+					htmlnewpost+='<div ><div >';
+					htmlnewpost+='<div class="UFICommentContent">	<a  class="UFICommentActorName"  content="Linh Nguyen" href="'+comment[j].cmt_user_link+'" title="'+comment[j].cmt_name+"::"	+comment[j].cmt_user_point+ '" target="_blank">'+comment[j].cmt_name+'</a><span > </span><span ><span class="UFICommentBody"><span >'+comment[j].cmt_Content+' </span></span></span></div>';
+					htmlnewpost+='<div class="UFICommentActions fsm fwn fcg"><span ><span ></span>';
+					htmlnewpost+='<a class="uiLinkSubtle" href=""><abbr  class="livetimestamp" content="a few seconds ago" title="'+comment[j].Time+'">'+comment[j].countTime+'</abbr></a>';
+					if ( comment[j].cmt_url!="" && !checkUrlImage(comment[j].cmt_url))
+					{
+						htmlnewpost+=' · <b><span ><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(comment[j].cmt_url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(comment[j].cmt_url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="20px"/></i></span></b>';
+					}
+					htmlnewpost+='</span><span > · </span>';
+					htmlnewpost+='<div class="statuslike" id="statuslike'+comment[j].cmt_Id+'"><a  class="UFILikeLink" id="likeCmt'+comment[j].cmt_Id+'" title="Like this comment" >';
+					if(comment[j].cmt_num_like!=0 && comment[j].cmt_my_like>0)
+					{
+						htmlnewpost+='Unlike<span> · </span><i class="UFICommentLikeIcon"></i> <span id="numlike' + comment[j].cmt_Id+'">' + comment[j].cmt_num_like + '</span>';					
+					}
+					else if ((comment[j].cmt_num_like!=0) && (comment[j].cmt_my_like==0 || comment[j].cmt_num_like==0))
+					{
+						htmlnewpost+='Like<span> · </span><i class="UFICommentLikeIcon"></i> <span id="numlike' + comment[j].cmt_Id + '">' + comment[j].cmt_num_like + '</span>';
+					}
+					else
+					htmlnewpost+='Like';
+					htmlnewpost+='</a></div></div></div></div></div></div></div></li>';					
+			   }
+			 }			
+			return htmlnewpost;			
+};
+
+
 function showCommentOfPost(idPost,comment)
 {			
 			var htmlnewpost='';
@@ -1016,10 +1141,12 @@ function showCommentOfPost(idPost,comment)
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div></div></div></li>';					
 			   }
+			   
 			   if ( comment.length > numCmtDisplay && $("#loadcmtfull"+idPost).html().trim()=="no")
 				{
 					htmlnewpost+='<li class="UFIRow UFIPagerRow UFIFirstCommentComponent" ><div class="clearfix"><div class="lfloat"><a class="img _8o _8r UFIImageBlockImage UFIPagerIcon" aria-hidden="true" tabindex="-1" role="button" href="#"></a></div><div ><div class="clearfix UFIImageBlockContent _42ef _8u"><div class="rfloat"><span class="fcg"></span></div><div ><a class="UFIPagerLink" role="button" href="javascript:showAllComment(\'' + root_path + 'json_comment_post.php\', ' + idPost + ' );"><span >Xem ' + (comment.length - numCmtDisplay) + ' khác </span></a></div></div></div></div>';					
 				}
+				
 			 }
 			 
 			
