@@ -20,3 +20,8 @@ new Date change by getTime();
 		});
 Not change .content. Only change notify	
 
+CSS
+#anaylyticsCountValue{
+display:none !important;
+}
+-> $('#anaylyticsCountValue').css("display","block"); Sẽ không hiển thị được id anaylyticsCountValue

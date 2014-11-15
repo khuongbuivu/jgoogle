@@ -92,11 +92,13 @@ function getAnalytics(url,idUser)
 			if(parseInt(xmlhttp_notify.responseText)!=0)
 			{
 				$('#anaylyticsCountWrapper').css("display","block");
+				$('#anaylyticsCountValue').css("display","block");
 				$('#anaylyticsCountValue').html(xmlhttp_notify.responseText);
 			}
 			else
 			{
 				$('#anaylyticsCountWrapper').css("display","none");
+				$('#anaylyticsCountValue').css("display","none");
 				document.title = "FaceSeo.Vn Mạng tương tác dành cho Seoer ";
 			}
 			

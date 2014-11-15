@@ -289,3 +289,12 @@ left: 50%;
 #headleft img{
 width:340px; height:72px; margin-top:0px;
 }
+span#anaylyticsCountWrapper{
+display:none;
+}
+#anaylyticsCountValue{
+display:none;
+}
+span#notificationsCountWrapper {
+display:none;
+}

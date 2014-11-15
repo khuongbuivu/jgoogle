@@ -147,7 +147,9 @@ div#contentCol.homeFixedLayout {
 
 
 .hasLeftCol .homeWiderContent div#contentArea {
-  background: url("../images/css/bgleft.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+ /* background: url("../images/css/bgleft.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+ */
+ background-color: #fff;
     min-height: 560px;
     opacity: 0.6;
     padding-left: 10px;
@@ -628,7 +630,6 @@ filter:alpha(opacity=1); /* For IE8 and earlier */
 ._5bfw #fsAnaylyticsButton a.icon-view .jewelCount,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount {
  border-radius: 49%;
     color: #ffffff;
-    display: block;
     font-size: 9px;
     font-weight: bold;
     overflow: hidden;
