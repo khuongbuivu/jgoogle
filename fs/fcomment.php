@@ -153,12 +153,21 @@ if(!isset($_SESSION)){
 			else
 				$content = " nhắc đến bạn \" ". $content."\"";	
 			$listUsers= mysqli_query($con,'SELECT userId,name FROM atw_cmt_content WHERE idArticles='.$idArt.' and userId!='.$_SESSION['session-user'].' group by userId');			 
-			while ($row3 = mysqli_fetch_array($listUsers))
+
+			if ($listUsers->num_rows>0)
 			{
-				$idUser=$row3['userId'];
-				//$userLogo = 'https://graph.facebook.com/'.$idUser.'/picture';
-				mysqli_query($con,"INSERT INTO atw_notify ( notify_user_id,notify_user_name,notify_user_logo ,notify_id_post,notify_id_comment,notify_time,notify_content,notify_status,notify_type) VALUES (".$idUser.",'".$userName."','".$userLogo."',".$idArt.",".$idCommentPost.",'".$datetime."','".$content."','".$status."',1)");		
+				while ($row3 = mysqli_fetch_array($listUsers))
+				{
+					$idUser=$row3['userId'];
+					//$userLogo = 'https://graph.facebook.com/'.$idUser.'/picture';
+					mysqli_query($con,"INSERT INTO atw_notify ( notify_user_id,notify_user_name,notify_user_logo ,notify_id_post,notify_id_comment,notify_time,notify_content,notify_status,notify_type) VALUES (".$idUser.",'".$userName."','".$userLogo."',".$idArt.",".$idCommentPost.",'".$datetime."','".$content."','".$status."',1)");		
+				}	
 			}
+			else
+			{
+				mysqli_query($con,"INSERT INTO atw_notify ( notify_user_id,notify_user_name,notify_user_logo ,notify_id_post,notify_id_comment,notify_time,notify_content,notify_status,notify_type) VALUES (".$idUser.",'".$userName."','".$userLogo."',".$idArt.",".$idCommentPost.",'".$datetime."','".$content."','".$status."',1)");
+			}
+			
 		}	
 			mysqli_close($con);
 	}
