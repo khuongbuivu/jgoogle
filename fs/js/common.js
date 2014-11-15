@@ -63,6 +63,7 @@ $('.postbutton').click( function(){
 					alert("Cách nhau 5p post 1 lần");
 				subPointPost(idUser,sidUser,textcomment);	
 				getNewPost(idgroup);
+				$("#fileupload").hide();
 	}	
 }).done(function( msg ) {
 	document.getElementById('noidungpost').innerHTML=msg;
