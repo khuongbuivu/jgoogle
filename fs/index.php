@@ -90,9 +90,9 @@ setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ id
 setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
 setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
 setCookie("UIDFACESEO", idUser, 1);
-
 getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
 getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
+
 </script>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -140,6 +140,16 @@ exit();
                <li><a href=""><span class="icon-set icon-acong"></span> </a></li>
                <li><a href=""><span class="icon-set icon-setpanel"></span> </a></li>
                </ul>
+				<!-- start code check login -->
+				<?php if(LOCAL=="TRUE"): ?>	
+					<?php  if ($id_user!=""){
+							$_SESSION['token-user']=md5($id_user);
+							$_SESSION['session-user']=$id_user;
+							$_SESSION['session-name']=$user_profile[name];
+							}
+					?>
+				<?php endif ?>
+				<!-- start code check login -->
               <?php /*
 				<div id="pagelet_welcome_box" data-referrer="pagelet_welcome_box">
 					<!-- login facebook -->
@@ -280,7 +290,6 @@ exit();
 			</div>
 			
 			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
-				<div class="messagesystem"><span style="color:red">Cập nhật profile người dùng. Click vào avatar của những người khác sẽ rõ.</span></div>
 				<div id="contentArea" aria-describedby="pageTitle" role="main">					
 					<div id="infopoint">					
 						<div id="point">Điểm</div>
