@@ -53,7 +53,7 @@ var timetmp=0;
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
-<script src="<?php //echo $PATH_ROOT;?>modules/upload/upclick.js"></script>
+<script src="<?php echo $PATH_ROOT;?>modules/upload/upclick.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/tinybox.js"></script> <!-- for popup -->
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
