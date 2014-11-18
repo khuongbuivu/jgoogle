@@ -1,30 +1,34 @@
-﻿<?php
-//fix
-	include('config_tag.php');
-	if($_POST)
-	{
-	$q=$_POST['searchword'];
-	//$q="Linh";
-	//echo $q;
-	$q=str_replace("@","",$q);
+<?php
+include('config_tag.php');
+if($_POST)
+{
+$q=$_POST['searchword'];
+$idPost=$_POST['idPost'];
+$q=str_replace("@","",$q);
 	//$q=str_replace(" ","%",$q);
-	$sql_res=mysqli_query($bd,"select * from user_data where fname like '%$q%' or lname like '%$q%' order by uid LIMIT 5");
-	//echo $q;
-	//echo "xx".$sql_res->num_rows." ";
-	echo "select * from user_data where fname like '%$q%' or lname like '%$q%' order by uid LIMIT 5";
-	while($row=mysqli_fetch_array($sql_res))
-	{
-		$fname=$row['fname'];
-		$lname=$row['lname'];
-		$img=$row['img'];
-		$country=$row['country'];
-		?>
-		<div class="addname">
-		<img src="user_img/<?php echo $img; ?>" class="image" />
-		<a title='<?php echo $fname; ?>&nbsp;<?php echo $lname; ?>' id="nametag">
-		<?php echo $fname; ?> <?php echo $lname; ?> </a>
-		</div>
-		<?php
-		}
-	}
+// $sql_res=mysql_query("select * from user_data where fname like '%$q%' or lname like '%$q%' order by uid LIMIT 5");
+$sql_res=mysql_query("select * from atw_user where user_name like '%$q%' order by  user_id LIMIT 5");
+//echo "select * from atw_user where user_name like '%$q%' order by uid LIMIT 5";
+while($row=mysql_fetch_array($sql_res))
+{
+$user_name=$row['user_name'];
+$img="https://graph.facebook.com/".$row['user_id']."/picture";
+$user_location=$row['user_location'];
+$user_work_employer=$row['user_work_employer'];
+?>
+<div class="display_box" >
+	
+	<img src="<?php echo $img; ?>" class="image" />
+	<a href="#" id= 'addname<?php echo $idPost ?>' class='addname' title='<?php echo $user_name; ?>'>
+	<?php echo $user_name; 
+	if (trim($user_work_employer)!="")
+		echo $user_work_employer;
+	else
+		echo $user_location;
+	?>
+	</a>
+</div>
+<?php
+}
+}
 ?>

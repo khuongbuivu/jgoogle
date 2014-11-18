@@ -11,14 +11,14 @@ echo "select * from atw_user where user_name like '%$q%' order by uid LIMIT 5";
 while($row=mysql_fetch_array($sql_res))
 {
 $user_name=$row['user_name'];
-$img=$row['img'];
+$img="https://graph.facebook.com/".$row['user_id']."/picture";
 $user_location=$row['user_location'];
 $user_work_employer=$row['user_work_employer'];
 ?>
 <div class="display_box" >
-	<?php if (trim($user_work_employer)!=""){ ?>
-	<img src="user_img/<?php echo $img; ?>" class="image" />
-	<?php }; ?>
+	
+	<img src="<?php echo $img; ?>" class="image" />
+	
 	<a href="#" class='addname' title='<?php echo $user_name; ?>'>
 	<?php echo $user_name; 
 	if (trim($user_work_employer)!="")

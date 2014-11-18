@@ -78,6 +78,7 @@ var timetmp=0;
 <!-- end point -->
 <!-- thanh -->
 <link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
 <link href="<?php echo $PATH_ROOT;?>favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 <!-- end thanh -->
@@ -101,6 +102,7 @@ getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
   js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=394280457341947";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
 
 </head>	
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
@@ -568,14 +570,21 @@ $( "#fsAnaylyticsButton" ).click(function() {
 
 $(document).on('click', '.addname', function()
 {
-	var username=$("#nametag").html();
-	username = username.trim(username);
-	var namename = "@" + username + "@";
-	//alert(namename);
-	$('#scriptBox').val(namename);
-	boolStartFindName=false;
-	
+	var username=$(this).attr('title');	 
+	var start=/@/ig;
+	var word=/@(.*)/ig;
+	var idPost=$(this).attr('id');
+	var idP=idPost.substring(7);
+	var old=$("#contentbox"+idP).html();
+	var content=old.replace(word,"");
+	$("#contentbox"+idP).html(content);
+	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";
+	$("#contentbox"+idP).append(E);
+	$("#display"+idP).hide();
+	$("#msgbox").hide();	
+
 });
+
 $(document).on('click','.uploader',function( ) {
 	// alert($(this).id);
 	var id=$(this).attr("id");
@@ -605,8 +614,6 @@ var idCmt = parseFloat(divLikeId);
 divLikeId = '#statuslike' + divLikeId;
 var htmlStr = $(this).html();
 htmlStr=htmlStr.trim(htmlStr);
-//alert(htmlStr);
-//alert(idCmt);
 addLikeToDB('save_like.php',idCmt,<?php echo $id_user; ?>);
 var htmlStr11=htmlStr.substring(0,6);
 if (htmlStr11.search('Like')>-1)
@@ -660,6 +667,73 @@ $('a[rel=btipsy]').tipsy({gravity: 'n'});
 $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
 
 });
+
+$('body').on('keyup','textarea,.contentbox', function(e) {
+	/*$('textarea').on('keydown',function(e){*/
+	var maxCharLineComment = 50;
+	var lineHeight = 20;
+	var tb = $(this);		
+	$('#comment-content-1').html(tb.text());	
+	if (tb.text().length> maxCharLineComment)
+	{
+		var line= 1 + parseInt(tb.text().length/maxCharLineComment);
+		$( this ).css("height", line*lineHeight + "px");
+	}
+	var charpressed= getChar(e.keyCode);
+	var start=/@/ig;
+	var word=/@(.*)/ig;
+	var content= tb.text();
+	var go= content.match(start);
+	var name= content.match(word);
+	var idTextArea=$(this).attr('id');
+	var idArt=idTextArea.substring(10);
+	var dataString = 'searchword='+ name + '&idPost='+idArt;
+	if(e.keyCode==50)
+	{
+		boolStartFindName=true;	
+	}
+	if (boolStartFindName && go!=null && go.length>0 && name!="@" && name!="@ " && name!="@  ")
+	{
+		$("#msgbox").slideDown('show');
+		$.ajax({
+					type: "POST",
+					url: "boxsearch.php",
+					data: dataString,
+					cache: false,
+					success: function(html)
+					{
+						var position = $("#contentbox"+idArt).position();
+						var newpos =  position.top + $("#contentbox"+idArt).height();
+						if (html== "" || html.trim(html)=="")
+						{
+							$("#display"+idArt).slideUp('show');
+						}
+						$("#display"+idArt).html(html).show();					
+					}
+					});
+		
+	}
+    if (e.keyCode == 13 && $(this).attr('id')!= "textcomment") {
+		alert("idArt: " + idArt);
+		idArt = parseFloat(idArt);
+		var url = root_path + "save_cmt.php";
+		var url1 = root_path + "save_link.php";
+		var url_notify = root_path + "save_notify.php";		
+		var imgLogo = $("#imgLogo").html();
+		var name = $("#name").html();			
+		var token = generateToken();
+		addLinkToDb(url1,<?php echo $id_user; ?>,tb.text());
+		addCmtToDb(url,idArt,tb.text(), $("#imgSrc"+idArt).html(),imgLogo,name,idUser , token);		
+        subPoint(idUser,sidUser,-5,tb.text());
+		addNotify(url_notify,idUser,name,imgLogo,idArt,0,tb.text() + $("#imgSrc"+idArt).html(),0);
+		$("#imgSrc"+idArt).html("");
+		$(this).val("");	
+		$(this).css("height","20px");
+		boolStartFindName = false;
+        return false;
+    }
+});
+/*
 	$('body').on('keydown','textarea', function(e) {
 	//$('textarea').on('keydown',function(e){
 	var maxCharLineComment = 50;
@@ -739,10 +813,10 @@ $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
         return false;
     }
 });
+*/
 function getFile(){
         document.getElementById("upfile").click();
 }
-
 
 function startTime(url,link)
 {
@@ -1031,6 +1105,7 @@ function addPoint(url,linkClicked,idUser,point)
 <!-- 
 Search upclick.js mo rem de su dung upload file 
 Đá banh về xử scrolToComment. Còn bị lỗi khi post đã được user đó click vào rồi thì không thể nào hiện lên được. Giờ cho nó hiện lên và del tất cả link để không view được nữa.
+Một số yêu cầu với sever: chạy được fbapi, chạy được php mới, cân bằng tải load balance
 -->
 </body>
 </html>

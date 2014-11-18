@@ -19,8 +19,9 @@ $("#contentbox").live("keyup",function()
 var content=$(this).text();
 var go= content.match(start);
 var name= content.match(word);
+alert("alert" + name);
 var dataString = 'searchword='+ name;
-if(go.length>0 && name!="@" && name!="@ " && name!="@  ")
+if(go!=null && go.length>0 && name!="@" && name!="@ " && name!="@  ")
 {
 	$("#msgbox").slideDown('show');
 	$.ajax({
@@ -38,13 +39,12 @@ if(go.length>0 && name!="@" && name!="@ " && name!="@  ")
 
 				}
 				$("#display").html(html).show();
-				$("#msgbox").remove();		
-				//alert(name);				
+				$("#msgbox").remove();				
 			}
 	});	
 	
 }
-return false();
+return false;
 });
  
 $(".addname").live("click",function()
@@ -53,22 +53,19 @@ var username=$(this).attr('title');
 var old=$("#contentbox").html();
 var content=old.replace(word,"");
 $("#contentbox").html(content);
-var E="<a class='red' contenteditable='true' href='#' >"+username+"</a>";
+var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";
 $("#contentbox").append(E);
 $("#display").hide();
 $("#msgbox").hide();
-$("#contentbox").focus();
+
 });
- 
+
 });
+
 </script>
 <style>
-body
-{
-font-family:Arial, Helvetica, sans-serif;
-font-size:12px;
-}
-#contentbox
+
+.contentbox
 {
 width:458px; height:50px;
 border:solid 2px #333;
@@ -77,7 +74,7 @@ font-size:14px;
 margin-bottom:6px;
 text-align:left;
 }
-.img
+.display_box.img
 {
 float:left; width:150px; margin-right:10px;
 text-align:center;
@@ -87,16 +84,11 @@ text-align:center;
 border:solid 1px #dedede;padding:5px;
 display:none;background-color:#f2f2f2
 }
-.red
-{
-color:#cc0000;
-font-weight:bold;
-}
- a
+.display_box a
 {
 text-decoration:none;
 }
-a:hover
+.display_box a:hover
 {
 text-decoration:none;
 }
@@ -134,7 +126,7 @@ margin:50px; padding:10px; width:460px
 {
 width:25px; float:left; margin-right:6px
 }
- 
+.highlighter b{background:#d8dfea;background:-moz-linear-gradient(#dce6f8, #bdcff1);border-radius:2px;box-shadow:0 0 0 1px #a3bcea;font-weight:normal}
 </style>
 </head>
  
