@@ -1,6 +1,6 @@
 <?php
 include('config_tag.php');
-if($_POST)
+if(isset($_POST['searchword'])&&$_POST['searchword']!='')
 {
 $q=$_POST['searchword'];
 $idPost=$_POST['idPost'];
@@ -19,14 +19,14 @@ $user_work_employer=$row['user_work_employer'];
 <div class="display_box" >
 	
 	<img src="<?php echo $img; ?>" class="image" />
-	<a href="#" id= 'addname<?php echo $idPost ?>' class='addname' title='<?php echo $user_name; ?>'>
+	<span href="#" id= 'addname<?php echo $idPost ?>' class='addname' title='<?php echo $user_name; ?>'>
 	<?php echo $user_name; 
 	if (trim($user_work_employer)!="")
 		echo $user_work_employer;
 	else
 		echo $user_location;
 	?>
-	</a>
+	</span>
 </div>
 <?php
 }
