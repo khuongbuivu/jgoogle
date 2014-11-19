@@ -28,10 +28,11 @@ ul.icon-setting li .icon-set{
 }
 ul.icon-setting li .icon-home{
 	background:url('../images/css/icon-home.png') no-repeat scroll 0 0;
+	border-radius:50%;
 
 }
 ul.icon-setting li .icon-gplus{
-	background:url('../images/css/icon-gplus.png') no-repeat scroll 0 0;
+	background:url('../images/css/icon-gplus.png') no-repeat scroll 0 0;border-radius:50%;
 
 }
 ul.icon-setting li .icon-connect{
@@ -39,11 +40,11 @@ ul.icon-setting li .icon-connect{
 
 }
 ul.icon-setting li .icon-share{
-	background:url('../images/css/icon-share.png') no-repeat scroll 0 0;
+	background:url('../images/css/icon-share.png') no-repeat scroll 0 0;border-radius:50%;
 
 }
 ul.icon-setting li .icon-acong{
-	background:url('../images/css/icon-acong.png') no-repeat scroll 0 0;
+	background:url('../images/css/icon-acong.png') no-repeat scroll 0 0;border-radius:50%;
 
 }
 ul.icon-setting li .icon-setpanel{
@@ -626,6 +627,12 @@ filter:alpha(opacity=1); /* For IE8 and earlier */
 }
 ._5bfw #fbNotificationsJewel a.icon-comment:hover,._5bfw #fbNotificationsJewel a.icon-comment{
 	background:url(../images/css/icon-comment.png) no-repeat scroll 0 center !important; 
+}
+._5bfw #iconmessagebutton a.icon-message:hover,._5bfw #iconmessagebutton a.icon-message{
+	background:url(../images/css/icon-message.png) no-repeat scroll 0 center !important; 
+}
+._5bfw #iconemailbutton a.icon-email:hover,._5bfw #iconemailbutton a.icon-email{
+	background:url(../images/css/icon-email.png) no-repeat scroll 0 center !important; 
 }
 ._5bfw #fsAnaylyticsButton a.icon-view .jewelCount,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount {
  border-radius: 49%;
