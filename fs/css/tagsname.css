@@ -56,6 +56,17 @@ color:#fff;
 width:25px; float:left; margin-right:6px
 }
 .highlighter b{background:#d8dfea;background:-moz-linear-gradient(#dce6f8, #bdcff1);border-radius:2px;box-shadow:0 0 0 1px #a3bcea;font-weight:normal}
+.boxtagfull{position:relative;z-index:1000;}
+.comment-div{z-index:1000;}
+.boxtag{ border:1px solid #eee; position:absolute;top:50px; z-index:1000; background:#eee;}
+.comment{
+}
+.boxtagtitle{font-weight: bold;
+    padding: 5px;
+	}
+.tagnameboxinput{border:1px solid #eee}	
+.UFIList-Cmt{z-index:1000;}
     [contentEditable=true]:empty:not(:focus):before{
         content:attr(data-ph)
     }
+	
