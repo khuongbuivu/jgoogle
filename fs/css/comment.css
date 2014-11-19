@@ -18,7 +18,7 @@ div.UFIContainer {
 }
 
 div.UFIContainer {
-    overflow: hidden;
+    overflow:visible;
     padding: 0;
 }
 .UFIContainer {
