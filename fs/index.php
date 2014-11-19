@@ -580,9 +580,10 @@ $(document).on('click', '.addname', function()
 	$("#contentbox"+idP).html(content);
 	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";
 	$("#contentbox"+idP).append(E);
+	$("#contentbox"+idP).focus();
 	$("#display"+idP).hide();
-	$("#msgbox").hide();	
-
+	$("#msgbox").hide();
+	return false;
 });
 
 $(document).on('click','.uploader',function( ) {
@@ -782,7 +783,8 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 
 						}
 						$("#display").html(html).show();
-						$("#msgbox").remove();					
+						$("#msgbox").remove();	
+						
 					}
 					});
 		
