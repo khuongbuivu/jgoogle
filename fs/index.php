@@ -639,7 +639,6 @@ if (htmlStr11.search('Like')>-1)
 }
 if  (htmlStr11.search("Unlike") >-1)
 {
-		
 		var numlike = 1;
 		var bonus=-1;
 		if (htmlStr.search('numlike')>-1 && parseInt(document.getElementById('numlike'+idCmt).innerHTML)==1)
@@ -715,7 +714,6 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 		
 	}
     if (e.keyCode == 13 && $(this).attr('id')!= "textcomment") {
-		alert("idArt: " + idArt);
 		idArt = parseFloat(idArt);
 		var url = root_path + "save_cmt.php";
 		var url1 = root_path + "save_link.php";
