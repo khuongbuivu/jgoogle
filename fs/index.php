@@ -387,10 +387,10 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<div id="listUrlViewMore"></div>				
 				<div id="wrappercontentpost">
 					<!--<div style="text-align:center"><img src="images/css/loading-google.gif" /></div>-->
-				</div>				
-				<script >
+				</div>		 				
+				<script>
 					getNewPosts(<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>);		
-				</script >			
+				</script>			
 				
 								
 				<div style="padding:5px; text-align:center; margin: 5 105px; background:#D8DFEA;color:#3B5998;width:528px;"><a onclick="loadOtherPost();">Xem thêm</a></div>					
