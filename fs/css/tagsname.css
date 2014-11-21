@@ -65,6 +65,7 @@ width:25px; float:left; margin-right:6px
     padding: 5px;
 	}
 .tagnameboxinput{border:1px solid #eee}	
+.boxtagdivscroll{ height:200px; overflow:scroll}
 .UFIList-Cmt{z-index:1000;}
     [contentEditable=true]:empty:not(:focus):before{
         content:attr(data-ph)
