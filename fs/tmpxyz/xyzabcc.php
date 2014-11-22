@@ -61,7 +61,22 @@ var timetmp=0;
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
+<style type="text/css"> 
+#boxms {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    width:600px;
+    height:220px;
+    margin-top: -117px; /*set to a negative number 1/2 of your height*/
+    margin-left: -300px; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+}
+#btsent{
+margin:2px;padding:10px 20px; float:right; background-color:#4e69a2; border-color:#435a8b #3c5488 #334c83;color:#fff;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.2);border-radius:2px;box-shadow:0 1px 1px rgba(0, 0, 0, 0.05);font-weight;bold
+}
+</style>
 </head>	
 <body>
 <div id="container">
@@ -69,5 +84,24 @@ var timetmp=0;
 include_once("../header.php");
 ?>
 </div>
+<div id="boxms">
+
+<form action="action_page.php" method="POST">
+<textarea content="Write a message" placeholder="Write a message" id="textcomment" name="textcomment" role="textbox" style="border:none; width:100% !important;resize: none; overflow:hidden;vertical-align: bottom;direction: ltr;min-height: 180px;white-space: pre-wrap;word-wrap: break-word;letter-spacing: normal;word-spacing: normal;text-transform: none;text-indent: 0px;text-shadow: none;display: inline-block;text-align: start;zoom: 1;"></textarea>
+<div style="margin:2px;padding:10px; width:100px; float:left;">
+<label><input type="checkbox" name="sentall"> SENT ALL</label>
+</div>
+<div style="margin:2px; width:200px; float:left;">
+
+</div>
+<div id="btsent">
+Sent!
+</div>
+</form>
+</div>
+<!--
+Tạo form cho post nội dung, list user cần send message 
+
+-->
 </body>
 </html>
