@@ -196,7 +196,7 @@ function getIdMax($table,$fieldName)
 	global $db;
 	$con=mysqli_connect($host,$user,$pass,$db);
 	mysqli_set_charset($con, "utf8");
-	$q="select ".$fieldName." from ".$table." order by desc limit 1";
+	$q="select ".$fieldName." from ".$table." order by ".$fieldName." desc limit 1";
 	$result=mysqli_query($con,"select ".$fieldName." from ".$table." order by ".$fieldName." desc limit 1");
 	if($result->num_rows>0)
 	{
@@ -204,7 +204,7 @@ function getIdMax($table,$fieldName)
 		return $row[$fieldName];
 	}
 	else
-		return 0;
+		return 1;
 }
 function getInfoBacklink($id,$textlink)
 {
