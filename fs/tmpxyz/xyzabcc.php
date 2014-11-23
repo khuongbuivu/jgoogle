@@ -42,8 +42,10 @@ var timetmp=0;
 
 </script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
+<script type="text/javascript" src="<?php echo $PATH_ROOT;?>tmpxyz/ad.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
+<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
 <link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
 <!-- Scroll bar -->
@@ -74,7 +76,9 @@ var timetmp=0;
     background-color: #f3f3f3;
 }
 #btsent{
-margin:2px;padding:10px 20px; float:right; background-color:#4e69a2; border-color:#435a8b #3c5488 #334c83;color:#fff;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.2);border-radius:2px;box-shadow:0 1px 1px rgba(0, 0, 0, 0.05);font-weight;bold
+margin:2px;padding:10px 20px; float:right; background-color:#4e69a2; border-color:#435a8b #3c5488 #334c83;color:#fff;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.2);border-radius:2px;box-shadow:0 1px 1px rgba(0, 0, 0, 0.05);font-weight:bold;
+cursor: pointer;
+cursor: hand;
 }
 </style>
 </head>	
@@ -85,20 +89,97 @@ include_once("../header.php");
 ?>
 </div>
 <div id="boxms">
-
 <form action="action_page.php" method="POST">
 <textarea content="Write a message" placeholder="Write a message" id="textcomment" name="textcomment" role="textbox" style="border:none; width:100% !important;resize: none; overflow:hidden;vertical-align: bottom;direction: ltr;min-height: 180px;white-space: pre-wrap;word-wrap: break-word;letter-spacing: normal;word-spacing: normal;text-transform: none;text-indent: 0px;text-shadow: none;display: inline-block;text-align: start;zoom: 1;"></textarea>
 <div style="margin:2px;padding:10px; width:100px; float:left;">
-<label><input type="checkbox" name="sentall"> SENT ALL</label>
+<label><input type="checkbox" name="sentall" id="sentall"> SENT ALL</label>
 </div>
 <div style="margin:2px; width:200px; float:left;">
-
+<div contenteditable="true" data-ph="Tag thành viên" class="contentbox tagnameboxinput" id="contentbox"></div>
+<div id='display'>
 </div>
+<div id="msgbox">
+</div>
+</div>
+
 <div id="btsent">
 Sent!
 </div>
 </form>
 </div>
+<script>
+$('body').on('click','#btsent', function(e) {
+	if ($('#sentall').is(':checked'))
+		sentMessage(1111111111);
+});
+
+$('body').on('keyup','.contentbox', function(e) {
+	/* $('textarea').on('keydown',function(e){ */
+	var maxCharLineComment = 50;
+	var lineHeight = 20;
+	var tb = $(this);		
+	if (tb.text().length> maxCharLineComment)
+	{
+		var line= 1 + parseInt(tb.text().length/maxCharLineComment);
+		$( this ).css("height", line*lineHeight + "px");
+	}
+	var charpressed= getChar(e.keyCode);
+	var start=/@/ig;
+	var word=/@(.*)/ig;
+	var content= tb.text();
+	var go= content.match(start);
+	var name= content.match(word);
+	var dataString = 'searchword='+ name ;
+	if(e.keyCode==50)
+	{
+		boolStartFindName=true;	
+	}
+	if (boolStartFindName && go!=null && go.length>0 && name!="@" && name!="@ " && name!="@  ")
+	{
+		$("#msgbox").slideDown('show');
+		$.ajax({
+					type: "POST",
+					url: root_path + "boxsearch.php",
+					data: dataString,
+					cache: false,
+					success: function(html)
+					{
+						var position = $("#contentbox").position();
+						var newpos =  position.top + $("#contentbox").height();
+						if (html== "" || html.trim(html)=="")
+						{
+							$("#display").slideUp('show');
+						}
+						$("#display").html(html).show();					
+					}
+					});
+		
+	}
+    if (e.keyCode == 13 && $(this).attr('id')!= "textcomment") {	
+		//addNotify(url_notify,idUser,name,imgLogo,idArt,0,tb.text() + $("#imgSrc"+idArt).html(),0);
+		boolStartFindName = false;
+        return false;
+    }
+});
+
+$(document).on('click', '.addname', function()
+{
+	var username=$(this).attr('title');	 
+	var start=/@/ig;
+	var word=/@(.*)/ig;
+	var idPost=$(this).attr('id');
+	var old=$("#contentbox").html();
+	var content=old.replace(word,"");
+	$("#contentbox").html(content);
+	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";
+	$("#contentbox").append(E);
+	$("#contentbox").focus();
+	$("#display").hide();
+	$("#msgbox").hide();
+	return false;
+});
+
+</script>
 <!--
 Tạo form cho post nội dung, list user cần send message 
 
