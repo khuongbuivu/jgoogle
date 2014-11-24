@@ -157,7 +157,7 @@
 							echo $i.". ".$row['idUser']."<br/>";
 							$user_id = $row['idUser'];
 							echo '<div style="float:left; width:50px ; margin:0px">';
-								echo "<img src='https://graph.facebook.com/".$user_id."/picture' />";						
+								//echo "<img src='https://graph.facebook.com/".$user_id."/picture' />";						
 							echo '</div>';						
 							echo '<div style="float:right; width:452px; margin:0px">';						
 							echo "<div style='width:452px; margin:0px'><b>".$infosUser['user_name']."</b></div>";
