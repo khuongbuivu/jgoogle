@@ -23,7 +23,7 @@ div.UFIContainer {
 }
 .UFIContainer {
     margin: 0;
-    width: 450px;
+    width: 97%;
 }
 .UFIArrow > i {
     background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/y7/r/UvyvLtJTQzO.png");
@@ -238,7 +238,7 @@ img {
 .UFIRow .UFIImageBlockContent {
     margin: 0;
     padding: 0 0 0 8px;
-	width:597px;
+	width:89%;
 }
 ._42ef {
     overflow: hidden;
@@ -485,7 +485,7 @@ button {
 #contenpost, #imgPost ,#titlePost {
 
     margin-bottom: 5px;
-    width: 638px;;
+    width: 97.7%;
 }
 #imgPost{
 	text-align:center;
