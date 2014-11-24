@@ -1118,7 +1118,7 @@ function showCommentOfPost(idPost,comment)
 					htmlnewpost+='<li class="UFIRow UFIComment UFILastComment UFILastCommentComponent commentid'+comment[j].cmt_Id+'" >';
 					htmlnewpost+='<div  class="clearfix">';
 					htmlnewpost+='<div class="lfloat"><a  class="img _8o _8s UFIImageBlockImage" aria-hidden="true" tabindex="-1" href="'+comment[j].cmt_imgLogo+'"><img class="img UFIActorImage _rx" src="'+comment[j].cmt_imgLogo+'" /></a></div>';
-					htmlnewpost+='<div ><div class="clearfix UFIImageBlockContent _42ef">';
+					htmlnewpost+='<div style="position:relative;"><div class="clearfix UFIImageBlockContent _42ef">';
 					htmlnewpost+='<div class="rfloat"><a class="uiCloseButton UFICommentCloseButton" data-tooltip-alignh="center" data-hover="tooltip" aria-label="Hide as Spam" role="button" href="#" aria-owns="js_2" aria-controls="js_2" aria-haspopup="true"></a></div>';
 					htmlnewpost+='<div ><div >';
 					htmlnewpost+='<div class="UFICommentContent">	<a  class="UFICommentActorName"  content="Linh Nguyen" href="'+comment[j].cmt_user_link+'" title="'+comment[j].cmt_name+"::"	+comment[j].cmt_user_point+ '" target="_blank">'+comment[j].cmt_name+'</a><span > </span><span ><span class="UFICommentBody"><span >'+comment[j].cmt_Content+' </span></span></span></div>';
@@ -1140,7 +1140,8 @@ function showCommentOfPost(idPost,comment)
 					}
 					else
 					htmlnewpost+='Like';
-					htmlnewpost+='</a></div></div></div></div></div></div></div></li>';					
+					htmlnewpost+='</a></div></div></div></div></div>';
+					htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:5px" >x</div> </div></div></li>';					
 			   }
 			   
 			   if ( comment.length > numCmtDisplay && $("#loadcmtfull"+idPost).html().trim()=="no")
@@ -1397,4 +1398,17 @@ function getCookie(cname) {
     }
     return "";
 } 
-
+function delComment(idCmt)
+{
+	var url=root_path + "modules/del_comment.php";
+	if (FaceSeo.search(domain)<0)
+		return;		
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {idCmt:idCmt},
+			dataType: "html",
+			success: function(html) {			  
+	}); 
+	return false;
+}
