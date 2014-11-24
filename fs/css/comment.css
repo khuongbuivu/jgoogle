@@ -238,7 +238,7 @@ img {
 .UFIRow .UFIImageBlockContent {
     margin: 0;
     padding: 0 0 0 8px;
-	width:89%;
+	width:95%;
 }
 ._42ef {
     overflow: hidden;
@@ -344,7 +344,7 @@ textarea, .inputtext, .inputpassword {
     width: 10px;
 }
 #attachedimage{
-width:24px;
+width:100%;
 height:24px;
 margin:2px;
 cursor: pointer;
@@ -362,12 +362,13 @@ overflow: hidden;
 #addPhoto{
 float:right;
 cursor: pointer;
+width:10%;
 }
 
 #addPhoto .uploader{
-	background:no-repeat url("../images/css/g-icon.png") 0 -611px rgba(0, 0, 0, 0);
+	background:no-repeat url("../images/css/g-icon.png") right -611px rgba(0, 0, 0, 0);
     height: 24px;
-    width: 24px;
+    width: 100%;
 	border-size: 0px;
 	border-style: none;
 	cursor: hand;
