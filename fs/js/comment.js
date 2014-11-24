@@ -1142,7 +1142,8 @@ function showCommentOfPost(idPost,comment)
 					else
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div>';
-					htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:5px;cursors:hand" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div> </div></div></li>';					
+					htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:5px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
+					htmlnewpost+='</div></div></li>';					
 			   }
 			   
 			   if ( comment.length > numCmtDisplay && $("#loadcmtfull"+idPost).html().trim()=="no")

@@ -1159,6 +1159,13 @@ function addPoint(url,linkClicked,idUser,point)
 	};
   xmlhttp.send(params);
 };
+$('body').on("mouseover",".UFIComment",function(){
+	$(".cmtclose").css("display","block");
+})
+$('body').on("mouseout",".UFIComment",function(){
+	$(".cmtclose").css("display","none");
+})
+
 </script>
 <!-- 
 Search upclick.js mo rem de su dung upload file 
