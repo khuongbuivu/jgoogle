@@ -943,7 +943,7 @@ function showPost(json)
 									else 
 										url=(json.post[i].post_full_url);							
 									htmlnewpost+="<div style='height:40px;'>";
-									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 271px;">';							
+									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 45%;">';							
 									if (url!="")
 									{				
 										htmlnewpost+='<div style=" background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 4px;float: left;height: 27px;padding: 0 5px;vertical-align: top;width: 60px;"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
