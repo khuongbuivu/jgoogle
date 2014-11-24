@@ -547,6 +547,7 @@ function generateToken()
 
 </script>
 <script>
+var isEnter=true;
 $(function(){
 $(document).on('mousedown', function (e) {   	
 	if($(e.target).parents().index($('#notify_content_wrapper')) == -1) {
@@ -568,12 +569,66 @@ $( "#fsAnaylyticsButton" ).click(function() {
 	TINY.box.show({url:'modules/statist_inday.php',width:700,height:500},'Thống kê Click','titlepopup'); refreshIntervalId = setInterval(startTime('modules/statist_inday.php',''), 5000); return false;
 });
 
-$(document).on('click', '.addname', function()
-{
-	var username=$(this).attr('title');	 
+$(window).keydown(function(e){
+	if($(".boxtag").css('display')== 'none')
+	{
+		isEnter=true;
+		return;
+	}
+	if(e.which === 13){
+		var username = $(".boxtagdivscroll div.selected span.addname").attr('title');
+		var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";
+		var idPost=$(".boxtagdivscroll div.selected span.addname").attr('id');
+		var idP=idPost.substring(7);
+		var start=/@/ig;
+		var word=/@(.*)/ig;
+		var old=$("#contentbox"+idP).html();
+		var content=old.replace(word,"");
+		$("#contentbox"+idP).html(content);
+		$("#contentbox"+idP).append(E);
+		$("#contentbox"+idP).focus();
+		$("#display"+idP).hide();
+		$("#msgbox").hide();
+		isEnter=false;
+		return false;
+	}
+	else 
+	{
+		isEnter=true;
+	}
+	if(e.which === 40){		
+        if(liSelected){
+            liSelected.removeClass('selected');
+            next = liSelected.next();
+            if(next.length > 0){
+                liSelected = next.addClass('selected');
+            }else{
+                liSelected = li.eq(0).addClass('selected');
+            }
+        }else{
+            liSelected = li.eq(0).addClass('selected');
+        }
+    }else if(e.which === 38){
+        if(liSelected){
+            liSelected.removeClass('selected');
+            next = liSelected.prev();
+            if(next.length > 0){
+                liSelected = next.addClass('selected');
+            }else{
+                liSelected = li.last().addClass('selected');
+            }
+        }else{
+            liSelected = li.last().addClass('selected');
+        }
+    }
+})
+
+$(document).on('click', '.display_box', function()
+{	
+	var username=$(this).find('.addname').attr('title');	 
 	var start=/@/ig;
 	var word=/@(.*)/ig;
-	var idPost=$(this).attr('id');
+	var idPost=$(this).find('.addname').attr('id');
 	var idP=idPost.substring(7);
 	var old=$("#contentbox"+idP).html();
 	var content=old.replace(word,"");
@@ -667,7 +722,8 @@ $('a[rel=btipsy]').tipsy({gravity: 'n'});
 $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
 
 });
-
+var li ;
+var liSelected;
 $('body').on('keyup','textarea,.contentbox', function(e) {
 	/*$('textarea').on('keydown',function(e){*/
 	var maxCharLineComment = 50;
@@ -692,7 +748,7 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 	{
 		boolStartFindName=true;	
 	}
-	if (boolStartFindName && go!=null && go.length>0 && name!="@" && name!="@ " && name!="@  ")
+	if (boolStartFindName && go!=null && go.length>0 && name!="@" && name!="@ " && name!="@  " && e.keyCode!=40)
 	{
 		$("#msgbox").slideDown('show');
 		$.ajax({
@@ -708,12 +764,14 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 						{
 							$("#display"+idArt).slideUp('show');
 						}
-						$("#display"+idArt).html(html).show();					
+						$("#display"+idArt).html(html).show();
+						li = $('.display_box');
+						liSelected = null;
 					}
 					});
 		
 	}
-    if (e.keyCode == 13 && $(this).attr('id')!= "textcomment") {
+    if (e.keyCode == 13 && (isEnter==true) && $(this).attr('id')!= "textcomment") {
 		idArt = parseFloat(idArt);
 		var url = root_path + "save_cmt.php";
 		var url1 = root_path + "save_link.php";
