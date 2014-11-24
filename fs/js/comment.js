@@ -901,9 +901,9 @@ function showPost(json)
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
 						{							
-						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:648px" class="postcontent" >';
+						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:97.9%" class="postcontent" >';
 						   
-						   htmlnewpost+='<div style="float:right; width:648px; margin:0px">';
+						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
 						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
 						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
@@ -919,13 +919,13 @@ function showPost(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='width:638px; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
+								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
 							}									
 							else
-								htmlnewpost+="<div style='width:638px; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
+								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
 						   if (json.post[i].user_point>0)
 						   {
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
@@ -1142,8 +1142,7 @@ function showCommentOfPost(idPost,comment)
 					else
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div>';
-					htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:5px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>' ;
-					htmlnewpost+='</div></div></li>';					
+					htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:5px;cursors:hand" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div> </div></div></li>';					
 			   }
 			   
 			   if ( comment.length > numCmtDisplay && $("#loadcmtfull"+idPost).html().trim()=="no")
