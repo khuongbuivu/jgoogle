@@ -1,6 +1,6 @@
 .contentbox
 {
-width:446px; height:50px;
+width:639px; height:50px;
 border:solid 2px #333;
 font-family:Arial, Helvetica, sans-serif;
 font-size:14px;
@@ -66,6 +66,8 @@ width:25px; float:left; margin-right:6px
 .comment-div{z-index:1000;}
 .boxtag{ border:1px solid #eee; position:absolute;top:50px; z-index:1000; background:#eee;}
 .comment{
+background: none repeat scroll 0 0 #f6f7f8;
+    border: 1px solid #e7e8e8;
 }
 .boxtagtitle{font-weight: bold;
     padding: 5px;

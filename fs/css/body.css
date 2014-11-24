@@ -150,9 +150,9 @@ div#contentCol.homeFixedLayout {
 .hasLeftCol .homeWiderContent div#contentArea {
  /* background: url("../images/css/bgleft.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
  */
- background-color: #fff;
+ background-color: #E9EAED;
     min-height: 560px;
-    opacity: 0.6;
+    opacity: 1;
     padding-left: 10px;
     padding-right: 0;
     width: 66%;
@@ -326,7 +326,7 @@ color:green;display:inline;
 }
 
 #action{
-	width: 450px;
+	width: 638px;
 	margin:0;
 }
 
@@ -447,7 +447,7 @@ button._11b {
 position:relative;
 }
 .fbjlike-example{
-float:right; width:300px;padding-right:10px; margin:4px 4px 4px 4px;height:80px; overflow: hidden;
+float:right; width:300px;padding-right:10px; margin:4px 4px 4px 4px;height:40px; overflow: hidden;
 }
 #loginform{
 background:url('../images/css/faceseo-login.png');
@@ -620,6 +620,7 @@ filter:alpha(opacity=1); /* For IE8 and earlier */
 .numview{
 	width: 50px;
 	display:inline;
+	vertical-align:super;
 }/*ngon bo re*/
 
 ._5bfw #fsAnaylyticsButton a.icon-view,._5bfw #fsAnaylyticsButton a.icon-view:hover{

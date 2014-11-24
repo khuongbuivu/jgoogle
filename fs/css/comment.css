@@ -238,7 +238,7 @@ img {
 .UFIRow .UFIImageBlockContent {
     margin: 0;
     padding: 0 0 0 8px;
-	width:400px;
+	width:597px;
 }
 ._42ef {
     overflow: hidden;
@@ -283,6 +283,7 @@ img {
 
 .uiTypeahead .innerWrap {
     overflow: hidden;
+	background:#fff;
 }
 
 
@@ -350,7 +351,7 @@ cursor: pointer;
 }
 #cmt-content{
 float:left;
-width:360px;
+width:558px;
 padding:4px;
 /*
 height:30px;
@@ -482,10 +483,9 @@ button {
     margin: 0;
 }
 #contenpost, #imgPost ,#titlePost {
-    border-bottom: 1px dotted #CCCCCC;
-    border-right: 1px dotted #CCCCCC;
+
     margin-bottom: 5px;
-    width: 450px;;
+    width: 638px;;
 }
 #imgPost{
 	text-align:center;
