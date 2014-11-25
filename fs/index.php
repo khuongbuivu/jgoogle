@@ -308,7 +308,7 @@ exit();
 					<!-- API FACEBOOK GET ID NAM IMG -->					
 <form name="frm" method="post" action="" id="fileupload" enctype="multipart/form-data">
   <div id="thanh" >
-    <div style="width:100%;padding:10px;">
+    <div style="width:94%;padding:10px;">
       <textarea style="border:none; width:100% !important;resize: none; overflow:hidden;vertical-align: bottom;direction: ltr;min-height: 48px;white-space: pre-wrap;word-wrap: break-word;letter-spacing: normal;
 word-spacing: normal;
 text-transform: none;
