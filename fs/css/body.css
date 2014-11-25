@@ -448,6 +448,7 @@ position:relative;
 }
 .fbjlike-example{
 float:right; width:45%;padding-right:10px; margin:4px 4px 4px 4px;height:40px; overflow: hidden;
+display:none;
 }
 #loginform{
 background:url('../images/css/faceseo-login.png');

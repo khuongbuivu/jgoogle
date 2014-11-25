@@ -500,4 +500,27 @@ display:none;
 .urlpost{
 display:none;
 }
+.likebutton{
+	
+    border: 1px solid #eee;
+    float: left;
+    height: 27px;
+    line-height: 27px;
+    margin-left: 0px;
+    padding: 0px;
+    text-align: left;
+    width: 100px;
+	background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;
+}
+.likebutton span{
+background: url("../images/css/likebutton.png") no-repeat scroll 5px center rgba(0, 0, 0, 0);
+    color: #4e5665;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 20px;
+    text-align: left;
+}
+.likebottondiv{    float: left;
+    margin-left: 5px;
+    width: 100px;}
 /*popup */
