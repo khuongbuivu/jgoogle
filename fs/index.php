@@ -393,7 +393,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				</script>			
 				
 								
-				<div style="padding:5px; text-align:center; margin: 5 105px; background:#D8DFEA;color:#3B5998;width:528px;"><a onclick="loadOtherPost();">Xem thêm</a></div>					
+				<div style="padding:5px; text-align:center; margin: 5 105px; background:#D8DFEA;color:#3B5998;width:96%;"><a onclick="loadOtherPost();">Xem thêm</a></div>					
 				<div id="last_msg_loader"></div>
 				</div>
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
