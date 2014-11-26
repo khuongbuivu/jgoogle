@@ -147,7 +147,7 @@ exit();
 					<?php  if ($id_user!=""){
 							$_SESSION['token-user']=md5($id_user);
 							$_SESSION['session-user']=$id_user;
-							$_SESSION['session-name']=$user_profile[name];
+							$_SESSION['session-name']=$userFace;
 							}
 					?>
 				<?php endif ?>
@@ -565,6 +565,14 @@ $( "#fbNotificationsJewel" ).click(function() {
 	$("#notify_content_wrapper").slideDown('show');
 });
 
+
+$( "#iconemailbutton" ).click(function() {
+	window.idNotifyStart=0;
+	notifyEmail(root_path + "modules/notifyemail.php",idUser,window.idNotifyStart);
+	$("#notify_content_wrapper").slideDown('show');
+});
+
+
 $( "#fsAnaylyticsButton" ).click(function() {
 	TINY.box.show({url:'modules/statist_inday.php',width:700,height:500},'Thống kê Click','titlepopup'); refreshIntervalId = setInterval(startTime('modules/statist_inday.php',''), 5000); return false;
 });
@@ -979,6 +987,23 @@ function scrolToComment(idPost,idCmt)
 		});
 	}
 }
+
+function scrolToMessage(idPost,idCmt)
+{
+	$('#notify_content_wrapper').hide();
+	if ($(".commentid"+idCmt).length == 0 )
+		getMessageById(idPost);		
+	updateMessage(root_path + "modules/update_message.php",idUser);
+	if ($(".commentid"+idCmt).length > 0 )
+	{
+		$('html, body').stop().animate({
+		'scrollTop': $(".commentid"+idCmt).offset().top - 100
+		}, 600, 'swing', function () {
+			window.location.hash = target;
+		});
+	}
+}
+
 var currentPagePost = 0;
 var currentPageBanner = 0;
 $(document).ready(function(){			

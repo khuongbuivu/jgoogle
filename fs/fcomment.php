@@ -145,7 +145,7 @@ if(!isset($_SESSION)){
 			}	
 			//echo "INSERT INTO atw_notify ( atw_notify_user_id,atw_notify_user_name,atw_notify_user_logo ,atw_notify_id_post,atw_notify_time,atw_notify_content,atw_notify_status) VALUES (".$idUser.",'".$userName."','".$userLogo."',".$idArt.",'".$datetime."','".$content."','".$status."'";
 			//echo $query_id_user;
-			if ($content.count>50)
+			if (strlen($content)>50)
 			{
 				$shortContent=substr($content, 50);
 				$content = " nhắc đến bạn \" ". $shortContent."\"...";

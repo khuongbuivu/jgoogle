@@ -61,6 +61,33 @@ function getNumuNotifyComment(url,idUser)
 	}
 	xmlhttp_notify.send(params);
 }
+function notifyEmail(url,idUser,idNotifyStart)
+{	
+	var xmlhttp_notify;
+	if(window.XMLHttpRequest){
+	  xmlhttp_notify=new XMLHttpRequest();
+	}else{
+	  xmlhttp_notify=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		var params = "idUser=" + idUser + "&idNotifyStart=" + idNotifyStart;
+	xmlhttp_notify.open("POST", url, true);
+	xmlhttp_notify.setRequestHeader("Content-type", "application/x-www-form-urlencoded");	
+	xmlhttp_notify.setRequestHeader("Content-length", params.length);	
+	xmlhttp_notify.setRequestHeader("Connection", "close");
+	xmlhttp_notify.onreadystatechange = function() {
+		if(xmlhttp_notify.readyState == 4 && xmlhttp_notify.status == 200){			
+			if(idNotifyStart!=0)
+			{		
+				$("#notify_content_wrapper .content").append(xmlhttp_notify.responseText);
+			}
+			else
+				document.getElementById("notify_content_wrapper").innerHTML=xmlhttp_notify.responseText;
+			window.initNotifyComment();
+		}
+	}
+	xmlhttp_notify.send(params);
+}
+
 function getAnalytics(url,idUser)
 {
 	var xmlhttp_notify;

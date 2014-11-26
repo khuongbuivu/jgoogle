@@ -206,6 +206,25 @@ function getIdMax($table,$fieldName)
 	else
 		return 1;
 }
+function getUIDS($table,$fieldName)
+{
+	global $host;
+	global $user;
+	global $pass;
+	global $db;
+	$con=mysqli_connect($host,$user,$pass,$db);
+	mysqli_set_charset($con, "utf8");
+	$q="select ".$fieldName." from ".$table." order by ".$fieldName." desc limit 1";
+	$result=mysqli_query($con,"select ".$fieldName." from ".$table." order by ".$fieldName." desc");
+	$arr= array();
+	$i=0;
+	while($row=mysqli_fetch_array($result))
+	{
+		$arr[$i]=$row[$fieldName];
+		$i=$i+1;
+	}
+	return $arr;
+}
 function getInfoBacklink($id,$textlink)
 {
 	global $host;

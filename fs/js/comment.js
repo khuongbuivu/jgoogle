@@ -895,6 +895,32 @@ function getPostById(idPost){
 };
 
 
+
+function getMessageById(idPost){
+	var url=root_path + "modules/json_message_by_id.php";
+	if (FaceSeo.search(domain)<0)
+		return;
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {idPost:idPost},
+			dataType: "json",
+			success: function(json) {
+				var htmlnewpost='';
+				var htmlInputForm='';
+				var url;
+				var titleStastic='Thống kê Click hôm nay';
+				var classtitlePopup='titlepopup';
+				if(json.post.length>0){
+					htmlnewpost=showPostById(json);					
+					$("#detailpushnotify").html(htmlnewpost);
+					initArrayIdPost();
+				}
+		}
+	});  	
+};
+
+
 function showPost(json)
 {	
 		var htmlnewpost="";
