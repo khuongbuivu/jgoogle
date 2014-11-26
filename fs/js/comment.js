@@ -912,7 +912,7 @@ function getMessageById(idPost){
 				var titleStastic='Thống kê Click hôm nay';
 				var classtitlePopup='titlepopup';
 				if(json.post.length>0){
-					htmlnewpost=showPostById(json);					
+					htmlnewpost=showMessageById(json);					
 					$("#detailpushnotify").html(htmlnewpost);
 					initArrayIdPost();
 				}
@@ -1010,21 +1010,20 @@ function showPost(json)
 		return 	htmlnewpost;
 };
 
-
-
 function showPostById(json)
 {	
 		var htmlnewpost="";
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
 						{							
-						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:540px" class="postcontent" >';
-						   htmlnewpost+='<div style="float:left; width:50px ; margin:0px; position:relative">';
+						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:97.9%" class="postcontent" >';
+						   
+						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
+						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
 						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
-						   htmlnewpost+='<div style="float:right; width:452px; margin:0px">';
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
 								if (json.post[i].user_id == idUser)
@@ -1035,36 +1034,39 @@ function showPostById(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='width:452px; margin:0px' ><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
+								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
 							}									
 							else
-								htmlnewpost+="<div style='width:452px; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
+								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
 						   if (json.post[i].user_point>0)
 						   {
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
 							   if(json.post[i].post_image.trim ()!="")
 									htmlnewpost+="<div id='imgPost'>"+json.post[i].post_image+"</div>";						
-								if(json.post[i].post_url.trim()!="" && json.post[i].post_url.trim()!="viewedinday")
+								if(json.post[i].post_url.trim()!="")
 								{						
 									htmlnewpost+="<div id='action'>";
 									htmlnewpost+="<div id='titlePost'>";
+									//alert(json.post[i].post_mintimeview);
 									htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
 									htmlnewpost+="</div>";
 									if(json.post[i].post_full_url.trim()=="")
 										url=(json.post[i].post_url);
 									else 
 										url=(json.post[i].post_full_url);							
-									htmlnewpost+="<div style='height:80px;background-color:#D8DFEA'>";
-									htmlnewpost+='<div style="float:left; width:100px;padding-right:10px; margin:4px 4px 4px 4px;height:70px;">';							
+									htmlnewpost+="<div style='height:40px;'>";
+									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 97%;">';							
 									if (url!="")
 									{				
-										htmlnewpost+='<b><span ><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
-										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div>';
+										htmlnewpost+='<div style=" background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 4px;float: left;height: 27px;padding: 0 5px;vertical-align: top;width: 45px;"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
+										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div></div>';
 										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
-										htmlnewpost+='<br/><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a><div style="width: 80px; height:40px; z-index:0; position:relative;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute; left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
+										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><a href="#"><span>Share Page</span></div></a></div>';
 										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
 										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
 										htmlnewpost+='</div>';
@@ -1077,13 +1079,14 @@ function showPostById(json)
 							{
 							htmlnewpost+="<div id='contenpost'><strong>Điểm = 0 => bàiviết không hiển thị</strong></div>";
 							};
-							htmlInputForm='<div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
+							htmlInputForm='</div><div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
 							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
 							if(linkLogoFace.trim()!="https://graph.facebook.com//picture")
 								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
 							htmlInputForm+='</div></div>';
 							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
-							htmlInputForm+='<div class="comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
+							htmlInputForm+='<div class="comment-div comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
+							htmlInputForm+='<div class="boxtagfull" id="fslisttags' + json.post[i].idPost +'"><div id="contentbox' + json.post[i].idPost + '" class="contentbox tagnameboxinput" contenteditable="true" data-ph="Tag thành viên"></div><div class="boxtag" id="display' + json.post[i].idPost + '"></div><div id="msgbox"></div></div>';	
 							htmlInputForm+=showFullCommentOfPost(json.post[i].idPost,json.comment[i]);
 							htmlInputForm+='</div>';
 							htmlInputForm+='</ul></div></div><div class="text-comment"><div id="cmt_content"><div id="comment-content-1"></div><div id="lastCommentPost' + json.post[i].idPost + '" >0</div><div id="num-like">Num Like</div><div id="' + json.post[i].idPost + '"></div><div id="notifyPost' + json.post[i].idPost + '_content"></div>';
@@ -1095,6 +1098,82 @@ function showPostById(json)
 				};		
 		return 	htmlnewpost;
 };
+function showMessageById(json)
+{	
+		var htmlnewpost="";
+		for(var i=0;i<json.post.length;i++){	
+						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
+						{							
+						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:97.9%" class="Message" >';
+						   
+						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
+						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
+						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
+						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
+						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
+						   htmlnewpost+='</div>';
+							if (json.post[i].user_id == idUser || xxyyzz==3)						
+							{
+								if (json.post[i].user_id == idUser)
+								{
+									var aa =$("#mypostid").html();
+									if (aa!="")
+										$("#mypostid").html( aa + ' or post_id=' + json.post[i].idPost );
+									else
+										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
+								};
+								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
+								if(xxyyzz==3)
+									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
+								htmlnewpost+="</div>";
+							}									
+							else
+								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
+						   if (json.post[i].user_point>0)
+						   {
+							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
+							   if(json.post[i].post_image.trim ()!="")
+									htmlnewpost+="<div id='imgPost'>"+json.post[i].post_image+"</div>";						
+								if(json.post[i].post_url.trim()!="")
+								{						
+									htmlnewpost+="<div id='action'>";
+									htmlnewpost+="<div id='titlePost'>";
+									//alert(json.post[i].post_mintimeview);
+									htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
+									htmlnewpost+="</div>";
+									if(json.post[i].post_full_url.trim()=="")
+										url=(json.post[i].post_url);
+									else 
+										url=(json.post[i].post_full_url);							
+									htmlnewpost+="<div style='height:40px;'>";
+									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 97%;">';							
+									if (url!="")
+									{				
+										htmlnewpost+='<div style=" background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 4px;float: left;height: 27px;padding: 0 5px;vertical-align: top;width: 45px;"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
+										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div></div>';
+										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
+										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
+										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><a href="#"><span>Share Page</span></div></a></div>';
+										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
+										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
+										htmlnewpost+='</div>';
+										htmlnewpost+='<div style=" clear: both;"></div>';
+										htmlnewpost+='</div></div>';					
+									}
+								};		
+							} 
+							else
+							{
+							htmlnewpost+="<div id='contenpost'><strong>Điểm = 0 => bàiviết không hiển thị</strong></div>";
+							};
+		
+							htmlnewpost+='</div><div style=" clear: both;"></div><ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul></div>';		
+					};	
+				};		
+		return 	htmlnewpost;
+};
+
 
 function showFullCommentOfPost(idPost,comment)
 {			

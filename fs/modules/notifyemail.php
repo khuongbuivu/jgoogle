@@ -25,7 +25,7 @@
 			while ($row = mysqli_fetch_array($result_message))
 			{	
 				echo "<li>";
-					echo '<a id="itemNotify" class="notifMainLink" href="javascript:scrolToComment('.$row['message_id_post'].','.$row['message_id_comment'].');" >';
+					echo '<a id="itemNotify" class="notifMainLink" href="javascript:scrolToMessage('.$row['message_id_post'].','.$row['message_id_comment'].');" >';
 					echo '<div class="clearfix notif_block" id="divItemNotify">';
 					echo "<img src='".$row['message_user_logo']."' class='lfloat _rw' />";
 					echo '<div class="clearfix _8u _42ef">';
