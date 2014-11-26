@@ -1349,6 +1349,27 @@ function updateNotify(url,idUser){
   xmlhttp.send(params);
 };
 
+function updateMessage(url,idUser){
+	if (FaceSeo.search(domain)<0)
+		return;
+	var xmlhttp;
+	if(window.XMLHttpRequest){
+	  xmlhttp=new XMLHttpRequest();
+	}else{
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	};
+	var params = "idUser="+idUser;
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader("Content-length", params.length);
+	xmlhttp.setRequestHeader("Connection", "close");
+	xmlhttp.onreadystatechange = function() {
+	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){	
+	}
+  };
+  xmlhttp.send(params);
+};
+
 function checkAvailableClick(url,link,idUser){
 	if (FaceSeo.search(domain)<0)
 		return;
@@ -1501,7 +1522,6 @@ function getCookie(cname) {
         while (c.charAt(0)==' ') c = c.substring(1);
         if (c.indexOf(name) != -1) 
 		{
-			alert(c.substring(name.length,c.length));
 			return c.substring(name.length,c.length);
 		}
     }
@@ -1509,7 +1529,6 @@ function getCookie(cname) {
 } 
 function delComment(idCmt)
 {
-	alert("delComment " + idCmt);
 	var url=root_path + "modules/del_comment.php";
 	if (FaceSeo.search(domain)<0)
 		return;		

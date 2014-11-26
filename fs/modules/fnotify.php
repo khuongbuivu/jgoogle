@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION)){
+    session_start();
+}
 	include("../config.php");
 	include_once("../user.php");
 	include_once("../system/function.php");
@@ -29,6 +32,33 @@
 		mysqli_close($con);
 	}
 	
+	function getNumMessage()
+	{
+		global $host;
+		global $user;
+		global $pass;
+		global $db;
+		$idUser=$_POST['idUser'];
+		$con=mysqli_connect($host,$user,$pass,$db);
+		mysqli_set_charset($con, "utf8");
+		$result_notify=mysqli_query($con,"select check_ms_id_post  from fs_check_message where  check_ms_id_user=".$idUser);
+		
+		if($result_notify->num_rows >0)
+		{
+			$row_notify = mysqli_fetch_array($result_notify);
+			$idLastCommentNotify = $row_notify['check_ms_id_post'];
+		}else
+			$idLastCommentNotify=0;	
+		$result=mysqli_query($con,"select * from fs_message where message_user_id =".$idUser."  and message_id_post > ".$idLastCommentNotify );
+		if($result->num_rows >0)
+		{
+			echo $result->num_rows;
+		}
+		else
+			echo 0;
+		mysqli_close($con);
+	}
+	
 	function getNumAnalytics()
 	{
 		global $host;
@@ -39,7 +69,7 @@
 		// get All Post of User A in today
 		// statastic click of All Post
 		// $idUser=$_POST['idUser'];
-		$idUser = "100001707050712";
+		$idUser = $_SESSION['session-user'];
 		$con=mysqli_connect($host,$user,$pass,$db);	
 		mysqli_set_charset($con, "utf8");		
 		$currentDay = date("m/d/y");

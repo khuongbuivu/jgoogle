@@ -93,6 +93,7 @@ setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idU
 setCookie("UIDFACESEO", idUser, 1);
 getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
 getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
+getNumMessage(root_path + 'modules/getNumMessage.php',idUser);
 
 </script>
 <script>(function(d, s, id) {
@@ -994,6 +995,7 @@ function scrolToMessage(idPost,idCmt)
 	if ($(".commentid"+idCmt).length == 0 )
 		getMessageById(idPost);		
 	updateMessage(root_path + "modules/update_message.php",idUser);
+	getNumMessage(root_path + 'modules/getNumMessage.php',idUser);
 	if ($(".commentid"+idCmt).length > 0 )
 	{
 		$('html, body').stop().animate({

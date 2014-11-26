@@ -5,6 +5,7 @@ if(!isset($_SESSION)){
 require_once('../definelocal.php');
 require_once('../system/function.php');
 require_once('../config.php');
+require_once('../user.php');
 global $host;
 global $user;
 global $pass;
@@ -12,6 +13,7 @@ global $db;
 $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_set_charset($con, "utf8");
 $idMaxPost = getIdMax("fs_message_content", "msct_id");
+$idMaxPost = $idMaxPost + 1;
 // $content = $_GET['content'];
 $content = "TEST ADD MESSAGE TEST ADD MESSAGE TEST ADD MESSAGE TEST ADD MESSAGE TEST ADD MESSAGE TEST ADD MESSAGE TEST ADD MESSAGE TEST ADD MESSAGE TEST ADD MESSAGE TEST ADD MESSAGE ";
 $query_post="INSERT INTO fs_message_content (msct_id, msct_iduser, msct_content) VALUES (".$idMaxPost.", ".$_SESSION['session-user'].", '".$content."' )";	
@@ -21,6 +23,9 @@ $userName = $_SESSION['session-name'];
 $userLogo = 'https://graph.facebook.com/'.$_SESSION['session-user'].'/picture';
 $datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
 $status	=1;
+$infoUser=getUserInfo($_SESSION['session-user']);
+if ($infoUser['user_manager']!=3)
+	exit();
 $idCommentPost = -1;
 if (strlen($content)>50)
 {
