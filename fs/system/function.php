@@ -204,7 +204,7 @@ function getIdMax($table,$fieldName)
 		return $row[$fieldName];
 	}
 	else
-		return 1;
+		return 0;
 }
 function getUIDS($table,$fieldName)
 {
