@@ -1,1 +1,70 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('a X(g,9){8 1;2(h.e){1=f e()}v{1=f w("z.s")};8 7="9="+9;1.M("L",g,N);1.5("d-O","P/x-J-E-D");1.5("d-b",7.b);1.5("K","C");2(A.q(n)<0)i;1.F=a(){2(1.I==4&&1.k==H){$("#Z").r(1.10)}};1.t(7)};a Y(g,11,j,6,k){8 1;2(h.e){1=f e()}v{1=f w("z.s")};j=$(\'#12\').r();2(j==""){T("Sớ l ả13 uước");i};6=$(\'#U\').W();2(6.V()==""){T("Sớ 15èm 6 uước 1a l uước");i};2(A.q(n)<0)i;8 7="9="+9+"&j="+j+"&6="+18(6);1.M("L",g,N);1.5("d-O","P/x-J-E-D");1.5("d-b",7.b);1.5("K","C");1.F=a(){2(1.I==4&&1.k==H){h.R.Q(o+"G/l/y.p")}};1.t(7)};a 19(9){8 3;2(h.e){3=f e()}v{3=f w("z.s")};2(A.q(n)<0)i;8 B=16();8 6=$(\'#14\').r();8 g=o+"G/17.p";8 7="9="+9+"&6="+6+"&B-y="+B;3.M("L",g,N);3.5("d-O","P/x-J-E-D");3.5("d-b",7.b);3.5("K","C");3.F=a(){2(3.I==4&&3.k==H){h.R.Q(o+"G/l/y.p")}};3.t(7)};',62,73,'|xmlhttp_cmt|if|xmlhttp_delbanner||setRequestHeader|link|params|var|idUser|function|length||Content|XMLHttpRequest|new|url|window|return|img|status|upload||domain|root_path|php|search|html|XMLHTTP|send|tr|else|ActiveXObject||banner|Microsoft|FaceSeo|token|close|urlencoded|form|onreadystatechange|modules|200|readyState|www|Connection|POST|open|true|type|application|assign|location|Nh|alert|linkbanner|trim|val|showbannerfree|addbannerfree|bannerfree|responseText|User|linkImageBanner|nh|linkbanner1|ch|generateTokenPost|del_banner|encodeURIComponent|delbanner|khi'.split('|'),0,{}))
+function showbannerfree(url,idUser)
+{
+var xmlhttp_cmt;
+if(window.XMLHttpRequest){xmlhttp_cmt=new XMLHttpRequest()}
+else{xmlhttp_cmt=new ActiveXObject("Microsoft.XMLHTTP")};
+var params="idUser="+idUser;
+xmlhttp_cmt.open("POST",url,true);
+xmlhttp_cmt.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp_cmt.setRequestHeader("Content-length",params.length);
+xmlhttp_cmt.setRequestHeader("Connection","close");
+if(FaceSeo.search(domain)<0)return;
+xmlhttp_cmt.onreadystatechange=function(){
+if(xmlhttp_cmt.readyState==4&&xmlhttp_cmt.status==200){$("#bannerfree").html(xmlhttp_cmt.responseText)}};
+xmlhttp_cmt.send(params)
+};
+function addbannerfree(url,User,img,link,status){
+var xmlhttp_cmt;
+if(window.XMLHttpRequest){xmlhttp_cmt=new XMLHttpRequest()}
+else{xmlhttp_cmt=new ActiveXObject("Microsoft.XMLHTTP")};
+img=$('#linkImageBanner').html();if(img==""){alert("Nhớ upload ảnh trước");return};
+link=$('#linkbanner').val();
+if(link.trim()==""){alert("Nhớ chèm link trước khi upload trước");return};
+if(FaceSeo.search(domain)<0)return;
+var params="idUser="+idUser+"&img="+img+"&link="+encodeURIComponent(link);
+xmlhttp_cmt.open("POST",url,true);
+xmlhttp_cmt.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp_cmt.setRequestHeader("Content-length",params.length);xmlhttp_cmt.setRequestHeader("Connection","close");
+xmlhttp_cmt.onreadystatechange=function(){
+if(xmlhttp_cmt.readyState==4&&xmlhttp_cmt.status==200){
+window.location.assign(root_path+"modules/upload/banner.php")}};xmlhttp_cmt.send(params)
+};
+function delbanner(idUser){
+var xmlhttp_delbanner;
+if(window.XMLHttpRequest){xmlhttp_delbanner=new XMLHttpRequest()}
+else{xmlhttp_delbanner=new ActiveXObject("Microsoft.XMLHTTP")};
+if(FaceSeo.search(domain)<0)return;
+var token=generateTokenPost();
+var link=$('#linkbanner1').html();
+var url=root_path+"modules/del_banner.php";
+var params="idUser="+idUser+"&link="+link+"&token-banner="+token;
+xmlhttp_delbanner.open("POST",url,true);
+xmlhttp_delbanner.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp_delbanner.setRequestHeader("Content-length",params.length);
+xmlhttp_delbanner.setRequestHeader("Connection","close");
+xmlhttp_delbanner.onreadystatechange=function(){
+if(xmlhttp_delbanner.readyState==4&&xmlhttp_delbanner.status==200){
+window.location.assign(root_path+"modules/upload/banner.php")}};xmlhttp_delbanner.send(params)
+};
+function delBannerById(idBanner){
+	var url = root_path + "modules/banner_del_by_id.php";
+	if (FaceSeo.search(domain)<0)
+		return;
+	var xmlhttp;
+	if(window.XMLHttpRequest){
+	  xmlhttp=new XMLHttpRequest();
+	}else{
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	};
+	var params = "idBanner=" + idBanner ;
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader("Content-length", params.length);
+	xmlhttp.setRequestHeader("Connection", "close");
+	xmlhttp.onreadystatechange = function() {
+	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){ 
+		$("#dbanner"+idBanner).hide();
+	}
+  };
+  xmlhttp.send(params);
+};

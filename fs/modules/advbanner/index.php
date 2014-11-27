@@ -17,7 +17,7 @@
 		while ($row = mysqli_fetch_array($result))
 		{
 			$infosUser=getUserInfo($row['banner_user_id']);
-			if (strpos($row['banner_img'], "faceseo.vn/images")==true)
+			// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 			{
 				if (checkAvailableLinks($row['post_url'],$idUser))
 					echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
