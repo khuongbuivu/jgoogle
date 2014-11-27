@@ -76,7 +76,8 @@ function getNumMessage(url,idUser)
 	if(xmlhttp_notify.readyState == 4 && xmlhttp_notify.status == 200){	
 			if(parseInt(xmlhttp_notify.responseText)!=0)
 			{
-				$('#emailCountWrappers').css("display","block");
+				$('#emailCountWrapper').css("display","block");
+				$('#iconemailCountValue').css("display","block");;
 				$('#iconemailCountValue').html(xmlhttp_notify.responseText);
 				document.title = "("+xmlhttp_notify.responseText+ ") FaceSeo.Vn Mạng tương tác dành cho Seoer ";
 				
