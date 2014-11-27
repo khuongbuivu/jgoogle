@@ -401,10 +401,17 @@ width:10%;
 cursor: pointer !important;
 float:right;width:150px;height:150px;margin-right:0px;
 }
+
 #addPhoto .uploader:hover{
-	background: url("../images/css/g-icon.png") no-repeat scroll 0 -569px rgba(0, 0, 0, 0);
-	height: 24px;
-    width: 24px;
+	background:no-repeat url("../images/css/g-icon.png") right -569px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 100%;
+	border-size: 0px;
+	border-style: none;
+	cursor: hand;
+	cursor:pointer;
+	padding: 0px;
+	
 }
 
 
