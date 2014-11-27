@@ -636,19 +636,18 @@ filter:alpha(opacity=1); /* For IE8 and earlier */
 ._5bfw #iconemailbutton a.icon-email:hover,._5bfw #iconemailbutton a.icon-email{
 	background:url(../images/css/icon-email.png) no-repeat scroll 0 center !important; 
 }
-._5bfw #fsAnaylyticsButton a.icon-view .jewelCount,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount {
+._5bfw #fsAnaylyticsButton a.icon-view .jewelCount,._5bfw #iconemailbutton a.icon-email .jewelCount,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount {
  border-radius: 49%;
     color: #ffffff;
     font-size: 9px;
     font-weight: bold;
     overflow: hidden;
-    padding-bottom: 1px;
     position: absolute;
     right:0px;
     top: 2px;
     z-index: 101;
 }
-._5bfw #fsAnaylyticsButton a.icon-view .jewelCount span,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount span {
+._5bfw #fsAnaylyticsButton a.icon-view .jewelCount span,._5bfw #iconemailbutton a.icon-email .jewelCount span,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount span {
 background-color: red;
     border: medium none;
     border-radius: 2px;
