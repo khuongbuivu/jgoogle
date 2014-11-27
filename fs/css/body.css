@@ -142,8 +142,7 @@ div#contentCol.homeFixedLayout {
     word-wrap: break-word;
 	margin-right:0;
 	background: url("../images/css/bgleft.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
-	 opacity: 0.6;
-	 min-height:580px;
+	min-height:580px;
 }
 
 
