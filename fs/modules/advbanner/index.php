@@ -16,6 +16,7 @@
 		$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser order by point desc limit ".$idBannerStart.",10");	 //idBannerStart
 		while ($row = mysqli_fetch_array($result))
 		{
+			echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
 			$infosUser=getUserInfo($row['banner_user_id']);
 			// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 			{
@@ -24,6 +25,8 @@
 				else
 					echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
 			}
+			echo '<div style="position:absolute; top:0px;right:0px; padding:3px; background:yellow" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
+			echo "</div>";
 							
 							
 		}
