@@ -232,6 +232,7 @@ h1 {
     right: -1px;
     top: 0;
 }
+
 .fbJewel .jewelCount {
     border-radius: 2px 2px 2px 2px;
     color: #FFFFFF;
@@ -301,8 +302,8 @@ display:none;
 
 
 #iconemailCountValue{
-display:block;
+display:none;
 }
 span#emailCountWrapper {
-display:block;
+display:none;
 }
