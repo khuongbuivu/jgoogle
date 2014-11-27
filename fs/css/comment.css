@@ -20,6 +20,7 @@ div.UFIContainer {
 div.UFIContainer {
     overflow:visible;
     padding: 0;
+	position:relative;
 }
 .UFIContainer {
     margin: 0;
@@ -301,7 +302,7 @@ img {
     background: none repeat scroll 0 0 transparent;
 }
 .UFIAddComment .UFIAddCommentInput {
-    display: block;
+    display: none;
     height: 20px;
 	margin-right:40px;
 }
@@ -401,17 +402,10 @@ width:10%;
 cursor: pointer !important;
 float:right;width:150px;height:150px;margin-right:0px;
 }
-
 #addPhoto .uploader:hover{
-	background:no-repeat url("../images/css/g-icon.png") right -569px rgba(0, 0, 0, 0);
-    height: 24px;
-    width: 100%;
-	border-size: 0px;
-	border-style: none;
-	cursor: hand;
-	cursor:pointer;
-	padding: 0px;
-	
+	background: url("../images/css/g-icon.png") no-repeat scroll 0 -569px rgba(0, 0, 0, 0);
+	height: 24px;
+    width: 24px;
 }
 
 
