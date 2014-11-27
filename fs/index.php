@@ -735,7 +735,9 @@ var li ;
 var liSelected;
 $('body').on('keyup','textarea,.contentbox', function(e) {
 	/*$('textarea').on('keydown',function(e){*/
+	
 	var maxCharLineComment = 50;
+	var maxCharLineComment1 = 61;
 	var lineHeight = 20;
 	var tb = $(this);		
 	$('#comment-content-1').html(tb.text());	
@@ -743,6 +745,11 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 	{
 		var line= 1 + parseInt(tb.text().length/maxCharLineComment);
 		$( this ).css("height", line*lineHeight + "px");
+		
+		var line1= 1 + parseInt(tb.text().length/maxCharLineComment1);
+		var tenclass=$(this).data('he');
+		$( '.'+tenclass ).css("height", line1*lineHeight + "px");
+		
 	}
 	var charpressed= getChar(e.keyCode);
 	var start=/@/ig;
