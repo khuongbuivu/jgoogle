@@ -615,8 +615,15 @@ function DisPlayUrlClickBacklink()
 	{
 		var t=timeClicked(timeInits[i],timecurrent);
 		if (t>10)
-		html= html + "<a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"'>" + urls[i].substring(0,60) + "</a><br/>";
+		{
+			html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"'>" + urls[i].substring(0,60) + "</a></div>";
+			html= html + "<div style='float:right; width:5%'><img src='images/rushviewing.gif' title='Click to view backlink'/></div>";
+		}
 	}
+	if (html=="")
+		$('#listUrlViewMore').css("display","none");
+	else
+		$('#listUrlViewMore').css("display","inline-block");
 	$('#listUrlViewMore').html(html);
 }
 function saveClick(url,urlClicked,idUser,timeOpend,timeClose,timeView)
