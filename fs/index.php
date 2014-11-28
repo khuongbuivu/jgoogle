@@ -645,7 +645,7 @@ $(document).on('click', '.display_box', function()
 	var old=$("#contentbox"+idP).html();
 	var content=old.replace(word,"");
 	$("#contentbox"+idP).html(content);
-	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";
+	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a> ";
 	$("#contentbox"+idP).append(E);
 	$("#contentbox"+idP).focus();
 	$("#display"+idP).hide();
@@ -799,7 +799,7 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 		var name = $("#name").html();			
 		var token = generateToken();
 		addLinkToDb(url1,<?php echo $id_user; ?>,tb.text());
-		addCmtToDb(url,idArt,tb.text(), $("#imgSrc"+idArt).html(),imgLogo,name,idUser , token);		
+		addCmtToDb(url,idArt,tb.html(), $("#imgSrc"+idArt).html(),imgLogo,name,idUser , token);		
         subPoint(idUser,sidUser,-5,tb.text());
 		addNotify(url_notify,idUser,name,imgLogo,idArt,0,tb.text() + $("#imgSrc"+idArt).html(),0);
 		$("#imgSrc"+idArt).html("");
