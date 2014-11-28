@@ -21,7 +21,6 @@ if (isset($_SESSION['token'], $_SESSION['token-user'],$_POST['idUser'],$_POST['t
 	mysqli_close($con);
 }
 */
-echo "DELETE FROM atw_post WHERE post_id =".$post_id." and post_iduser=".$post_iduser;
 $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_query($con,"DELETE FROM atw_post WHERE post_id=".$post_id." and post_iduser=".$post_iduser);
 mysqli_query($con,"DELETE FROM atw_cmt_content WHERE IdArticles=".$post_id);

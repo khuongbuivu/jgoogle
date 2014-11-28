@@ -13,7 +13,6 @@ $link= $_POST['link'];
 if (isset($_SESSION['token'], $_SESSION['token-user'],$_POST['idUser'],$_POST['token-banner'])&& checkToken($_POST['token-banner'])==true)
 {
 	$con=mysqli_connect($host,$user,$pass,$db);
-	echo "DELETE FROM fs_banner WHERE banner_link like'%".$link."%' and banner_user_id=".$idUser;
 	mysqli_query($con,"DELETE FROM fs_banner WHERE banner_link like'%".$link."%' and banner_user_id=".$idUser);
 	mysqli_close($con);
 }

@@ -1210,7 +1210,8 @@ function showFullCommentOfPost(idPost,comment)
 					else
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div>';
-					htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:-20px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
+					if (comment[j].cmt_userId == window.idUser || xxyyzz==3)
+						htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:-20px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
 			   }
 			 }			
@@ -1254,7 +1255,8 @@ function showCommentOfPost(idPost,comment)
 					else
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div>';
-					htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:-20px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
+					if (comment[j].cmt_userId == window.idUser || xxyyzz==3)
+						htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:-20px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
 			   }
 			   

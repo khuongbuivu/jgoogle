@@ -23,6 +23,7 @@
 	while( ($row1 = mysqli_fetch_array($result)) ){
 		$infosUser1=getUserInfo($row1['userId']);		
 		$comment[$ii]['cmt_Id'] 			=$row1['Id'];
+		$comment[$i][$ii]['cmt_userId'] 			=$row1['userId'];
 		$comment[$ii]['cmt_imgLogo']		=$row1['imgLogo'];
 		$comment[$ii]['cmt_user_link']	=$infosUser1['user_link'];
 		$comment[$ii]['cmt_name']		=$infosUser1['user_name'];
