@@ -18,7 +18,8 @@ for ($ii=1;$ii<count($links);$ii++)
 	$links[$ii]=rtrim($links[$ii],  "/");
 	$q=$q.' or link=\''.$links[$ii].'\'';
 }
-$result = mysqli_query($con,"select idUser,timestart from atw_click_link where (".$q.") and timeclose='In view'  order by id desc ");
+$currentDay = date("d/m/y");
+$result = mysqli_query($con,"select idUser,timestart from atw_click_link where (".$q.") and timeclose='In view' and timestart like '%".$currentDay."%'  order by id desc ");
 $listIDU = array();
 $i=0;
 while ($row = mysqli_fetch_array($result))
