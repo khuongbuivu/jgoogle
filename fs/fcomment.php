@@ -52,9 +52,10 @@ if(!isset($_SESSION)){
 				
 				$ImageLogo='https://graph.facebook.com/'.$_SESSION['session-user'].'/picture';
 				$userNameLike=$_SESSION['session-name'];
-				if ($infoCmt['cmtContent'].count>70)
+				$infoCmt['cmtContent'] = removeTag($infoCmt['cmtContent']);
+				if (strlen($infoCmt['cmtContent'])>60)
 				{
-					$shortContent=substr($content, 70);
+					$shortContent=substr($infoCmt['cmtContent'], 60);
 					$content = " <i>thích</i>: ". $shortContent."...";
 				}
 				else
@@ -115,7 +116,8 @@ if(!isset($_SESSION)){
 		global $pass;
 		global $db;
 		//url, idUser, userName, idArt, content, status
-		$idUser		=$_POST['idUser'];
+		$idUser		= $_POST['idUser'];
+		$listTags	= $_POST['listTags'];
 		$userName		=$_POST['userName'];
 		$userLogo		=$_POST['userLogo'];
 		$idArt		=$_POST['idArt'];
@@ -168,8 +170,16 @@ if(!isset($_SESSION)){
 				mysqli_query($con,"INSERT INTO atw_notify ( notify_user_id,notify_user_name,notify_user_logo ,notify_id_post,notify_id_comment,notify_time,notify_content,notify_status,notify_type) VALUES (".$idUser.",'".$userName."','".$userLogo."',".$idArt.",".$idCommentPost.",'".$datetime."','".$content."','".$status."',1)");
 			}
 			
+			
 		}	
-			mysqli_close($con);
+			if ($listTags!=null || $listTags!="")
+				$UIDTAGS=split(",",$listTags);
+			for ($jj=0;$jj< count($UIDTAGS);$jj++)
+			{
+				$idUser=$UIDTAGS[$jj];
+				mysqli_query($con,"INSERT INTO atw_notify ( notify_user_id,notify_user_name,notify_user_logo ,notify_id_post,notify_id_comment,notify_time,notify_content,notify_status,notify_type) VALUES (".$idUser.",'".$userName."','".$userLogo."',".$idArt.",".$idCommentPost.",'".$datetime."','".$content."','".$status."',1)");		
+			}
+		mysqli_close($con);
 	}
 	function checkUrlImage($url)
 	{

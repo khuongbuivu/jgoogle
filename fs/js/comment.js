@@ -54,7 +54,7 @@ function autoLoadComment(url,idArt)
 	}); 	
 };
 
-function addCmtToDb(url, idArt, content,commentImage, imgLogo, name,idUser , token){
+function addCmtToDb(url, idArt, content,commentImage, imgLogo, name,idUser,  token){
 	
 	if (FaceSeo.search(domain)<0)
 		return;
@@ -71,7 +71,7 @@ function addCmtToDb(url, idArt, content,commentImage, imgLogo, name,idUser , tok
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){ 
-	  document.getElementById("scriptBox"+idArt).innerHTML="";
+	  $(".mentionsHidden"+idArt).val("");
 	  autoLoadComment(root_path + 'content_comment.php',idArt);
 	}
   };
@@ -739,7 +739,7 @@ function loadStasticLink(url,link)
   };
   xmlhttp.send(params);
 };
-function addNotify(url, idUser, userName, userLogo, idArt, idCommentPost, content, status){	
+function addNotify(url, idUser, userName, userLogo, idArt, idCommentPost, content, status,listTags ){	
 	if (FaceSeo.search(domain)<0)
 		return;
 	var xmlhttp;
@@ -748,7 +748,7 @@ function addNotify(url, idUser, userName, userLogo, idArt, idCommentPost, conten
 	}else{
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	};
-	var params = "idUser=" + idUser + "&userName=" +userName + "&userLogo=" + userLogo + "&idArt="+idArt + "&idCommentPost=" + idCommentPost + "&content=" + content + "&status=" + status;
+	var params = "idUser=" + idUser + "&userName=" +userName + "&userLogo=" + userLogo + "&idArt="+idArt + "&idCommentPost=" + idCommentPost + "&content=" + content + "&status=" + status + "&listTags="+listTags;
 	xmlhttp.open("POST", url, true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.setRequestHeader("Content-length", params.length);
@@ -809,7 +809,6 @@ function getOtherPosts(idgroup){
 }
 function getNewPosts(idgroup){
 
-	// var url = root_path + "modules/json_posts_new.php?idgroup="+idgroup;
 	var url = root_path + "modules/json_get_help_post.php?idgroup="+idgroup;	
 	if (FaceSeo.search(domain)<0)
 		return;
@@ -1002,7 +1001,7 @@ function showPost(json)
 							if(linkLogoFace.trim()!="https://graph.facebook.com//picture")
 								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
 							htmlInputForm+='</div></div>';
-							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content" class="cmt-content'+ json.post[i].idPost +'"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
+							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content" class="cmt-content'+ json.post[i].idPost +'"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden'+ json.post[i].idPost +'" value=""></div></div></div></div></div></li>';						
 							htmlInputForm+='<div class="comment-div comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
 							
 							htmlInputForm+=showCommentOfPost(json.post[i].idPost,json.comment[i]);

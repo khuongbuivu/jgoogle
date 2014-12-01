@@ -591,17 +591,20 @@ $(window).keydown(function(e){
 		var username = $(".boxtagdivscroll div.selected span.addname").attr('title');
 		var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";
 		var idPost=$(".boxtagdivscroll div.selected span.addname").attr('id');
-		var idP=idPost.substring(7);
-		var start=/@/ig;
-		var word=/@(.*)/ig;
-		var old=$("#contentbox"+idP).html();
-		var content=old.replace(word,"");
-		$("#contentbox"+idP).html(content);
-		$("#contentbox"+idP).append(E);
-		$("#contentbox"+idP).focus();
-		$("#display"+idP).hide();
-		$("#msgbox").hide();
-		isEnter=false;
+		if (idPost!= null && idPost.length>0)
+		{
+			var idP=idPost.substring(7);
+			var start=/@/ig;
+			var word=/@(.*)/ig;
+			var old=$("#contentbox"+idP).html();
+			var content=old.replace(word,"");
+			$("#contentbox"+idP).html(content);
+			$("#contentbox"+idP).append(E);
+			$("#contentbox"+idP).focus();
+			$("#display"+idP).hide();
+			$("#msgbox").hide();
+			isEnter=false;
+		}
 		return false;
 	}
 	else 
@@ -645,8 +648,15 @@ $(document).on('click', '.display_box', function()
 	var old=$("#contentbox"+idP).html();
 	var content=old.replace(word,"");
 	$("#contentbox"+idP).html(content);
-	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a> ";
-	$("#contentbox"+idP).append(E);
+	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b>· </a> ";
+	var curITags=$(".mentionsHidden"+idP).val();
+	var newTagsName = $(this).data('uid');
+	if (curITags=="")
+		$(".mentionsHidden"+idP).val(newTagsName);
+	else
+		$(".mentionsHidden"+idP).val(curITags + "," + newTagsName);
+		
+	$("#contentbox"+idP).append(E);	
 	$("#contentbox"+idP).focus();
 	$("#display"+idP).hide();
 	$("#msgbox").hide();
@@ -798,12 +808,13 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 		var imgLogo = $("#imgLogo").html();
 		var name = $("#name").html();			
 		var token = generateToken();
+		var listTags= $(".mentionsHidden"+idArt).val();
 		addLinkToDb(url1,<?php echo $id_user; ?>,tb.text());
-		addCmtToDb(url,idArt,tb.html(), $("#imgSrc"+idArt).html(),imgLogo,name,idUser , token);		
+		addCmtToDb(url,idArt,tb.html(), $("#imgSrc"+idArt).html(), imgLogo, name, idUser, token);		
         subPoint(idUser,sidUser,-5,tb.text());
-		addNotify(url_notify,idUser,name,imgLogo,idArt,0,tb.text() + $("#imgSrc"+idArt).html(),0);
+		addNotify(url_notify,idUser,name,imgLogo,idArt,0,tb.text() + $("#imgSrc"+idArt).html(),0,listTags);
 		$("#imgSrc"+idArt).html("");
-		$(this).val("");	
+		$(this).html("");	
 		$(this).css("height","20px");
 		boolStartFindName = false;
         return false;
@@ -1206,6 +1217,7 @@ $('body').on("mouseout",".UFIComment",function(){
 Search upclick.js mo rem de su dung upload file 
 Đá banh về xử scrolToComment. Còn bị lỗi khi post đã được user đó click vào rồi thì không thể nào hiện lên được. Giờ cho nó hiện lên và del tất cả link để không view được nữa.
 Một số yêu cầu với sever: chạy được fbapi, chạy được php mới, cân bằng tải load balance
+Trong khi một số link đang view. Post link mới sẽ bị sai id
 -->
 </body>
 </html>

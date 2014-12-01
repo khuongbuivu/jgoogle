@@ -18,7 +18,7 @@ $img="https://graph.facebook.com/".$row['user_id']."/picture";
 $user_location=$row['user_location'];
 $user_work_employer=$row['user_work_employer'];
 ?>
-<div class="display_box" >
+<div class="display_box" data-UID="<?php echo $row['user_id'];?>">
 	
 	<img src="<?php echo $img; ?>" class="image" />
 	<span href="#" id= 'addname<?php echo $idPost ?>' class='addname' title='<?php echo $user_name; ?>'>

@@ -302,4 +302,10 @@ function displayBacklinkViewed($bl)
 	}	
 	echo $html."<br/>";
 }
+function removeTag($string)
+{
+	$string = preg_replace("/<a[^>]+\>/i", "", $string);
+	$string = preg_replace("/<\/a\>/i", "", $string);
+	return $string;
+}
 ?>
