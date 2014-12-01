@@ -24,6 +24,7 @@ $infoUser=getUserInfo($_SESSION['session-user']);
 if ($infoUser['user_manager']!=3 && $okdel==false)
 	exit();
 mysqli_query($con,"DELETE FROM atw_cmt_content WHERE Id=".$idCmt);
+mysqli_query($con,"DELETE FROM atw_notify WHERE notify_id_comment=".$idCmt);
 mysqli_close($con);
 
 // Must check user permission to del comment
