@@ -515,7 +515,7 @@ position:relative;
     left: 60px;
     position: absolute;
     top: 0px;
-    width: 340px;
+    width: 34%;
 }
 
 .moduletable_menu {
@@ -661,4 +661,12 @@ background-color: red;
     text-align: center;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
     width: 20px;
+}
+#listUrlViewMore{
+	border: 2px solid red;
+    border-radius: 5px;
+	width: 97%;
+	margin-bottom:5px;
+	box-shadow: 2px 2px 3px #888888;
+	display:none;
 }

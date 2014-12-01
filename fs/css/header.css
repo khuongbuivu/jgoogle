@@ -288,7 +288,7 @@ left: 50%;
 #pageNav .fbJewel{margin-right:10px;}
 
 #headleft img{
-width:390px; height:72px; margin-top:0px;
+width:100%; height:72px; margin-top:0px;
 }
 span#anaylyticsCountWrapper{
 display:none;
