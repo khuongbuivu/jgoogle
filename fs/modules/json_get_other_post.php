@@ -78,8 +78,8 @@ if(!isset($_SESSION)){
 					$alllink =$alllink."····".$link11[$jjj];
 				}				
 				$comment[$i][$ii]['cmt_url']			=$alllink;
-				$result_like=mysqli_query($con,"select * from atw_like_cmt where idCmt=".$row['Id']);
-				$result_mylike=mysqli_query($con,"select * from atw_like_cmt where idCmt=".$row['Id']. " and idUser=".$id_user);
+				$result_like=mysqli_query($con,"select * from atw_like_cmt where idCmt=".$row1['Id']);
+				$result_mylike=mysqli_query($con,"select * from atw_like_cmt where idCmt=".$row1['Id']. " and idUser=".$id_user);
 				$num_like = $result_like->num_rows;
 				$num_mylike = $result_mylike->num_rows;
 				$comment[$i][$ii]['cmt_num_like']	=($num_like==""?0:$num_like);
