@@ -657,7 +657,9 @@ $(document).on('click', '.display_box', function()
 		$(".mentionsHidden"+idP).val(curITags + "," + newTagsName);
 		
 	$("#contentbox"+idP).append(E);	
-	$("#contentbox"+idP).focus();
+	var them=$("#contentbox"+idP).text().length;
+	//$("#contentbox"+idP).focus(them);
+	//$("#contentbox"+idP).setCursorToTextEnd();
 	$("#display"+idP).hide();
 	$("#msgbox").hide();
 	return false;
@@ -792,6 +794,7 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 						if (html== "" || html.trim(html)=="")
 						{
 							$("#display"+idArt).slideUp('show');
+							$("#display"+idArt ).css("top", line1*lineHeight + "px");
 						}
 						$("#display"+idArt).html(html).show();
 						li = $('.display_box');
@@ -817,6 +820,7 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 		$(this).html("");	
 		$(this).css("height","20px");
 		boolStartFindName = false;
+		$(this).html("");
         return false;
     }
 });
