@@ -582,7 +582,13 @@ $( "#fsAnaylyticsButton" ).click(function() {
 });
 
 $(window).keydown(function(e){
-	if($(".boxtag").css('display')== 'none')
+	var tmp = true;
+	$(".boxtag").each(function(){
+		if ($(this).css('display')!='none')
+			tmp=false;
+	});
+	
+	if(tmp)
 	{
 		isEnter=true;
 		return;
@@ -594,6 +600,13 @@ $(window).keydown(function(e){
 		if (idPost!= null && idPost.length>0)
 		{
 			var idP=idPost.substring(7);
+			var curITags=$(".mentionsHidden"+idP).val();
+			var newTagsName = $(".boxtagdivscroll div.selected").data('uid');
+			if (curITags=="")
+				$(".mentionsHidden"+idP).val(newTagsName);
+			else
+				$(".mentionsHidden"+idP).val(curITags + "," + newTagsName);
+				
 			var start=/@/ig;
 			var word=/@(.*)/ig;
 			var old=$("#contentbox"+idP).html();

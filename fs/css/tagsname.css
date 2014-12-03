@@ -70,7 +70,7 @@ width:25px; float:left; margin-right:6px
     width: 86%;
     z-index: 1000;}
 .comment-div{z-index:1000;}
-.boxtag{ border:1px solid #111; position:absolute;top:25px; z-index:1000; background:#fff;}
+.boxtag{ border:1px solid #111; position:absolute;top:25px; z-index:1000; background:#fff;display:none;}
 .comment{
 background: none repeat scroll 0 0 #f6f7f8;
     border: 1px solid #e7e8e8;
