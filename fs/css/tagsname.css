@@ -42,12 +42,13 @@ padding:4px; border-top:solid 1px #dedede; font-size:12px; height:30px;
 .display_box:hover
 {
 background:#3b5998;
+color:#fff;
 }
 
 .boxtagdivscroll .selected
 {
 background:#3b5998;
-color:#FFFFFF;
+color:#fff;
 }
 
 .display_box a
