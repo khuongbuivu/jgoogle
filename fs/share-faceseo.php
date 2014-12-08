@@ -18,6 +18,7 @@ $timeCurrent = time() + 3600*($timezone+date("0"));
 $share = false;
 if($okshare->num_rows>0)
 {
+	$row = mysqli_fetch_array($okshare);
 	$timeSaved=strtotime($row['share_time']);
 	$t =$timeCurrent - $timeSaved;		
 	$day=0;
