@@ -60,7 +60,7 @@ $(document).ready(function () {
 		addPointLike(idUser, '<?php echo $link;?>');
   	},
   	onunlike:function(response){
-subPointLike(idUser);
+		subPointLike(idUser);
   	},
   	lang:'en_US'
   });

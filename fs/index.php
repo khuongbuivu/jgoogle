@@ -1100,6 +1100,12 @@ function confirmshare( ) {
 		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
 	}
 };
+function fsshare( ) {
+	var windowLike=window.open("http://faceseo.vn/fbshare.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	windowLike.onbeforeunload = function(){ 
+		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
+	}
+};
 function confirmshareBirthday( ) {
 	var windowLike=window.open("http://faceseo.vn/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 

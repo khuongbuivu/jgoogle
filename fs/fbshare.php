@@ -107,8 +107,7 @@ else
 	};
 	
 </script>
-Các bạn comment giúp "Hoàng Sa, Trường Sa muôn năm! Đảng Cộng Sản Việt Nam bất tử!"
-FBlike
+MỖI LƯỢT SHARE +20 ĐIỂM
 http://stackoverflow.com/questions/2798622/facebook-like-button-callback
 <?php
 if ($share==true){

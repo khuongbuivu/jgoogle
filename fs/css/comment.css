@@ -507,7 +507,7 @@ display:none;
 .urlpost{
 display:none;
 }
-.likebutton{
+.likebutton,.sharebutton{
 	
     border: 1px solid #eee;
     float: left;
@@ -519,7 +519,7 @@ display:none;
     width: 100px;
 	background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;
 }
-.likebutton span{
+.likebutton span, .sharebutton span{
 background: url("../images/css/likebutton.png") no-repeat scroll 5px center rgba(0, 0, 0, 0);
     color: #4e5665;
     font-size: 13px;
