@@ -175,6 +175,13 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 </footer>
 <?php exit();endif ?>
 
+<?php if ($accountFace): ?>      
+<?php //print_r($user_profile); ?>
+<?php $urlImgProfile="https://graph.facebook.com/$accountFace/picture";?>
+<?php
+	saveUser($user_profile);
+	endif
+?>
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
 <div id="UIDHelpYou"></div>
 <!--

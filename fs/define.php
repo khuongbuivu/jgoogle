@@ -98,7 +98,7 @@ require_once('system/function.php');
 			$result=mysqli_query($con,"select * from atw_user where user_email='".$emaillogin."' limit 0,1" );
             while( ($row = mysqli_fetch_array($result)) ){
                 $_SESSION['email']=$emaillogin;
-				$accountFace=true;
+				$accountFace=$row['user_id'];
                  $id=89;
 				$id_comment=1;	
 				$id_user=$row['user_id'];//"100001707050719"; //"$int" convert int to string  $user_profile['id']
