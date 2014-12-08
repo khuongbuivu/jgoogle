@@ -29,90 +29,154 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" >
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="keywords" content="hệ thống câu view, seo website, giải pháp seo website, phần mềm Seo," />
-  <meta name="description" content="FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Hệ thống câu view, kiểm soát view, chuyển trang, chèn banner quảng cáo, backlink hoàn toàn free." />
-  <title>FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Giải Pháp Thương Hiệu</title>
+<?php if (!$accountFace): ?>
+	<title>Login FACESEO</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0, width=500"/>
+	<meta name="description" content="FACESEO hệ thống được SEOER tôn vinh. Giúp hàng trăm doanh nghiệp khởi sắc."/>
+	<meta name="og:description" content="FACESEO hệ thống SEO, tăng traffic nhanh, giảm alexa">
+	<meta name="og:image" content="http://faceseo.vn/index/images/banner-faceseo.jpg">
+	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="index/DZxVCOBqfnMg-r0L7dS-Xw.css">
+	<link rel="stylesheet" type="text/css" href="index/Xqjxjf4xU2G8_Gb-X7tbow.css">
+	<script src="index/ua-parser.min.2.js" crossorigin="anonymous"></script>
+	<script src="index/jquery-1.8.3.min.2.js" crossorigin="anonymous">
+	</script><script src="index/rDC3wlfGQC1vpaP6IdD89A.js" crossorigin>
+	</script>
+<?php else: ?>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="hệ thống câu view, seo website, giải pháp seo website, phần mềm Seo," />
+	<meta name="description" content="FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Hệ thống câu view, kiểm soát view, chuyển trang, chèn banner quảng cáo, backlink hoàn toàn free." />
+	<title>FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Giải Pháp Thương Hiệu</title>
 	<meta content="731864150162369" property="fb:app_id"/>
 	<meta content="100001707050712" property="fb:admins"/>
-<script type="text/javascript">
-<?php if(LOCAL=="TRUE"): ?>
-var root_path = "http://localhost/faceseo.vn/";
-<?php else: ?>
-var root_path = "http://faceseo.vn/";	
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
+	<script src="<?php echo $PATH_ROOT;?>modules/upload/upclick.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/tinybox.js"></script> <!-- for popup -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/warning.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/banner.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/link.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/post.js"></script>
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/comment.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylepopup.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/notify_css.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/tipsy.css" type="text/css" />
+	<!-- Scroll bar -->
+	<link href="<?php echo $PATH_ROOT;?>libs/scrollbar/js/css.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/overthrow.min.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/jquery.nanoscroller.js"></script>
+	<!-- end Scroll bar -->
+	<!-- point -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/point.js"></script>
+	<!-- end point -->
+	<!-- thanh -->
+	<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
+	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
+	<link href="<?php echo $PATH_ROOT;?>favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<!-- end thanh -->
+	<!-- add scroll top comment -->
+	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
+	<!-- add scroll top comment -->
+	<script type="text/javascript" >	
+	<?php if(LOCAL=="TRUE"): ?>
+	var root_path = "http://localhost/faceseo.vn/";
+	<?php else: ?>
+	var root_path = "http://faceseo.vn/";	
+	<?php endif ?>
+	var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
+	var sidUser="<?php  $id_user!=""? $id_user :-1; $sid_user = MD5(intval($id_user)*1606); echo $sid_user; ?>";
+	var linkLogoFace = "<?php echo $linkLogoFace;?>";
+	var userFace = "<?php echo $userFace;?>";
+	var timeoutStasticClick,setScroll=0;
+	var refreshIntervalId=0;
+	var timetmp=0;
+	
+	setInterval("checkTabsClosed()",5000);
+	setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
+	setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
+	setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
+	setCookie("UIDFACESEO", idUser, 1);
+	getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
+	getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
+	getNumMessage(root_path + 'modules/getNumMessage.php',idUser);
+	</script>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=394280457341947";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
 <?php endif ?>
-var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
-var sidUser="<?php  $id_user!=""? $id_user :-1; $sid_user = MD5(intval($id_user)*1606); echo $sid_user; ?>";
-var linkLogoFace = "<?php echo $linkLogoFace;?>";
-var userFace = "<?php echo $userFace;?>";
-var timeoutStasticClick,setScroll=0;
-var refreshIntervalId=0;
-var timetmp=0;
-
-</script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
-<script src="<?php echo $PATH_ROOT;?>modules/upload/upclick.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/tinybox.js"></script> <!-- for popup -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/warning.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/banner.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/link.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/post.js"></script>
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/comment.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylepopup.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/notify_css.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/tipsy.css" type="text/css" />
-<!-- Scroll bar -->
-<link href="<?php echo $PATH_ROOT;?>libs/scrollbar/js/css.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/overthrow.min.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/jquery.nanoscroller.js"></script>
-<!-- end Scroll bar -->
-<!-- point -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/point.js"></script>
-<!-- end point -->
-<!-- thanh -->
-<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
-<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
-<link href="<?php echo $PATH_ROOT;?>favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
-<!-- end thanh -->
-<!-- add scroll top comment -->
-<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
-<!-- add scroll top comment -->
-<script type="text/javascript" >	
-setInterval("checkTabsClosed()",5000);
-setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
-setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
-setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
-setCookie("UIDFACESEO", idUser, 1);
-getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
-getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
-getNumMessage(root_path + 'modules/getNumMessage.php',idUser);
-
-</script>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=394280457341947";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
 </head>	
-<body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
-<?php
-print_r($_SESSION['userHelpYou']);
-echo $_SESSION['iPageUIDHelpYou'];
-?>
-<div id="UIDHelpYou"></div>
 
+<?php if(LOCAL=="TRUE"): ?>	
+	<?php  if ($id_user!=""){
+			$_SESSION['token-user']=md5($id_user);
+			$_SESSION['session-user']=$id_user;
+			$_SESSION['session-name']=$userFace;
+			}
+	?>
+<?php endif ?>
+
+<?php if (!$accountFace): ?>
+<body class="dark ">
+<div id="fb-root"></div>
+<form id="signupForm" name='dangnhap' action='' method='post' >
+  <h1>Start SEO</h1>
+  <fieldset id="message" class="message">
+  </fieldset>
+  <fieldset id="intro">
+    <p>
+      <button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button>
+    </p>
+    <p class="or">or</p>
+  </fieldset>
+  <fieldset id="emailSignup">
+    <input id="analyticsId" name="analyticsId" type="hidden" value="">
+    <input id="accessToken" name="accessToken" type="hidden" value="coApDOTKi2Ui1kgbhg-QuPig7KVvgXquDnhUNk-QNADtvMnmjsOAhiHSkWtjzD9bpe6YVA" >
+    <input id="reservationToken" name="reservationToken" value="" disabled="disabled" type="hidden">
+    <input id="authMode" name="authMode" value="email" type="hidden">
+    <input id="facebookToken" name="facebookToken" type="hidden">
+    <label for="email"> <span class="text">Email</span>
+      <input id="email" name="email" type="text" value="" autocomplete="off"  placeholder="Your email address" />
+    </label>
+    <label for="password"> <span class="text">Password</span>
+      <input id="password" name="password" value="" autocomplete="off" placeholder="Choose a password" type="password">
+    </label>
+    <input value="Sign up" type="submit">
+  </fieldset>
+  <fieldset id="quotes">
+    <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
+    <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>
+    <p>Nhiều người đã bị nghiện vì vậy hãy cân nhắc trước khi tham gia hệ thống!</p>
+	<p>Hệ thống chính thức hoạt động 5/1/2015!</p>
+  </fieldset>
+</form>
+<div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>
+<footer>
+  <div class="inner"> <menu>
+    <li><a href="#" style="position: relative;">Giới thiệu <em style="position: absolute; right: -1.6em; bottom: 2em; width: 3.5em; height: 2em; border-radius: 1em; background-color: #a06fda; color: #ffffff; font-size: 65%; font-style: normal; line-height: 2em; text-align: center;">NEW</em></a></li>
+    <li><a href="#">Điều khoản</a></li>
+    <li><a href="#">Bảo mật</a></li>
+    <li><a href="#">Hợp tác</a></li>
+    <li><a href="http://giaiphapthuonghieu.vn/tin-moi-la-247/145-cach-tu-tu-moi-danh-cho-quy-ong-uong-ruou-an-sau-rieng.html" ref="nofollow">Tuyển dụng</a></li>
+    </menu> </div>
+</footer>
+<?php exit();endif ?>
+
+<body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
+<div id="UIDHelpYou"></div>
 <!--
 <div style="position:fixed;left:0;top:60px;"><img src="images/phao.gif"></div>
 <div style="position:fixed;right:0;top:60px;"><img src="images/phao.gif"></div>
@@ -129,7 +193,6 @@ exit();
 }
 //include_once("user.php");
 ?>
-
 <div id="globalContainer" class="uiContextualLayerParent">
 	<div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content">
 		<div>
@@ -144,14 +207,7 @@ exit();
                <li><a href=""><span class="icon-set icon-setpanel"></span> </a></li>
                </ul>
 				<!-- start code check login -->
-				<?php if(LOCAL=="TRUE"): ?>	
-					<?php  if ($id_user!=""){
-							$_SESSION['token-user']=md5($id_user);
-							$_SESSION['session-user']=$id_user;
-							$_SESSION['session-name']=$userFace;
-							}
-					?>
-				<?php endif ?>
+
 				<!-- start code check login -->
               <?php /*
 				<div id="pagelet_welcome_box" data-referrer="pagelet_welcome_box">
