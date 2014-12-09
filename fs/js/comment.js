@@ -967,23 +967,25 @@ function showPost(json)
 								{						
 									htmlnewpost+="<div id='action'>";
 									htmlnewpost+="<div id='titlePost'>";
-									//alert(json.post[i].post_mintimeview);
 									htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
 									htmlnewpost+="</div>";
 									if(json.post[i].post_full_url.trim()=="")
 										url=(json.post[i].post_url);
 									else 
 										url=(json.post[i].post_full_url);							
-									htmlnewpost+="<div style='height:40px;'>";
-									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 97%;">';							
+									htmlnewpost+="<div class='pwrapperbuttonaction'>";
+									htmlnewpost+='<div class="wrapperbuttonaction">';							
 									if (url!="")
-									{				
-										htmlnewpost+='<div style=" background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 4px;float: left;height: 27px;padding: 0 5px;vertical-align: top;width: 45px;"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
+									{	htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';			
+										htmlnewpost+='<div class="buttonactionview"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
 										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div></div>';
 										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
 										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										htmlnewpost+= '</div>';
+										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
-										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
+										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
+										htmlnewpost+= '</div>';
 										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
 										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
 										htmlnewpost+='</div>';
@@ -1070,12 +1072,16 @@ function showPostById(json)
 									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 97%;">';							
 									if (url!="")
 									{				
-										htmlnewpost+='<div style=" background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 4px;float: left;height: 27px;padding: 0 5px;vertical-align: top;width: 45px;"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
+										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';			
+										htmlnewpost+='<div class="buttonactionview"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
 										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div></div>';
 										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
 										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										htmlnewpost+= '</div>';
+										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
-										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><a href="#"><span>Share Page</span></div></a></div>';
+										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
+										htmlnewpost+= '</div>';
 										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
 										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
 										htmlnewpost+='</div>';
@@ -1158,12 +1164,16 @@ function showMessageById(json)
 									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 97%;">';							
 									if (url!="")
 									{				
-										htmlnewpost+='<div style=" background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 4px;float: left;height: 27px;padding: 0 5px;vertical-align: top;width: 45px;"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
+										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';			
+										htmlnewpost+='<div class="buttonactionview"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
 										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div></div>';
 										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
 										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										htmlnewpost+= '</div>';
+										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
-										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><a href="#"><span>Share Page</span></div></a></div>';
+										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
+										htmlnewpost+= '</div>';
 										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
 										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
 										htmlnewpost+='</div>';

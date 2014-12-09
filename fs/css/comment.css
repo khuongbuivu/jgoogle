@@ -514,9 +514,8 @@ display:none;
     height: 27px;
     line-height: 27px;
     margin-left: 0px;
-    padding: 0px;
+    padding: 0px 4px 0px 0px;
     text-align: left;
-    width: 100px;
 	background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;
 }
 .likebutton span, .sharebutton span{
@@ -527,7 +526,28 @@ background: url("../images/css/likebutton.png") no-repeat scroll 5px center rgba
     padding-left: 20px;
     text-align: left;
 }
-.likebottondiv{    float: left;
-    margin-left: 5px;
-    width: 100px;}
+.likebottondiv{   
+	float: left;
+}
+.sharebottondiv{   
+	float: right;
+	margin-left:5px;
+}
+.pwrapperbuttonaction{
+}
+.wrapperbuttonaction{
+	float: left; 
+	margin: 4px; 
+	width: 100%;
+}
+.buttonactionview{
+	background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #eee;
+	border-radius: 4px;
+	float: left;
+	height: 27px;
+	padding: 0 5px;
+	vertical-align: top;
+	width: 45px;
+}
 /*popup */
