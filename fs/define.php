@@ -140,7 +140,7 @@ require_once('system/function.php');
 				
 				$result=mysqli_query($con,"select * from atw_user where user_email='".$emaillogin."' limit 0,1" );
 				if ($result->num_rows>0)
-					$_SESSION['messlogin']="Sai pass";
+					$_SESSION['messlogin']="Sai pass. <a href='#' onclick='return changepass();'>Đổi pass mới";
 				else
 					$_SESSION['messlogin']="Vui lòng đăng nhập bằng FB";
 			}

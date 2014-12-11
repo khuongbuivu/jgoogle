@@ -136,33 +136,34 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
   <h1>Start SEO</h1>
   <fieldset id="message" class="message">
   </fieldset>
-  <fieldset id="intro">
-    <p>
-      <button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button>
-    </p>
-    <p class="or">or</p>
-  </fieldset>
-  <fieldset id="emailSignup">
-    <input id="analyticsId" name="analyticsId" type="hidden" value="">
-    <input id="accessToken" name="accessToken" type="hidden" value="coApDOTKi2Ui1kgbhg-QuPig7KVvgXquDnhUNk-QNADtvMnmjsOAhiHSkWtjzD9bpe6YVA" >
-    <input id="reservationToken" name="reservationToken" value="" disabled="disabled" type="hidden">
-    <input id="authMode" name="authMode" value="email" type="hidden">
-    <input id="facebookToken" name="facebookToken" type="hidden">
-    <label for="email"> <span class="text">Email</span>
-      <input id="email" name="email" type="text" value="" autocomplete="off"  placeholder="Your email address" />
-    </label>
-    <label for="password"> <span class="text">Password</span>
-      <input id="password" name="passfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
-    </label>
-	
-	<?php  if($_SESSION['messlogin']!='ok'):?>
-	<div style="width:100%; padding:5px 0; background-color:red;margin: 10px 0 0 0; color:#fff;">	
-		<?php echo $_SESSION['messlogin']; ?>
+  <div class="signupwrapper">
+	  <fieldset id="intro">
+		<p>
+		  <button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button>
+		</p>
+		<p class="or">or</p>
+	  </fieldset>
+	  <fieldset id="emailSignup">
+		<input id="analyticsId" name="analyticsId" type="hidden" value="">
+		<input id="accessToken" name="accessToken" type="hidden" value="coApDOTKi2Ui1kgbhg-QuPig7KVvgXquDnhUNk-QNADtvMnmjsOAhiHSkWtjzD9bpe6YVA" >
+		<input id="reservationToken" name="reservationToken" value="" disabled="disabled" type="hidden">
+		<input id="authMode" name="authMode" value="email" type="hidden">
+		<input id="facebookToken" name="facebookToken" type="hidden">
+		<label for="email"> <span class="text">Email</span>
+		  <input id="email" name="email" type="text" value="" autocomplete="off"  placeholder="Your email address" />
+		</label>
+		<label for="password"> <span class="text">Password</span>
+		  <input id="password" name="passfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
+		</label>
+		
+		<?php  if($_SESSION['messlogin']!='ok' && $_SESSION['messlogin']!=''):?>
+		<div style="width:100%; padding:5px 0; background-color:red;margin: 10px 0 0 0; color:#fff;">	
+			<?php echo $_SESSION['messlogin']; ?>
+		</div>
+		<?php endif ?>
+		<input value="Sign up" type="submit">		
+	  </fieldset>
 	</div>
-	<?php endif ?>
-    <input value="Sign up" type="submit">
-	
-  </fieldset>
   <fieldset id="quotes">
     <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
     <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>

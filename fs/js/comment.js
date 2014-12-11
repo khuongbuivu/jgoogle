@@ -1566,6 +1566,7 @@ function delComment(idCmt)
 	}); 
 	return false;
 }
+
 $( ".contentbox" ).focus(function() {
 alert( "Handler for .focus() called." );
 });
