@@ -43,20 +43,34 @@ require_once('system/function.php');
 			$emaillogin=$_POST['email'];
 		}else{
 			$emaillogin=$_SESSION['email'];
-		}            
+		}
+		
+		if($_SESSION['passfs']==''){ 
+			$passlogin=$_POST['passfs'];
+		}else{
+			$passlogin=$_SESSION['passfs'];
+		} 
+		
         $emaillogin = preg_replace('/~|`|!|#|%|\^|&|\*|\(|\)|\+|=|\}|\{|\[|\]|:|;|\'|"|<|>|,|\?|\/|\|/', '',$emaillogin);
         if($emaillogin!=''){    
 			$host="localhost";
 			$user="faceseo";
 			$pass="8wiWq637ceD@";
 			$db="faceseo";
+			if($_SESSION['messlogin']=='')
+			{
+				$_SESSION['messlogin']='aaaaaaaaaaaaaa';
+			}
             $con=mysqli_connect($host,$user,$pass,$db);
 			mysqli_set_charset($con, "utf8");
-			$result=mysqli_query($con,"select * from atw_user where user_email='".$emaillogin."' limit 0,1" );
-            while( ($row = mysqli_fetch_array($result)) ){
+			$result=mysqli_query($con,"select * from atw_user where user_email='".$emaillogin."' and user_pass='".md5($passlogin)."' limit 0,1" );
+           
+			while( ($row = mysqli_fetch_array($result)) ){
                 $_SESSION['email']=$emaillogin;
+                $_SESSION['passfs']=$passlogin;
+				$_SESSION['messlogin']=true;
 				$accountFace=true;
-                 $id=89;
+                $id=89;
 				$id_comment=1;	
 				$id_user=$row['user_id'];//"100001707050719"; //"$int" convert int to string  $user_profile['id']
 				$userFace=$row['user_name'];//"Linh Nguyen";  // $user_profile['name']
@@ -65,7 +79,7 @@ require_once('system/function.php');
 				$linkLogoFace="https://graph.facebook.com/$id_user/picture";
 				$numCmtDisplay = 10;
 				$FOLDERTHUMBANNER = $PATH_ROOT."images/modules/upload/banner/";	
-              }
+            }
 		}      
 
  
@@ -74,10 +88,10 @@ require_once('system/function.php');
 	{
 		$id=89;
 		$id_comment=1;
-		$id_user="100001707050712";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
-		$userFace="Linh Nguyen";//"Linh Nguyen";  // $user_profile['name']
-		// $id_user="100005640848020";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
-		// $userFace="Tran Lai";//"Linh Nguyen";  // $user_profile['name']
+		// $id_user="100001707050712";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
+		// $userFace="Linh Nguyen";//"Linh Nguyen";  // $user_profile['name']
+		$id_user="100005640848020";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
+		$userFace="Tran Lai";//"Linh Nguyen";  // $user_profile['name']
 		$linkLogoFace="https://graph.facebook.com/$id_user/picture";
 		$PATH_ROOT="http://localhost/faceseo.vn/";
 		$numCmtDisplay = 10;	
@@ -87,17 +101,28 @@ require_once('system/function.php');
 		}else{
 			$emaillogin=$_SESSION['email'];
 		}            
+		if($_SESSION['passfaceseo']==''){ 
+			$passlogin=$_POST['passfaceseo'];
+		}else{
+			$passlogin=$_SESSION['passfaceseo'];
+		} 	
         $emaillogin = preg_replace('/~|`|!|#|%|\^|&|\*|\(|\)|\+|=|\}|\{|\[|\]|:|;|\'|"|<|>|,|\?|\/|\|/', '',$emaillogin);
         if($emaillogin!=''){    
 			$host="localhost";
 			$user="root";
 			$pass="";
 			$db="autoviewsite";
+			if($_SESSION['messlogin']=='')
+			{
+				$_SESSION['messlogin']='invalid';
+			}
             $con=mysqli_connect($host,$user,$pass,$db);
 			mysqli_set_charset($con, "utf8");
-			$result=mysqli_query($con,"select * from atw_user where user_email='".$emaillogin."' limit 0,1" );
+			$result=mysqli_query($con,"select * from atw_user where user_email='".$emaillogin."' and user_pass='".md5($passlogin)."' limit 0,1" );
             while( ($row = mysqli_fetch_array($result)) ){
                 $_SESSION['email']=$emaillogin;
+                $_SESSION['passfaceseo']=$passlogin;
+				$_SESSION['messlogin']='ok';
 				$accountFace=$row['user_id'];
                  $id=89;
 				$id_comment=1;	
@@ -108,7 +133,18 @@ require_once('system/function.php');
 				$linkLogoFace="https://graph.facebook.com/$id_user/picture";
 				$numCmtDisplay = 10;
 				$FOLDERTHUMBANNER = $PATH_ROOT."images/modules/upload/banner/";	
-              }
+            }
+			
+			if ($_SESSION['messlogin']!='ok')
+			{
+				
+				$result=mysqli_query($con,"select * from atw_user where user_email='".$emaillogin."' limit 0,1" );
+				if ($result->num_rows>0)
+					$_SESSION['messlogin']="Sai pass";
+				else
+					$_SESSION['messlogin']="Vui lòng đăng nhập bằng FB";
+			}
+			
 		} 
 		
 	}
