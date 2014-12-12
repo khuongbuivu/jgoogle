@@ -28,7 +28,8 @@ function resetPass(){
 		xmlhttp.setRequestHeader("Connection", "close");
 		xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){ 
-		  window.location(root_path);
+			alert(xmlhttp.responseText);
+		  window.location.assign(root_path);
 		}
 	  };
 	  xmlhttp.send(params);
