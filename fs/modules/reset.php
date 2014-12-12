@@ -47,8 +47,8 @@ global $db;
 $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_set_charset($con, "utf8");
 mysqli_query($con,"UPDATE atw_user set user_tpass='".md5($newpass)."' where user_email='".$email."'");
-echo $activepass;
 mysqli_close($con);
 $_SESSION['messlogin']='Kiểm tra mail '.$email.' để kích hoạt password mới';
+echo $activepass;
 //test http://localhost/faceseo.vn/modules/reset.php
 ?>
