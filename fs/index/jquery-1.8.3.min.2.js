@@ -3,5 +3,35 @@
 function changepass()
 {
 	$('.signupwrapper').css('display','none');
+	$('.signinwrapper').css('display','block');
+	return false;
+}
+function resetPass(){
+	var email=$('#emailsignin').val();
+	var pass1=$('#passsigninfaceseo').val();
+	var pass2=$('#repasssigninfaceseo').val();
+	if (pass1!=pass2)
+		alert("Password không trùng khớp. Nhập lại");
+	else
+	{
+		var url = root_path + "modules/reset.php";
+		var xmlhttp;
+		if(window.XMLHttpRequest){
+		  xmlhttp=new XMLHttpRequest();
+		}else{
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		};
+		var params = "email=" + email + "&pass=" + pass1;
+		xmlhttp.open("POST", url, true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.setRequestHeader("Content-length", params.length);
+		xmlhttp.setRequestHeader("Connection", "close");
+		xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){ 
+		  window.location(root_path);
+		}
+	  };
+	  xmlhttp.send(params);
+	}
 	return false;
 }

@@ -133,18 +133,21 @@ require_once('system/function.php');
 				$linkLogoFace="https://graph.facebook.com/$id_user/picture";
 				$numCmtDisplay = 10;
 				$FOLDERTHUMBANNER = $PATH_ROOT."images/modules/upload/banner/";	
-            }
-			
+            }			
 			if ($_SESSION['messlogin']!='ok')
-			{
-				
-				$result=mysqli_query($con,"select * from atw_user where user_email='".$emaillogin."' limit 0,1" );
+			{				
+				$result=mysqli_query($con,"select user_id from atw_user where user_email='".$emaillogin."' limit 0,1" );
 				if ($result->num_rows>0)
-					$_SESSION['messlogin']="Sai pass. <a href='#' onclick='return changepass();'>Đổi pass mới";
+				{
+					$result1=mysqli_query($con,"select user_id from atw_user where user_email='".$emaillogin."' and user_pass!=user_tpass and user_tpass!='' limit 0,1" );
+					if ($result1->num_rows>0)
+						$_SESSION['messlogin']="Sai pass. <a href='https://mail.google.com/mail/?tab=wm'>Login Mail $emaillogin To Active Account  </a>";
+					else
+						$_SESSION['messlogin']="Sai pass. <a href='#' onclick='return changepass();'>Đổi pass mới</a>";
+				}
 				else
 					$_SESSION['messlogin']="Vui lòng đăng nhập bằng FB";
-			}
-			
+			}			
 		} 
 		
 	}

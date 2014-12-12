@@ -43,6 +43,13 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 	<script src="index/jquery-1.8.3.min.2.js" crossorigin="anonymous">
 	</script><script src="index/rDC3wlfGQC1vpaP6IdD89A.js" crossorigin>
 	</script>
+	<script type="text/javascript" >	
+	<?php if(LOCAL=="TRUE"): ?>
+	var root_path = "http://localhost/faceseo.vn/";
+	<?php else: ?>
+	var root_path = "http://faceseo.vn/";	
+	<?php endif ?>
+	</script>
 <?php else: ?>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -136,7 +143,7 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
   <h1>Start SEO</h1>
   <fieldset id="message" class="message">
   </fieldset>
-  <div class="signupwrapper">
+	<div class="signupwrapper">
 	  <fieldset id="intro">
 		<p>
 		  <button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button>
@@ -163,6 +170,21 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 		<?php endif ?>
 		<input value="Sign up" type="submit">		
 	  </fieldset>
+	</div>
+		<div class="signinwrapper">
+	<fieldset id="emailSignup">
+		<label for="email"><span class="text">Email</span>
+		  <input id="emailsignin" name="emailsignin" type="text" value="" autocomplete="off"  placeholder="Your email address" />
+		</label>
+		
+		<label for="password"> <span class="text">Password</span>
+		  <input id="passsigninfaceseo" name="passsigninfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
+		</label>
+		<label for="password"> <span class="text">RePass</span>
+		  <input id="repasssigninfaceseo" name="repasssigninfaceseo" value="" autocomplete="off" placeholder="Input a password again" type="password">
+		</label>
+		<input value="Resend Password" type="button" onclick='return resetPass();'>
+	</fieldset>
 	</div>
   <fieldset id="quotes">
     <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
