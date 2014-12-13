@@ -14,8 +14,8 @@ else
     echo 'mail() has been disabled';
 } 
 */
-$email="linh.nguyenhong@gameloft.com";
-$newpass="newpass2";
+$email=$_POST['email'];
+$newpass=$_POST['pass'];
 $to  = 'linh.nguyenhong@gameloft.com' ;
 $subject = '[FACESEO] THAY ĐỔI PASSWORD';
 $time=date("h:s");
@@ -39,16 +39,43 @@ $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 // Additional headers
 $headers .= 'To: linh.nguyenhong@gameloft.com' . "\r\n";
 $headers .= 'From: Linh Nguyễn <linhnguyen@faceseo.vn>' . "\r\n";
-//mail($to, $subject, $message, $headers);
+
 global $host;
 global $user;
 global $pass;
 global $db;
 $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_set_charset($con, "utf8");
-mysqli_query($con,"UPDATE atw_user set user_tpass='".md5($newpass)."' where user_email='".$email."'");
+$issetemailsend=mysqli_query($con,"select * from fs_sendmail where user_email='".$email."'");
+$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
+$timeCurrent = time() + 3600*($timezone+date("0"));
+if ($issetemailsend->num_rows>0)
+{
+	$row = mysqli_fetch_array($issetemailsend);
+	$timeSaved=strtotime($row['sendmail_time']);
+	$t =$timeCurrent - $timeSaved;		
+	$day=0;
+	if ($t>86400 && $t < 86400*12)
+			$day=(int)($t/86400);
+	// onday reset, send mail one time
+	if ($day > 1)
+	{
+		//mail($to, $subject, $message, $headers);
+		mysqli_query($con,"UPDATE fs_sendmail set sendmail_time = '".$datetime."'  where sendmail_email=".$email);
+		mysqli_query($con,"UPDATE atw_user set user_tpass='".md5($newpass)."' where user_email='".$email."'");
+	}
+	else
+		$_SESSION['messlogin']='Mỗi ngày chỉ được đặt lại pass 1 lần. Vào mail kích hoạt passwords vừa đổi.';
+	
+}
+else
+{
+	mysqli_query($con,"insert into fs_sendmail (sendmail_email,sendmail_time) values ('".$email."','".$datetime."')");
+	mysqli_query($con,"UPDATE atw_user set user_tpass='".md5($newpass)."' where user_email='".$email."'");
+}
+
 mysqli_close($con);
-$_SESSION['messlogin']='Kiểm tra mail '.$email.' để kích hoạt password mới';
+//$_SESSION['messlogin']='Kiểm tra mail '.$email.' để kích hoạt password mới';
 echo $activepass;
 //test http://localhost/faceseo.vn/modules/reset.php
 ?>
