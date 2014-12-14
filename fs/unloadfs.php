@@ -43,7 +43,7 @@
   </div>
   <div id="content">
     <div id="showindex" class="ccenter2">
-       <div class="textadmin">Concact Admin<br />
+       <div class="textadmin">Contact Admin<br />
 Unlock your account</div>
         <ul class="bankli">
         <li><div class="bankcontent">
