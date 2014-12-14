@@ -194,14 +194,7 @@ ul {
     padding: 0px;
     width: 50px;
 }
-._5bfg .fbJewel .jewelCount {
-    background-color: transparent;
-    border-radius: 0 0 0 0;
-    overflow: visible;
-    padding: 0;
-    right: -1px;
-    top: 0;
-}
+
 .fbJewel a.jewelButton {
     display: block;
     height: 31px;
@@ -259,7 +252,6 @@ h1 {
 .fbJewel .jewelCount {
     border-radius: 2px 2px 2px 2px;
     color: #FFFFFF;
-    display: none;
     font-size: 9px;
     font-weight: bold;
     overflow: hidden;
@@ -271,19 +263,18 @@ h1 {
 }
 
 .jewelCount span {					
-	background-color:red;
-	border: medium none;
-    border-radius: 2px 2px 2px 2px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+  background-color: red;
+    border: medium none;
+    border-radius: 50%;
+    display: block;
     font-family: "Helvetica Neue",Helvetica,Arial,"segoe ui",tahoma,sans-serif;
     font-size: 10px;
     font-weight: bold;
-    height: 14px;
-    line-height: 14px;
-    min-width: 12px;
+    height: 20px;
+    line-height: 20px;
     padding: 2px;
     text-align: center;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    width: 20px;
 }
 #headintro{
 float:left;
@@ -311,24 +302,24 @@ left: 50%;
 #pageNav .fbJewel{margin-right:10px;}
 
 #headleft img{
-width:100%; height:72px; margin-top:0px;
+width:340px; height:72px; margin-top:0px;
 }
 span#anaylyticsCountWrapper{
-display:none;
+display:block;
 }
 #anaylyticsCountValue{
-display:none;
+display:block;
 }
 span#notificationsCountWrapper {
-display:none;
+display:block;
 }
 
 
 #iconemailCountValue{
-display:none;
+display:block;
 }
 span#emailCountWrapper {
-display:none;
+display:block;
 }
 .hasLeftCol #leftCol {
     display: block;
@@ -978,7 +969,7 @@ filter:alpha(opacity=1); /* For IE8 and earlier */
     top: 2px;
     z-index: 101;
 }
-._5bfw #fsAnaylyticsButton a.icon-view .jewelCount span,._5bfw #iconemailbutton a.icon-email .jewelCount span,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount span {
+._5bfw #fsAnaylyticsButton a.icon-view .jewelCount span,._5bfw #iconemailbutton a.icon-email .jewelCount span,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount span,#iconmessagebutton a.icon-comment .jewelCount span {
 background-color: red;
     border: medium none;
     border-radius: 2px;
@@ -1028,10 +1019,14 @@ background-color: red;
 	font-size:10px;
 }
 .ccenter{
- background: none repeat scroll 0 0 #dbdbdb;
     margin: 0 auto;
     padding: 10px;
     width: 800px;
+}
+.ccenter2{
+    margin: 0 auto;
+    padding: 10px;
+    width: 500px;
 }
 .track3 {
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);
@@ -1065,8 +1060,40 @@ background-color: red;
     padding: 5px;
     position: absolute;
     top: 60px;
+	right:0;
     width: 200px;
 }
 #fsAnaylyticsButton:hover .textintro,#fbNotificationsJewel:hover .textintro,#iconmessagebutton:hover .textintro,#iconemailbutton:hover .textintro{
 	display:block;
 }
+
+.menulink .licon {
+    background: url("../images/css/licon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 50px;
+    overflow: hidden;
+}
+.menulink li{
+	padding:10px 0;
+}
+.menulink .licon .so{
+ color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 50px;
+    padding-left: 22px;
+}
+.menulink .licon a{
+ color: #fff;
+    font-size: 22px;
+    line-height: 45px;
+    padding-left: 79px;
+}
+.nutintro{
+ background: url("../images/css/nutintro.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 7px;
+    position: absolute;
+    right: 24px;
+    top: -12px;
+    width: 8px;
+	}
+.textcon{position:relative}	
