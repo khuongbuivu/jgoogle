@@ -994,9 +994,12 @@ background-color: red;
 	display:none;
 }
 #footer{
- background: none repeat scroll 0 0 #43464c;
+background: none repeat scroll 0 0 #43464c;
+    bottom: 0;
     margin: 0;
-	overflow:hidden;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 .footermenu{ float:right}
 .footermenu ul li{
