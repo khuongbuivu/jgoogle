@@ -998,6 +998,14 @@ background-color: red;
 	overflow:hidden;
 	height:25px;
 }
+#footer{
+background: none repeat scroll 0 0 #fff;
+    bottom: 0;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
 .footermenu{ float:right}
 .footermenu ul li{
 	 float: left;
