@@ -12,15 +12,34 @@ global $pass;
 global $db;
 if(isset($_GET[email]))
 {
+
 	$con=mysqli_connect($host,$user,$pass,$db);
 	mysqli_set_charset($con, "utf8");
 	$email=$_GET['email'];
 	$newpass=$_GET['code'];
-	mysqli_query($con,"UPDATE atw_user set user_pass='".($newpass)."' where user_email='".$email."' and user_tpass='".$newpass."'");
-	mysqli_query($con,"UPDATE atw_user set user_tpass='' where user_email='".$email."'");
+	$issetemailsend=mysqli_query($con,"select * from fs_sendmail where sendmail_email='".$email."'");
+	$datetime = gmdate("Y-m-d H:i:s", time() + ($timezone+date("0")));
+	$timeCurrent = time() + ($timezone+date("0"));
+	if ($issetemailsend->num_rows>0)
+	{
+		$row = mysqli_fetch_array($issetemailsend);
+		$timeSaved=strtotime($row['sendmail_time']);
+		$t =$timeCurrent - $timeSaved;
+		$day=0;
+		if ($t>86400)
+				$day=($t/86400);
+		// onday reset, send mail one time
+		if ($day < 1)
+		{
+			mysqli_query($con,"UPDATE atw_user set user_pass='".($newpass)."' where user_email='".$email."' and user_tpass='".$newpass."'");
+			mysqli_query($con,"UPDATE atw_user set user_tpass='' where user_email='".$email."'");
+			$_SESSION['messlogin']='Kích hoạt password thành công';
+		}
+		else
+			$_SESSION['messlogin']='Mã kích hoạt hết hạn.';
+	}
 	mysqli_close($con);
-	$_SESSION['messlogin']='Kích hoạt password thành công';
-	if(LOCAL=="TRUE")	
+	if(LOCAL=="TRUE")
 		header('Location: http://localhost/faceseo.vn/');
 	else
 		header('Location: http://faceseo.vn/');

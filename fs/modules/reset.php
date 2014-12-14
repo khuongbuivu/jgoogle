@@ -46,7 +46,7 @@ global $pass;
 global $db;
 $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_set_charset($con, "utf8");
-$issetemailsend=mysqli_query($con,"select * from fs_sendmail where user_email='".$email."'");
+$issetemailsend=mysqli_query($con,"select * from fs_sendmail where sendmail_email='".$email."'");
 $datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
 $timeCurrent = time() + 3600*($timezone+date("0"));
 if ($issetemailsend->num_rows>0)
@@ -55,17 +55,24 @@ if ($issetemailsend->num_rows>0)
 	$timeSaved=strtotime($row['sendmail_time']);
 	$t =$timeCurrent - $timeSaved;		
 	$day=0;
-	if ($t>86400 && $t < 86400*12)
-			$day=(int)($t/86400);
+	if ($t>86400)
+			$day=($t/86400);
 	// onday reset, send mail one time
 	if ($day > 1)
 	{
 		//mail($to, $subject, $message, $headers);
-		mysqli_query($con,"UPDATE fs_sendmail set sendmail_time = '".$datetime."'  where sendmail_email=".$email);
+		mysqli_query($con,"UPDATE fs_sendmail set sendmail_time = '".$datetime."'  where sendmail_email='".$email."'");
 		mysqli_query($con,"UPDATE atw_user set user_tpass='".md5($newpass)."' where user_email='".$email."'");
+		$_SESSION['messlogin']='Kiểm tra mail '.$email.' để kích hoạt password mới';
 	}
 	else
-		$_SESSION['messlogin']='Mỗi ngày chỉ được đặt lại pass 1 lần. Vào mail kích hoạt passwords vừa đổi.';
+	{
+		$issetemailsend=mysqli_query($con,"select * from atw_user where user_email='".$email."' and user_tpass=''");
+		if ($issetemailsend->num_rows>0)
+			$_SESSION['messlogin']='Mỗi ngày chỉ được đặt lại pass 1 lần.';
+		else
+			$_SESSION['messlogin']='Mỗi ngày chỉ được đặt lại pass 1 lần. Vào mail kích hoạt passwords vừa đổi.';
+	}
 	
 }
 else
@@ -75,7 +82,6 @@ else
 }
 
 mysqli_close($con);
-//$_SESSION['messlogin']='Kiểm tra mail '.$email.' để kích hoạt password mới';
 echo $activepass;
 //test http://localhost/faceseo.vn/modules/reset.php
 ?>
