@@ -183,7 +183,7 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 		<label for="password"> <span class="text">RePass</span>
 		  <input id="repasssigninfaceseo" name="repasssigninfaceseo" value="" autocomplete="off" placeholder="Input a password again" type="password">
 		</label>
-		<input value="Resend Password" type="button" onclick='return resetPass();'>
+		<input value="Reset Password" type="submit" onclick='return resetPass();'>
 	</fieldset>
 	</div>
   <fieldset id="quotes">
