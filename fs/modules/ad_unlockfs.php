@@ -1,5 +1,4 @@
 <?php
-/*
 if(!isset($_SESSION)){
     session_start();
 }
@@ -22,10 +21,8 @@ for ($jj=0;$jj< count($UIDTAGS);$jj++)
 {
 	$idUser=$UIDTAGS[$jj];
 	$at=md5($idUser.'1');
-	echo "UPDATE atw_user set $f=".$at." where user_id='".$idUser."'"
-	mysqli_query($con,"UPDATE atw_user set $f=".$at." where user_id='".$idUser."'");		
+
+	mysqli_query($con,"UPDATE atw_user set $f='".$at."' where user_id='".$idUser."'");		
 }
 mysqli_close($con);
-*/
-echo 'ccccc';
 ?>

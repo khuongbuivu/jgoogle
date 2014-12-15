@@ -35,18 +35,12 @@ function atv(listTags)
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	};
 	var params = "listTags="+listTags;
-	alert(url + " " + params);
 	xmlhttp.open("POST", url, true);
-	alert(url);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	alert(url);
 	xmlhttp.setRequestHeader("Content-length", params.length);
-	alert(url);
 	xmlhttp.setRequestHeader("Connection", "close");
-	
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			alert(url);
 		}
 	};
 	xmlhttp.send(params);

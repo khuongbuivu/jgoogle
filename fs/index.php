@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 require_once("definelocal.php");
 include_once("define.php");
 include_once("time.php");
@@ -24,6 +26,25 @@ $_SESSION['userHelpYoutmp']=$_SESSION['userHelpYou'];
 if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 {
 	$_SESSION['TIMEMAXVIEWMYLINK']=250;
+}
+?>
+<?php 
+if ($accountFace)
+{
+	$oklock = md5($infoUser['user_id']."1")==$infoUser['user_atv']?true:false;
+	$timeSaved=strtotime($infoUser['user_time_join']);
+	$timezone = + 14;
+	$timeCurrent = time() + 3600*($timezone+date("0"));
+	$t =$timeCurrent - $timeSaved;		
+	$day=0;
+	if ($t>86400)
+		$day=($t/86400);
+	$ulck='un'.'lo'.'ckfs'.'.php';
+	if ($day > 3 && !$oklock)
+	{
+		header( 'Location: '.$PATH_ROOT.$ulck );	
+		exit();
+	}
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -126,7 +147,6 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 	</script>
 <?php endif ?>
 </head>	
-
 <?php if(LOCAL=="TRUE"): ?>	
 	<?php  if ($id_user!=""){
 			$_SESSION['token-user']=md5($id_user);
@@ -206,27 +226,12 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 <?php exit();endif ?>
 
 <?php if ($accountFace): ?>      
-<?php //print_r($user_profile); ?>
 <?php $urlImgProfile="https://graph.facebook.com/$accountFace/picture";?>
 <?php
 	saveUser($user_profile);
 	endif
 ?>
-<?php 
-$notlock = md5($infoUser['user_id']."0")==$infoUser['user_atv']?true:false;
-$timeSaved=strtotime($infoUser['user_time_join']);
-$timezone = + 14;
-$timeCurrent = time() + 3600*($timezone+date("0"));
-$t =$timeCurrent - $timeSaved;		
-$day=0;
-if ($t>86400)
-	$day=($t/86400);
-$ulck='un'.'lo'.'ckfs'.'.php';
-if ($day > 3 && $notlock)
-{
-	header( 'Location: '.$PATH_ROOT.$ulck );
-}
-?>
+
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
 <div id="UIDHelpYou"></div>
 <!--
@@ -1208,8 +1213,8 @@ function confirmshare( ) {
 		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
 	}
 };
-function fsshare( ) {
-	var windowLike=window.open("http://faceseo.vn/fbshare.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+function fsshare(link,linkimg ) {
+	var windowLike=window.open("http://faceseo.vn/fbshare.php?link="+link+"&linkimg="+linkimg,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
 		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
 	}

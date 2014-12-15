@@ -9,7 +9,7 @@ echo $string; // will output "Here is your content with an image tag" without th
 
 $string="567@";
 $string1="'@";
-$string2="faceseo";
+$string2="1234";
 echo "<br/>";
 echo md5($string)."<br/>";
 echo md5($string1)."<br/>";
