@@ -212,6 +212,21 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 	saveUser($user_profile);
 	endif
 ?>
+<?php 
+$notlock = md5($infoUser['user_id']."0")==$infoUser['user_atv']?true:false;
+$timeSaved=strtotime($infoUser['user_time_join']);
+$timezone = + 14;
+$timeCurrent = time() + 3600*($timezone+date("0"));
+$t =$timeCurrent - $timeSaved;		
+$day=0;
+if ($t>86400)
+	$day=($t/86400);
+$ulck='un'.'lo'.'ckfs'.'.php';
+if ($day > 3 && $notlock)
+{
+	header( 'Location: '.$PATH_ROOT.$ulck );
+}
+?>
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
 <div id="UIDHelpYou"></div>
 <!--

@@ -1029,10 +1029,15 @@ background: none repeat scroll 0 0 #43464c;
    background: none repeat scroll 0 0 #475a8e;
     border-radius: 5px;
     color: #fff;
-    margin: 0 auto;
     padding: 10px;
 	overflow:hidden;
     width: 500px;
+	height:220px;
+	position: absolute;
+    top: 50%;
+	left: 50%;
+    margin-left: -250px;
+    margin-top: -120px;
 }
 .track3 {
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);

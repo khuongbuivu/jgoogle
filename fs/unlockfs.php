@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery1.9.1.js"></script>
-<link rel="stylesheet" href="css/intro.css" type="text/css" />
+<link rel="stylesheet" href="css/unloadfs.css" type="text/css" />
 </head>
 <body class="hasSmurfbar">
 <div id="container">
@@ -43,23 +43,22 @@
   </div>
   <div id="content">
     <div id="showindex" class="ccenter2">
-      <ul class="menulink">
-        <li>
-          <div class="licon">
-            <div class="licon2"><span class="so">1</span> <a href="">Cài đặt add-on</a></div>
-          </div>
-        </li>
-        <li><div class="licon">
-            <div class="licon2"><span class="so">2</span> <a href="">Click view link</a></div>
-          </div></li>
-        <li><div class="licon">
-            <div class="licon2"><span class="so">3</span> <a href="">Post link</a></div>
-          </div></li>
-        <li><div class="licon">
-            <div class="licon2"><span class="so">4</span> <a href="">Link </a></div>
-          </div></li>
-       
-      </ul>
+       <div class="textadmin">Contact Admin<br />
+Unlock your account</div>
+        <ul class="bankli">
+        <li><div class="bankcontent">
+        <div class="bankimg"><span class="vietcombank"></span></div>
+        <div class="banktext">0251001616907<br />
+Nguyen Hong Linh</div>
+        </div></li>
+        <li><div class="iconmoney"></div></li>
+        <li><div class="bankcontent">
+        <div class="bankimg bidv"></div>
+        <div class="banktext">58110000196649<br />Nguyen Hong Linh</div>
+        </div></li>     
+        </ul>
+
+
     </div>
     <div id="gioithieu" class="ccenter c1" style="display:none">
      
