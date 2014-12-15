@@ -63,24 +63,6 @@ var timetmp=0;
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<style type="text/css"> 
-#boxms {
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    width:600px;
-    height:220px;
-    margin-top: -117px; /*set to a negative number 1/2 of your height*/
-    margin-left: -300px; /*set to a negative number 1/2 of your width*/
-    border: 1px solid #ccc;
-    background-color: #f3f3f3;
-}
-#btsent{
-margin:2px;padding:10px 20px; float:right; background-color:#4e69a2; border-color:#435a8b #3c5488 #334c83;color:#fff;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.2);border-radius:2px;box-shadow:0 1px 1px rgba(0, 0, 0, 0.05);font-weight:bold;
-cursor: pointer;
-cursor: hand;
-}
-</style>
 </head>	
 <body>
 <div id="container">
