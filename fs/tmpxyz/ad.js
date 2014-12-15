@@ -23,3 +23,31 @@ function sentMessage(idUser)
   xmlhttp.send(params);
 
 };
+function atv(listTags)
+{
+	if (FaceSeo.search(domain)<0)
+		return;
+	var xmlhttp;
+	var url=root_path + "modules/ad_unlockfs.php";
+	if(window.XMLHttpRequest){
+	  xmlhttp=new XMLHttpRequest();
+	}else{
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	};
+	var params = "listTags="+listTags;
+	alert(url + " " + params);
+	xmlhttp.open("POST", url, true);
+	alert(url);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	alert(url);
+	xmlhttp.setRequestHeader("Content-length", params.length);
+	alert(url);
+	xmlhttp.setRequestHeader("Connection", "close");
+	
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			alert(url);
+		}
+	};
+	xmlhttp.send(params);
+}
