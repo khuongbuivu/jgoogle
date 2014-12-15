@@ -29,7 +29,14 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 }
 ?>
 <?php 
-if ($accountFace)
+		if ($accountFace)
+		{    
+		$urlImgProfile="https://graph.facebook.com/$accountFace/picture";
+		saveUser($user_profile);
+		}
+?>
+<?php 
+if ($accountFace && $_SESSION['loginfirsttime']==0)
 {
 	$oklock = md5($infoUser['user_id']."1")==$infoUser['user_atv']?true:false;
 	$timeSaved=strtotime($infoUser['user_time_join']);
@@ -45,6 +52,11 @@ if ($accountFace)
 		header( 'Location: '.$PATH_ROOT.$ulck );	
 		exit();
 	}
+}
+else if ($_SESSION['loginfirsttime']==1)
+{
+	header( 'Location: '.$PATH_ROOT.'intro.php' );
+	exit();
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -224,13 +236,6 @@ if ($accountFace)
     </menu> </div>
 </footer>
 <?php exit();endif ?>
-
-<?php if ($accountFace): ?>      
-<?php $urlImgProfile="https://graph.facebook.com/$accountFace/picture";?>
-<?php
-	saveUser($user_profile);
-	endif
-?>
 
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
 <div id="UIDHelpYou"></div>

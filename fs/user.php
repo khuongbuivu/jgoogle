@@ -1,5 +1,7 @@
 <?php
-// keke
+if(!isset($_SESSION)){
+    session_start();
+}
 	function saveUser($user_profile)
 	{
 		global $host;
@@ -8,8 +10,7 @@
 		global $db;	
 		$con=mysqli_connect($host,$user,$pass,$db);
 		mysqli_set_charset($con, "utf8");
-		$result=mysqli_query($con,"select user_id,user_time_join from atw_user where user_id=".$user_profile[id]);	
-		
+		$result=mysqli_query($con,"select user_id,user_time_join from atw_user where user_id=".$user_profile[id]);
 		if(!($result->num_rows>0))
 		{
 			$timezone  = +14;//+7; //(GMT +7:00) 
@@ -21,9 +22,12 @@
 			mysqli_query($con,"insert into atw_point (idUser,point) values (".$user_profile[id].",50)");		
 			mysqli_query($con,"INSERT INTO atw_notify ( notify_user_id,notify_user_name,notify_user_logo ,notify_id_post,notify_id_comment,notify_time,notify_content,notify_status) VALUES (".$user_profile[id].",'".$user_profile[name]."','"."https://graph.facebook.com/".$user_profile[id]."/picture"."',1,1,'".$datetime."','Chào mừng bạn đến với FaceSeo.Vn. Chạy thử nghiệm 3 tháng. Phí sử dụng hệ thống 500k/2năm. Các bạn cần giải pháp Seo hay phát triển thương hiệu online vui lòng liên hệ Linh Nguyễn.  ','0')");	
 			$result_check_notify=mysqli_query($con,"insert into fs_check_notify (check_notify_id_user,check_notify_id_comment) values ('".$user_profile[id]."',0)" );
+			$_SESSION['loginfirsttime']=1;
 		}
 		else
-		{	if ($user_profile['birthday']!="")
+		{	
+			$_SESSION['loginfirsttime']=0;			
+			if ($user_profile['birthday']!="")
 				mysqli_query($con,"UPDATE atw_user SET birthday='".$user_profile['birthday']."' where user_id=".$user_profile[id]);
 			if ($user_profile['user_ip']!="")
 				mysqli_query($con,"UPDATE atw_user SET user_ip='".$user_profile['user_ip']."' where user_id=".$user_profile[id]);
