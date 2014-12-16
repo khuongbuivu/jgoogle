@@ -117,7 +117,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://giaiphapthuonghieu.vn/dich-vu-seo-website-top-google/'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>MUỐN QUẢNG CÁO NHANH XEM GIÁ:<br/><strong><a href='http://www.google.com.vn/url?sa=t&rct=j&q=&esrc=s&source=web&cd=10&cad=rja&uact=8&sqi=2&ved=0CHIQFjAJ&url=http%3A%2F%2Fgiaiphapthuonghieu.vn%2Fbang-gia-quang-cao-google-adwords-quang-ba-web.html&ei=GikuVL_oFoGj8AXJrYCoCg&usg=AFQjCNFX19BHE5ZFJhZMNiWX_2ahqdo2HA&bvm=bv.76802529,d.dGc' target='_blank' title='Ðào tạo Seo website'>QUẢNG CÁO GOOGLE ADWORDS</a></strong><a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://giaiphapthuonghieu.vn/dich-vu-seo-website-top-google/'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>Thông tin:<br/><strong><a href='http://giaiphapthuonghieu.vn/hoitthaoseo-hoi-thao-seo-tphcm/169-hoi-thao-seo-mini-cuoi-nam-2014-do-faceseo-to-chuc.html' target='_blank' title='hội thảo SEO'>hội thảo SEO mini</a></strong><a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
