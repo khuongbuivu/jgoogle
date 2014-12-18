@@ -1,5 +1,5 @@
 ﻿      //<![CDATA[
-	  var url_ppp = 'http://www.google.com.vn/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0CE8QFjAC&url=http%3A%2F%2Fgiaiphapthuonghieu.vn%2Fdaotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html&ei=2LIXVJbpKsTM8gWI3YLQBQ&usg=AFQjCNEa_QflR9NqBjpmJa96GnAweqc6aQ&sig2=anxywImKgHOCWa_fNbV-7g&bvm=bv.75097202,d.dGc';
+	  var url_ppp = 'bit.ly/1xs4EtA';
       function addEvent(obj, eventName, func){
         if (obj.attachEvent)
         {
