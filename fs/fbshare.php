@@ -114,7 +114,7 @@ mysqli_close($con);
 </script>
 <div style="margin:20px;background-color:#ccc;height:437px; position: relative;">
 <div style="width:10%;height:40px;float:left; background-color:#444;text-align:center"><img src="images/button/iconlink.png" /></div>
-<div style="width:90%;float:left;background-color:#555;color:#fff;font-size:25px;height:30px;text-align:center; padding:5px 0; border-bottom:1px #ccc dotted;"><?php echo $link; ?></div>
+<div style="width:90%;float:left;background-color:#555;color:#fff;font-size:25px;height:30px;text-align:center; padding:5px 0; border-bottom:1px #ccc dotted;box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);"><?php echo $link; ?></div>
 <div style="clear:both"></div>
 <div style="width:50%;float:left;background-color:#555;height:300px;margin:5px;overflow: hidden;"><img src="<?php echo $linkimg; ?>" width="100%" /></div>
 <div style="width:45%;float:right;background-color:#444;height:300px;margin:5px;text-align:center;"> Hãy share những gì bạn thích.</div>
