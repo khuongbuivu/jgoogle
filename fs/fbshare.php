@@ -9,7 +9,25 @@ global $pass;
 global $db;
 $con=mysqli_connect($host,$user,$pass,$db);
 $idUser=$_SESSION['session-user'];
-$okshare=mysqli_query($con,"select * from fs_share where share_iduser=".$idUser);
+if (isset($_GET['link']))
+	$link=$_GET['link'];
+else
+	$link="http://faceseo.vn";
+if (isset($_GET['linkimg']))
+	$linkimg=$_GET['linkimg'];
+else
+	$linkimg="http://faceseo.vn/background.jpg";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>FACESEO TRUNG TÂM ĐÀO TẠO SEO CHẤT LƯỢNG & UY TÍN VIỆT NAM</title>
+	<meta name="description" content="Tôi đã từng học tại nhiều nơi nhưng đến với trung tâm đào tạo seo FACESEO tôi được học thêm nhiều cách làm đơn giản hơn, hiệu quả hơn. Cảm ơn Linh Nguyễn." />
+	<meta charset="utf-8">
+</head>
+<body>
+<?php
+$okshare=mysqli_query($con,"select * from fs_fbshare where fbshare_link='".$link."'");
 $result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 $pointOfUser = mysqli_fetch_array($result);
 $pointCurrent = $pointOfUser['point'];
@@ -19,7 +37,7 @@ $share = false;
 if($okshare->num_rows>0)
 {
 	$row = mysqli_fetch_array($okshare);
-	$timeSaved=strtotime($row['share_time']);
+	$timeSaved=strtotime($row['fbshare_time']);
 	$t =$timeCurrent - $timeSaved;		
 	$day=0;
 	if ($t>86400 && $t < 86400*12)
@@ -34,19 +52,6 @@ else
 	$share=true;
 }
 mysqli_close($con);
-?>
-<?php
-if (isset($_GET['link']))
-	$link=$_GET['link'];
-else
-	$link="http://faceseo.vn";
-
-
-if (isset($_GET['linkimg']))
-	$linkimg=$_GET['linkimg'];
-else
-	$linkimg="http://faceseo.vn/background.jpg";
-
 ?>
 <div id="fb-root"></div>
 <script src="http://connect.facebook.com/en_US/all.js" type="text/javascript"></script>
@@ -69,7 +74,7 @@ else
 						 name: 'Bài viết hữu ích',
 						 link: '<?php echo $link; ?>',
 						 picture: '<?php echo $linkimg; ?>',
-						 caption: 'Hãy share những gì bạn thích',
+						 caption: 'Hãy share những gì bạn thích.',
 						 description: 'Cảm thấy thích thú.',
 					   },
 					   function(response) {
@@ -107,13 +112,24 @@ else
 	};
 	
 </script>
-MỖI LƯỢT SHARE +20 ĐIỂM
+<div style="margin:20px;background-color:#ccc;height:437px; position: relative;">
+<div style="width:10%;height:40px;float:left; background-color:#444;text-align:center"><img src="images/button/iconlink.png" /></div>
+<div style="width:90%;float:left;background-color:#555;color:#fff;font-size:25px;height:30px;text-align:center; padding:5px 0; border-bottom:1px #ccc dotted;"><?php echo $link; ?></div>
+<div style="clear:both"></div>
+<div style="width:50%;float:left;background-color:#555;height:300px;margin:5px;overflow: hidden;"><img src="<?php echo $linkimg; ?>" width="100%" /></div>
+<div style="width:45%;float:right;background-color:#444;height:300px;margin:5px;text-align:center;"> Hãy share những gì bạn thích.</div>
+<div style="position: absolute;right:0px;bottom:-4px">
+<?php 
+if ($share==true):
+?>
+<a href="#"  onClick="shareOnWall();"> <img src="images/button/fbshare.jpg" /></a>
+<?php 
+else:
+	echo "ĐÃ SHARE";
+endif
+?>
+</div>
+</div>
 http://stackoverflow.com/questions/2798622/facebook-like-button-callback
-<?php
-if ($share==true){
-?>
-<input type="button" value="SHARE VÌ BIỂN ĐẢO VIỆT NAM" onClick="shareOnWall();">
-<?php
-} else
-echo "Quay lại lần sau nhé";
-?>
+</body>
+</html>

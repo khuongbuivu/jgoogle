@@ -930,6 +930,8 @@ function getMessageById(idPost){
 function showPost(json)
 {	
 		var htmlnewpost="";
+		var regex = /<img.*?src=["'](.*?)["']/;
+		var srcimg="";
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
 						{							
@@ -984,7 +986,10 @@ function showPost(json)
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
-										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
+										if(json.post[i].post_image.trim ()!=""){
+											srcimg = regex.exec(json.post[i].post_image)[1];										
+										}
+										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\',\''+srcimg+'\')" ><span>Share Page</span></div></a></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
 										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
