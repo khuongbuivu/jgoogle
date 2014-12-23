@@ -146,7 +146,7 @@ if(!isset($_SESSION)){
 	}
 	function removeSlashEndUrl($url)
 	{
-		return substr("$url", 0, -1);
+		return rtrim($url, "/");
 	}
 	addPoint();
 	subPoint();

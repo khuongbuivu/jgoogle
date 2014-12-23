@@ -220,7 +220,7 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 mysqli_close($con);
 function removeSlashEndUrl($url)
 {
-	return substr("$url", 0, -1);
+	return rtrim($url, "/");
 }
 function getDomainName($url)
 {

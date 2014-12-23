@@ -52,7 +52,7 @@ function spg()
 }
 function removeSlashEndUrl($url)
 {
-	return substr("$url", 0, -1);
+	return rtrim($url, "/");
 }
 spg();
 ?>

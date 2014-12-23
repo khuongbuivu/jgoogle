@@ -139,7 +139,7 @@ function subPoint1()
 }
 function removeSlashEndUrl($url)
 {
-	return substr("$url", 0, -1);
+	return rtrim($url, "/");
 }
 
 subpoint()	;

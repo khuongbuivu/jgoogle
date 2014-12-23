@@ -13,9 +13,10 @@ function addpointshare()
 	// $idUser			=	'100001707050712';
 	$idUser			=	$_SESSION['session-user'];	
 	$pointBonus			=	20;
-	$dayShare			= 	7;
-	// $link			= 	'http://giaiphapthuonghieu.vn/daotaoseo.html';
+	$dayShare			= 	7;	
+	// $link			= 	'http://giasuminhtri.com/Phu-Huynh-Can-Biet/gia-su-tieu-hoc.html';
 	$link			= 	$_POST['link'];
+	$link			=	rtrim($link, "/");
 	$con=mysqli_connect($host,$user,$pass,$db);
 	
 	if (($_POST['point']>550 && $_SESSION['session-user']>0) || ($_POST['idUser']!=$_SESSION['session-user']))
@@ -94,7 +95,7 @@ function addpointshare()
 		}
 		$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 		$rsPointA = mysqli_fetch_array($result);
-		$point = $point + $rsPointA['point'];
+		$point = $pointBonus + $rsPointA['point'];
 		$resultB=mysqli_query($con,"select iduser from awt_list_url where url like '%".$link."%' limit 1" );		
 		if($resultB->num_rows>0)
 		{
