@@ -55,7 +55,16 @@ function addpointshare()
 	else
 	{
 		// check nếu tốn tại link getlink trong database
-		mysqli_query($con,"insert into fs_fbshare (fbshare_link,fbshare_iduser,fbshare_time) values ('".$link."',".$idUser.",'".$datetime."')");
+		$qLinks= mysqli_query($con,"select * from fs_fbshare where fbshare_link='".$link."'");
+		$rowLink=mysqli_fetch_array($qLinks);
+		if ($qLinks->num_rows>0)
+		{
+			//update list iduser
+			$newIDUs=$rowLink['fbshare_iduser'].",".$idUser;
+			mysqli_query($con,"UPDATE fs_fbshare set fbshare_iduser = '".$newIDUs."'  where fbshare_link='".$link."'");		
+		}	
+		else
+			mysqli_query($con,"insert into fs_fbshare (fbshare_link,fbshare_iduser,fbshare_time) values ('".$link."',".$idUser.",'".$datetime."')");		
 		$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 		$rsPointA = mysqli_fetch_array($result);
 		$point = $point + $rsPointA['point'];
@@ -66,13 +75,6 @@ function addpointshare()
 	}	
 	mysqli_close($con);	
 }
-addpointshare()	;
-/*
-check user shared link
-Mỗi ngày chỉ được share link 1 lần vì vậy phải check link đã share
-Nếu chưa add user thì add user vào list những thành viên đã share
-Update string time 2014-04-01 10:14:06
-*/
 function find($str,$arr)
 {
 	$l=split(",",$arr);
@@ -93,4 +95,13 @@ function insertStrTime($strTime,$i,$currentTime)
 {
 	return substr_replace($strTime, "$currentTime,", $i, 20);
 }
+
+addpointshare()	;
+/*
+check user shared link
+Mỗi ngày chỉ được share link 1 lần vì vậy phải check link đã share
+Nếu chưa add user thì add user vào list những thành viên đã share
+Update string time 2014-04-01 10:14:06
+*/
+
 ?>
