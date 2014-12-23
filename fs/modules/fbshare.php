@@ -22,6 +22,7 @@ function addpointshare()
 	if (($_POST['point']>550 && $_SESSION['session-user']>0) || ($_POST['idUser']!=$_SESSION['session-user']))
 	{
 			mysqli_query($con,"insert into fs_log_del (log_del_user,log_del_user_removed,log_del_id_post,log_del_type) values ('".$_SESSION['session-user']."','0','0',1)");
+			exit();
 	}
 	
 	$okshare=mysqli_query($con,"select * from fs_fbshare where fbshare_iduser like '%".$idUser."%' and fbshare_link='".$link."'");
