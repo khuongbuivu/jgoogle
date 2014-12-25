@@ -1212,6 +1212,12 @@ function confirmlink( link ) {
 
 eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('4 8(0,9){7 5=b.f("i://g.k/8.3?0="+0,"j","e=6, a=6, c=d, h=1, z=1, v=u, l=1");5.y=4(){t(s+"n.3",m);7 2=o.p(\'r\'+9);2.q.w=2.x}};',36,36,'link|500|iframe|php|function|windowLike|no|var|confirmgplus|id|scrollbars|window|resizable|yes|toolbar|open|faceseo|top|http|_blank|vn|height|idUser|get_point|document|getElementById|contentWindow|iframegplus|root_path|getPoint|550|width|location|src|onbeforeunload|left'.split('|'),0,{}))
 
+function fsGShare(url,token) {
+	var windowLike=window.open("https://plus.google.com/118322503677129379211/posts/KgTv57QPA4j","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	windowLike.onbeforeunload = function(){ 
+		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
+	}
+};
 function confirmshare( ) {
 	var windowLike=window.open("http://faceseo.vn/share-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 

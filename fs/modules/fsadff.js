@@ -614,5 +614,5 @@ window.addEventListener('click', function(event) {
 // debug firefox https://developer.mozilla.org/en-US/docs/Tools/Browser_Console
 // https://developer.mozilla.org/en-US/docs/Tools/Tools_Toolbox#Advanced_settings
 // debug firefox -jsconsole
-
+// test https://plus.google.com/share?url={http://giaiphapthuonghieu.vn}
 
