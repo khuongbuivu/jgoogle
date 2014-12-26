@@ -1229,8 +1229,8 @@ function fsGShare(url,token) {
 	var pollTimer = window.setInterval(function() {
 		if (windowLike.closed !== false) { // !== is required for compatibility with Opera		
 			$.ajax({
-				url: 'http://localhost/faceseo.vn/modules/json_getshareg.php',
-				data: {url:'https://plus.google.com/118322503677129379211/posts/eUV6RWBFTQb'},
+				url: 'http://localhost/faceseo.vn/modules/json_checkshareg.php',
+				data: {url:'https://plus.google.com/118322503677129379211/posts/eUV6RWBFTQb',numShare:resultstart,token:token()},
 				type: 'POST',
 				success: function(response) {
 					if(resultstart===response)
