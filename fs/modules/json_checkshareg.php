@@ -8,6 +8,7 @@ $geturl=$_POST['url'];
 // $geturl='https://plus.google.com/118322503677129379211/posts/KTdLbMd1HeZ';
 $newnumshare = get_share_count($geturl);
 $oldnumshare=$_POST['numShare'];
+echo $newnumshare." ".$oldnumshare;
 if ($newnumshare!=$oldnumshare)
 {
 	global $host;
@@ -17,31 +18,35 @@ if ($newnumshare!=$oldnumshare)
 	$idUser			=	$_SESSION['session-user'];
 	$pointbonus		= 	30;
 	$con=mysqli_connect($host,$user,$pass,$db);
-	$result=mysqli_query($con,"select iduser from awt_list_url where url like '%".$geturl."%'");
-	
-	
-	
+	echo "select * from atw_point where idUser=".$idUser." limit 1"."<br/>";
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
-	while ($row = mysqli_fetch_array($result))
-	{		
-			
-			
-			$point = -10 + $row['point'];
-	}
+	$point=$pointbonus;
 	if ($result->num_rows>0)
+	{
+		$row = mysqli_fetch_array($result);			
+		$point = $pointbonus + $row['point'];
+		echo $point."<br/>";
 		mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser);	
+	}
 	else
-		mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$pointbonus.")");
+		mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
 	$result=mysqli_query($con,"select iduser from awt_list_url where url like '%".$geturl."%'");
 	if($result->num_rows>0)
 	{
 		$row = mysqli_fetch_array($result)		;
 		$idUserB = $row[0];
+		$resultPointB= mysqli_query($con,"select * from atw_point where idUser=".$idUserB." limit 1");
+		$point=$pointbonus;
+		if ($resultPointB->num_rows>0)
+		{
+			$row = mysqli_fetch_array($resultPointB);			
+			$point = -$pointbonus + $row['point'];
+			echo $point."<br/>";
+			mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUserB);	
+		}
+		else
+			mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUserB.",".$pointbonus.")");
 	}
-	if ($result->num_rows>0)
-		$result=mysqli_query($con,"UPDATE atw_point set point = ".$pointbonus." where idUser=".$idUser);	
-	else
-		$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$pointbonus.")");
 	mysqli_close($con);
 }
 ?>
