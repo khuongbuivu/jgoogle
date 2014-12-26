@@ -5,7 +5,6 @@ if(!isset($_SESSION)){
 require_once("fs_socialcount.php");
 require_once("../config.php");
 $geturl=$_POST['url'];
-// $geturl='https://plus.google.com/118322503677129379211/posts/KTdLbMd1HeZ';
 $newnumshare = get_share_count($geturl);
 $oldnumshare=$_POST['numShare'];
 echo $newnumshare." ".$oldnumshare;
@@ -18,14 +17,12 @@ if ($newnumshare!=$oldnumshare)
 	$idUser			=	$_SESSION['session-user'];
 	$pointbonus		= 	30;
 	$con=mysqli_connect($host,$user,$pass,$db);
-	echo "select * from atw_point where idUser=".$idUser." limit 1"."<br/>";
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 	$point=$pointbonus;
 	if ($result->num_rows>0)
 	{
 		$row = mysqli_fetch_array($result);			
 		$point = $pointbonus + $row['point'];
-		echo $point."<br/>";
 		mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser);	
 	}
 	else
@@ -41,7 +38,6 @@ if ($newnumshare!=$oldnumshare)
 		{
 			$row = mysqli_fetch_array($resultPointB);			
 			$point = -$pointbonus + $row['point'];
-			echo $point."<br/>";
 			mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUserB);	
 		}
 		else
