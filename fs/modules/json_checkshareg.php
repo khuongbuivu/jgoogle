@@ -7,7 +7,6 @@ require_once("../config.php");
 $geturl=$_POST['url'];
 $newnumshare = get_share_count($geturl);
 $oldnumshare=$_POST['numShare'];
-echo $newnumshare." ".$oldnumshare;
 if ($newnumshare!=$oldnumshare)
 {
 	global $host;

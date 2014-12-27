@@ -1211,54 +1211,55 @@ function confirmlink( link ) {
 
 
 //eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('4 8(0,9){7 5=b.f("i://g.k/8.3?0="+0,"j","e=6, a=6, c=d, h=1, z=1, v=u, l=1");5.y=4(){t(s+"n.3",m);7 2=o.p(\'r\'+9);2.q.w=2.x}};',36,36,'link|500|iframe|php|function|windowLike|no|var|confirmgplus|id|scrollbars|window|resizable|yes|toolbar|open|faceseo|top|http|_blank|vn|height|idUser|get_point|document|getElementById|contentWindow|iframegplus|root_path|getPoint|550|width|location|src|onbeforeunload|left'.split('|'),0,{}))
-function confirmgplus(link,id){var windowLike=window.open("http://localhost/faceseo.vn/confirmgplus.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=550, height=500");windowLike.onbeforeunload=function(){alert("close");getPoint(root_path+"get_point.php",idUser);var iframe=document.getElementById('iframegplus'+id);iframe.contentWindow.location=iframe.src}};
+function confirmgplus(link,id){var windowLike=window.open(root_path + "confirmgplus.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=550, height=500");windowLike.onbeforeunload=function(){alert("close");getPoint(root_path+"get_point.php",idUser);var iframe=document.getElementById('iframegplus'+id);iframe.contentWindow.location=iframe.src}};
 function fsGShare(url,token) {
 	var resultstart=0;
-	var resultend=0;
+	var callAjx=0;
 	var windowLike;
 	$.ajax({
-        url: 'http://localhost/faceseo.vn/modules/json_getshareg.php',
-		data: {url:'https://plus.google.com/118322503677129379211/posts/eUV6RWBFTQb'},
+        url: root_path + 'modules/json_getshareg.php',
+		data: {url:url},
 		type: 'POST',
         success: function(response) {
             resultstart = response;
 			
         }
     });
-	var windowLike=window.open("https://plus.google.com/118322503677129379211/posts/eUV6RWBFTQb","_blank","toolbar=no, scrollbars=yes, resizable=yes, top=500, left=400, width=800, height=600");
+	var windowLike=window.open(url,"_blank","toolbar=no, scrollbars=yes, resizable=yes, top=500, left=400, width=800, height=600");
+	
 	var pollTimer = window.setInterval(function() {
-		if (windowLike.closed !== false) { // !== is required for compatibility with Opera		
+		if (windowLike.closed !== false && callAjx===0) {
 			$.ajax({
-				url: 'http://localhost/faceseo.vn/modules/json_checkshareg.php',
-				data: {url:'https://plus.google.com/118322503677129379211/posts/eUV6RWBFTQb',numShare:resultstart},
+				url: root_path+'modules/json_checkshareg.php',
+				data: {url:url,numShare:resultstart},
 				type: 'POST',
 				success: function(response) {
-					if(resultstart===response)
-						alert("Ban chua share");
-					else
-						getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
+					callAjx = 1 ;
+					
+					getPoint(root_path + "get_point.php",idUser);
 					window.clearInterval(pollTimer);				
 				}
-			});		   
+			});	
+			alert(callAjx);
 		}
 	}, 1000);
 };
 function confirmshare( ) {
-	var windowLike=window.open("http://faceseo.vn/share-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open(root_path + "share-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
+		getPoint(root_path + "get_point.php",idUser);
 	}
 };
 function fsshare(link,linkimg ) {
-	var windowLike=window.open("http://faceseo.vn/fbshare.php?link="+link+"&linkimg="+linkimg,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open(root_path + "fbshare.php?link="+link+"&linkimg="+linkimg,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
+		getPoint(root_path+"get_point.php",idUser);
 	}
 };
 function confirmshareBirthday( ) {
 	var windowLike=window.open("http://faceseo.vn/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);	
+		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	
 	}
 };
@@ -1266,24 +1267,20 @@ function confirmshareBirthday( ) {
 function confirmshareBirthday( ) {
 	var windowLike=window.open("http://faceseo.vn/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);	
+		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	
 	}
 };
 
 function confirm83( ) {
-	var windowLike=window.open("http://faceseo.vn/share-8-3-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open(root_path + "share-8-3-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);	
-		//$("#birthday").remove();	
+		getPoint(root_path + "get_point.php",idUser);	
 	}
 };
-
-
-
 </script>
+
 <script>
-//UA-45049546-1
 <?php if ($_SESSION['token-user']!=""){ ?>
 		isUserLogined = true;
 <?php };?>
