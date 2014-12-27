@@ -1229,20 +1229,18 @@ function fsGShare(url,token) {
 	
 	var pollTimer = window.setInterval(function() {
 		if (windowLike.closed !== false && callAjx===0) {
-			$.ajax({
+				callAjx = 1 ;
+				$.ajax({
 				url: root_path+'modules/json_checkshareg.php',
 				data: {url:url,numShare:resultstart},
 				type: 'POST',
-				success: function(response) {
-					callAjx = 1 ;
-					
+				success: function(response) {					
 					getPoint(root_path + "get_point.php",idUser);
 					window.clearInterval(pollTimer);				
 				}
-			});	
-			alert(callAjx);
+			});
 		}
-	}, 1000);
+	}, 2000);
 };
 function confirmshare( ) {
 	var windowLike=window.open(root_path + "share-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
