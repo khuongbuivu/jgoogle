@@ -1226,7 +1226,6 @@ function fsGShare(url,token) {
         }
     });
 	var windowLike=window.open(url,"_blank","toolbar=no, scrollbars=yes, resizable=yes, top=500, left=400, width=800, height=600");
-	
 	var pollTimer = window.setInterval(function() {
 		if (windowLike.closed !== false && callAjx===0) {
 				callAjx = 1 ;
@@ -1234,13 +1233,13 @@ function fsGShare(url,token) {
 				url: root_path+'modules/json_checkshareg.php',
 				data: {url:url,numShare:resultstart},
 				type: 'POST',
-				success: function(response) {					
+				success: function(response) {
 					getPoint(root_path + "get_point.php",idUser);
-					window.clearInterval(pollTimer);				
+					window.clearInterval(pollTimer);			
 				}
 			});
 		}
-	}, 2000);
+	}, 3000);
 };
 function confirmshare( ) {
 	var windowLike=window.open(root_path + "share-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");

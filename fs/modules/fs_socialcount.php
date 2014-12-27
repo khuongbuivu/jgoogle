@@ -13,10 +13,30 @@ function getPage($url){
 }
 function get_share_count( $url ) {
     $content=getPage($url);
-	 if (preg_match('%(?<=<span class="MM jI">)\d+?(?=</span>)%s', $content, $regs)) {
-	return(int)$regs[0];
+	if (preg_match('%(?<=<span class="MM jI">)\d+?(?=</span>)%s', $content, $regs)) {
+		return(int)$regs[0];
+	} else {
+		return 0;
+    }
+}
+function get_plus_count( $url ) {
+    $content=getPage($url);
+	if (preg_match('%(?<=<span class="H3" jsname="NnAfwf">)\d+?(?=</span>)%s', $content, $regs)) {
+		return(int)$regs[0];
     } else {
-	return 0;
-     }
+		return 0;
+    }
+}
+function get_plusandshare( $url ) {
+    $content=getPage($url);
+	$count=0;	
+	if (preg_match('%(?<=<span class="H3" jsname="NnAfwf">)\d+?(?=</span>)%s', $content, $regs)) 
+		$count =(int)$regs[0];
+	if (preg_match('%(?<=<span class="MM jI">)\d+?(?=</span>)%s', $content, $regs)) {
+		$count = $count.",".(int)$regs[0];
+    } else {
+		$count = $count.",0";
+    }
+	return $count;
 }
 ?>

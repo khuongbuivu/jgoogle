@@ -5,8 +5,10 @@ if(!isset($_SESSION)){
 require_once("fs_socialcount.php");
 require_once("../config.php");
 $geturl=$_POST['url'];
-$newnumshare = get_share_count($geturl);
 $oldnumshare=$_POST['numShare'];
+$newnumshare = get_plusandshare($geturl);
+$arrOld = split(",",$oldnumshare);
+$arrNew = split(",",$newnumshare);
 if ($newnumshare!=$oldnumshare)
 {
 	global $host;
@@ -14,7 +16,30 @@ if ($newnumshare!=$oldnumshare)
 	global $pass;
 	global $db;
 	$idUser			=	$_SESSION['session-user'];
-	$pointbonus		= 	30;
+	if ($arrOld[0]<$arrNew[0] && $arrNew[1]==$arrOld[1])
+	{
+		$pointbonus		= 	15;
+	}
+	else if ($arrOld[0]<$arrNew[0] && $arrNew[1]>$arrOld[1])
+	{
+		$pointbonus		= 	45;
+	}
+	else if ($arrOld[0]==$arrNew[0] && $arrNew[1]>$arrOld[1])
+	{
+		$pointbonus		= 	30;
+	}
+	else if ($arrOld[0]>$arrNew[0] && $arrNew[1]>$arrOld[1])
+	{
+		$pointbonus		= 	15;
+	}	
+	else if ($arrOld[0]>$arrNew[0])
+	{
+		$pointbonus		= 	-15;
+	}
+	else
+	{
+		$pointbonus		= 0;
+	}	
 	$con=mysqli_connect($host,$user,$pass,$db);
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 	$point=$pointbonus;
