@@ -993,7 +993,8 @@ function showPost(json)
 										}
 										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\',\''+srcimg+'\')" ><span>Share Page</span></div></a></div>';
 										htmlnewpost+= '</div>';
-										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
+										htmlnewpost+='</div>';
+										htmlnewpost+='<div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
 										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
 										htmlnewpost+='</div>';
 										htmlnewpost+='<div style=" clear: both;"></div>';
@@ -1089,7 +1090,8 @@ function showPostById(json)
 										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
 										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
 										htmlnewpost+= '</div>';
-										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
+										htmlnewpost+='</div>';
+										htmlnewpost+='<div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
 										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
 										htmlnewpost+='</div>';
 										htmlnewpost+='<div style=" clear: both;"></div>';
@@ -1181,7 +1183,8 @@ function showMessageById(json)
 										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
 										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
 										htmlnewpost+= '</div>';
-										htmlnewpost+='</div><div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
+										htmlnewpost+='</div>';
+										htmlnewpost+='<div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
 										htmlnewpost+='<!-- <a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')" >Like: +15điểm</a> <iframe frameborder="0" style="border:none; " allowtransparency="true" src="http://www.facebook.com/plugins/like.php?href='+json.post[i].post_url+'"></iframe>-->';
 										htmlnewpost+='</div>';
 										htmlnewpost+='<div style=" clear: both;"></div>';
