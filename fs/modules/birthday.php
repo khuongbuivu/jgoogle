@@ -10,7 +10,7 @@ function addpointshare()
 	$idUser			=	$_POST['idUser'];
 	$point			=	1000;
 	if ($_POST['point']>1000)
-		mysqli_query($con,"UPDATE atw_user set user_status = 0 where user_id=".$idUser);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'BIRTHDAY: HACK POINT > 1000' where user_id=".$idUser);
 	$con=mysqli_connect($host,$user,$pass,$db);	
 	$okshare=mysqli_query($con,"select * from fs_birthday_share where share_iduser=".$idUser);
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");

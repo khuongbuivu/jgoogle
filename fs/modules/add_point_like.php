@@ -17,7 +17,7 @@ function subpoint()
 	$result=mysqli_query($con,"select iduser from awt_list_url where url like '%".$linkClicked."%'");
 	if(($result->num_rows==""))
 	{
-		mysqli_query($con,"UPDATE atw_user set user_status = 4 where user_id=".$_SESSION['session-user']);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_LIKE: LINK LINK NOT EXIST' where user_id=".$_SESSION['session-user']);
 		exit();
 	}
 	$dm = date("d/m"); 	
@@ -48,7 +48,7 @@ function subpoint()
 	
 	if ($point>30 && $point<-30 || $_SESSION['session-user'] !=$_POST['idUser'])
 	{
-		mysqli_query($con,"UPDATE atw_user set user_status = 5 where user_id=".$_SESSION['session-user']);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_LIKE: HACK POINT' where user_id=".$_SESSION['session-user']);
 		$point=-500;
 	}
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
@@ -57,13 +57,10 @@ function subpoint()
 	$rsgplus = mysqli_query($con," select * from fs_gplus where gplus_link like '".$linkClicked."'");
 	if ($rsgplus->num_rows>0)
 	{
-		//$point = $pointOfUser['point'];
 	}
 	else
 	{
-		//echo "insert into fs_gplus (gplus_link,gplus_iduser) values ('".$linkClicked."','".$idUser."')";
 		mysqli_query($con,"insert into fs_gplus (gplus_link,gplus_iduser) values ('".$linkClicked."','".$idUser."')");
-		 
 	}
 	
 	if ($result->num_rows>0)

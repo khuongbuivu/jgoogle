@@ -26,7 +26,7 @@ if ($_SESSION['session-user']>0)
 		$user2 = $infosUser2['user_manager'];
 		if($row['post_iduser']==$post_iduser && $user2>$user1)
 		{
-			mysqli_query($con,"UPDATE atw_user set user_status = 0 where user_id=".$row['post_iduser']); 
+			mysqli_query($con,"UPDATE atw_user set user_status = 'DEL_USER: DEL USER' where user_id=".$row['post_iduser']); 
 			mysqli_query($con,"DELETE FROM atw_post  where post_iduser=".$row['post_iduser']);		
 			mysqli_query($con,"DELETE FROM atw_cmt_content  where userId=".$row['post_iduser']);
 			mysqli_query($con,"insert into fs_log_del (log_del_user,log_del_user_removed,log_del_id_post,log_del_type) values ('".$_SESSION['session-user']."','".$row['post_iduser']."','".$_POST['post_id']."',1)");

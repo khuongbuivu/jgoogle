@@ -13,7 +13,7 @@ function spg()
 	if ($_SESSION['session-user'] != $_POST['idUser'] || $_POST['point']< -20 )
 	{
 		$con=mysqli_connect($host,$user,$pass,$db);
-		mysqli_query($con,"UPDATE atw_user set user_status = 4 where user_id=".$_SESSION['session-user']);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'SPG: SPG() HACK POINT' where user_id=".$_SESSION['session-user']);
 		mysqli_close($con);	
 		exit();
 	}

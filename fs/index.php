@@ -246,14 +246,13 @@ else if ($_SESSION['loginfirsttime']==1)
 <div id="container">
 <?php
 include_once("header.php");
-if ($infoUser['user_status']==0 && $infoUser['user_status']!="")
+if ($infoUser['user_status']!=1)
 {
 	echo '<div id="globalContainer" class="uiContextualLayerParent"><div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content"> 		<div>
 		<div id="mainContainer" style="text-align:center; height: 400px;"> <h1> Vui lòng sử dụng tài khoản Facebook khác để đăng nhập. </h1> <br/> <a href="http://faceseo.vn" title="Cộng đồng Seo Việt Nam">Trang chủ</a> </div></div><div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div></div></div>';
 exit();
 }
-//include_once("user.php");
 ?>
 <div id="globalContainer" class="uiContextualLayerParent">
 	<div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content">

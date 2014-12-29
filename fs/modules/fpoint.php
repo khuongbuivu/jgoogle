@@ -15,7 +15,7 @@ function subpoint()
 	$con=mysqli_connect($host,$user,$pass,$db);
 	if ($_SESSION['session-user'] !=$_POST['idUser'] || $subpoint < - 20 || !checkSecurityUser($idUser,$sidUser) || !checkSecurityUser($_SESSION['session-user'],$sidUser))
 	{
-		mysqli_query($con,"UPDATE atw_user set user_status = 6 where user_id=".$_SESSION['session-user']);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'FPOINT: CHECK SECURITYUSER FAIL' where user_id=".$_SESSION['session-user']);
 		mysqli_close($con);	
 		return;
 	}
@@ -42,7 +42,7 @@ function subpointPost()
 	$con=mysqli_connect($host,$user,$pass,$db);
 	if ($_SESSION['session-user'] !=$_POST['idUser']  || !checkSecurityUser($idUser,$sidUser) || !checkSecurityUser($_SESSION['session-user'],$sidUser))
 	{
-		mysqli_query($con,"UPDATE atw_user set user_status = 6 where user_id=".$_SESSION['session-user']);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'FPOINT: SUBPOINTPOST() CHECK SECURITYUSER FAIL' where user_id=".$_SESSION['session-user']);
 		mysqli_close($con);	
 		return;
 	}

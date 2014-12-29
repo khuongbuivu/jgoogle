@@ -10,13 +10,13 @@ function addpointshare()
 	$idUser			=	$_POST['idUser'];
 	$point			=	1000;
 	if ($_POST['point']>1000)
-		mysqli_query($con,"UPDATE atw_user set user_status = 0 where user_id=".$idUser);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'BIRTHDAY: ADD POINT MORE 1000' where user_id=".$idUser);
 	$con=mysqli_connect($host,$user,$pass,$db);	
 	$okshare=mysqli_query($con,"select * from fs_birthday_share where share_iduser=".$idUser);
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 	$pointOfUser = mysqli_fetch_array($result);
 	$pointCurrent = $pointOfUser['point'];	
-	$timezone  = +7;//+7; //(GMT +7:00) 
+	$timezone  = +7;
 	$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
 	$timeCurrent = time() + 3600*($timezone+date("0"));
 	$share_num=0;	

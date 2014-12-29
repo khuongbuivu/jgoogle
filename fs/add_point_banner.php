@@ -17,7 +17,7 @@ if(!isset($_SESSION)){
 		$con=mysqli_connect($host,$user,$pass,$db);
 		if ($idUser=="100001790943200" || $idUser=="100001655675884" || $idUser=="100002442662639")
 		{			
-			mysqli_query($con,"UPDATE atw_user set user_status = 10 where user_id=".$_SESSION['session-user']);
+			mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_BANNER: DISABLE SOME ID' where user_id=".$_SESSION['session-user']);
 			exit();
 		}
 		$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
@@ -27,27 +27,22 @@ if(!isset($_SESSION)){
 		{
 			$rts = mysqli_fetch_array($ctime);
 			$timeSaved= substr($rts['timeclose'],0,8);
+			$oldday=substr($rts['timeclose'],9);
 			$currentTime=date("H:i:s");
 			$t2 = strtotime($currentTime);
 			$t1 = strtotime($timeSaved);
 			$t= $t2 - $t1;
-			if ( $t < 2000 and $t >-1)
+			$dayTime=date("d/m/y");
+			if ( ($t>5 && $oldday==$dayTime) || $oldday!=$dayTime)
 			{
 				$okap = true;
 			}
 			else
 			{
 				$okap = false;
-				mysqli_query($con,"UPDATE atw_user set user_status = 8 where user_id=".$_SESSION['session-user']);
+				mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_BANNER: AUTO ADD POINT BANNER' where user_id=".$_SESSION['session-user']);
 			}	
 		}
-		else
-		{
-				   mysqli_query($con,"UPDATE atw_user set user_status = 0 where user_id=".$_SESSION['session-user']);
-		}
-		
-		
-		
 		while ($row = mysqli_fetch_array($result))
 		{
 			if(!($result1->num_rows>0))
@@ -110,9 +105,7 @@ if(!isset($_SESSION)){
 			else
 				$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
 		}
-		mysqli_close($con);
-		
-		
+		mysqli_close($con);	
 	}
 	function removeSlashEndUrl($url)
 	{

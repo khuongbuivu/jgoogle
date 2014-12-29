@@ -1,5 +1,20 @@
-
 <?php
+
+$timeSaved= substr("08:38:11 15/11/14",0,8);
+$oldday=substr("08:38:11 27/12/14",9);
+echo $oldday."<br/>";
+echo $timeSaved."<br/>";
+$currentTime=date("H:i:s");
+$dayTime=date("d/m/y");
+echo $dayTime."<br/>";
+echo $currentTime."<br/>";
+$t2 = strtotime($dayTime);
+$t1 = strtotime($oldday);
+$t= $t2 - $t1;
+echo $t;
+if ($oldday==$dayTime)
+ echo "xxxxx";
+/*
 // Remove tag
 // $string = 'Here is your content with an image tag <a href=http://www.giaiphapthuonghieu.vn/dang-ki-khoa-hoc-seo  onclick="return openUrl(this.href,60);" >http://www.giaiphapthuonghieu.vn/dang-ki-khoa-hoc-seo</a><br /><a href=http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html  onclick="return openUrl(this.href,60,90829);" >http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-...</a>' ;
 $string = '<a class="highlighter" href="#" contenteditable="true"><b>Linh Nguyen</b>·cho e xin cái ổi</a>' ;
@@ -34,7 +49,7 @@ function insertStrTime($strTime,$i,$currentTime)
 {
 	return substr_replace($strTime, "$currentTime,", $i*20, 20);
 }
-/*
+
 function generatePassword($length = 8) {
 		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$count = mb_strlen($chars);

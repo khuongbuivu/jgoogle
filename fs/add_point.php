@@ -21,85 +21,75 @@ if(!isset($_SESSION)){
 		$idUserA		=	$idUser;
 		$point			=	$_POST['point'];
 		$token			=	$_POST['token'];
+		$TIMEMINVIEW		= 5;
+		$TIMEMAXVIEW		= 10;
 		$okap			= false;
 		$dm = date("d/m"); 	
 		$s1= date("s");
 		$shortDay= str_replace("/","",$dm);
 		$User1=intval($_SESSION['session-user']) * intval($shortDay);
-		//if ($okap==true)
+		$con=mysqli_connect($host,$user,$pass,$db);
+		if ($idUser=="100001790943200" || $idUser=="100001655675884" || $idUser=="100002442662639")
+		{			
+			mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT: DONT ADD POINT SOME UID' where user_id=".$_SESSION['session-user']);
+			exit();
+		}
+		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc");
+		if($ctime->num_rows>0)
 		{
-			$con=mysqli_connect($host,$user,$pass,$db);
-			if ($idUser=="100001790943200" || $idUser=="100001655675884" || $idUser=="100002442662639")
-			{			
-				mysqli_query($con,"UPDATE atw_user set user_status = 11 where user_id=".$_SESSION['session-user']);
-				exit();
-			}
-			
-			
-			
-			$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc");
+			$rts = mysqli_fetch_array($ctime);
+			$timeSaved= substr($rts['timeclose'],0,8);
+			$oldday=substr($rts['timeclose'],9);
+			$currentTime=date("H:i:s");
+			$t2 = strtotime($currentTime);
+			$t1 = strtotime($timeSaved);
+			$t= $t2 - $t1;
+			$dayTime=date("d/m/y");
+			if ( ($t>5 && $oldday==$dayTime) || $oldday!=$dayTime)
 			{
-				if($ctime->num_rows>0)
-				{
-					$rts = mysqli_fetch_array($ctime);
-					$timeSaved= substr($rts['timeclose'],0,8);
-					$currentTime=date("H:i:s");
-					$t2 = strtotime($currentTime);
-					$t1 = strtotime($timeSaved);
-					$t= $t2 - $t1;
-					if ( $t < 2000 and $t >-1)
-					{
-						$okap = true;
-					}
-					else
-					{
-						$okap = false;
-						mysqli_query($con,"UPDATE atw_user set user_status = 8 where user_id=".$_SESSION['session-user']);
-					}	
-				}
-                    else
-			        {
-				            mysqli_query($con,"UPDATE atw_user set user_status = 6 where user_id=".$_SESSION['session-user']);
-							exit();
-			        }
-			
+				$okap = true;
 			}
-			
-			if ($okap==true)
+			else
 			{
-				$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
-				$result1=mysqli_query($con,"select * from awt_list_url where iduser='".$idUser."' and url='".$linkClicked."'");
-				while ($row = mysqli_fetch_array($result))
+				$okap = false;
+				mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT: AUTO ADD POINT' where user_id=".$_SESSION['session-user']);
+			}	
+		}			
+		if ($okap==true)
+		{
+			$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
+			$result1=mysqli_query($con,"select * from awt_list_url where iduser='".$idUser."' and url='".$linkClicked."'");
+			while ($row = mysqli_fetch_array($result))
+			{
+				if(!($result1->num_rows>0))
 				{
-					if(!($result1->num_rows>0))
-					{
-						
-						$minuteView = (int)(intval($point)) ; 
-						if($minuteView < 5)
-						{
-							$point = 0 + $row['point'];
-							$pointHelp =0;
-						}
-						else
-						{
-							$minuteView = $minuteView > 10? 10 : $minuteView;
-							$point = $minuteView + $row['point'];
-							$pointHelp = $minuteView;
-						}
-					}
-					else
+					
+					$minuteView = (int)(intval($point)) ; 
+					if($minuteView < $TIMEMIN)
 					{
 						$point = $row['point'];
+						$pointHelp =0;
 					}
-				}	
-				if ($result->num_rows>0)
-					$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser); 
+					else
+					{
+						$minuteView = $minuteView > TIMEMAXVIEW? TIMEMAXVIEW : $minuteView;
+						$point = $minuteView + $row['point'];
+						$pointHelp = $minuteView;
+					}
+				}
 				else
-					$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
-				echo $point;
-			}
-			mysqli_close($con);	
+				{
+					$point = $row['point'];
+				}
+			}	
+			if ($result->num_rows>0)
+				$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser); 
+			else
+				$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
+			echo $point;
 		}
+		mysqli_close($con);	
+		
 	}
 	function subPoint()
 	{
@@ -126,23 +116,28 @@ if(!isset($_SESSION)){
 		{
 			$idUser	=$idUserOfUrl;
 			$idUserB = $idUserOfUrl;
-			$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser);			
-			while ($row = mysqli_fetch_array($result))
-			{		
-					$minuteView = (int)(intval($point))  ; 
-					$point=$minuteView > 4 ? $minuteView : 0 ;
-					$point = -$point + $row['point'];
-			}	
+			$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");	
 			if ($result->num_rows>0)
+			{
+				$row = mysqli_fetch_array($result);
+				$minuteView = (int)(intval($point))  ; 
+				if($minuteView < $TIMEMIN)
+				{
+					$point = $row['point'];
+					$pointHelp =0;
+				}
+				else
+				{
+					$minuteView = $minuteView > TIMEMAXVIEW? TIMEMAXVIEW : $minuteView;
+					$point = -$minuteView + $row['point'];
+				}
 				$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser);	
+			}
 			else
 				$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
-		}
-		
+		}	
 		updateHelpClickTable($idUserA,$idUserB,$pointHelp);		
 		mysqli_close($con);
-		
-		
 	}
 	function removeSlashEndUrl($url)
 	{

@@ -16,14 +16,14 @@ function addpointshare()
 	if ($_POST['point']>550 && $_SESSION['session-user']>0 || $_POST['idUser']!=$_SESSION['session-user'])
 	{
 			mysqli_query($con,"insert into fs_log_del (log_del_user,log_del_user_removed,log_del_id_post,log_del_type) values ('".$_SESSION['session-user']."','0','0',1)");
-			//mysqli_query($con,"UPDATE atw_user set user_status = 0 where user_id=".$idUser);
+			mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_SHARE: HACK POINT SHARE' where user_id=".$_SESSION['session-user']);
 	}
 		
 	$okshare=mysqli_query($con,"select * from fs_share where share_iduser=".$idUser);
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 	$pointOfUser = mysqli_fetch_array($result);
 	$pointCurrent = $pointOfUser['point'];	
-	$timezone  = +7;//+7; //(GMT +7:00) 
+	$timezone  = +7;
 	$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
 	$timeCurrent = time() + 3600*($timezone+date("0"));
 	$share_num=0;	

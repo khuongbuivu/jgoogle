@@ -128,33 +128,27 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 	$con=mysqli_connect($host,$user,$pass,$db);
 	mysqli_set_charset($con, "utf8");
 	$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 299 and timeview < 601 and idUser=".$idUser." order by id desc");
+	if($ctime->num_rows>0)
 	{
-		if($ctime->num_rows>0)
+		$rts = mysqli_fetch_array($ctime);
+		$timeSaved= substr($rts['timeclose'],0,8);
+		$oldday=substr($rts['timeclose'],9);
+		$currentTime=date("H:i:s");
+		$t2 = strtotime($currentTime);
+		$t1 = strtotime($timeSaved);
+		$t= $t2 - $t1;
+		$dayTime=date("d/m/y");
+		if ( ($t>5 && $oldday==$dayTime) || $oldday!=$dayTime)
 		{
-			$rts = mysqli_fetch_array($ctime);
-			$timeSaved= substr($rts['timeclose'],0,8);
-			$currentTime=date("H:i:s");
-			$t2 = strtotime($currentTime);
-			$t1 = strtotime($timeSaved);
-			$t= $t2 - $t1;
-			echo "kekeke$t<br/>";
-			
-			if ( $t < 2000 and $t >-1)
-			{
-				$okap = true;
-			}
-			else
-			{
-				$okap = false;
-				mysqli_query($con,"UPDATE atw_user set user_status = 8 where user_id=".$_SESSION['session-user']);
-			}	
+			$okap = true;
 		}
 		else
 		{
-			mysqli_query($con,"UPDATE atw_user set user_status = 9 where user_id=".$_SESSION['session-user']);
+			$okap = false;
+			mysqli_query($con,"UPDATE atw_user set user_status = 'FS: AUTO ADD POINT BANNER' where user_id=".$_SESSION['session-user']);
 		}
-	
 	}
+	
 	$okap=true;
 	$pointView=0;
 	if ($okap==true)
