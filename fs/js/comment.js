@@ -124,9 +124,9 @@ function addLikeToDB(url,idCmt,idUser)
   xmlhttp.send(params);
 }
 
-function addPointLike(idUser,link,tk1,tk2,tk3,tk4)
+function addPointLikeG(idUser,link,tk1,tk2,tk3,tk4)
 {	
-	var url=root_path + "modules/add_point_like.php";
+	var url=root_path + "modules/add_point_likeg.php";
 	var point = 10;
 	if (FaceSeo.search(domain)<0)
 		return;
@@ -149,7 +149,7 @@ function addPointLike(idUser,link,tk1,tk2,tk3,tk4)
 
 };
 
-function subPointLike(idUser,tk1,tk2,tk3,tk4){
+function subPointLikeG(idUser,tk1,tk2,tk3,tk4){
 alert("Unlike bị trừ 20đ");
 var url=root_path+"modules/spg.php";
 var point=-20;if(FaceSeo.search(domain)<0)return;
@@ -987,7 +987,7 @@ function showPost(json)
 											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + json.post[i].post_url +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
-										htmlnewpost+='<div class="likebottondiv"><a href=""><div class="likebutton"><span>Like Page</span></div></a></div>';
+										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
 										if(json.post[i].post_image.trim ()!=""){
 											srcimg = regex.exec(json.post[i].post_image)[1];										
 										}
@@ -1577,7 +1577,7 @@ function delComment(idCmt)
 var rand = function() {
     return Math.random().toString(36).substr(2); 
 };
-var token = function() {
+function token() {
     return rand() + rand();
 };
 function getUrLSharePlus(str)

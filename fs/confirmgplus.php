@@ -46,10 +46,8 @@ if (isset($_GET['link']))
 	$link=$_GET['link'];
 else
 	$link="http://faceseo.vn";
-//echo $link;
 ?>
 
-<!-- Share Google Plus -->
 <div class="gplusone-content" style="display:none;font-size:120%;color:#336633;">Cảm ơn bạn đã share G+. Bạn được cộng thêm 10 điểm. Tắt cửa sổ để thấy điểm cộng.</div><div class="gplusone-uncontent" style="display:none;font-size:120%;color:#f00;">Bạn bị trừ 20 điểm</div><div id="gplusone-example"><g:plusone size="standard" callback="gplus_callback" href="<?php echo $link;?>" count="true" width="350px" annotation="inline"></g:plusone></div><div class="gplusone-content remember-state" style="display:none;"></div><script type="text/javascript" src="js/jquery.gplusone.1.1.js"></script>
 <?php
 $dm = date("d/m");
@@ -71,13 +69,12 @@ $token4 = MD5($strtoken4);
 <script type="text/javascript">
 $(document).ready(function () {
 $('#gplusone-example').gplusone({
-  	onlike:"addPointLike(idUser, '<?php echo $link;?>','<?php echo $token1;?>','<?php echo $token2;?>','<?php echo $token3;?>','<?php echo $token4;?>');$('.gplusone-uncontent:visible').hide('fade');$('.gplusone-content').show('fade');$.cookie('liked','liked');",
-  	onunlike:"subPointLike(idUser, '<?php echo $token1;?>','<?php echo $token2;?>','<?php echo $token3;?>','<?php echo $token4;?>');$('.gplusone-content:visible').hide('fade');$('.gplusone-uncontent').show('fade');$.cookie('liked','unliked');",
+  	onlike:"addPointLikeG(idUser, '<?php echo $link;?>','<?php echo $token1;?>','<?php echo $token2;?>','<?php echo $token3;?>','<?php echo $token4;?>');$('.gplusone-uncontent:visible').hide('fade');$('.gplusone-content').show('fade');$.cookie('liked','liked');",
+  	onunlike:"subPointLikeG(idUser, '<?php echo $token1;?>','<?php echo $token2;?>','<?php echo $token3;?>','<?php echo $token4;?>');$('.gplusone-content:visible').hide('fade');$('.gplusone-uncontent').show('fade');$.cookie('liked','unliked');",
   	lang:'en-US'
   });
   if($.cookie('liked')=='liked'){$('.remember-state').show('fade');$('.gplusone-uncontent:visible').hide('fade');}
 });
 </script>
-<!-- Share Google Plus -->
 </body>
 </html>
