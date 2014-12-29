@@ -25,7 +25,7 @@ $_SESSION['userHelpYoutmp']=$_SESSION['userHelpYou'];
 }
 if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 {
-	$_SESSION['TIMEMAXVIEWMYLINK']=250;
+	$_SESSION['TIMEMAXVIEWMYLINK']=50;
 }
 ?>
 <?php 

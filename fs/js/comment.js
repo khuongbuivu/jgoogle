@@ -339,7 +339,6 @@ function openUrl(url,timesession,idPost)
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
 				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
-				//alert(i,idPost);
 				addListidPostHide(i,idPost);
 				i=i+1;	
 				window.iswiewing=true;				
@@ -360,9 +359,7 @@ function openUrl(url,timesession,idPost)
 		}
 		else
 			alert("Bạn đang view link này");
-	};
-	//$("#postcontent"+idPost).hide();
-	
+	};	
 	return false;
 };
 function addListidPostHide(i,value)
@@ -447,9 +444,9 @@ function autoView(){
 		var t=timeClicked(timeInits[iautoview],timeclose);
 		timeOpeneds[iautoview] = t;					
 		if (parseInt(t)>300)
-		{	
-			saveClickAuto('save_click.php',encodeURIComponent(urlsAuto[iautoview]),idUser,timeInits[iautoview],timeclose,timeOpeneds[iautoview]);
+		{				
 			addPoint('add_point_auto.php',encodeURIComponent(urlsAuto[iautoview]),idUser,parseInt(t/(militime*5)));			
+			saveClickAuto('save_click.php',encodeURIComponent(urlsAuto[iautoview]),idUser,timeInits[iautoview],timeclose,timeOpeneds[iautoview]);
 			tabs[iautoview].close();	
 			timeInits[iautoview] = "";
 			urlsAuto.splice(iautoview,1);
@@ -482,8 +479,9 @@ function checkTabsClosedAuto()
 				alert("Bạn view chưa được 5p nên chưa được + điểm");
 				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
 			}else {
-				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
 				addPoint('add_point_auto.php',encodeURIComponent(urlsAuto[j]),idUser,parseInt(t/(militime*5)));			
+				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+				
 			}
 			timeInits[j] = "";
 			urlsAuto.splice(j,1);
@@ -501,9 +499,9 @@ function checkTabsClosedAuto()
 			
 			if (parseInt(t)>300)
 			{
-				$("#postcontent"+arrPostViewNeedRemove[j]).hide();
-				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
-				addPoint('add_point_auto.php',encodeURIComponent(urlsAuto[j]),idUser,parseInt(t/(militime*5)));				
+				$("#postcontent"+arrPostViewNeedRemove[j]).hide();				
+				addPoint('add_point_auto.php',encodeURIComponent(urlsAuto[j]),idUser,parseInt(t/(militime*5)));		
+				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);				
 				tabs[j].close();	
 				timeInits[j] = "";
 				urlsAuto.splice(j,1);
@@ -522,7 +520,6 @@ function checkTabsClosedAuto()
 };
 function checkTabsClosed()
 {		
-	// alert("checkTabsClosed");
 	if (FaceSeo.search(domain)<0)
 		return;
 	for(j=0;j<urls.length;j++)
@@ -544,15 +541,17 @@ function checkTabsClosed()
 				{	
 					hideAllListPost(arrIdPostHide);
 					$("#postcontent"+arrPostViewNeedRemove[j]).hide();
+					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
 					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
-					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));					
+										
 				}
 				else
 				{
 					$("#banner"+arrPostViewNeedRemove[j]).hide();
 					t=parseInt(t) + 600;
+					addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));		
 					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
-					addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));					
+								
 				}
 				
 			};
@@ -563,8 +562,7 @@ function checkTabsClosed()
 			timeInits.splice(j,1);
 		}
 		else
-		{
-			//timeOpeneds[j] = t;	
+		{	
 			var time = new Date();
 			var timeclose=time.format("hh:mm:ss dd/MM/yyyy");
 			var t=timeClicked(timeInits[j],timeclose);
@@ -574,17 +572,15 @@ function checkTabsClosed()
 			{
 				$("#postcontent"+arrPostViewNeedRemove[j]).hide();
 				if (urlsBanner[j]==false)
-				{	
-					
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+				{						
 					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-					
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);					
 				}
 				else
 				{
 					t=parseInt(t) + 600;
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
-					addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));					
+					addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);									
 				};								
 				tabs[j].close();	
 				timeInits[j] = "";
@@ -601,8 +597,7 @@ function checkTabsClosed()
 	if(urls.length==0)
 	{	
 		window.iswiewing=false;
-	}	
-	// Display List Url Need Click Backlink
+	};	
 	DisPlayUrlClickBacklink();
 	
 };
@@ -619,7 +614,7 @@ function DisPlayUrlClickBacklink()
 			html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"'>" + urls[i].substring(0,60) + "</a></div>";
 			html= html + "<div style='float:right; width:5%'><img src='images/rushviewing.gif' title='Click to view backlink'/></div>";
 		}
-	}
+	};
 	if (html=="")
 		$('#listUrlViewMore').css("display","none");
 	else

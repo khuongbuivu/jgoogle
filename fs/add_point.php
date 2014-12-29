@@ -45,6 +45,13 @@ if(!isset($_SESSION)){
 			$t1 = strtotime($timeSaved);
 			$t= $t2 - $t1;
 			$dayTime=date("d/m/y");
+			/*
+			echo $t."<br/>";
+			echo $oldday."<br/>";
+			echo $dayTime."<br/>";
+			echo "timeSaved ".$timeSaved."<br/>";
+			echo "currentTime ".$currentTime."<br/>";
+			*/
 			if ( ($t>5 && $oldday==$dayTime) || $oldday!=$dayTime)
 			{
 				$okap = true;
