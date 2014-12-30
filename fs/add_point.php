@@ -1,7 +1,7 @@
 <?php 
 if(!isset($_SESSION)){
     session_start();
-}
+};
 	require_once("config.php");	
 	$idUserA = -1;
 	$idUserB = -1;
@@ -33,7 +33,7 @@ if(!isset($_SESSION)){
 		{			
 			mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT: DONT ADD POINT SOME UID' where user_id=".$_SESSION['session-user']);
 			exit();
-		}
+		};
 		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc");
 		if($ctime->num_rows>0)
 		{
@@ -45,13 +45,7 @@ if(!isset($_SESSION)){
 			$t1 = strtotime($timeSaved);
 			$t= $t2 - $t1;
 			$dayTime=date("d/m/y");
-			/*
-			echo $t."<br/>";
-			echo $oldday."<br/>";
-			echo $dayTime."<br/>";
-			echo "timeSaved ".$timeSaved."<br/>";
-			echo "currentTime ".$currentTime."<br/>";
-			*/
+			
 			if ( ($t>5 && $oldday==$dayTime) || $oldday!=$dayTime)
 			{
 				$okap = true;
@@ -61,7 +55,7 @@ if(!isset($_SESSION)){
 				$okap = false;
 				mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT: AUTO ADD POINT' where user_id=".$_SESSION['session-user']);
 			}	
-		}			
+		};			
 		if ($okap==true)
 		{
 			$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
@@ -72,14 +66,14 @@ if(!isset($_SESSION)){
 				{
 					
 					$minuteView = (int)(intval($point)) ; 
-					if($minuteView < $TIMEMIN)
+					if($minuteView < $TIMEMINVIEW)
 					{
 						$point = $row['point'];
 						$pointHelp =0;
 					}
 					else
 					{
-						$minuteView = $minuteView > TIMEMAXVIEW? TIMEMAXVIEW : $minuteView;
+						$minuteView = $minuteView > $TIMEMAXVIEW? $TIMEMAXVIEW : $minuteView;
 						$point = $minuteView + $row['point'];
 						$pointHelp = $minuteView;
 					}
@@ -88,16 +82,16 @@ if(!isset($_SESSION)){
 				{
 					$point = $row['point'];
 				}
-			}	
+			};	
 			if ($result->num_rows>0)
 				$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser); 
 			else
 				$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
 			echo $point;
-		}
+		};
 		mysqli_close($con);	
 		
-	}
+	};
 	function subPoint()
 	{
 		global $host;
@@ -112,13 +106,15 @@ if(!isset($_SESSION)){
 		$linkClicked 	= 	removeSlashEndUrl($linkClicked);
 		$idUser			=	$_POST['idUser'];
 		$point			=	$_POST['point'];
+		$TIMEMINVIEW		= 5;
+		$TIMEMAXVIEW		= 10;
 		$con=mysqli_connect($host,$user,$pass,$db);
 		$result=mysqli_query($con,"select iduser from awt_list_url where url like '%".$linkClicked."%' limit 1" );
 		if($result->num_rows>0)
 		{
 			$row = mysqli_fetch_array($result)		;
 			$idUserOfUrl = $row[0];
-		}		
+		};
 		if ($idUser	!=$idUserOfUrl)
 		{
 			$idUser	=$idUserOfUrl;
@@ -128,33 +124,30 @@ if(!isset($_SESSION)){
 			{
 				$row = mysqli_fetch_array($result);
 				$minuteView = (int)(intval($point))  ; 
-				if($minuteView < $TIMEMIN)
+				if($minuteView < $TIMEMINVIEW)
 				{
 					$point = $row['point'];
 					$pointHelp =0;
 				}
 				else
 				{
-					$minuteView = $minuteView > TIMEMAXVIEW? TIMEMAXVIEW : $minuteView;
+					$minuteView = $minuteView > $TIMEMAXVIEW ? $TIMEMAXVIEW : $minuteView;
 					$point = -$minuteView + $row['point'];
-				}
+				};
 				$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser);	
 			}
 			else
 				$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
-		}	
+		};	
 		updateHelpClickTable($idUserA,$idUserB,$pointHelp);		
 		mysqli_close($con);
-	}
+	};
 	function removeSlashEndUrl($url)
 	{
 		return rtrim($url, "/");
 	}
 	addPoint();
 	subPoint();
-	/*
-	process user have multi link we must call while to check all user in list link
-	*/
 	
 	function GetPointHelp($A,$B)
 	{
@@ -173,7 +166,7 @@ if(!isset($_SESSION)){
 		{
 			$pointA=0;
 			mysqli_query($con,"insert into  fs_help_click (idUser,idUserHelp,pointHelp) values (".$A.",".$B.",0)");
-		}
+		};
 		$AB[0]= $pointA;
 		$resultBA=mysqli_query($con,"select pointHelp from fs_help_click where idUser =".$B." and idUserHelp=".$A." limit  1");
 		if($resultBA->num_rows>0)
@@ -185,13 +178,12 @@ if(!isset($_SESSION)){
 		{
 			$pointB=0;
 			mysqli_query($con,"insert into  fs_help_click (idUser,idUserHelp,pointHelp) values (".$B.",".$A.",0)");
-		}
+		};
 		$AB[1] = $pointB;
-		mysqli_close($con);
-		
+		mysqli_close($con);		
 		return $AB;
-	}
-	// lâu lâu del hết các record 0 điểm để dọn rác và chỉ sinh ra các record trong trường hợp cần thiết nhất.
+	};
+	
 	function updateHelpClickTable($A,$B,$X)
 	{
 		if ($A==$B || $A==-1 || $B==-1)
@@ -199,7 +191,6 @@ if(!isset($_SESSION)){
 		$PAB=GetPointHelp($A,$B);
 		$P1 = $PAB[0];
 		$P2 = $PAB[1];
-		// cần lấy thông tin của $X
 		global $host;
 		global $user;
 		global $pass;
@@ -207,8 +198,6 @@ if(!isset($_SESSION)){
 		$con=mysqli_connect($host,$user,$pass,$db);
 		if(($P1>0 && $P2==0) || $P1==$P2)
 		{
-			//Update A B point + thêm
-			
 			$rids = mysqli_query($con,"select id,pointHelp from fs_help_click where idUser =$A and idUserHelp=$B limit 1");	
 			$pointA=0;
 			if($rids->num_rows>0)
@@ -238,20 +227,17 @@ if(!isset($_SESSION)){
 		{
 			if ($X > $P2)
 			{
-				//Update A B set point  = (X-P2)
-				//Update B A point  0
 				$X=$X-$P2;
 				mysqli_query($con,"UPDATE fs_help_click set pointHelp= ".$X." where idUser =$A and idUserHelp=$B");
 				mysqli_query($con,"UPDATE fs_help_click set pointHelp= 0 where idUser =$B and idUserHelp=$A");				
 			}
 			else 
 			{
-				//Update B A set point = ( P2-X )
 				$P2 = $P2-$X;
 				mysqli_query($con,"UPDATE fs_help_click set pointHelp= ".$P2." where idUser =$B and idUserHelp=$A");
 			}
-		}
+		};
 		mysqli_close($con);
-	}
+	};
 
 ?>
