@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TinyBox2 - JavaScript Modal Windows</title>
+<link rel="stylesheet" href="style.css" />
+<script type="text/javascript" src="tinybox.js"></script>
+</head>
+<body>
+<div id="testdiv">
+	<ul>
+		<li onclick="TINY.box.show({iframe:'http://www.scriptiny.com/',boxid:'frameless',width:750,height:450,fixed:false,maskid:'bluemask',maskopacity:40,closejs:function(){closeJS()}})">iFrame, Blue Mask, Absolute Position, Frameless, Close Callback</li>
+		<li onclick="TINY.box.show({url:'advanced.html',width:300,height:150})">Ajax, Advanced Functions</li>
+	</ul>
+</div>
+<script type="text/javascript">
+function openJS(){alert('loaded')}
+function closeJS(){alert('closed')}
+</script>
+</body>
+</html>
