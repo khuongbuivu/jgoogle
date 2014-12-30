@@ -1,6 +1,6 @@
 <?php
-	// define("LOCAL", "TRUE", true);
-	define("LOCAL", "FALSE", true);
+	define("LOCAL", "TRUE", true);
+	// define("LOCAL", "FALSE", true);
 	if(LOCAL=="TRUE")
 	{
 	$host="localhost";
