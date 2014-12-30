@@ -159,14 +159,14 @@ else if ($_SESSION['loginfirsttime']==1)
 	</script>
 <?php endif ?>
 </head>	
-<?php if(LOCAL=="TRUE"): ?>	
-	<?php  if ($id_user!=""){
-			$_SESSION['token-user']=md5($id_user);
-			$_SESSION['session-user']=$id_user;
-			$_SESSION['session-name']=$userFace;
-			}
-	?>
-<?php endif ?>
+
+<?php  if ($id_user!=""){
+		$_SESSION['token-user']=md5($id_user);
+		$_SESSION['session-user']=$id_user;
+		$_SESSION['session-name']=$userFace;
+		}
+?>
+
 
 <?php if (!$accountFace): ?>
 <body class="dark ">
@@ -178,7 +178,7 @@ else if ($_SESSION['loginfirsttime']==1)
 	<div class="signupwrapper">
 	  <fieldset id="intro">
 		<p>
-		  <button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button>
+		 <a href="<?php echo $loginUrl; ?>" target="_blank"><button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button></a>
 		</p>
 		<p class="or">or</p>
 	  </fieldset>
