@@ -1229,7 +1229,7 @@ function fsGShare(url,token) {
 				callAjx = 1 ;
 				$.ajax({
 				url: root_path+'modules/json_checkshareg.php',
-				data: {url:url,numShare:resultstart},
+				data: {url:url,numShare:resultstart,token:token},
 				type: 'POST',
 				success: function(response) {
 					getPoint(root_path + "get_point.php",idUser);
@@ -1245,8 +1245,8 @@ function confirmshare( ) {
 		getPoint(root_path + "get_point.php",idUser);
 	}
 };
-function fsshare(link,linkimg ) {
-	var windowLike=window.open(root_path + "fbshare.php?link="+link+"&linkimg="+linkimg,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+function fsshare(link,linkimg,token ) {
+	var windowLike=window.open(root_path + "fbshare.php?link="+link+"&linkimg="+linkimg+"&token="+token,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path+"get_point.php",idUser);
 	}

@@ -982,7 +982,7 @@ function showPost(json)
 										if(json.post[i].post_image.trim ()!=""){
 											srcimg = regex.exec(json.post[i].post_image)[1];										
 										}
-										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\',\''+srcimg+'\')" ><span>Share Page</span></div></a></div>';
+										htmlnewpost+='<div class="sharebottondiv"><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\',\''+srcimg+'\',\'' + token()+'\')" ><span>Share Page</span></a></div></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+='</div>';
 										htmlnewpost+='<div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
@@ -1080,7 +1080,7 @@ function showPostById(json)
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
-										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
+										htmlnewpost+='<div class="sharebottondiv"><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+',\'' + token()+'\')" ><span>Share Page</span></a></div></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+='</div>';
 										htmlnewpost+='<div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
@@ -1174,7 +1174,7 @@ function showMessageById(json)
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
-										htmlnewpost+='<div class="sharebottondiv"><a href=""><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" ><span>Share Page</span></div></a></div>';
+										htmlnewpost+='<div class="sharebottondiv"><div class="sharebutton"><a href="javascript:fsshare(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+',\'' + token()+'\')" ><span>Share Page</span></a></div></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+='</div>';
 										htmlnewpost+='<div id="fbjlike-example'+ json.post[i].idPost +'" class="fbjlike-example">';
@@ -1571,7 +1571,7 @@ function delComment(idCmt)
 	return false;
 };
 
-var rand = function() {
+function rand() {
     return Math.random().toString(36).substr(2); 
 };
 function token() {
