@@ -51,39 +51,6 @@ if(!isset($_SESSION)){
 	$keyword = $_POST['keyword'];
 	$link = $_POST['link'];
 	$linkhinh = $_POST['linkhinh'];
-	/* bị lỗi với php mới
-	if(trim($content)!="")
-	{
-		$html=str_get_html($content);
-		foreach($html->find('#tieudebv h3.title') as $k){
-		  $title=$k->text();
-		  break;
-		}
-
-		foreach($html->find('#tieudebv #desid') as $k){
-		  $description=$k->text();
-		  break;
-		}
-
-		foreach($html->find('#tieudebv #keyid') as $k){
-		  $keyword=$k->text();
-		  break;
-		}
-
-		foreach($html->find('#tieudebv #linkpost') as $k){
-		  $link=$k->value;
-		  break;
-		}
-
-		if($srcid!=""&&$cohinh){
-			$idhinh='#idhinh'.$srcid;
-			foreach($html->find('#hotmusic .item img') as $k){
-			  $linkhinh=$k->src;
-			  break;
-			}
-		}
-	}
-	*/
 	if($textcomment!="")
 	{
 		$link11=getListUrl($textcomment1);
@@ -121,8 +88,6 @@ if(!isset($_SESSION)){
 	$cnn = mysql_connect($host,$user,$pass) or die ("can not connect");
 	mysql_select_db($db,$cnn);
 	mysql_query("SET NAMES 'utf8'"); 
-	//$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
-	//if($link!=''&&$title!=''&&$description!=''&&$keyword!=''){
 	if(trim($content)!="" && $link!=''&&$title!=''&&$description!=''&&$keyword!='')
 	{
 		$query='INSERT INTO atw_info_url(id_url, info_url, title_url, des_url, key_url, img_url, pulished_url) VALUES ("", "'.$link.'", "'.$title.'", "'.$description.'", "'.$keyword.'", "'.$linkhinh.'", "1");';
@@ -134,6 +99,5 @@ if(!isset($_SESSION)){
 	else
 		$query_post="INSERT INTO atw_post (post_id, post_iduser, post_content, post_image, post_url, post_full_url, post_title, post_description, post_time,post_group,post_mintimeviewlink) VALUES (".$idMaxPost.", ".$iduser.", '".$textcomment."', '".$imgOfUrl."', '".$link."' , '".$alllink."', '".$title."', '".$description."', '".$datetime."',".$idgroup.",".$ltv[0]." )";	
 	mysql_query($query_post);
-	//}
 	mysql_close($cnn);
 ?>
