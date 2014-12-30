@@ -212,11 +212,17 @@ $('body').on('keyup','.contentbox', function(e) {
 
 $(document).on('click', '.addname', function()
 {
-	var username=$(this).attr('title');	 
+	var username=$(this).attr('title');
+	
 	var start=/@/ig;
 	var word=/@(.*)/ig;
-	var idPost=$(this).attr('id');
 	var old=$("#contentbox").html();
+	var curITags=$(".mentionsHidden"+idP).val();
+	var newTagsName = $(this).parent().data('uid');
+	if (curITags=="")
+		$(".mentionsHidden").val(newTagsName);
+	else
+		$(".mentionsHidden").val(curITags + "," + newTagsName);			
 	var content=old.replace(word,"");
 	$("#contentbox").html(content);
 	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";

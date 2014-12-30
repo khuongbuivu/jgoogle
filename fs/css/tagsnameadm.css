@@ -47,13 +47,13 @@ z-index: 9999;
  
 .display_box:hover
 {
-background:#3b5998;
+background:blue;
 color:#fff;
 }
 
 .boxtagdivscroll .selected
 {
-background:#3b5998;
+background:blue;
 color:#fff;
 }
 

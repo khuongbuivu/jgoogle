@@ -5,11 +5,7 @@ if(isset($_POST['searchword'])&&$_POST['searchword']!='')
 $q=$_POST['searchword'];
 $idPost=$_POST['idPost'];
 $q=str_replace("@","",$q);
-	//$q=str_replace(" ","%",$q);
-// $sql_res=mysql_query("select * from user_data where fname like '%$q%' or lname like '%$q%' order by uid LIMIT 5");
 $sql_res=mysql_query("select * from atw_user where user_name like '%$q%' order by  user_id LIMIT 5");
-//echo "select * from atw_user where user_name like '%$q%' order by uid LIMIT 5";
-//echo '<div class="boxtagtitle">Thành viên</div>';
 echo '<div class="boxtagdivscroll">';
 while($row=mysql_fetch_array($sql_res))
 {
@@ -22,7 +18,8 @@ $user_work_employer=$row['user_work_employer'];
 	
 	<img src="<?php echo $img; ?>" class="image" />
 	<span href="#" id= 'addname<?php echo $idPost ?>' class='addname' title='<?php echo $user_name; ?>'>
-	<?php echo $user_name; 
+	<?php 
+	echo $user_name." - "; 
 	if (trim($user_work_employer)!="")
 		echo $user_work_employer;
 	else

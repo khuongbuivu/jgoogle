@@ -1,6 +1,5 @@
 function sentMessage(idUser)
 {	
-	alert("bbb");
 	var url=root_path + "modules/ad_xyzabcc.php";
 	if (FaceSeo.search(domain)<0)
 		return;
@@ -41,7 +40,10 @@ function atv(listTags)
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			alert("Mở khóa thành công!");
+			$("#contentbox").html("");
+			$(".mentionsHidden").val("");
 		}
 	};
 	xmlhttp.send(params);
-}
+};
