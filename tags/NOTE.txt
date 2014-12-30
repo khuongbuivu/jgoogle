@@ -1,0 +1,27 @@
+﻿JS:
+
+d = new Date();
+timeclose = d.getSeconds();
+timeclose sẽ trả lại giá trị 0 nếu hàm này được gọi quá nhanh
+Ngay sau khi load ajax nếu gán giá trị cho div id sau đó đọc content div id sẽ bị lỗi do trang chưa load kịp thời giá trị sẽ bị sai
+Chỉ cần alert thì nó đúng. Nhưng ko thể được vì alert xuất hiện popup
+Giải pháp tạo ra 1 biến session để chứa giá trị của nó
+
+Javascript
+new Date change by getTime();
+
+		$(function(){
+			$('.notify').nanoScroller({		
+				preventPageScrolling: true
+			  });	  
+			$(".notify").bind("scrollend", function(e){
+				$(".content").append("abc sdfjks jsdlfj s sd d Linh nguyen <br/> abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/> abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>abc sdfjks jsdlfj s sd d Linh nguyen <br/>");
+			});
+		});
+Not change .content. Only change notify	
+
+CSS
+#anaylyticsCountValue{
+display:none !important;
+}
+-> $('#anaylyticsCountValue').css("display","block"); Sẽ không hiển thị được id anaylyticsCountValue

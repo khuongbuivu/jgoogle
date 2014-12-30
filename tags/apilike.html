@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta content="731864150162369" property="fb:app_id"/>
+<meta content="100001707050712" property="fb:admins"/>
+<title>Like now</title>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<div class="fbjlike-content" style="display:none;font-size:120%;color:#336633;">Thank you for liking!</div>
+<div class="fbjlike-uncontent" style="display:none;font-size:120%;color:#f00;">Hey! What's wrong? Why did you unlike this content?</div>
+<div id="fbjlike-example1111" class="fbjlike-example" ><fb:like class="fb_edge_widget_with_comment fb_iframe_widget" colorscheme="light" action="like" layout="normal" font="lucida grande" show_faces="true" height="60" width="450" href="http://giaiphapthuonghieu.vn/hinh-anh-hoat-dong.html" fb-xfbml-state="rendered"></fb:like></div>
+
+
+<div id="likelike">
+abcdef
+</div>
+<script>
+alert($("#likelike").html());
+$("#likelike").html('<div id="fbjlike-example2222" class="fbjlike-example" ><fb:like class="fb_edge_widget_with_comment fb_iframe_widget" colorscheme="light" action="like" layout="normal" font="lucida grande" show_faces="true" height="60" width="450" href="http://giaiphapthuonghieu.vn/thiet-ke-website-free/164-thiet-ke-website-gia-re-dep-nhanh-chuan-seo.html" fb-xfbml-state="rendered"></fb:like></div>');
+</script>
+
+
+<div class="fbjlike-content remember-state" style="display:none;">...your content here...</div>
+
+<script src="http://socialmediaautomat.com/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.fbjlike.1.4.js"></script>
+<script type="text/javascript">
+//$(document).on('fbjlike','.fbjlike-example',function( event ) {
+$(document).ready(function () {
+  $('.fbjlike-example').fbjlike({
+  	siteTitle:'jQuery-Like-Button Plugin with callback functions',
+  	onlike:function(response){
+		alert("abc");
+	//$('.fbjlike-uncontent:visible').hide('fade');
+  		//$('.fbjlike-content').show('fade');
+  		//$.cookie('liked','liked');
+		//addPointLike();
+  	},
+  	onunlike:function(response){
+	
+  		//$('.fbjlike-content:visible').hide('fade');
+  		//$('.fbjlike-uncontent').show('fade');
+  		//$.cookie('liked','unliked');
+  	},
+  	lang:'en_US'
+  });
+  //if($.cookie('liked')=='liked'){$('.remember-state').show('fade');$('.fbjlike-uncontent:visible').hide('fade');}
+});
+</script>
+</body>
+</html>

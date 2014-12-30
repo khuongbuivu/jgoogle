@@ -1,0 +1,28 @@
+<html>
+<head>
+<script type="text/javascript" src="popup.js"></script>
+<style>
+#blanket {
+   background-color:#111;
+   opacity: 0.65;
+   position:absolute;
+   z-index: 9001;
+   width:100%;
+}
+#popUpDiv {
+    position:absolute;
+    background-color:#eeeeee;
+    width:520px;
+    height:1300px;
+    z-index: 9002;
+}
+</style>
+</head>
+<body onload="popup('popUpDiv');>
+<div id="blanket" style="display: none;"></div>
+    <div id="popUpDiv" style="display: none;">
+        <a href="#" onclick="popup('popUpDiv')">Click Me To Close</a>
+       âaaaaaaaaaaaaaaaaaaaaaa
+    </div>
+</body>
+</html>
