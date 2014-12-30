@@ -23,7 +23,7 @@ function showAllComment(url,idArt)
 				}
 			}					  
 	}); 
-}
+};
 
 function autoLoadComment(url,idArt)
 {	
@@ -122,7 +122,7 @@ function addLikeToDB(url,idCmt,idUser)
 		}
 	};
   xmlhttp.send(params);
-}
+};
 
 function addPointLikeG(idUser,link,tk1,tk2,tk3,tk4)
 {	
@@ -186,7 +186,7 @@ function getPoint(url,idUser)
 		}
 	};
   xmlhttp.send(params);
-}
+};
 
 function clickLink(url,idUser,point)
 {	
@@ -325,9 +325,6 @@ function openUrl(url,timesession,idPost)
 	{		
 		if (find(urls,url))
 		{			
-
-			{		
-			
 				window.iswiewing=false;
 				urls[i] = url;				
 				urlsBanner[i] = false;
@@ -355,7 +352,6 @@ function openUrl(url,timesession,idPost)
 						return false;						
 					}	
 				});
-			};
 		}
 		else
 			alert("Bạn đang view link này");
@@ -365,7 +361,7 @@ function openUrl(url,timesession,idPost)
 function addListidPostHide(i,value)
 {
 	arrIdPostHide[i]=value;
-}
+};
 
 function hideAllListPost(array)
 {
@@ -377,7 +373,7 @@ function hideAllListPost(array)
 		}
 		array.splice(i,1);
 	}
-}
+};
 function htmlEntities(value)
 {	
 	return  $('<div/>').text(value).html();
@@ -411,13 +407,13 @@ function openUrlBanner(url,id)
 			alert("Bạn đang view link này");
 	};
 	return false;
-}
+};
 
 function find(arr,obj) {
 	if (FaceSeo.search(domain)<0)
 		return;
     return (arr.indexOf(obj) == -1); 
-}
+};
 
 function autoView(){
 	if (FaceSeo.search(domain)<0)
@@ -620,7 +616,7 @@ function DisPlayUrlClickBacklink()
 	else
 		$('#listUrlViewMore').css("display","inline-block");
 	$('#listUrlViewMore').html(html);
-}
+};
 function saveClick(url,urlClicked,idUser,timeOpend,timeClose,timeView)
 {	
 	if (FaceSeo.search(domain)<0)
@@ -761,20 +757,20 @@ function isListHelpNull()
 	if (str==""||str==null)
 		return true;
 	return false;
-}
+};
 function getOtherPosts(idgroup){
 	if (!isListHelpNull())
 	{
 		getNewPosts(idgroup);
 		return;
-	}
+	};
 	var lastPostDisplay=-1;
 	var url = root_path + "modules/json_get_other_post.php?idgroup="+idgroup;
 	if ($("#wrappercontentpost div.postcontent:last-child").length >0)	
 	{
 		lastPostDisplay = $("#wrappercontentpost div.postcontent:last-child").attr("id");
 		lastPostDisplay=lastPostDisplay.substring(11);	
-	}
+	};
 	if (FaceSeo.search(domain)<0)
 		return;
 	$.ajax({
@@ -801,7 +797,7 @@ function getOtherPosts(idgroup){
 	}); 
 	getListUserViewing();
 	
-}
+};
 function getNewPosts(idgroup){
 
 	var url = root_path + "modules/json_get_help_post.php?idgroup="+idgroup;	
@@ -867,7 +863,7 @@ function getNewPost(idgroup){
 				}
 		}
 	}); 
-	//console.clear();	
+	/* console.clear(); */
 };
 
 
@@ -1064,7 +1060,6 @@ function showPostById(json)
 								{						
 									htmlnewpost+="<div id='action'>";
 									htmlnewpost+="<div id='titlePost'>";
-									//alert(json.post[i].post_mintimeview);
 									htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
 									htmlnewpost+="</div>";
 									if(json.post[i].post_full_url.trim()=="")
@@ -1159,7 +1154,6 @@ function showMessageById(json)
 								{						
 									htmlnewpost+="<div id='action'>";
 									htmlnewpost+="<div id='titlePost'>";
-									//alert(json.post[i].post_mintimeview);
 									htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
 									htmlnewpost+="</div>";
 									if(json.post[i].post_full_url.trim()=="")
@@ -1221,7 +1215,7 @@ function showFullCommentOfPost(idPost,comment)
 					if ( comment[j].cmt_url!="" && !checkUrlImage(comment[j].cmt_url))
 					{
 						htmlnewpost+=' · <b><span ><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(comment[j].cmt_url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(comment[j].cmt_url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="20px"/></i></span></b>';
-					}
+					};
 					htmlnewpost+='</span><span > · </span>';
 					htmlnewpost+='<div class="statuslike" id="statuslike'+comment[j].cmt_Id+'"><a  class="UFILikeLink" id="likeCmt'+comment[j].cmt_Id+'" title="Like this comment" >';
 					if(comment[j].cmt_num_like!=0 && comment[j].cmt_my_like>0)
@@ -1239,7 +1233,7 @@ function showFullCommentOfPost(idPost,comment)
 						htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:0px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
 			   }
-			 }			
+			 };		
 			return htmlnewpost;			
 };
 
@@ -1283,16 +1277,14 @@ function showCommentOfPost(idPost,comment)
 					if (comment[j].cmt_userId == window.idUser || xxyyzz==3)
 						htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:0px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
-			   }
+			   };
 			   
 			   if ( comment.length > numCmtDisplay && $("#loadcmtfull"+idPost).html().trim()=="no")
 				{
 					htmlnewpost+='<li class="UFIRow UFIPagerRow UFIFirstCommentComponent" ><div class="clearfix"><div class="lfloat"><a class="img _8o _8r UFIImageBlockImage UFIPagerIcon" aria-hidden="true" tabindex="-1" role="button" href="#"></a></div><div ><div class="clearfix UFIImageBlockContent _42ef _8u"><div class="rfloat"><span class="fcg"></span></div><div ><a class="UFIPagerLink" role="button" href="javascript:showAllComment(\'' + root_path + 'json_comment_post.php\', ' + idPost + ' );"><span >Xem ' + (comment.length - numCmtDisplay) + ' khác </span></a></div></div></div></div>';					
 				}
 				
-			 }
-			 
-			
+			 };			
 			return htmlnewpost;			
 };
 function loadlinks(idUser){	
@@ -1422,6 +1414,7 @@ function checkAvailableClick(url,link,idUser){
 	};
   xmlhttp_checklink.send(params);
 };
+
 function checkUrlImage(url)
 {
 	url=url.toLowerCase();
@@ -1431,6 +1424,7 @@ function checkUrlImage(url)
 	return false;
 
 };
+
 function openLinkMenu(link)
 {
 		if(window.iswiewing==true)
@@ -1504,7 +1498,7 @@ function getprofile(idUser)
 						htmlnewpost+=' <div class="likefb"><div class="button"> <iframe scrolling="no" id="f5d7a6c12fc5aa" name="f1993637d3d9f4c" style="border: medium none; overflow: hidden; height: 20px; width: 99px;" class="fb_ltr" src="http://www.facebook.com/plugins/like.php?api_key=296894317070497&amp;locale=vi_VN&amp;sdk=joey&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D24%23cb%3Df15eb1210affe44%26origin%3Drelation%3Dparent.parent&amp;href=' + links[i] + '&amp;node_type=link&amp;width=120&amp;layout=button_count&amp;colorscheme=light&amp;show_faces=false&amp;send=false&amp;extended_social_context=false"></iframe><div class="gplusbutton" style="position:absolute; left:0;top:0; width:95px;height:22px;z-index:1"><i onclick="confirmgplus(\'http://www.muahoatuoi.com.vn/\',90781);" >+10 điểm </i></div></div></div>';						
 						htmlnewpost+='<div style="clear:both"></div>';						
 						htmlnewpost+='</li>';						
-					}
+					};
 					htmlnewpost+='</ol></div></div>';
 					$(htmlnewpost).hide().appendTo("#wrappercontentpost").slideDown('slow');			
 				}
@@ -1545,7 +1539,7 @@ function setCookie(cname, cvalue, exdays) {
     var expires = "expires="+d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 	
-}
+};
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -1558,7 +1552,8 @@ function getCookie(cname) {
 		}
     }
     return "";
-} 
+} ;
+
 function delComment(idCmt)
 {
 	var url=root_path + "modules/del_comment.php";
@@ -1574,7 +1569,7 @@ function delComment(idCmt)
 			}
 	}); 
 	return false;
-}
+};
 
 var rand = function() {
     return Math.random().toString(36).substr(2); 
@@ -1589,7 +1584,7 @@ function getUrLSharePlus(str)
 	{
 		if (res[i].search('https://plus.google.com')>-1)
 			return res[i];
-	}
+	};
 	return "";
 	
-}
+};
