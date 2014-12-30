@@ -71,68 +71,65 @@ $('.postbutton').click( function(){
 	document.getElementById('textcomment').value="";
 });
 });
-$('#ban').click(function(){
-});
+
 $('#textcomment').keyup(function(e) {
-  var url=$('#textcomment').val();
-  var noidung=document.getElementById('des').innerHTML;  
-  if(noidung=="" && (e.keyCode==32 || (url.substring(url.length-1)!="." && e.keyCode==86))){
-	if(!url.match(/(http|https|ftp|ftps|www)+(\:\/\/)*\S*/))  
-	{
-		return;
-	};
- $("#cho").css("display","block");
-  $("#u_1w_n").css("display","none");	
-  $.ajax({
-  type: "POST",
-  url: root_path + "libs/getcontenturl/content.php" , 
-  data: { textcomment: url }
-}).done(function( msg ) {
- $("#cho").css("display","none");	
- 
-  $('#des').html(msg);
-  $("#haveimg").click( function(){  	  
-	   if( $("#haveimg").is(':checked') ){	  
-		   $("#hinhanh").css("display","none");
-		   $("#hinhanh").css("width","0%");   
-		   $("#tieudebv").css("width","100%");
-		   
-	   }else{
-		   $("#hinhanh").css("width","30%");	   
-		   $("#hinhanh").css("display","");  
-		   $("#tieudebv").css("width","64%");
-	   }
-	});
-	$("#xoatieude").click( function(){$("#des").html("");$("#u_1w_n").css("display","");});
-	$('#hotmusic').carouFredSel({
-					width: null,
-					align:"left",
-					circular:true,
-					infinite:false,
-					items: {visible:1,start:0},
-					scroll: {items:1,
-								fx:"cover-fade",
-								pauseOnHover: true,
-								onAfter : function( data ) {						
-								$(this).trigger("currentPosition", function( pos ) {	                
-									document.getElementById('srcid').value=pos;	                
-									});
-								}								
-							},					
-					cookie: false,	
-					auto:false,
-					prev: {
-					button  : ".sl_scroll.hotmusic",
-					onBefore: function() {}
-							},
-					next:{
-					button  : ".sr_scroll.hotmusic",
-					onBefore: function() {}
-						},
-					
+	var url=$('#textcomment').val();
+	var noidung=document.getElementById('des').innerHTML;  
+	if(noidung=="" && (e.keyCode==32 || (url.substring(url.length-1)!="." && e.keyCode==86))){
+		if(!url.match(/(http|https|ftp|ftps|www)+(\:\/\/)*\S*/))  
+		{
+			return;
+		};
+		$("#cho").css("display","block");
+		$("#u_1w_n").css("display","none");	
+		$.ajax({
+			type: "POST",
+			url: root_path + "libs/getcontenturl/content.php" , 
+			data: { textcomment: url }
+		}).done(function( msg ) {
+				$("#cho").css("display","none");	
+				$('#des').html(msg);
+				$("#haveimg").click( function(){  	  
+				   if( $("#haveimg").is(':checked') ){	  
+					   $("#hinhanh").css("display","none");
+					   $("#hinhanh").css("width","0%");   
+					   $("#tieudebv").css("width","100%");		   
+				   }else{
+					   $("#hinhanh").css("width","30%");	   
+					   $("#hinhanh").css("display","");  
+					   $("#tieudebv").css("width","64%");
+					}
 				});
-});
-}
+				$("#xoatieude").click( function(){$("#des").html("");$("#u_1w_n").css("display","");});
+				$('#hotmusic').carouFredSel({
+						width: null,
+						align:"left",
+						circular:true,
+						infinite:false,
+						items: {visible:1,start:0},
+						scroll: {items:1,
+									fx:"cover-fade",
+									pauseOnHover: true,
+									onAfter : function( data ) {						
+									$(this).trigger("currentPosition", function( pos ) {	                
+										document.getElementById('srcid').value=pos;	                
+										});
+									}								
+								},					
+						cookie: false,	
+						auto:false,
+						prev: {
+						button  : ".sl_scroll.hotmusic",
+						onBefore: function() {}
+						},
+						next:{
+						button  : ".sr_scroll.hotmusic",
+						onBefore: function() {}
+						}
+						
+				});
+		});
+	}
 });
 
 
