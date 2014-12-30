@@ -1,0 +1,553 @@
+.cmt-function{
+background-color:#fff;
+color:#6D84B4;
+}
+
+div.UFIContainer {
+    overflow: hidden;
+    padding: 0;
+}
+.UFIContainer {
+    margin: 0;
+    width: 398px;
+}
+
+div.UFIContainer {
+    overflow: hidden;
+    padding: 0;
+}
+
+div.UFIContainer {
+    overflow:visible;
+    padding: 0;
+	position:relative;
+}
+.UFIContainer {
+    margin: 0;
+    width: 97%;
+}
+.UFIArrow > i {
+    background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/y7/r/UvyvLtJTQzO.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    display: block;
+    height: 5px;
+    margin-left: 17px;
+    width: 9px;
+}
+.UFIRow {
+    background-color: #EDEFF4;
+    margin-top: 1px !important;
+    padding: 4px !important;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.clearfix {
+}
+
+.lfloat {
+    float: left;
+}
+
+.UFIRow .UFIImageBlockImage {
+    margin: 0;
+}
+._8r {
+    margin-right: 5px;
+    margin-top: -1px;
+}
+._8o, ._8o .img {
+    display: block;
+}
+a {
+    color: #3B5998;
+    cursor: pointer;
+    text-decoration: none;
+}
+.UFILikeIcon {
+    background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yP/r/ZztFj_dOML8.png");
+    background-position: 0 -52px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    display: block;
+    height: 13px;
+    width: 15px;
+}
+.UFIRow .UFIImageBlockContent {
+    margin: 0;
+    padding: 0 0 0 8px;
+}
+._42ef {
+    overflow: hidden;
+}
+._8u {
+    margin-top: 1px;
+}
+
+.UFIPagerIcon {
+    background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yP/r/ZztFj_dOML8.png");
+    background-position: 0 -18px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.UFICollapseIcon, .UFIPagerIcon, .UFIShareIcon {
+    display: block;
+    height: 16px;
+    margin-right: 5px;
+    vertical-align: top;
+    width: 16px;
+}
+
+ul {
+    list-style-type: none !important;
+}
+._rx {
+    height: 32px;
+    width: 32px;
+}
+.UFICommentActorName {
+    font-weight: bold;
+}
+
+.fcg {
+    color: gray;
+}
+.fwn {
+    font-weight: normal;
+}
+.fsm {
+    font-size: 11px;
+}
+.UFICommentActions {
+    clear: both;
+    padding-top: 2px;
+}
+.UFIMentionsInputWrap {
+    position: relative;
+}
+.ff4 .uiMentionsInput .highlighter {
+    padding: 4px 5px;
+}
+.uiMentionsInput .highlighter {
+    left: 0;
+    overflow: hidden;
+    padding: 4px;
+    position: absolute;
+    top: 0;
+}
+
+.uiMentionsInput .mentionsTextarea, .uiMentionsInput .mentionsTypeahead {
+    background: none repeat scroll 0 0 transparent;
+}
+
+.uiTypeahead .innerWrap {
+    overflow: hidden;
+}
+
+
+.uiMentionsInput .mentionsTextarea {
+    line-height: 1.28;
+}
+.uiMentionsInput .mentionsTextarea, .uiMentionsInput .mentionsTypeahead {
+    background: none repeat scroll 0 0 transparent;
+}
+.UFIAddComment .UFIAddCommentInput {
+    display: block;
+    height: 20px;
+}
+.uiTextareaAutogrow {
+    overflow: hidden;
+}
+.uiTextareaNoResize {
+    resize: none;
+}
+.DOMControl_placeholder {
+    color: #777777;
+}
+textarea {
+    max-width: 100%;
+}
+textarea, .inputtext, .inputpassword {
+    border: 1px solid #BDC7D8;
+    margin: 0;
+    padding: 3px;
+}
+
+.UFIRow {
+    background-color: #EDEFF4;
+    margin-top: 1px;
+    padding: 4px;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.UFIMentionsInputWrap {
+    position: relative;
+}
+.clearfix {
+}
+
+.lfloat {
+    float: left;
+}
+
+.UFIRow .UFIImageBlockImage {
+    margin: 0;
+}
+._8r {
+    margin-right: 5px;
+    margin-top: -1px;
+}
+._8o, ._8o .img {
+    display: block;
+}
+
+._8o, ._8o .img {
+    display: block;
+}
+._rx {
+    height: 32px;
+    width: 32px;
+}
+img {
+    border: 0 none;
+}
+.UFIRow .UFIImageBlockContent {
+    margin: 0;
+    padding: 0 0 0 8px;
+}
+._42ef {
+    overflow: hidden;
+}
+._8u {
+    margin-top: 1px;
+}
+.UFIRow .UFIImageBlockContent {
+    margin: 0;
+    padding: 0 0 0 8px;
+	width:95%;
+}
+._42ef {
+    overflow: hidden;
+}
+._8u {
+    margin-top: 1px;
+}
+
+.ff4 .uiMentionsInput .highlighter {
+    padding: 4px 5px;
+}
+.uiMentionsInput .highlighter {
+    left: 0;
+    overflow: hidden;
+    padding: 4px;
+    position: absolute;
+    top: 0;
+}
+.uiMentionsInput .mentionsTextarea, .uiMentionsInput .mentionsTypeahead {
+    background: none repeat scroll 0 0 transparent;
+}
+.uiTypeahead {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #BDC7D8;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    cursor: default;
+    position: relative;
+}
+
+.uiTypeahead .wrap-input {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+}
+
+.uiTypeahead .innerWrap {
+    overflow: hidden;
+	background:#fff;
+}
+
+
+.uiTypeahead .textInput {
+    -moz-box-sizing: border-box;
+    background-color: transparent;
+    border: 0 none;
+    outline: 0 none;
+    width: 100%;
+}
+.uiMentionsInput .mentionsTextarea {
+    line-height: 1.28;
+}
+.uiMentionsInput .mentionsTextarea, .uiMentionsInput .mentionsTypeahead {
+    background: none repeat scroll 0 0 transparent;
+}
+.UFIAddComment .UFIAddCommentInput {
+    display: none;
+    height: 20px;
+	margin-right:40px;
+}
+.uiTextareaAutogrow {
+    overflow: hidden;
+}
+.uiTextareaNoResize {
+    resize: none;
+}
+.DOMControl_placeholder {
+    color: #777777;
+}
+body, button, input, label, select, td, textarea {
+    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+}
+textarea .UFIAddCommentInput {
+    max-width: 290px;
+}
+textarea, .inputtext, .inputpassword {
+    border: 1px solid #BDC7D8;
+    margin: 0;
+    padding: 3px;
+}
+
+.UFICommentActions.fsm.fwn.fcg > div.statuslike {
+    display: inline;
+    max-width: 40px;
+    width: 40px;
+}
+
+.UFICommentLikeIcon {
+    background-image: url("../images/css/MySsTXmCCyZ.png");
+    background-position: -450px -74px;
+    background-repeat: no-repeat;
+    background-size: 500px 132px;
+    display: inline-block;
+    height: 9px;
+    margin-right: 3px;
+    width: 10px;
+}
+#attachedimage{
+width:100%;
+height:24px;
+margin:2px;
+cursor: pointer;
+}
+#cmt-content{
+float:left;
+width:86%;
+padding:4px;
+/*
+height:30px;
+*/
+overflow: hidden;
+
+}
+#addPhoto{
+float:right;
+cursor: pointer;
+width:10%;
+}
+
+#addPhoto .uploader{
+	background:no-repeat url("../images/css/g-icon.png") right -611px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 100%;
+	border-size: 0px;
+	border-style: none;
+	cursor: hand;
+	padding: 0px;
+}
+
+#demouploadfile .uploadbanner{
+	background:no-repeat url("../images/css/camera-icon.png")	;
+    height: 150px;
+    width: 150px;
+	border-size: 0px;
+	border-style: none;
+	cursor: hand;
+	padding: 0px;
+	
+}
+#demouploadfile .uploadbanner:hover{
+	background:no-repeat url("../images/css/camera-icon.png")	;
+    height: 150px;
+    width: 150px;
+	border-size: 0px;
+	border-style: none;
+	cursor: hand;
+	padding: 0px;
+	opacity:0.8;
+	filter:alpha(opacity=80);
+	
+}
+#demouploadfile{
+cursor: pointer !important;
+float:right;width:150px;height:150px;margin-right:0px;
+}
+#addPhoto .uploader:hover{
+	background:no-repeat url("../images/css/g-icon.png") right -569px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 100%;
+	border-size: 0px;
+	border-style: none;
+	cursor: hand;
+	cursor:pointer;
+	padding: 0px;
+
+}
+
+
+div#info{
+display:none;
+}
+/*popup */
+#popup_box { 
+	display:none; /* Hide the DIV */
+	position:fixed;  
+	_position:absolute; /* hack for internet explorer 6 */  
+	height:300px;  
+	width:600px;  
+	background:#FFFFFF;  
+	left: 300px;
+	top: 150px;
+	z-index:100; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+	margin-left: 15px;  
+	/* additional features, can be omitted */
+	border:2px solid #ccc;  	
+	padding:15px;  
+	font-size:15px;  
+	-moz-box-shadow: 0 0 5px #ccd;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	box-shadow: 0 0 5px #ccc;
+	
+}
+a{  
+cursor: pointer;  
+text-decoration:none;  
+} 
+/* This is for the positioning of the Close Link */
+#popupBoxClose {
+	background-image: url("../images/UGjWUTdexCa.png");
+	background-position: -39px -65px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+	font-size:20px;  
+	line-height:15px;  
+	right:5px;  
+	top:5px;  
+	position:absolute;  
+	color:#6fa5e2;  
+	font-weight:500;  	
+}
+
+._50-0._50z- {
+    background-image: url("../images/UGjWUTdexCa.png");
+    background-position: -39px -65px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+
+._50-0 {
+    height: 12px;
+    width: 12px;
+}
+
+._50zy {
+    background-color: transparent;
+    border: 0 none;
+    cursor: pointer;
+    font-size: 0 !important;
+    overflow: hidden;
+    padding: 0;
+    vertical-align: middle;
+}
+
+._42ft {
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+button {
+    margin: 0;
+}
+#contenpost, #imgPost ,#titlePost {
+
+    margin-bottom: 5px;
+    width: 97.7%;
+}
+#imgPost{
+	text-align:center;
+}
+#cmt_content{
+
+display:none;
+
+}
+
+.urlpost{
+display:none;
+}
+.likebutton,.sharebutton{
+	
+    border: 1px solid #eee;
+    float: left;
+    height: 27px;
+    line-height: 27px;
+    margin-left: 0px;
+    padding: 0px 4px 0px 0px;
+    text-align: left;
+	background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;
+}
+.likebutton span, .sharebutton span{
+background: url("../images/css/likebutton.png") no-repeat scroll 5px center rgba(0, 0, 0, 0);
+    color: #4e5665;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 20px;
+    text-align: left;
+}
+.likebottondiv{   
+	float: left;
+}
+.sharebottondiv{   
+	float: right;
+	margin-left:5px;
+}
+.pwrapperbuttonaction{
+}
+.wrapperbuttonaction{
+	float: left; 
+	margin: 4px; 
+	width: 100%;
+}
+.buttonactionview{
+	background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #eee;
+	border-radius: 4px;
+	float: left;
+	height: 27px;
+	padding: 0 5px;
+	vertical-align: top;
+	width: 45px;
+}
+/*popup */

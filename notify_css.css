@@ -1,0 +1,159 @@
+/** initial setup **/
+.notify {
+  position : relative;
+  width    : 100%;
+  height   : 530px;
+  overflow : hidden;
+}
+.notify .content {
+  position      : absolute;
+  overflow      : scroll;
+  overflow-x    : hidden;
+  top           : 0;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+}
+.notify .content:focus {
+  outline: thin dotted;
+}
+.notify .content::-webkit-scrollbar {
+  visibility: hidden;
+}
+.has-scrollbar .content::-webkit-scrollbar {
+  visibility: visible;
+}
+.notify > .pane {
+  background : rgba(0,0,0,.25);
+  position   : absolute;
+  width      : 10px;
+  right      : 0;
+  top        : 0;
+  bottom     : 0;
+  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : .01; 
+  -webkit-transition    : .2s;
+  -moz-transition       : .2s;
+  -o-transition         : .2s;
+  transition            : .2s;
+  -moz-border-radius    : 5px;
+  -webkit-border-radius : 5px;  
+  border-radius         : 5px;
+}
+.notify > .pane > .slider {
+  background: #444;
+  background: rgba(0,0,0,.5);
+  position              : relative;
+  margin                : 0 1px;
+  -moz-border-radius    : 3px;
+  -webkit-border-radius : 3px;  
+  border-radius         : 3px;
+}
+.notify:hover > .pane, .pane.active, .pane.flashed {
+  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : 0.99;
+}
+
+.scrollbarwrapper {
+	background: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-top: 1px rgba(255,255,255,.6) solid;
+	height: 550px;
+	width: 100%;
+}
+
+.scrollbarwrapper .notify {
+	text-shadow: #eee 0 1px;
+}
+
+.scrollbarwrapper .content h1 {
+	display: block;
+	margin: 0;
+	padding: 0;
+	color: #111;
+	text-indent: 0;
+	background: none;
+	display: none;
+}
+
+.scrollbarwrapper a {
+	color: #066;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+.scrollbarwrapper a:hover {
+	text-decoration: underline;
+}
+
+
+.small.notify {
+	background: #ffa;
+	height: 100px;
+	margin-top: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;	
+	border-radius: 5px;
+}
+
+.notify .content { 
+	padding-right: 0px;
+}
+
+.notify .pane {
+	background: #555;
+	width: 8px;
+	right: 1px;
+  margin: 5px;
+}
+
+.notify .slider {
+	background: #111;
+}
+#notify_content_wrapper{
+position:fixed;top:55px;right:2px; background:#fff;width:500px; height:550px; display:none;
+}
+#notify_content_wrapper {
+    background: none repeat scroll 0 0 padding-box rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(100, 100, 100, 0.4);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+a.notifMainLink {
+    border-top: medium none;
+}
+a.notifMainLink {
+    border-bottom: 1px solid #E9E9E9;
+    border-top: 1px solid #E9E9E9;
+    color: #333333;
+    display: block;
+    margin-bottom: -1px;
+    padding: 7px 20px 7px 8px;
+    text-decoration: none;
+    z-index: 2;
+}
+a.notifMainLink {
+    color: #333333;
+}
+._rw {
+    height: 50px;
+    width: 50px;
+}
+._42ef{
+overflow:hidden;
+}
+._8u{
+margin-top:1px;
+}
+li div.info{
+max-width:400px;
+overflow:hidden;
+position:relative;
+}
+.blueName{
+color:#333333;
+font-weight:bold;
+}
