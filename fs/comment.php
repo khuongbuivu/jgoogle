@@ -7,9 +7,7 @@
 	global $user;
 	global $pass;
 	global $db;
-	//echo $idPost;
 	$id=$idPost;
-	//echo "bbb ".$idCommentNotify;
 	if (isset($_POST['numCmtDisplay'])&& $_POST['numCmtDisplay']=="FULL")
 	{
 		$numCmtDisplay=999;
@@ -18,7 +16,6 @@
 	{
 		$numCmtDisplay=$_POST['numCmtDisplay'];
 	}
-
 	$con=mysqli_connect($host,$user,$pass,$db);
 	$result=mysqli_query($con,"select * from atw_cmt_content where IdArticles=$id ORDER BY Id DESC " );
 	$numCmtOfArticle =  $result->num_rows;
@@ -72,7 +69,6 @@
 										  oncomplete:
 											function(response_data) 
 											{
-											  //alert(response_data);
 											  $("#imgSrc"+"<?php echo $idPost;?>").html("<img src='"+response_data+ "' />");
 											}
 										 });
