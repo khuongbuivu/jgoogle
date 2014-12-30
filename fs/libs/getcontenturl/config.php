@@ -10,8 +10,8 @@
 	}else
 	{
 	$host="localhost";
-	$user="faceseo";
-	$pass="8wiWq637ceD@";
-	$db="faceseo";
+	$user="faceseovn";
+	$pass="faceseovn@";
+	$db="faceseovn";
 	}
 ?>
