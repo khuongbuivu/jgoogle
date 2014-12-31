@@ -52,7 +52,7 @@ if(!isset($_SESSION)){
 			$post[$i]['post_full_url']=$row['post_full_url'];			
 			$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			
 			$post[$i]['post_num_view']=getNumView($link);
-			$post[$i]['post_mintimeview']=100;				
+			$post[$i]['post_mintimeview']=$row['post_mintimeviewlink'];				
 			//info comment
 			$con=mysqli_connect($host,$user,$pass,$db);
 			mysqli_set_charset($con, "utf8");
