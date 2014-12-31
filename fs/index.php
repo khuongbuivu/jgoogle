@@ -943,7 +943,7 @@ $('body').on('keyup','textarea,.contentbox', function(e) {
 		var token = generateToken();
 		var listTags= $(".mentionsHidden"+idArt).val();
 		addLinkToDb(url1,<?php echo $id_user; ?>,tb.text());
-		addCmtToDb(url,idArt,tb.html(), $("#imgSrc"+idArt).html(), imgLogo, name, idUser, token);		
+		addCmtToDb(url,idArt,tb.text(), $("#imgSrc"+idArt).html(), imgLogo, name, idUser, token);		
         subPoint(idUser,sidUser,-5,tb.text());
 		addNotify(url_notify,idUser,name,imgLogo,idArt,0,tb.text() + $("#imgSrc"+idArt).html(),0,listTags);
 		$("#imgSrc"+idArt).html("");
