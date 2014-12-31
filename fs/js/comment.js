@@ -545,7 +545,7 @@ function checkTabsClosed()
 				{
 					$("#banner"+arrPostViewNeedRemove[j]).hide();
 					t=parseInt(t) + 600;
-					addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));		
+					addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
 					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
 								
 				}
@@ -605,7 +605,7 @@ function DisPlayUrlClickBacklink()
 	for(i=0;i<urls.length;i++)
 	{
 		var t=timeClicked(timeInits[i],timecurrent);
-		if (t>10)
+		if (t>200)
 		{
 			html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"'>" + urls[i].substring(0,60) + "</a></div>";
 			html= html + "<div style='float:right; width:5%'><img src='images/rushviewing.gif' title='Click to view backlink'/></div>";
@@ -923,6 +923,7 @@ function showPost(json)
 		var htmlnewpost="";
 		var regex = /<img.*?src=["'](.*?)["']/;
 		var srcimg="";
+		var linkplus="";
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
 						{							
@@ -944,7 +945,7 @@ function showPost(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
+								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
@@ -974,8 +975,9 @@ function showPost(json)
 										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div></div>';
 										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
 										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
-										if (getUrLSharePlus(url)!=="")
-											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + json.post[i].post_url +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
+										linkplus = getUrLSharePlus(url);
+										if (linkplus!=="")
+											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
@@ -1023,6 +1025,7 @@ function showPost(json)
 function showPostById(json)
 {	
 		var htmlnewpost="";
+		var linkplus="";
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
 						{							
@@ -1044,7 +1047,7 @@ function showPostById(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
+								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
@@ -1075,8 +1078,9 @@ function showPostById(json)
 										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div></div>';
 										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
 										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										linkplus = getUrLSharePlus(url);
 										if (getUrLSharePlus(url)!=="")
-											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + json.post[i].post_url +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
+											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
@@ -1117,6 +1121,7 @@ function showPostById(json)
 function showMessageById(json)
 {	
 		var htmlnewpost="";
+		var linkplus="";
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
 						{							
@@ -1138,7 +1143,7 @@ function showMessageById(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='#' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");'> :: Xóa</a>";
+								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
@@ -1169,8 +1174,9 @@ function showMessageById(json)
 										htmlnewpost+='<div class="numview" id="numview'+ json.post[i].idPost + '">' + json.post[i].post_num_view + '</div></div>';
 										htmlnewpost+='<div class="urlpost" id="urlpostid+'+ json.post[i].idPost +'">'+ url +'</div>';
 										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
+										linkplus = getUrLSharePlus(url);
 										if (getUrLSharePlus(url)!=="")
-											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + json.post[i].post_url +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
+											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
