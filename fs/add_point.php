@@ -34,7 +34,7 @@ if(!isset($_SESSION)){
 			mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT: DONT ADD POINT SOME UID' where user_id=".$_SESSION['session-user']);
 			exit();
 		};
-		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc");
+		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc limit 5,1");
 		if($ctime->num_rows>0)
 		{
 			$rts = mysqli_fetch_array($ctime);
@@ -45,7 +45,7 @@ if(!isset($_SESSION)){
 			$t1 = strtotime($timeSaved);
 			$t= $t2 - $t1;
 			$dayTime=date("d/m/y");
-			
+			$str = $dayTime." ".$oldday."  ".$currentTime."  ".$timeSaved. " ". $t." ".$t2." ".$t1." select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc";
 			if ( ($t>5 && $oldday==$dayTime) || $oldday!=$dayTime)
 			{
 				$okap = true;
@@ -53,7 +53,7 @@ if(!isset($_SESSION)){
 			else
 			{
 				$okap = false;
-				mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT: AUTO ADD POINT' where user_id=".$_SESSION['session-user']);
+				mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT:".$str."' where user_id=".$_SESSION['session-user']);
 			}	
 		};			
 		if ($okap==true)
