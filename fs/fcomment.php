@@ -55,7 +55,7 @@ if(!isset($_SESSION)){
 				$infoCmt['cmtContent'] = removeTag($infoCmt['cmtContent']);
 				if (strlen($infoCmt['cmtContent'])>60)
 				{
-					$shortContent=substr($infoCmt['cmtContent'], 60);
+					$shortContent=substr($infoCmt['cmtContent'], 0,60);
 					$content = " <i>thích</i>: ". $shortContent."...";
 				}
 				else
@@ -144,16 +144,14 @@ if(!isset($_SESSION)){
 			while ($row = mysqli_fetch_array($result))
 			{
 				$idUser=$row['post_iduser'];
-			}	
-			//echo "INSERT INTO atw_notify ( atw_notify_user_id,atw_notify_user_name,atw_notify_user_logo ,atw_notify_id_post,atw_notify_time,atw_notify_content,atw_notify_status) VALUES (".$idUser.",'".$userName."','".$userLogo."',".$idArt.",'".$datetime."','".$content."','".$status."'";
-			//echo $query_id_user;
+			}
 			if (strlen($content)>50)
 			{
-				$shortContent=substr($content, 50);
-				$content = " nhắc đến bạn \" ". $shortContent."\"...";
+				$shortContent=substr($content, 0,50);
+				$content = " bình luận \" ". $shortContent."\"...";
 			}
 			else
-				$content = " nhắc đến bạn \" ". $content."\"";	
+				$content = " bình luận \" ". $content."\"";	
 			$listUsers= mysqli_query($con,'SELECT userId,name FROM atw_cmt_content WHERE idArticles='.$idArt.' and userId!='.$_SESSION['session-user'].' group by userId');			 
 
 			if ($listUsers->num_rows>0)
@@ -174,6 +172,7 @@ if(!isset($_SESSION)){
 		}	
 			if ($listTags!=null || $listTags!="")
 				$UIDTAGS=split(",",$listTags);
+			$content = str_replace("bình luận","nhắc đến bạn",$content);
 			for ($jj=0;$jj< count($UIDTAGS);$jj++)
 			{
 				$idUser=$UIDTAGS[$jj];
