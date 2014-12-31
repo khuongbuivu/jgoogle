@@ -21,6 +21,7 @@ $_SESSION['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
 <meta content="731864150162369" property="fb:app_id"/>
 <meta content="100001707050712" property="fb:admins"/>
 <title>Like now</title>
+<meta charset="utf-8">
 <meta http-equiv="refresh" content="8" >
 <script type="text/javascript">
 <?php if(LOCAL=="TRUE"): ?>
