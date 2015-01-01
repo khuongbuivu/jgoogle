@@ -1067,19 +1067,22 @@ function showPostById(json)
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
 							   if(json.post[i].post_image.trim ()!="")
 									htmlnewpost+="<div id='imgPost'>"+json.post[i].post_image+"</div>";						
-								if(json.post[i].post_url.trim()!="")
+								if(json.post[i].post_url.trim()!=="")
 								{						
 									htmlnewpost+="<div id='action'>";
 									htmlnewpost+="<div id='titlePost'>";
-									htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
+									if (json.post[i].post_url!=='viewedinday')
+										htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
+									else
+										htmlnewpost+=json.post[i].post_title ;								
 									htmlnewpost+="</div>";
-									if(json.post[i].post_full_url.trim()=="")
+									if(json.post[i].post_full_url.trim()==="")
 										url=(json.post[i].post_url);
 									else 
 										url=(json.post[i].post_full_url);							
 									htmlnewpost+="<div style='height:40px;'>";
 									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 97%;">';							
-									if (url!="")
+									if (url!=="")
 									{				
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';			
 										htmlnewpost+='<div class="buttonactionview"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
@@ -1109,7 +1112,7 @@ function showPostById(json)
 							};
 							htmlInputForm='</div><div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
 							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
-							if(linkLogoFace.trim()!="https://graph.facebook.com//picture")
+							if(linkLogoFace.trim()!=="https://graph.facebook.com//picture")
 								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
 							htmlInputForm+='</div></div>';
 							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
@@ -1131,7 +1134,7 @@ function showMessageById(json)
 		var htmlnewpost="";
 		var linkplus="";
 		for(var i=0;i<json.post.length;i++){	
-						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
+						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id !== idUser) )
 						{							
 						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:97.9%" class="Message" >';
 						   
@@ -1141,18 +1144,18 @@ function showMessageById(json)
 						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
-							if (json.post[i].user_id == idUser || xxyyzz==3)						
+							if (json.post[i].user_id === idUser || xxyyzz===3)						
 							{
-								if (json.post[i].user_id == idUser)
+								if (json.post[i].user_id === idUser)
 								{
 									var aa =$("#mypostid").html();
-									if (aa!="")
+									if (aa!=="")
 										$("#mypostid").html( aa + ' or post_id=' + json.post[i].idPost );
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
 								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
-								if(xxyyzz==3)
+								if(xxyyzz===3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
 							}									
@@ -1161,21 +1164,21 @@ function showMessageById(json)
 						   if (json.post[i].user_point>0)
 						   {
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
-							   if(json.post[i].post_image.trim ()!="")
+							   if(json.post[i].post_image.trim ()!=="")
 									htmlnewpost+="<div id='imgPost'>"+json.post[i].post_image+"</div>";						
-								if(json.post[i].post_url.trim()!="")
+								if(json.post[i].post_url.trim()!=="")
 								{						
 									htmlnewpost+="<div id='action'>";
 									htmlnewpost+="<div id='titlePost'>";
 									htmlnewpost+="<a href=" + json.post[i].post_url + "  onclick=\"return openUrl(this.href," + json.post[i].post_mintimeview + "," + json.post[i].idPost + ");\" >"+json.post[i].post_title + "</a>"	;								
 									htmlnewpost+="</div>";
-									if(json.post[i].post_full_url.trim()=="")
+									if(json.post[i].post_full_url.trim()==="")
 										url=(json.post[i].post_url);
 									else 
 										url=(json.post[i].post_full_url);							
 									htmlnewpost+="<div style='height:40px;'>";
 									htmlnewpost+='<div style="float: left; padding-right: 10px; margin: 4px; height: 40px; width: 97%;">';							
-									if (url!="")
+									if (url!=="")
 									{				
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';			
 										htmlnewpost+='<div class="buttonactionview"><b><span><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="25px"/></i></span></b>' 	;																												
@@ -1226,24 +1229,24 @@ function showFullCommentOfPost(idPost,comment)
 					htmlnewpost+='<div class="UFICommentContent">	<a  class="UFICommentActorName"  content="Linh Nguyen" href="'+comment[j].cmt_user_link+'" title="'+comment[j].cmt_name+"::"	+comment[j].cmt_user_point+ '" target="_blank">'+comment[j].cmt_name+'</a><span > </span><span ><span class="UFICommentBody"><span >'+comment[j].cmt_Content+' </span></span></span></div>';
 					htmlnewpost+='<div class="UFICommentActions fsm fwn fcg"><span ><span ></span>';
 					htmlnewpost+='<a class="uiLinkSubtle" href=""><abbr  class="livetimestamp" content="a few seconds ago" title="'+comment[j].Time+'">'+comment[j].countTime+'</abbr></a>';
-					if ( comment[j].cmt_url!="" && !checkUrlImage(comment[j].cmt_url))
+					if ( comment[j].cmt_url!=="" && !checkUrlImage(comment[j].cmt_url))
 					{
 						htmlnewpost+=' · <b><span ><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(comment[j].cmt_url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(comment[j].cmt_url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="20px"/></i></span></b>';
 					};
 					htmlnewpost+='</span><span > · </span>';
 					htmlnewpost+='<div class="statuslike" id="statuslike'+comment[j].cmt_Id+'"><a  class="UFILikeLink" id="likeCmt'+comment[j].cmt_Id+'" title="Like this comment" >';
-					if(comment[j].cmt_num_like!=0 && comment[j].cmt_my_like>0)
+					if(comment[j].cmt_num_like!==0 && comment[j].cmt_my_like>0)
 					{
 						htmlnewpost+='Unlike<span> · </span><i class="UFICommentLikeIcon"></i> <span id="numlike' + comment[j].cmt_Id+'">' + comment[j].cmt_num_like + '</span>';					
 					}
-					else if ((comment[j].cmt_num_like!=0) && (comment[j].cmt_my_like==0 || comment[j].cmt_num_like==0))
+					else if ((comment[j].cmt_num_like!==0) && (comment[j].cmt_my_like===0 || comment[j].cmt_num_like===0))
 					{
 						htmlnewpost+='Like<span> · </span><i class="UFICommentLikeIcon"></i> <span id="numlike' + comment[j].cmt_Id + '">' + comment[j].cmt_num_like + '</span>';
 					}
 					else
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div>';
-					if (comment[j].cmt_userId == window.idUser || xxyyzz==3)
+					if (comment[j].cmt_userId === window.idUser || xxyyzz===3)
 						htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:0px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
 			   }
@@ -1257,7 +1260,7 @@ function showCommentOfPost(idPost,comment)
 			var htmlnewpost='';
 			var numCmtDisplay=1000;
 			var num=0;
-			if ( ($("#loadcmtfull"+idPost).length ==0) || ($("#loadcmtfull"+idPost).length > 0 && $("#loadcmtfull"+idPost).html().trim()=="no"))
+			if ( ($("#loadcmtfull"+idPost).length ===0) || ($("#loadcmtfull"+idPost).length > 0 && $("#loadcmtfull"+idPost).html().trim()==="no"))
 				numCmtDisplay=10;
 			num = (comment.length <	numCmtDisplay? comment.length:numCmtDisplay);
 			if(comment.length>0){
@@ -1271,29 +1274,29 @@ function showCommentOfPost(idPost,comment)
 					htmlnewpost+='<div class="UFICommentContent">	<a  class="UFICommentActorName"  content="Linh Nguyen" href="'+comment[j].cmt_user_link+'" title="'+comment[j].cmt_name+"::"	+comment[j].cmt_user_point+ '" target="_blank">'+comment[j].cmt_name+'</a><span > </span><span ><span class="UFICommentBody"><span >'+comment[j].cmt_Content+' </span></span></span></div>';
 					htmlnewpost+='<div class="UFICommentActions fsm fwn fcg"><span ><span ></span>';
 					htmlnewpost+='<a class="uiLinkSubtle" href=""><abbr  class="livetimestamp" content="a few seconds ago" title="'+comment[j].Time+'">'+comment[j].countTime+'</abbr></a>';
-					if ( comment[j].cmt_url!="" && !checkUrlImage(comment[j].cmt_url))
+					if ( comment[j].cmt_url!=="" && !checkUrlImage(comment[j].cmt_url))
 					{
 						htmlnewpost+=' · <b><span ><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(comment[j].cmt_url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(comment[j].cmt_url)+' \'), 5000); return false;"'  +  ' href="#" title="Thống kê ai đang view cho bạn"  ><img src="images/css/view-icon.gif" width="20px"/></i></span></b>';
 					}
 					htmlnewpost+='</span><span > · </span>';
 					htmlnewpost+='<div class="statuslike" id="statuslike'+comment[j].cmt_Id+'"><a  class="UFILikeLink" id="likeCmt'+comment[j].cmt_Id+'" title="Like this comment" >';
-					if(comment[j].cmt_num_like!=0 && comment[j].cmt_my_like>0)
+					if(comment[j].cmt_num_like!==0 && comment[j].cmt_my_like>0)
 					{
 						htmlnewpost+='Unlike<span> · </span><i class="UFICommentLikeIcon"></i> <span id="numlike' + comment[j].cmt_Id+'">' + comment[j].cmt_num_like + '</span>';					
 					}
-					else if ((comment[j].cmt_num_like!=0) && (comment[j].cmt_my_like==0 || comment[j].cmt_num_like==0))
+					else if ((comment[j].cmt_num_like!==0) && (comment[j].cmt_my_like===0 || comment[j].cmt_num_like===0))
 					{
 						htmlnewpost+='Like<span> · </span><i class="UFICommentLikeIcon"></i> <span id="numlike' + comment[j].cmt_Id + '">' + comment[j].cmt_num_like + '</span>';
 					}
 					else
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div>';
-					if (comment[j].cmt_userId == window.idUser || xxyyzz==3)
+					if (comment[j].cmt_userId === window.idUser || xxyyzz===3)
 						htmlnewpost+='<div style="float:right;position:absolute;top:0px;right:0px;cursor: pointer; cursor: hand;" class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
 			   };
 			   
-			   if ( comment.length > numCmtDisplay && $("#loadcmtfull"+idPost).html().trim()=="no")
+			   if ( comment.length > numCmtDisplay && $("#loadcmtfull"+idPost).html().trim()==="no")
 				{
 					htmlnewpost+='<li class="UFIRow UFIPagerRow UFIFirstCommentComponent" ><div class="clearfix"><div class="lfloat"><a class="img _8o _8r UFIImageBlockImage UFIPagerIcon" aria-hidden="true" tabindex="-1" role="button" href="#"></a></div><div ><div class="clearfix UFIImageBlockContent _42ef _8u"><div class="rfloat"><span class="fcg"></span></div><div ><a class="UFIPagerLink" role="button" href="javascript:showAllComment(\'' + root_path + 'json_comment_post.php\', ' + idPost + ' );"><span >Xem ' + (comment.length - numCmtDisplay) + ' khác </span></a></div></div></div></div>';					
 				}
@@ -1381,7 +1384,7 @@ function updateNotify(url,idUser){
 	xmlhttp.setRequestHeader("Content-length", params.length);
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
-	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){		
+	if(xmlhttp.readyState === 4 && xmlhttp.status === 200){		
 	}
   };
   xmlhttp.send(params);
@@ -1402,7 +1405,7 @@ function updateMessage(url,idUser){
 	xmlhttp.setRequestHeader("Content-length", params.length);
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
-	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){	
+	if(xmlhttp.readyState === 4 && xmlhttp.status === 200){	
 	}
   };
   xmlhttp.send(params);
@@ -1423,7 +1426,7 @@ function checkAvailableClick(url,link,idUser){
 	xmlhttp_checklink.setRequestHeader("Content-length", params.length);
 	xmlhttp_checklink.setRequestHeader("Connection", "close");
 	xmlhttp_checklink.onreadystatechange = function() {
-		if(xmlhttp_checklink.readyState == 4 && xmlhttp_checklink.status == 200){	
+		if(xmlhttp_checklink.readyState === 4 && xmlhttp_checklink.status === 200){	
 		}
 	};
   xmlhttp_checklink.send(params);
@@ -1433,7 +1436,7 @@ function checkUrlImage(url)
 {
 	url=url.toLowerCase();
 	var arr=url.split('.');	
-	if (arr[(arr.length-1)] =="gif" || arr[(arr.length-1)]=="jpeg" || arr[(arr.length-1)]=="jpg"|| arr[(arr.length-1)]=="png"|| arr[(arr.length-1)]=="bmp")
+	if (arr[(arr.length-1)] ==="gif" || arr[(arr.length-1)]==="jpeg" || arr[(arr.length-1)]==="jpg"|| arr[(arr.length-1)]==="png"|| arr[(arr.length-1)]==="bmp")
 		return true;
 	return false;
 
@@ -1441,7 +1444,7 @@ function checkUrlImage(url)
 
 function openLinkMenu(link)
 {
-		if(window.iswiewing==true)
+		if(window.iswiewing===true)
 			window.open(link);
 		else
 			window.open(link,"_self");
@@ -1464,7 +1467,7 @@ function getNumView(link,id){
 	xmlhttp_checklink.setRequestHeader("Content-length", params.length);
 	xmlhttp_checklink.setRequestHeader("Connection", "close");
 	xmlhttp_checklink.onreadystatechange = function() {
-		if(xmlhttp_checklink.readyState == 4 && xmlhttp_checklink.status == 200){
+		if(xmlhttp_checklink.readyState === 4 && xmlhttp_checklink.status === 200){
 			$('#numview'+id).html(xmlhttp_checklink.responseText);
 		}
 	};
@@ -1537,7 +1540,7 @@ function getListUserViewing()
 							var idu = parseInt(this.id.substring(5));
 							$(this).html('');
 							for(var i=0;i<jsonviewing.length;i++){									
-								if (jsonviewing[i]==idu)
+								if (jsonviewing[i]===idu)
 									$(this).html('<img src="images/loading-google-smaill.gif">');									
 							}	
 						});
@@ -1559,8 +1562,8 @@ function getCookie(cname) {
     var ca = document.cookie.split(';');
     for(var i=0; i<ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) != -1) 
+        while (c.charAt(0)===' ') c = c.substring(1);
+        if (c.indexOf(name) !== -1) 
 		{
 			return c.substring(name.length,c.length);
 		}
