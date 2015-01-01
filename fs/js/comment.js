@@ -837,10 +837,20 @@ function getNewPost(idgroup){
 	var url=root_path + "modules/json_post_new.php?idgroup="+idgroup;
 	if ($("#wrappercontentpost div:first-child").length <=0)	
 		return;
-	var idCurrentPost = $("#wrappercontentpost div:first-child").attr("id");
+	/*var idCurrentPost = $("#wrappercontentpost div:first-child").attr("id");*/
+	var idCurrentPost = -1;
+	var i=0;
+	$("div[id^='postcontent']").each(function(){
+		var id = parseInt(this.id.substring(11));
+		if (id>idCurrentPost)
+		idCurrentPost = id;
+		i=i + 1;
+		if (i==10)
+			return false;
+	});
+	console.log("idCurrentPost" + idCurrentPost);
 	if (FaceSeo.search(domain)<0)
 		return;
-	idCurrentPost=idCurrentPost.substring(11);
 	$.ajax({
 			url:url,
 			type:'POST',
@@ -855,10 +865,8 @@ function getNewPost(idgroup){
 				if( json.post!=null && json.post.length>0){
 					htmlnewpost=showPost(json);	
 					var tmp = $(htmlnewpost).hide();
-					$("#wrappercontentpost #postcontent"+idCurrentPost).before(tmp);		
-					idCurrentPost = $("#wrappercontentpost div:first-child").attr("id");
+					$("#wrappercontentpost #postcontent"+idCurrentPost).before(htmlnewpost);
 					$("#wrappercontentpost #"+idCurrentPost).toggle( "scale" );
-					idCurrentPost=idCurrentPost.substring(11);
 					initArrayIdPost();					   
 				}
 		}

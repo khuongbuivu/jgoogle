@@ -239,24 +239,27 @@ if(!isset($_SESSION)){
 		$urls=split("····",$link);
 		for ($ii=0;$ii<count($urls);$ii++)
 		{
-			//echo 'select SUM(ip_click_link_numview) as numview from fs_ip_click_link where  ip_click_link_url="'.$urls[$ii].'" and ip_click_link_id_user="'.$idUser.'" ';
 			$urls[$ii]=rtrim($urls[$ii], "/");
-/*
-$arruser=mysqli_query($con,"select iduser from awt_list_url where url like '%".$urls[$ii]."%'  limit 1 ");
-			//echo "select iduser from awt_list_url where url like '%".$urls[$ii]."%' limit 1";
+			/* NEU ID CUA CHINH USER DO VAN CHO HIEN LINK */
+			$arruser=mysqli_query($con,"select iduser from awt_list_url where url like '%".$urls[$ii]."%'  limit 1 ");
 			if($arruser->num_rows>0)
 			{
 				$row11 = mysqli_fetch_array($arruser);
 				$idUserOfUrl = $row11[0];
-			}
-			//echo $idUserOfUrl." ".$idUser;
-			
+			}		
 			if ($idUserOfUrl==$idUser)
-			{
-				
+			{				
 				return true;
 			}
-*/
+			/* END NEU ID CUA CHINH USER DO VAN CHO HIEN LINK */
+			$resultPointB=mysqli_query($con,"select * from atw_point where idUser=".$idUserOfUrl." limit 1");
+			if ($resultPointB->num_rows>0)
+			{
+				$row = mysqli_fetch_array($resultPointB);
+				if($row['point']<1)
+					return false;				
+			}
+			
 			$result=mysqli_query($con,'select SUM(ip_click_link_numview) as numview from fs_ip_click_link where  ip_click_link_url="'.$urls[$ii].'" and ip_click_link_id_user="'.$idUser.'" ');			
 			if ($result->num_rows>0)
 			{

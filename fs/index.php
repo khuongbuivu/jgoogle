@@ -25,7 +25,7 @@ $_SESSION['userHelpYoutmp']=$_SESSION['userHelpYou'];
 }
 if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 {
-	$_SESSION['TIMEMAXVIEWMYLINK']=50;
+	$_SESSION['TIMEMAXVIEWMYLINK']=300;
 }
 ?>
 <?php 
@@ -121,7 +121,7 @@ else if ($_SESSION['loginfirsttime']==1)
 	<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
 	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
-	<link href="<?php echo $PATH_ROOT;?>favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 	<!-- end thanh -->
 	<!-- add scroll top comment -->
 	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
@@ -178,7 +178,7 @@ else if ($_SESSION['loginfirsttime']==1)
 	<div class="signupwrapper">
 	  <fieldset id="intro">
 		<p>
-		 <a href="<?php echo $loginUrl; ?>" target="_blank"><button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button></a>
+		 <a href="<?php echo $loginUrl; ?>"><button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button></a>
 		</p>
 		<p class="or">or</p>
 	  </fieldset>
@@ -222,7 +222,7 @@ else if ($_SESSION['loginfirsttime']==1)
     <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
     <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>
     <p>Nhiều người đã bị nghiện vì vậy hãy cân nhắc trước khi tham gia hệ thống!</p>
-	<p>Hệ thống chính thức hoạt động 5/1/2015!</p>
+	<p>Hệ thống chính thức hoạt động 15/1/2015!</p>
   </fieldset>
 </form>
 <div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>
