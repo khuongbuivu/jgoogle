@@ -1136,10 +1136,12 @@ function scrolToComment(idPost,idCmt)
 	updateNotify(root_path + "modules/update_notify.php",idUser);
 	if ($(".commentid"+idCmt).length > 0 )
 	{
+		
 		$('html, body').stop().animate({
 		'scrollTop': $(".commentid"+idCmt).offset().top - 100
 		}, 600, 'swing', function () {
-			window.location.hash = target;
+			/* var target= $(".commentid"+idCmt).hash;
+			window.location.hash = target;//fix faceseo.vn/#undefine */
 		});
 	}
 }
@@ -1156,7 +1158,8 @@ function scrolToMessage(idPost,idCmt)
 		$('html, body').stop().animate({
 		'scrollTop': $(".commentid"+idCmt).offset().top - 100
 		}, 600, 'swing', function () {
-			window.location.hash = target;
+			/* var target= $(".commentid"+idCmt).hash;
+			window.location.hash = target;//fix faceseo.vn/#undefine */
 		});
 	}
 }
