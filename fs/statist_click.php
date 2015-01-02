@@ -19,6 +19,7 @@
 			$link	=	$_POST['link'];
 			
 		}
+		$link=rtrim($link, "/");
 		$urls=split("····",$link);		
 		//echo $link;		
 		$con=mysqli_connect($host,$user,$pass,$db);
@@ -26,11 +27,11 @@
 		$currentDay = date("d/m/y");
 		echo '<ul class="uiList clearfix _5bbv _4kg _704 _4ks">';
 		for ($ii=0;$ii<count($urls);$ii++)
-		{
+		{			
+			$urls[$ii]=rtrim($urls[$ii], " ");
 			$urls[$ii]=rtrim($urls[$ii], "/");
 			$jjj=$ii + 1;
 			$q='link =\''.$urls[$ii].'\'';
-			//echo 'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc';
 			$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc');		
 			echo '<li class="fbProfileBrowserListItemTitle">Link '.$jjj  . " :: view: ".$result->num_rows.'</li>';
 			if ($result->num_rows>0){
