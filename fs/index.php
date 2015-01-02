@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if(!isset($_SESSION)){
     session_start();
 }
@@ -1388,9 +1388,10 @@ Trong khi một số link đang view. Post link mới sẽ bị sai id
 When open popup with https function beforeunload not working so using interval to check status share.
 http://stackoverflow.com/questions/3291712/is-it-possible-to-open-a-popup-with-javascript-and-then-detect-when-the-user-clo
 -->
-<style>@media screen and (-webkit-min-device-pixel-ratio:0) {
-#leftCol { margin-top:55px;  }
-.UFIRow .UFIImageBlockContent{width:93%}
-}</style>
+<style>
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#leftCol { margin-top:65px;  }
+}
+</style>
 </body>
 </html>
