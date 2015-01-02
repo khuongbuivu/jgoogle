@@ -82,7 +82,7 @@ mysqli_close($con);
 					   },
 					   function(response) {
 						 if (response && response.post_id) {
-							addPointShare(idUser);
+							addPointShare(idUser,'<?php echo $link; ?>');
 						 } else {
 						   alert('Share Faceseo được cộng điểm.');
 						 }
