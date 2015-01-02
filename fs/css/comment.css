@@ -24,7 +24,7 @@ div.UFIContainer {
 }
 .UFIContainer {
     margin: 0;
-    width: 97%;
+    width: 99%;
 }
 .UFIArrow > i {
     background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/y7/r/UvyvLtJTQzO.png");
@@ -39,7 +39,7 @@ div.UFIContainer {
 .UFIRow {
     background-color: #EDEFF4;
     margin-top: 1px !important;
-    padding: 4px !important;
+    padding: 4px 0px 4px 4px !important;
 }
 .clearfix:after {
     clear: both;
@@ -239,7 +239,7 @@ img {
 .UFIRow .UFIImageBlockContent {
     margin: 0;
     padding: 0 0 0 8px;
-	width:95%;
+	width:92%;
 }
 ._42ef {
     overflow: hidden;
@@ -549,5 +549,12 @@ background: url("../images/css/likebutton.png") no-repeat scroll 5px center rgba
 	padding: 0 5px;
 	vertical-align: top;
 	width: 45px;
+}
+.cmtclose {
+float:right;position:absolute;top:0px;right:8px;cursor: pointer; cursor: hand;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+#leftCol { margin-top:65px;  }
+.UFIRow .UFIImageBlockContent{width:92%}
 }
 /*popup */
