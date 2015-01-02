@@ -5,19 +5,28 @@ if(!isset($_SESSION)){
 require_once("../config.php");
 function subpoint()	
 {
-	
+	if (!isset($_SESSION['token']) || $_SESSION['token']=="" || !isset($_POST['point']) || !isset($_POST['idUser']))
+	{
+		echo "Not access this page";
+		exit();
+	}
 	global $host;
 	global $user;
 	global $pass;
 	global $db;
 	$idUser			=	$_POST['idUser'];
 	$point			=	$_POST['point'];
-	$linkClicked			=	$_POST['linkClicked'];
+	$pointBonus		= 	15;
+	$linkClicked	=	$_POST['linkClicked'];
+	$timezone  = +7;//+7; //(GMT +7:00) 
+	$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
 	$con=mysqli_connect($host,$user,$pass,$db);
+	
 	$result=mysqli_query($con,"select iduser from awt_list_url where url like '%".$linkClicked."%'");
-	if(($result->num_rows==""))
+	
+	if($result->num_rows=="")
 	{
-		mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_LIKE: LINK LINK NOT EXIST' where user_id=".$_SESSION['session-user']);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_LIKEG: LINK NOT EXIST' where user_id=".$_SESSION['session-user']);
 		exit();
 	}
 	$dm = date("d/m"); 	
@@ -26,7 +35,7 @@ function subpoint()
 	$User1=intval($_SESSION['session-user']) * intval($shortDay);
 	$strtoken1=$_SESSION['session-user'].$shortDay.$User1.$s1;
 	$token1 = MD5($strtoken1);
-	$okap			= false;
+	$okap			= true;
 	for ($i = 1; $i <= 10; $i++) {
 		$s1 = $s1 + 1;
 		$strtoken1=$_SESSION['session-user'].$shortDay.$User1.$s1;
@@ -42,25 +51,22 @@ function subpoint()
 	{
 		mysqli_close($con);	
 		exit();
-	}	
-	
-	
-	
+	}
 	if ($point>30 && $point<-30 || $_SESSION['session-user'] !=$_POST['idUser'])
 	{
-		mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_LIKE: HACK POINT' where user_id=".$_SESSION['session-user']);
+		mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_LIKEG: HACK LIKE G' where user_id=".$_SESSION['session-user']);
 		$point=-500;
 	}
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 	$pointOfUser = mysqli_fetch_array($result);
 	$point = $point + $pointOfUser['point'];
-	$rsgplus = mysqli_query($con," select * from fs_gplus where gplus_link like '".$linkClicked."'");
-	if ($rsgplus->num_rows>0)
+	$rsfblike = mysqli_query($con," select * from fs_fblike where fblike_link like '".$linkClicked."'");
+	if ($rsfblike->num_rows>0)
 	{
 	}
 	else
 	{
-		mysqli_query($con,"insert into fs_gplus (gplus_link,gplus_iduser) values ('".$linkClicked."','".$idUser."')");
+		mysqli_query($con,"insert into fs_fblike (fblike_link,fblike_iduser,fblike_time) values ('".$linkClicked."','".$idUser."','".$datetime."')");		 
 	}
 	
 	if ($result->num_rows>0)
@@ -73,7 +79,11 @@ function subpoint()
 
 function subPoint1()
 {
-	
+	if (!isset($_SESSION['token']) || $_SESSION['token']=="" || !isset($_POST['point']) || !isset($_POST['idUser']))
+	{
+		echo "Not access this page";
+		exit();
+	}
 	global $host;
 	global $user;
 	global $pass;
@@ -82,20 +92,17 @@ function subPoint1()
 	$linkClicked 	= 	removeSlashEndUrl($linkClicked);
 	$idUser			=	$_POST['idUser'];
 	$point			=	$_POST['point'];
-	$dm = date("d/m"); 	
-	
+	$dm = date("d/m");
 	$s1= intval(date("s"));
 	$shortDay= str_replace("/","",$dm);
 	$User1=intval($_SESSION['session-user']) * intval($shortDay);
 	$strtoken1=$_SESSION['session-user'].$shortDay.$User1.$s1;
 	$token1 = MD5($strtoken1);	
-	$okap			= false;
-	
+	$okap			= true;
 	for ($i = 1; $i <= 10; $i++) {
 		$s1 = $s1 + 1;
 		$strtoken1=$_SESSION['session-user'].$shortDay.$User1.$s1;
-		$token1 = MD5($strtoken1);
-		
+		$token1 = MD5($strtoken1);		
 		if ($token1==$_POST['tk1'])
 		{
 					
@@ -104,11 +111,8 @@ function subPoint1()
 		}	
 	}	
 	
-	if ( $okap==false)
-	{
-		
+	if ( $okap==false)		
 		exit();
-	}	
 	$con=mysqli_connect($host,$user,$pass,$db);
 	$result=mysqli_query($con,"select iduser from awt_list_url where url like '%".$linkClicked."%'");
 	
@@ -122,23 +126,21 @@ function subPoint1()
 		$idUser	=$idUserOfUrl;
 		$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 		while ($row = mysqli_fetch_array($result))
-		{		
-				
-				
+		{						
 				$point = -10 + $row['point'];
-		}	
+		};
 		if ($result->num_rows>0)
 			$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser);	
 		else
 			$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
 	}
 	mysqli_close($con);	
-}
+};
 function removeSlashEndUrl($url)
 {
 	return rtrim($url, "/");
 }
 
 subpoint()	;
-subPoint1();
+subPoint1()	;
 ?>

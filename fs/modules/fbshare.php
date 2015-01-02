@@ -12,7 +12,7 @@ function addpointshare()
 	global $db;
 	// $idUser			=	'100001707050712';
 	$idUser			=	$_SESSION['session-user'];	
-	$pointBonus			=	20;
+	$pointBonus			=	50;
 	$dayShare			= 	7;	
 	// $link			= 	'http://giasuminhtri.com/Phu-Huynh-Can-Biet/gia-su-tieu-hoc.html';
 	$link			= 	$_POST['link'];
