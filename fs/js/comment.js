@@ -165,6 +165,48 @@ if(xmlhttp.readyState==4&&xmlhttp.status==200){
 }};
 xmlhttp.send(params)};
 
+function addPointLike(idUser,link,tk1,tk2,tk3,tk4)
+{	
+	var url=root_path + "modules/add_point_like.php";
+	var point = 10;
+	if (FaceSeo.search(domain)<0)
+		return;
+	var xmlhttp;
+	if(window.XMLHttpRequest){
+	  xmlhttp=new XMLHttpRequest();
+	}else{
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	};	
+	var params = "idUser=" + idUser + "&point=" +point+"&linkClicked=" + link + "&tk1=" + tk1 + "&tk2=" + tk2 + "&tk3=" + tk3 + "&tk4=" + tk4;
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader("Content-length", params.length);
+	xmlhttp.setRequestHeader("Connection", "close");
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+		}
+	};
+  xmlhttp.send(params);
+
+};
+
+function subPointLike(idUser,tk1,tk2,tk3,tk4){
+alert("Unlike bị trừ 20đ");
+var url=root_path+"modules/spg.php";
+var point=-20;if(FaceSeo.search(domain)<0)return;
+var xmlhttp;
+if(window.XMLHttpRequest){xmlhttp=new XMLHttpRequest()}else{xmlhttp=new ActiveXObject("Microsoft.XMLHTTP")};
+var params="idUser="+idUser+"&point="+point + "&tk1=" + tk1 + "&tk2=" + tk2 + "&tk3=" + tk3 + "&tk4=" + tk4;
+xmlhttp.open("POST",url,true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.setRequestHeader("Content-length",params.length);
+xmlhttp.setRequestHeader("Connection","close");
+xmlhttp.onreadystatechange=function(){
+if(xmlhttp.readyState==4&&xmlhttp.status==200){
+}};
+xmlhttp.send(params)};
+
+
 function getPoint(url,idUser)
 {	
 	if (FaceSeo.search(domain)<0)
