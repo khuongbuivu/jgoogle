@@ -9,26 +9,26 @@ if(!isset($_SESSION)){
 	include_once("../fcomment.php");
 	include_once("../user.php");
 	$NUMPOSTLOAD = 5;
-	if (!isset($_SESSION['iPageUIDHelpYou']))
-		$_SESSION['iPageUIDHelpYou']=0;
-	else
-		$_SESSION['iPageUIDHelpYou']=($_SESSION['iPageUIDHelpYou'] + 1)*$NUMPOSTLOAD;
 	global $host;
 	global $user;
 	global $pass;
 	global $db;
-	// using with json
-	// $ll="100001707050712,100005640848020,100005638054455,100006197473333,100004423232266,100006276192136,100004043834368";
 	$qidUser ="";
 	$start =0;
+	if (isset ($_POST['iPageUIDHelpYou']) && $_POST['iPageUIDHelpYou']!="")
+	{
+		$_SESSION['iPageUIDHelpYou'] = $_POST['iPageUIDHelpYou'];
+	}
+	else 
+		$_SESSION['iPageUIDHelpYou'] = 0;
+	$start= $_SESSION['iPageUIDHelpYou']*$NUMPOSTLOAD;
 	if (isset ($_SESSION['userHelpYou']))
 	{
 		$listIDUser=$_SESSION['userHelpYou'];
-		if (count($listIDUser)>$_SESSION['iPageUIDHelpYou'])
+		if (count($listIDUser)> $start)
 		{
-			$qidUser= " post_iduser=".$listIDUser[$_SESSION['iPageUIDHelpYou']];
-			$start= $_SESSION['iPageUIDHelpYou'] + 1;
-			for ($ii=$start;$ii<count($listIDUser);$ii++)
+			$qidUser= " post_iduser=".$listIDUser[$start];			
+			for ($ii=$start + 1;$ii<count($listIDUser);$ii++)
 			{
 				if ($ii%$NUMPOSTLOAD==0)
 				{
@@ -117,21 +117,21 @@ if(!isset($_SESSION)){
 						$comment[$i][$ii]['countTime']				=getTimeString($timeCurrent,$timeSaved);				
 						$ii++;
 					}
+					$posts['post']=$post;
+					$posts['comment']=$comment;					
+					$i++;
 				}
-				$posts['post']=$post;
-				$posts['comment']=$comment;	
 				
-				$i++;
 			}
 			mysqli_close($con);	
 		}
 	}
 	$posts['uidhelpyou']="";
-	if (count($listIDUser)>($_SESSION['iPageUIDHelpYou'] + 1)*$NUMPOSTLOAD)
+	if (count($listIDUser)>$start)
 	{
-		$posts['uidhelpyou']="ok";
+		$posts['uidhelpyou']=$_SESSION['iPageUIDHelpYou'] + 1;
 	}
-	//print_r($posts);
+	// print_r($posts);
 	// header('Content-type: application/json');
 	echo json_encode($posts);
 	// select max(post_id) postId from atw_post where post_iduser =100001707050712 or post_iduser=100005640848020 group by post_iduser

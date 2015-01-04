@@ -1,7 +1,7 @@
 <?php
 //fix
-	define("LOCAL", "FALSE", true);
-	// define("LOCAL", "TRUE", true);
+	// define("LOCAL", "FALSE", true);
+	define("LOCAL", "TRUE", true);
 	include_once("../../define.php");
 	include_once("../../time.php");
 	include_once("../../config.php");

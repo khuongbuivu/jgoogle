@@ -845,12 +845,15 @@ function getNewPosts(idgroup){
 	var url = root_path + "modules/json_get_help_post.php?idgroup="+idgroup;	
 	if (FaceSeo.search(domain)<0)
 		return;
+	var iPageUIDHelpYou = $('div#UIDHelpYou').text();
+	
 	$.ajax({
 			url:url,
 			type:'POST',
-			data: {},
+			data: {iPageUIDHelpYou:iPageUIDHelpYou},
 			dataType: "json",
 			success: function(json) {
+				
 				var htmlnewpost='';
 				var htmlInputForm='';
 				var url;
