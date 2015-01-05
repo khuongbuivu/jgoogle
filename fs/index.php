@@ -265,7 +265,7 @@ exit();
                <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"><span class="icon-set icon-connect"></span> </a></li>
                <li><a href=""><span class="icon-set icon-share"></span> </a></li>
                <li><a href=""><span class="icon-set icon-acong"></span> </a></li>
-               <li><a href=""><span class="icon-set icon-setpanel"></span> </a></li>
+               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>');"><span class="icon-set icon-setpanel"></span> </a></li>
                </ul>
 
 			<!-- 
