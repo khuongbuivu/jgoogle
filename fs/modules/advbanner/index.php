@@ -1,5 +1,7 @@
 <?php
-//fix
+if(!isset($_SESSION)){
+    session_start();
+}
 	include_once("../../config.php");
 	include_once("../../user.php");
 	include_once("../../fcomment.php");
@@ -9,8 +11,9 @@
 		global $user;
 		global $pass;
 		global $db;
-		$idUser			=	$_POST['idUser'];
-		$infosUser=getUserInfo($idUser);
+		$idUser			=	$_SESSION['session-user'];
+		$infosUserLog=getUserInfo($idUser);
+		echo "idUser".$idUser;
 		$idBannerStart = intval($_POST['currentPageBanner'])*10;
 		$con=mysqli_connect($host,$user,$pass,$db);
 		$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser order by point desc limit ".$idBannerStart.",10");	 //idBannerStart
@@ -25,7 +28,8 @@
 				else
 					echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
 			}
-			echo '<div style="position:absolute; top:0px;right:0px; padding:3px; background:yellow" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
+			if ($row['banner_user_id']==$idUser || $infosUserLog['user_manager']>2)
+				echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
 			echo "</div>";
 							
 							

@@ -166,7 +166,7 @@ function getListUIDVip($A)
 		global $pass;
 		global $db;
 		$con=mysqli_connect($host,$user,$pass,$db);
-		$ruids = mysqli_query($con,"select idUser from fs_help_click where idUserHelp=$A limit 50");
+		$ruids = mysqli_query($con,"select idUser from fs_help_click where idUserHelp=$A order by pointHelp desc limit 50");
 		$arrUIDVip = array();
 		$i=0;
 		while ($row = mysqli_fetch_array($ruids))

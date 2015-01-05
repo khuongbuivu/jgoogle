@@ -18,9 +18,9 @@ $_SESSION['token'] = $token;
 $_SESSION['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
 $id_user=$id_user!=""?$id_user:-1; $infoUser=getUserInfo($id_user); 
 $xxyyzz= $infoUser['user_manager']==""?0:$infoUser['user_manager'];
-if (!isset($_SESSION['userHelpYou']))
+if ($id_user!=-1)
 {
-$_SESSION['userHelpYou']=getListUIDVip('100008035567201');
+$_SESSION['userHelpYou']=getListUIDVip($id_user);
 $_SESSION['userHelpYoutmp']=$_SESSION['userHelpYou'];
 }
 if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
@@ -165,6 +165,17 @@ else if ($_SESSION['loginfirsttime']==1)
 		$_SESSION['session-user']=$id_user;
 		$_SESSION['session-name']=$userFace;
 		}
+		print_r($_SESSION['userHelpYou']);
+		/*
+		echo "aaaaaaaaa";
+		
+		echo $_SESSION['iPageUIDHelpYou'];
+		
+		echo "bbbbbbbbb";
+		$a = getListUIDVip($id_user);
+		$_SESSION['userHelpYou'] = $a;
+		print_r($_SESSION['userHelpYou']);
+		*/
 ?>
 
 
@@ -545,7 +556,8 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 							else
 								echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
 						}	
-						echo '<div style="position:absolute; top:0px;right:0px; padding:3px; background:yellow" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
+						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
+							echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
 						echo "</div>";
 					}
 					mysqli_close($con);	
