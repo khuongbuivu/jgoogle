@@ -176,7 +176,7 @@ include_once("../../user.php");
 												<div class="innerWrap">
 													<div id="cmt-content">
 													<form method="get" action="" id="form-cmt">
-														<textarea name="add_comment_text" title="Nhập link của các bạn vào đây. Bắt đầu bằng http:// nhé!" content="Nhập link của các bạn vào đây. Bắt đầu bằng http:// nhé!" placeholder="Nhập link của các bạn vào đây. Bắt đầu bằng http:// nhé!" class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" id="linkbanner"></textarea>							
+														<textarea name="add_comment_text" title="Nhập link của các bạn vào đây. Bắt đầu bằng http:// nhé!" content="Nhập link của các bạn vào đây. Bắt đầu bằng http:// nhé!" placeholder="Nhập link của các bạn vào đây. Bắt đầu bằng http:// nhé!" class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize DOMControl_placeholder" id="linkbanner"></textarea>							
 													</form>
 													</div>
 													
