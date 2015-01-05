@@ -77,4 +77,48 @@ if(!isset($_SESSION)){
 
 		return $result;
 	}
+	function getUserSetting($user_id)
+	{
+		global $host;
+		global $user;
+		global $pass;
+		global $db;	
+		$con=mysqli_connect($host,$user,$pass,$db);
+		mysqli_set_charset($con, "utf8");
+		$result=mysqli_query($con,"select * from fs_setting where setting_uid='".$user_id."'");	
+		$usersetting=array();
+		if($result->num_rows>0)
+		{
+			$row = mysqli_fetch_array($result);			
+			$usersetting['setting_id']=$row['setting_id'];
+			$usersetting['setting_uid']=$row['setting_uid'];
+			$usersetting['setting_projectname']=$row['setting_projectname'];
+			$usersetting['setting_keywords']=$row['setting_keywords'];
+			$usersetting['setting_linkseo']=$row['setting_linkseo'];
+			$usersetting['setting_linkbl1']=$row['setting_linkbl1'];
+			$usersetting['setting_linkbl2']=$row['setting_linkbl2'];
+			$usersetting['setting_linkbl3']=$row['setting_linkbl3'];		
+			$usersetting['setting_linkg1']=$row['setting_linkg1'];		
+			$usersetting['setting_linkg2']=$row['setting_linkg2'];		
+			$usersetting['setting_linkg3']=$row['setting_linkg3'];		
+			$usersetting['setting_linkfb1']=$row['setting_linkfb1'];		
+			$usersetting['setting_totalclick']=$row['setting_totalclick'];		
+			$usersetting['setting_dailyclick']=$row['setting_dailyclick'];		
+			$usersetting['setting_cpc']=$row['setting_cpc'];
+		}
+		mysqli_close($con);
+		return $usersetting;
+	}
+	function checksharedplus($user_id)
+	{
+		global $host;
+		global $user;
+		global $pass;
+		global $db;	
+		$con=mysqli_connect($host,$user,$pass,$db);
+		mysqli_set_charset($con, "utf8");
+		$result=mysqli_query($con,"select * from fs_setting where user_id='".$user_id."'");	
+		mysqli_close($con);
+		return $usersetting;
+	}
 ?>
