@@ -159,7 +159,7 @@ include_once("../../user.php");
 								<li id="UFIList-Cmt-Input" class="UFIRow UFIAddComment UFILastComponent">
 							<div class="clearfix UFIMentionsInputWrap"><div class="lfloat">
 									<div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">
-																<img src="<?php echo $urlImgProfile;?>" class="img UFIActorImage _rx">
+																<img src="https://graph.facebook.com/<?php echo $_SESSION['session-user'];?>/picture">
 															</div></div>
 							<div>
 							<div class="UFIImageBlockContent _42ef _8u">
@@ -246,7 +246,7 @@ include_once("../../user.php");
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
-					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
+					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,4");	 //idBannerStart		
 					while ($row = mysqli_fetch_array($result))
 					{				
 						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
