@@ -102,106 +102,7 @@ setCookie("UIDFACESEO", idUser, 1);
   js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=394280457341947";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-
-<style>
-.listlinkwrapper {
-    background: url("images/css/bgprofile.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.cl:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 0;
-    visibility: hidden;
-}
-.cen {
-    margin: 0 auto;
-    position: relative;
-    width: 440px;
-}
-.cl {
-    display: block;
-}
-.listlinkwrapper .roundedlistlink {
-    float: left;
-    margin-left: 20px;
-    width: 420px;
-}
-ol {
-    counter-reset: li;
-    font: 15px 'Arial','lucida sans';
-    list-style: none outside none;
-    padding: 0;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-ol.roundedlistlink li {
-	position:relative;
-}
-.roundedlistlink a:before {
-    background: none repeat scroll 0 0 #87CEEB;
-    border: 0.3em solid #FFFFFF;
-    border-radius: 2em;
-    content: counter(li, decimal);
-    counter-increment: li;
-    font-weight: bold;
-    height: 2em;
-    left: -1.3em;
-    line-height: 2em;
-    margin-top: -1.3em;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transition: all 0.3s ease-out 0s;
-    width: 2em;
-}
-.roundedlistlink a {
-    background: none repeat scroll 0 0 #DDDDDD;
-    border-radius: 0.3em;
-    color: #444444;
-    display: block;
-    margin: 0.5em 0;
-    padding: 0.4em 0.4em 0.4em 2em;
-    position: relative;
-    text-decoration: none;
-    transition: all 0.3s ease-out 0s;
-}
-.roundedlistlink a:hover{
-	background: #eee;
-}
-
-.roundedlistlink a:hover:before{
-	-moz-transform: rotate(360deg);
-	-webkit-transform: rotate(360deg);
-	-moz-transform: rotate(360deg);
-	-ms-transform: rotate(360deg);
-	-o-transform: rotate(360deg);
-	transform: rotate(360deg);	
-}
-.gplusbutton {
-    opacity: 0.001;
-}
-.roundedlistlink div i:hover {
-  cursor: pointer !important;
-}
-.roundedlistlink .googleplus{
-	width: 100px; height:22px; float:left;
-	
-}
-.roundedlistlink .likefb{
-	width: 100px; height:22px; float:left;
-}
-
-.roundedlistlink .button{
-	width: 100px; height:22px; z-index:0; position:relative;
-}
-.roundedlistlink img {
-height:22px;
-margin-right:20px
-}
-</style>
-
-
-
+<link href="<?php echo $PATH_ROOT;?>css/profile.css" rel="stylesheet" type="text/css" />
 </head>	
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
 
@@ -225,154 +126,21 @@ exit();
 		<div>
 		<div id="mainContainer">
 			<div id="leftCol">
-				<div id="pagelet_welcome_box" data-referrer="pagelet_welcome_box">
-					<!-- login facebook -->
-					<?php if(LOCAL!="TRUE"): ?>		
-						<?php //print_r ($accountFace);  
-							if ($accountFace): ?>
-							<a href="<?php echo $logoutUrl; ?>">Logout</a>
-							<?php else: ?>
-							  <div> 
-                                                              <?php if (isset($_GET['admin']) && $_GET['admin']==3 ){?>
-                                                              <form name='dangnhap' action='' method='post'><input name='email' value=''/></br><input type="submit" value="Đăng nhập qua Email"/></form>
-<?php }; ?>
-								<a href="<?php echo $loginUrl; ?>" target="_blank"><img src="images/css/login-with-facebook.png" /></a>
-							  </div>
-							<?php endif ?>
-							<?php //print_r($_SESSION); // $_SESSION?>
-							<?php if ($accountFace): ?>      
-							  <!-- <h3>Your User Object (/me)</h3> -->
-							  <pre><?php //print_r($user_profile); ?></pre>
-							  
-							  <?php 
-							  if (isset($_GET['iduser'])) 
-									$urlImgProfile="https://graph.facebook.com/".$_GET['iduser']."/picture"; 
-							  else 
-									$urlImgProfile="https://graph.facebook.com/$accountFace/picture";?>
-							  <?php
-									saveUser($user_profile);
-							  ?>
-							<?php else: ?>
-							
-							  <strong><em>Đăng nhập ngay.</em></strong>
-							<?php endif ?>
-					<?php else:?>
-						<?php $urlImgProfile="https://graph.facebook.com/100001707050712/picture" ?>
-					<?php endif ?>
-					<?php  if ($id_user!=""){
-						$_SESSION['token-user']=md5($id_user);
-						$_SESSION['session-user']=$id_user;
-						$_SESSION['session-name']=$user_profile[name];
-						}
-					?>
-					<!-- end login facebook -->					
-					<a tabindex="-1" href="<?php echo $user_profile[link];?>"  class="fbxWelcomeBoxBlock _8o _8s lfloat">
-					<?php if (trim($urlImgProfile)!=""){?>
-					<img id="profile_pic_welcome_100001707050712" alt="" src="<?php echo $urlImgProfile;?>" class="_s0 fbxWelcomeBoxImg _rw img">
-					<?php };?>
-					
-					</a>
-					<?php if (trim($urlImgProfile)!=""){?>
-					<div class="_42ef"><div class="_6a prs"><div style="height:40px" class="_6a _6b"></div><div class="_6a _6b">					
-					<a href="<?php echo $user_profile[link];?>"  class="fbxWelcomeBoxName">
-					<?php
-						echo $user_profile[name]; 
-						
-					?>
-					</a>					
-					</div></div></div>
-					<?php };?>
-					<div id="nav" class="left1 leftbigger" role="navigation">
-<!--
-						<a href="http://giaiphapthuonghieu.vn/dang-ki-hoc-adwords-nang-cao/"><img src="http://faceseo.vn/images/event/phong-hoc-seo-giai-phap-thuong-hieu.jpg"  width="99%" /></a>
+              <ul class="icon-setting">
+                <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT; ?>')"><span class="icon-set icon-home"></span> </a></li>
+               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"><span class="icon-set icon-gplus"></span> </a></li>
+               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"><span class="icon-set icon-connect"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-share"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-acong"></span> </a></li>
+               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>');"><span class="icon-set icon-setpanel"></span> </a></li>
+               </ul>
 
-						<br/><br/>
--->
-						<div class="moduletable_menu">
-						 <h3><span class="backh"><span class="backh2"><span class="backh3">Chuyên mục</span></span></span></h3>
-						<ul class="menu">
-						<li class="item-506 current active"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT; ?>')">Trang chủ</a></li>
-						<li class="item-510"><a href="javascript:mylink(<?php echo $id_user; ?>);">Link của tôi</a></li>
-						<li class="item-483"><a href="javascript: openLinkMenu('modules/upload/banner.php');">Đăng kí banner</a></li>
-						<!--<li class="item-484"><a target="_blank" href="autoview.php">Tăng điểm tự động</a></li>-->
-						<li class="item-485"><a  href="javascript:loadlinks(<?php echo $id_user; ?>);">Link cần trả lễ</a></li>
-						<li class="item-485"><a  title="Chức năng vẫn còn đang phát triển" href="javascript: alert('Chức năng sẽ cập nhật sau 2 tháng nữa')">Quản lý chuyển trang</a></li>						
-						<li class="item-485"><a href="javascript: openLinkMenu('documentation/index.html')">Hướng Dẫn Sử Dụng</a></li>
-<li class="item-485"><a href="javascript:alert('Các bạn nên click bằng chuột trái để kiếm điểm. Khi click xong nhớ click vào hình con mắt để xem hệ thống đã thống kê bạn trong danh sách click chưa');">Tại sao không tăng điểm?</a></li>
-<li class="item-486"><a href="javascript:alert('1-4 sẽ kích hoạt chức năng này. Chỉ dành cho những user > 100 nghìn điểm.');">Tạo nhóm</a></li>
-
-<li class="item-486"><a href="javascript: openLinkMenu('http://www.alexa.com/siteinfo/faceseo.vn');">Kiểm tra alexa</a></li>
-						</ul>
-						</div>
-						
-						<!-- add group -->
-						<div class="moduletable_menu">
-						
-						<h3><span class="backh"><span class="backh2"><span class="backh3">Nhóm ............ <a href="javascript:alert('1-4 sẽ kích hoạt chức năng này. Chỉ dành cho những user > 100 nghìn điểm.');">Tạo nhóm</a></span>    </span></span></h3>
-						<ul class="menu">
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');">Hội like là lên lên là Seo</a></li>
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');">Hội chém +1</a></li>
-						
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=3"; ?>');">Hội tăng +1 Like vs Follow</a></li>
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=4"; ?>');">Liên minh trao đổi backlink</a></li>
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=5"; ?>');">Google Search and click web</a></li>
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=6"; ?>');">Cộng đồng Mass seo content</a></li>
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=7"; ?>');">Hội kiếm tiền Adsense</a></li>
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=8"; ?>');">Hội Seo nhà tui</a></li>
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=9"; ?>');">Hội tăng view web</a></li>
-						<li class="item-506 current"><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=10"; ?>');">Hội Trao đổi Like Facebook</a></li>
-						</ul>
-												
-						</div>
-						<!-- add group -->
-					</div>
-					
-					
-<div class="uiSideHeader"><strong>Sáng Lập FaceSeo</strong></div>
-					<div class="listmem mem1"><a target="_blank" href="https://www.facebook.com/linh.nguyen.52035772" rel="ttipsy" title=" Linh Nguyễn" ><img src="https://graph.facebook.com/100001707050712/picture"  style="margin-right:3px;" /></a></div>
-					<div class="listmem mem2"><a target="_blank" href="https://www.facebook.com/hd.isuit" rel="ttipsy" title="Hoàng Đoàn"><img src="https://graph.facebook.com/hd.isuit/picture"  style="margin-right:2px;" /></a></div>
-					<div class="listmem mem3"><a target="_blank" href="https://www.facebook.com/tohoaithanhtv?fref=ts" rel="ttipsy" title="Thanh Long" ><img src="https://graph.facebook.com/tohoaithanhtv/picture"  style="margin-right:3px;" /></a></div>
-					<div class="listmem mem4"><a target="_blank" href="https://www.facebook.com/kenzngulon" rel="ttipsy" title="Kenz" ><img src="https://graph.facebook.com/djkenzsmith/picture" style="margin-right:3px;"/></a></div>
-					<div class="uiSideHeader"><strong>Hỗ trợ FaceSeo</strong></div>
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/all.onlylove" rel="ttipsy" title="Tú Cao" ><img src="https://graph.facebook.com/100000454020972/picture"  style="margin-right:3px;"/> </a></div>
-
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/tuankhang.bui.3" rel="ttipsy" title="Tuấn Khang Bùi" ><img src="https://graph.facebook.com/tuankhang.bui.3/picture"  style="margin-right:3px;"/> </a></div>
-
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/seophamthi" rel="ttipsy" title="Phạm Thi" ><img src="https://graph.facebook.com/seophamthi/picture"  style="margin-right:3px;"/> </a></div>
-
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/NguyenVanVuong99" rel="ttipsy" title="Vượng An" ><img src="https://graph.facebook.com/NguyenVanVuong99/picture"  style="margin-right:3px;"/></a></div>
-					<br/>
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/hoanganit" rel="ttipsy" title="Hoàng An" ><img src="https://graph.facebook.com/hoanganit/picture"  style="margin-right:3px;"/> </a></div>
-
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/truong.seo.37" rel="ttipsy" title="Trường Thật Thà" ><img src="https://graph.facebook.com/truong.seo.37/picture"  style="margin-right:3px;"/> </a></div>
-
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/dongvanlanh" rel="ttipsy" title="Lanh Đồng" ><img src="https://graph.facebook.com/dongvanlanh/picture"  style="margin-right:3px;"/> </a></div>
-
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/Nhamvu.CEO" rel="ttipsy" title="Vũ Nhâm" ><img src="https://graph.facebook.com/Nhamvu.CEO/picture"  style="margin-right:3px;"/> </a></div>
-					<br/>
-					
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/nguyen.oanh.90260" rel="ttipsy" title="Nguyễn Oanh" ><img src="https://graph.facebook.com/nguyen.oanh.90260/picture"  style="margin-right:3px;"/> </a></div>				
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/coolkapok" rel="ttipsy" title="Đoàn Tuấn Vũ" ><img src="https://graph.facebook.com/coolkapok/picture"  style="margin-right:3px;"/> </a></div>
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/profile.php?id=100006843854065" rel="ttipsy" title="Thanh Tuyền" ><img src="https://graph.facebook.com/100006843854065/picture"  style="margin-right:3px;"/> </a></div>
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/vuongqcc" rel="ttipsy" title="Quốc Vương" ><img src="https://graph.facebook.com/vuongqcc/picture"  style="margin-right:3px;"/> </a></div> <br/>
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/risktien.nd" rel="ttipsy" title="Tiên Ngụy" ><img src="https://graph.facebook.com/risktien.nd/picture"  style="margin-right:3px;"/> </a></div>
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/dung.tsbd" rel="ttipsy" title="Dũng Tây Sơn" ><img src="https://graph.facebook.com/dung.tsbd/picture"  style="margin-right:3px;"/> </a></div>
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/vancaphvhc" rel="ttipsy" title="Alibaba A Cấp" ><img src="https://graph.facebook.com/vancaphvhc/picture"  style="margin-right:3px;"/> </a></div>
-					<div class="listmem mem5"><a target="_blank" href="https://www.facebook.com/an.duongnguyen" rel="ttipsy" title="Duong Nguyen An" ><img src="https://graph.facebook.com/an.duongnguyen/picture"  style="margin-right:3px;"/> </a></div>
-					<br/>
-					
-
-					<div class="fb-like-box" data-href="http://www.facebook.com/faceseo.vn" data-width="236px" data-height="308px"
+			<!-- 
+			<div class="fb-like-box" data-href="http://www.facebook.com/faceseo.vn" data-width="236px" data-height="308px"
 					  data-colorscheme="light" data-show-faces="true" data-header="true"  data-show-border="true"></div>
-					
-				</div>
-			<!--	
-			<a target="_blank" href="https://docs.google.com/forms/d/1TMAzaLf2rXzRXzMlnbLFHSxX0Ggv6TtSaBSd07rvfck/viewform?edit_requested=true"><img src="http://faceseo.vn/images/advertising/banner-dang-ki-ao-faceseo.jpg" /></a>
 			-->
 			</div>
-			
 			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
-				<div class="messagesystem"><span style="color:red">Update profile .</span></div>
 				<div id="contentArea" aria-describedby="pageTitle" role="main">					
 					<div id="infopoint">					
 						<div id="point">Điểm</div>
@@ -471,6 +239,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 					getprofile('<?php if(isset($_GET['iduser'])) echo $_GET['iduser']; else echo $_SESSION['session-user']; ?>');
 				</script >			
 				</div>
+				
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
 				<?php 
 				$btd = substr($infoUser['birthday'],0,5);
@@ -480,47 +249,42 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				?>
 				<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
 				<?php } ?>
-			<!--	<a href="javascript:confirmshare()"><img src="images/event/share-faceseo-500d.jpg" width="100%"/></a> -->
+				<a href="javascript:confirmshare()"><img src="images/event/share-co-viet-nam.png" width="100%"/></a> 
 			
 				<div class="uiSideHeader"><strong><a rel="ttipsy" title="Đăng kí banner ở menu trái. Hoạt động tích cực thì banner sẽ top">Nhà tài trợ</a></strong></div>
 <div id="sponser">
-<a onclick="return openUrlBanner(this.href);" title="Tuấn Khang Bùi" href="http://thietbi-vesinh.vn/"><img src="http://faceseo.vn/images/advertising/sponsor/tuan-khang-bui-thiet-bi-ve-sinh.jpg
-" style="max-width:100%"></a><br/>
-<a onclick="return openUrlBanner(this.href);" title="Ngô Duy Lâm" href="http://kiemsoatcannang.com/giam-can/bi-quyet-giam-can/cach-giam-can-hieu-qua-khoa-hoc-lanh-manh-nhat/"><img src="http://faceseo.vn/images/advertising/sponsor/giam-can-nang-nhanh.jpg
-" style="max-width:100%"></a><br/>
-<a onclick="return openUrlBanner(this.href);" title="Lăng Diệu Xương" href="http://canhothevistaquan2.com"><img src="http://faceseo.vn/images/advertising/sponsor/can-ho-the-vistaquan2.jpg
-" style="max-width:100%"></a><br/>
-
-<a onclick="return openUrlBanner(this.href);" title="Hoàng Anh Composite" href="http://www.composite.com.vn/vi/ghe-composite-frp"><img src="http://faceseo.vn/images/advertising/sponsor/hoang-anh-composite-ghe.jpg
-" style="max-width:100%"></a><br/>
-<a onclick="return openUrlBanner(this.href);" title="Ngô Long" href="http://cuacuong8.com/"><img src="http://faceseo.vn/images/advertising/sponsor/cua-thong-minh-LHD.jpg
-" style="max-width:100%"></a><br/><br/>
 </div>
-				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" >Banner miễn phí</a></strong></div><div style="float:right; width:20%"><a href="http://faceseo.vn/modules/upload/banner.php">Đăng</a></div></div>
+				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" >Banner miễn phí</a></strong></div><div style="float:right; width:20%"><a href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')">Đăng</a></div></div>
 
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
-					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart
+					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
 					while ($row = mysqli_fetch_array($result))
-					{
+					{				
+						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
 						$infosUser=getUserInfo($row['banner_user_id']);
-						if (strpos($row['banner_img'], "faceseo.vn/images")==true)
+						// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 						{
 							if (checkAvailableLinks($row['post_url'],$id_user))
 								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
 							else
 								echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
 						}	
+						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
+							echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
+						echo "</div>";
 					}
 					mysqli_close($con);	
 				?>
 				</div>
-				<div>Làm banner: <a href="https://www.facebook.com/dr.jayvuong">Jay Vuong</a></div>
+				
 				<div id="loadBannerFree"></div>
 				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
 			</div>
-		</div>		
+		
+				
+				</div>		
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
 		
