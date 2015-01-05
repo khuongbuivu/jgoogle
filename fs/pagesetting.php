@@ -48,9 +48,9 @@
     <div id="showindex" class="ccenter2">
       <div class="center">
                 									<script src="css/pages/showLoading.js" type="text/javascript"></script>
-<h2 class="center_title">Add / Edit Content  <img title="" alt="" src="css/pages/primary_objects.png"></h2>
+<h2 class="center_title">Thêm/Sửa Link  <img title="" alt="" src="css/pages/icon-add-setting.png"></h2>
 <div class="main-content">
-			<div>Here you can add or edit your content<br><span style="font-size: 10pt;"><span style="color: #ff0000;"></span></span></div>
+			<div>Link SEO, Link G+, Link Fanpage FB, Link Youtube<br><span style="font-size: 10pt;"><span style="color: #ff0000;"></span></span></div>
 	</div>
 <div class="add-site-form">
 	<script src="css/pages/jquery.validate.js" type="text/javascript"></script>
@@ -259,10 +259,10 @@ jQuery(function () {
 	
 		
 	<div class="edit_row">
+	<?php 
+	/*
 		<label class="col1">Type:</label>	
-		<!--selection-->
-		
-		
+		<!--selection-->	
 		<div class=" col2_wrap"> 
 	       <select onchange="changeSiteLinkField('SiteLinkName','SiteLinkNote','Page URL:','Username:','Video URL:','Username/Id:','ID / UserName:','Username:','Username / ID:','Enter your Facebook Page url','Type your twitter username only','YouTube video full url or video id','Enter Youtube channel username','exp. 104027532900 or +your_gplus_username','Type your pinterest username only','Type your facebook username or id','Type your myspace username only','Type your digg username or id only','Type your stumbleupon username or id only', 'Tweet ID:', 'Twitter tweet\'s id only (exmpl. 435757540987514880)', 'Text:', 'Twitter tweet\'s text, max 140 characters', 'URL:', 'Enter URL for sharing on facebook', 'Username:', 'Enter your Instagram username', 'Username:', 'Enter your Reverbnation username', 'Username:', 'Enter your SoundCloud username', 'Pin ID:', 'Enter your pinterest pin id', 'FB post url:', 'Enter facebook post url', 'G+ post url:', 'Enter Google plus post url', 'VK page URL:', 'Enter vk.com page url', 'VK group URL:', 'Enter vk.com group url', 'Username:', 'Enter your MySpace username', 'Video URL', 'YouTube video full url or video id', 'Photo URL:', 'Enter your Instagram Photo URL', 'Answer URL:', 'Enter your Ask.fm answer URL (exmpl. ask.fm/x/answer/1)', 'Post URL:', 'Enter your Google Plus Post URL', 'Username/ID:', 'Enter your Vine account ID or Username only', 'Post ID:', 'Enter your Vine post ID only', 'Post ID:', 'Enter your Vine post ID only', 'URL:', 'Enter your website url')" id="l_type" class="col2" name="type">
 	       					<option value="1">Facebook Likes</option>
@@ -564,25 +564,72 @@ jQuery(function () {
 		
 		<label class="col3">Select countries to promote your site / page.</label>
 	</div>
-	
+	*/
+	?>
 			<div id="siteTitle" class="edit_row">
 			<label class="col1">Title:</label>
 			<div class="col2_wrap">
 				<input type="text" value="" id="l_title" class="col2 ErrorField" name="title"><span class="ValidationErrors">Please enter only letters and numbers</span>
 			</div>
-			<label class="col3">Your Site/Page Title - must be only in letters and numbers</label>
+			<label class="col3">Tên dự án bạn đang SEO</label>
 		</div>
 		
-	
-	
+	<div class="edit_row">
+		<label id="SiteLinkName" class="col1">Link SEO:</label>
+		<div class="col2_wrap">
+							<input type="text" value="" id="l_url" class="col2" name="url">
+					</div>
+		<label id="SiteLinkNote" class="col3">Link chính cần SEO top</label>
+	</div>
+	<div class="edit_row">
+		<label id="SiteLinkName" class="col1">Backlink 1:</label>
+		<div class="col2_wrap">
+							<input type="text" value="" id="l_url" class="col2" name="url">
+					</div>
+		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
+	</div>
 		<div class="edit_row">
-		<label id="SiteLinkName" class="col1">Page URL:</label>
+		<label id="SiteLinkName" class="col1">Backlink 2:</label>
+		<div class="col2_wrap">
+							<input type="text" value="" id="l_url" class="col2" name="url">
+					</div>
+		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
+	</div>
+		<div class="edit_row">
+		<label id="SiteLinkName" class="col1">Backlink 3:</label>
+		<div class="col2_wrap">
+							<input type="text" value="" id="l_url" class="col2" name="url">
+					</div>
+		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
+	</div>
+	<div class="edit_row">
+		<label id="SiteLinkName" class="col1">Url post G+ 1:</label>
+		<div class="col2_wrap">
+							<input type="text" value="" id="l_url" class="col2" name="url">
+					</div>
+		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
+	</div>
+	<div class="edit_row">
+		<label id="SiteLinkName" class="col1">Url post G+ 2 :</label>
+		<div class="col2_wrap">
+							<input type="text" value="" id="l_url" class="col2" name="url">
+					</div>
+		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
+	</div>
+	<div class="edit_row">
+		<label id="SiteLinkName" class="col1">Url post G+ 3:</label>
+		<div class="col2_wrap">
+							<input type="text" value="" id="l_url" class="col2" name="url">
+					</div>
+		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
+	</div>
+	<div class="edit_row">
+		<label id="SiteLinkName" class="col1">Url Fanpage:</label>
 		<div class="col2_wrap">
 							<input type="text" value="" id="l_url" class="col2" name="url">
 					</div>
 		<label id="SiteLinkNote" class="col3">Enter your Facebook Page url</label>
 	</div>
-	
 		
 	<div class="edit_row">
 		<label class="col1">Total Clicks:</label>
@@ -625,7 +672,7 @@ jQuery(function () {
 	</form>
 
 </div>
-<div class="content_bottom">Note: The higher your Site's/Page's CPC, the more chance you have for it to be visible. You can add unlimited sites/pages, Add web page, or facebook, google plus, etc. pages. Increase your site/page media activity. Get more and more fans, followers and likes. All categories of site/page are allowed (cars, food, music, fanclub, artist, film) except adult content. All sites with adult title, link or content will be disabled.<br></div>
+<div class="content_bottom">Các bạn nhớ điều chỉnh, điều hướng link cần SEO mỗi ngày để đạt hiệu quả SEO cao nhất.<br></div>
 								</div>
     </div>
   </div>

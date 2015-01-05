@@ -1029,7 +1029,7 @@ background: none repeat scroll 0 0 #43464c;
 .ccenter2{
     margin: 0 auto;
     padding: 10px;
-    width: 555px;
+    width: 800px;
 }
 .track3 {
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);
@@ -1467,6 +1467,7 @@ background: none repeat scroll 0 0 #43464c;
 	margin-top: 12px;
 	text-align: left;
 	margin-left: 10px;
+	width:780px;
 }
 
 .center2 {
@@ -1567,7 +1568,7 @@ background: none repeat scroll 0 0 #43464c;
 	font-size: 17px;
 	float: left;
 	margin: 5px 10px 0 0;
-	width: 120px;
+	width: 200px;
 }
 
 .col2 {
@@ -1674,10 +1675,11 @@ background: none repeat scroll 0 0 #43464c;
 
 .content_bottom {
 	color: #919191;
-	font-size: 12px;
+	font-size: 16px;
 	margin-left: 28px;
 	margin-bottom: 61px;
 	display: inline-block;
+	margin-top: 10px;
 }
 
 .right {
