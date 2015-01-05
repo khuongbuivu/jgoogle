@@ -13,7 +13,6 @@ if(!isset($_SESSION)){
 		global $db;
 		$idUser			=	$_SESSION['session-user'];
 		$infosUserLog=getUserInfo($idUser);
-		echo "idUser".$idUser;
 		$idBannerStart = intval($_POST['currentPageBanner'])*10;
 		$con=mysqli_connect($host,$user,$pass,$db);
 		$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser order by point desc limit ".$idBannerStart.",10");	 //idBannerStart
