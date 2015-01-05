@@ -83,7 +83,7 @@ var timetmp=0;
 <!-- thanh -->
 <link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
-<link href="<?php echo $PATH_ROOT;?>favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 <!-- end thanh -->
 <!-- add scroll top comment -->
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>

@@ -1,5 +1,28 @@
 <?php
+require_once("config.php");
+global $host;
+global $user;
+global $pass;
+global $db;
 
+$con=mysqli_connect($host,$user,$pass,$db);
+$result=mysqli_query($con,"select * from atw_point");
+echo "xxx".$result->num_rows;
+$row = mysqli_fetch_array($result);
+/*
+echo $host." ".$user." ".$pass;
+$cnn = mysql_connect($host,$user,$pass) or die ("can not connect");
+mysql_select_db($db,$cnn);
+mysql_query("SET NAMES 'utf8'"); 
+$query='select * from atw_point';
+mysql_query($query);
+$row = mysqli_fetch_array($result);
+print_r($row );
+echo "Test connection".$pass;
+
+//mysqli_connect("localhost","faceseovn","faceseovn@","faceseovn");
+
+/*
 $timeSaved= substr("08:38:11 15/11/14",0,8);
 $oldday=substr("08:38:11 27/12/14",9);
 echo $oldday."<br/>";
@@ -14,7 +37,7 @@ $t= $t2 - $t1;
 echo $t;
 if ($oldday==$dayTime)
  echo "xxxxx";
-/*
+
 // Remove tag
 // $string = 'Here is your content with an image tag <a href=http://www.giaiphapthuonghieu.vn/dang-ki-khoa-hoc-seo  onclick="return openUrl(this.href,60);" >http://www.giaiphapthuonghieu.vn/dang-ki-khoa-hoc-seo</a><br /><a href=http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html  onclick="return openUrl(this.href,60,90829);" >http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-...</a>' ;
 $string = '<a class="highlighter" href="#" contenteditable="true"><b>Linh Nguyen</b>·cho e xin cái ổi</a>' ;
