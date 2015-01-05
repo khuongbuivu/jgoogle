@@ -25,3 +25,13 @@ CSS
 display:none !important;
 }
 -> $('#anaylyticsCountValue').css("display","block"); Sẽ không hiển thị được id anaylyticsCountValue
+
+for follow by ID
+$("div[id^='postcontent']").each(function(){
+		var id = parseInt(this.id.substring(11));
+		arrayIdPost[i]=id;
+		i=i + 1;
+	});
+Account 
+e-observer-815
+hmnD,QU8V}D4Qj
