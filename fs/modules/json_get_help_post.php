@@ -8,7 +8,7 @@ if(!isset($_SESSION)){
 	include_once("../config.php");
 	include_once("../fcomment.php");
 	include_once("../user.php");
-	$NUMPOSTLOAD = 5;
+	$NUMPOSTLOAD = 10;
 	global $host;
 	global $user;
 	global $pass;
