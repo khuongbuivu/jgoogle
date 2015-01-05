@@ -41,6 +41,7 @@ if ($newnumshare!=$oldnumshare)
 		$pointbonus		= 0;
 	}	
 	$con=mysqli_connect($host,$user,$pass,$db);
+	mysqli_set_charset($con, "utf8");
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 	$point=$pointbonus;
 	if ($result->num_rows>0)
