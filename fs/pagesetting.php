@@ -21,19 +21,19 @@
                 <li id="navJewels" class="navItem">
                   <div id="jewelContainer" class="notifNegativeBase notifCentered notifGentleAppReceipt">
                     <div id="fsAnaylyticsButton" class="uiToggle fbJewel west"> <a class="jewelButton icon-view"> <i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i> <span id="anaylyticsCountWrapper" class="jewelCount"><span id="anaylyticsCountValue">1</span></span> </a>
-                       
-                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng show ảnh</div></div>
+                     
+                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng thống kê lượt click trong ngày</div></div>
                     </div>
                     <div id="fbNotificationsJewel" class="uiToggle fbJewel west"> <a class="jewelButton icon-comment"> <i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i> <span id="notificationsCountWrapper" class="jewelCount"><span id="notificationsCountValue">1</span></span> </a>
                    
-                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng show ảnh</div></div>
+                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng thống kê comment mới</div></div>
                     </div>
                     <div id="iconmessagebutton" class="uiToggle fbJewel west"> <a class="jewelButton icon-message"> <i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i> <span id="messageCountWrapper" class="jewelCount"><span id="iconmessageCountValue">1</span></span> </a>
                     
-                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng show ảnh</div></div>
+                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng thống báo tin nhắn mới</div></div>
                     </div>
                     <div id="iconemailbutton" class="uiToggle fbJewel west"> <a class="jewelButton icon-email"> <i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i> <span id="emailCountWrapper" class="jewelCount"><span id="iconemailCountValue">1</span></span> </a>
-                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng show ảnh</div></div>
+                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng thông báo mới của hệ thống</div></div>
                     </div>
                   </div>
                 </li>
@@ -567,13 +567,19 @@ jQuery(function () {
 	*/
 	?>
 			<div id="siteTitle" class="edit_row">
-			<label class="col1">Title:</label>
+			<label class="col1">Tên dự án:</label>
 			<div class="col2_wrap">
 				<input type="text" value="" id="l_title" class="col2 ErrorField" name="title"><span class="ValidationErrors">Please enter only letters and numbers</span>
 			</div>
 			<label class="col3">Tên dự án bạn đang SEO</label>
 		</div>
-		
+	<div class="edit_row">
+		<label id="SiteLinkName" class="col1">Từ khóa SEO:</label>
+		<div class="col2_wrap">
+							<input type="text" value="" id="l_url" class="col2" name="url">
+					</div>
+		<label id="SiteLinkNote" class="col3">Những keywords cần SEO</label>
+	</div>	
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Link SEO:</label>
 		<div class="col2_wrap">

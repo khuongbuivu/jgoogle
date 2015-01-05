@@ -30,6 +30,7 @@
 			$post[$i]['user_id']=$row['post_iduser'];
 			$post[$i]['post_title']=$row['post_title'];
 			$infosUser=getUserInfo($post[$i]['user_id']);
+			$infosUserUserSetting=getUserSetting($post[$i]['user_id']);
 			$post[$i]['user_link']=$infosUser['user_link'];
 			$post[$i]['user_name']=$infosUser['user_name'];
 			$post[$i]['user_point']=$infosUser['user_point'];
@@ -40,6 +41,10 @@
 			$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			
 			$post[$i]['post_num_view']=getNumView($link);
 			$post[$i]['post_mintimeview']=$row['post_mintimeviewlink'];	
+			if (count($infosUserUserSetting) >0)
+				$post[$i]['linkgplus']=$infosUserUserSetting['setting_linkg1'];
+			else 
+				$post[$i]['linkgplus']="";
 			//info comment
 			$con=mysqli_connect($host,$user,$pass,$db);
 			mysqli_set_charset($con, "utf8");
