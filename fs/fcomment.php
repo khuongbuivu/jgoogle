@@ -20,7 +20,8 @@ if(!isset($_SESSION)){
 		$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
 		$con=mysqli_connect($host,$user,$pass,$db);
 		mysqli_set_charset($con, "utf8");
-		$cmt_content = addLinkUrl($cmt_content).$cmt_img;		
+		$arrtimes[0] = 300;
+		$cmt_content = addLinkUrl($cmt_content,'300',$_POST['idArt']).$cmt_img;		
 		if($cmt_content!="")
 			mysqli_query($con,"INSERT INTO atw_cmt_content (IdArticles,Content,Time,imgLogo, userId,name) VALUES (".$idArt.",'".$cmt_content."','".$datetime."','".$imgLogo."' , '".$_SESSION['session-user']."', '".$name."')");	
 		mysqli_close($con);
