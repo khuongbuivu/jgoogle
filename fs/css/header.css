@@ -160,6 +160,17 @@ ul {
     padding: 0px;
     width: 50px;
 }
+._5bfg .fbJewel a.avataruser {
+    height: 50px;
+    margin-top: 6px;
+    padding: 0px;
+    width: 50px;
+}
+.fbJewel a.avataruser {
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
 ._5bfg .fbJewel .jewelCount {
     background-color: transparent;
     border-radius: 0 0 0 0;
