@@ -117,7 +117,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://giaiphapthuonghieu.vn/dich-vu-seo-website-top-google/'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>Thông tin:<br/><strong><a href='http://giaiphapthuonghieu.vn/hoitthaoseo-hoi-thao-seo-tphcm/169-hoi-thao-seo-mini-cuoi-nam-2014-do-faceseo-to-chuc.html' target='_blank' title='hội thảo SEO'>hội thảo SEO mini</a></strong><a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://giaiphapthuonghieu.vn/dich-vu-seo-website-top-google/'><img src='https://jgoogle.googlecode.com/svn/trunk/linhnguyen.jpg' width='500px'/></a><h2>Thông tin:<br/><strong><a href='https://www.google.com/maps/place/Trung+T%C3%A2m+%C4%90%C3%A0o+T%E1%BA%A1o+SEO+-+C%C3%B4ng+Ty+SEO+FACESEO+TPHCM/@10.796311,106.64852,15z/data=!4m2!3m1!1s0x0:0xadec6d3b1068a06' target='_blank' title='đào tạo seo chất lượng'>đào tạo seo chất lượng</a></strong><a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
