@@ -61,7 +61,7 @@
 										if($row[4]=='In view')
 										{
 											if ($view>620)
-												echo " Closed:<b style='color:red'>Đang view không được F5, rớt mạng.</b><br/>";
+												echo " Closed:<b style='color:red'>Đang view không được F5, rớt mạng.Nhớ click bằng chuột trái.</b><br/>";
 											else
 												echo " Closed:<img title='Đang view' src='images/loading-google-smaill.gif' /><br/>";
 										}
@@ -70,7 +70,7 @@
 										if ($row[5]==0)
 										{
 											if ($view>620)
-												echo " Bạn không được + điểm khi phạm luật view<br/>";
+												echo " Bạn không được + điểm.<br/>";
 											else
 												echo " Timeview: ".$view." giây"."<br/>";
 										}
