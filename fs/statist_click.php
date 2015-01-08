@@ -70,7 +70,7 @@
 										if ($row[5]==0)
 										{
 											if ($view>620)
-												echo " Bạn không được + điểm khi phạm luật view";
+												echo " Bạn không được + điểm khi phạm luật view<br/>";
 											else
 												echo " Timeview: ".$view." giây"."<br/>";
 										}
