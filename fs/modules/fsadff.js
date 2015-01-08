@@ -60,8 +60,8 @@ function getCookie(cname) {
 var catchAllLinks = {
     // ORIGINAL_LINK: "http://giaiphapthuonghieu.vn/",
     // ORIGINAL_LINK: "file:///D:/fs/index.html",
-    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
-    BASE_URL: "http://localhost/faceseo.vn/fs.php",
+    ORIGINAL_LINK: "http://faceseo.vn/",
+    BASE_URL: "http://faceseo.vn/fs.php",
     // BASE_URL: "http://whatstek.com/8f2ab912c2f5d700e6feaa28ef5c7c71.php",
     ID_USER: "100001707050712",
     COOKIE_NAME: "SID",
@@ -302,12 +302,6 @@ var catchAllLinks = {
 			tabIndex = gBrowser.tabContainer.selectedIndex;
 			urlCurrentTab = gBrowser.currentURI.spec;
 		}
-		// alert(origEl.tagName);
-		if (origEl.tagName=="DIV")
-		{
-			//alert(origEl.className());
-			// alert(origEl.getAttribute("class"));
-		}
 		var iiii 	= origEl.toString().search("@@faceseo@@");
 		if ((urlCurrentTab.indexOf(catchAllLinks.ORIGINAL_LINK)>-1) && (origEl.tagName === 'A' || origEl.tagName === 'a'))
 		{
@@ -494,10 +488,10 @@ var catchAllLinks = {
     },
     updateServerSideWithParams: function(urlClicked, idUser, timeOpen, timeClose, timeView, linkText, parent) {
         if (catchAllLinks.invocation) {
-            var requestUrl = catchAllLinks.BASE_URL + '?urlClicked='+ encodeURIComponent(urlClicked) +'&idUser=' + encodeURIComponent(idUser) + 
+            var requestUrl = catchAllLinks.BASE_URL + '?urlClicked=%20'+ encodeURIComponent(urlClicked) +'&idUser=' + encodeURIComponent(idUser) + 
             '&timeOpend=' + encodeURIComponent(timeOpen) +'&timeClose=' + encodeURIComponent(timeClose) + 
             '&timeView='+ encodeURIComponent(timeView) + '&linkText=' + encodeURIComponent(linkText) + 
-            '&parent=' + encodeURIComponent(parent)+ '&deepbacklink=1';
+            '&parent=%20' + encodeURIComponent(parent)+ '&deepbacklink=1';
             console.log("updateServerSideWithParams With URL: " + requestUrl);
             console.log("Update Server Side With URL: " + requestUrl);
             if(catchAllLinks.isIE8) {
@@ -614,5 +608,5 @@ window.addEventListener('click', function(event) {
 // debug firefox https://developer.mozilla.org/en-US/docs/Tools/Browser_Console
 // https://developer.mozilla.org/en-US/docs/Tools/Tools_Toolbox#Advanced_settings
 // debug firefox -jsconsole
-// test https://plus.google.com/share?url={http://giaiphapthuonghieu.vn}
+
 
