@@ -40,7 +40,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
+		var uri = ios.newURI("http://faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -63,7 +63,7 @@ var catchAllLinks = {
     ORIGINAL_LINK: "http://faceseo.vn/",
     BASE_URL: "http://faceseo.vn/fs.php",
     // BASE_URL: "http://whatstek.com/8f2ab912c2f5d700e6feaa28ef5c7c71.php",
-    ID_USER: "100001707050712",
+    ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 50,// 300 - 5p
     isIE8: false,
@@ -345,7 +345,7 @@ var catchAllLinks = {
 					console.log("dcm33333333");
 					event.stopPropagation();
 				}
-				catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.toString(), origEl.innerHTML.trim(), event);
+				catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.toString(), catchAllLinks.removeTag(origEl.innerHTML.trim()), event);
 			}		
 			else
 			{
@@ -363,7 +363,7 @@ var catchAllLinks = {
 				arrLinks.splice(tabIndex,0,linkObject);
 			}
         } else if(origEl.parentNode.tagName === 'A' || origEl.parentNode.tagName === 'a') {
-			catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.parentNode.toString(), origEl.parentNode.innerHTML.trim(), event);
+			catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.parentNode.toString(), catchAllLinks.removeTag(origEl.parentNode.innerHTML.trim()), event);
         }		
     },
 	checkUrlAvailable: function (url) {
@@ -562,6 +562,12 @@ var catchAllLinks = {
 			  return false;
 			}
 		  }
+	},
+	removeTag: function (str)
+	{
+			var temp = document.createElement("div");
+			temp.innerHTML = str;
+			return temp.textContent || temp.innerText;
 	}
 	
 };
@@ -608,5 +614,5 @@ window.addEventListener('click', function(event) {
 // debug firefox https://developer.mozilla.org/en-US/docs/Tools/Browser_Console
 // https://developer.mozilla.org/en-US/docs/Tools/Tools_Toolbox#Advanced_settings
 // debug firefox -jsconsole
-
+// Remove tags http://stackoverflow.com/questions/1499889/remove-html-tags-in-javascript-with-regex
 
