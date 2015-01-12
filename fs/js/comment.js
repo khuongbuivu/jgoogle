@@ -677,7 +677,7 @@ function saveClick(url,urlClicked,idUser,timeOpend,timeClose,timeView)
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 		if (!window.iswiewing)
-			window.location.assign(root_path);
+			window.location.assign(window.location.href);
 	}
   };
   xmlhttp.send(params);
@@ -830,6 +830,43 @@ function getOtherPosts(idgroup){
 					htmlnewpost=showPost(json);				
 					if (htmlnewpost != "") {
 					$(htmlnewpost).hide().appendTo("#wrappercontentpost").show('fade');
+					$('div#last_msg_loader').empty();
+					};
+					initArrayIdPost();
+				}
+			}
+					  
+	}); 
+	getListUserViewing();
+	
+};
+function getOtherUrlsProfile(idUser){
+	
+	var lastPostDisplay=-1;
+	var idgroup=0;
+	var url = root_path + "modules/json_get_other_url_profile.php?iduser="+idUser;
+	if ($("#wrappercontentpost li.profileurlid:last-child").length >0)	
+	{
+		lastPostDisplay = $("#wrappercontentpost li.profileurlid:last-child").attr("id");
+		lastPostDisplay=lastPostDisplay.substring(12);	
+	};
+	if (FaceSeo.search(domain)<0)
+		return;
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {lastPostDisplay:lastPostDisplay},
+			dataType: "json",
+			success: function(json) {
+				var htmlnewpost='';
+				var htmlInputForm='';
+				var url;
+				var titleStastic='Thống kê Click hôm nay';
+				var classtitlePopup='titlepopup';
+				if(json.length>0){
+					htmlnewpost=showOtherUrlprofile(json);				
+					if (htmlnewpost != "") {
+					$(htmlnewpost).hide().appendTo("#wrappercontentpost ol").show('fade');
 					$('div#last_msg_loader').empty();
 					};
 					initArrayIdPost();
@@ -1544,7 +1581,6 @@ function getprofile(idUser)
 			dataType: "json",
 			success: function(links) {
 				var htmlnewpost='';
-				var htmlInputForm='';
 				if (links.length>0)
 				{
 					htmlnewpost+="<pre><b>   Hãy click mạnh tay giúp nào. </b></pre>";
@@ -1552,14 +1588,14 @@ function getprofile(idUser)
 					htmlnewpost+='<div class="listlinkwrapper"><div class="cen cl"><ol class="roundedlistlink">';
 					for (var i=0;i<links.length;i++)
 					{		
-						shortlink = links[i];
+						shortlink = links[i].url;
 						if (shortlink.length > 75)
-							shortlink = links[i].substring(0,75)+'...';					
-						htmlnewpost+="<li>";						
-						htmlnewpost+='<a href="' + links[i] + '" onclick="return openUrl1(this.href);">' + shortlink + '</a>';
-						htmlnewpost+='<div style="float:left"><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(links[i])+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(links[i])+' \'), 5000); return false;"'  +  ' href="#" title="Ai đang view cho bạn?"  ><img src="images/css/view-icon.gif" width="18px"/></i></div>';						
-						htmlnewpost+=' <div class="googleplus"><div class="button"> <iframe scrolling="no" frameborder="0" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" title="+1" allowtransparency="true" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + links[i] + '&amp;parent=' + links[i] +'" id="iframegplus90781"></iframe><div class="gplusbutton" style="position:absolute; left:0;top:0; width:95px;height:22px;z-index:1"><i onclick="confirmgplus(\'' + links[i]+ '\',90781);" >+10 điểm </i></div></div></div>';						
-						htmlnewpost+=' <div class="likefb"><div class="button"> <iframe scrolling="no" id="f5d7a6c12fc5aa" name="f1993637d3d9f4c" style="border: medium none; overflow: hidden; height: 20px; width: 99px;" class="fb_ltr" src="http://www.facebook.com/plugins/like.php?api_key=296894317070497&amp;locale=vi_VN&amp;sdk=joey&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D24%23cb%3Df15eb1210affe44%26origin%3Drelation%3Dparent.parent&amp;href=' + links[i] + '&amp;node_type=link&amp;width=120&amp;layout=button_count&amp;colorscheme=light&amp;show_faces=false&amp;send=false&amp;extended_social_context=false"></iframe><div class="gplusbutton" style="position:absolute; left:0;top:0; width:95px;height:22px;z-index:1"><i onclick="confirmgplus(\'http://www.muahoatuoi.com.vn/\',90781);" >+10 điểm </i></div></div></div>';						
+							shortlink = links[i].url.substring(0,75)+'...';					
+						htmlnewpost+="<li class='profileurlid' id='profileurlid"+ links[i].id +"'>";						
+						htmlnewpost+='<a href="' + links[i].url + '" onclick="return openUrl1(this.href);">' + shortlink + '</a>';
+						htmlnewpost+='<div style="float:left"><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(links[i].url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(links[i].url)+' \'), 5000); return false;"'  +  ' href="#" title="Ai đang view cho bạn?"  ><img src="images/css/view-icon.gif" width="18px"/></i></div>';						
+						htmlnewpost+=' <div class="googleplus"><div class="button"> <iframe scrolling="no" frameborder="0" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" title="+1" allowtransparency="true" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + links[i].url + '&amp;parent=' + links[i].url +'" id="iframegplus90781"></iframe><div class="gplusbutton" style="position:absolute; left:0;top:0; width:95px;height:22px;z-index:1"><i onclick="confirmgplus(\'' + links[i].url+ '\',90781);" >+10 điểm </i></div></div></div>';						
+						htmlnewpost+=' <div class="likefb"><div class="button"> <iframe scrolling="no" id="f5d7a6c12fc5aa" name="f1993637d3d9f4c" style="border: medium none; overflow: hidden; height: 20px; width: 99px;" class="fb_ltr" src="http://www.facebook.com/plugins/like.php?api_key=296894317070497&amp;locale=vi_VN&amp;sdk=joey&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D24%23cb%3Df15eb1210affe44%26origin%3Drelation%3Dparent.parent&amp;href=' + links[i].url + '&amp;node_type=link&amp;width=120&amp;layout=button_count&amp;colorscheme=light&amp;show_faces=false&amp;send=false&amp;extended_social_context=false"></iframe><div class="gplusbutton" style="position:absolute; left:0;top:0; width:95px;height:22px;z-index:1"><i onclick="confirmgplus(\'http://www.muahoatuoi.com.vn/\',90781);" >+10 điểm </i></div></div></div>';						
 						htmlnewpost+='<div style="clear:both"></div>';						
 						htmlnewpost+='</li>';						
 					};
@@ -1569,6 +1605,33 @@ function getprofile(idUser)
 		}
 	}); 
 };
+
+
+function showOtherUrlprofile(links)
+{
+	if (FaceSeo.search(domain)<0)
+		return;
+	var htmlnewpost='';
+	if (links.length>0)
+	{
+		var shortlink='';
+		for (var i=0;i<links.length;i++)
+		{		
+			shortlink = links[i].url;
+			if (shortlink.length > 75)
+				shortlink = links[i].url.substring(0,75)+'...';					
+			htmlnewpost+="<li class='profileurlid' id='profileurlid"+ links[i].id +"'>";						
+			htmlnewpost+='<a href="' + links[i].url + '" onclick="return openUrl1(this.href);">' + shortlink + '</a>';
+			htmlnewpost+='<div style="float:left"><i onclick="TINY.box.show({url:'+ "'statist_click.php?link="+encodeURIComponent(links[i].url)+"',width:500,height:500},'"+ titleStastic + "','" + classtitlePopup + "'); refreshIntervalId = setInterval(startTime(' statist_click.php','" +encodeURIComponent(links[i].url)+' \'), 5000); return false;"'  +  ' href="#" title="Ai đang view cho bạn?"  ><img src="images/css/view-icon.gif" width="18px"/></i></div>';						
+			htmlnewpost+=' <div class="googleplus"><div class="button"> <iframe scrolling="no" frameborder="0" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" title="+1" allowtransparency="true" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + links[i].url + '&amp;parent=' + links[i].url +'" id="iframegplus90781"></iframe><div class="gplusbutton" style="position:absolute; left:0;top:0; width:95px;height:22px;z-index:1"><i onclick="confirmgplus(\'' + links[i].url+ '\',90781);" >+10 điểm </i></div></div></div>';						
+			htmlnewpost+=' <div class="likefb"><div class="button"> <iframe scrolling="no" id="f5d7a6c12fc5aa" name="f1993637d3d9f4c" style="border: medium none; overflow: hidden; height: 20px; width: 99px;" class="fb_ltr" src="http://www.facebook.com/plugins/like.php?api_key=296894317070497&amp;locale=vi_VN&amp;sdk=joey&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D24%23cb%3Df15eb1210affe44%26origin%3Drelation%3Dparent.parent&amp;href=' + links[i].url + '&amp;node_type=link&amp;width=120&amp;layout=button_count&amp;colorscheme=light&amp;show_faces=false&amp;send=false&amp;extended_social_context=false"></iframe><div class="gplusbutton" style="position:absolute; left:0;top:0; width:95px;height:22px;z-index:1"><i onclick="confirmgplus(\'http://www.muahoatuoi.com.vn/\',90781);" >+10 điểm </i></div></div></div>';						
+			htmlnewpost+='<div style="clear:both"></div>';						
+			htmlnewpost+='</li>';						
+		};
+	}
+	return htmlnewpost;
+};
+
 function getListUserViewing()
 {
 	var url=root_path + "modules/json_list_user_viewing.php";

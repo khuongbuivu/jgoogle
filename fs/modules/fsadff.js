@@ -579,8 +579,10 @@ window.addEventListener('load', function load(event) {
 window.addEventListener('click', function(event) {	
    catchAllLinks.handleWindowClick(event);
 }, false);
-// MyExtension.tab.contentDocument.getElementsByClassName("class");
 
+// Loi: view l link tat link đang view backlink. Mở tab mới với Google, search click vào link. Tự động đóng tab đang mở [chưa fix]
+
+// MyExtension.tab.contentDocument.getElementsByClassName("class");
 //info element dom http://stackoverflow.com/questions/7723188/jquery-what-properties-can-i-use-with-event-target
 //https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Tabbed_browser
 //https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/tab#Properties

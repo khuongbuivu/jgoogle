@@ -238,53 +238,56 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				</div>				
 				<script >
 					getprofile('<?php if(isset($_GET['iduser'])) echo $_GET['iduser']; else echo $_SESSION['session-user']; ?>');
-				</script >			
-				</div>
+				</script >	
+							<div style="padding:5px; text-align:center; margin: 5 105px; background:#D8DFEA;color:#3B5998;width:96%;"><a onclick="loadOtherUrlsProfile();">Xem thêm</a></div>					
+							<div id="last_msg_loader"></div>
+						</div>
 				
-				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
-				<?php 
-				$btd = substr($infoUser['birthday'],0,5);
-				$today=date("m/d");
-				$checkbtd = false;	
-				if ($today==$btd){
-				?>
-				<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
-				<?php } ?>
-				<a href="javascript:confirmshare()"><img src="images/event/share-co-viet-nam.png" width="100%"/></a> 
-			
-				<div class="uiSideHeader"><strong><a rel="ttipsy" title="Đăng kí banner ở menu trái. Hoạt động tích cực thì banner sẽ top">Nhà tài trợ</a></strong></div>
-<div id="sponser">
-</div>
-				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" >Banner miễn phí</a></strong></div><div style="float:right; width:20%"><a href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')">Đăng</a></div></div>
+				
+						<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
+						<?php 
+						$btd = substr($infoUser['birthday'],0,5);
+						$today=date("m/d");
+						$checkbtd = false;	
+						if ($today==$btd){
+						?>
+						<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
+						<?php } ?>
+						<a href="javascript:confirmshare()"><img src="images/event/share-co-viet-nam.png" width="100%"/></a> 
+					
+						<div class="uiSideHeader"><strong><a rel="ttipsy" title="Đăng kí banner ở menu trái. Hoạt động tích cực thì banner sẽ top">Nhà tài trợ</a></strong></div>
+						<div id="sponser">
+						</div>
+						<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" >Banner miễn phí</a></strong></div><div style="float:right; width:20%"><a href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')">Đăng</a></div></div>
 
-				<div id="bannerfree">
-				<?php
-					$con=mysqli_connect($host,$user,$pass,$db);
-					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
-					while ($row = mysqli_fetch_array($result))
-					{				
-						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
-						$infosUser=getUserInfo($row['banner_user_id']);
-						// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
-						{
-							if (checkAvailableLinks($row['post_url'],$id_user))
-								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
-							else
-								echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
-						}	
-						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
-							echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
-						echo "</div>";
-					}
-					mysqli_close($con);	
-				?>
+						<div id="bannerfree">
+						<?php
+							$con=mysqli_connect($host,$user,$pass,$db);
+							$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
+							while ($row = mysqli_fetch_array($result))
+							{				
+								echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
+								$infosUser=getUserInfo($row['banner_user_id']);
+								// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
+								{
+									if (checkAvailableLinks($row['post_url'],$id_user))
+										echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
+									else
+										echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
+								}	
+								if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
+									echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
+								echo "</div>";
+							}
+							mysqli_close($con);	
+						?>
+						</div>
+						
+						<div id="loadBannerFree"></div>
+						<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
+					</div>
+				
 				</div>
-				
-				<div id="loadBannerFree"></div>
-				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
-			</div>
-		
-				
 				</div>		
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
@@ -697,7 +700,7 @@ $(document).ready(function(){
 		  		
 		$(window).scroll(function(){		
 		  if  (($(window).scrollTop() == $(document).height() - $(window).height()) && (isloading==false) ){			
-			loadOtherPost() ;
+			loadOtherUrlsProfile() ;
 			loadOtherBanner();
 		  }
 		});	
@@ -717,11 +720,11 @@ function loadOtherBanner()
 		isloading = false;
 	});
 }
-function loadOtherPost() 
+function loadOtherUrlsProfile() 
 { 		  
 	isloading = true;
 	$('div#last_msg_loader').html('<img src="images/css/loading-google.gif" />');
-	getOtherPosts(<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>);
+	getOtherUrlsProfile('<?php echo $_GET['iduser']; ?>');
 };
 $(".postcontent").on('mouseover',function() {
 });

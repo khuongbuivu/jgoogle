@@ -9,14 +9,15 @@
 	$idUser = $_POST['idUser'];
 	$con=mysqli_connect($host,$user,$pass,$db);
 	mysqli_set_charset($con, "utf8");
-	$result=mysqli_query($con,"select url from awt_list_url where iduser=".$idUser." order by id DESC limit 20");
+	$result=mysqli_query($con,"select id,url from awt_list_url where iduser=".$idUser." order by id DESC limit 20");
 	$listUrl=array();
 	$i=0;
 	while ($row = mysqli_fetch_array($result))
 	{
 		if (checkAvailableLinks($row['url'],$idUser))
 		{
-			$listUrl[$i]=$row['url'];
+			$listUrl[$i]['id']=$row['id'];
+			$listUrl[$i]['url']=$row['url'];
 			$i++;
 		}
 	}
