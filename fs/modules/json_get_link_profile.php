@@ -1,6 +1,7 @@
 <?php
 	include_once("../config.php");
 	include_once("../system/function.php");
+	include_once("../fcomment.php");
 	global $host;
 	global $user;
 	global $pass;
@@ -13,11 +14,14 @@
 	$i=0;
 	while ($row = mysqli_fetch_array($result))
 	{
-		$listUrl[$i]=$row['url'];
-		$i++;
+		if (checkAvailableLinks($row['url'],$idUser))
+		{
+			$listUrl[$i]=$row['url'];
+			$i++;
+		}
 	}
 	mysqli_close($con);	
 	// print_r($listUrl);
 	echo json_encode($listUrl);
-	?>	
+?>	
 	
