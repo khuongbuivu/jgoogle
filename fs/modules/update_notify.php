@@ -7,7 +7,7 @@
 	global $db;
 	$id_user= $_POST['idUser'];
 	$con=mysqli_connect($host,$user,$pass,$db);
-	$result_id_comment=mysqli_query($con,"select notify_id_comment from atw_notify where notify_user_id=".$id_user. " order by notify_id desc limit 1");		
+	$result_id_comment=mysqli_query($con,"select notify_id_comment from atw_notify where notify_user_id=".$id_user. " order by notify_id_comment desc limit 1");		
 	$idLastCommentOfUser=0;
 	if($result_id_comment->num_rows>0)
 	{
