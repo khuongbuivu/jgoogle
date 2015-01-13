@@ -834,6 +834,8 @@ function getOtherPosts(idgroup){
 					};
 					initArrayIdPost();
 				}
+				else
+					$('div#last_msg_loader').html('');
 			}
 					  
 	}); 
@@ -871,6 +873,8 @@ function getOtherUrlsProfile(idUser){
 					};
 					initArrayIdPost();
 				}
+				else
+					$('div#last_msg_loader').html('');
 			}
 					  
 	}); 
@@ -910,6 +914,8 @@ function getNewPosts(idgroup){
 					$('div#last_msg_loader').empty();					
 					initArrayIdPost();
 				}
+				else
+					$('div#last_msg_loader').html('');
 			}					  
 	}); 
 	getListUserViewing();	
