@@ -70,6 +70,15 @@ if(!isset($_SESSION)){
 		echo "3333";
 		exit();
 	}
+	if ($idgroup==1)
+	{
+	
+		if (strpos($textcomment,"google.com.vn")<-1)
+		{
+			echo "googlesearchbox";
+			exit();
+		}
+	}
 	if (count($link11)>0 )
 	{		
 			foreach($link11 as $url) {

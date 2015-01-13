@@ -58,7 +58,8 @@ $('.postbutton').click( function(){
 	{
 				if(abc.search("3333")>-1)
 					alert("Chỉ post tối đa 3 link");
-					
+				if(abc.search("googlesearchbox")>-1)
+					alert("Muốn tạo Google Search Box bạn nên post link search dạng: https://www.google.com.vn/#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+faceseo .");	
 				if(abc.search("-1")>-1)
 					alert("Cách nhau 5p post 1 lần");
 				subPointPost(idUser,sidUser,textcomment);	
