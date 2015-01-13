@@ -4,7 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="css/pages/jquery.min.js"></script>
 <script type="text/javascript" src="css/pages/jquery-ui.min.js"></script>
-<script>jQuery=$.noConflict();</script>
+<script>
+jQuery=$.noConflict();
+var root_path = "http://localhost/faceseo.vn/";
+</script>
 <link rel="stylesheet" href="css/pagesetting.css" type="text/css" />
 <link href="css/pages/jquery-ui.css" rel="stylesheet" type="text/css" />
 </head>
@@ -235,7 +238,35 @@ jQuery(function () {
 			jQuery("#l_daily").attr("disabled", "disabled");
 			jQuery("#l_daily").val("");
 		});
+		jQuery('.save').click( function(){
+			var nameproject= jQuery('#l_title').val();
+			var keywords= jQuery('#l_keywrods').val();
+			var urls= jQuery('#l_url').val();
+			var bl1= jQuery('#l_bl1').val();
+			var bl2= jQuery('#l_bl2').val();
+			var bl3= jQuery('#l_bl3').val();
+			var gplus1= jQuery('#l_gplus1').val();
+			var gplus2= jQuery('#l_gplus2').val();
+			var gplus3= jQuery('#l_gplus3').val();
+			var fanpage= jQuery('#l_fanpage').val();
+			var clicks= jQuery('#l_clicks').val();
+			var daily= jQuery('#l_daily').val();
+			var cpc= jQuery('#l_cpc').val();
+			alert(cpc);
+			jQuery.ajax({
+				type: "POST",
+				url: root_path+"modules/add_setting.php",
+				data: { nameproject:nameproject, urls:urls, keywords:keywords, bl1:bl1, bl2:bl2, bl3: bl3,gplus1:gplus1,gplus2:gplus2,gplus3:gplus3,fanpage:fanpage,clicks:clicks,daily:daily,cpc:cpc},	
+				success : function(abc)
+				{
+							alert(abc);
+				}	
+			}).done(function( msg ) {
+			});
+			
+		});
 	});
+	
 </script>
 
 
@@ -576,7 +607,7 @@ jQuery(function () {
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Từ khóa SEO:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="" id="l_keywrods" class="col2" name="keywrods">
 					</div>
 		<label id="SiteLinkNote" class="col3">Những keywords cần SEO</label>
 	</div>	
@@ -590,49 +621,49 @@ jQuery(function () {
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Backlink 1:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="" id="l_bl1" class="col2" name="backlink1">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
 	</div>
 		<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Backlink 2:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="" id="l_bl2" class="col2" name="backlink2">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
 	</div>
 		<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Backlink 3:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="" id="l_bl3" class="col2" name="backlink3">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Url post G+ 1:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="" id="l_gplus1" class="col2" name="gplus1">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Url post G+ 2 :</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="" id="l_gplus2" class="col2" name="gplus2">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Url post G+ 3:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="" id="l_gplus3" class="col2" name="gplus3">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Url Fanpage:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="" id="l_fanpage" class="col2" name="fanpage">
 					</div>
 		<label id="SiteLinkNote" class="col3">Enter your Facebook Page url</label>
 	</div>
@@ -672,8 +703,8 @@ jQuery(function () {
 	</div>
         
 		<div class="edit_form_bottom">
-		<label class="cancel"><a href="/my_sites">Cancel</a></label>
-		<input type="submit" class="save btn btn2" value="Save Changes" name="save">
+		<label class="cancel"><a href="/my_sites">Hủy</a></label>
+		<button type="button" class="save btn btn2" value="Lưu" name="save" />Lưu</button>
 	</div>
 	</form>
 
