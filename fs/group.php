@@ -78,6 +78,7 @@ var timetmp=0;
 <!-- end point -->
 <!-- thanh -->
 <link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
 <link href="<?php echo $PATH_ROOT;?>favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 <!-- end thanh -->
