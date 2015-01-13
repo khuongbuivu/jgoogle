@@ -4,12 +4,66 @@ global $host;
 global $user;
 global $pass;
 global $db;
+function get_likes($url) {
+ 
+    $json_string = getPage('http://graph.facebook.com/?ids=' . $url);
+	print_r($json_string);
+    $json = json_decode($json_string, true);
+	
+    return intval( $json[$url]['shares'] );
+}
+function getPage($url){
+    if(!isset($timeout))
+        $timeout=200;
+    $curl = curl_init(); 
+    curl_setopt ($curl, CURLOPT_URL, $url);
+    curl_setopt ($curl, CURLOPT_USERAGENT, sprintf("Mozilla/%d.0",rand(4,5)));
+    curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt ($curl, CURLOPT_SSL_VERIFYPEER, 0);
+	curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+    $html = curl_exec ($curl);
+    curl_close ($curl);
+    return $html;
+};
+function facebook_count($url){
+ 
+    // Query in FQL
+    $fql  = "SELECT share_count, like_count, comment_count ";
+    $fql .= " FROM link_stat WHERE url = '$url'";
+ 
+    $fqlURL = "https://api.facebook.com/method/fql.query?format=json&query=" . urlencode($fql);
+	echo  $fqlURL;
+    // Facebook Response is in JSON
+    $response = getPage($fqlURL);
+	echo "response".$response;
+    return json_decode($response);
+ 
+}
+ 
+$fb = get_likes('https://www.facebook.com/digital.inspiration');
+ 
+// facebook share count
+echo $fb[0]->share_count;
+ 
+// facebook like count
+echo $fb[0]->like_count;
+ 
+// facebook comment count
+echo $fb[0]->comment_count;
 
+/*
 $con=mysqli_connect($host,$user,$pass,$db);
 $result=mysqli_query($con,"select * from atw_point");
 echo "xxx".$result->num_rows;
 $row = mysqli_fetch_array($result);
-/*
+
+$string="             thamtu tu";
+$bbb=trim($string);
+// $bbb=$string;
+echo "ccccc".$bbb."<br/>";
+
+echo strcmp("https://www.google.com.vn/#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+faceseo","https://www.google.com.vn/#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+facese");
+
 echo $host." ".$user." ".$pass;
 $cnn = mysql_connect($host,$user,$pass) or die ("can not connect");
 mysql_select_db($db,$cnn);
@@ -112,4 +166,6 @@ echo $pos;
 echo substr($mystring,0,$pos);
 */
 
+// http://johndyer.name/getting-counts-for-twitter-links-facebook-likesshares-and-google-1-plusones-in-c-or-php/
+// http://stackoverflow.com/questions/8003948/how-can-i-get-the-number-of-share-for-a-post-on-a-fan-page
 ?>
