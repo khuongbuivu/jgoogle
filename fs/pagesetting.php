@@ -10,6 +10,7 @@ var root_path = "http://localhost/faceseo.vn/";
 </script>
 <link rel="stylesheet" href="css/pagesetting.css" type="text/css" />
 <link href="css/pages/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 </head>
 <body class="hasSmurfbar">
 <div id="container">

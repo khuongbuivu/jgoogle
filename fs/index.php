@@ -222,7 +222,7 @@ else if ($_SESSION['loginfirsttime']==1)
     <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
     <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>
     <p>Nhiều người đã bị nghiện vì vậy hãy cân nhắc trước khi tham gia hệ thống!</p>
-	<p>Hệ thống chính thức hoạt động 15/1/2015!</p>
+	<p>Hệ thống chính thức hoạt động khi cáp quang được khắc phục!</p>
   </fieldset>
 </form>
 <div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>
@@ -260,12 +260,12 @@ exit();
 		<div id="mainContainer">
 			<div id="leftCol">
               <ul class="icon-setting">
-                <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT; ?>')"><span class="icon-set icon-home"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"><span class="icon-set icon-gplus"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"><span class="icon-set icon-connect"></span> </a></li>
-               <li><a href=""><span class="icon-set icon-share"></span> </a></li>
-               <li><a href=""><span class="icon-set icon-acong"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>');"><span class="icon-set icon-setpanel"></span> </a></li>
+                <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
+				<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
+				<li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"></span> </li>				
+				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
+				<li><a href=""><span class="icon-set icon-acong"></span> </a></li>
+				<li><span class="icon-set icon-setpanel" onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " ></span></li>
                </ul>
 
 			<!-- 
@@ -1246,7 +1246,13 @@ $('body').on("mouseout",".UFIComment",function(){
 })
 
 </script>
-<!-- 
+<!--
+getOtherUrlsProfile comment.js chưa getidpage, sau khi get về chưa có hàm showlistprofileaddmore
+
+Danh sách link profile chưa hiển thị đúng, chưa kiểm tra những link nào đã view, chưa get được orther link tối phải xong phần này và addon
+Vấn đề hiển thị notify không đúng. Đôi khi người ta like cho những comment cũ thì id của comment đó sẽ nhỏ hơn id comment cũ
+-> lưu vào database của atw_notify sẽ không đúng. [fixed]
+
 Search upclick.js mo rem de su dung upload file 
 Đá banh về xử scrolToComment. Còn bị lỗi khi post đã được user đó click vào rồi thì không thể nào hiện lên được. Giờ cho nó hiện lên và del tất cả link để không view được nữa.
 Một số yêu cầu với sever: chạy được fbapi, chạy được php mới, cân bằng tải load balance

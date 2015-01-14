@@ -127,12 +127,12 @@ exit();
 		<div id="mainContainer">
 			<div id="leftCol">
               <ul class="icon-setting">
-                <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT; ?>')"><span class="icon-set icon-home"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"><span class="icon-set icon-gplus"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"><span class="icon-set icon-connect"></span> </a></li>
-               <li><a href=""><span class="icon-set icon-share"></span> </a></li>
-               <li><a href=""><span class="icon-set icon-acong"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>');"><span class="icon-set icon-setpanel"></span> </a></li>
+                <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
+				<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
+				<li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"></span> </li>				
+				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
+				<li><a href=""><span class="icon-set icon-acong"></span> </a></li>
+				<li><span class="icon-set icon-setpanel" onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " ></span></li>
                </ul>
 
 			<!-- 
