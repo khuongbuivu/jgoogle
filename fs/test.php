@@ -1,9 +1,23 @@
+<script>
+var myString = "http://www.inbangron.com/";
+function rtrim(stringToTrim) {
+	return stringToTrim.replace(/\s+$/,"");
+}
+alert(myString.lastIndexOf("/"));
+alert(myString.length-1)
+var b="";
+if (myString.lastIndexOf("/")== myString.length-1)
+	b = myString.substring(0, myString.length - 1);
+alert(b);
+</script>
 <?php
+/*
 require_once("config.php");
 global $host;
 global $user;
 global $pass;
 global $db;
+echo file_get_contents("http://dsvn.vn/#/");
 function get_likes($url) {
  
     $json_string = getPage('http://graph.facebook.com/?ids=' . $url);
@@ -39,7 +53,8 @@ function facebook_count($url){
     return json_decode($response);
  
 }
- 
+echo getPage("http://dsvn.vn/#/");
+
 $fb = get_likes('https://www.facebook.com/digital.inspiration');
  
 // facebook share count
@@ -51,7 +66,6 @@ echo $fb[0]->like_count;
 // facebook comment count
 echo $fb[0]->comment_count;
 
-/*
 $con=mysqli_connect($host,$user,$pass,$db);
 $result=mysqli_query($con,"select * from atw_point");
 echo "xxx".$result->num_rows;

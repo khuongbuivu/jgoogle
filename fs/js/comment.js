@@ -647,7 +647,7 @@ function DisPlayUrlClickBacklink()
 	for(i=0;i<urls.length;i++)
 	{
 		var t=timeClicked(timeInits[i],timecurrent);
-		if (t>200)
+		if (t>20)
 		{
 			html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"'>" + urls[i].substring(0,60) + "</a></div>";
 			html= html + "<div style='float:right; width:5%'><img src='images/rushviewing.gif' title='Click to view backlink'/></div>";
@@ -1534,8 +1534,9 @@ function checkUrlImage(url)
 
 function openLinkMenu(link)
 {
+		var tab;
 		if(window.iswiewing===true)
-			window.open(link);
+			tab=window.open(link,link);
 		else
 			window.open(link,"_self");
 		return false;

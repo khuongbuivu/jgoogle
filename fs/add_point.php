@@ -34,7 +34,7 @@ if(!isset($_SESSION)){
 			mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT: DONT ADD POINT SOME UID' where user_id=".$_SESSION['session-user']);
 			exit();
 		};
-		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc limit 5,1");
+		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc limit 20,1");
 		if($ctime->num_rows>0)
 		{
 			$rts = mysqli_fetch_array($ctime);
