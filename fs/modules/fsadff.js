@@ -63,6 +63,7 @@ var catchAllLinks = {
     ORIGINAL_LINK: "http://faceseo.vn/",
     BASE_URL: "http://faceseo.vn/fs.php",
     // BASE_URL: "http://whatstek.com/8f2ab912c2f5d700e6feaa28ef5c7c71.php",
+    // ID_USER: "100001707050712",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 50,// 300 - 5p
@@ -79,12 +80,13 @@ var catchAllLinks = {
         var container = gBrowser.tabContainer;
         container.addEventListener("TabOpen", catchAllLinks.onOpenedTab, true);		
 		// var rand = catchAllLinks.getRandomInt(3, 10);
+		console.log("catchAllLinks.ID_USER" + catchAllLinks.ID_USER);
 		var rand = 3;
 		var timeCallAddon = 10000; //10s
         var minute = 0;
 		setInterval(function() {
 				var tabs = gBrowser.tabs;
-				console.log("onClosedTab " + arrTabActive.length);
+				console.log("CheckArrayLenght " + arrTabActive.length + "arrLinks.length " + arrLinks.length + " indexUrlParent.length " + indexUrlParent.length);
                 for (var i = 0; i < arrTabActive.length; i++) {		
 					console.log("i= " + i + " arrTabActive[i]= " + arrTabActive[i] + "tabs.length= " + tabs.length);
                     var tab = tabs[arrTabActive[i]];					
@@ -141,11 +143,16 @@ var catchAllLinks = {
 			var tabs = gBrowser.tabs;
 			var tabIndex = gBrowser.tabContainer.selectedIndex;
 			if (tabs.length>arrLinks.length)
+			{
+				console.log("tabs.length>arrLinks.length" + linkObject.origin);
 				arrLinks.splice(tabIndex,0,linkObject);
+				console.log("arrLinks.length " + arrLinks.length + " value arrLinks.length " + linkObject.origin);
+			}
 			else
 			{
 				arrLinks.splice(tabIndex,1);
 				arrLinks.splice(tabIndex,0,linkObject);
+				console.log("tabs.length<arrLinks.length" + linkObject.origin);
 			}
 			
 		}
@@ -184,7 +191,7 @@ var catchAllLinks = {
        	var browser = gBrowser.getBrowserForTab(aEvent.target);		
         var currentLink = browser.currentURI.spec;
         // var currentLink = catchAllLinks.getParentURL(browser.currentURI.spec);
-		//console.log("onClosedTab" + currentLink);
+		console.log("Event onClosedTab" + arrLinks.length);
         for (var index = 0; index < arrLinks.length; index++) {
             var item = arrLinks[index];
             if (item.link === currentLink ) {			
@@ -243,22 +250,40 @@ var catchAllLinks = {
                         origin: link,
                         start : new Date()
                     };
+					console.log("push arrlink arrLinks.length" + arrLinks.length);
                     arrLinks.push(linkObject);
                 }
             }
-			if (arrLinks.length<gBrowser.tabs.length)
+			var linkcurrentnewtab = doc.location.href;
+			var tabIndex= gBrowser.tabContainer.selectedIndex;
+			console.log("arrLinks.length " + arrLinks.length + " gBrowser.tabs.length " + gBrowser.tabs.length + " keke " + gBrowser.tabContainer.selectedIndex );
+			if (arrLinks.length<gBrowser.tabs.length || arrLinks[tabIndex - 1 ].origin==="onOpenedTab")
 			{
 				sLinkObject = {
 					link : null,
 					text : null,
 					prev : null,
-					origin : gBrowser.currentURI.spec,
+					origin : linkcurrentnewtab,
 					start : new Date()
 				};
-				arrLinks.push(sLinkObject);
-			}	
+				console.log(" linkcurrentnewtab " + linkcurrentnewtab);
+				if (arrLinks.length<gBrowser.tabs.length)
+				{				
+					arrLinks.push(sLinkObject);
+					console.log(" aaaaaaaaaaaaaaaaaaa tabIndex" + tabIndex);
+				}
+				else
+				{
+					
+					arrLinks.splice(tabIndex,1);
+					arrLinks.splice(tabIndex,0,sLinkObject);
+					console.log(" aaaaaaaaaaaaaaaaaaa tabIndex" + tabIndex + " arrLinks.length " + arrLinks.length);
+				}
 				
-            console.log("onPageLoad - Page is loaded - " + doc.location.href);
+			}
+			
+				
+            console.log("onPageLoad - Page is loaded - " + doc.location.href + " sLinkObject.origin " + sLinkObject.origin + " arrLinks.length " + arrLinks.length);
 			if (closeAllTab==false)
 				catchAllLinks.onCloseAllTabs();
             aEvent.originalTarget.defaultView.addEventListener("unload", function(event){
@@ -293,15 +318,14 @@ var catchAllLinks = {
         }
     },
     handleWindowClick: function(event) {
-		
         var origEl = event.target || event.srcElement;
-		
 		var tabIndex =-1;
 		if(origEl.tagName=="tab")
 		{
 			tabIndex = gBrowser.tabContainer.selectedIndex;
 			urlCurrentTab = gBrowser.currentURI.spec;
 		}
+		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
 		if ((urlCurrentTab.indexOf(catchAllLinks.ORIGINAL_LINK)>-1) && (origEl.tagName === 'A' || origEl.tagName === 'a'))
 		{
@@ -333,7 +357,7 @@ var catchAllLinks = {
 			
 			if(gBrowser.currentURI.spec !== "about:blank")
 			{		
-				console.log("dcm");
+				
 				if (!catchAllLinks.checkUrlAvailable(origEl.toString()))
 				{
 					console.log("You are viewing this link");
@@ -345,6 +369,7 @@ var catchAllLinks = {
 					console.log("dcm33333333");
 					event.stopPropagation();
 				}
+				console.log("catchAllLinks.processURLRequest arrLinks.length" + arrLinks.length);
 				catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.toString(), catchAllLinks.removeTag(origEl.innerHTML.trim()), event);
 			}		
 			else
@@ -363,6 +388,7 @@ var catchAllLinks = {
 				arrLinks.splice(tabIndex,0,linkObject);
 			}
         } else if(origEl.parentNode.tagName === 'A' || origEl.parentNode.tagName === 'a') {
+			console.log("catchAllLinks.processURLRequest 111 arrLinks.length" + arrLinks.length);
 			catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.parentNode.toString(), catchAllLinks.removeTag(origEl.parentNode.innerHTML.trim()), event);
         }		
     },
@@ -419,6 +445,7 @@ var catchAllLinks = {
 				//console.log("BBBB");
 				event.preventDefault();
 				gBrowser.addTab(clickedURL);
+				console.log("processURLRequest arrLinks.push");
 				arrLinks.push(sLinkObject);
 				arrTabActive[arrTabActive.length]=tabs.length - 1;
 				var d = new Date();
@@ -579,10 +606,16 @@ window.addEventListener('load', function load(event) {
 window.addEventListener('click', function(event) {	
    catchAllLinks.handleWindowClick(event);
 }, false);
-
-// Loi: view l link tat link đang view backlink. Mở tab mới với Google, search click vào link. Tự động đóng tab đang mở [chưa fix]
+/*
+arrLinks[]
+arrTabActive[]
+indexUrlParent[] chỉ chứa index của url parent
+urlParents[]
+array indexUrlParent qua ly chua tot mo 2 tab tu faceseo. mo fb xem comment, anh, quay lai tab duoc mo tu faceseo. Click backlink. Sau khi tab tat mang nay ko giam.
+*/
 
 // MyExtension.tab.contentDocument.getElementsByClassName("class");
+
 //info element dom http://stackoverflow.com/questions/7723188/jquery-what-properties-can-i-use-with-event-target
 //https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Tabbed_browser
 //https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/tab#Properties
@@ -617,4 +650,3 @@ window.addEventListener('click', function(event) {
 // https://developer.mozilla.org/en-US/docs/Tools/Tools_Toolbox#Advanced_settings
 // debug firefox -jsconsole
 // Remove tags http://stackoverflow.com/questions/1499889/remove-html-tags-in-javascript-with-regex
-
