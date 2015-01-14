@@ -345,7 +345,7 @@ var catchAllLinks = {
 		if((origEl.tagName === 'A' || origEl.tagName === 'a') && (iiii>-1))
 		{
 			var rushUrl = origEl.toString().substring(iiii + 11);
-			rushUrl= catchAllLinks.rtrim(rushUrl);
+			// rushUrl= catchAllLinks.rtrim(rushUrl);
 			console.log("focusTabUrl " + rushUrl); // thuong bi loi thieu /
 			catchAllLinks.focusTabUrl(rushUrl);
 			return ;
