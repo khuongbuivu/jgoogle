@@ -257,7 +257,7 @@ var catchAllLinks = {
 			var linkcurrentnewtab = doc.location.href;
 			var tabIndex= gBrowser.tabContainer.selectedIndex;
 			console.log("arrLinks.length " + arrLinks.length + " gBrowser.tabs.length " + gBrowser.tabs.length + " keke " + gBrowser.tabContainer.selectedIndex );
-			if (arrLinks.length<gBrowser.tabs.length || arrLinks[tabIndex - 1 ].origin==="onOpenedTab")
+			if (arrLinks.length<gBrowser.tabs.length || arrLinks[tabIndex].origin==="onOpenedTab")
 			{
 				sLinkObject = {
 					link : null,
@@ -324,6 +324,8 @@ var catchAllLinks = {
 		{
 			tabIndex = gBrowser.tabContainer.selectedIndex;
 			urlCurrentTab = gBrowser.currentURI.spec;
+			for (var kk=0;kk<arrLinks.length;kk++)
+				console.log("arrLinks["+ kk + "]: " + arrLinks[kk].origin + " " + arrLinks[kk].prev + " <br/>");
 		}
 		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
@@ -342,8 +344,10 @@ var catchAllLinks = {
 				
 		if((origEl.tagName === 'A' || origEl.tagName === 'a') && (iiii>-1))
 		{
-			console.log("focusTabUrl " + origEl.toString().substring(iiii + 11)); // thuong bi loi thieu /
-			catchAllLinks.focusTabUrl(origEl.toString().substring(iiii + 11));
+			var rushUrl = origEl.toString().substring(iiii + 11);
+			rushUrl= catchAllLinks.rtrim(rushUrl);
+			console.log("focusTabUrl " + rushUrl); // thuong bi loi thieu /
+			catchAllLinks.focusTabUrl(rushUrl);
 			return ;
 		}
 		
@@ -403,6 +407,12 @@ var catchAllLinks = {
 		}
 		return true;
 	},
+	rtrim: function (url) {
+		var urlnew=url;
+		if (url.lastIndexOf("/")== url.length-1)
+			urlnew = url.substring(0, url.length - 1);
+		return urlnew;
+	},
     processURLRequest: function (currentURI, clickedURL, linkText, event) {
 		
         if (clickedURL === undefined || clickedURL === "" || gBrowser.tabContainer.selectedIndex >=arrLinks.length) {
@@ -441,7 +451,7 @@ var catchAllLinks = {
 			//console.log("tabs.length " + tabs.length + " arrLinks.length " + arrLinks.length + " tabIndex " + tabIndex + " currentItem.origin " + currentItem.origin )  ;
 			//console.log("arrLinks.length " + arrLinks.length + "Url " + sLinkObject.link + " UrlParrent " + sLinkObject.prev + " start " + sLinkObject.start);												
 			if (currentLink.indexOf(catchAllLinks.ORIGINAL_LINK)==-1 &&
-				currentItem !== null && currentItem.origin.indexOf(catchAllLinks.ORIGINAL_LINK)>-1) {
+				currentItem !== null && currentItem.origin.indexOf(catchAllLinks.ORIGINAL_LINK)>-1 && urlParents.length>0) {
 				//console.log("BBBB");
 				event.preventDefault();
 				gBrowser.addTab(clickedURL);
@@ -607,11 +617,13 @@ window.addEventListener('click', function(event) {
    catchAllLinks.handleWindowClick(event);
 }, false);
 /*
+
 arrLinks[]
 arrTabActive[]
 indexUrlParent[] chỉ chứa index của url parent
 urlParents[]
 array indexUrlParent qua ly chua tot mo 2 tab tu faceseo. mo fb xem comment, anh, quay lai tab duoc mo tu faceseo. Click backlink. Sau khi tab tat mang nay ko giam.
+
 */
 
 // MyExtension.tab.contentDocument.getElementsByClassName("class");
