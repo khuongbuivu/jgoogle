@@ -353,7 +353,7 @@ function openUrl(url,timesession)
 	return false;
 };
 
-function openUrl(url,timesession,idPost)
+function openUrl(url,timesession,idPost,key)
 {
 	if (FaceSeo.search(domain)<0)
 		return;
@@ -375,6 +375,7 @@ function openUrl(url,timesession,idPost)
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+timesession);
 				else
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
+				arrKeys[i]= key;
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
 				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
@@ -489,7 +490,9 @@ function autoView(){
 			timeInits[iautoview] = "";
 			urlsAuto.splice(iautoview,1);
 			tabs.splice(iautoview,1);
-			timeInits.splice(iautoview,1);				
+			arrKeys.splice(iautoview,1);			
+			timeInits.splice(iautoview,1);
+			randomTimeCloses.splice(iautoview,1);		
 		}
 	};	
 	if(urlsAuto.length==0)
@@ -524,7 +527,9 @@ function checkTabsClosedAuto()
 			timeInits[j] = "";
 			urlsAuto.splice(j,1);
 			tabs.splice(j,1);
+			arrKeys.splice(j,1);
 			timeInits.splice(j,1);
+			randomTimeCloses.splice(j,1);
 			
 		}
 		else
@@ -544,7 +549,9 @@ function checkTabsClosedAuto()
 				timeInits[j] = "";
 				urlsAuto.splice(j,1);
 				tabs.splice(j,1);
+				arrKeys.splice(j,1);
 				timeInits.splice(j,1);
+				randomTimeCloses.splice(j,1);
 				
 			}
 
@@ -596,8 +603,10 @@ function checkTabsClosed()
 			timeInits[j] = "";
 			urls.splice(j,1);
 			tabs.splice(j,1);
+			arrKeys.splice(j,1);
 			urlsBanner.splice(j,1);
 			timeInits.splice(j,1);
+			randomTimeCloses.splice(j,1);
 		}
 		else
 		{	
@@ -624,6 +633,7 @@ function checkTabsClosed()
 				timeInits[j] = "";
 				urls.splice(j,1);
 				tabs.splice(j,1);
+				arrKeys.splice(j,1);
 				urlsBanner.splice(j,1);
 				randomTimeCloses.splice(j,1);
 				timeInits.splice(j,1);
@@ -649,7 +659,7 @@ function DisPlayUrlClickBacklink()
 		var t=timeClicked(timeInits[i],timecurrent);
 		if (t>20)
 		{
-			html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"###dịch vụ seo###'>" + urls[i].substring(0,60) + "</a></div>";
+			html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"###"+arrKeys[i]+"###'>" + urls[i].substring(0,60) + "</a></div>";
 			html= html + "<div style='float:right; width:5%'><img src='images/rushviewing.gif' title='Click to view backlink'/></div>";
 		}
 	};

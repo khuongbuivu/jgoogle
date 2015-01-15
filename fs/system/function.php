@@ -1,6 +1,6 @@
 <?php
 
-	function addLinkUrl($text,$arrtimes,$idPost)
+	function addLinkUrl($text,$arrtimes,$idPost,$arrkeys)
 	{
 			if (isContentSex($text))
                 return null;
@@ -17,14 +17,18 @@
 						$time=$arrtimes[$ii];
 					else
 						$time = $_SESSION['TIMEMAXVIEWMYLINK'];
+					$key = "";
+					if(count($arrkeys)>$ii)
+						$key=$arrkeys[$ii];						
 				   $replacement =  array();
 				   //$count=count($matches)-1;
 				   foreach($matches as $match) {
 						$shortlink=$match;
 						if (strlen($match)>75)
 							$shortlink = substr($shortlink,0,75)."...";
-						if ($count==$ii)
-							$replacement[$ii] = "<a href=".($match)."  onclick=\"return openUrl(this.href,$time,$idPost);\" >{$shortlink}</a>";
+						
+						if ($count==$ii || $arrkeys[$ii]!="")
+							$replacement[$ii] = "<a href=".($match)."  onclick=\"return openUrl(this.href,$time,$idPost,\'$key\');\" >{$shortlink}</a>";
 						else
 							$replacement[$ii] = "<a href=".($match)."  onclick=\"return openUrl(this.href,$time);\" >{$shortlink}</a>";
 						
@@ -181,6 +185,16 @@ function getListUIDVip($A)
 function getListTimesView($text)
 {
 	$reg_exUrl = "/(?<=\#\#\#)(\d)*(?=[s|S]\*\*\*)/";
+	if(preg_match_all($reg_exUrl, $text, $url)) {
+		return $url[0];
+	}
+	return null;
+	// test http://www.heise.de/download/mouse-recorder-pro-ec216441dbc757d56808a7b076f4de5f-1413478779-2669347.html ###50s***
+}
+
+function getListKeys($text)
+{
+	$reg_exUrl = "/(?<=\#\#\#)(.*)(?=\#\#\#)/";
 	if(preg_match_all($reg_exUrl, $text, $url)) {
 		return $url[0];
 	}

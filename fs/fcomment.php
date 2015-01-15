@@ -21,7 +21,8 @@ if(!isset($_SESSION)){
 		$con=mysqli_connect($host,$user,$pass,$db);
 		mysqli_set_charset($con, "utf8");
 		$arrtimes[0] = 300;
-		$cmt_content = addLinkUrl($cmt_content,'300',$_POST['idArt']).$cmt_img;		
+		$arrKey = array();
+		$cmt_content = addLinkUrl($cmt_content,'300',$_POST['idArt'],$arrKey).$cmt_img;		
 		if($cmt_content!="")
 			mysqli_query($con,"INSERT INTO atw_cmt_content (IdArticles,Content,Time,imgLogo, userId,name) VALUES (".$idArt.",'".$cmt_content."','".$datetime."','".$imgLogo."' , '".$_SESSION['session-user']."', '".$name."')");	
 		mysqli_close($con);

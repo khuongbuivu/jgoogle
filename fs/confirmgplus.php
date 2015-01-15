@@ -49,7 +49,7 @@ else
 	$link="http://faceseo.vn";
 ?>
 
-<div class="gplusone-content" style="display:none;font-size:120%;color:#336633;">Cảm ơn bạn đã share G+. Bạn được cộng thêm 10 điểm. Tắt cửa sổ để thấy điểm cộng.</div><div class="gplusone-uncontent" style="display:none;font-size:120%;color:#f00;">Bạn bị trừ 20 điểm</div><div id="gplusone-example"><g:plusone size="standard" callback="gplus_callback" href="<?php echo $link;?>" count="true" width="350px" annotation="inline"></g:plusone></div><div class="gplusone-content remember-state" style="display:none;"></div><script type="text/javascript" src="js/jquery.gplusone.1.1.js"></script>
+<div class="gplusone-content" style="display:none;font-size:120%;color:#336633;">Cảm ơn bạn đã G+. Bạn được cộng thêm 10 điểm. Tắt cửa sổ để thấy điểm cộng.</div><div class="gplusone-uncontent" style="display:none;font-size:120%;color:#f00;">Bạn bị trừ 20 điểm</div><div id="gplusone-example"><g:plusone size="standard" callback="gplus_callback" href="<?php echo $link;?>" count="true" width="350px" annotation="inline"></g:plusone></div><div class="gplusone-content remember-state" style="display:none;"></div><script type="text/javascript" src="js/jquery.gplusone.1.1.js"></script>
 <?php
 $dm = date("d/m");
 $s1= intval(date("s")) + 8;

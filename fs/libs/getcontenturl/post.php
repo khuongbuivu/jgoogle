@@ -39,7 +39,8 @@ if(!isset($_SESSION)){
 	$idMaxPost = getIdMax("atw_post", "post_id");
 	$idMaxPost = $idMaxPost + 1;
 	$ltv=getListTimesView($textcomment);
-	$textcomment=addLinkUrl($textcomment,$ltv,$idMaxPost);
+	$lkeys = getListKeys($textcomment);
+	$textcomment=addLinkUrl($textcomment,$ltv,$idMaxPost,$lkeys);
 	$content=str_replace('\"', '"', $content);
 	$title="";
 	$description="";

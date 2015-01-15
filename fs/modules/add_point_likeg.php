@@ -43,7 +43,7 @@ function subpoint()
 					break;
 		}	
 	}	
-	
+	$okap=true;
 	if ( $okap==false)
 	{
 		mysqli_close($con);	
