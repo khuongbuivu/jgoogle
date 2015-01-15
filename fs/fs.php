@@ -117,7 +117,9 @@ $uid= getUId($domain);
 $idUser			=	$_GET['idUser'];
 $TIMEVIEW		=	$_GET['timeView']; //60s
 $minuteView = (int)(intval($TIMEVIEW)) ; 
-$BACKLINK		= 5;// HE SO BACKLINK
+$BACKLINK		= 2;// HE SO BACKLINK
+if ($_GET['checkkey']==1)
+	$BACKLINK = 5;
 $token			=	$_GET['token'];
 $okap			= false;
 $dm = date("d/m"); 	
