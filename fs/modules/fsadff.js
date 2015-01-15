@@ -102,10 +102,11 @@ var catchAllLinks = {
 								var d = new Date();								
 								var timeOpen = item.start.format("hh:mm:ss dd/MM/yyyy");
 								var timeClose = d.format("hh:mm:ss dd/MM/yyyy");
-								var timeView = diff;
-								console.log("item.text " + item.text + "arrTabActive[i] " + iTabParent + " arrkey[arrTabActive[i]] " + arrkey[iTabParent] + " item.link.search(arrkey[arrTabActive[i]]) " + item.link.search(arrkey[iTabParent]));
-								
-								if ( (item.text.toUpperCase().search(arrkey[iTabParent].toUpperCase()) >-1 || item.link.search(arrkey[iTabParent])>0) && (arrkey[iTabParent]!==""))
+								var timeView = diff;								
+								var a1=item.text.toUpperCase();
+								var a2=decodeURIComponent(arrkey[iTabParent]).toUpperCase();
+								var a3=decodeURIComponent(item.link).toUpperCase();
+								if ( ( (a1.search(a2) >-1) || (a3.search(a2)>-1)) && (arrkey[iTabParent]!==""))
 									catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER,
 										timeOpen, timeClose, timeView, item.text, parentUrl,1);
 								else
