@@ -17,16 +17,21 @@
 						$time=$arrtimes[$ii];
 					else
 						$time = $_SESSION['TIMEMAXVIEWMYLINK'];
-					$key = "";
-					if(count($arrkeys)>$ii)
-						$key=$arrkeys[$ii];						
+					
+											
 				   $replacement =  array();
 				   //$count=count($matches)-1;
 				   foreach($matches as $match) {
 						$shortlink=$match;
 						if (strlen($match)>75)
 							$shortlink = substr($shortlink,0,75)."...";
-						
+						$key = "";
+						if(count($arrkeys)>$ii)
+							$key=$arrkeys[$ii];
+						if(count($arrtimes)>$ii)
+							$time=$arrtimes[$ii];
+						else
+							$time = $_SESSION['TIMEMAXVIEWMYLINK'];
 						if ($count==$ii || $arrkeys[$ii]!="")
 							$replacement[$ii] = "<a href=".($match)."  onclick=\"return openUrl(this.href,$time,$idPost,\'$key\');\" >{$shortlink}</a>";
 						else
@@ -194,7 +199,7 @@ function getListTimesView($text)
 
 function getListKeys($text)
 {
-	$reg_exUrl = "/(?<=\#\#\#)(.*)(?=\#\#\#)/";
+	$reg_exUrl = "/(?<=\#\#\#).*?(?=\!\!\!)/";
 	if(preg_match_all($reg_exUrl, $text, $url)) {
 		return $url[0];
 	}
