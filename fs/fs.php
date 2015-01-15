@@ -23,22 +23,13 @@ $timeClose	=	$_GET['timeClose'];
 $linkText	=	$_GET['linkText'];
 $parent		=	trim($_GET['parent']);
 $parent = removeSlashEndUrl($parent);
-echo "urlClicked ".$urlClicked."<br/>";
-echo "idUser ".$idUser."<br/>";
-echo "timeOpend ".$timeOpend."<br/>";
-echo "timeClose ".$timeClose."<br/>";
-echo "linkText ".$linkText."<br/>";
-
 if ($timeClose!="In view")
 	$timeClose	=	date("H:i:s d/m/y");
 $currentDay = substr($timeOpendClient,9);// using time of client
 $timeView	=	$_GET['timeView'];
-echo "timeView ".$timeView."<br/>";
 $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_set_charset($con, "utf8");
-echo "<br/>"."select * from atw_click_link where iduser='".$idUser."' and link like '%".$parent."%' and timeclienttmp like '%".$currentDay."%'"."<br/>";
 $resultviewing=mysqli_query($con,"select * from atw_click_link where iduser='".$idUser."' and link like '%".$parent."%' and timeclienttmp like '%".$currentDay."%' order by id desc limit 1" );
-echo "select * from fs_click_backlink where iduser='".$idUser."' and link like '%".$urlClicked."%' and timeclienttmp like '%".$currentDay."%' order by id desc limit 1"."<br/>";
 $resultbacklink=mysqli_query($con,"select * from fs_click_backlink where iduser='".$idUser."' and link like '%".$urlClicked."%' and timeclienttmp like '%".$currentDay."%' order by id desc limit 1");
 $resultidlink=mysqli_query($con,"select id from awt_list_url where url like '%".$urlClicked."%' limit 1");
 $idlink=-1;
@@ -56,7 +47,6 @@ else
 	//mysqli_query($con,"INSERT INTO awt_list_url (url,iduser) VALUES ('".$url."','".$uid."')");
 }
 $IdBacklink = getIdMax("fs_click_backlink","id") + 1;
-// Open new tab
 if ($timeClose=="In view")
 {
 	mysqli_query($con,"INSERT INTO fs_click_backlink (id,link,iduser,timestart,timeclose,timeview,timeclienttmp,click_link_idlink) VALUES (".$IdBacklink.",'".$urlClicked."','".$idUser."','".$timeOpend."','".$timeClose."','".$timeView."','".$timeOpendClient."',".$idlink.")");
@@ -66,7 +56,6 @@ if ($timeClose=="In view")
 		$rvw=mysqli_fetch_array($resultviewing);
 		$Idbl=$rvw['idclicked']==""?$IdBacklink:$rvw['idclicked']."··".$IdBacklink;
 		$lt=$rvw['keyclick']==""?$linkText:$rvw['keyclick']."··".$linkText;
-		echo "<br/>UPDATE atw_click_link set idclicked = '".$Idbl."' ,keyclick='".$lt."' where iduser='".$idUser."' and link like '%".$parent."%' and timeclienttmp like '%".$currentDay."%'";
 		mysqli_query($con,"UPDATE atw_click_link set idclicked = '".$Idbl."' ,keyclick='".$lt."' where iduser='".$idUser."' and id=".$rvw['id']." and link like '%".$parent."%' and timeclienttmp like '%".$currentDay."%'");
 	}
 	else
@@ -75,7 +64,6 @@ if ($timeClose=="In view")
 }
 else // Close tab
 {
-	echo "bbbbb".$resultbacklink->num_rows."<br/>";
 	if (($resultbacklink->num_rows>0))
 	{
 		if ($timeClose!="In view")
@@ -83,7 +71,6 @@ else // Close tab
 		if ($_GET['deepbacklink']=="1")
 		{		
 			mysqli_query($con,"UPDATE fs_click_backlink set timeclose = '".$timeClose."' ,timeview=".$timeView." where iduser='".$idUser."' and link like '%".$urlClicked."%' and timeclienttmp like '%".$currentDay."%'");
-			echo "<br/> UPDATE fs_click_backlink set timeclose = '".$timeClose."' ,timeview=".$timeView." where iduser='".$idUser."' and link like '%".$urlClicked."%' and timeclienttmp like '".$currentDay."' <br/>";
 		}
 		$resultIP=mysqli_query($con,"select ip_click_link_numview from fs_ip_click_link where ip_click_link_url='".$urlClicked."' and ip_click_link_id_user='".$idUser."' and ip_click_link_ip='".$_SESSION['ip']."'" );
 		if ($resultIP->num_rows>0)
@@ -102,7 +89,6 @@ else // Close tab
 		}
 	}
 }
-
 // insert new backlink clicked
 //mysqli_query($con,"INSERT INTO fs_click_backlink (id,link,iduser,timestart,timeclose,timeview,timeclienttmp,click_link_idlink) VALUES (".$IdBacklink.",'".$urlClicked."','".$idUser."','".$timeOpend."','".$timeClose."','".$timeView."','".$timeOpendClient."',".$idlink.")");
 //echo "INSERT INTO fs_click_backlink (id,link,iduser,timestart,timeclose,timeview,timeclienttmp,click_link_idlink) VALUES (".$IdBacklink.",'".$urlClicked."','".$idUser."','".$timeOpend."','".$timeClose."','".$timeView."','".$timeOpendClient."',".$idlink.")";
@@ -157,7 +143,6 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 	{
 		/* Add Point */
 		$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
-		echo "ccc select * from awt_list_url where iduser='".$idUser."' and url='".$linkClicked."'";
 		$result1=mysqli_query($con,"select * from awt_list_url where iduser='".$idUser."' and url='".$parent."'");
 		while ($row = mysqli_fetch_array($result))
 		{
@@ -169,8 +154,7 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 				}
 				else
 				{
-					$minuteView = $minuteView > $MAXMINUTEVIEW_BACKLINK ? $MAXMINUTEVIEW_BACKLINK : $minuteView;
-					echo "hoho".$minuteView;					
+					$minuteView = $minuteView > $MAXMINUTEVIEW_BACKLINK ? $MAXMINUTEVIEW_BACKLINK : $minuteView;				
 					$pointView = $minuteView*$BACKLINK;
 					$point = $minuteView*$BACKLINK + $row['point'];
 					
@@ -184,7 +168,6 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 		}	
 		if ($result->num_rows>0)
 		{
-			echo "Line 184"."UPDATE atw_point set point = ".$point." where idUser=".$idUser;
 			mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser); 
 		}
 		else
@@ -245,11 +228,6 @@ function getUId($url)
 	mysqli_close($con);
 	return -1;
 }
-
-//data to test
-//http://localhost/faceseo.vn/fs.php?urlClicked=http%3A%2F%2Ffaceseo.vn%2F&idUser=100001707050712&timeOpend=01%3A04%3A38%2026%2F07%2F2014&timeClose=In%20view&timeView=0&linkText=%20Linh%20Nguy%E1%BB%85n&parent=http%3A%2F%2Fgiaiphapthuonghieu.vn%2F162-code-chong-sao-chep-copy-bai-han-che-rui-ro-khi-seo.html";
-//http://localhost/faceseo.vn/fs.php?urlClicked=http%3A%2F%2Fgiaiphapthuonghieu.vn%2F162-code-chong-sao-chep-copy-bai-han-che-rui-ro-khi-seo.html&idUser=100001707050712&timeOpend=00%3A16%3A37%2005%2F08%2F2014&timeClose=In%20view&timeView=0&linkText=%20Linh%20Nguy%E1%BB%85n&parent=http%3A%2F%2Fgiaiphapthuonghieu.vn%2F";
-//http://localhost/faceseo.vn/fs.php?urlClicked=http%3A%2F%2Fgiaiphapthuonghieu.vn%2F162-code-chong-sao-chep-copy-bai-han-che-rui-ro-khi-seo.html&idUser=100001707050712&timeOpend=00%3A50%3A37%2005%2F08%2F2014&timeClose=01%3A16%3A37%2004%2F08%2F2014&timeView=0&linkText=%20Linh%20Nguy%E1%BB%85n&parent=http%3A%2F%2Fgiaiphapthuonghieu.vn%2F&deepbacklink=1";
 // Rãnh xem lại để check bảo mật không refresh liên tục để kiếm điểm
 // Kiem tra xem neu cai link do cua user A ma user P mang post len thi no tru diem user nao
 
