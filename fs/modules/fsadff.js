@@ -48,7 +48,7 @@ function getCookie(cname) {
 			{
 				return c.substring(name.length,c.length);
 			}
-		}
+		};
 		return "";		
 };
 
@@ -67,21 +67,18 @@ var catchAllLinks = {
         catchAllLinks.invocation = catchAllLinks.createCrossDomainRequest();
         if (gBrowser.addEventListener) {
             gBrowser.addEventListener("load", catchAllLinks.onPageLoad, true);
-        }
+        };
         var container = gBrowser.tabContainer;
         container.addEventListener("TabOpen", catchAllLinks.onOpenedTab, true);		
 		var rand = catchAllLinks.getRandomInt(3, 10);		
 		var timeCallAddon = 10000;
         var minute = 0;
 		setInterval(function() {
-				var tabs = gBrowser.tabs;
-				
-                for (var i = 0; i < arrTabActive.length; i++) {		
-					
+				var tabs = gBrowser.tabs;				
+                for (var i = 0; i < arrTabActive.length; i++) {						
                     var tab = tabs[arrTabActive[i]];					
                     var browser = gBrowser.getBrowserForTab(tab);
-					var item = arrLinks[arrTabActive[i]];		
-					
+					var item = arrLinks[arrTabActive[i]];					
 						var diff = Math.floor(Math.abs(item.start - new Date()) / 1000);
 						if (diff > catchAllLinks.DIFF_TIME) {
 							var parentUrl = item.prev;
@@ -109,7 +106,7 @@ var catchAllLinks = {
 								removedTab = false;
 							}
 						}					
-                }			
+                };		
 			minute++;
         }, timeCallAddon); 
     },
@@ -118,7 +115,7 @@ var catchAllLinks = {
 			if (url == urlParents[index]) {
 						return indexUrlParent[index];
 			}
-		}
+		};
 		return -1;
     },
     getRandomInt: function(min, max) {
@@ -129,9 +126,8 @@ var catchAllLinks = {
         var tabs = gBrowser.tabs;
         for (var i = 0; i < tabs.length; i++) {
             var tab = tabs[i];
-            var browser = gBrowser.getBrowserForTab(tab);
-            
-        }
+            var browser = gBrowser.getBrowserForTab(tab);           
+        };
     },
     onOpenedTab: function(aEvent) {
 		
@@ -158,9 +154,9 @@ var catchAllLinks = {
 				arrLinks.splice(tabIndex,1);
 				arrLinks.splice(tabIndex,0,linkObject);
 				
-			}
+			};
 			
-		}
+		};
         var container = gBrowser.tabContainer;
         container.addEventListener("TabClose", catchAllLinks.onClosedTab, true);
     },
@@ -169,30 +165,29 @@ var catchAllLinks = {
 		for (var i = at; i < arrTabActive.length; i++ )
 		{
 			arrTabActive[i]=arrTabActive[i]-1;
-		}
+		};
 	},
 	increaseIndexArrTabActive: function() {	
 		for (var i = 0; i < arrTabActive.length; i++ )
 		{
 			arrTabActive[i]=arrTabActive[i]+1;
-		}
+		};
 	},
 	onCloseAllTabs: function (){
-		var tabs = gBrowser.tabs;
-		
+		var tabs = gBrowser.tabs;		
 		if(tabs.length>1)
 		{
 			for (var i = 0; i < tabs.length; i++) {
 				gBrowser.removeTab(tabs[i]);
 			}
-		}
+		};
 		closeAllTab = true;
 	},
     onClosedTab: function(aEvent) {		
 		if (removedTab)
 		{
 			return;
-		}
+		};
        	var browser = gBrowser.getBrowserForTab(aEvent.target);		
         var currentLink = browser.currentURI.spec;
         for (var index = 0; index < arrLinks.length; index++) {
@@ -212,8 +207,8 @@ var catchAllLinks = {
                     }
                 }              
                 break;
-            }
-        }
+            };
+        };
 		var doc = browser.contentDocument; 
 		var targetBrowserIndex = gBrowser.getBrowserIndexForDocument(doc);
 		if (targetBrowserIndex > -1)
@@ -226,10 +221,8 @@ var catchAllLinks = {
 			else
 				catchAllLinks.reduceIndexArrTabActive(0);
 			if(ii>-1 && arrTabActive.length>-1)
-				arrTabActive.splice(ii,1);
-				
-			var iii = indexUrlParent.indexOf(targetBrowserIndex);
-			
+				arrTabActive.splice(ii,1);				
+			var iii = indexUrlParent.indexOf(targetBrowserIndex);			
 			if (iii>-1)
 			{
 				urlParents.splice(iii,1);
@@ -255,11 +248,10 @@ var catchAllLinks = {
                     };
 					
                     arrLinks.push(linkObject);
-                }
-            }
+                };
+            };
 			var linkcurrentnewtab = doc.location.href;
-			var tabIndex= gBrowser.tabContainer.selectedIndex;
-			
+			var tabIndex= gBrowser.tabContainer.selectedIndex;			
 			if (arrLinks.length<gBrowser.tabs.length || arrLinks[tabIndex].origin==="onOpenedTab")
 			{
 				sLinkObject = {
@@ -272,27 +264,20 @@ var catchAllLinks = {
 				
 				if (arrLinks.length<gBrowser.tabs.length)
 				{				
-					arrLinks.push(sLinkObject);
-					
+					arrLinks.push(sLinkObject);				
 				}
 				else
-				{
-					
+				{					
 					arrLinks.splice(tabIndex,1);
-					arrLinks.splice(tabIndex,0,sLinkObject);
-					
-				}
-				
-			}
-			
-				
-            
+					arrLinks.splice(tabIndex,0,sLinkObject);					
+				};				
+			};
 			if (closeAllTab==false)
 				catchAllLinks.onCloseAllTabs();
             aEvent.originalTarget.defaultView.addEventListener("unload", function(event){
                 catchAllLinks.onPageUnload(event);
             }, true);
-        }
+        };
     },
     onPageUnload: function(aEvent) {
         var doc = aEvent.originalTarget;
@@ -313,7 +298,7 @@ var catchAllLinks = {
                             var timeView = diff;
                             catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER, timeOpen, timeClose, timeView, item.text, parentUrl,0);
                         }
-                    }
+                    };
                     arrLinks.splice(index, 1);
                     break;
                 }
@@ -331,8 +316,7 @@ var catchAllLinks = {
 			for (var kk=0;kk<arrLinks.length;kk++)
 				console.log("arrLinks["+ kk + "]: " + arrLinks[kk].origin + " " + arrLinks[kk].prev + " <br/>");
 			*/
-		}
-		
+		};		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
 		if ((urlCurrentTab.indexOf(catchAllLinks.ORIGINAL_LINK)>-1) && (origEl.tagName === 'A' || origEl.tagName === 'a'))
 		{
@@ -345,8 +329,7 @@ var catchAllLinks = {
 						indexUrlParent.splice(0, 0, tabIndex);
 					}
 				
-		}
-				
+		};				
 		if((origEl.tagName === 'A' || origEl.tagName === 'a') && (iiii>-1))
 		{
 			var rushUrl = origEl.toString().substring(iiii + 11);
@@ -355,19 +338,15 @@ var catchAllLinks = {
 			var key = catchAllLinks.getkey(rushUrl);
 			catchAllLinks.focusTabUrl(uuu,key);
 			return ;
-		}
-		
+		};		
 		if (gBrowser.currentURI.spec.indexOf(catchAllLinks.ORIGINAL_LINK)>-1)
-		{
-			
+		{			
 			return;
-		}
+		};
 		
-        if(origEl.tagName === 'A' || origEl.tagName === 'a') {
-			
+        if(origEl.tagName === 'A' || origEl.tagName === 'a') {		
 			if(gBrowser.currentURI.spec !== "about:blank")
-			{		
-				
+			{			
 				if (!catchAllLinks.checkUrlAvailable(origEl.toString()))
 				{
 					
@@ -378,8 +357,7 @@ var catchAllLinks = {
 				{
 					
 					event.stopPropagation();
-				}
-				
+				};				
 				catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.toString(), catchAllLinks.removeTag(origEl.innerHTML.trim()), event);
 			}		
 			else
@@ -395,7 +373,7 @@ var catchAllLinks = {
 				
 				catchAllLinks.increaseIndexArrTabActive();
 				arrLinks.splice(tabIndex,0,linkObject);
-			}
+			};
         } else if(origEl.parentNode.tagName === 'A' || origEl.parentNode.tagName === 'a') {
 			
 			catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.parentNode.toString(), catchAllLinks.removeTag(origEl.parentNode.innerHTML.trim()), event);
@@ -409,7 +387,7 @@ var catchAllLinks = {
 			
 			if (urlTabEnd==url)
 				return false;
-		}
+		};
 		return true;
 	},
 	rtrim: function (url) {
@@ -426,10 +404,9 @@ var catchAllLinks = {
 		return key;
 	},
     processURLRequest: function (currentURI, clickedURL, linkText, event) {		
-        if (clickedURL === undefined || clickedURL === "" || gBrowser.tabContainer.selectedIndex >=arrLinks.length) {
-            
+        if (clickedURL === undefined || clickedURL === "" || gBrowser.tabContainer.selectedIndex >=arrLinks.length) {          
 			return;
-        }		
+        };
         var currentLink = catchAllLinks.getParentURL(currentURI);
         var currentItem;
 		currentItem= arrLinks[gBrowser.tabContainer.selectedIndex];
@@ -468,7 +445,7 @@ var catchAllLinks = {
                 item = tmp;
                 break;
             }
-        }
+        };
         return item;
     },
     getParentURL: function (currentURI) {
@@ -488,7 +465,7 @@ var catchAllLinks = {
         var referredFromURI = gBrowser.tabContainer.childNodes[tabIndex].linkedBrowser.webNavigation.referringURI;
         if (referredFromURI == null) {
             return "";
-        }
+        };
         return referredFromURI.spec;
     },
     createCrossDomainRequest: function(url, handler) {
@@ -497,7 +474,7 @@ var catchAllLinks = {
             request = new window.XDomainRequest();
         } else {
             request = new XMLHttpRequest();
-        }
+        };
         return request;
     }, 
     updateServerSide: function() {
@@ -522,7 +499,7 @@ var catchAllLinks = {
             '&timeView='+ encodeURIComponent(timeView) + '&linkText=' + encodeURIComponent(linkText) + 
             '&parent=%20' + encodeURIComponent(parent)+ '&deepbacklink=1';
 			if (checkkey===1)
-			requestUrl=requestUrl + '&checkkey=1';
+				requestUrl=requestUrl + '&checkkey=1';
 			/*console.log("updateServerSideWithParams With URL: " + requestUrl);
 			console.log("Update Server Side With URL: " + requestUrl);           
 			*/
@@ -549,8 +526,7 @@ var catchAllLinks = {
         }
     },
     outputResult: function() {
-        var response = catchAllLinks.invocation.responseText;
-        
+        var response = catchAllLinks.invocation.responseText;        
     }, 
     increaseArrayIndex: function ()
 	{
