@@ -35,6 +35,7 @@ var sLinkObject = {
 var urlCurrentTab = "";
 var urlParents = [];
 var indexUrlParent = [];
+var arrkey = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
 var removedTab = false;
 var closeAllTab = false;
 function getCookie(cname) {
@@ -96,13 +97,20 @@ var catchAllLinks = {
 						var diff = Math.floor(Math.abs(item.start - new Date()) / 1000);
 						if (diff > catchAllLinks.DIFF_TIME) {
 							var parentUrl = item.prev;
+							var iTabParent = catchAllLinks.getITabParent(parentUrl);
 							if (parentUrl != null && parentUrl.indexOf(catchAllLinks.ORIGINAL_LINK)==-1) {
 								var d = new Date();								
 								var timeOpen = item.start.format("hh:mm:ss dd/MM/yyyy");
 								var timeClose = d.format("hh:mm:ss dd/MM/yyyy");
 								var timeView = diff;
-								catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER,
-									timeOpen, timeClose, timeView, item.text, parentUrl);
+								console.log("item.text " + item.text + "arrTabActive[i] " + iTabParent + " arrkey[arrTabActive[i]] " + arrkey[iTabParent] + " item.link.search(arrkey[arrTabActive[i]]) " + item.link.search(arrkey[iTabParent]));
+								
+								if ( (item.text.toUpperCase().search(arrkey[iTabParent].toUpperCase()) >-1 || item.link.search(arrkey[iTabParent])>0) && (arrkey[iTabParent]!==""))
+									catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER,
+										timeOpen, timeClose, timeView, item.text, parentUrl,1);
+								else
+									catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER,
+										timeOpen, timeClose, timeView, item.text, parentUrl,0);
 								if (arrLinks.length>-1)
 									arrLinks.splice(arrTabActive[i], 1);									
 								catchAllLinks.reduceIndexArrTabActive(i);	
@@ -115,6 +123,14 @@ var catchAllLinks = {
                 }			
 			minute++;
         }, timeCallAddon); 
+    },
+	getITabParent: function(url) {
+        for (var index = 0; index < urlParents.length; index++) {
+			if (url == urlParents[index]) {
+						return indexUrlParent[index];
+			}
+		}
+		return -1;
     },
     getRandomInt: function(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -205,7 +221,7 @@ var catchAllLinks = {
                         var timeClose = d.format("hh:mm:ss dd/MM/yyyy");
                         var timeView = diff;
                         catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER,
-                            timeOpen, timeClose, timeView, item.text, parentUrl);
+                            timeOpen, timeClose, timeView, item.text, parentUrl,0);
                     }
                 }              
                 break;
@@ -308,7 +324,7 @@ var catchAllLinks = {
                             var timeOpen = item.start.format("hh:mm:ss dd/MM/yyyy");
                             var timeClose = d.format("hh:mm:ss dd/MM/yyyy");
                             var timeView = diff;
-                            catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER, timeOpen, timeClose, timeView, item.text, parentUrl);
+                            catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER, timeOpen, timeClose, timeView, item.text, parentUrl,0);
                         }
                     }
                     arrLinks.splice(index, 1);
@@ -345,9 +361,12 @@ var catchAllLinks = {
 		if((origEl.tagName === 'A' || origEl.tagName === 'a') && (iiii>-1))
 		{
 			var rushUrl = origEl.toString().substring(iiii + 11);
+			var iiii= rushUrl.search("###");
+			var uuu	= rushUrl.substring(0,iiii);
+			var key = catchAllLinks.getkey(rushUrl);
 			// rushUrl= catchAllLinks.rtrim(rushUrl);
 			console.log("focusTabUrl " + rushUrl); // thuong bi loi thieu /
-			catchAllLinks.focusTabUrl(rushUrl);
+			catchAllLinks.focusTabUrl(uuu,key);
 			return ;
 		}
 		
@@ -413,6 +432,13 @@ var catchAllLinks = {
 			urlnew = url.substring(0, url.length - 1);
 		return urlnew;
 	},
+	getkey: function (str) {
+		var key="";
+		var start = str.search("###");
+		var end = str.lastIndexOf("###");
+		var key=str.substring(start+3,end);
+		return key;
+	},
     processURLRequest: function (currentURI, clickedURL, linkText, event) {
 		
         if (clickedURL === undefined || clickedURL === "" || gBrowser.tabContainer.selectedIndex >=arrLinks.length) {
@@ -463,7 +489,7 @@ var catchAllLinks = {
 				var timeClose = "In view";
 				var timeView = "0";
 				catchAllLinks.updateServerSideWithParams(clickedURL, catchAllLinks.ID_USER, 
-					timeOpen, timeClose, timeView, linkText, currentLink);
+					timeOpen, timeClose, timeView, linkText, currentLink,0);
 			}
 		}
     },
@@ -523,12 +549,14 @@ var catchAllLinks = {
             //console.log("Error: " + text);
         }
     },
-    updateServerSideWithParams: function(urlClicked, idUser, timeOpen, timeClose, timeView, linkText, parent) {
+    updateServerSideWithParams: function(urlClicked, idUser, timeOpen, timeClose, timeView, linkText, parent,checkkey) {
         if (catchAllLinks.invocation) {
             var requestUrl = catchAllLinks.BASE_URL + '?urlClicked=%20'+ encodeURIComponent(urlClicked) +'&idUser=' + encodeURIComponent(idUser) + 
             '&timeOpend=' + encodeURIComponent(timeOpen) +'&timeClose=' + encodeURIComponent(timeClose) + 
             '&timeView='+ encodeURIComponent(timeView) + '&linkText=' + encodeURIComponent(linkText) + 
             '&parent=%20' + encodeURIComponent(parent)+ '&deepbacklink=1';
+			if (checkkey===1)
+			requestUrl=requestUrl + '&checkkey=1';
             console.log("updateServerSideWithParams With URL: " + requestUrl);
             console.log("Update Server Side With URL: " + requestUrl);
             if(catchAllLinks.isIE8) {
@@ -569,7 +597,7 @@ var catchAllLinks = {
 			for(var i=at;i<indexUrlParent.length;i++)
 				indexUrlParent[i]=indexUrlParent[i]-1;
 	},
-	focusTabUrl: function(url) {
+	focusTabUrl: function(url,key) {
 		  var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 							 .getService(Components.interfaces.nsIWindowMediator);
 		  var browserEnumerator = wm.getEnumerator("navigator:browser");
@@ -581,6 +609,9 @@ var catchAllLinks = {
 			  if (url == urlParents[index]) {
 				// The URL is already opened. Select this tab.
 				tabbrowser.selectedTab = tabbrowser.tabContainer.childNodes[indexUrlParent[index]];
+				console.log("focusTabUrl indexUrlParent[index] " + indexUrlParent[index] + " key " + key);
+				arrkey[indexUrlParent[index]]=key;
+				console.log("arrkey[indexUrlParent[index]] " + arrkey[indexUrlParent[index]]);
 				urlCurrentTab = url;
 				// Focus *this* browser-window
 				browserWin.focus();
@@ -623,7 +654,7 @@ arrTabActive[]
 indexUrlParent[] chỉ chứa index của url parent
 urlParents[]
 array indexUrlParent qua ly chua tot mo 2 tab tu faceseo. mo fb xem comment, anh, quay lai tab duoc mo tu faceseo. Click backlink. Sau khi tab tat mang nay ko giam.
-
+arrkeywrods[]
 */
 
 // MyExtension.tab.contentDocument.getElementsByClassName("class");
