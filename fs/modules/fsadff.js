@@ -69,8 +69,7 @@ var catchAllLinks = {
             gBrowser.addEventListener("load", catchAllLinks.onPageLoad, true);
         };
         var container = gBrowser.tabContainer;
-        container.addEventListener("TabOpen", catchAllLinks.onOpenedTab, true);		
-		var rand = catchAllLinks.getRandomInt(3, 10);		
+        container.addEventListener("TabOpen", catchAllLinks.onOpenedTab, true);	
 		var timeCallAddon = 10000;
         var minute = 0;
 		setInterval(function() {
@@ -183,7 +182,7 @@ var catchAllLinks = {
 		};
 		closeAllTab = true;
 	},
-    onClosedTab: function(aEvent) {		
+    onClosedTab: function(aEvent) {
 		if (removedTab)
 		{
 			return;
@@ -205,7 +204,7 @@ var catchAllLinks = {
                         catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER,
                             timeOpen, timeClose, timeView, item.text, parentUrl,0);
                     }
-                }              
+                };             
                 break;
             };
         };
@@ -300,12 +299,20 @@ var catchAllLinks = {
                         }
                     };
                     arrLinks.splice(index, 1);
+					var iii = indexUrlParent.indexOf(index);			
+					if (iii>-1)
+					{
+						urlParents.splice(iii,1);
+						indexUrlParent.splice(iii,1);
+						catchAllLinks.decreaseArrayIndex(iii);
+					};
                     break;
                 }
             }
         }
     },
     handleWindowClick: function(event) {
+		
         var origEl = event.target || event.srcElement;
 		var tabIndex =-1;
 		if(origEl.tagName=="tab")
@@ -315,6 +322,10 @@ var catchAllLinks = {
 			/*
 			for (var kk=0;kk<arrLinks.length;kk++)
 				console.log("arrLinks["+ kk + "]: " + arrLinks[kk].origin + " " + arrLinks[kk].prev + " <br/>");
+			for (xx=0;xx<urlParents.length;xx++)
+				console.log("urlParents " + xx + " " + urlParents[xx]);			
+			for (var xx=0;xx<indexUrlParent.length;xx++)
+				console.log("indexUrlParent " + xx + " " + indexUrlParent[xx]);
 			*/
 		};		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
@@ -324,9 +335,13 @@ var catchAllLinks = {
 					if (iiii==-1)
 					{			
 						tabIndex = gBrowser.tabContainer.selectedIndex;
-						urlParents.splice(0, 0, origEl.toString());
-						catchAllLinks.increaseArrayIndex();
-						indexUrlParent.splice(0, 0, tabIndex);
+						if(indexUrlParent.length < arrLinks.length &&  !catchAllLinks.checkUrlInListParent(origEl.toString()))
+						{							
+							urlParents.splice(0, 0, origEl.toString());
+							catchAllLinks.increaseArrayIndex();
+							indexUrlParent.splice(0, 0, tabIndex);
+						}
+						
 					}
 				
 		};				
@@ -389,6 +404,12 @@ var catchAllLinks = {
 				return false;
 		};
 		return true;
+	},
+	checkUrlInListParent: function (url) {
+			for (var ii = 0;ii < urlParents.length;ii++)
+				if (urlParents[ii]==url)
+					return true;
+		return false;
 	},
 	rtrim: function (url) {
 		var urlnew=url;
@@ -583,42 +604,3 @@ window.addEventListener('click', function(event) {
    catchAllLinks.handleWindowClick(event);
 }, false);
 
-/*
-arrLinks[]
-arrTabActive[]
-indexUrlParent[] chỉ chứa index của url parent
-urlParents[]
-array indexUrlParent qua ly chua tot mo 2 tab tu faceseo. mo fb xem comment, anh, quay lai tab duoc mo tu faceseo. Click backlink. Sau khi tab tat mang nay ko giam.
-arrkeywrods[]
-MyExtension.tab.contentDocument.getElementsByClassName("class");
-info element dom http://stackoverflow.com/questions/7723188/jquery-what-properties-can-i-use-with-event-target
-https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Tabbed_browser
-https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/tab#Properties
-CON DANG BI LOI NEU DUNG O TAB FACESEO SE KHONG THE NAO UPDATE DUOC SEVER
-DOI KHI UPDATE SEVER 2 LAN LIEN TUC CO LE LA DO 
-KHI TAT THONG BAO UPDATE SEVER SIDE THI NO HIEN THONG BAO BAO LOI NHUNG KHONG SAO.
-LOI
-Process of Adong onOpenedTab ->processURLRequest ->onClosedTab
-arrTabActive[0]=4; nếu tab 4 bắt đầu của click backlink
-Loi khong bat dung link cha
-indexUrlParent[0] = 1, indexTab vua chen vao
-indexUrlParent[1] = 1, indexTab vua chen vao
-->  Moi khi chen vao 1 phan tu tang array tang gia tri cac phan tu len 1.
-Mang activetab chua dung thu tu
-arrTabActive dang bi sai
-arrTabActive[0]=2
-Mo tab moi -> TangArrayTabAcitve arrTabActive[0]=3;
-arrTabActive[1]=2
-arrTabActive[0]=2
-BI LOI NEU MO SAN CAC TAB, SAU DO MOI MO FACESEO
-CAC TAB KO XUAT PHAT TU FACESEO THI PHAI BO QUA KO DUOC XU LY
-mang arrayLink quan ly chua tot
-NEU USER VUA MO LINK LEN VA CLICK VAO NGAY BACKLINK CUNG DUOC TINH DIEM CAI NAY SE TANG TI LE THOAT CHO TRANG BAN VUA CLICK
-LOI KHI DAT FACESEO KHONG PHAI O VI TRI TAB 0 NO SE BI LOI
-event.preventDefault(); khoa trang
-Bi loi sau khi focus tab thi duong dan link cha bi sai. Nguyen ngan do dong 307
-debug firefox https://developer.mozilla.org/en-US/docs/Tools/Browser_Console
-https://developer.mozilla.org/en-US/docs/Tools/Tools_Toolbox#Advanced_settings
-debug firefox -jsconsole
-Remove tags http://stackoverflow.com/questions/1499889/remove-html-tags-in-javascript-with-regex
-*/
