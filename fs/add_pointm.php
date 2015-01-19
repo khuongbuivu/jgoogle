@@ -23,6 +23,7 @@ if(!isset($_SESSION)){
 		$token			=	$_POST['token'];
 		$TIMEMINVIEW		= 5;
 		$TIMEMAXVIEW		= 10;
+		$BONUSMOBILE		= 5;
 		$okap			= false;
 		$dm = date("d/m"); 	
 		$s1= date("s");
@@ -75,6 +76,7 @@ if(!isset($_SESSION)){
 					else
 					{
 						$minuteView = $minuteView > $TIMEMAXVIEW? $TIMEMAXVIEW : $minuteView;
+						$minuteView = $minuteView*$BONUSMOBILE;
 						$point = $minuteView + $row['point'];
 						$pointHelp = $minuteView;
 					}
@@ -133,6 +135,7 @@ if(!isset($_SESSION)){
 				else
 				{
 					$minuteView = $minuteView > $TIMEMAXVIEW ? $TIMEMAXVIEW : $minuteView;
+					$minuteView = $minuteView*$BONUSMOBILE;
 					$point = -$minuteView + $row['point'];
 				};
 				$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser);	

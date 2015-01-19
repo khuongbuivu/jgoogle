@@ -1091,10 +1091,16 @@ background: none repeat scroll 0 0 #43464c;
     padding-left: 22px;
 }
 .menulink .licon a{
- color: #fff;
+	color: #fff;
     font-size: 22px;
     line-height: 45px;
-    padding-left: 79px;
+    padding-left: 54px;
+}
+.textintro1 {
+    color: #fff;
+    font-size: 22px;
+    line-height: 45px;
+    padding-left: 54px;
 }
 .nutintro{
  background: url("../images/css/nutintro.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);

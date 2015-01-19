@@ -365,6 +365,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 </div>
 <ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul>
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
+				<div style="color:red" id="message">CÀI ĐẶT <a href="http://faceseo.vn/intro.php">ADDON FIREFOX</a> ĐỂ CLICK ĐÚNG TEXTLINK +50Đ</div>
 				<div id="listUrlViewMore"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				

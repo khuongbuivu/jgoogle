@@ -46,17 +46,17 @@
       <ul class="menulink">
         <li>
           <div class="licon">
-            <div class="licon2"><span class="so">1</span> <a href="">Cài đặt add-on</a></div>
+            <div class="licon2" id="firtstep"><span class="so">1</span><a href="">CHỈ HỖ TRỢ FIREFOX</a></div>
           </div>
         </li>
         <li><div class="licon">
-            <div class="licon2"><span class="so">2</span> <a href="">Click view link</a></div>
+            <div class="licon2"><span class="so">2</span> <span class="textintro1">Click view link</span></div>
           </div></li>
         <li><div class="licon">
-            <div class="licon2"><span class="so">3</span> <a href="">Post link</a></div>
+            <div class="licon2"><span class="so">3</span><span class="textintro1">Post link</span></div>
           </div></li>
         <li><div class="licon">
-            <div class="licon2"><span class="so">4</span> <a href="">Link </a></div>
+            <div class="licon2"><span class="so">4</span> <span class="textintro1">Share,Like G+,FB + điểm </span></div>
           </div></li>
        
       </ul>
@@ -95,24 +95,28 @@
 </div>
 <script src="js/enscroll-0.6.0.min.js"></script> 
 <script>
-                   $('.noidung').enscroll({
-                        showOnHover: false,
-                        verticalTrackClass: 'track3',
-                        verticalHandleClass: 'handle3'
-                    });
-					$( ".liamenu" ).click(function() {
-                         var li=$(this).data('show');
-						
-						 for(i=1;i<6;i++){
-							if(i==li){
-							   $('.c'+li).css('display','block');
-							}else{
-							$('.c'+i).css('display','none');
-							}
-							 
-						 }
-						 
-                     });
-                </script>
+	 var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	 if (is_firefox===true)
+		$("#firtstep").html('<span class="so">1</span><a href="http://faceseo.vn/faceseo.xpi">Click CÀI ĐẶT ADDON FIREFOX</a>');
+   $('.noidung').enscroll({
+		showOnHover: false,
+		verticalTrackClass: 'track3',
+		verticalHandleClass: 'handle3'
+	});
+	$( ".liamenu" ).click(function() {
+		 var li=$(this).data('show');
+		
+		 for(i=1;i<6;i++){
+			if(i==li){
+			   $('.c'+li).css('display','block');
+			}else{
+			$('.c'+i).css('display','none');
+			}
+			 
+		 }
+		 
+	 });					
+</script>
+				
 </body>
 </html>

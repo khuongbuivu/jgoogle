@@ -63,7 +63,7 @@
 											if ($view>620)
 												echo " Closed:<b style='color:red'>Đang view không được F5, rớt mạng.Nhớ click bằng chuột trái.</b><br/>";
 											else
-												echo " Closed:<img title='Đang view' src='images/loading-google-smaill.gif' /><br/>";
+												echo " Closed:<img title='Đang view' src='images/loading-google-smaill.gif' /> <b style='color:green'>".$row[10]."</b><br/>";
 										}
 										else
 											echo " Closed: ".$row[4]."<BR/>";
