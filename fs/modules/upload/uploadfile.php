@@ -1,9 +1,9 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 if(!isset($_SESSION)){
     session_start();
-}echo "hiiiiiiii";
+}
 	require_once("../../definelocal.php");
 	include_once("../../config.php");
 	global $host;
@@ -13,7 +13,7 @@ if(!isset($_SESSION)){
 	require_once("../../libs/thumnail/index.php");
 	require_once("../../define.php");
 	require_once("../../system/function.php");
-	echo "hiiiiiiii";
+
 	if (checkSecurityFile($_FILES,'Filedata'))
 	{
 		$tmp_file_name = $_FILES['Filedata']['tmp_name'];

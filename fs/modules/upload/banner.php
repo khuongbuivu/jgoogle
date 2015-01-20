@@ -171,6 +171,8 @@ include_once("../../user.php");
 											</div>
 										</div>
 										<div class="uiTypeahead mentionsTypeahead">
+                                        <div class="eg"><div class="yw oo"></div><div class="yw VK"></div></div>
+                                        
 											<div class="wrap-input">
 												<input type="hidden" class="hiddenInput">
 												<div class="innerWrap">
@@ -189,15 +191,17 @@ include_once("../../user.php");
 											</div>
 										</div>
                                         <style>
-#dragandrophandler
+.dragandrophandler
 {
-border:2px dotted #0B85A1;
-width:400px;
-color:#92AAB0;
-text-align:left;vertical-align:middle;
-padding:10px 10px 10 10px;
-margin-bottom:10px;
-font-size:200%;
+    background: none repeat scroll 0 0 #e5e5e5;
+    border: 1px dotted #ccc;
+    color: #92aab0;
+    font-size: 140%;
+    margin-bottom: 10px;
+	height: 330px;
+    text-align: center;
+	margin-left:10px;
+    vertical-align: middle;
 }
 .progressBar {
     width: 200px;
@@ -255,13 +259,29 @@ margin-right:5px;
     cursor:pointer;
     vertical-align:top
     }
+.iconshareup {
+    background: url("shareicon.png") no-repeat scroll -179px 0 rgba(0, 0, 0, 0);
+    height: 64px;
+    margin: 0 auto;
+    visibility: visible;
+    width: 64px;
+	top:30%;
+	position:relative;
+}	
+.textshareup{
+	top:30%;
+	position:relative;
+}
 </style>
 
                                                 
                                                 
                                                 
-                                                <div id="dragandrophandler">Drag & Drop Files Here</div>
-<br><br>
+                                                <div class="dragandrophandler">
+                                                <div class="iconshareup"></div>
+                                                <div class="textshareup">Kéo ảnh vào đây</div>
+                                                
+                                                </div>
 <div id="status1"></div>
    <script>
 function sendFileToServer(formData,status)
@@ -293,8 +313,16 @@ function sendFileToServer(formData,status)
         data: formData,
         success: function(data){
             status.setProgress(100);
- 
-            $("#status1").append("File upload Done<br>");        
+			
+			if(data!='FAIL'){
+				$('.dragandrophandler').html('<img class="hinhup" src="'+data+'"/><br/><a onclick="xoaanh()" class="xoaanh">x</a>');
+				$('.dragandrophandler').css({"background":"#e5e5e5","border":"1px dotted #ccc"});	
+			}else {
+				$('.dragandrophandler').html('<div class="iconshareup"></div><div class="textshareup">Kéo ảnh khác vào đây</div>');
+				$('.dragandrophandler').css({"background":"#e5e5e5","border":"1px dotted #ccc"});		
+								
+			}
+            //$("#status1").append("File upload Done<br>");        
         }
     });
  
@@ -302,6 +330,13 @@ function sendFileToServer(formData,status)
 }
  
 var rowCount=0;
+
+function xoaanh(){
+	
+$('.dragandrophandler').html('<div class="iconshareup"></div><div class="textshareup">Kéo ảnh khác vào đây</div>');
+				$('.dragandrophandler').css({"background":"#e5e5e5","border":"1px dotted #ccc"});	
+}
+
 function createStatusbar(obj)
 {
      rowCount++;
@@ -312,7 +347,7 @@ function createStatusbar(obj)
      this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
      this.progressBar = $("<div class='progressBar'><div></div></div>").appendTo(this.statusbar);
      this.abort = $("<div class='abort'>Abort</div>").appendTo(this.statusbar);
-     obj.after(this.statusbar);
+    $(".textshareup").after(this.statusbar);
  
     this.setFileNameSize = function(name,size)
     {
@@ -365,12 +400,12 @@ function handleFileUpload(files,obj)
 }
 $(document).ready(function()
 {
-var obj = $("#dragandrophandler");
+var obj = $(".dragandrophandler");
 obj.on('dragenter', function (e)
 {
     e.stopPropagation();
     e.preventDefault();
-    $(this).css('border', '2px solid #0B85A1');
+    //$(this).css('border', '2px solid #0B85A1');
 });
 obj.on('dragover', function (e)
 {
@@ -380,7 +415,8 @@ obj.on('dragover', function (e)
 obj.on('drop', function (e)
 {
  
-     $(this).css('border', '2px dotted #0B85A1');
+    $(this).css('border', '1px dotted #0B85A1');
+	 $(this).css('background', '#A3C3FF');
      e.preventDefault();
      var files = e.originalEvent.dataTransfer.files;
  
@@ -396,7 +432,8 @@ $(document).on('dragover', function (e)
 {
   e.stopPropagation();
   e.preventDefault();
-  obj.css('border', '2px dotted #0B85A1');
+  obj.css('border', '1px dotted #0B85A1');
+  obj.css('background', '#A3C3FF');
 });
 $(document).on('drop', function (e)
 {
@@ -892,7 +929,68 @@ function loadOtherPost()
     padding: 0 0 0 8px;
     width: 89%;
 }
+._2yg {
+    height: 430px;
+}
+.UFIImageBlockImage img{
+	border-radius:100%;
+}
+.eg {
+    background-color: white;
+    border-top: 1px solid #e4e4e4;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.04) inset;
+    cursor: text;
+    display: none;
+    height: 15px;
+    left: -15px;
+    position: absolute;
+    top: -1px;
+    width: 20px;
+	display:block;
+}
 
+.yw {
+    height: 0;
+    position: absolute;
+    width: 0;
+}
+.VK {
+    border-bottom: 15px solid #edeff4;
+    border-right: 15px solid transparent;
+    left: -1px;
+}
+.oo {
+    border-bottom: 16px solid #BDC7D8;
+    border-right: 16px solid transparent;
+    left: -1px;
+    top: -1px;
+}
+.uiTypeahead {
+    margin-left: 10px;
+
+}
+#insertbanner{
+	background: none repeat scroll 0 0 #7086af;
+    border: 1px solid #485771;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 5px;
+}
+.hinhup{max-height: 330px;
+    position: relative;
+    top: 30%;
+}
+.xoaanh{
+ background: none repeat scroll 0 0 #f00;
+    border-radius: 50%;
+    color: #fff;
+    display: table;
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    width: 25px;
+}
 </style>
 
 
