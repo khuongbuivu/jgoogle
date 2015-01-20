@@ -39,7 +39,7 @@ var refreshIntervalId=0;
 var timetmp=0;
 
 </script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
+<?php /*<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>*/?>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="<?php echo $PATH_ROOT;?>modules/upload/upclick.js"></script> <!-- for upload file -->
@@ -48,7 +48,7 @@ var timetmp=0;
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/warning.js"></script>
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/banner.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script>
+<?php /*?><script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script><?php */?>
 <link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/comment.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
@@ -75,10 +75,10 @@ var timetmp=0;
 <script type="text/javascript" >	
 //setInterval("autoLoadComment('" + root_path + "content_comment.php',<?php echo (int)($id) ?>)",10000);
 //setInterval("B()",5000);
-setInterval("checkTabsClosed()",5000);
-setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
-setInterval("getNewPost('"+root_path + "modules/post_new.php')",10000);
-setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",60000);
+//setInterval("checkTabsClosed()",5000);
+//setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
+//setInterval("getNewPost('"+root_path + "modules/post_new.php')",10000);
+//setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",60000);
 
 
 </script>
@@ -93,7 +93,7 @@ setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idU
 </script>	
 -->
 <!-- show popup-->
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 </head>	
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
 <div id="container">
@@ -132,7 +132,7 @@ include_once("../../user.php");
 						<div class="clearfix"></div>
 					</div>
 					<script>
-					getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
+					//getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
 					getWarningNumber(root_path+ "modules/get_warning_number.php",idUser,1);
 					</script>
 					<!-- API FACEBOOK GET ID NAME IMG -->
@@ -181,22 +181,238 @@ include_once("../../user.php");
 													</div>
 													
 												</div>
+                                                
+                                                                                         
+                                                
+                                                
+                                                
 											</div>
-										</div>	
+										</div>
+                                        <style>
+#dragandrophandler
+{
+border:2px dotted #0B85A1;
+width:400px;
+color:#92AAB0;
+text-align:left;vertical-align:middle;
+padding:10px 10px 10 10px;
+margin-bottom:10px;
+font-size:200%;
+}
+.progressBar {
+    width: 200px;
+    height: 22px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    display:inline-block;
+    margin:0px 10px 5px 5px;
+    vertical-align:top;
+}
+ 
+.progressBar div {
+    height: 100%;
+    color: #fff;
+    text-align: right;
+    line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+    width: 0;
+    background-color: #0ba1b5; border-radius: 3px;
+}
+.statusbar
+{
+    border-top:1px solid #A9CCD1;
+    min-height:25px;
+    width:700px;
+    padding:10px 10px 0px 10px;
+    vertical-align:top;
+}
+.statusbar:nth-child(odd){
+    background:#EBEFF0;
+}
+.filename
+{
+display:inline-block;
+vertical-align:top;
+width:250px;
+}
+.filesize
+{
+display:inline-block;
+vertical-align:top;
+color:#30693D;
+width:100px;
+margin-left:10px;
+margin-right:5px;
+}
+.abort{
+    background-color:#A8352F;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;display:inline-block;
+    color:#fff;
+    font-family:arial;font-size:13px;font-weight:normal;
+    padding:4px 15px;
+    cursor:pointer;
+    vertical-align:top
+    }
+</style>
+
+                                                
+                                                
+                                                
+                                                <div id="dragandrophandler">Drag & Drop Files Here</div>
+<br><br>
+<div id="status1"></div>
+   <script>
+function sendFileToServer(formData,status)
+{
+    var uploadURL ="http://localhost/faceseo.vn/modules/upload/uploadfile.php"; //Upload URL
+    var extraData ={}; //Extra Data.
+    var jqXHR=$.ajax({
+            xhr: function() {
+            var xhrobj = $.ajaxSettings.xhr();
+            if (xhrobj.upload) {
+                    xhrobj.upload.addEventListener('progress', function(event) {
+                        var percent = 0;
+                        var position = event.loaded || event.position;
+                        var total = event.total;
+                        if (event.lengthComputable) {
+                            percent = Math.ceil(position / total * 100);
+                        }
+                        //Set progress
+                        status.setProgress(percent);
+                    }, false);
+                }
+            return xhrobj;
+        },
+    url: uploadURL,
+    type: "POST",
+    contentType:false,
+    processData: false,
+        cache: false,
+        data: formData,
+        success: function(data){
+            status.setProgress(100);
+ 
+            $("#status1").append("File upload Done<br>");        
+        }
+    });
+ 
+    status.setAbort(jqXHR);
+}
+ 
+var rowCount=0;
+function createStatusbar(obj)
+{
+     rowCount++;
+     var row="odd";
+     if(rowCount %2 ==0) row ="even";
+     this.statusbar = $("<div class='statusbar "+row+"'></div>");
+     this.filename = $("<div class='filename'></div>").appendTo(this.statusbar);
+     this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
+     this.progressBar = $("<div class='progressBar'><div></div></div>").appendTo(this.statusbar);
+     this.abort = $("<div class='abort'>Abort</div>").appendTo(this.statusbar);
+     obj.after(this.statusbar);
+ 
+    this.setFileNameSize = function(name,size)
+    {
+        var sizeStr="";
+        var sizeKB = size/1024;
+        if(parseInt(sizeKB) > 1024)
+        {
+            var sizeMB = sizeKB/1024;
+            sizeStr = sizeMB.toFixed(2)+" MB";
+        }
+        else
+        {
+            sizeStr = sizeKB.toFixed(2)+" KB";
+        }
+ 
+        this.filename.html(name);
+        this.size.html(sizeStr);
+    }
+    this.setProgress = function(progress)
+    {      
+        var progressBarWidth =progress*this.progressBar.width()/ 100; 
+        this.progressBar.find('div').animate({ width: progressBarWidth }, 10).html(progress + "% ");
+        if(parseInt(progress) >= 100)
+        {
+            this.abort.hide();
+        }
+    }
+    this.setAbort = function(jqxhr)
+    {
+        var sb = this.statusbar;
+        this.abort.click(function()
+        {
+            jqxhr.abort();
+            sb.hide();
+        });
+    }
+}
+function handleFileUpload(files,obj)
+{
+   for (var i = 0; i < files.length; i++)
+   {
+        var fd = new FormData();
+        fd.append('Filedata', files[i]);
+ 
+        var status = new createStatusbar(obj); //Using this we can set progress.
+        status.setFileNameSize(files[i].name,files[i].size);
+        sendFileToServer(fd,status);
+ 
+   }
+}
+$(document).ready(function()
+{
+var obj = $("#dragandrophandler");
+obj.on('dragenter', function (e)
+{
+    e.stopPropagation();
+    e.preventDefault();
+    $(this).css('border', '2px solid #0B85A1');
+});
+obj.on('dragover', function (e)
+{
+     e.stopPropagation();
+     e.preventDefault();
+});
+obj.on('drop', function (e)
+{
+ 
+     $(this).css('border', '2px dotted #0B85A1');
+     e.preventDefault();
+     var files = e.originalEvent.dataTransfer.files;
+ 
+     //We need to send dropped files to Server
+     handleFileUpload(files,obj);
+});
+$(document).on('dragenter', function (e)
+{
+    e.stopPropagation();
+    e.preventDefault();
+});
+$(document).on('dragover', function (e)
+{
+  e.stopPropagation();
+  e.preventDefault();
+  obj.css('border', '2px dotted #0B85A1');
+});
+$(document).on('drop', function (e)
+{
+    e.stopPropagation();
+    e.preventDefault();
+});
+ 
+});
+</script>    
+                                        
+                                        
+                                        	
 									</div>
 							</div>							
 							</div></div></div></li>	<br/>
-							<div class="rulebanner">
-							<strong>1.</strong> Nhập link cần quảng cáo vào<br/>
-							<strong>2.</strong> Click vào icon máy ảnh để upload banner<br/>
-							<strong>3.</strong> Bấm vào nút "Đăng Banner" để hoàn thành<br/>
-							<strong>4.</strong> Chỉ banner của 10 người cao điểm nhất được hiển thị<br/>
-							<strong>5.</strong> Đăng banner có kích thước 300x150<br/>
-							<strong>6.</strong> Thay đổi banner: xóa banner cũ upload lại banner mới<br/>
-							<strong>7.</strong> Không upload ảnh vi phạm pháp luật Việt Nam<br/>
-							<strong>8.</strong> Top 10 thành viên đang có banner hiển thị: xem bên phải <br/>
-							<strong>9.</strong> Khi kéo xuống thì banner của người có điểm > 0 sẽ xuất hiện <br/>
-							</div>
+							
 							
 				<div class="_1dsp1 _4-">
 					<div style="clear:both">
@@ -213,6 +429,17 @@ include_once("../../user.php");
 				</div>
 				<div id="linkImageBanner" style="display:none"></div>
 				<div style="clear:both"></div>
+                <div class="rulebanner">
+							<strong>1.</strong> Nhập link cần quảng cáo vào<br/>
+							<strong>2.</strong> Click vào icon máy ảnh để upload banner<br/>
+							<strong>3.</strong> Bấm vào nút "Đăng Banner" để hoàn thành<br/>
+							<strong>4.</strong> Chỉ banner của 10 người cao điểm nhất được hiển thị<br/>
+							<strong>5.</strong> Đăng banner có kích thước 300x150<br/>
+							<strong>6.</strong> Thay đổi banner: xóa banner cũ upload lại banner mới<br/>
+							<strong>7.</strong> Không upload ảnh vi phạm pháp luật Việt Nam<br/>
+							<strong>8.</strong> Top 10 thành viên đang có banner hiển thị: xem bên phải <br/>
+							<strong>9.</strong> Khi kéo xuống thì banner của người có điểm > 0 sẽ xuất hiện <br/>
+							</div>
 				<?php 
 				echo $html;
 				?>		
@@ -323,7 +550,7 @@ function loadComment(url)
     if (currentIdLoadPost > idMaxPostOnpage)
         currentIdLoadPost = idDivPostStart;		
 }
-setInterval("loadComment('" + root_path + "content_comment.php')",5000);
+//setInterval("loadComment('" + root_path + "content_comment.php')",5000);
 function generateTokenPost()
 {
 	<?php 	
@@ -433,10 +660,10 @@ if  (htmlStr11.search("Unlike") >-1)
 };
 });
 /* css tooltip */
-$('a[rel=westtipsy]').tipsy({fade: true, gravity: 'w'});
+/*$('a[rel=westtipsy]').tipsy({fade: true, gravity: 'w'});
 $('a[rel=ttipsy]').tipsy({gravity: 's'});
 $('a[rel=btipsy]').tipsy({gravity: 'n'});
-$('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
+$('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});*/
 
 });
 	$('body').on('keydown','textarea', function(e) {
@@ -659,5 +886,17 @@ function loadOtherPost()
 		isUserLogined = true;
 <?php };?>
 </script>
+<style>
+.UFIRow .UFIImageBlockContent {
+    margin: 0;
+    padding: 0 0 0 8px;
+    width: 89%;
+}
+
+</style>
+
+
+
+
 </body>
 </html>

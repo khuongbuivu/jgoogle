@@ -1,7 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if(!isset($_SESSION)){
     session_start();
-}
+}echo "hiiiiiiii";
 	require_once("../../definelocal.php");
 	include_once("../../config.php");
 	global $host;
@@ -11,6 +13,7 @@ if(!isset($_SESSION)){
 	require_once("../../libs/thumnail/index.php");
 	require_once("../../define.php");
 	require_once("../../system/function.php");
+	echo "hiiiiiiii";
 	if (checkSecurityFile($_FILES,'Filedata'))
 	{
 		$tmp_file_name = $_FILES['Filedata']['tmp_name'];
@@ -45,22 +48,22 @@ if(!isset($_SESSION)){
 		chmod($thumb,0755);
 		
 	}
-	function checkSecurityFile($_FILES,$arg)
+	function checkSecurityFile($a,$arg)
 	{
 		
 		$MAX_FILENAME_LENGTH = 260;
 		$valid_chars_regex = 'A-Za-z0-9_-\s ';
 		$allowedExts = array("gif", "jpeg", "jpg", "png");
 		$backlist = array('php', 'php3', 'php4', 'phtml','exe');
-		$temp = explode(".", $_FILES[$arg]["name"]);
+		$temp = explode(".", $a[$arg]["name"]);
 		$extension = end($temp);
-		if(!eregi('image/', $_FILES[$arg]['type']))
+		if(!eregi('image/', $a[$arg]['type']))
 		{
 				echo "File Invalid";
 				return false;
 		}
 		// Validate file name (for our purposes we'll just remove invalid characters)
-		$file_name = preg_replace('/[^'.$valid_chars_regex.']|\.+$/i', '', strtolower(basename($_FILES[$arg]['name'])));
+		$file_name = preg_replace('/[^'.$valid_chars_regex.']|\.+$/i', '', strtolower(basename($a[$arg]['name'])));
 		if (strlen($file_name) == 0 || strlen($file_name) > $MAX_FILENAME_LENGTH)
 		{		
 				echo "File Invalid";
@@ -78,16 +81,16 @@ if(!isset($_SESSION)){
 				echo "File Invalid";
 				return false;
 		}
-		if ((($_FILES[$arg]["type"] == "image/gif")
-		|| ($_FILES[$arg]["type"] == "image/jpeg")
-		|| ($_FILES[$arg]["type"] == "image/jpg")
-		|| ($_FILES[$arg]["type"] == "image/pjpeg")
-		|| ($_FILES[$arg]["type"] == "image/x-png")
-		|| ($_FILES[$arg]["type"] == "image/png"))
-		&& ($_FILES[$arg]["size"] < 1000000)
-		&& in_array($extension, $allowedExts) && ((strpos($_FILES[$arg]["name"], "php")===false))&& ((strpos($_FILES[$arg]["name"], "php")===false))&& ((strpos($_FILES[$arg]["name"], "php4")===false))&& ((strpos($_FILES[$arg]["name"], "phtml")===false))&& ((strpos($_FILES[$arg]["name"], "exe")===false)))
+		if ((($a[$arg]["type"] == "image/gif")
+		|| ($a[$arg]["type"] == "image/jpeg")
+		|| ($a[$arg]["type"] == "image/jpg")
+		|| ($a[$arg]["type"] == "image/pjpeg")
+		|| ($a[$arg]["type"] == "image/x-png")
+		|| ($a[$arg]["type"] == "image/png"))
+		&& ($a[$arg]["size"] < 1000000)
+		&& in_array($extension, $allowedExts) && ((strpos($a[$arg]["name"], "php")===false))&& ((strpos($a[$arg]["name"], "php")===false))&& ((strpos($a[$arg]["name"], "php4")===false))&& ((strpos($a[$arg]["name"], "phtml")===false))&& ((strpos($a[$arg]["name"], "exe")===false)))
 		  {
-		  if ($_FILES[$arg]["error"] > 0)
+		  if ($a[$arg]["error"] > 0)
 			{
 				return false;
 			}
