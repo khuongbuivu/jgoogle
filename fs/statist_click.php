@@ -50,7 +50,10 @@
 								echo '<div class="uiProfileBlockContent">';
 									echo '<div class="_6a _6b">';
 										echo '<div class="fsl fwb fcb">';
-											echo "<a href='javascript: openLinkMenu(\"".$PATH_ROOT."profile.php?iduser=".$row[2]."\")'>".$userinfo[user_name]. "</a>";
+										if ($row[10]!=null || $row[10]!="")
+											echo "<a href='javascript: openLinkMenu(\"".$PATH_ROOT."profile.php?iduser=".$row[2]."\")'>".$userinfo[user_name]. "</a> ::  <b style='color:green'>".$row[10]."</b>";
+										else
+											echo "<a href='javascript: openLinkMenu(\"".$PATH_ROOT."profile.php?iduser=".$row[2]."\")'>".$userinfo[user_name]. "</a>  <b style='color:green'>".$row[10]."</b>";
 										echo '</div>';
 										echo " Start : ".$row[3]."<BR/>";
 										$strTime = substr($row[3], 0, 8);
@@ -63,7 +66,7 @@
 											if ($view>620)
 												echo " Closed:<b style='color:red'>Đang view không được F5, rớt mạng.Nhớ click bằng chuột trái.</b><br/>";
 											else
-												echo " Closed:<img title='Đang view' src='images/loading-google-smaill.gif' /> <b style='color:green'>".$row[10]."</b><br/>";
+												echo " Closed:<img title='Đang view' src='images/loading-google-smaill.gif' /><br/>";
 										}
 										else
 											echo " Closed: ".$row[4]."<BR/>";
@@ -80,7 +83,10 @@
 											{
 												$minuteView = intval($row[5])/60 ; 
 												$pointadd= $minuteView > 10 ? 10 : $minuteView  ;
-												echo " Timeview: ".$row[5]." giây + ".(int)($pointadd)."  điểm ( cộng tối đa 10đ cho mỗi lượt view).<BR/>";							
+												if ($row[10]!=null || $row[10]!="")
+													echo " Timeview: ".$row[5]." giây + ".(int)($pointadd)*5 ."  điểm(cộng tối đa 50đ).<br/>ĐiểmViewMobile  = SốPhút*5.<BR/>";							
+												else
+													echo " Timeview: ".$row[5]." giây + ".(int)($pointadd)."  điểm ( cộng tối đa 10đ cho mỗi lượt view).<BR/>";							
 											}
 											else
 												echo " Timeview: ".$row[5]." giây < 300 giây =>  Bạn không được cộng điểm<BR/>";							
