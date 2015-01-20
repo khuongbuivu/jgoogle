@@ -40,9 +40,11 @@ if(!isset($_SESSION)){
 			else
 			{
 				$okap = false;
+				exit();
 				mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_BANNER: AUTO ADD POINT BANNER' where user_id=".$_SESSION['session-user']);
 			}	
 		}
+		
 		while ($row = mysqli_fetch_array($result))
 		{
 			if(!($result1->num_rows>0))

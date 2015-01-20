@@ -133,6 +133,7 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 		else
 		{
 			$okap = false;
+			exit();
 			mysqli_query($con,"UPDATE atw_user set user_status = 'FS: AUTO ADD POINT BANNER' where user_id=".$_SESSION['session-user']);
 		}
 	}
