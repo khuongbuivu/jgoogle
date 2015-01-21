@@ -98,11 +98,13 @@ div#contentCol.homeWiderContent, .homeWiderContent #bottomContent {
 }
 
 div#contentCol.homeFixedLayout {
-    padding-top: 5px;
+    padding-top: 0px;
 }
 
 #contentCol {
- border: 1px solid #cccccc;
+ border-left: 1px solid #cccccc;
+ border-bottom: 1px solid #cccccc;
+ border-right: 1px solid #cccccc;
     border-radius: 0 0 5px 5px;
     margin-left: 9%;
     min-height: 600px;
@@ -376,7 +378,7 @@ background-color: #475A8E;
 }
 .fs #globalContainer {
     position: relative;
-    top: 70px;
+    top: 60px;
     width: 100%;
 }
 ._2yg{

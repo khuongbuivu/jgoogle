@@ -1,5 +1,5 @@
 var isMobile = navigator.userAgent.toLowerCase().indexOf('mobile') > -1;
-
+isMobile=false;
 function showAllComment(url,idArt)
 {
 	if (FaceSeo.search(domain)<0)

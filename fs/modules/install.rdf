@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <RDF:Description RDF:about="urn:mozilla:install-manifest">
+        <em:name>Faceseo</em:name>
+        <em:version>1.0</em:version>
+        <em:id>linhnguyen@faceseo.vn</em:id>
+        <em:description>ADDON DÀNH CHO SEOER. GIÚP QUẢN LÝ CLICK CHUYỂN TRANG</em:description>
+        <em:creator>Linh Nguyen</em:creator>
+        <em:optionsURL>chrome://faceseo/content/options.xul</em:optionsURL>
+		<em:iconURL>chrome://faceseo/skin/icon.png</em:iconURL>
+		<em:icon64URL>chrome://faceseo/skin/icon64.png</em:icon64URL>
+        <em:homepageURL>http://faceseo.vn</em:homepageURL>
+        <em:contributor>Linh Nguyen</em:contributor>
+        <em:translator>Linh Nguyen</em:translator>
+		
+        
+        <em:targetApplication>
+            <Description>
+                    <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+                    <em:minVersion>2.0</em:minVersion>
+                    <em:maxVersion>31.0</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+     <!--
+        <em:file>
+         <RDF:Description about="urn:mozilla:extension:file:faceseo.jar">
+            <em:package>content/</em:package>
+            <em:locale>locale/en-US/</em:locale>
+            <em:skin>skin/</em:skin>
+        </RDF:Description>
+       </em:file>
+       -->
+       <!--
+       <em:id>faceseo@nhd.com</em:id>
+        <em:name>Catch All Links</em:name>
+        <em:version>1.0</em:version>
+        <em:type>2</em:type>
+        <em:creator>NHD</em:creator>
+        <em:description>Catch all links which are reviewed by users over 50s</em:description>
+        <em:homepageURL>http://www.nhd.com/</em:homepageURL>
+        <em:optionsURL>chrome://faceseo/content/options.xul</em:optionsURL>
+
+        <em:targetApplication>
+            <Description>
+                    <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+                    <em:minVersion>2.0</em:minVersion>
+                    <em:maxVersion>31.0</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+        -->
+    </RDF:Description>
+</RDF:RDF>
