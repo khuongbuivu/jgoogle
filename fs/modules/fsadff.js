@@ -604,4 +604,4 @@ window.addEventListener('click', function(event) {
    catchAllLinks.handleWindowClick(event);
 }, false);
 // Add Icon toolbar https://developer.mozilla.org/en-US/Add-ons/Overlay_Extensions/XUL_School/Adding_Toolbars_and_Toolbar_Buttons
-
+// Code process https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Adding_a_Button_to_the_Toolbar
