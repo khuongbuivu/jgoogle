@@ -253,14 +253,13 @@ jQuery(function () {
 			var clicks= jQuery('#l_clicks').val();
 			var daily= jQuery('#l_daily').val();
 			var cpc= jQuery('#l_cpc').val();
-			alert(cpc);
 			jQuery.ajax({
 				type: "POST",
 				url: root_path+"modules/add_setting.php",
 				data: { nameproject:nameproject, urls:urls, keywords:keywords, bl1:bl1, bl2:bl2, bl3: bl3,gplus1:gplus1,gplus2:gplus2,gplus3:gplus3,fanpage:fanpage,clicks:clicks,daily:daily,cpc:cpc},	
 				success : function(abc)
 				{
-							alert(abc);
+							alert("Bạn đã cài đặt thành công");
 				}	
 			}).done(function( msg ) {
 			});
