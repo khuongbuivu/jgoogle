@@ -264,7 +264,7 @@ exit();
 				<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
 				<li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"></span> </li>				
 				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
-				<li><a href=""><span class="icon-set icon-acong"></span> </a></li>
+				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" ><span class="icon-set icon-acong"></span> </a></li>
 				<li><a onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"><span class="icon-set icon-setpanel"   ></span></a></li>
                </ul>
 
@@ -466,6 +466,7 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 <!--<link rel="stylesheet" href="http://giaiphapthuonghieu.vn/miniapps/popuponload/linhnguyen.css">	-->
 <script type="text/javascript" src="http://giaiphapthuonghieu.vn/miniapps/popuponload/jquery.popup.js"></script>	
 <script type="text/javascript" >
+	var xxyyzz=<?php echo $xxyyzz;?>;
 	jQuery(window).load(function() {
 		/*if(document.cookie.indexOf("adf") == -1)*/
 		{
@@ -473,7 +474,7 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 			jQuery('#myModal').linhnguyen(jQuery('#myModal').data());
 		}
 	});
-	var xxyyzz=<?php echo $xxyyzz;?>;
+	
 
 </script>
 
@@ -489,12 +490,18 @@ function initArrayIdPost()
 {
 	
 	arrayIdPost = new Array();
+	strIdPosts  = "";
 	var i=0;
 	$("div[id^='postcontent']").each(function(){
 		var id = parseInt(this.id.substring(11));
 		arrayIdPost[i]=id;
+		if (i===0)
+			strIdPosts = id;
+		else
+			strIdPosts = strIdPosts + "," + id;
 		i=i + 1;
 	});
+	arrayIdPost.sort();
 	idMaxPostOnpage = i;
 }
 function loadComment(url)

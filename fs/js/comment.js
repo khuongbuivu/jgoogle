@@ -842,6 +842,8 @@ function isListHelpNull()
 		return true;
 	return false;
 };
+var numloadPost=0;
+var strIdPosts = "";
 function getOtherPosts(idgroup){
 	if (!isListHelpNull())
 	{
@@ -860,7 +862,7 @@ function getOtherPosts(idgroup){
 	$.ajax({
 			url:url,
 			type:'POST',
-			data: {lastPostDisplay:lastPostDisplay},
+			data: {lastPostDisplay:strIdPosts},
 			dataType: "json",
 			success: function(json) {
 				var htmlnewpost='';
@@ -869,7 +871,7 @@ function getOtherPosts(idgroup){
 				var titleStastic='Thống kê Click hôm nay';
 				var classtitlePopup='titlepopup';
 				if(json.post.length>0){
-					htmlnewpost=showPost(json);				
+					htmlnewpost=showPost(json);	
 					if (htmlnewpost != "") {
 					$(htmlnewpost).hide().appendTo("#wrappercontentpost").show('fade');
 					$('div#last_msg_loader').empty();
@@ -877,7 +879,9 @@ function getOtherPosts(idgroup){
 					initArrayIdPost();
 				}
 				else
-					$('div#last_msg_loader').html('');
+				{
+					$('div#last_msg_loader').empty();
+				}
 			}
 					  
 	}); 
@@ -942,25 +946,32 @@ function getNewPosts(idgroup){
 				var url;
 				var titleStastic='Thống kê Click hôm nay';
 				var classtitlePopup='titlepopup';
-				if (json.uidhelpyou=="")
-				{
-					getOtherPosts(idgroup);								
-				}
 				$('div#UIDHelpYou').html(json.uidhelpyou);
+				if (json.uidhelpyou=="" || json.post.length===0)
+				{
+					getOtherPosts(idgroup);	
+					$('div#UIDHelpYou').html("");
+					return;
+				};
 				if(json.post.length>0){
 					/*$('div#wrappercontentpost').empty();*/	
 					htmlnewpost=showPost(json);				
 					if (htmlnewpost != "") {
 					$(htmlnewpost).hide().appendTo("#wrappercontentpost").slideDown('slow');			
 					};
-					$('div#last_msg_loader').empty();					
+					$('div#last_msg_loader').empty();	
+					numloadPost=0;
 					initArrayIdPost();
+					getListUserViewing();
+					return;
 				}
 				else
+				{				
 					$('div#last_msg_loader').html('');
+				}
 			}					  
 	}); 
-	getListUserViewing();	
+		
 };
 
 function getNewPost(idgroup){
@@ -978,7 +989,6 @@ function getNewPost(idgroup){
 		if (i==10)
 			return false;
 	});
-	console.log("idCurrentPost" + idCurrentPost);
 	if (FaceSeo.search(domain)<0)
 		return;
 	$.ajax({
@@ -1001,7 +1011,7 @@ function getNewPost(idgroup){
 				}
 		}
 	}); 
-	/* console.clear(); */
+	console.clear();
 };
 
 

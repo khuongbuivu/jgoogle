@@ -45,13 +45,14 @@ if(!isset($_SESSION)){
 	$posts = array();
 	$posts['post']=array();
 	$posts['comment']=array();
+	$i=0;
 	if ($listIDUser!="" && $qidUser!="")
 	{
 		$idPost = $_POST['idPost'];
 		$con=mysqli_connect($host,$user,$pass,$db);
 		mysqli_set_charset($con, "utf8");
 		/* GET MY POST */
-		$ridposts=mysqli_query($con,"select max(post_id) postId from atw_post where post_iduser=".$_SESSION['session-user']." group by post_iduser limit 1");
+		$ridposts=mysqli_query($con,"select post_id  from atw_post where post_iduser=".$_SESSION['session-user']." order by post_id desc limit 1");
 		$qidPost="";
 		if ($ridposts->num_rows>0)
 		{
@@ -65,7 +66,6 @@ if(!isset($_SESSION)){
 		if ($qidPost!="" && $_SESSION['iPageUIDHelpYou'] == 0)
 		{
 			$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and (".$qidPost.")  group by post_id ORDER BY post_id DESC" );
-			$i=0;
 			while ($row = mysqli_fetch_array($result_post))
 			{
 				if (checkAvailableLinks($row['post_url'],$id_user) && checkAvailableLinks($row['post_full_url'],$id_user))
@@ -134,7 +134,7 @@ if(!isset($_SESSION)){
 		}
 		
 		/* END GET MY POST */
-		$ridposts=mysqli_query($con,"select max(post_id) postId from atw_post where $qidUser group by post_iduser");
+		$ridposts=mysqli_query($con,"select max(post_id) postId from atw_post where $qidUser group by post_iduser ORDER BY post_id DESC");
 		$qidPost="";
 		if ($ridposts->num_rows>0)
 		{
@@ -147,7 +147,7 @@ if(!isset($_SESSION)){
 		}		
 		if ($qidPost!="")
 		{
-			$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and (".$qidPost.")  group by post_id ORDER BY post_id DESC" );
+			$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and (".$qidPost.")" );
 			while ($row = mysqli_fetch_array($result_post))
 			{
 				if (checkAvailableLinks($row['post_url'],$id_user) && checkAvailableLinks($row['post_full_url'],$id_user))
