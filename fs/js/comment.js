@@ -18,7 +18,9 @@ function showAllComment(url,idArt)
 				if(json.length>0){
 					htmlnewpost=showCommentOfPost(idArt,json);
 					if (htmlnewpost != "") {
-						$("#comment-adv"+idArt).html(htmlnewpost);
+						htmlInputForm='<div class="boxtagfull" id="fslisttags' + idArt +'"><div id="contentbox' + idArt + '" class="contentbox tagnameboxinput" contenteditable="true" data-ph="Tag thành viên"></div><div class="boxtag" id="display' + idArt + '"></div><div id="msgbox"></div></div>';
+						htmlnewpost = htmlInputForm + htmlnewpost;
+						$("#comment-adv"+idArt).html(htmlnewpost);						
 						$("#loadcmtfull"+idArt).html("yes");			
 					}
 				}
@@ -46,6 +48,9 @@ function autoLoadComment(url,idArt)
 				var titleStastic='Thống kê Click hôm nay';
 				var classtitlePopup='titlepopup';
 				if(json.length>0){
+						htmlInputForm='<div class="boxtagfull" id="fslisttags' + idArt +'"><div id="contentbox' + idArt + '" class="contentbox tagnameboxinput" contenteditable="true" data-ph="Tag thành viên"></div><div class="boxtag" id="display' + idArt + '"></div><div id="msgbox"></div></div>';
+						htmlnewpost = htmlInputForm + htmlnewpost;
+						
 					htmlnewpost=showCommentOfPost(idArt,json);
 					if (htmlnewpost != "") {
 						$("#comment-adv"+idArt).html(htmlnewpost);		
@@ -852,11 +857,6 @@ function getOtherPosts(idgroup){
 	};
 	var lastPostDisplay=-1;
 	var url = root_path + "modules/json_get_other_post.php?idgroup="+idgroup;
-	if ($("#wrappercontentpost div.postcontent:last-child").length >0)	
-	{
-		lastPostDisplay = $("#wrappercontentpost div.postcontent:last-child").attr("id");
-		lastPostDisplay=lastPostDisplay.substring(11);	
-	};
 	if (FaceSeo.search(domain)<0)
 		return;
 	$.ajax({
@@ -1011,7 +1011,7 @@ function getNewPost(idgroup){
 				}
 		}
 	}); 
-	console.clear();
+	/*console.clear();*/
 };
 
 
@@ -1151,7 +1151,7 @@ function showPost(json)
 							};
 							htmlInputForm='</div><div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
 							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
-							if(linkLogoFace.trim()!="https://graph.facebook.com//picture")
+							if(linkLogoFace.trim()!=="https://graph.facebook.com//picture")
 								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
 							htmlInputForm+='</div></div>';
 							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content" class="cmt-content'+ json.post[i].idPost +'"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden'+ json.post[i].idPost +'" value=""></div></div></div></div></div></li>';						
