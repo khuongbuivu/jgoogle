@@ -82,6 +82,6 @@ else
 }
 
 mysqli_close($con);
-echo $activepass;
+// echo $activepass;
 //test http://localhost/faceseo.vn/modules/reset.php
 ?>
