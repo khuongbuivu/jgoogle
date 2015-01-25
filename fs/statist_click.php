@@ -51,9 +51,9 @@
 									echo '<div class="_6a _6b">';
 										echo '<div class="fsl fwb fcb">';
 										if ($row[10]!=null || $row[10]!="")
-											echo "<a href='javascript: openLinkMenu(\"".$PATH_ROOT."profile.php?iduser=".$row[2]."\")'>".$userinfo[user_name]. "</a> ::  <b style='color:green'>".$row[10]."</b>";
+											echo "<a href='javascript: openLinkMenu(\"https://www.facebook.com/profile.php?id=".$row[2]."\")'>".$userinfo[user_name]. "</a> ::  <b style='color:green'>".$row[10]."</b>";
 										else
-											echo "<a href='javascript: openLinkMenu(\"".$PATH_ROOT."profile.php?iduser=".$row[2]."\")'>".$userinfo[user_name]. "</a>  <b style='color:green'>".$row[10]."</b>";
+											echo "<a href='javascript: openLinkMenu(\"https://www.facebook.com/profile.php?id=".$row[2]."\")'>".$userinfo[user_name]. "</a>  <b style='color:green'>".$row[10]."</b>";
 										echo '</div>';
 										echo " Start : ".$row[3]."<BR/>";
 										$strTime = substr($row[3], 0, 8);
