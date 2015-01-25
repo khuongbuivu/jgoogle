@@ -36,6 +36,7 @@ if(!isset($_SESSION)){
 		//echo $tmp_file_name." ". $newSubFolder."/".$newPathImage;
 		$ok = move_uploaded_file($tmp_file_name, $newSubFolder."/".$newPathImage);
 		//echo $newSubFolder."/".$newPathImage."xxxxxx";
+	
 		if(LOCAL=="TRUE")
 		{		
 			thumnail($newSubFolder."/".$newPathImage,$thumb."/",300,150);
@@ -44,6 +45,7 @@ if(!isset($_SESSION)){
 			thumnail($newSubFolder."/".$newPathImage,$thumb."/",300,150);
 			echo $ok ? "http://faceseo.vn/images/modules/upload/banner/".$currentDay."/".$newPathImage : "FAIL";
 		}
+	
 		chmod($newSubFolder,0755);
 		chmod($thumb,0755);
 		

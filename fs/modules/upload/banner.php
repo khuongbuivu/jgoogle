@@ -139,6 +139,7 @@ include_once("../../user.php");
 					<?php
 					$con=mysqli_connect($host,$user,$pass,$db);					
 					$result=mysqli_query($con,"select * from  fs_banner where banner_user_id=".$id_user);
+					
 					$html = "";
 					if ($result->num_rows>0)
 					{
@@ -313,10 +314,11 @@ function sendFileToServer(formData,status)
         data: formData,
         success: function(data){
             status.setProgress(100);
-			
-			if(data!='FAIL'){
+			 
+			if(!data.match(/Fail/)&&!data.match(/Invalid/)){
 				$('.dragandrophandler').html('<img class="hinhup" src="'+data+'"/><br/><a onclick="xoaanh()" class="xoaanh">x</a>');
-				$('.dragandrophandler').css({"background":"#e5e5e5","border":"1px dotted #ccc"});	
+				$('.dragandrophandler').css({"background":"#e5e5e5","border":"1px dotted #ccc"});
+				$('#linkImageBanner').html(data);	
 			}else {
 				$('.dragandrophandler').html('<div class="iconshareup"></div><div class="textshareup">Kéo ảnh khác vào đây</div>');
 				$('.dragandrophandler').css({"background":"#e5e5e5","border":"1px dotted #ccc"});		
@@ -332,7 +334,7 @@ function sendFileToServer(formData,status)
 var rowCount=0;
 
 function xoaanh(){
-	
+	$('#linkImageBanner').html('');	
 $('.dragandrophandler').html('<div class="iconshareup"></div><div class="textshareup">Kéo ảnh khác vào đây</div>');
 				$('.dragandrophandler').css({"background":"#e5e5e5","border":"1px dotted #ccc"});	
 }
@@ -462,10 +464,8 @@ $(document).on('drop', function (e)
 						<div style="text-align:right; padding-right:5px;"><a onclick="addbannerfree('<?php echo $PATH_ROOT;?>modules/upload/addbanner.php','','','','');"><button type="button" class="insertbanner _11b" id="insertbanner">Đăng banner</button></a> </div>
 						</div>	
 					</div>	
-				</div>				
-				</div>
-				<div id="linkImageBanner" style="display:none"></div>
-				<div style="clear:both"></div>
+                    
+                    <div style="clear:both"></div>
                 <div class="rulebanner">
 							<strong>1.</strong> Nhập link cần quảng cáo vào<br/>
 							<strong>2.</strong> Click vào icon máy ảnh để upload banner<br/>
@@ -477,6 +477,10 @@ $(document).on('drop', function (e)
 							<strong>8.</strong> Top 10 thành viên đang có banner hiển thị: xem bên phải <br/>
 							<strong>9.</strong> Khi kéo xuống thì banner của người có điểm > 0 sẽ xuất hiện <br/>
 							</div>
+				</div>				
+				</div>
+				<div id="linkImageBanner" style="display:none"></div>
+				
 				<?php 
 				echo $html;
 				?>		
@@ -931,13 +935,14 @@ function loadOtherPost()
 }
 ._2yg {
     height: 430px;
+	border:none;
 }
 .UFIImageBlockImage img{
 	border-radius:100%;
 }
 .eg {
     background-color: white;
-    border-top: 1px solid #e4e4e4;
+    border-top: 1px solid #BDC7D8;
     box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.04) inset;
     cursor: text;
     display: none;
@@ -990,6 +995,18 @@ function loadOtherPost()
     position: absolute;
     top: 50%;
     width: 25px;
+}
+#UFIList-Cmt-Input:hover .VK{
+border-bottom: 15px solid #E5E5E5;
+}
+#linkbanner{
+	margin-left:5px;
+}
+.uiTypeahead:hover .eg{
+border-top: 1px solid #3b5998;
+}
+.uiTypeahead:hover .oo{
+border-bottom: 16px solid #3b5998;
 }
 </style>
 
