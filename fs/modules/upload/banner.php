@@ -1008,6 +1008,9 @@ border-top: 1px solid #3b5998;
 .uiTypeahead:hover .oo{
 border-bottom: 16px solid #3b5998;
 }
+._1dsp1 {
+	position:static;
+}
 </style>
 
 
