@@ -63,12 +63,13 @@ else if ($_SESSION['loginfirsttime']==1)
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" >
 <head>
 <?php if (!$accountFace): ?>
-	<title>Login FACESEO</title>
+	<title>ĐÃ LÀM SEO THÌ PHẢI BIẾT FACESEO</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="maximum-scale=1.0, width=500"/>
-	<meta name="description" content="FACESEO hệ thống được SEOER tôn vinh. Giúp hàng trăm doanh nghiệp khởi sắc."/>
-	<meta name="og:description" content="FACESEO hệ thống SEO, tăng traffic nhanh, giảm alexa">
+	<meta name="description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO"/>
+	<meta name="og:description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO">
 	<meta name="og:image" content="http://faceseo.vn/index/images/banner-faceseo.jpg">
+	<meta name="author" content="Linh Nguyễn">
 	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon">
 	<link rel="stylesheet" type="text/css" href="index/DZxVCOBqfnMg-r0L7dS-Xw.css">
 	<link rel="stylesheet" type="text/css" href="index/Xqjxjf4xU2G8_Gb-X7tbow.css">
@@ -222,7 +223,7 @@ else if ($_SESSION['loginfirsttime']==1)
     <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
     <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>
     <p>Nhiều người đã bị nghiện vì vậy hãy cân nhắc trước khi tham gia hệ thống!</p>
-	<p>Hệ thống chính thức hoạt động khi cáp quang được khắc phục!</p>
+	<p>Hệ thống đã hoạt động và chính thức phổ biến toàn cộng đồng 1-2-2015!</p>
   </fieldset>
 </form>
 <div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>

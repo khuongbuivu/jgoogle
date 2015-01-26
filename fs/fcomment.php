@@ -266,7 +266,7 @@ if(!isset($_SESSION)){
 			if ($result->num_rows>0)
 			{
 				$row = mysqli_fetch_array($result);
-				if($row['numview']>1)
+				if($row['numview']>0)
 				{
 					return false;
 				}		

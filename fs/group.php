@@ -329,6 +329,7 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 <!--<link rel="stylesheet" href="http://giaiphapthuonghieu.vn/miniapps/popuponload/linhnguyen.css">	-->
 <script type="text/javascript" src="http://giaiphapthuonghieu.vn/miniapps/popuponload/jquery.popup.js"></script>	
 <script type="text/javascript" >
+	var xxyyzz=<?php echo $xxyyzz;?>;
 	jQuery(window).load(function() {
 		/*if(document.cookie.indexOf("adf") == -1)*/
 		{
@@ -336,7 +337,7 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 			jQuery('#myModal').linhnguyen(jQuery('#myModal').data());
 		}
 	});
-	var xxyyzz=<?php echo $xxyyzz;?>;
+	
 
 </script>
 

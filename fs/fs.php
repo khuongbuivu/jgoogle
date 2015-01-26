@@ -102,10 +102,10 @@ $domain = getDomainName($linkClicked);
 $uid= getUId($domain);
 $idUser			=	$_GET['idUser'];
 $TIMEVIEW		=	$_GET['timeView']; //60s
-$minuteView = (int)(intval($TIMEVIEW)) ; 
-$BACKLINK		= 2;// HE SO BACKLINK
+$minuteView = (int)(intval($TIMEVIEW)/60) ; 
+$BACKLINK		= 4;// HE SO BACKLINK
 if ($_GET['checkkey']==1)
-	$BACKLINK = 5;
+	$BACKLINK = 10;
 $token			=	$_GET['token'];
 $okap			= false;
 $dm = date("d/m"); 	
@@ -149,7 +149,7 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 		{
 			if(!($result1->num_rows>0))
 			{				
-				if($minuteView < 5)
+				if($minuteView < 3)
 				{
 					$point = $row['point'];
 				}
