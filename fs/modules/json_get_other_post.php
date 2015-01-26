@@ -33,7 +33,7 @@ if(!isset($_SESSION)){
 	else
 	{
 		if($q!="")
-		{
+		{	
 			$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and (".$q.") and post_group=".$idgroup." ORDER BY post_id DESC limit 50" );			
 		
 		}else
@@ -47,13 +47,13 @@ if(!isset($_SESSION)){
 	$posts = array();
 	$posts['post']=array();
 	$posts['comment']=array();
-	while (($row = mysqli_fetch_array($result_post)) && ($countPostAvailable<6))
+	while (($row = mysqli_fetch_array($result_post)) && ($countPostAvailable<10))
 	{
 		if ($countPost%50==0 && $countPost!=$countPostAvailable)
 		{
 			$con=mysqli_connect($host,$user,$pass,$db);
 			mysqli_set_charset($con, "utf8");
-			$result_post=mysqli_query($con,"select * from atw_post where post_id<".$row['post_id']." and post_group=".$idgroup." ORDER BY post_id DESC limit 10" );
+			$result_post=mysqli_query($con,"select * from atw_post where post_id<".$row['post_id']." and post_group=".$idgroup." ORDER BY post_id DESC limit 20" );
 			$countPost=$countPostAvailable;			
 		}
 		if (checkAvailableLinks($row['post_url'],$id_user) && checkAvailableLinks($row['post_full_url'],$id_user))
