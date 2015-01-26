@@ -90,6 +90,7 @@ function subPoint1()
 	global $db;
 	$linkClicked	=	$_POST['linkClicked'];
 	$linkClicked 	= 	removeSlashEndUrl($linkClicked);
+	$linkClicked 	= 	removeSlashEndUrl($linkClicked);
 	$idUser			=	$_POST['idUser'];
 	$point			=	$_POST['point'];
 	$dm = date("d/m");

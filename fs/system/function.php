@@ -32,11 +32,13 @@
 							$time=$arrtimes[$ii];
 						else
 							$time = $_SESSION['TIMEMAXVIEWMYLINK'];
+						$match1 =$match;
+						if (strpos($match,"www")==0 && strpos($match,"www")!="" && strpos($match,"www")!==null)
+							$match1 ="http://".$match;
 						if ($count==$ii || $arrkeys[$ii]!="")
-							$replacement[$ii] = "<a href=".($match)."  onclick=\"return openUrl(this.href,$time,$idPost,\'$key\');\" >{$shortlink}</a>";
+							$replacement[$ii] = "<a href=".($match1)."  onclick=\"return openUrl(this.href,$time,$idPost,\'$key\');\" >{$shortlink}</a>";
 						else
-							$replacement[$ii] = "<a href=".($match)."  onclick=\"return openUrl(this.href,$time);\" >{$shortlink}</a>";
-						
+							$replacement[$ii] = "<a href=".($match1)."  onclick=\"return openUrl(this.href,$time);\" >{$shortlink}</a>";						
 						//echo $match;
                         $match = str_replace("?","\?",$match);
                         $match = str_replace("#","\#",$match);

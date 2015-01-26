@@ -1,17 +1,70 @@
 <script>
-var myString = "http://www.inbangron.com/";
-function rtrim(stringToTrim) {
-	return stringToTrim.replace(/\s+$/,"");
-}
-alert(myString.lastIndexOf("/"));
-alert(myString.length-1)
-var b="";
-if (myString.lastIndexOf("/")== myString.length-1)
-	b = myString.substring(0, myString.length - 1);
-alert(b);
+var a1="D%E1%BB%8ACH%20V%E1%BB%A4%20SEO";
+var a2="D%E1%BB%8ACH%20V%E1%BB%A4%20SEO";
+var a3="HTTP%3A%2F%2FGIAIPHAPTHUONGHIEU.VN%2FDICH-VU-SEO-WEBSITE-TOP-GOOGLE%2F";
+var x="cccccc"
+// if ( ( (a1.search(a2) >-1) || (a3.search(a2)>-1)) && (a2!==""))
+	// alert("xxxxx");
+
 </script>
+
+
 <?php
+$str="http://http//suanha24h.com.vn/sua-chua-nha/67-cty-sua-nha-uy-tin-chat-luong-va-chuyen-nghiep-nhat.html";
+echo strpos($str,"wwww");
+
+$match="http://diathe.vn/vi/sieu-thi-dia-oc.re.html";
+$match1 =$match;
+echo strpos($match,"www");
+if (strpos($match,"www")==0 && strpos($match,"www")!="" && strpos($match,"www")!==null)
+	$match1 ="http://".$match;
+echo $match1;
+echo stripos("I love php, I love php too!","PHP1");
+$aaa="http://seomxh.com/";
+function removeSlashEndUrl($url)
+{
+	return rtrim($url, "/");
+}
+echo removeSlashEndUrl($aaa);
+
+$text="http://giaiphapthuonghieu.vn/";
+
+// print_r (getListUrl($text));
+getListUrl($text);
+
+function getListUrl($text)
+{
+	
+	
+		 // The Regular Expression filter
+	   // $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+		$reg_exUrl = "/(http|https|ftp|ftps|www)+(\:\/\/)*\S*/";
+		// The Text you want to filter for urls
+		// Check if there is a url in the text
+		echo $text;
+		if(preg_match_all($reg_exUrl, $text, $url)) {
+			   // make the urls hyper links
+			   $matches = array_unique($url[0]);
+			   print_r( $matches);
+			   return  $matches;
+		}
+		return null;
+
+}
 /*
+function getListKeys($text)
+{
+	$reg_exUrl = "/(?<=\#\#\#).*?(?=\*\*\*)/";
+	if(preg_match_all($reg_exUrl, $text, $url)) {
+		return $url[0];
+	}
+	return null;
+	// test http://www.heise.de/download/mouse-recorder-pro-ec216441dbc757d56808a7b076f4de5f-1413478779-2669347.html ###50s***
+}
+$str="http://giaiphapthuonghieu.vn/ ###dịch vụ seo*** http://giaiphapthuonghieu.net/ ###bảng giá seo*** http://giaiphapthuonghieu.org/ ###đào tạo seo***";
+$keys=getListKeys($str);
+print_r($keys);
+
 require_once("config.php");
 global $host;
 global $user;

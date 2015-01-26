@@ -18,8 +18,6 @@ function showAllComment(url,idArt)
 				if(json.length>0){
 					htmlnewpost=showCommentOfPost(idArt,json);
 					if (htmlnewpost != "") {
-						htmlInputForm='<div class="boxtagfull" id="fslisttags' + idArt +'"><div id="contentbox' + idArt + '" class="contentbox tagnameboxinput" contenteditable="true" data-ph="Tag thành viên"></div><div class="boxtag" id="display' + idArt + '"></div><div id="msgbox"></div></div>';
-						htmlnewpost = htmlInputForm + htmlnewpost;
 						$("#comment-adv"+idArt).html(htmlnewpost);						
 						$("#loadcmtfull"+idArt).html("yes");			
 					}
@@ -48,9 +46,6 @@ function autoLoadComment(url,idArt)
 				var titleStastic='Thống kê Click hôm nay';
 				var classtitlePopup='titlepopup';
 				if(json.length>0){
-						htmlInputForm='<div class="boxtagfull" id="fslisttags' + idArt +'"><div id="contentbox' + idArt + '" class="contentbox tagnameboxinput" contenteditable="true" data-ph="Tag thành viên"></div><div class="boxtag" id="display' + idArt + '"></div><div id="msgbox"></div></div>';
-						htmlnewpost = htmlInputForm + htmlnewpost;
-						
 					htmlnewpost=showCommentOfPost(idArt,json);
 					if (htmlnewpost != "") {
 						$("#comment-adv"+idArt).html(htmlnewpost);		
@@ -978,7 +973,8 @@ function getNewPost(idgroup){
 	var url=root_path + "modules/json_post_new.php?idgroup="+idgroup;
 	if ($("#wrappercontentpost div:first-child").length <=0)	
 		return;
-	/*var idCurrentPost = $("#wrappercontentpost div:first-child").attr("id");*/
+	var idCurrentPost1 = $("#wrappercontentpost div:first-child").attr("id");
+	var idCurrentPost1 = parseInt(idCurrentPost1.substring(11));
 	var idCurrentPost = -1;
 	var i=0;
 	$("div[id^='postcontent']").each(function(){
@@ -1004,14 +1000,14 @@ function getNewPost(idgroup){
 				var classtitlePopup='titlepopup';
 				if( json.post!=null && json.post.length>0){
 					htmlnewpost=showPost(json);	
-					var tmp = $(htmlnewpost).hide();
-					$("#wrappercontentpost #postcontent"+idCurrentPost).before(htmlnewpost);
-					$("#wrappercontentpost #"+idCurrentPost).toggle( "scale" );
+					var tmp = $(htmlnewpost).hide();			
+					$("#wrappercontentpost #postcontent"+idCurrentPost1).before(htmlnewpost);
+					$("#wrappercontentpost #"+idCurrentPost1).toggle( "scale" );
 					initArrayIdPost();					   
 				}
 		}
 	}); 
-	/*console.clear();*/
+	console.clear();
 };
 
 
@@ -1259,10 +1255,11 @@ function showPostById(json)
 							htmlInputForm+='</div></div>';
 							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
 							htmlInputForm+='<div class="comment-div comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
-							htmlInputForm+='<div class="boxtagfull" id="fslisttags' + json.post[i].idPost +'"><div id="contentbox' + json.post[i].idPost + '" class="contentbox tagnameboxinput" contenteditable="true" data-ph="Tag thành viên"></div><div class="boxtag" id="display' + json.post[i].idPost + '"></div><div id="msgbox"></div></div>';	
 							htmlInputForm+=showFullCommentOfPost(json.post[i].idPost,json.comment[i]);
 							htmlInputForm+='</div>';
-							htmlInputForm+='</ul></div></div><div class="text-comment"><div id="cmt_content"><div id="comment-content-1"></div><div id="lastCommentPost' + json.post[i].idPost + '" >0</div><div id="num-like">Num Like</div><div id="' + json.post[i].idPost + '"></div><div id="notifyPost' + json.post[i].idPost + '_content"></div>';
+							htmlInputForm+='</ul>';
+							htmlInputForm+='<div class="boxtagfull" id="fslisttags' + json.post[i].idPost +'"><div class="boxtagfullsecond"><div id="contentbox' + json.post[i].idPost + '" class="contentbox tagnameboxinput" contenteditable="true" data-he="cmt-content'+ json.post[i].idPost +'" data-ph="Write a comment..."></div><div class="boxtag" id="display' + json.post[i].idPost + '"></div><div id="msgbox"></div></div></div>';								
+							htmlInputForm+='</div></div><div class="text-comment"><div id="cmt_content"><div id="comment-content-1"></div><div id="lastCommentPost' + json.post[i].idPost + '" >0</div><div id="num-like">Num Like</div><div id="' + json.post[i].idPost + '"></div><div id="notifyPost' + json.post[i].idPost + '_content"></div>';
 							htmlInputForm+='<div id="loadcmtfull' + json.post[i].idPost + '" >no</div>';						
 							htmlInputForm+='</div></div></div>';					
 							htmlnewpost+=htmlInputForm;
@@ -1437,11 +1434,8 @@ function showCommentOfPost(idPost,comment)
 						htmlnewpost+='<div class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
 			   };
-			   
-			   if ( comment.length > numCmtDisplay && $("#loadcmtfull"+idPost).html().trim()==="no")
-				{
-					htmlnewpost+='<li class="UFIRow UFIPagerRow UFIFirstCommentComponent" ><div class="clearfix"><div class="lfloat"><a class="img _8o _8r UFIImageBlockImage UFIPagerIcon" aria-hidden="true" tabindex="-1" role="button" href="#"></a></div><div ><div class="clearfix UFIImageBlockContent _42ef _8u"><div class="rfloat"><span class="fcg"></span></div><div ><a class="UFIPagerLink" role="button" href="javascript:showAllComment(\'' + root_path + 'json_comment_post.php\', ' + idPost + ' );"><span >Xem ' + (comment.length - numCmtDisplay) + ' khác </span></a></div></div></div></div>';					
-				}
+			   if (comment.length - numCmtDisplay>0)
+					htmlnewpost+='<li class="UFIRow UFIPagerRow UFIFirstCommentComponent" ><div class="clearfix"><div class="lfloat"><a class="img _8o _8r UFIImageBlockImage UFIPagerIcon" aria-hidden="true" tabindex="-1" role="button" href="#"></a></div><div ><div class="clearfix UFIImageBlockContent _42ef _8u"><div class="rfloat"><span class="fcg"></span></div><div ><a class="UFIPagerLink" role="button" href="javascript:showAllComment(\'' + root_path + 'json_comment_post.php\', ' + idPost + ' );"><span >Xem ' + (comment.length - numCmtDisplay) + ' khác </span></a></div></div></div></div></li>';
 				
 			 };			
 			return htmlnewpost;			

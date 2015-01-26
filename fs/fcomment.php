@@ -105,6 +105,7 @@ if(!isset($_SESSION)){
 		$con=mysqli_connect($host,$user,$pass,$db);
         
 		foreach($listUrls as $url) {
+			$url=rtrim($url, "/");
 			$result=mysqli_query($con,"select url from awt_list_url where idUser='".$iduser."' and url='".$url."'");	
 			if(!($result->num_rows>0))
 				mysqli_query($con,"INSERT INTO awt_list_url (url,iduser) VALUES ('".$url."','".$iduser."')");	

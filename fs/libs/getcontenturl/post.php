@@ -83,9 +83,11 @@ if(!isset($_SESSION)){
 	if (count($link11)>0 )
 	{		
 			foreach($link11 as $url) {
+			$url=rtrim($url, "/");
 			$result=mysqli_query($con,"select url from awt_list_url where idUser='".$iduser."' and url='".$url."'");
 			if(!($result->num_rows>0))
 			{
+				
 				mysqli_query($con,"INSERT INTO awt_list_url (url,iduser) VALUES ('".$url."','".$iduser."')");	
 			}
 		}

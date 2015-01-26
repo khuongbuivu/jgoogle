@@ -18,6 +18,7 @@ function subpoint()
 	$point			=	$_POST['point'];
 	$pointBonus		= 	15;
 	$linkClicked	=	$_POST['linkClicked'];
+	
 	$con=mysqli_connect($host,$user,$pass,$db);
 	$result=mysqli_query($con,"select iduser from awt_list_url where url like '%".$linkClicked."%'");
 	
@@ -86,6 +87,7 @@ function subPoint1()
 	global $pass;
 	global $db;
 	$linkClicked	=	$_POST['linkClicked'];
+	$linkClicked 	= 	removeSlashEndUrl($linkClicked);
 	$linkClicked 	= 	removeSlashEndUrl($linkClicked);
 	$idUser			=	$_POST['idUser'];
 	$point			=	$_POST['point'];
