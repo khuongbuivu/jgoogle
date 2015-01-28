@@ -15,7 +15,8 @@ if(!isset($_SESSION)){
 		$infosUserLog=getUserInfo($idUser);
 		$idBannerStart = intval($_POST['currentPageBanner'])*10;
 		$con=mysqli_connect($host,$user,$pass,$db);
-		$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser order by point desc limit ".$idBannerStart.",10");	 //idBannerStart
+		$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser group by banner_user_id order by point desc limit ".$idBannerStart.",10");	 //idBannerStart
+		
 		while ($row = mysqli_fetch_array($result))
 		{
 			echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
