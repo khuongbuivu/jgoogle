@@ -503,6 +503,7 @@ $(document).on('drop', function (e)
 							function(response_data) 
 							{
 							  $("#reviewbannerupload").html("<img src='"+response_data+"' width='240px'/>");
+							  $('.dragandrophandler').html('<img class="hinhup" src="'+response_data+'"/><br/><a onclick="xoaanh()" class="xoaanh">x</a>');
 							  $("#linkImageBanner").html(response_data);
 							  $("#reviewbannerupload").show();							  
 							}
