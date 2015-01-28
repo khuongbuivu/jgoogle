@@ -400,7 +400,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
-					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
+					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser group by banner_user_id order by point desc limit 0,10");	 //idBannerStart		
 					while ($row = mysqli_fetch_array($result))
 					{				
 						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
