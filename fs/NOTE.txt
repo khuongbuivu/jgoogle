@@ -35,3 +35,23 @@ $("div[id^='postcontent']").each(function(){
 Account 
 e-observer-815
 hmnD,QU8V}D4Qj
+
+http://www.dynamicguru.com/php/obfuscate-php-code-base64-encode/
+http://www.phpprotect.info/downloads.php
+http://stackoverflow.com/questions/232736/is-there-a-code-obfuscator-for-php
+http://www.joeswebtools.com/security/php-obfuscator/
+
+<!--
+getOtherUrlsProfile comment.js chưa getidpage, sau khi get về chưa có hàm showlistprofileaddmore
+
+Danh sách link profile chưa hiển thị đúng, chưa kiểm tra những link nào đã view, chưa get được orther link tối phải xong phần này và addon
+Vấn đề hiển thị notify không đúng. Đôi khi người ta like cho những comment cũ thì id của comment đó sẽ nhỏ hơn id comment cũ
+-> lưu vào database của atw_notify sẽ không đúng. [fixed]
+
+Search upclick.js mo rem de su dung upload file 
+Đá banh về xử scrolToComment. Còn bị lỗi khi post đã được user đó click vào rồi thì không thể nào hiện lên được. Giờ cho nó hiện lên và del tất cả link để không view được nữa.
+Một số yêu cầu với sever: chạy được fbapi, chạy được php mới, cân bằng tải load balance
+Trong khi một số link đang view. Post link mới sẽ bị sai id
+When open popup with https function beforeunload not working so using interval to check status share.
+http://stackoverflow.com/questions/3291712/is-it-possible-to-open-a-popup-with-javascript-and-then-detect-when-the-user-clo
+-->
