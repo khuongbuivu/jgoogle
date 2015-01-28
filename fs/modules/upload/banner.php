@@ -514,36 +514,55 @@ $(document).on('drop', function (e)
 				</div>				
 				<script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 						
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
-				<div id="reviewbannerupload" style="float:left;width:100%;height:150px"><img src="../../images/advertising/demo-banner-free.png" width="100%"></div>
+				
 				<div id="bannerfree">
 				<?php
+				    $m='';$cobanner=0;
 					$con=mysqli_connect($host,$user,$pass,$db);
-					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,4");	 //idBannerStart		
+					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser group by banner_user_id order by point desc limit 0,4");
+					
+						 //idBannerStart		
+					
 					while ($row = mysqli_fetch_array($result))
-					{				
-						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
+					{		
+					
+					   if($row['banner_user_id']==$id_user)$cobanner=1;
+					
+							
+						$m.='<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
 						$infosUser=getUserInfo($row['banner_user_id']);
-						// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
-						{
-							if (checkAvailableLinks($row['post_url'],$id_user)){
-								
-								if (!strpos($row['banner_img'], "faceseo.vn/images")==true){
+						
+						if (!strpos($row['banner_img'], "faceseo.vn/images")==true){
 								  if(LOCAL=="TRUE")$row['banner_img']='http://localhost/faceseo.vn/'.$row['banner_img'];
 								  else $row['banner_img']='http://faceseo.vn/'.$row['banner_img'];
-								}
-								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
-							} else
-								echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
-						}	
+						}
+						
+						
+						
+						// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
+						
+							if (checkAvailableLinks($row['post_url'],$id_user)){
+								$m.="<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";	
+								
+									
+							} else {
+							   
+								$m.="<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
+							}
+					
 						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
-							echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
-						echo "</div>";
+							$m.='<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
+						$m.="</div>";
 					}
 					mysqli_close($con);	
 					
+					if($cobanner==0){?>
+						<div id="reviewbannerupload" style="float:left;width:100%;height:150px"><img src="../../images/advertising/demo-banner-free.png" width="100%"></div>
+                         <?php echo $m;?>
+						
+				<?php	}else{ echo $m;?>
 					
-					
-				?>
+				<?php }	?>
 				</div>
 				
 			</div>
@@ -1070,6 +1089,7 @@ border-bottom: 16px solid #3b5998;
     display: block;
     height: 24px;
     margin: 0 auto;
+	cursor:pointer;
     text-align: center;
     width: 24px;
 }
@@ -1091,6 +1111,11 @@ border-bottom: 16px solid #3b5998;
 .bnner img{
 	max-width:135px;
 }
+#reviewbannerupload{
+	max-width:300px;
+	margin:0 auto;
+}
+#bannerfree{text-align:center;}
 </style>
 
 
