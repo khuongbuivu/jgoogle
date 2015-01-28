@@ -73,12 +73,12 @@ var timetmp=0;
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
 <!-- add scroll top comment -->
 <script type="text/javascript" >	
-//setInterval("autoLoadComment('" + root_path + "content_comment.php',<?php echo (int)($id) ?>)",10000);
-//setInterval("B()",5000);
-//setInterval("checkTabsClosed()",5000);
-//setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
-//setInterval("getNewPost('"+root_path + "modules/post_new.php')",10000);
-//setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",60000);
+setInterval("autoLoadComment('" + root_path + "content_comment.php',<?php echo (int)($id) ?>)",10000);
+setInterval("B()",5000);
+setInterval("checkTabsClosed()",5000);
+setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
+setInterval("getNewPost('"+root_path + "modules/post_new.php')",10000);
+setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",60000);
 
 
 </script>
@@ -143,16 +143,18 @@ include_once("../../user.php");
 					$html = "";
 					if ($result->num_rows>0)
 					{
-						$html = '<table width="100%"  id="listBanner">';
-						$html = $html.'  <tr><td>Banner của bạn</td><td>Link</td><td>Xóa</td></tr>';
-						$html = $html.'<tr>';
+						$html = '<table width="100%" cellpadding="5" cellspacing="5"  id="listBanner"><thead>';
+						$html = $html.'  <tr><td>Chức năng</td><td>Liên kết</td><td>Hình ảnh</td></tr>';
+						$html = $html.'<tr></thead>';
 						while ($row=mysqli_fetch_array($result))
-						{
-							$html = $html. '<td><a target="_blank" href="'.$row['banner_link'].'"><img src="'.$row['banner_img'].'" /></a></td>';
-							$html = $html. '<td><div id="linkbanner1">'.$row['banner_link'].'</div></td>';
-							$html = $html. '<td><a onclick="delbanner(\''.$id_user.'\');">Xóa</a></td>';							
+						{  
+						    $html = $html. '<tr><td class="bge"><span class="xoabn" onclick="delbanner(\''.$id_user.'\');"></span></td>';						
+							
+							$html = $html. '<td class="bgf"><div id="linkbanner1">'.$row['banner_link'].'</div></td>';
+							$html = $html. '<td class="bgi"><a class="bnner" target="_blank" href="'.$row['banner_link'].'"><img src="'.$row['banner_img'].'" /></a></td></tr>';
+								
 						}
-						$html = $html. '</tr></table>';
+						$html = $html. '</table>';
 					}										
 					mysqli_close($con);
 				?>
@@ -456,8 +458,10 @@ $(document).on('drop', function (e)
 				<div class="_1dsp1 _4-">
 					<div style="clear:both">
 						<div style="float:left; width:70%;">
-						<?php if ($html=="") {?><div style="margin-left:5px; width: 50%; float:left"><?php echo "<strong>Bạn chưa đăng banner</strong>"?></div><?php }?>
-						<div style="width:40%;float:right;" id="uploadbanner"><input type="button" id="uploader" class="uploadbanner" ></div>
+						<?php /* if ($html=="") {?><div style="margin-left:5px; width: 50%; float:left"><?php echo "<strong>Bạn chưa đăng banner</strong>"?></div><?php }*/?>
+						
+                        <div style="float:right;" class="huongdan"></div>
+                        <div style="width:40%;float:right;" id="uploadbanner"><input type="button" id="uploader" class="uploadbanner" ></div>
 						<div style="clear:both"></div>
 						</div>
 						<div style="float:right; width:30%;">
@@ -521,9 +525,14 @@ $(document).on('drop', function (e)
 						$infosUser=getUserInfo($row['banner_user_id']);
 						// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 						{
-							if (checkAvailableLinks($row['post_url'],$id_user))
-								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='http://localhost/faceseo.vn/".$row['banner_img']."' /></a><br/>";		
-							else
+							if (checkAvailableLinks($row['post_url'],$id_user)){
+								
+								if (!strpos($row['banner_img'], "faceseo.vn/images")==true){
+								  if(LOCAL=="TRUE")$row['banner_img']='http://localhost/faceseo.vn/'.$row['banner_img'];
+								  else $row['banner_img']='http://faceseo.vn/'.$row['banner_img'];
+								}
+								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
+							} else
 								echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
 						}	
 						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
@@ -531,6 +540,9 @@ $(document).on('drop', function (e)
 						echo "</div>";
 					}
 					mysqli_close($con);	
+					
+					
+					
 				?>
 				</div>
 				
@@ -591,7 +603,7 @@ function loadComment(url)
     if (currentIdLoadPost > idMaxPostOnpage)
         currentIdLoadPost = idDivPostStart;		
 }
-//setInterval("loadComment('" + root_path + "content_comment.php')",5000);
+setInterval("loadComment('" + root_path + "content_comment.php')",5000);
 function generateTokenPost()
 {
 	<?php 	
@@ -913,6 +925,16 @@ function loadOtherPost()
 	});		
 };
 */
+$( ".huongdan" ).click(function() {
+	if($(this).hasClass("anhuongdan")){
+	   $(this).removeClass('anhuongdan');
+	   $('.rulebanner').css('display','none');
+	}else {
+	   $(this).addClass('anhuongdan');
+	   $('.rulebanner').css('display','block');
+	}
+});
+
 </script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -934,8 +956,8 @@ function loadOtherPost()
     width: 89%;
 }
 ._2yg {
-    height: 430px;
-	border:none;
+    border: medium none;
+    height: auto;
 }
 .UFIImageBlockImage img{
 	border-radius:100%;
@@ -975,13 +997,14 @@ function loadOtherPost()
 
 }
 #insertbanner{
-	background: none repeat scroll 0 0 #7086af;
-    border: 1px solid #485771;
+	background: -moz-linear-gradient(center top , #6f9bed 0%, #427fed 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: 1px solid #427fed;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
     padding: 0 5px;
 }
+
 .hinhup{max-height: 330px;
     position: relative;
     top: 30%;
@@ -1010,6 +1033,63 @@ border-bottom: 16px solid #3b5998;
 }
 ._1dsp1 {
 	position:static;
+}
+#uploadbanner .uploadbanner {
+    background: url("taimaytinh.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-style: none;
+    height: 29px;
+    padding: 0;
+    width: 146px;
+	cursor:pointer;
+}
+.huongdan {
+    background: url("huongdan.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-style: none;
+    height: 29px;
+    padding: 0;
+	float:left;
+	cursor:pointer;
+    width: 146px;
+}
+.rulebanner{
+	display:none;
+}
+.anhuongdan{
+   background: url("tathuongdan.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#listBanner thead{
+	background:#F4F4F8;
+	color:#FC1618;
+}
+#listBanner{
+	  box-shadow: none;
+    width: 99%;
+}
+.xoabn{
+	background: url("xoabn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 24px;
+    margin: 0 auto;
+    text-align: center;
+    width: 24px;
+}
+.bge{
+	background:#F4F5F9;width: 80px;
+}
+.bgf{
+	background:#FFF;
+	
+}
+.bgi{
+	background:#fff;
+	width:140px;
+}
+#listBanner td{
+	border:1px solid #FFFFFF;
+	padding:20px;font-size: 15px;
+}
+.bnner img{
+	max-width:135px;
 }
 </style>
 

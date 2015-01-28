@@ -22,7 +22,7 @@ if(!isset($_SESSION)){
 		exit();
 	}else
 	{
-		
+		//$img = preg_replace('%http://localhost/faceseo\.vn|http://faceseo\.vn%s', '', $img);
 		$con=mysqli_connect($host,$user,$pass,$db);
 		$con=mysqli_connect($host,$user,$pass,$db);
 		mysqli_set_charset($con, "utf8");
