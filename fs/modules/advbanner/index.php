@@ -18,7 +18,13 @@ if(!isset($_SESSION)){
 		$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser group by banner_user_id order by point desc limit ".$idBannerStart.",10");	 //idBannerStart
 		
 		while ($row = mysqli_fetch_array($result))
-		{
+		{   
+		
+		    if (!strpos($row['banner_img'], "faceseo.vn/images")==true){
+								  if(LOCAL=="TRUE")$row['banner_img']='http://localhost/faceseo.vn/'.$row['banner_img'];
+								  else $row['banner_img']='http://faceseo.vn/'.$row['banner_img'];
+						}
+		    
 			echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
 			$infosUser=getUserInfo($row['banner_user_id']);
 			// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
