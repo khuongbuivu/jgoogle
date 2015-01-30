@@ -23,6 +23,13 @@ $timeClose	=	$_GET['timeClose'];
 $linkText	=	$_GET['linkText'];
 $parent		=	trim($_GET['parent']);
 $parent = removeSlashEndUrl($parent);
+$BACKLINK		= 4;// HE SO BACKLINK
+$checkkey=0;
+if ($_GET['checkkey']==1)
+{
+	$BACKLINK = 10;
+	$checkkey=1;
+}
 if ($timeClose!="In view")
 	$timeClose	=	date("H:i:s d/m/y");
 $currentDay = substr($timeOpendClient,9);// using time of client
@@ -38,18 +45,10 @@ if ($resultidlink->num_rows>0)
 	$row11 = mysqli_fetch_array($resultidlink);
 	$idlink=$row11[id];
 }
-else
-{
-	// check link này thuộc user nào, getIdUser
-	//$domain = getDomainName($url);
-	//$uid= getUId($domain);
-	// insert link đã view
-	//mysqli_query($con,"INSERT INTO awt_list_url (url,iduser) VALUES ('".$url."','".$uid."')");
-}
 $IdBacklink = getIdMax("fs_click_backlink","id") + 1;
 if ($timeClose=="In view")
 {
-	mysqli_query($con,"INSERT INTO fs_click_backlink (id,link,iduser,timestart,timeclose,timeview,timeclienttmp,click_link_idlink) VALUES (".$IdBacklink.",'".$urlClicked."','".$idUser."','".$timeOpend."','".$timeClose."','".$timeView."','".$timeOpendClient."',".$idlink.")");
+	mysqli_query($con,"INSERT INTO fs_click_backlink (id,link,iduser,timestart,timeclose,timeview,timeclienttmp,click_link_idlink,checkkey) VALUES (".$IdBacklink.",'".$urlClicked."','".$idUser."','".$timeOpend."','".$timeClose."','".$timeView."','".$timeOpendClient."',".$idlink.",".$checkkey.")");
 	// Update keywords thì dựa vào link parent, $currentday,iduser
 	if ($resultviewing->num_rows>0)
 	{
@@ -102,10 +101,7 @@ $domain = getDomainName($linkClicked);
 $uid= getUId($domain);
 $idUser			=	$_GET['idUser'];
 $TIMEVIEW		=	$_GET['timeView']; //60s
-$minuteView = (int)(intval($TIMEVIEW)/60) ; 
-$BACKLINK		= 4;// HE SO BACKLINK
-if ($_GET['checkkey']==1)
-	$BACKLINK = 10;
+$minuteView = (int)(intval($TIMEVIEW)/60) ;
 $token			=	$_GET['token'];
 $okap			= false;
 $dm = date("d/m"); 	
