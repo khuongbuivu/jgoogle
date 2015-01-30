@@ -15,20 +15,16 @@ if(!isset($_SESSION)){
    
 	$img=trim($_POST['img']);
 	$link=$_POST['link'];
-	//params = "idUser=" + idUser + "&img=" + img + "&link=" + link;
 	if (!isset($_SESSION['token'], $_SESSION['token-user'],$_POST['idUser'])&& $id_user!="")
 	{  
 	   
 		exit();
 	}else
 	{
-		//$img = preg_replace('%http://localhost/faceseo\.vn|http://faceseo\.vn%s', '', $img);
 		$con=mysqli_connect($host,$user,$pass,$db);
 		$con=mysqli_connect($host,$user,$pass,$db);
 		mysqli_set_charset($con, "utf8");
-		echo "INSERT INTO fs_banner (banner_user_id, 	banner_img, banner_link, banner_status) VALUES ('".$id_user."','".$img."','".$link."',1)";
 		mysqli_query($con,"INSERT INTO fs_banner (banner_user_id, 	banner_img, banner_link, banner_status) VALUES ('".$id_user."','".$img."','".$link."',1)" );
-		//echo "INSERT INTO fs_banner (banner_user_id, 	banner_img, banner_link, banner_status) VALUES ('".$id_user."','".$img."','".$link."',1)";
 		mysqli_close($con);
 	}
 
