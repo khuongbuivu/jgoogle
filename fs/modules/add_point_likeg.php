@@ -24,8 +24,9 @@ function subpoint()
 	
 	if($result->num_rows=="")
 	{
+exit();
 		mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_LIKEG: LINK NOT EXIST ".$linkClicked."' where user_id=".$_SESSION['session-user']);
-		exit();
+		
 	}
 	$dm = date("d/m"); 	
 	$s1= intval(date("s"));
