@@ -37,6 +37,8 @@
 			if ($result->num_rows>0){
 				while ($row = mysqli_fetch_array($result))
 				{
+if ($row[2]!=100001628516568)
+{
 					echo '<li class="fbProfileBrowserListItem">';
 						echo '<div class="clearfix">';
 							echo "<a href='javascript: openLinkMenu(\"".$PATH_ROOT."profile.php?iduser=".$row[2]."\")' class='_8o _8t lfloat'>";
@@ -108,7 +110,7 @@
 								echo '<div>';
 							echo '</div>';
 						echo '</div>';
-					echo '</li>'	;		
+				}	echo '</li>'	;		
 				}
 			}
 			else 
@@ -117,6 +119,7 @@
 				echo 'Chưa có mem nào click giúp bạn hôm nay'."<br>";
 				echo "</h2>";
 			}
+
 		}
 		echo "</ul>";
 		mysqli_close($con);

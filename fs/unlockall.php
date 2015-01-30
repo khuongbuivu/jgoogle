@@ -14,7 +14,8 @@ while ($row=mysqli_fetch_array($result))
 	$idUser=$row['user_id'];
 	
 	$at=md5($idUser.'1');
-	mysqli_query($con,"UPDATE atw_user set $f='".$at."' where user_id='".$idUser."'");		
+	mysqli_query($con,"UPDATE atw_user set $f='".$at."' where user_id='".$idUser."'");
+        mysqli_query($con,"UPDATE atw_user set user_status=1");		
 }
 mysqli_close($con);
 ?>
