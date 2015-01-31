@@ -540,7 +540,7 @@ $(document).on('drop', function (e)
 						
 						
 						
-						// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
+						if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 						
 							if (checkAvailableLinks($row['post_url'],$id_user)){
 								$m.="<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";	
