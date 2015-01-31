@@ -299,7 +299,7 @@ text-transform: none;
 text-indent: 0px;
 text-shadow: none;
 display: inline-block;
-text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Mỗi lần đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm" content="Mỗi lần đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm" title="Mỗi lần đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm" ></textarea>
+text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Post bài -20đ. Click link bằng chuột trái 5p  + 5điểm. Click keywords + 50Đ. Click trên kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA." content="Đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm. Click keywords + 50Đ. Click kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA + 50Đ" ></textarea>
     </div>
     <p style="text-align:center;"><span id="cho"></span></p>
     <div id="des"></div>
@@ -366,7 +366,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 </div>
 <ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul>
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
-				<div style="color:red" id="message">CÀI ĐẶT <a href="http://faceseo.vn/intro.php">ADDON FIREFOX</a> ĐỂ CLICK ĐÚNG TEXTLINK +50Đ</div>
+				<div style="color:red" id="message"><!--CÀI ĐẶT <a href="http://faceseo.vn/intro.php">ADDON</a>--></div>
 				<div id="listUrlViewMore"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
@@ -400,12 +400,12 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
-					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser group by banner_user_id order by point desc limit 0,10");	 //idBannerStart		
+					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
 					while ($row = mysqli_fetch_array($result))
 					{				
 						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
 						$infosUser=getUserInfo($row['banner_user_id']);
-						// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
+						if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 						{
 							if (checkAvailableLinks($row['post_url'],$id_user))
 								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
