@@ -138,21 +138,22 @@ $data[135]="/spg.php/" ; $datafiles[135]="spg.php" ; $replacdata[135]="kwqfkzdw6
 $data[136]="/8-3.php/" ; $datafiles[136]="8-3.php" ; $replacdata[136]="qrc4ei1y1x-1.php";
 $data[137]="/post.js/" ; $datafiles[137]="post.js" ; $replacdata[137]="466gs99cy1106.js";
 $data[138]="/var.js/" ; $datafiles[138]="var.js" ; $replacdata[138]="p4vbyxao8x139.js";
-$data[139]="/fs.php/" ; $datafiles[139]="fs.php" ; $replacdata[139]="ax5t6muv1a54.php";
+$data[139]="/fs.php/" ; $datafiles[139]="fs.php" ; $replacdata[139]="fs.php";
 $data[140]="/ma.php/" ; $datafiles[140]="ma.php" ; $replacdata[140]="jleo1uaq9w100.php";
 $data[141]="/ad.js/" ; $datafiles[141]="ad.js" ; $replacdata[141]="er3od36lkq2.js"; 
 /* index.php,banner.php,group.php, profile.php, pagesetting.php */
 
 
-// obfucate($datafiles,$data,$replacdata,"");
-// obfucate($datafiles,$data,$replacdata,"system");
-// obfucate($datafiles,$data,$replacdata,"modules");
-// obfucate($datafiles,$data,$replacdata,"modules/upload");
-// obfucate($datafiles,$data,$replacdata,"modules/advbanner");
-// obfucate($datafiles,$data,$replacdata,"modules/uploadimagecomment");
-// obfucate($datafiles,$data,$replacdata,"cronjob");
-// obfucate($datafiles,$data,$replacdata,"libs/getcontenturl");
-// obfucate($datafiles,$data,$replacdata,"js");
+obfucate($datafiles,$data,$replacdata,"");
+obfucate($datafiles,$data,$replacdata,"system");
+obfucate($datafiles,$data,$replacdata,"modules");
+obfucate($datafiles,$data,$replacdata,"modules/upload");
+obfucate($datafiles,$data,$replacdata,"modules/cronjob");
+obfucate($datafiles,$data,$replacdata,"modules/advbanner");
+obfucate($datafiles,$data,$replacdata,"modules/uploadimagecomment");
+obfucate($datafiles,$data,$replacdata,"cronjob");
+obfucate($datafiles,$data,$replacdata,"libs/getcontenturl");
+obfucate($datafiles,$data,$replacdata,"js");
 
 // GenerateList();
 // sortArrName($datafiles,$data,$replacdata);
@@ -216,7 +217,7 @@ function GenerateList()
 	while (false !== ($filename = readdir($dh))) {
 		$files[] = $filename;
 		if((substr($filename,-3)=="php" || substr($filename,-2)=="js") && (!checkInArray($datafiles,"user.php")) 
-		&& ($filename!="index.php") && ($filename!="banner.php")&& ($filename!="profile.php")&& ($filename!="pagesetting.php"))
+		&& ($filename!="index.php") && ($filename!="banner.php")&& ($filename!="profile.php")&& ($filename!="pagesetting.php") && ($filename!="group.php"))
 		{
 			if (substr($filename,-3)=="php")
 				echo '$data['.$i.']="/'.$filename.'/" ; '.'$datafiles['.$i.']="'.$filename."\" ; ".'$replacdata['.$i.']="'.generateRandomString(10).$i.'.php"'.";  <br/>";
