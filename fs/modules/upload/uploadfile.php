@@ -65,7 +65,8 @@ if(!isset($_SESSION)){
 				return false;
 		}
 		// Validate file name (for our purposes we'll just remove invalid characters)
-		$file_name = preg_replace('/[^'.$valid_chars_regex.']|\.+$/i', '', strtolower(basename($a[$arg]['name'])));
+		// $file_name = preg_replace('/[^'.$valid_chars_regex.']|\.+$/i', '', strtolower(basename($a[$arg]['name'])));
+		$file_name = strtolower(basename($a[$arg]['name']));
 		if (strlen($file_name) == 0 || strlen($file_name) > $MAX_FILENAME_LENGTH)
 		{		
 				echo "File Invalid";
