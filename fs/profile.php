@@ -127,12 +127,12 @@ exit();
 		<div id="mainContainer">
 			<div id="leftCol">
               <ul class="icon-setting">
-                <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
-				<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
-				<li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"></span> </li>				
-				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
-				<li><a href=""><span class="icon-set icon-acong"></span> </a></li>
-				<li><span class="icon-set icon-setpanel" onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " ></span></li>
+                <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT; ?>')"><span class="icon-set icon-home"></span> </a></li>
+               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"><span class="icon-set icon-gplus"></span> </a></li>
+               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"><span class="icon-set icon-connect"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-share"></span> </a></li>
+               <li><a href=""><span class="icon-set icon-acong"></span> </a></li>
+               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>');"><span class="icon-set icon-setpanel"></span> </a></li>
                </ul>
 
 			<!-- 
@@ -268,7 +268,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 							{				
 								echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
 								$infosUser=getUserInfo($row['banner_user_id']);
-								// if (strpos($row['banner_img'], "faceseo.vn/images")==true)
+								if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 								{
 									if (checkAvailableLinks($row['post_url'],$id_user))
 										echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
