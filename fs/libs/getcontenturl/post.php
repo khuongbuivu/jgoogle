@@ -15,6 +15,7 @@ if(!isset($_SESSION)){
 	$iduser=$_POST['iduser'];
 	$idgroup=$_POST['idgroup'];
 	$textcomment=$_POST['textcomment'];
+	$textcomment = str_replace("###"," ###",$textcomment);
 	$textcomment1=$textcomment;
 	if (!isset($_SESSION['token'], $_SESSION['token-user'],$_POST['tokenPost']) || checkToken($_POST['tokenPost'])==false)
 	{

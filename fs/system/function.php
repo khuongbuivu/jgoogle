@@ -5,7 +5,6 @@
 			if (isContentSex($text))
                 return null;
 			 // The Regular Expression filter
-			$text = str_replace("###"," ###",$text);
 			$reg_exUrl = "/(http|https|ftp|ftps|www)+(\:\/\/)*\S*/";
 			// The Text you want to filter for urls
 			// Check if there is a url in the text
