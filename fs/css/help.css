@@ -1,3 +1,326 @@
+@charset "utf-8";
+/* CSS Document */
+
+@charset "utf-8";
+/*reset*/
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+fieldset, img {
+	border: 0;
+}
+address, caption, cite, code, dfn, em, strong, th, var, optgroup, i {
+	font-style: inherit;
+	font-weight: inherit;
+}
+del, ins {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+caption, th {
+	text-align: left;
+}
+
+q:before, q:after {
+	content: '';
+}
+abbr, acronym {
+	border: 0;
+	font-variant: normal;
+}
+sup {
+	vertical-align: baseline;
+}
+sub {
+	vertical-align: baseline;
+}
+legend {
+	color: #000;
+}
+a{text-decoration:none}
+input, button, textarea, select, optgroup, option {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+	outline: none;
+}
+#blueBar {
+    height: 66px;
+}
+.hasSmurfbar #blueBarHolder #blueBar:after {
+   /* background-image: url("../images/line.png");*/
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    background-size: auto auto;
+    bottom: -4px
+    content: "";
+    height: 4px;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+.hasSmurfbar #blueBarHolder #blueBar {
+    /*background-color: #4C66A4;*/
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    background-size: auto auto;
+    border: 0 none;
+    box-shadow: none;
+    position: relative;
+}
+
+.hasSmurfbar #blueBarHolder #pageHead {
+    margin: 0 auto;
+    width: 90%;
+}
+.hasSmurfbar #blueBarHolder #blueBar #pageHead {
+    padding-top: 0;
+}
+
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+#pageLogo {}
+.hasSmurfbar #blueBarHolder #headNav {
+    margin: 0;
+}
+
+.rfloat {
+    float: right;
+}
+
+.hasSmurfbar #headNav #pageNav {
+   height: 48px;
+    margin: 10px 0 0;
+    overflow:visible;
+}
+ 
+._585_ {
+    background-image: url("../images/Bbz4Buqzgqn.png");
+    background-position: 0 -1598px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    cursor: pointer;
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 16px;
+    z-index: 2;
+}
+
+#pageLogo a, #pageLogo a:hover, #pageLogo a:focus, #pageLogo a:active {}
+._585- {
+    background-color: #FFFFFF;
+    border: medium none;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 0 1px #F9F9F9 inset, 0 1px 0 0 #E5E5E5 inset, 0 -1px 0 0 #2F477A;
+    height: 24px;
+    margin-left: 33px;
+    margin-top: 0;
+    max-width: 550px;
+    overflow: hidden;
+    padding-left: 5px;
+    padding-right: 25px;
+    position: relative;
+    top: 9px;
+    width: auto;
+}
+
+body{
+	color: #333333;
+    direction: ltr;
+    line-height: 1.28;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    unicode-bidi: embed;
+}
+ul {
+    list-style-type: none;
+}
+.fbJewel {
+    float: left;
+    margin-right: -1px;
+    position: relative;
+}
+
+._5bfg #jewelContainer {
+    height: 40px;
+    margin-top: -5px;
+    padding: 0px;
+}
+
+#jewelContainer {
+    float: left;
+    position: relative;
+    z-index: 4;
+}
+._5bfw #fbRequestsJewel a.jewelButton, ._5bfw #fbRequestsJewel a.jewelButton:focus, ._5bfw #fbRequestsJewel a.jewelButton:hover, ._5bfw #fbRequestsJewel a.jewelButton:active {
+    background-image: url("../images/QWQvCtXLHXG.png") !important;
+    background-position: -2px -1501px !important;
+    background-repeat: no-repeat !important;
+    background-size: auto auto !important;
+}
+._5bfg #jewelContainer a.jewelButton, ._5bfg #pageNav .navLink, ._5bfg #pageNav .navLink:hover, ._5bfg #pageNav .navLink:focus {
+    background: none repeat scroll 0 0 transparent;
+}
+._5bfw #fbRequestsJewel a.jewelButton, ._5bfw #fbRequestsJewel a.jewelButton:focus, ._5bfw #fbRequestsJewel a.jewelButton:hover, ._5bfw #fbRequestsJewel a.jewelButton:active {
+    background-image: url("../images/Bbz4Buqzgqn.png") !important;
+    background-position: -2px -1501px !important;
+    background-repeat: no-repeat !important;
+    background-size: auto auto !important;
+}
+._5bfg .fbJewel a.jewelButton {
+    height: 50px;
+    margin-top: 6px;
+    padding: 0px;
+    width: 50px;
+}
+
+.fbJewel a.jewelButton {
+    display: block;
+    height: 31px;
+    margin: 0 1px;
+    position: relative;
+    text-decoration: none;
+    width: 24px;
+	cursor:pointer;
+}
+._5bfw #fbMessagesJewel.hasNew a.jewelButton, ._5bfw .notifNegativeBase #fbMessagesJewel.openToggler a.jewelButton, ._5bfw .notifNegativeBase #fbMessagesJewel.openToggler a.jewelButton:hover {
+    background-image: url("../images/Bbz4Buqzgqn.png") !important;
+    background-position: -1px -1361px !important;
+    background-repeat: no-repeat !important;
+    background-size: auto auto !important;
+}
+._5bfw #fbMessagesJewel a.jewelButton, ._5bfw #fbMessagesJewel a.jewelButton:focus, ._5bfw #fbMessagesJewel a.jewelButton:hover, ._5bfw #fbMessagesJewel a.jewelButton:active {
+    background-image: url("../images/Bbz4Buqzgqn.png") !important;
+    background-position: -1px -1431px !important;
+    background-repeat: no-repeat !important;
+    background-size: auto auto !important;
+}
+
+._5bfg #fbMessagesJewel .jewelButton {
+    padding: 0 3px;
+}
+
+._5bfw #fbNotificationsJewel a.jewelButton, ._5bfw #fbNotificationsJewel a.jewelButton:focus, ._5bfw #fbNotificationsJewel a.jewelButton:hover, ._5bfw #fbNotificationsJewel a.jewelButton:active {
+    background-image: url("../images/css/icon-push.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: auto auto !important;
+}
+._5bfw #fsAnaylyticsButton a.jewelButton, ._5bfw #fsAnaylyticsButton a.jewelButton:focus, ._5bfw #fsAnaylyticsButton a.jewelButton:hover, ._5bfw #fsAnaylyticsButton a.jewelButton:active {
+    background-image: url("../images/css/icon-push.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: auto auto !important;
+}
+
+
+
+h1 {
+    font-size: 18px;
+}
+.jewelCount {
+    display: block;
+}
+.fbJewel .jewelCount {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0 0 0 0;
+    overflow: visible;
+    padding: 0;
+    right: -1px;
+    top: 0;
+}
+
+.fbJewel .jewelCount {
+    border-radius: 2px 2px 2px 2px;
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: bold;
+    overflow: hidden;
+    padding-bottom: 1px;
+    position: absolute;
+    right: -1px;
+    top: 0;
+    z-index: 101;
+}
+
+.jewelCount span {					
+  background-color: red;
+    border: medium none;
+    border-radius: 50%;
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,"segoe ui",tahoma,sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    padding: 2px;
+    text-align: center;
+    width: 20px;
+}
+#headintro{
+float:left;
+margin: 0 auto;
+width:84%;
+padding:8px 0;
+text-align:center;
+display:block;
+left: 50%;
+/*margin-left: -400px;*/
+}
+#headintro{
+	font:normal 22px/22px 'MyCustomFont1', Verdana, Arial, sans-serif !important;
+	color:#fff;
+}
+/*a{color:#797979; font:normal 20px/20px 'MyCustomFont1', Verdana, Arial, sans-serif !important;}*/
+@font-face {
+ font-family: 'MyCustomFont1';
+ src: url("../images/css/font/UTM_IsadoraR.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: 'MyCustomFont1';
+ src: url("../images/css/font/UTM_Facebook.ttf") format("truetype");/* TTF file for CSS3 browsers */
+}
+#pageNav .fbJewel{margin-right:10px;}
+
+#headleft img{
+width:340px; height:72px; margin-top:0px;
+}
+span#anaylyticsCountWrapper{
+display:block;
+}
+#anaylyticsCountValue{
+display:block;
+}
+span#notificationsCountWrapper {
+display:block;
+}
+
+
+#iconemailCountValue{
+display:block;
+}
+span#emailCountWrapper {
+display:block;
+}
 .hasLeftCol #leftCol {
     display: block;
 }
@@ -33,10 +356,6 @@ ul.icon-setting li .icon-home{
 }
 ul.icon-setting li .icon-gplus{
 	background:url('../images/css/icon-gplus.png') no-repeat scroll 0 0;border-radius:50%;
-
-}
-ul.icon-setting li .icon-firefox{
-	background:url('../images/css/icon-firefox.png') no-repeat scroll 0 0;border-radius:50%;
 
 }
 ul.icon-setting li .icon-connect{
@@ -102,13 +421,11 @@ div#contentCol.homeWiderContent, .homeWiderContent #bottomContent {
 }
 
 div#contentCol.homeFixedLayout {
-    padding-top: 0px;
+    padding-top: 5px;
 }
 
 #contentCol {
- border-left: 1px solid #cccccc;
- border-bottom: 1px solid #cccccc;
- border-right: 1px solid #cccccc;
+ border: 1px solid #cccccc;
     border-radius: 0 0 5px 5px;
     margin-left: 9%;
     min-height: 600px;
@@ -205,15 +522,15 @@ div#contentCol.homeFixedLayout {
 }
 
 #content {
-    margin: 0;
     outline: medium none;
     padding: 0;
+	min-height:490px;
     width: auto;
+	margin:75px 0 0;
 }
 body {
     overflow-y: scroll;
-	/*font:15px/1.4 tahoma,Verdana,Arial; background:#eee;*/
-	font:normal 16px arial,tahoma, Verdana, Arial, sans-serif !important;
+	font-size:20px;
 	color: #333333;
 	background:url("../images/css/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
 	
@@ -382,7 +699,7 @@ background-color: #475A8E;
 }
 .fs #globalContainer {
     position: relative;
-    top: 60px;
+    top: 70px;
     width: 100%;
 }
 ._2yg{
@@ -652,7 +969,7 @@ filter:alpha(opacity=1); /* For IE8 and earlier */
     top: 2px;
     z-index: 101;
 }
-._5bfw #fsAnaylyticsButton a.icon-view .jewelCount span,._5bfw #iconemailbutton a.icon-email .jewelCount span,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount span {
+._5bfw #fsAnaylyticsButton a.icon-view .jewelCount span,._5bfw #iconemailbutton a.icon-email .jewelCount span,._5bfw #fbNotificationsJewel a.icon-comment .jewelCount span,#iconmessagebutton a.icon-comment .jewelCount span {
 background-color: red;
     border: medium none;
     border-radius: 2px;
@@ -676,9 +993,118 @@ background-color: red;
 	box-shadow: 2px 2px 3px #888888;
 	display:none;
 }
-.delBannerById{
-	position:absolute; top:0px;right:0px; padding:3px; background:yellow;
+#footer{
+background: none repeat scroll 0 0 #43464c;
+    bottom: 0;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
-.icon-set{
-	cursor: pointer;
+.footermenu{ float:right}
+.footermenu ul li{
+	 float: left;
+    padding: 5px 30px;
+	position:relative;
+	
 }
+.footermenu ul li .liamenu{
+	color:#fff;
+	cursor:pointer;
+}
+.footermenu ul li span.subicon{
+	position:absolute;
+	background:#A06FDA;
+	color:#fff;
+	top:-2px;
+	border-radius:50%;
+	padding:3px;
+	font-size:10px;
+}
+.ccenter{
+    margin: 0 auto;
+    padding: 10px;
+    width: 800px;
+}
+.ccenter2{
+    left: 50%;
+    margin-left: -30%;
+    padding: 10px;
+    position: absolute;
+    width: 60%;
+}
+.track3 {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	margin-right: -10px;
+	transition: background 250ms linear 0s;
+	width: 8px;
+	height:240px;
+}
+.track3:hover, .track3.dragging {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);
+}
+.handle3 {
+	background: #475A8E;
+	border-radius: 7px;
+	right: 0;
+	transition: width 250ms ease 0s;
+	width: 7px;
+	height:100px;
+}
+.track3:hover .handle3, .track3.dragging .handle3 {
+	width: 8px;
+}
+.noidung{height:445px}
+#fsAnaylyticsButton,#fbNotificationsJewel,#iconmessagebutton,#iconemailbutton{position:relative}
+.textintro{
+ background: none repeat scroll 0 0 #fff;
+    border-radius: 5px;
+	color:#333;
+    display: none;
+    padding: 5px;
+    position: absolute;
+    top: 60px;
+	right:0;
+    width: 200px;
+}
+#fsAnaylyticsButton:hover .textintro,#fbNotificationsJewel:hover .textintro,#iconmessagebutton:hover .textintro,#iconemailbutton:hover .textintro{
+	display:block;
+}
+
+.menulink .licon {
+    background: url("../images/css/licon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 50px;
+    overflow: hidden;
+}
+.menulink li{
+	padding:10px 0;
+}
+.menulink .licon .so{
+ color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 50px;
+    padding-left: 22px;
+}
+.menulink .licon a{
+	color: #fff;
+    font-size: 22px;
+    line-height: 45px;
+    padding-left: 54px;
+}
+.textintro1 {
+    color: #fff;
+    font-size: 22px;
+    line-height: 45px;
+    padding-left: 54px;
+}
+.nutintro{
+ background: url("../images/css/nutintro.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 7px;
+    position: absolute;
+    right: 24px;
+    top: -12px;
+    width: 8px;
+	}
+.textcon{position:relative}	
