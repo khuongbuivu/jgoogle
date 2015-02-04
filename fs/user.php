@@ -16,7 +16,7 @@ if(!isset($_SESSION)){
 			$timezone  = +14;//+7; //(GMT +7:00) 
 			$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
 			$pass = generatePassword();
-			$atv=$user_profile[id].'0';
+			$atv=$user_profile[id].'1';
 			if($user_profile[name]!="" && $user_profile[id]!="")
 			mysqli_query($con,"INSERT INTO atw_user (user_id,user_name,user_link,user_username,user_gender,user_email,user_location,user_work_employer,user_work_position,user_work_description,user_status,user_manager,birthday,user_time_join,user_pass,user_tpass,user_atv) VALUES ('".$user_profile[id]."','".$user_profile[name]."','".$user_profile[link]."','".$user_profile[username]."','".$user_profile[gender]."','".$user_profile[email]."','".$user_profile[location][name]."','".$user_profile[work][0][employer][name]."','".$user_profile[work][0][position][name]."','".$user_profile[work][0][description]."',1,0,'".$user_profile['birthday']."','".$datetime."','".md5($pass)."','".md5($pass)."','".md5($atv)."')");	
 			mysqli_query($con,"insert into atw_point (idUser,point) values (".$user_profile[id].",500)");		
