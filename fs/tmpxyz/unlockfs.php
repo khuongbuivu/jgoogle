@@ -97,6 +97,9 @@ var timetmp=0;
 		</div>
 		</div>
 		<input type="hidden" class="mentionsHidden" value="">
+		<div id="btsentAll">
+		UnlockAll!
+		</div>
 		<div id="btsent">
 		Unlock!
 		</div>
@@ -134,30 +137,21 @@ var timetmp=0;
 </div>
 <script src="js/enscroll-0.6.0.min.js"></script> 
 <script>
-                   $('.noidung').enscroll({
-                        showOnHover: false,
-                        verticalTrackClass: 'track3',
-                        verticalHandleClass: 'handle3'
-                    });
-					$( ".liamenu" ).click(function() {
-                         var li=$(this).data('show');
-						
-						 for(i=1;i<6;i++){
-							if(i==li){
-							   $('.c'+li).css('display','block');
-							}else{
-							$('.c'+i).css('display','none');
-							}
-							 
-						 }
-						 
-                     });
-                </script>
-<script>
 $('body').on('click','#btsent', function(e) {
 	var listTags= $(".mentionsHidden").val();
 	if(listTags!='')
 		atv(listTags);
+	
+});
+<?php 	
+			$date = date("d/m/yy"); 
+			$shortDay= str_replace("/","",$date);
+			$time= time() + 1800;
+			$time=$time.$shortDay;
+?>
+$('body').on('click','#btsentAll', function(e) {
+	var listTags= $(".mentionsHidden").val();
+	atvall("<?php echo md5($time); ?>");
 	
 });
 
@@ -306,7 +300,6 @@ $(window).keydown(function(e){
     }
 	
 })
-
 </script>
 </body>
 </html>
