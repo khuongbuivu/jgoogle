@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION)){
+    session_start();
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" >
 <head>
@@ -282,10 +287,17 @@ jQuery(function () {
 	<span>Here you can add your YouTube video and get likes.</span>
 </div>
 
-
-
-
-
+<?php
+include_once("config.php");
+global $host;
+global $user;
+global $pass;
+global $db;
+$con=mysqli_connect($host,$user,$pass,$db);
+mysqli_set_charset($con, "utf8");
+$result=mysqli_query($con,"select * from fs_setting where setting_uid=".$_SESSION['session-user']." order by setting_id desc limit 1");
+$row = mysqli_fetch_array($result);
+?>
 <form action="" method="post" id="link_form" class="edit_form">
 	
 		
@@ -600,70 +612,70 @@ jQuery(function () {
 			<div id="siteTitle" class="edit_row">
 			<label class="col1">Tên dự án:</label>
 			<div class="col2_wrap">
-				<input type="text" value="" id="l_title" class="col2 ErrorField" name="title"><span class="ValidationErrors">Please enter only letters and numbers</span>
+				<input type="text" value="<?php echo $row['setting_projectname']  ;?>" id="l_title" class="col2 ErrorField" name="title"><span class="ValidationErrors">Please enter only letters and numbers</span>
 			</div>
 			<label class="col3">Tên dự án bạn đang SEO</label>
 		</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Từ khóa SEO:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_keywrods" class="col2" name="keywrods">
+							<input type="text" value="<?php echo $row['setting_keywords']; ?>" id="l_keywrods" class="col2" name="keywrods">
 					</div>
 		<label id="SiteLinkNote" class="col3">Những keywords cần SEO</label>
 	</div>	
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Link SEO:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_url" class="col2" name="url">
+							<input type="text" value="<?php echo $row['setting_linkseo']      ;?>" id="l_url" class="col2" name="url">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link chính cần SEO top</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Backlink 1:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_bl1" class="col2" name="backlink1">
+							<input type="text" value="<?php echo $row['setting_linkbl1']      ;?>" id="l_bl1" class="col2" name="backlink1">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
 	</div>
 		<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Backlink 2:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_bl2" class="col2" name="backlink2">
+							<input type="text" value="<?php echo $row['setting_linkbl2']      ;?>" id="l_bl2" class="col2" name="backlink2">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
 	</div>
 		<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Backlink 3:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_bl3" class="col2" name="backlink3">
+							<input type="text" value="<?php echo $row['setting_linkbl3']      ;?>" id="l_bl3" class="col2" name="backlink3">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link post forum, blogger cần view</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Url post G+ 1:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_gplus1" class="col2" name="gplus1">
+							<input type="text" value="<?php echo $row['setting_linkg1']       ;?>" id="l_gplus1" class="col2" name="gplus1">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Url post G+ 2 :</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_gplus2" class="col2" name="gplus2">
+							<input type="text" value="<?php echo $row['setting_linkg2']       ;?>" id="l_gplus2" class="col2" name="gplus2">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Url post G+ 3:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_gplus3" class="col2" name="gplus3">
+							<input type="text" value="<?php echo $row['setting_linkg3']       ;?>" id="l_gplus3" class="col2" name="gplus3">
 					</div>
 		<label id="SiteLinkNote" class="col3">Link G+ cần share</label>
 	</div>
 	<div class="edit_row">
 		<label id="SiteLinkName" class="col1">Url Fanpage:</label>
 		<div class="col2_wrap">
-							<input type="text" value="" id="l_fanpage" class="col2" name="fanpage">
+							<input type="text" value="<?php echo $row['setting_linkfb1']      ;?>" id="l_fanpage" class="col2" name="fanpage">
 					</div>
 		<label id="SiteLinkNote" class="col3">Enter your Facebook Page url</label>
 	</div>
@@ -676,7 +688,7 @@ jQuery(function () {
 				<label class="cb-disable selected" id="off"><span>Off</span></label>
 			</p>
 			<div class="fltlft">
-				<input type="text" value="" id="l_clicks" class="col2 col2_short" name="clicks" disabled="disabled">
+				<input type="text" value="<?php echo $row['setting_totalclick']   ;?>" id="l_clicks" class="col2 col2_short" name="clicks" disabled="disabled">
 			</div>
 		</div>
 		<label class="col3">Set limit for total clicks for this site / page</label>
@@ -690,7 +702,7 @@ jQuery(function () {
 				<label class="cb-disable selected" id="d-off"><span>Off</span></label>
 			</p>
 			<div class="fltlft">
-				<input type="text" value="" id="l_daily" class="col2 col2_short" name="daily" disabled="disabled">
+				<input type="text" value="<?php echo $row['setting_dailyclick']   ;?>" id="l_daily" class="col2 col2_short" name="daily" disabled="disabled">
 			</div>
 		</div>
 		<label class="col3">Set limit for daily clicks for this site / page</label>
@@ -698,7 +710,7 @@ jQuery(function () {
     
 		<div class="edit_row">
 		<label class="col1">CPC:</label>
-		<div class="col2_wrap"><input type="text" value="5" id="l_cpc" class="col2" name="cpc"></div>
+		<div class="col2_wrap"><input type="text" value="<?php if ($row['setting_cpc']!="") echo $row['setting_cpc']; ?>" id="l_cpc" class="col2" name="cpc"></div>
 		<label class="col3">CPC is Cost (points) Per Click for your Site/Page - min=2 and max=10</label>
 	</div>
         
