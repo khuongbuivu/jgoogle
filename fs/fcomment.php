@@ -240,6 +240,8 @@ if(!isset($_SESSION)){
 		global $db;
 		$con=mysqli_connect($host,$user,$pass,$db);
 		$urls=split("····",$link);
+		if ($link=="")
+			return true;
 		for ($ii=0;$ii<count($urls);$ii++)
 		{
 			$urls[$ii]=rtrim($urls[$ii], "/");
