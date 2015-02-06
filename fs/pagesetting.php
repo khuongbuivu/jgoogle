@@ -2,19 +2,18 @@
 if(!isset($_SESSION)){
     session_start();
 }
+$PATH_ROOT="http://faceseo.vn/";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="css/pages/jquery.min.js"></script>
-<script type="text/javascript" src="css/pages/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/i6ptlwq0d278.js"></script>
 <script>
-jQuery=$.noConflict();
 var root_path = "http://localhost/faceseo.vn/";
 </script>
-<link rel="stylesheet" href="css/pagesetting.css" type="text/css" />
-<link href="css/pages/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="http://faceseo.vn/css/pagesetting.css" type="text/css" />
+<link href="http://faceseo.vn/css/pages/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 </head>
 <body class="hasSmurfbar">
@@ -56,221 +55,101 @@ var root_path = "http://localhost/faceseo.vn/";
   <div id="content">
     <div id="showindex" class="ccenter2">
       <div class="center">
-                									<script src="css/pages/showLoading.js" type="text/javascript"></script>
 <h2 class="center_title">Thêm/Sửa Link  <img title="" alt="" src="css/pages/icon-add-setting.png"></h2>
 <div class="main-content">
 			<div>Link SEO, Link G+, Link Fanpage FB, Link Youtube<br><span style="font-size: 10pt;"><span style="color: #ff0000;"></span></span></div>
-	</div>
+</div>
 <div class="add-site-form">
-	<script src="css/pages/jquery.validate.js" type="text/javascript"></script>
-<script src="css/pages/jquery.validation.functions.js" type="text/javascript"></script>
-
-<link type="text/css" rel="stylesheet" href="css/pages/jquery.multiselect.css">
-<link type="text/css" rel="stylesheet" href="css/pages/jquery.multiselect.filter.css">
-<script src="css/pages/jquery.multiselect.js" type="text/javascript"></script>
-<script src="css/pages/jquery.multiselect.filter.min.js" type="text/javascript"></script>
-
-
-<script type="text/javascript"> 
-
-jQuery(function () {
-    jQuery("#l_email").validate({
-        expression: "if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)*\\.[a-zA-Z]{2,4}$/)) return true; else return false;",
-        message: "Please, enter vaild email"
-    });
-    jQuery("#l_pass").validate({
-        expression: "if (VAL.length &gt; 5 &amp;&amp; VAL) return true; else return false;",
-        message: "Password is not valid, please use only letters and numbers - at least 6 characters"
-    });
-    jQuery('#login_form').validated(function () {
-        login()
-    });
-    jQuery("#r_email").validate({
-        expression: "if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9-_]+(\\.[a-zA-Z0-9-_]+)*\\.[a-zA-Z]{2,4}$/)) return true; else return false;",
-        message: "Please, enter vaild email"
-    });
-    jQuery("#r_pass").validate({
-        expression: "if (VAL.length &gt; 5 &amp;&amp; VAL) return true; else return false;",
-        message: "Password is not valid, please use only letters and numbers - at least 6 characters"
-    });
-    jQuery("#r_re_pass").validate({
-        expression: "if ((VAL == jQuery(\'#r_pass\').val()) &amp;&amp; VAL) return true; else return false;",
-        message: "Please, confirm password, field doesn't match the password field"
-    });
-    jQuery("#capt").validate({
-        expression: "if (VAL.length &gt; 1 &amp;&amp; VAL) return true; else return false;",
-        message: "Please, enter security code"
-    });
-    jQuery('#reg_form').validated(function () {
-        registration()
-    });
-    jQuery("#l_title").validate({
-        expression: "if ((VAL.match(/^[a-zA-Z0-9 _]*$/) &amp;&amp; VAL  &amp;&amp; jQuery(\'#l_type\').val()!=3 &amp;&amp; jQuery(\'#l_type\').val()!=35 &amp;&amp; jQuery(\'#l_type\').val()!=36 &amp;&amp; jQuery(\'#l_type\').val()!=37 &amp;&amp; jQuery(\'#l_type\').val()!=20 &amp;&amp; jQuery(\'#l_type\').val()!=7 &amp;&amp; jQuery(\'#l_type\').val()!=11) || jQuery(\'#l_type\').val()==3 || jQuery(\'#l_type\').val()==35 || jQuery(\'#l_type\').val()==36 || jQuery(\'#l_type\').val()==37 || jQuery(\'#l_type\').val()==7 || jQuery(\'#l_type\').val()==20 || jQuery(\'#l_type\').val()==11 || jQuery(\'#l_type\').val()==12 || jQuery(\'#l_type\').val()==13 || jQuery(\'#l_type\').val()==14 || jQuery(\'#l_type\').val()==15 || jQuery(\'#l_type\').val()==16 || jQuery(\'#l_type\').val()==17 || jQuery(\'#l_type\').val()==19 || jQuery(\'#l_type\').val()==21 || jQuery(\'#l_type\').val()==22 || jQuery(\'#l_type\').val()==23 || jQuery(\'#l_type\').val()==24) return true; else return false;",
-        message: "Please enter only letters and numbers"
-    });
-    jQuery("#l_url").validate({
-        expression: "if ((isUrl(VAL) &amp;&amp; jQuery(\'#l_type\').val()!=3 &amp;&amp; jQuery(\'#l_type\').val()!=35 &amp;&amp; jQuery(\'#l_type\').val()!=36 &amp;&amp; jQuery(\'#l_type\').val()!=37 &amp;&amp; jQuery(\'#l_type\').val()!=9 &amp;&amp; jQuery(\'#l_type\').val()!=18 &amp;&amp; jQuery(\'#l_type\').val()!=19) || ((jQuery(\'#l_type\').val()==3 || jQuery(\'#l_type\').val()==35 || jQuery(\'#l_type\').val()==36 || jQuery(\'#l_type\').val()==37 || jQuery(\'#l_type\').val()==5 || jQuery(\'#l_type\').val()==6 || jQuery(\'#l_type\').val()==7 || jQuery(\'#l_type\').val()==8 || jQuery(\'#l_type\').val()==31 || jQuery(\'#l_type\').val()==12 || jQuery(\'#l_type\').val()==13 || jQuery(\'#l_type\').val()==14 || jQuery(\'#l_type\').val()==15 || jQuery(\'#l_type\').val()==16 || jQuery(\'#l_type\').val()==19 || jQuery(\'#l_type\').val()==21 || jQuery(\'#l_type\').val()==22 || jQuery(\'#l_type\').val()==23 || jQuery(\'#l_type\').val()==24) &amp;&amp; VAL.match(/^[a-zA-Z0-9 _\-\]*$/) &amp;&amp; VAL) || (jQuery(\'#l_type\').val()==11 &amp;&amp; VAL.match(/^[a-zA-Z0-9 _\.\-\]*$/) &amp;&amp; VAL) || (jQuery(\'#l_type\').val()==20 &amp;&amp; VAL.match(/^[a-zA-Z0-9 _\.\-\]*$/) &amp;&amp; VAL) || (jQuery(\'#l_type\').val()==15 &amp;&amp; VAL.match(/^[a-zA-Z0-9 \/_\.\-\:]*$/) &amp;&amp; VAL) || (jQuery(\'#l_type\').val()==16 &amp;&amp; VAL.match(/^[a-zA-Z0-9 \/_\.\-\:]*$/) &amp;&amp; VAL) || (jQuery(\'#l_type\').val()==19 &amp;&amp; VAL.match(/^[a-zA-Z0-9 \/_\.\-\:]*$/) &amp;&amp; VAL) || (jQuery(\'#l_type\').val()==17 &amp;&amp; VAL.length &gt; 0 &amp;&amp; VAL.length &lt; 256) || (isUrl(VAL) &amp;&amp; jQuery(\'#l_type\').val()==18 &amp;&amp; !VAL.match(/[#]/)) || jQuery(\'#l_type\').val()==9) return true; else return false;",
-        message: "Please enter a valid url"
-    });
-    jQuery("#l_type").validate({
-        expression: "if (VAL != \'0\') return true; else return false;",
-        message: "Please select type"
-    });
-    jQuery("#l_cpc").validate({
-        expression: "if (VAL.match(/^[0-9]*$/) &amp;&amp; VAL!=1 &amp;&amp; VAL&lt;11) return true; else return false;",
-        message: "Must bee only numbers or 0, or from 2 to 10"
-    });
-    jQuery("#l_clicks").validate({
-        expression: "if (!VAL || (VAL &amp;&amp; VAL.match(/^[0-9]*$/))) return true; else return false;",
-        message: "Enter only numbers"
-    });
-    jQuery("#l_daily").validate({
-        expression: "if (!VAL || (VAL &amp;&amp; VAL.match(/^[0-9]*$/))) return true; else return false;",
-        message: "Enter only numbers"
-    });
-    jQuery('#link_form').validated(function () {
-        addSite()
-    });
-    jQuery("#f_email").validate({
-        expression: "if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9-_]+(\\.[a-zA-Z0-9-_]+)*\\.[a-zA-Z]{2,4}$/)) return true; else return false;",
-        message: "Please, enter vaild email"
-    });
-    jQuery("#secure").validate({
-        expression: "if (VAL.length &gt; 1 &amp;&amp; VAL) return true; else return false;",
-        message: "Please, enter security code"
-    });
-    jQuery('#forgot_form').validated(function () {
-        forgot()
-    });
-    jQuery("#f_code").validate({
-        expression: "if (VAL.match(/^[a-zA-Z0-9]*$/) &amp;&amp; VAL) return true; else return false;",
-        message: "Please enter only letters and numbers"
-    });
-    jQuery('#recover_form').validated(function () {
-        resetPassCode()
-    });
-    jQuery("#f_pass").validate({
-        expression: "if (VAL.length &gt; 5 &amp;&amp; VAL) return true; else return false;",
-        message: "Password is not valid, please use only letters and numbers - at least 6 characters"
-    });
-    jQuery("#f_re_pass").validate({
-        expression: "if ((VAL == jQuery(\'#f_pass\').val()) &amp;&amp; VAL) return true; else return false;",
-        message: "Please, confirm password, field doesn't match the password field"
-    });
-    jQuery('#new_pass_form').validated(function () {
-        newPass()
-    });
-    jQuery("#rce_email").validate({
-        expression: "if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)*\\.[a-zA-Z]{2,4}$/)) return true; else return false;",
-        message: "Please, enter vaild email"
-    });
-    jQuery("#rce_capt").validate({
-        expression: "if (VAL.length &gt; 1 &amp;&amp; VAL) return true; else return false;",
-        message: "Please, enter security code"
-    });
-    jQuery('#resend_email_form').validated(function () {
-        resendConfirmEmail()
-    })
-});
-</script> 
-
-<script src="css/pages/jquery.jqEasyCharCounter.min.js" tyep="text/javascript"></script>
-
+<link type="text/css" rel="stylesheet" href="http://faceseo.vn/css/pages/jquery.multiselect.css">
+<link type="text/css" rel="stylesheet" href="http://faceseo.vn/css/pages/jquery.multiselect.filter.css">
 
 <script type="text/javascript">
-	jQuery(document).ready(function(){
-		jQuery(".area_col2").jqEasyCounter({
-		    'maxChars': 255,
-		    'maxCharsWarning': 140,
-		    'msgFontSize': '12px',
-		    'msgFontColor': '#000',
-		    'msgFontFamily': 'Arial',
-		    'msgTextAlign': 'left',
-		    'msgWarningColor': '#F00',
-		    'msgAppendMethod': 'insertBefore'              
-		});
-		
-		var widget = jQuery("#l_country").multiselect({
-			header: "&amp;nbsp;",
-			height: "350",
-			noneSelectedText: "select countries",
-			click: function(e, ui){
-				if( jQuery(this).multiselect("widget").find("input:checked").length > 30 ){
-				    return false;
-				}
-			}
-		}).multiselectfilter();
-		
-		state = false;
-		
-			widget.multiselect('disable');
-			state = true;
-		
-		
-		
-		jQuery("#ww").click(function(){
-		   state = !state;
-		   widget.multiselect(state ? 'disable' : 'enable');
-		});
-		
-		jQuery(document).on("click", "#on", function(){
-			var parent = jQuery(this).parents('.switch');
-			jQuery('#off',parent).removeClass('selected');
-			jQuery(this).addClass('selected');
-			jQuery("#l_clicks").removeAttr("disabled");
-			jQuery("#l_clicks").val(parseInt(1000));
+	$(document).ready(function(){
+
+                $(document).on("click", "#on", function(){
+			var parent = $(this).parents('.switch');
+			$('#off',parent).removeClass('selected');
+			$(this).addClass('selected');
+			$("#l_clicks").removeAttr("disabled");
+			$("#l_clicks").val(parseInt(1000));
 		});
 
-		jQuery(document).on("click", "#off", function(){
-			var parent = jQuery(this).parents('.switch');
-			jQuery('#on',parent).removeClass('selected');
-			jQuery(this).addClass('selected');
-			jQuery("#l_clicks").attr("disabled", "disabled");
-			jQuery("#l_clicks").val("");
+		$(document).on("click", "#off", function(){
+			var parent = $(this).parents('.switch');
+			$('#on',parent).removeClass('selected');
+			$(this).addClass('selected');
+			$("#l_clicks").attr("disabled", "disabled");
+			$("#l_clicks").val("");
 		});
 		
-		jQuery(document).on("click", "#d-on", function(){
-			var parent = jQuery(this).parents('.switch');
-			jQuery('#d-off',parent).removeClass('selected');
-			jQuery(this).addClass('selected');
-			jQuery("#l_daily").removeAttr("disabled");
-			jQuery("#l_daily").val(parseInt(100));
+		$(document).on("click", "#d-on", function(){
+			var parent = $(this).parents('.switch');
+			$('#d-off',parent).removeClass('selected');
+			$(this).addClass('selected');
+			$("#l_daily").removeAttr("disabled");
+			$("#l_daily").val(parseInt(30));
 		});
 
-		jQuery(document).on("click", "#d-off", function(){
-			var parent = jQuery(this).parents('.switch');
-			jQuery('#d-on',parent).removeClass('selected');
-			jQuery(this).addClass('selected');
-			jQuery("#l_daily").attr("disabled", "disabled");
-			jQuery("#l_daily").val("");
+		$(document).on("click", "#d-off", function(){
+			var parent = $(this).parents('.switch');
+			$('#d-on',parent).removeClass('selected');
+			$(this).addClass('selected');
+			$("#l_daily").attr("disabled", "disabled");
+			$("#l_daily").val("");
 		});
-		jQuery('.save').click( function(){
-			var nameproject= jQuery('#l_title').val();
-			var keywords= jQuery('#l_keywrods').val();
-			var urls= jQuery('#l_url').val();
-			var bl1= jQuery('#l_bl1').val();
-			var bl2= jQuery('#l_bl2').val();
-			var bl3= jQuery('#l_bl3').val();
-			var gplus1= jQuery('#l_gplus1').val();
-			var gplus2= jQuery('#l_gplus2').val();
-			var gplus3= jQuery('#l_gplus3').val();
-			var fanpage= jQuery('#l_fanpage').val();
-			var clicks= jQuery('#l_clicks').val();
-			var daily= jQuery('#l_daily').val();
-			var cpc= jQuery('#l_cpc').val();
-			jQuery.ajax({
-				type: "POST",
-				url: root_path+"modules/add_setting.php",
+
+	
+		$('.save').click( function(){
+			var nameproject= $('#l_title').val();
+			var keywords= $('#l_keywrods').val();
+			var urls= $('#l_url').val();
+			var bl1= $('#l_bl1').val();
+			var bl2= $('#l_bl2').val();
+			var bl3= $('#l_bl3').val();
+			var gplus1= $('#l_gplus1').val();
+			var gplus2= $('#l_gplus2').val();
+			var gplus3= $('#l_gplus3').val();
+			var fanpage= $('#l_fanpage').val();
+			var clicks= $('#l_clicks').val();
+			var daily= $('#l_daily').val();
+			var cpc= $('#l_cpc').val();
+			/*
+			$.ajax({
+				type: "GET",
+				url: root_path + "modules/add_setting.php",
 				data: { nameproject:nameproject, urls:urls, keywords:keywords, bl1:bl1, bl2:bl2, bl3: bl3,gplus1:gplus1,gplus2:gplus2,gplus3:gplus3,fanpage:fanpage,clicks:clicks,daily:daily,cpc:cpc},	
+				dataType: "html",
 				success : function(abc)
 				{
-							alert("Bạn đã cài đặt thành công");
+						
+							alert("Bạn đã cài đặt thành công!");
 				}	
 			}).done(function( msg ) {
 			});
-			
+			*/
+			var xmlhttp;
+			var url = root_path + "modules/add_setting.php";
+			if(window.XMLHttpRequest){
+			  xmlhttp=new XMLHttpRequest();
+			}else{
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			};
+			var params = "nameproject=" + nameproject + "&urls=" + escape(urls) + "&keywords=" + keywords + "&urls1=" + escape(bl1) + "&urls2=" + escape(bl2) + "&urls3=" + escape(bl3) + "&urls4=" + escape(gplus1) + "&urls5=" + escape(gplus2) + "&urls6=" + escape(gplus3) + "&urls7=" + escape(fanpage)+ "&clicks=" + clicks+ "&daily="+daily+ "&cpc="+cpc;
+			xmlhttp.open("POST", url, true);
+			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xmlhttp.setRequestHeader("Content-length", params.length);
+			xmlhttp.setRequestHeader("Connection", "close");
+			xmlhttp.onreadystatechange = function() {
+			if(xmlhttp.readyState == 4 && xmlhttp.status == 200){ 
+			  alert("Bạn đã cài đặt thành công!");
+			}
+  };
+  xmlhttp.send(params);
+
 		});
+
 	});
+	
 	
 </script>
 
@@ -289,6 +168,7 @@ jQuery(function () {
 
 <?php
 include_once("config.php");
+// include_once("wn3z74w1oe32.php");
 global $host;
 global $user;
 global $pass;
@@ -689,7 +569,7 @@ mysqli_close($con);
 				<label class="cb-disable selected" id="off"><span>Off</span></label>
 			</p>
 			<div class="fltlft">
-				<input type="text" value="<?php echo $row['setting_totalclick']   ;?>" id="l_clicks" class="col2 col2_short" name="clicks" disabled="disabled">
+				<input type="text" value="<?php if($row['setting_totalclick']!="" && $row['setting_totalclick']!=null) echo $row['setting_totalclick']; else echo 1000; ?>" id="l_clicks" class="col2 col2_short" name="clicks" disabled="disabled">
 			</div>
 		</div>
 		<label class="col3">Set limit for total clicks for this site / page</label>
@@ -703,7 +583,7 @@ mysqli_close($con);
 				<label class="cb-disable selected" id="d-off"><span>Off</span></label>
 			</p>
 			<div class="fltlft">
-				<input type="text" value="<?php echo $row['setting_dailyclick']   ;?>" id="l_daily" class="col2 col2_short" name="daily" disabled="disabled">
+				<input type="text" value="<?php if($row['setting_dailyclick']!="" && $row['setting_dailyclick']!=null) echo $row['setting_dailyclick']   ; else echo 30;?>" id="l_daily" class="col2 col2_short" name="daily" disabled="disabled">
 			</div>
 		</div>
 		<label class="col3">Set limit for daily clicks for this site / page</label>
@@ -711,7 +591,7 @@ mysqli_close($con);
     
 		<div class="edit_row">
 		<label class="col1">CPC:</label>
-		<div class="col2_wrap"><input type="text" value="<?php if ($row['setting_cpc']!="") echo $row['setting_cpc']; ?>" id="l_cpc" class="col2" name="cpc"></div>
+		<div class="col2_wrap"><input type="text" value="<?php if($row['setting_cpc']!="" && $row['setting_cpc']!=null) echo $row['setting_cpc']; else echo 5; ?>" id="l_cpc" class="col2" name="cpc"></div>
 		<label class="col3">CPC is Cost (points) Per Click for your Site/Page - min=2 and max=10</label>
 	</div>
         
