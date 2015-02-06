@@ -180,9 +180,9 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-		};
-		gBrowser.addTab("http://faceseo.vn/");
-		gBrowser.removeTab(tabs[0]);
+			gBrowser.addTab("http://faceseo.vn/");
+			gBrowser.removeTab(tabs[0]);
+		};		
 		closeAllTab = true;
 	},
     onClosedTab: function(aEvent) {
