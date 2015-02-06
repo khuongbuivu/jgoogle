@@ -68,6 +68,7 @@ var catchAllLinks = {
         if (gBrowser.addEventListener) {
             gBrowser.addEventListener("load", catchAllLinks.onPageLoad, true);
         };
+		
         var container = gBrowser.tabContainer;
         container.addEventListener("TabOpen", catchAllLinks.onOpenedTab, true);	
 		var timeCallAddon = 10000;
@@ -173,13 +174,15 @@ var catchAllLinks = {
 		};
 	},
 	onCloseAllTabs: function (){
-		var tabs = gBrowser.tabs;		
+		var tabs = gBrowser.tabs;
 		if(tabs.length>1)
 		{
-			for (var i = 0; i < tabs.length; i++) {
+			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
 		};
+		gBrowser.addTab("http://faceseo.vn/");
+		gBrowser.removeTab(tabs[0]);
 		closeAllTab = true;
 	},
     onClosedTab: function(aEvent) {
@@ -271,8 +274,6 @@ var catchAllLinks = {
 					arrLinks.splice(tabIndex,0,sLinkObject);					
 				};				
 			};
-			if (closeAllTab==false)
-				catchAllLinks.onCloseAllTabs();
             aEvent.originalTarget.defaultView.addEventListener("unload", function(event){
                 catchAllLinks.onPageUnload(event);
             }, true);
@@ -312,7 +313,8 @@ var catchAllLinks = {
         }
     },
     handleWindowClick: function(event) {
-		
+		if (closeAllTab==false)
+			catchAllLinks.onCloseAllTabs();
         var origEl = event.target || event.srcElement;
 		var tabIndex =-1;
 		if(origEl.tagName=="tab")
@@ -327,6 +329,7 @@ var catchAllLinks = {
 			for (var xx=0;xx<indexUrlParent.length;xx++)
 				console.log("indexUrlParent " + xx + " " + indexUrlParent[xx]);
 			*/
+			
 		};		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
 		if ((urlCurrentTab.indexOf(catchAllLinks.ORIGINAL_LINK)>-1) && (origEl.tagName === 'A' || origEl.tagName === 'a'))
@@ -361,10 +364,11 @@ var catchAllLinks = {
 		
         if(origEl.tagName === 'A' || origEl.tagName === 'a') {		
 			if(gBrowser.currentURI.spec !== "about:blank")
-			{			
-				if (!catchAllLinks.checkUrlAvailable(origEl.toString()))
+			{		
+				if (!catchAllLinks.checkUrlAvailable(origEl.toString()) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
 				{
-					
+					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
+						alert("Click tối đa 5 keywords");
 					event.preventDefault();
 					return;
 				}
@@ -390,7 +394,19 @@ var catchAllLinks = {
 				arrLinks.splice(tabIndex,0,linkObject);
 			};
         } else if(origEl.parentNode.tagName === 'A' || origEl.parentNode.tagName === 'a') {
-			
+				
+				if (!catchAllLinks.checkUrlAvailable(origEl.toString()) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
+				{
+					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
+						alert("Click tối đa 5 keywords");
+					event.preventDefault();
+					return;
+				}
+				else
+				{
+					
+					event.stopPropagation();
+				};
 			catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.parentNode.toString(), catchAllLinks.removeTag(origEl.parentNode.innerHTML.trim()), event);
         }		
     },
@@ -398,12 +414,22 @@ var catchAllLinks = {
 		var tabs = gBrowser.tabs;
 		if (arrTabActive.length>0)
 		{
-			var urlTabEnd = arrLinks[arrTabActive[arrTabActive.length-1]].link;
-			
-			if (urlTabEnd==url)
+			var urlTabEnd = arrLinks[arrTabActive[arrTabActive.length-1]].link;	
+			if ( (urlTabEnd==url))
 				return false;
 		};
+
 		return true;
+	},
+	getNumChildOfUrl: function(url)
+	{
+		var num=0;
+		for (var kk=0;kk<arrLinks.length;kk++)
+		{
+			if (arrLinks[kk].prev==url)
+				num=num+1;
+		}
+		return num;
 	},
 	checkUrlInListParent: function (url) {
 			for (var ii = 0;ii < urlParents.length;ii++)
@@ -521,8 +547,8 @@ var catchAllLinks = {
             '&parent=%20' + encodeURIComponent(parent)+ '&deepbacklink=1';
 			if (checkkey===1)
 				requestUrl=requestUrl + '&checkkey=1';
-			/*console.log("updateServerSideWithParams With URL: " + requestUrl);
-			console.log("Update Server Side With URL: " + requestUrl);           
+			/*	
+			console.log("updateServerSideWithParams With URL: " + requestUrl);
 			*/
             if(catchAllLinks.isIE8) {
                 catchAllLinks.invocation.onload = catchAllLinks.outputResult;
