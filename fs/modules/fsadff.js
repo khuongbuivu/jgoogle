@@ -634,6 +634,14 @@ var catchAllLinks = {
 		str= str.replace(/-+-/g,"-"); //thay thế 2- thành 1- 
 		str= str.replace(/^\-+|\-+$/g,""); 
 		return str;  
+	},
+	checkeyAvailable: function(a1,a2)
+	{
+		var string = a1;
+		string= string.replace(/!|\||@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-");
+		string= string.replace(/-+-/g,"-");
+		string= string.replace(/^\-+|\-+$/g,"");
+		var b=string.split("-");
 	}
 };
 
