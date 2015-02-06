@@ -50,7 +50,7 @@
           </div>
         </li>
         <li><div class="licon">
-            <div class="licon2"><span class="so">2</span> <span class="textintro1">Click view link</span></div>
+            <div class="licon2"><span class="so">2</span> <span class="textintro1"><a href="http://faceseo.vn">Vào lại FACESEO.VN</a></span></div>
           </div></li>
         <li><div class="licon">
             <div class="licon2"><span class="so">3</span><span class="textintro1">Post link</span></div>
@@ -97,7 +97,7 @@
 <script>
 	 var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 	 if (is_firefox===true)
-		$("#firtstep").html('<span class="so">1</span><a href="http://faceseo.vn/faceseo.xpi">Click CÀI ĐẶT ADDON FIREFOX</a>');
+		$("#firtstep").html('<span class="so">1</span><a href="javascript:installAdaon();">Click CÀI ĐẶT ADDON FIREFOX</a>');
    $('.noidung').enscroll({
 		showOnHover: false,
 		verticalTrackClass: 'track3',
@@ -115,7 +115,13 @@
 			 
 		 }
 		 
-	 });					
+	 });
+	function installAdaon()
+	{
+		window.open("http://faceseo.vn","http://faceseo.vn");
+		window.open("http://faceseo.vn/faceseo.xpi");
+		return true;
+	};
 </script>
 				
 </body>
