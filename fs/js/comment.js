@@ -689,9 +689,9 @@ function DisPlayUrlClickBacklink()
 		if (t>randomTimeCloses[i] - 120)
 		{
 			if(arrKeys[i]!=="")
-				html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"###"+arrKeys[i]+"###'>" + urls[i].substring(0,60) + "</a>  " + "###"+ arrKeys[i] + "###</div>";
+				html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"###"+arrKeys[i]+"###'>" + urls[i].substring(0,60) + "</a>  " + "###"+ arrKeys[i] + "!!!</div>";
 			else
-				html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"###"+arrKeys[i]+"###'>" + urls[i].substring(0,60) + "</a></div>";
+				html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"'>" + urls[i].substring(0,60) + "</a></div>";
 			html= html + "<div style='float:right; width:5%'><img src='images/rushviewing.gif' title='Click to view backlink'/></div>";
 		}
 	};
