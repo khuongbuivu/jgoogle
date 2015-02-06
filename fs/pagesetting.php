@@ -297,6 +297,7 @@ $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_set_charset($con, "utf8");
 $result=mysqli_query($con,"select * from fs_setting where setting_uid=".$_SESSION['session-user']." order by setting_id desc limit 1");
 $row = mysqli_fetch_array($result);
+mysqli_close($con);
 ?>
 <form action="" method="post" id="link_form" class="edit_form">
 	
