@@ -145,7 +145,7 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 		{
 			if(!($result1->num_rows>0))
 			{				
-				if($minuteView < 3)
+				if($minuteView < 2)
 				{
 					$point = $row['point'];
 				}

@@ -266,6 +266,7 @@ function getInfoBacklink($id,$textlink)
 			$bl['timestart'] 	=  $row[3];
 			$bl['status'] 		=  $row[4];
 			$bl['timeviewed'] 	=  $row[5];
+			$bl['checkkey'] 	=  $row[6];
 			//echo $bl['textlink'].$bl['timestart'].$bl['status'].$bl['timeviewed'] ;
 	}
 	mysqli_close($con);
@@ -273,7 +274,6 @@ function getInfoBacklink($id,$textlink)
 }
 function displayBacklinkViewed($bl)
 {
-	global $BACKLINK;
 	if (strlen($bl['textlink'])>35)
 	{
 		$bl['textlink'] = substr($bl['textlink'], 0, 35);
@@ -311,12 +311,13 @@ function displayBacklinkViewed($bl)
 	}
 	else
 	{
-		if (intval($bl['timeviewed'])>30)
+		$minuteView = intval($bl['timeviewed'])/60;
+		if ($minuteView>2)
 		{
-			$minuteView = intval($bl['timeviewed']) ; 
 			$pointadd= $minuteView > 10 ? 10 : $minuteView  ;
-			$pointadd = $pointadd* $BACKLINK;
-			$html= $html."       +".($pointadd)."đ";				
+			$BACKLINK=$bl['checkkey']==1?10:4;
+			$pointadd = $pointadd*$BACKLINK;
+			$html= $html."       +".($pointadd)."đ";		
 		}
 		else
 			$html= $html." +0đ";
