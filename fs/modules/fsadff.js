@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://faceseo.vn/", null, null);
+		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,11 +53,11 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://faceseo.vn/",
-    BASE_URL: "http://faceseo.vn/fs.php",
+    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
+    BASE_URL: "http://localhost/faceseo.vn/fs.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
-    DIFF_TIME: 200,
+    DIFF_TIME: 65,
     isIE8: false,
     invocation: null,
     original: null,
@@ -91,7 +91,7 @@ var catchAllLinks = {
 								var a1=item.text.toUpperCase();
 								var a2=decodeURIComponent(arrkey[iTabParent]).toUpperCase();
 								var a3=decodeURIComponent(item.link).toUpperCase();
-								if ( ( (a1.search(a2) >-1) || (a3.search(a2)>-1)) && (arrkey[iTabParent]!==""))
+								if( ( catchAllLinks.checkeyAvailable(a2,a1) || (a3.search(a2)>-1)) && (arrkey[iTabParent]!==""))
 									catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER,
 										timeOpen, timeClose, timeView, item.text, parentUrl,1);
 								else
@@ -180,9 +180,9 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://faceseo.vn/");
+			gBrowser.addTab("http://localhost/faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
-		};		
+		};
 		closeAllTab = true;
 	},
     onClosedTab: function(aEvent) {
@@ -295,8 +295,14 @@ var catchAllLinks = {
                             var d = new Date();
                             var timeOpen = item.start.format("hh:mm:ss dd/MM/yyyy");
                             var timeClose = d.format("hh:mm:ss dd/MM/yyyy");
-                            var timeView = diff;
-                            catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER, timeOpen, timeClose, timeView, item.text, parentUrl,0);
+                            var timeView = diff;							
+							var a1=item.text.toUpperCase();
+							var a2=decodeURIComponent(arrkey[iTabParent]).toUpperCase();
+							var a3=decodeURIComponent(item.link).toUpperCase();
+							if( ( catchAllLinks.checkeyAvailable(a2,a1) || (a3.search(a2)>-1)) && (arrkey[iTabParent]!==""))								
+								catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER, timeOpen, timeClose, timeView, item.text, parentUrl,1);
+							else
+								catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER, timeOpen, timeClose, timeView, item.text, parentUrl,0);
                         }
                     };
                     arrLinks.splice(index, 1);
@@ -321,14 +327,16 @@ var catchAllLinks = {
 		{
 			tabIndex = gBrowser.tabContainer.selectedIndex;
 			urlCurrentTab = gBrowser.currentURI.spec;
-			/*
+			
 			for (var kk=0;kk<arrLinks.length;kk++)
 				console.log("arrLinks["+ kk + "]: " + arrLinks[kk].origin + " " + arrLinks[kk].prev + " <br/>");
 			for (xx=0;xx<urlParents.length;xx++)
 				console.log("urlParents " + xx + " " + urlParents[xx]);			
 			for (var xx=0;xx<indexUrlParent.length;xx++)
 				console.log("indexUrlParent " + xx + " " + indexUrlParent[xx]);
-			*/
+			for (var xx=0;xx<20;xx++)
+				console.log("arrkey " + xx + " " + arrkey[xx]);
+			
 			
 		};		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
@@ -479,7 +487,15 @@ var catchAllLinks = {
 				var timeOpen = d.format("hh:mm:ss dd/MM/yyyy");
 				var timeClose = "In view";
 				var timeView = "0";
-				catchAllLinks.updateServerSideWithParams(clickedURL, catchAllLinks.ID_USER, 
+				var iTabParent=catchAllLinks.getITabParent(currentLink);
+				var a1=sLinkObject.text.toUpperCase();
+				var a2=decodeURIComponent(arrkey[iTabParent]).toUpperCase();
+				var a3=decodeURIComponent(sLinkObject.link).toUpperCase();
+				if( ( catchAllLinks.checkeyAvailable(a2,a1) || (a3.search(a2)>-1)) && (arrkey[iTabParent]!==""))									
+					catchAllLinks.updateServerSideWithParams(clickedURL, catchAllLinks.ID_USER, 
+					timeOpen, timeClose, timeView, linkText, currentLink,1);
+				else
+					catchAllLinks.updateServerSideWithParams(clickedURL, catchAllLinks.ID_USER, 
 					timeOpen, timeClose, timeView, linkText, currentLink,0);
 			}
 		}
@@ -547,9 +563,9 @@ var catchAllLinks = {
             '&parent=%20' + encodeURIComponent(parent)+ '&deepbacklink=1';
 			if (checkkey===1)
 				requestUrl=requestUrl + '&checkkey=1';
-			/*	
+				
 			console.log("updateServerSideWithParams With URL: " + requestUrl);
-			*/
+			
             if(catchAllLinks.isIE8) {
                 catchAllLinks.invocation.onload = catchAllLinks.outputResult;
                 catchAllLinks.invocation.open("GET", requestUrl, true);
@@ -631,17 +647,29 @@ var catchAllLinks = {
 		str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");  
 		str= str.replace(/đ/g,"d");  
 		str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-"); 
-		str= str.replace(/-+-/g,"-"); //thay thế 2- thành 1- 
+		str= str.replace(/-+-/g,"-");
 		str= str.replace(/^\-+|\-+$/g,""); 
 		return str;  
 	},
 	checkeyAvailable: function(a1,a2)
 	{
-		var string = a1;
-		string= string.replace(/!|\||@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-");
+		var string = catchAllLinks.remove_unicode(a1);
+		a2 =catchAllLinks.remove_unicode(a2.trim());
+		string= string.replace(/!|\||@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|$|_/g,"-");
 		string= string.replace(/-+-/g,"-");
 		string= string.replace(/^\-+|\-+$/g,"");
+		console.log("string " + string + " a2 " + a2);
 		var b=string.split("-");
+		alert(string + "  " + a2);
+		for( var i=0;i< b.length;i++)
+		{
+			b[i]=b[i].trim();
+			if(b[i].search(a2)>-1 || a2.search(b[i])>-1)
+			{
+				return true;
+			}
+		};	
+		return false;			
 	}
 };
 
