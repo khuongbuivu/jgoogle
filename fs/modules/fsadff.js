@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
+		var uri = ios.newURI("http://faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,11 +53,11 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
-    BASE_URL: "http://localhost/faceseo.vn/fs.php",
+    ORIGINAL_LINK: "http://faceseo.vn/",
+    BASE_URL: "http://faceseo.vn/fs1.1.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
-    DIFF_TIME: 65,
+    DIFF_TIME: 301,
     isIE8: false,
     invocation: null,
     original: null,
@@ -180,7 +180,7 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://localhost/faceseo.vn/");
+			gBrowser.addTab("http://faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
 		};
 		closeAllTab = true;
@@ -459,7 +459,7 @@ var catchAllLinks = {
 	getkey: function (str) {
 		var key="";
 		var start = str.search("###");
-		var end = str.lastIndexOf("###");
+		var end = str.lastIndexOf("!!!");
 		var key=str.substring(start+3,end);
 		return key;
 	},
@@ -660,8 +660,8 @@ var catchAllLinks = {
 	{
 		var string = catchAllLinks.remove_unicode(a1);
 		a2 =catchAllLinks.remove_unicode(a2.trim());
-		console.log("string " + string + " a2 " + a2);
 		var b=string.split("-");
+		console.log("string " + string + " a2 " + a2);
 		for( var i=0;i< b.length;i++)
 		{
 			b[i]=b[i].trim();
@@ -690,5 +690,3 @@ window.addEventListener('load', function load(event) {
 window.addEventListener('click', function(event) {	
    catchAllLinks.handleWindowClick(event);
 }, false);
-// Add Icon toolbar https://developer.mozilla.org/en-US/Add-ons/Overlay_Extensions/XUL_School/Adding_Toolbars_and_Toolbar_Buttons
-// Code process https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Adding_a_Button_to_the_Toolbar
