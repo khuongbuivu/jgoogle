@@ -309,7 +309,12 @@ function displayBacklinkViewed($bl)
 		if ($view>620)
 			$html= $html." +0đ ";
 		else 
-			$html= $html." +".$view."s";
+		{
+			if($bl['checkkey']==1)
+				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeyok.gif' style='position:absolute;right:34px' />";
+			else
+				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeynook.gif' style='position:absolute;right:34px' />";
+		}
 	}
 	else
 	{
