@@ -144,16 +144,17 @@ $data[141]="/ad.js/" ; $datafiles[141]="ad.js" ; $replacdata[141]="er3od36lkq2.j
 /* index.php,banner.php,group.php, profile.php, pagesetting.php */
 
 
-obfucate($datafiles,$data,$replacdata,"");
-obfucate($datafiles,$data,$replacdata,"system");
-obfucate($datafiles,$data,$replacdata,"modules");
-obfucate($datafiles,$data,$replacdata,"modules/upload");
-obfucate($datafiles,$data,$replacdata,"modules/cronjob");
-obfucate($datafiles,$data,$replacdata,"modules/advbanner");
-obfucate($datafiles,$data,$replacdata,"modules/uploadimagecomment");
-obfucate($datafiles,$data,$replacdata,"cronjob");
-obfucate($datafiles,$data,$replacdata,"libs/getcontenturl");
+// obfucate($datafiles,$data,$replacdata,"");
+// obfucate($datafiles,$data,$replacdata,"system");
+// obfucate($datafiles,$data,$replacdata,"modules");
+// obfucate($datafiles,$data,$replacdata,"modules/upload");
+// obfucate($datafiles,$data,$replacdata,"modules/cronjob");
+// obfucate($datafiles,$data,$replacdata,"modules/advbanner");
+// obfucate($datafiles,$data,$replacdata,"modules/uploadimagecomment");
+// obfucate($datafiles,$data,$replacdata,"cronjob");
+// obfucate($datafiles,$data,$replacdata,"libs/getcontenturl");
 obfucate($datafiles,$data,$replacdata,"js");
+// obfucate($datafiles,$data,$replacdata,"tmpxyz");
 
 // GenerateList();
 // sortArrName($datafiles,$data,$replacdata);
@@ -188,6 +189,7 @@ function obfucate($datafiles,$data,$replacdata,$folder)
 {
 
 	$dir = $_SERVER['DOCUMENT_ROOT'] ."/faceseo.vn/".$folder;
+	echo $dir;
 	for ($ii=0;$ii<count($datafiles);$ii++)
 	{
 		if (file_exists($dir."/".$datafiles[$ii]))
