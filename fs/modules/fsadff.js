@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://faceseo.vn/", null, null);
+		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,8 +53,8 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://faceseo.vn/",
-    BASE_URL: "http://faceseo.vn/fs1.1.php",
+    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
+    BASE_URL: "http://localhost/faceseo.vn/fs1.1.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 301,
@@ -180,7 +180,7 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://faceseo.vn/");
+			gBrowser.addTab("http://localhost/faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
 		};
 		closeAllTab = true;
@@ -326,7 +326,11 @@ var catchAllLinks = {
     handleWindowClick: function(event) {
 		if (closeAllTab==false)
 			catchAllLinks.onCloseAllTabs();
+			
+		
+		
         var origEl = event.target || event.srcElement;
+		console.log("xxxxxxxxxxxxxx" + origEl.toString() + " " + origEl.parentNode.toString());
 		var tabIndex =-1;
 		if(origEl.tagName=="tab")
 		{
@@ -345,14 +349,17 @@ var catchAllLinks = {
 			
 		};		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
+		console.log("aaaaaaaaa");
 		if ((urlCurrentTab.indexOf(catchAllLinks.ORIGINAL_LINK)>-1) && (origEl.tagName === 'A' || origEl.tagName === 'a'))
 		{
-				
+					console.log("aaaaaaaaa1");
 					if (iiii==-1)
 					{			
+						console.log("aaaaaaaaa2");
 						tabIndex = gBrowser.tabContainer.selectedIndex;
 						if(indexUrlParent.length < arrLinks.length &&  !catchAllLinks.checkUrlInListParent(origEl.toString()))
-						{							
+						{			
+							console.log("aaaaaaaaa3");
 							urlParents.splice(0, 0, origEl.toString());
 							catchAllLinks.increaseArrayIndex();
 							indexUrlParent.splice(0, 0, tabIndex);
@@ -360,9 +367,11 @@ var catchAllLinks = {
 						
 					}
 				
-		};				
+		};			
+		console.log("aaaaaaaaa4");
 		if((origEl.tagName === 'A' || origEl.tagName === 'a') && (iiii>-1))
 		{
+			console.log("aaaaaaaa5");
 			var rushUrl = origEl.toString().substring(iiii + 11);
 			var iiii= rushUrl.search("###");
 			var uuu	= rushUrl.substring(0,iiii);
@@ -372,14 +381,18 @@ var catchAllLinks = {
 		};		
 		if (gBrowser.currentURI.spec.indexOf(catchAllLinks.ORIGINAL_LINK)>-1)
 		{			
+			console.log("aaaaaaaaa6");
 			return;
 		};
 		
-        if(origEl.tagName === 'A' || origEl.tagName === 'a') {		
+        if(origEl.tagName === 'A' || origEl.tagName === 'a') {	
+			console.log("aaaaaaaaa7");
 			if(gBrowser.currentURI.spec !== "about:blank")
 			{		
+				console.log("aaaaaaaaa8");
 				if (!catchAllLinks.checkUrlAvailable(origEl.toString()) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
 				{
+					console.log("aaaaaaaaa14");
 					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
 						alert("Click tối đa 5 keywords");
 					event.preventDefault();
@@ -389,12 +402,15 @@ var catchAllLinks = {
 				{
 					
 					event.stopPropagation();
-				};				
+				};	
+				console.log("aaaaaaaaa17");			
+				//console.log("aaaaaaaaa17" + catchAllLinks.removeTag(origEl.innerHTML.trim()));						
+				console.log("origEl.innerHTML " + origEl.innerHTML.trim());			
 				catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.toString(), catchAllLinks.removeTag(origEl.innerHTML.trim()), event);
 			}		
 			else
 			{
-				
+				console.log("aaaaaaaaa9");
 				var linkObject = {
 					link : null,
 					text : null,
@@ -402,14 +418,15 @@ var catchAllLinks = {
 					origin : catchAllLinks.ORIGINAL_LINK,
 					start : new Date()
 				};
-				
+				console.log("aaaaaaaaa10");
 				catchAllLinks.increaseIndexArrTabActive();
 				arrLinks.splice(tabIndex,0,linkObject);
 			};
         } else if(origEl.parentNode.tagName === 'A' || origEl.parentNode.tagName === 'a') {
-				
+				console.log("aaaaaaaaa11");
 				if (!catchAllLinks.checkUrlAvailable(origEl.toString()) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
 				{
+					console.log("aaaaaaaaa12");
 					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
 						alert("Click tối đa 5 keywords");
 					event.preventDefault();
@@ -635,10 +652,23 @@ var catchAllLinks = {
 			}
 		  };
 	},
+	replaceNbsps: function (str) {
+		str=str.replace("&nbsp;", " ");
+		str=str.replace("&amp;", " ");
+		str=str.replace("&quot;", " ");
+		str=str.replace("&lt;", " ");
+		str=str.replace("&gt;", " ");
+		return str;
+	},
 	removeTag: function (str)
 	{
+			
+			str=catchAllLinks.replaceNbsps(str);
 			var temp = document.createElement("div");
-			temp.innerHTML = str;
+			console.log("removeTag strstrstr1 " + str);
+			temp.innerHTML = str;	
+			console.log("removeTag strstrstr2 " + str);
+			console.log("removeTag strstrstr temp.textContent  " + temp.textContent);
 			return temp.textContent || temp.innerText;
 	},
 	remove_unicode: function(str) 
@@ -690,3 +720,4 @@ window.addEventListener('load', function load(event) {
 window.addEventListener('click', function(event) {	
    catchAllLinks.handleWindowClick(event);
 }, false);
+// http://canhodepnhatsaigon.blogspot.com/2015/01/can-ho-la-astoria.html link bị lỗi
