@@ -260,13 +260,14 @@ function getInfoBacklink($id,$textlink)
 	//echo 'select * from fs_click_backlink where id='.$id.' and timestart like "%'.$currentDay.'%" order by id desc';
 	if ($result->num_rows>0)
 	{
+			
 			$row = mysqli_fetch_array($result);
 			$bl['textlink']		=  $textlink;
 			$bl['link']			=  $row[1];
 			$bl['timestart'] 	=  $row[3];
 			$bl['status'] 		=  $row[4];
 			$bl['timeviewed'] 	=  $row[5];
-			$bl['checkkey'] 	=  $row[6];
+			$bl['checkkey'] 	=  $row[10];
 			//echo $bl['textlink'].$bl['timestart'].$bl['status'].$bl['timeviewed'] ;
 	}
 	mysqli_close($con);
@@ -274,6 +275,7 @@ function getInfoBacklink($id,$textlink)
 }
 function displayBacklinkViewed($bl)
 {
+	
 	if (strlen($bl['textlink'])>35)
 	{
 		$bl['textlink'] = substr($bl['textlink'], 0, 35);
@@ -311,11 +313,11 @@ function displayBacklinkViewed($bl)
 	}
 	else
 	{
-		$minuteView = intval($bl['timeviewed'])/60;
+		$minuteView = intval(intval($bl['timeviewed'])/60);
 		if ($minuteView>2)
 		{
 			$pointadd= $minuteView > 10 ? 10 : $minuteView  ;
-			$BACKLINK=$bl['checkkey']==1?10:4;
+			$BACKLINK=$bl['checkkey']==1?10:1;
 			$pointadd = $pointadd*$BACKLINK;
 			$html= $html."       +".($pointadd)."đ";		
 		}

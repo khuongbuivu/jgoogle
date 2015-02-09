@@ -2,8 +2,8 @@
 if(!isset($_SESSION)){
     session_start();
 }
-include("config.php");
-require_once('system/function.php');
+include("wn3z74w1oe32.php");
+require_once('system/6dxzm0g3bd57.php');
 $_SESSION['ip'] = getUserIP();
 $POINT_BACKLINK=5;
 $MAXMINUTEVIEW_BACKLINK=10;
