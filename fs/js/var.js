@@ -10,3 +10,4 @@ eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/
 var randomTimeCloses=new Array();
 var arrIdPostHide=new Array();
 var arrKeys=new Array();
+var arrClickKey=new Array();

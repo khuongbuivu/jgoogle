@@ -468,7 +468,7 @@ function openUrlBanner(url,id)
 function find(arr,obj) {
 	if (FaceSeo.search(domain)<0)
 		return;
-    return (arr.indexOf(obj) == -1); 
+    return (arr.indexOf(obj) == -1);
 };
 
 function autoView(){
@@ -686,12 +686,12 @@ function DisPlayUrlClickBacklink()
 	for(i=0;i<urls.length;i++)
 	{
 		var t=timeClicked(timeInits[i],timecurrent);
-		if (t>randomTimeCloses[i] - 120)
+		if (t>20 && find(arrClickKey,i))
 		{
 			if(arrKeys[i]!=="")
-				html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"###"+arrKeys[i]+"!!!'>" + urls[i].substring(0,60) + "</a>  " + "###"+ arrKeys[i] + "!!!</div>";
+				html= html + "<div id='idurlneedclick"+ i +"' style='float:left; width:92%; padding:0 5px;'><a onclick='return hideURLNeedClick("+ i +") ;'  href='@@faceseo@@"+ urls[i] +"###"+arrKeys[i]+"!!!'>" + urls[i].substring(0,60) + "</a>  " + "###"+ arrKeys[i] + "!!!</div>";
 			else
-				html= html + "<div style='float:left; width:92%; padding:0 5px;'><a onclick='return false;'  href='@@faceseo@@"+ urls[i] +"'>" + urls[i].substring(0,60) + "</a></div>";
+				html= html + "<div id='idurlneedclick"+ i +"' style='float:left; width:92%; padding:0 5px;'><a onclick='return hideURLNeedClick("+ i +") ;'  href='@@faceseo@@"+ urls[i] +"'>" + urls[i].substring(0,60) + "</a></div>";
 			html= html + "<div style='float:right; width:5%'><img src='images/rushviewing.gif' title='Click to view backlink'/></div>";
 		}
 	};
@@ -700,6 +700,12 @@ function DisPlayUrlClickBacklink()
 	else
 		$('#listUrlViewMore').css("display","inline-block");
 	$('#listUrlViewMore').html(html);
+};
+function hideURLNeedClick(i)
+{
+	arrClickKey[arrClickKey.length]=i;
+	$("#idurlneedclick"+i).hide();
+	return false;
 };
 function saveClick(url,urlClicked,idUser,timeOpend,timeClose,timeView)
 {	
