@@ -623,6 +623,9 @@ function checkTabsClosed()
 			urlsBanner.splice(j,1);
 			timeInits.splice(j,1);
 			randomTimeCloses.splice(j,1);
+			var xxxx=arrClickKey.indexOf(j);
+			if (xxxx!==-1)
+				arrClickKey.splice(xxxx,1);
 		}
 		else
 		{	
@@ -666,6 +669,9 @@ function checkTabsClosed()
 				urlsBanner.splice(j,1);
 				randomTimeCloses.splice(j,1);
 				timeInits.splice(j,1);
+				var xxxx=arrClickKey.indexOf(j);
+				if (xxxx!==-1)
+					arrClickKey.splice(xxxx,1);
 							
 			}
 
