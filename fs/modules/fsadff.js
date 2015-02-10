@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
+		var uri = ios.newURI("http://faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,8 +53,8 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
-    BASE_URL: "http://localhost/faceseo.vn/fs1.1.php",
+    ORIGINAL_LINK: "http://faceseo.vn/",
+    BASE_URL: "http://faceseo.vn/fs1.2.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 301,
@@ -180,7 +180,7 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://localhost/faceseo.vn/");
+			gBrowser.addTab("http://faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
 		};
 		closeAllTab = true;
@@ -232,9 +232,14 @@ var catchAllLinks = {
 				catchAllLinks.decreaseArrayIndex(iii);
 			}
 		};
-		if(urlParents.length===0)
+		if(urlParents.length===0 || arrLinks.length===1)
 		{
 			catchAllLinks.resetArrayKey();
+			if (arrLinks.length===1)
+			{
+				urlParents.splice(0,1);
+				indexUrlParent.splice(0,1);
+			}
 		};
 		
     },
@@ -325,18 +330,14 @@ var catchAllLinks = {
     },
     handleWindowClick: function(event) {
 		if (closeAllTab==false)
-			catchAllLinks.onCloseAllTabs();
-			
-		
-		
+			catchAllLinks.onCloseAllTabs();		
         var origEl = event.target || event.srcElement;
-		console.log("xxxxxxxxxxxxxx" + origEl.toString() + " " + origEl.parentNode.toString());
 		var tabIndex =-1;
 		if(origEl.tagName=="tab")
 		{
 			tabIndex = gBrowser.tabContainer.selectedIndex;
 			urlCurrentTab = gBrowser.currentURI.spec;
-			
+			/*
 			for (var kk=0;kk<arrLinks.length;kk++)
 				console.log("arrLinks["+ kk + "]: " + arrLinks[kk].origin + " " + arrLinks[kk].prev + " <br/>");
 			for (xx=0;xx<urlParents.length;xx++)
@@ -345,21 +346,17 @@ var catchAllLinks = {
 				console.log("indexUrlParent " + xx + " " + indexUrlParent[xx]);
 			for (var xx=0;xx<20;xx++)
 				console.log("arrkey " + xx + " " + arrkey[xx]);
-			
+			*/
 			
 		};		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
-		console.log("aaaaaaaaa");
 		if ((urlCurrentTab.indexOf(catchAllLinks.ORIGINAL_LINK)>-1) && (origEl.tagName === 'A' || origEl.tagName === 'a'))
-		{
-					console.log("aaaaaaaaa1");
+		{				
 					if (iiii==-1)
 					{			
-						console.log("aaaaaaaaa2");
 						tabIndex = gBrowser.tabContainer.selectedIndex;
 						if(indexUrlParent.length < arrLinks.length &&  !catchAllLinks.checkUrlInListParent(origEl.toString()))
 						{			
-							console.log("aaaaaaaaa3");
 							urlParents.splice(0, 0, origEl.toString());
 							catchAllLinks.increaseArrayIndex();
 							indexUrlParent.splice(0, 0, tabIndex);
@@ -367,32 +364,31 @@ var catchAllLinks = {
 						
 					}
 				
-		};			
-		console.log("aaaaaaaaa4");
+		};	
 		if((origEl.tagName === 'A' || origEl.tagName === 'a') && (iiii>-1))
 		{
-			console.log("aaaaaaaa5");
+			
 			var rushUrl = origEl.toString().substring(iiii + 11);
-			var iiii= rushUrl.search("###");
-			var uuu	= rushUrl.substring(0,iiii);
+			var iiiii= rushUrl.search("###");
+			var uuu="";
+			if(iiiii>-1)
+					uuu = rushUrl.substring(0,iiiii);
+			else
+					uuu = rushUrl.substring(0);
 			var key = catchAllLinks.getkey(rushUrl);
 			catchAllLinks.focusTabUrl(uuu,key);
 			return ;
 		};		
 		if (gBrowser.currentURI.spec.indexOf(catchAllLinks.ORIGINAL_LINK)>-1)
 		{			
-			console.log("aaaaaaaaa6");
 			return;
 		};
 		
         if(origEl.tagName === 'A' || origEl.tagName === 'a') {	
-			console.log("aaaaaaaaa7");
 			if(gBrowser.currentURI.spec !== "about:blank")
 			{		
-				console.log("aaaaaaaaa8");
 				if (!catchAllLinks.checkUrlAvailable(origEl.toString()) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
 				{
-					console.log("aaaaaaaaa14");
 					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
 						alert("Click tối đa 5 keywords");
 					event.preventDefault();
@@ -402,15 +398,11 @@ var catchAllLinks = {
 				{
 					
 					event.stopPropagation();
-				};	
-				console.log("aaaaaaaaa17");			
-				//console.log("aaaaaaaaa17" + catchAllLinks.removeTag(origEl.innerHTML.trim()));						
-				console.log("origEl.innerHTML " + origEl.innerHTML.trim());			
+				};
 				catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.toString(), catchAllLinks.removeTag(origEl.innerHTML.trim()), event);
 			}		
 			else
 			{
-				console.log("aaaaaaaaa9");
 				var linkObject = {
 					link : null,
 					text : null,
@@ -418,15 +410,12 @@ var catchAllLinks = {
 					origin : catchAllLinks.ORIGINAL_LINK,
 					start : new Date()
 				};
-				console.log("aaaaaaaaa10");
 				catchAllLinks.increaseIndexArrTabActive();
 				arrLinks.splice(tabIndex,0,linkObject);
 			};
         } else if(origEl.parentNode.tagName === 'A' || origEl.parentNode.tagName === 'a') {
-				console.log("aaaaaaaaa11");
 				if (!catchAllLinks.checkUrlAvailable(origEl.toString()) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
 				{
-					console.log("aaaaaaaaa12");
 					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
 						alert("Click tối đa 5 keywords");
 					event.preventDefault();
@@ -476,9 +465,14 @@ var catchAllLinks = {
 	getkey: function (str) {
 		var key="";
 		var start = str.search("###");
-		var end = str.lastIndexOf("!!!");
-		var key=str.substring(start+3,end);
-		return key;
+		if(start>-1)
+		{
+			var end = str.lastIndexOf("!!!");
+			var key=str.substring(start+3,end);
+			return key;
+		};
+		return "";
+		
 	},
     processURLRequest: function (currentURI, clickedURL, linkText, event) {		
         if (clickedURL === undefined || clickedURL === "" || gBrowser.tabContainer.selectedIndex >=arrLinks.length) {          
@@ -585,9 +579,9 @@ var catchAllLinks = {
             '&parent=%20' + encodeURIComponent(parent)+ '&deepbacklink=1';
 			if (checkkey===1)
 				requestUrl=requestUrl + '&checkkey=1';
-				
+			/*
 			console.log("updateServerSideWithParams With URL: " + requestUrl);
-			
+			*/
             if(catchAllLinks.isIE8) {
                 catchAllLinks.invocation.onload = catchAllLinks.outputResult;
                 catchAllLinks.invocation.open("GET", requestUrl, true);
@@ -632,7 +626,7 @@ var catchAllLinks = {
 			var browserWin = browserEnumerator.getNext();
 			var tabbrowser = browserWin.gBrowser;
 			for (var index = 0; index < urlParents.length; index++) {
-			  if (url == urlParents[index]) {
+			  if (url == urlParents[index] && url!=="") {
 				tabbrowser.selectedTab = tabbrowser.tabContainer.childNodes[indexUrlParent[index]];				
 				arrkey[indexUrlParent[index]]=key;				
 				urlCurrentTab = url;
@@ -653,11 +647,12 @@ var catchAllLinks = {
 		  };
 	},
 	replaceNbsps: function (str) {
-		str=str.replace("&nbsp;", " ");
-		str=str.replace("&amp;", " ");
-		str=str.replace("&quot;", " ");
-		str=str.replace("&lt;", " ");
-		str=str.replace("&gt;", " ");
+		
+		str=str.replace(/&nbsp;/gi," ");
+		str=str.replace(/&amp;/gi,"&");
+		str=str.replace(/&quot;/gi,'"');
+		str=str.replace(/&lt;/gi,"<");
+		str=str.replace(/&gt;/gi,">");
 		return str;
 	},
 	removeTag: function (str)
@@ -665,10 +660,7 @@ var catchAllLinks = {
 			
 			str=catchAllLinks.replaceNbsps(str);
 			var temp = document.createElement("div");
-			console.log("removeTag strstrstr1 " + str);
-			temp.innerHTML = str;	
-			console.log("removeTag strstrstr2 " + str);
-			console.log("removeTag strstrstr temp.textContent  " + temp.textContent);
+			temp.innerHTML = str;
 			return temp.textContent || temp.innerText;
 	},
 	remove_unicode: function(str) 
@@ -691,7 +683,6 @@ var catchAllLinks = {
 		var string = catchAllLinks.remove_unicode(a1);
 		a2 =catchAllLinks.remove_unicode(a2.trim());
 		var b=string.split("-");
-		console.log("string " + string + " a2 " + a2);
 		for( var i=0;i< b.length;i++)
 		{
 			b[i]=b[i].trim();
@@ -720,4 +711,3 @@ window.addEventListener('load', function load(event) {
 window.addEventListener('click', function(event) {	
    catchAllLinks.handleWindowClick(event);
 }, false);
-// http://canhodepnhatsaigon.blogspot.com/2015/01/can-ho-la-astoria.html link bị lỗi
