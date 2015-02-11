@@ -1,4 +1,5 @@
 var isMobile = navigator.userAgent.toLowerCase().indexOf('mobile') > -1;
+var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 function showAllComment(url,idArt)
 {
 	if (FaceSeo.search(domain)<0)
@@ -279,7 +280,9 @@ function openUrl1(url)
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
 				if (isMobile!==true)
+				{
 					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+				}
 				else
 					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
 				i=i+1;	
@@ -625,7 +628,10 @@ function checkTabsClosed()
 			randomTimeCloses.splice(j,1);
 			var xxxx=arrClickKey.indexOf(j);
 			if (xxxx!==-1)
+			{
 				arrClickKey.splice(xxxx,1);
+				arrClickKey=reduceIndexArr(arrClickKey,xxxx);
+			};
 		}
 		else
 		{	
@@ -671,7 +677,11 @@ function checkTabsClosed()
 				timeInits.splice(j,1);
 				var xxxx=arrClickKey.indexOf(j);
 				if (xxxx!==-1)
+				{
+					
 					arrClickKey.splice(xxxx,1);
+					arrClickKey=reduceIndexArr(arrClickKey,xxxx);
+				};
 							
 			}
 
@@ -684,6 +694,8 @@ function checkTabsClosed()
 	DisPlayUrlClickBacklink();
 	
 };
+
+
 function DisPlayUrlClickBacklink()
 {
 	var html ="";
@@ -707,6 +719,15 @@ function DisPlayUrlClickBacklink()
 		$('#listUrlViewMore').css("display","inline-block");
 	$('#listUrlViewMore').html(html);
 };
+
+function reduceIndexArr(arr,at) {	
+		for (var i = at; i < arr.length; i++ )
+		{
+			arr[i]=arr[i]-1;
+		};
+		return arr;
+};
+
 function hideURLNeedClick(i)
 {
 	arrClickKey[arrClickKey.length]=i;
