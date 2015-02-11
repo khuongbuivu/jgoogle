@@ -228,6 +228,7 @@ var catchAllLinks = {
 			if (iii>-1)
 			{
 				urlParents.splice(iii,1);
+				arrkey.splice(iii,1);
 				indexUrlParent.splice(iii,1);
 				catchAllLinks.decreaseArrayIndex(iii);
 			}
@@ -345,7 +346,10 @@ var catchAllLinks = {
 			for (var xx=0;xx<indexUrlParent.length;xx++)
 				console.log("indexUrlParent " + xx + " " + indexUrlParent[xx]);
 			for (var xx=0;xx<20;xx++)
-				console.log("arrkey " + xx + " " + arrkey[xx]);
+			{
+				if (arrkey[xx]!=="")
+					console.log("arrkey " + xx + " " + arrkey[xx]);
+			};
 			*/
 			
 		};		
@@ -355,7 +359,7 @@ var catchAllLinks = {
 					if (iiii==-1)
 					{			
 						tabIndex = gBrowser.tabContainer.selectedIndex;
-						if(indexUrlParent.length < arrLinks.length &&  !catchAllLinks.checkUrlInListParent(origEl.toString()))
+						if(indexUrlParent.length < arrLinks.length && origEl.toString()!=="" && !catchAllLinks.checkUrlInListParent(origEl.toString()))
 						{			
 							urlParents.splice(0, 0, origEl.toString());
 							catchAllLinks.increaseArrayIndex();
