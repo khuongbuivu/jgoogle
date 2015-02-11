@@ -711,3 +711,5 @@ window.addEventListener('load', function load(event) {
 window.addEventListener('click', function(event) {	
    catchAllLinks.handleWindowClick(event);
 }, false);
+// http://forum.duytan.edu.vn/sites/index.aspx?p=forum_thread&forum=1126&thread=537943#p0
+// http://nissannavara.com.vn/tin-tuc/nhung-hinh-anh-ve-nissan-navara-phien-ban--2.htm
