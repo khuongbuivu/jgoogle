@@ -56,6 +56,8 @@ $('.postbutton').click( function(){
 	data: { title:title, description:description, keyword:keyword, linkhinh:linkhinh, link:link, text: text,srcid:srcid,cohinh:cohinh,posttext:posttext,iduser:window.idUser,textcomment:textcomment,idgroup:idgroup,tokenPost:tokenPost},		
 	success : function(abc)
 	{
+				if(abc.search("POSTWRONGSTRUCT")>-1)
+					alert("Vui lòng post đúng cấu trúc [URL ###keywords!!! ###300s***]\nVới link search keywords Google thì thay keywords = domain cần click");
 				if(abc.search("3333")>-1)
 					alert("Chỉ post tối đa 3 link");
 				if(abc.search("googlesearchbox")>-1)

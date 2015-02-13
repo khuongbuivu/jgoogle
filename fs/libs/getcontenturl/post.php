@@ -41,6 +41,11 @@ if(!isset($_SESSION)){
 	$idMaxPost = $idMaxPost + 1;
 	$ltv=getListTimesView($textcomment);
 	$lkeys = getListKeys($textcomment);
+	if(count($lkeys)<=0)
+	{
+		echo "POSTWRONGSTRUCT";
+		exit();
+	}
 	$textcomment=addLinkUrl($textcomment,$ltv,$idMaxPost,$lkeys);
 	$content=str_replace('\"', '"', $content);
 	$title="";
