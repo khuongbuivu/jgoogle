@@ -124,13 +124,18 @@ exit();
 		<div id="mainContainer">
 			<div id="leftCol">
               <ul class="icon-setting">
-                <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT; ?>')"><span class="icon-set icon-home"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"><span class="icon-set icon-gplus"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=2"; ?>');"><span class="icon-set icon-connect"></span> </a></li>
-               <li><a href=""><span class="icon-set icon-share"></span> </a></li>
-               <li><a href=""><span class="icon-set icon-acong"></span> </a></li>
-               <li><a href="javascript: openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>');"><span class="icon-set icon-setpanel"></span> </a></li>
-               </ul>
+                <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
+				<li id="icon-firefox"><a href="<?php echo $PATH_ROOT."faceseo1.2.xpi"; ?>" title="Cài đặt Addon FS1.2 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
+				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
+<li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://faceseo.vn/modules/upload/banner.php"; ?>');"></span> </li>
+				
+<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."l8vhie102w64.php?idgroup=1"; ?>');"></span> </li>
+
+				<!-- <li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php //echo $PATH_ROOT."l8vhie102w64.php?idgroup=2"; ?>');"></span> </li>				
+				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
+				-->
+				<li><a onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"><span class="icon-set icon-setpanel"   ></span></a></li>
+			   </ul>
 
 			<!-- 
 			<div class="fb-like-box" data-href="http://www.facebook.com/faceseo.vn" data-width="236px" data-height="308px"
