@@ -259,7 +259,7 @@ exit();
 	<div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content">
 		<div>
 		<div id="mainContainer">
-			<div id="leftCol">
+			<div id="leftCol" class="leftCol">
               <ul class="icon-setting">
                 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
 				<li id="icon-firefox"><a href="<?php echo $PATH_ROOT."faceseo1.2.xpi"; ?>" title="Cài đặt Addon FS1.2 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
@@ -431,6 +431,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 			</div>
 		</div>		
 			<div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;"><a target="_blank" href="http://thucphamdouong.net/" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_ruou.jpg" width="100%" /></a></div>
+			<div style="position:fixed;bottom:20px;right:3px; background:#fff; width: 16%;"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
 		
@@ -1026,8 +1027,15 @@ function scrolToComment(idPost,idCmt)
 			window.location.hash = target;//fix faceseo.vn/#undefine */
 		});
 	}
-}
-
+};
+function uptoTop()
+{
+	//$('#notify_content_wrapper').hide();			
+	$('html, body').stop().animate({
+	'scrollTop': $(".leftCol").offset().top - 100
+	}, 600, 'swing', function () {
+	});
+};
 function scrolToMessage(idPost,idCmt)
 {
 	$('#notify_content_wrapper').hide();
@@ -1044,7 +1052,7 @@ function scrolToMessage(idPost,idCmt)
 			window.location.hash = target;//fix faceseo.vn/#undefine */
 		});
 	}
-}
+};
 
 var currentPagePost = 0;
 var currentPageBanner = 0;
@@ -1057,7 +1065,12 @@ $(document).ready(function(){
 		  }
 		});	
 });
+
 var isloading=false;
+function displayUpTop()
+{
+	
+}
 function loadOtherBanner()
 {
 	currentPageBanner = currentPageBanner + 1;
