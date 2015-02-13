@@ -53,7 +53,12 @@ if ($row[2]!=100001628516568)
 									echo '<div class="_6a _6b">';
 										echo '<div class="fsl fwb fcb">';
 										if ($row[10]!=null || $row[10]!="")
-											echo "<a href='javascript: openLinkMenu(\"https://www.facebook.com/profile.php?id=".$row[2]."\")'>".$userinfo[user_name]. "</a> ::  <b style='color:green'>".$row[10]."</b>";
+										{
+											if ($row[10]=="mobile")
+												echo "<a href='javascript: openLinkMenu(\"https://www.facebook.com/profile.php?id=".$row[2]."\")'>".$userinfo[user_name]. "</a> ::  <b style='color:green'>".$row[10]."</b>";
+											else
+												echo "<a href='javascript: openLinkMenu(\"https://www.facebook.com/profile.php?id=".$row[2]."\")'>".$userinfo[user_name]. "</a> <img src='images/iconbrowser/".$row[10].".png' style='position:absolute;right:40px' /> ";
+										}
 										else
 											echo "<a href='javascript: openLinkMenu(\"https://www.facebook.com/profile.php?id=".$row[2]."\")'>".$userinfo[user_name]. "</a>  <b style='color:green'>".$row[10]."</b>";
 										echo '</div>';
@@ -85,7 +90,7 @@ if ($row[2]!=100001628516568)
 											{
 												$minuteView = intval($row[5])/60 ; 
 												$pointadd= $minuteView > 10 ? 10 : $minuteView  ;
-												if ($row[10]!=null || $row[10]!="")
+												if (($row[10]!=null || $row[10]!="") && $row[10]=="mobile")
 													echo " Timeview: ".$row[5]." giây + ".(int)($pointadd)*5 ."  điểm(cộng tối đa 50đ).<br/>ĐiểmViewMobile  = SốPhút*5.<BR/>";							
 												else
 													echo " Timeview: ".$row[5]." giây + ".(int)($pointadd)."  điểm ( cộng tối đa 10đ cho mỗi lượt view).<BR/>";							

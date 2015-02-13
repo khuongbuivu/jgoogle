@@ -1,5 +1,20 @@
 var isMobile = navigator.userAgent.toLowerCase().indexOf('mobile') > -1;
 var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+var is_coccoc = navigator.userAgent.toLowerCase().indexOf('coc_coc') > -1;
+var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+var typebrowser = "firefox";
+if (is_firefox===true)
+	typebrowser = "firefox";
+else if (is_chrome===true)
+	typebrowser = "chrome";
+else if (is_coccoc===true)
+	typebrowser = "coc_coc";
+else if (is_safari===true)
+	typebrowser = "safari";
+else
+	typebrowser = "explore";
+
 function showAllComment(url,idArt)
 {
 	if (FaceSeo.search(domain)<0)
@@ -281,10 +296,10 @@ function openUrl1(url)
 				timeInits[i]=time;
 				if (isMobile!==true)
 				{
-					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				}
 				else
-					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				i=i+1;	
 				window.iswiewing=true;				
 				var contentPost="";				
@@ -336,9 +351,9 @@ function openUrl(url,timesession)
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
 				if (isMobile!==true)
-					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				else
-					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				i=i+1;	
 				window.iswiewing=true;				
 				var contentPost="";				
@@ -389,9 +404,9 @@ function openUrl(url,timesession,idPost,key)
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
 				if (isMobile!==true)
-					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				else
-					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				addListidPostHide(i,idPost);
 				i=i+1;	
 				window.iswiewing=true;				
@@ -455,9 +470,9 @@ function openUrlBanner(url,id)
 			time=time.format("hh:mm:ss dd/MM/yyyy");
 			timeInits[i]=time;
 			if (isMobile!==true)
-				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 			else
-				timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0);
+				timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 			i=i+1;
 			window.iswiewing=true;
 			arrPostViewNeedRemove[i-1]=	id;
@@ -534,10 +549,10 @@ function checkTabsClosedAuto()
 			if (parseInt(t)<300)
 			{
 				alert("Bạn view chưa được 5p nên chưa được + điểm");
-				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 			}else {
 				addPoint('add_point_auto.php',encodeURIComponent(urlsAuto[j]),idUser,parseInt(t/(militime*5)));			
-				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 				
 			}
 			timeInits[j] = "";
@@ -559,8 +574,8 @@ function checkTabsClosedAuto()
 			if (parseInt(t)>300)
 			{
 				$("#postcontent"+arrPostViewNeedRemove[j]).hide();				
-				addPoint('add_point_auto.php',encodeURIComponent(urlsAuto[j]),idUser,parseInt(t/(militime*5)));		
-				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);				
+				addPoint('add_point_auto.php',encodeURIComponent(urlsAuto[j]),idUser,parseInt(t/(militime*5)),typebrowser);		
+				saveClick('save_click.php',encodeURIComponent(urlsAuto[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);				
 				tabs[j].close();	
 				timeInits[j] = "";
 				urlsAuto.splice(j,1);
@@ -597,16 +612,16 @@ function checkTabsClosed()
 				$("#postcontent"+arrPostViewNeedRemove[j]).hide();
 				alert("Bạn view chưa được 5p nên chưa được + điểm");
 				if (isMobile!==true)
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 				else
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 			}else {			
 				if (urlsBanner[j]==false)
 				{	
 					hideAllListPost(arrIdPostHide);
 					$("#postcontent"+arrPostViewNeedRemove[j]).hide();
 					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 										
 				}
 				else
@@ -614,7 +629,7 @@ function checkTabsClosed()
 					$("#banner"+arrPostViewNeedRemove[j]).hide();
 					t=parseInt(t) + 600;
 					addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 								
 				}
 				
@@ -647,10 +662,10 @@ function checkTabsClosed()
 				{		
 					if (isMobile!==true){
 					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);					
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);					
 					}else {
 					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);					
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);					
 					}
 					
 				}
@@ -660,11 +675,11 @@ function checkTabsClosed()
 					if (isMobile!==true)
 					{
 						addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-						saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);
+						saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 					}else
 					{
 						addPoint('add_point_bannerm.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-						saveClick('save_clickm.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j]);									
+						saveClick('save_clickm.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);									
 					}
 				};								
 				tabs[j].close();	
@@ -734,7 +749,7 @@ function hideURLNeedClick(i)
 	$("#idurlneedclick"+i).hide();
 	return false;
 };
-function saveClick(url,urlClicked,idUser,timeOpend,timeClose,timeView)
+function saveClick(url,urlClicked,idUser,timeOpend,timeClose,timeView,typebrowser)
 {	
 	if (FaceSeo.search(domain)<0)
 		return;
@@ -744,7 +759,7 @@ function saveClick(url,urlClicked,idUser,timeOpend,timeClose,timeView)
 	}else{
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	};
-	var params = "urlClicked="+urlClicked + "&idUser=" + idUser + "&timeOpend=" + timeOpend + "&timeClose="+ timeClose + "&timeView="+timeView;
+	var params = "urlClicked="+urlClicked + "&idUser=" + idUser + "&timeOpend=" + timeOpend + "&timeClose="+ timeClose + "&timeView=" + timeView + "&typebrowser=" + typebrowser;
 	xmlhttp.open("POST", url, true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.setRequestHeader("Content-length", params.length);

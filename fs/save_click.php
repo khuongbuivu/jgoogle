@@ -18,6 +18,8 @@ function saveClick()
 	$timeOpendClient	=	$_POST['timeOpend'];
 	$timeOpend = 	date("H:i:s d/m/y");
 	$timeClose	=	$_POST['timeClose'];
+	$typebrowser	=	$_POST['typebrowser'];
+	
 	if ($timeClose!="In view")
 		$timeClose	=	date("H:i:s d/m/y");
 	$timeView	=	$_POST['timeView'];
@@ -52,7 +54,7 @@ function saveClick()
 	}
 	else
 	{	
-		mysqli_query($con,"INSERT INTO atw_click_link (link,iduser,timestart,timeclose,timeview,timeclienttmp,click_link_idlink) VALUES ('".$urlClicked."','".$idUser."','".$timeOpend."','".$timeClose."','".$timeView."','".$timeOpendClient."',".$idlink.")");
+		mysqli_query($con,"INSERT INTO atw_click_link (link,iduser,timestart,timeclose,timeview,timeclienttmp,click_link_idlink,device) VALUES ('".$urlClicked."','".$idUser."','".$timeOpend."','".$timeClose."','".$timeView."','".$timeOpendClient."',".$idlink.",'".$typebrowser."')");
 	}
 	mysqli_close($con);
 }
