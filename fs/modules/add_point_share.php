@@ -11,9 +11,9 @@ function addpointshare()
 	global $pass;
 	global $db;
 	$idUser			=	$_POST['idUser'];
-	$point			=	500;
+	$point			=	1000;
 	$con=mysqli_connect($host,$user,$pass,$db);
-	if ($_POST['point']>550 && $_SESSION['session-user']>0 || $_POST['idUser']!=$_SESSION['session-user'])
+	if ($_POST['point']>1050 && $_SESSION['session-user']>0 || $_POST['idUser']!=$_SESSION['session-user'])
 	{
 			mysqli_query($con,"insert into fs_log_del (log_del_user,log_del_user_removed,log_del_id_post,log_del_type) values ('".$_SESSION['session-user']."','0','0',1)");
 			mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_SHARE: HACK POINT SHARE' where user_id=".$_SESSION['session-user']);
@@ -59,7 +59,7 @@ function addpointshare()
 	}
 	else
 	{
-		echo $textReply."500 điểm";
+		echo $textReply."1000 điểm";
 		mysqli_query($con,"insert into fs_share (share_iduser,share_num,share_time) values (".$idUser.",".$share_num.",'".$datetime."')");
 		$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 		$pointOfUser = mysqli_fetch_array($result);
