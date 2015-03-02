@@ -41,11 +41,6 @@ if(!isset($_SESSION)){
 	$idMaxPost = $idMaxPost + 1;
 	$ltv=getListTimesView($textcomment);
 	$lkeys = getListKeys($textcomment);
-	if(count($lkeys)<=0)
-	{
-		echo "POSTWRONGSTRUCT";
-		exit();
-	}
 	$textcomment=addLinkUrl($textcomment,$ltv,$idMaxPost,$lkeys);
 	$content=str_replace('\"', '"', $content);
 	$title="";
@@ -88,6 +83,11 @@ if(!isset($_SESSION)){
 	}
 	if (count($link11)>0 )
 	{		
+			if(count($lkeys)<=0)
+			{
+				echo "POSTWRONGSTRUCT";
+				exit();
+			}
 			foreach($link11 as $url) {
 			$url=rtrim($url, "/");
 			$result=mysqli_query($con,"select url from awt_list_url where idUser='".$iduser."' and url='".$url."'");
