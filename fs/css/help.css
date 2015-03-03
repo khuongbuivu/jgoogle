@@ -45,7 +45,9 @@ sub {
 legend {
 	color: #000;
 }
-a{text-decoration:none}
+a{text-decoration:none;
+color: #fff;
+}
 input, button, textarea, select, optgroup, option {
 	font-family: inherit;
 	font-size: inherit;
@@ -526,7 +528,7 @@ div#contentCol.homeFixedLayout {
     padding: 0;
 	min-height:490px;
     width: auto;
-	margin:75px 0 0;
+	margin: 0 0;
 }
 body {
     overflow-y: scroll;
@@ -691,8 +693,7 @@ display: none;
 }
 
 #pagelet_bluebar{
-
-position:fixed; top:0px; margin:0;padding:0; width:100%; z-index:1111;
+top:0px; margin:0;padding:0; width:100%; z-index:1111;
 /*background:url('../images/css/xmas_bg_n.gif')!important;*/
 background-color: #475A8E;
 
@@ -1027,11 +1028,9 @@ background: none repeat scroll 0 0 #43464c;
     width: 800px;
 }
 .ccenter2{
-    left: 50%;
-    margin-left: -30%;
     padding: 10px;
     position: absolute;
-    width: 60%;
+    width: 80%;
 }
 .track3 {
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);
@@ -1108,3 +1107,47 @@ background: none repeat scroll 0 0 #43464c;
     width: 8px;
 	}
 .textcon{position:relative}	
+#contentleft{
+	position: relative;
+	float:left;
+	width: 24%;
+}
+#contentright{
+	position: relative;
+	float:right;
+	width: 75%;
+}
+#menu0,#menu1,#menu2,#menu3,#menu4,#menu5,#menu6,#menu7,#menu8 {
+	color: #fff;
+	background: green;
+	padding:5px;
+	position: fixed;	
+	left: 10px;
+}
+#menu0{
+	top: 100px;
+}
+#menu1 {
+	top: 150px;
+}
+#menu2 {
+	top: 200px;
+}
+#menu3 {
+	top: 250px;
+}
+#menu4 {
+	top: 300px;
+}
+#menu5 {
+	top: 350px;
+}
+#menu6 {
+	top: 400px;
+}
+#menu7 {
+	top: 450px;
+}
+#menu8 {
+	top: 500px;
+}
