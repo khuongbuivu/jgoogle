@@ -119,7 +119,7 @@
 	function installAdaon()
 	{
 		window.open("http://faceseo.vn","http://faceseo.vn");
-		window.open("http://faceseo.vn/faceseo.xpi");
+		window.open("http://faceseo.vn/faceseo1.3.xpi");
 		return true;
 	};
 </script>
