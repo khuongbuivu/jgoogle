@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://faceseo.vn/", null, null);
+		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,8 +53,8 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://faceseo.vn/",
-    BASE_URL: "http://faceseo.vn/fs1.2.php",
+    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
+    BASE_URL: "http://localhost/faceseo.vn/fs1.2.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 301,
@@ -180,7 +180,7 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://faceseo.vn/");
+			gBrowser.addTab("http://localhost/faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
 		};
 		closeAllTab = true;
@@ -338,7 +338,7 @@ var catchAllLinks = {
 		{
 			tabIndex = gBrowser.tabContainer.selectedIndex;
 			urlCurrentTab = gBrowser.currentURI.spec;
-			/*
+			
 			for (var kk=0;kk<arrLinks.length;kk++)
 				console.log("arrLinks["+ kk + "]: " + arrLinks[kk].origin + " " + arrLinks[kk].prev + " <br/>");
 			for (xx=0;xx<urlParents.length;xx++)
@@ -350,7 +350,7 @@ var catchAllLinks = {
 				if (arrkey[xx]!=="")
 					console.log("arrkey " + xx + " " + arrkey[xx]);
 			};
-			*/
+			
 			
 		};		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
@@ -435,11 +435,16 @@ var catchAllLinks = {
     },
 	checkUrlAvailable: function (url) {
 		var tabs = gBrowser.tabs;
-		if (arrTabActive.length>0)
+		var urlTabEnd="";
+		for (var ii = 0;ii < arrTabActive.length;ii++)
 		{
-			var urlTabEnd = arrLinks[arrTabActive[arrTabActive.length-1]].link;	
-			if ( (urlTabEnd==url))
-				return false;
+			console.log("checkUrlAvailable " + arrTabActive[ii] + " " + url + "arrTabActive.length " + arrTabActive.length);
+			// if (arrTabActive[ii] < arrLinks.length)
+			{
+				urlTabEnd = arrLinks[arrTabActive[ii]].link;			
+				if (urlTabEnd==url)
+					return false;
+			}
 		};
 
 		return true;
@@ -458,7 +463,7 @@ var catchAllLinks = {
 			for (var ii = 0;ii < urlParents.length;ii++)
 				if (urlParents[ii]==url)
 					return true;
-		return false;
+			return false;
 	},
 	rtrim: function (url) {
 		var urlnew=url;
@@ -583,9 +588,9 @@ var catchAllLinks = {
             '&parent=%20' + encodeURIComponent(parent)+ '&deepbacklink=1';
 			if (checkkey===1)
 				requestUrl=requestUrl + '&checkkey=1';
-			/*
+			
 			console.log("updateServerSideWithParams With URL: " + requestUrl);
-			*/
+			
             if(catchAllLinks.isIE8) {
                 catchAllLinks.invocation.onload = catchAllLinks.outputResult;
                 catchAllLinks.invocation.open("GET", requestUrl, true);
@@ -687,6 +692,7 @@ var catchAllLinks = {
 		var string = catchAllLinks.remove_unicode(a1);
 		a2 =catchAllLinks.remove_unicode(a2.trim());
 		var b=string.split("-");
+		console.log("string " + string + " a2 " + a2);
 		for( var i=0;i< b.length;i++)
 		{
 			b[i]=b[i].trim();
@@ -715,5 +721,3 @@ window.addEventListener('load', function load(event) {
 window.addEventListener('click', function(event) {	
    catchAllLinks.handleWindowClick(event);
 }, false);
-// http://forum.duytan.edu.vn/sites/index.aspx?p=forum_thread&forum=1126&thread=537943#p0
-// http://nissannavara.com.vn/tin-tuc/nhung-hinh-anh-ve-nissan-navara-phien-ban--2.htm
