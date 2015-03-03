@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
+		var uri = ios.newURI("http://faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,8 +53,8 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
-    BASE_URL: "http://localhost/faceseo.vn/fs1.2.php",
+    ORIGINAL_LINK: "http://faceseo.vn/",
+    BASE_URL: "http://faceseo.vn/fs1.3.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 301,
@@ -180,7 +180,7 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://localhost/faceseo.vn/");
+			gBrowser.addTab("http://faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
 		};
 		closeAllTab = true;
@@ -338,7 +338,7 @@ var catchAllLinks = {
 		{
 			tabIndex = gBrowser.tabContainer.selectedIndex;
 			urlCurrentTab = gBrowser.currentURI.spec;
-			
+			/*
 			for (var kk=0;kk<arrLinks.length;kk++)
 				console.log("arrLinks["+ kk + "]: " + arrLinks[kk].origin + " " + arrLinks[kk].prev + " <br/>");
 			for (xx=0;xx<urlParents.length;xx++)
@@ -350,7 +350,7 @@ var catchAllLinks = {
 				if (arrkey[xx]!=="")
 					console.log("arrkey " + xx + " " + arrkey[xx]);
 			};
-			
+			*/
 			
 		};		
 		var iiii 	= origEl.toString().search("@@faceseo@@");
@@ -391,7 +391,7 @@ var catchAllLinks = {
         if(origEl.tagName === 'A' || origEl.tagName === 'a') {	
 			if(gBrowser.currentURI.spec !== "about:blank")
 			{		
-				if (!catchAllLinks.checkUrlAvailable(origEl.toString()) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
+				if (!catchAllLinks.checkUrlAvailable(origEl.toString(),catchAllLinks.removeTag(origEl.innerHTML.trim())) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
 				{
 					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
 						alert("Click tối đa 5 keywords");
@@ -418,7 +418,7 @@ var catchAllLinks = {
 				arrLinks.splice(tabIndex,0,linkObject);
 			};
         } else if(origEl.parentNode.tagName === 'A' || origEl.parentNode.tagName === 'a') {
-				if (!catchAllLinks.checkUrlAvailable(origEl.toString()) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
+				if (!catchAllLinks.checkUrlAvailable(origEl.toString(), catchAllLinks.removeTag(origEl.parentNode.innerHTML.trim())) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
 				{
 					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
 						alert("Click tối đa 5 keywords");
@@ -433,20 +433,27 @@ var catchAllLinks = {
 			catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.parentNode.toString(), catchAllLinks.removeTag(origEl.parentNode.innerHTML.trim()), event);
         }		
     },
-	checkUrlAvailable: function (url) {
+	checkUrlAvailable: function (url,key) {
 		var tabs = gBrowser.tabs;
 		var urlTabEnd="";
+		var key1="";
+		var key2="";
 		for (var ii = 0;ii < arrTabActive.length;ii++)
 		{
-			console.log("checkUrlAvailable " + arrTabActive[ii] + " " + url + "arrTabActive.length " + arrTabActive.length);
-			// if (arrTabActive[ii] < arrLinks.length)
-			{
-				urlTabEnd = arrLinks[arrTabActive[ii]].link;			
-				if (urlTabEnd==url)
+			if (arrLinks.length > arrTabActive[ii])
+				urlTabEnd = arrLinks[arrTabActive[ii]].link;
+			if (urlTabEnd==url)
 					return false;
-			}
 		};
-
+		if (arrTabActive.length>0)
+		{
+			urlTabEnd = arrLinks[arrTabActive[arrTabActive.length-1]].link;	
+			key1 = arrLinks[arrTabActive[arrTabActive.length-1]].text;
+			if(arrTabActive.length>1)
+				key2 = arrLinks[arrTabActive[arrTabActive.length-2]].text;
+			if ( (urlTabEnd==url) || key==key1 || key==key2)
+				return false;
+		};
 		return true;
 	},
 	getNumChildOfUrl: function(url)
@@ -589,7 +596,7 @@ var catchAllLinks = {
 			if (checkkey===1)
 				requestUrl=requestUrl + '&checkkey=1';
 			
-			console.log("updateServerSideWithParams With URL: " + requestUrl);
+			/* console.log("updateServerSideWithParams With URL: " + requestUrl);*/
 			
             if(catchAllLinks.isIE8) {
                 catchAllLinks.invocation.onload = catchAllLinks.outputResult;
@@ -692,7 +699,6 @@ var catchAllLinks = {
 		var string = catchAllLinks.remove_unicode(a1);
 		a2 =catchAllLinks.remove_unicode(a2.trim());
 		var b=string.split("-");
-		console.log("string " + string + " a2 " + a2);
 		for( var i=0;i< b.length;i++)
 		{
 			b[i]=b[i].trim();
