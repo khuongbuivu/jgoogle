@@ -23,7 +23,7 @@ $timeClose	=	$_GET['timeClose'];
 $linkText	=	$_GET['linkText'];
 $parent		=	trim($_GET['parent']);
 $parent = removeSlashEndUrl($parent);
-$BACKLINK		= 1;// HE SO BACKLINK
+$BACKLINK		= 2;// HE SO BACKLINK
 $checkkey=0;
 if ($_GET['checkkey']==1)
 {
