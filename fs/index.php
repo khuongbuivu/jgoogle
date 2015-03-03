@@ -223,17 +223,17 @@ else if ($_SESSION['loginfirsttime']==1)
     <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
     <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>
     <p>Nhiều người đã bị nghiện vì vậy hãy cân nhắc trước khi tham gia hệ thống!</p>
-	<p>Hệ thống đã hoạt động và chính thức phổ biến toàn cộng đồng 1-2-2015!</p>
+	<p>Hệ thống đã hoạt động và chính thức phổ biến toàn cộng đồng 1-4-2015!</p>
   </fieldset>
 </form>
 <div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>
 <footer>
   <div class="inner"> <menu>
-    <li><a href="#" style="position: relative;">Giới thiệu <em style="position: absolute; right: -1.6em; bottom: 2em; width: 3.5em; height: 2em; border-radius: 1em; background-color: #a06fda; color: #ffffff; font-size: 65%; font-style: normal; line-height: 2em; text-align: center;">NEW</em></a></li>
+    <li><a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" style="position: relative;">Giới thiệu <em style="position: absolute; right: -1.6em; bottom: 2em; width: 3.5em; height: 2em; border-radius: 1em; background-color: #a06fda; color: #ffffff; font-size: 65%; font-style: normal; line-height: 2em; text-align: center;">NEW</em></a></li>
     <li><a href="#">Điều khoản</a></li>
     <li><a href="#">Bảo mật</a></li>
     <li><a href="#">Hợp tác</a></li>
-    <li><a href="http://giaiphapthuonghieu.vn/tin-moi-la-247/145-cach-tu-tu-moi-danh-cho-quy-ong-uong-ruou-an-sau-rieng.html" ref="nofollow">Tuyển dụng</a></li>
+    <li><a href="http://www.giaiphapthuonghieu.net/2014/08/viec-lam-them-cho-sinh-vien-xhnv-tai-hcm.html" ref="nofollow">Tuyển dụng</a></li>
     </menu> </div>
 </footer>
 <?php exit();endif ?>
@@ -396,8 +396,8 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				?>
 				<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
 				<?php } ?>
-				<a href="javascript:confirmshare()"><img src="images/event/share-co-viet-nam.png" width="100%"/></a> 
-			
+<a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>
+				<!--<a href="javascript:confirmshare()"><img src="images/event/share-faceseo.gif" width="100%"/></a>-->
 				<div class="uiSideHeader"><strong><a rel="ttipsy" title="Đăng kí banner ở menu trái. Hoạt động tích cực thì banner sẽ top">Nhà tài trợ</a></strong></div>
 <div id="sponser">
 </div>
@@ -430,8 +430,12 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
 			</div>
 		</div>		
-			<div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;"><a target="_blank" href="http://thucphamdouong.net/" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_ruou.jpg" width="100%" /></a></div>
-			<div style="position:fixed;bottom:20px;right:3px; background:#fff; width: 16%;"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
+			<div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;">
+<a target="_blank" href="http://thucphamdouong.net/" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_ruou.jpg" width="100%" /></a>
+<br/><a target="_blank" href="http://inaxgroup.vn" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_inaxgroup.jpg" width="100%" /></a>
+			</div>
+</div>	
+			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
 		
@@ -1029,11 +1033,11 @@ function scrolToComment(idPost,idCmt)
 	}
 };
 function uptoTop()
-{
-	//$('#notify_content_wrapper').hide();			
+{	
 	$('html, body').stop().animate({
-	'scrollTop': $(".leftCol").offset().top - 100
+	'scrollTop': $("#contentCol").offset().top - 100
 	}, 600, 'swing', function () {
+		$(".btscrolltop").css("display","none");
 	});
 };
 function scrolToMessage(idPost,idCmt)
@@ -1067,10 +1071,6 @@ $(document).ready(function(){
 });
 
 var isloading=false;
-function displayUpTop()
-{
-	
-}
 function loadOtherBanner()
 {
 	currentPageBanner = currentPageBanner + 1;
@@ -1088,6 +1088,7 @@ function loadOtherPost()
 	isloading = true;
 	$('div#last_msg_loader').html('<img src="images/css/loading-google.gif" />');
 	getOtherPosts(<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>);
+	$(".btscrolltop").css("display","block");
 };
 $(".postcontent").on('mouseover',function() {
 });
