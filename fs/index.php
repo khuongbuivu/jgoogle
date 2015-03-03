@@ -262,7 +262,7 @@ exit();
 			<div id="leftCol" class="leftCol">
               <ul class="icon-setting">
                 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
-				<li id="icon-firefox"><a href="<?php echo $PATH_ROOT."faceseo1.2.xpi"; ?>" title="Cài đặt Addon FS1.2 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
+				<li id="icon-firefox"><a href="<?php echo $PATH_ROOT."faceseo1.3.xpi"; ?>" title="Cài đặt Addon FS1.3 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
 				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
 <li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://faceseo.vn/modules/upload/banner.php"; ?>');"></span> </li>
 				
@@ -372,7 +372,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 </div>
 <ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul>
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
-				<div style="color:red" id="message"><!--CÀI ĐẶT <a href="http://faceseo.vn/intro.php">ADDON</a>--></div>
+				<div style="color:red" id="message">CÀI ĐẶT <a href="http://faceseo.vn/intro.php">ADDON</a></div>
 				<div id="listUrlViewMore"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
