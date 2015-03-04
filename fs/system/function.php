@@ -322,7 +322,7 @@ function displayBacklinkViewed($bl)
 		if ($minuteView>2)
 		{
 			$pointadd= $minuteView > 10 ? 10 : $minuteView  ;
-			$BACKLINK=$bl['checkkey']==1?10:1;
+			$BACKLINK=$bl['checkkey']==1?10:2;
 			$pointadd = $pointadd*$BACKLINK;
 			$html= $html."       +".($pointadd)."đ";		
 		}
