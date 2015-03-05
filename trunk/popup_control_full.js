@@ -117,7 +117,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html'><img src='https://jgoogle.googlecode.com/svn/trunk/cong-ty-seo.jpg' width='500px'/></a><h2><strong><a href='http://bit.ly/1KmPNYe' target='_blank' title='Công ty seo'>Công ty SEO chất lượng cao tại VIỆT NAM</a></strong><a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html' target='_blank'><img src='https://jgoogle.googlecode.com/svn/trunk/cong-ty-seo.jpg' width='500px'/></a><h2><strong><a href='http://bit.ly/1KmPNYe' target='_blank' title='Công ty seo'>Công ty SEO chất lượng cao tại VIỆT NAM</a></strong><a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
