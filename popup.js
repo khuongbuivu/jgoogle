@@ -1,5 +1,5 @@
 ﻿      //<![CDATA[
-	  var url_ppp = 'bit.ly/1xs4EtA';
+	  var url_ppp = 'http://bit.ly/1KmPNYe';
       function addEvent(obj, eventName, func){
         if (obj.attachEvent)
         {
