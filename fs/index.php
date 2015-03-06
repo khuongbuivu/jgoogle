@@ -556,11 +556,13 @@ function generateToken()
 </script>
 <script>
 var isEnter=true;
+var clickButtonPush = true;
 $(function(){
 $(document).on('mousedown', function (e) {   	
 	if($(e.target).parents().index($('#notify_content_wrapper')) == -1) {
-        if($('#notify_content_wrapper').is(":visible")) {
+        if($('#notify_content_wrapper').css('display') != 'none' ) {
             $('#notify_content_wrapper').hide();
+			clickButtonPush=false;
         }
     } 
 	
@@ -568,16 +570,32 @@ $(document).on('mousedown', function (e) {
 });
 
 $( "#fbNotificationsJewel" ).click(function() {
-	window.idNotifyStart=0;
-	notifyComment(root_path + "modules/notify.php",idUser,window.idNotifyStart);
-	$("#notify_content_wrapper").slideDown('show');
+	if($('#notify_content_wrapper').css('display') == 'none' && clickButtonPush==true)
+	{
+		window.idNotifyStart=0;
+		notifyComment(root_path + "modules/notify.php",idUser,window.idNotifyStart);
+		$("#notify_content_wrapper").slideDown('show');
+	}
+	else
+	{
+		$('#notify_content_wrapper').hide();
+	}
+	clickButtonPush = true;
 });
 
 
 $( "#iconemailbutton" ).click(function() {
-	window.idNotifyStart=0;
-	notifyEmail(root_path + "modules/notifyemail.php",idUser,window.idNotifyStart);
-	$("#notify_content_wrapper").slideDown('show');
+	if($('#notify_content_wrapper').css('display') == 'none' && clickButtonPush==true)
+	{
+		window.idNotifyStart=0;
+		notifyEmail(root_path + "modules/notifyemail.php",idUser,window.idNotifyStart);
+		$("#notify_content_wrapper").slideDown('show');
+	}
+	else
+	{
+		$('#notify_content_wrapper').hide();
+	}
+	clickButtonPush = true;
 });
 
 
@@ -973,6 +991,22 @@ function initNotifyComment()
 		{
 		window.idNotifyStart=window.idNotifyStart + 10;
 		notifyComment(root_path + "modules/notify.php",idUser,window.idNotifyStart);
+		}
+	});
+	
+}
+
+function initNotifyEmail()
+{
+	updateNotify(root_path + "modules/update_notify.php",idUser);
+	  $('.notify').nanoScroller({		
+		preventPageScrolling: true
+	  });	  
+	$(".notify").bind("scrollend", function(e){
+		if(!($("#stop").length > 0))
+		{
+		window.idNotifyStart=window.idNotifyStart + 10;
+		notifyEmail(root_path + "modules/notifyemail.php",idUser,window.idNotifyStart);
 		}
 	});
 	

@@ -113,7 +113,7 @@ function notifyEmail(url,idUser,idNotifyStart)
 			}
 			else
 				document.getElementById("notify_content_wrapper").innerHTML=xmlhttp_notify.responseText;
-			window.initNotifyComment();
+			window.initNotifyEmail();
 		}
 	};
 	xmlhttp_notify.send(params);
