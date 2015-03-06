@@ -13,7 +13,7 @@ function subpoint()
 	$subpoint			=	$_POST['subpoint'];
 	$sidUser		= $_POST['sidUser'];
 	$con=mysqli_connect($host,$user,$pass,$db);
-	if ($_SESSION['session-user'] !=$_POST['idUser'] || $subpoint < - 20 || !checkSecurityUser($idUser,$sidUser) || !checkSecurityUser($_SESSION['session-user'],$sidUser))
+	if ($_SESSION['session-user'] !=$_POST['idUser'] || $subpoint < - 100 || !checkSecurityUser($idUser,$sidUser) || !checkSecurityUser($_SESSION['session-user'],$sidUser))
 	{
 		mysqli_query($con,"UPDATE atw_user set user_status = 'FPOINT: CHECK SECURITYUSER FAIL' where user_id=".$_SESSION['session-user']);
 		mysqli_close($con);	
@@ -22,6 +22,7 @@ function subpoint()
 	
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 	$pointOfUser = mysqli_fetch_array($result);
+	echo $subpoint." ".$pointOfUser['point']." ";
 	$point = $subpoint + $pointOfUser['point'];
 	if ($result->num_rows>0)
 		$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser); 

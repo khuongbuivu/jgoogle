@@ -607,7 +607,7 @@ function checkTabsClosed()
 			var t=timeClicked(timeInits[j],timeclose);
 			timeOpeneds[j] = t;		
 			
-			if (parseInt(t)<10)
+			if (parseInt(t)<300)
 			{
 				$("#postcontent"+arrPostViewNeedRemove[j]).hide();
 				alert("Bạn view chưa được 5p nên chưa được + điểm");
@@ -661,6 +661,13 @@ function checkTabsClosed()
 				if (urlsBanner[j]==false)
 				{		
 					if (isMobile!==true){
+					alert(t);
+					if (t>620)
+					{
+						alert("keke");
+						subPoint(idUser,sidUser,-100,"");
+					}
+					else
 					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
 					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);					
 					}else {
@@ -1055,7 +1062,7 @@ function getNewPost(idgroup){
 				}
 		}
 	}); 
-	console.clear();
+	// console.clear();
 };
 
 

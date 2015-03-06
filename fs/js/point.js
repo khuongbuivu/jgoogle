@@ -43,6 +43,7 @@ function subPoint(idUser,sidUser,subpoint,content)
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+		alert(xmlhttp.responseText);
 		document.getElementById('point').innerHTML="Point <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
 	}
   };
