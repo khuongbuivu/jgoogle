@@ -266,7 +266,7 @@ exit();
 				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
 <li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://faceseo.vn/modules/upload/banner.php"; ?>');"></span> </li>
 				
-<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."l8vhie102w64.php?idgroup=1"; ?>');"></span> </li>
+<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
 
 				<!-- <li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php //echo $PATH_ROOT."l8vhie102w64.php?idgroup=2"; ?>');"></span> </li>				
 				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
