@@ -24,9 +24,7 @@ if(!isset($_SESSION)){
 	else 
 		$_SESSION['iPageUIDHelpYou'] = 0;
 	$start= $_SESSION['iPageUIDHelpYou']*$NUMPOSTLOAD;
-	//print_r($_SESSION['userHelpYou']);
-	//echo $_SESSION['iPageUIDHelpYou'];
-	//echo "start".$start;
+	$IdPostDisPlay = "";
 	if (isset ($_SESSION['userHelpYou']))
 	{
 		$listIDUser=$_SESSION['userHelpYou'];
@@ -84,6 +82,7 @@ if(!isset($_SESSION)){
 			{
 				if (checkAvailableLinks($row['post_url'],$id_user) && checkAvailableLinks($row['post_full_url'],$id_user))
 				{			
+					$IdPostDisPlay="post_id!=".$row['post_id'];
 					$post[$i]['idPost']=$row['post_id'];
 					$post[$i]['user_id']=$row['post_iduser'];
 					$post[$i]['post_title']=$row['post_title'];
@@ -166,11 +165,15 @@ if(!isset($_SESSION)){
 		{
 			$qidPost = $qidPost." or ".$qidPost;
 			$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and (".$qidPost.")" );
-			while (($row = mysqli_fetch_array($result_post)) && ($countpost <11))
+			while (($row = mysqli_fetch_array($result_post)) && ($countpost <9))
 			{
 				
 				if (checkAvailableLinks($row['post_url'],$id_user) && checkAvailableLinks($row['post_full_url'],$id_user))
 				{			
+					if ($IdPostDisPlay!="")
+						$IdPostDisPlay=$IdPostDisPlay." and post_id!=".$row['post_id'];
+					else
+						$IdPostDisPlay="post_id!=".$row['post_id'];
 					$post[$i]['idPost']=$row['post_id'];
 					$post[$i]['user_id']=$row['post_iduser'];
 					$post[$i]['post_title']=$row['post_title'];
@@ -234,13 +237,13 @@ if(!isset($_SESSION)){
 			}
 		}
 	}
-	if($countpost <11 && ($qidPost!="" && $_SESSION['iPageUIDHelpYou'] == 0))
+	if($countpost <9 && ($qidPost!="" && $_SESSION['iPageUIDHelpYou'] == 0))
 	{
 			$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id ORDER BY post_id DESC limit 100" );
-			while (($row = mysqli_fetch_array($result_post)) && ($countpost <11))
+			while (($row = mysqli_fetch_array($result_post)) && ($countpost <9))
 			{
 				if (checkAvailableLinks($row['post_url'],$id_user) && checkAvailableLinks($row['post_full_url'],$id_user))
-				{			
+				{								
 					$post[$i]['idPost']=$row['post_id'];
 					$post[$i]['user_id']=$row['post_iduser'];
 					$post[$i]['post_title']=$row['post_title'];
