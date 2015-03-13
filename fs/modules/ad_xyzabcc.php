@@ -37,6 +37,7 @@ else
 $message_id=getIdMax("fs_fs_message", "message_id");
 for ($i=0;$i<2;$i++)
 {
+	echo "INSERT INTO fs_message (message_id, message_user_id,message_user_name,message_user_logo ,message_id_post,message_id_comment,message_time,message_content,message_status,message_type) VALUES(".$message_id.",".$UIDS[$i].",'".$userName."','".$userLogo."',".$idMaxPost.",".$idCommentPost.",'".$datetime."','".$content."','".$status."',1)";
 	mysqli_query($con,"INSERT INTO fs_message (message_id, message_user_id,message_user_name,message_user_logo ,message_id_post,message_id_comment,message_time,message_content,message_status,message_type) VALUES(".$message_id.",".$UIDS[$i].",'".$userName."','".$userLogo."',".$idMaxPost.",".$idCommentPost.",'".$datetime."','".$content."','".$status."',1)");
 	$message_id = $message_id + 1;
 }
