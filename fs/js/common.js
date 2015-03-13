@@ -22,7 +22,6 @@ $('.postbutton').click( function(){
 	if($('#srcid').length > 0)
 	srcid=document.getElementById('srcid').value;
 	posttext="";
-	$(this).hide();
 	if($('#textpost').length > 0)
 		posttext=document.getElementById('textpost').innerHTML;
 	var title="";
@@ -50,28 +49,46 @@ $('.postbutton').click( function(){
 	if($('#haveimg').length > 0 && !document.getElementById('haveimg').checked) cohinh=1;
 	else cohinh=0;
 	var tokenPost=generateTokenPost();
+	var checkpost=true;
 	$.ajax({
 	type: "POST",
 	url: root_path+"libs/getcontenturl/post.php",
 	data: { title:title, description:description, keyword:keyword, linkhinh:linkhinh, link:link, text: text,srcid:srcid,cohinh:cohinh,posttext:posttext,iduser:window.idUser,textcomment:textcomment,idgroup:idgroup,tokenPost:tokenPost},		
 	success : function(abc)
 	{
+				
 				if(abc.search("POSTWRONGSTRUCT")>-1)
+				{
 					alert("Vui lòng post đúng cấu trúc [URL ###keywords!!! ###300s***]\nVới link search keywords Google thì thay keywords = domain cần click");
+					checkpost=false;
+					return;
+				};
 				if(abc.search("3333")>-1)
+				{
 					alert("Chỉ post tối đa 3 link");
+					checkpost=false;
+					return;
+				};
 				if(abc.search("googlesearchbox")>-1)
+				{
 					alert("Muốn tạo Google Search Box bạn nên post link search dạng: https://www.google.com.vn/#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+faceseo .");	
+					checkpost=false;
+					return;
+				};
 				if(abc.search("-1")>-1)
 					alert("Cách nhau 5p post 1 lần");
 				subPointPost(idUser,sidUser,textcomment);	
 				getNewPost(idgroup);
 				$("#fileupload").hide();
+				$(this).hide();
 	}	
 }).done(function( msg ) {
-	document.getElementById('noidungpost').innerHTML=msg;
-	document.getElementById('des').innerHTML="";
-	document.getElementById('textcomment').value="";
+	if (checkpost==true)
+	{
+		document.getElementById('noidungpost').innerHTML=msg;
+		document.getElementById('des').innerHTML="";
+		document.getElementById('textcomment').value="";
+	}
 });
 });
 
