@@ -2,13 +2,13 @@
 if(!isset($_SESSION)){
     session_start();
 }
-require_once("definelocal.php");
+include_once("definelocal.php");
 include_once("define.php");
 include_once("time.php");
 include_once("config.php");
 include_once('fcomment.php');
 include_once('user.php');
-require_once('system/function.php');
+include_once('system/function.php');
 global $host;
 global $user;
 global $pass;
@@ -18,90 +18,228 @@ $_SESSION['token'] = $token;
 $_SESSION['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
 $id_user=$id_user!=""?$id_user:-1; $infoUser=getUserInfo($id_user); 
 $xxyyzz= $infoUser['user_manager']==""?0:$infoUser['user_manager'];
-//$xxyyzz= 0;
-//$con=mysqli_connect($host,$user,$pass,$db);
-//$result=mysqli_query($con,"select * from atw_cmt_content where IdArticles=$id ORDER BY Id DESC ");
-//$linhnguyen = $facebook->api('/linh.nguyen');
+if ($id_user!=-1)
+{
+$_SESSION['userHelpYou']=getListUIDVip($id_user);
+$_SESSION['userHelpYoutmp']=$_SESSION['userHelpYou'];
+}
+if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
+{
+	$_SESSION['TIMEMAXVIEWMYLINK']=300;
+}
+?>
+<?php 
+		if ($accountFace)
+		{    
+		$urlImgProfile="https://graph.facebook.com/$accountFace/picture";
+		saveUser($user_profile);
+		}
+?>
+<?php 
+if ($accountFace && $_SESSION['loginfirsttime']==0)
+{
+	$oklock = md5($infoUser['user_id']."1")==$infoUser['user_atv']?true:false;
+	$timeSaved=strtotime($infoUser['user_time_join']);
+	$timezone = + 14;
+	$timeCurrent = time() + 3600*($timezone+date("0"));
+	$t =$timeCurrent - $timeSaved;		
+	$day=0;
+	if ($t>86400)
+		$day=($t/86400);
+	$ulck='un'.'lo'.'ckfs'.'.php';
+	if ($day > 3 && !$oklock)
+	{
+		header( 'Location: '.$PATH_ROOT.$ulck );	
+		exit();
+	}
+}
+else if ($_SESSION['loginfirsttime']==1)
+{
+	header( 'Location: '.$PATH_ROOT.'intro.php' );
+	exit();
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" >
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href='https://plus.google.com/u/0/111756378553641206176' rel='author'/>
-  <meta name="keywords" content="hệ thống câu view, seo website, giải pháp seo website, phần mềm Seo," />
-  <meta name="description" content="FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Hệ thống câu view, kiểm soát view, chuyển trang, chèn banner quảng cáo, backlink hoàn toàn free." />
-  <title>FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Giải Pháp Thương Hiệu</title>
+<?php if (!$accountFace): ?>
+	<title>ĐÃ LÀM SEO THÌ PHẢI BIẾT FACESEO</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0, width=500"/>
+	<meta name="description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO"/>
+	<meta name="og:description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO">
+	<meta name="og:image" content="http://faceseo.vn/index/images/banner-faceseo.jpg">
+	<meta name="author" content="Linh Nguyễn">
+	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="index/DZxVCOBqfnMg-r0L7dS-Xw.css">
+	<link rel="stylesheet" type="text/css" href="index/Xqjxjf4xU2G8_Gb-X7tbow.css">
+	<script src="index/ua-parser.min.2.js" crossorigin="anonymous"></script>
+	<script src="index/jquery-1.8.3.min.2.js" crossorigin="anonymous">
+	</script><script src="index/rDC3wlfGQC1vpaP6IdD89A.js" crossorigin>
+	</script>
+	<script type="text/javascript" >	
+	<?php if(LOCAL=="TRUE"): ?>
+	var root_path = "http://localhost/faceseo.vn/";
+	<?php else: ?>
+	var root_path = "http://faceseo.vn/";	
+	<?php endif ?>
+	</script>
+<?php else: ?>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="hệ thống câu view, seo website, giải pháp seo website, phần mềm Seo," />
+	<meta name="description" content="FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Hệ thống câu view, kiểm soát view, chuyển trang, chèn banner quảng cáo, backlink hoàn toàn free." />
+	<title>FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Giải Pháp Thương Hiệu</title>
 	<meta content="731864150162369" property="fb:app_id"/>
 	<meta content="100001707050712" property="fb:admins"/>
-<script type="text/javascript">
-<?php if(LOCAL=="TRUE"): ?>
-var root_path = "http://localhost/faceseo.vn/";
-
-<?php else: ?>
-var root_path = "http://faceseo.vn/";	
-<?php endif ?>
-var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
-var sidUser="<?php  $id_user!=""? $id_user :-1; $sid_user = MD5(intval($id_user)*1606); echo $sid_user; ?>";
-var linkLogoFace = "<?php echo $linkLogoFace;?>";
-var userFace = "<?php echo $userFace;?>";
-var timeoutStasticClick,setScroll=0;
-var refreshIntervalId=0;
-var timetmp=0;
-
-</script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
-<script src="<?php echo $PATH_ROOT;?>upload/upclick.js"></script> <!-- for upload file -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/tinybox.js"></script> <!-- for popup -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/warning.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/banner.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/link.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/post.js"></script>
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/comment.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylepopup.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/notify_css.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/tipsy.css" type="text/css" />
-
-<!-- Scroll bar -->
-<link href="<?php echo $PATH_ROOT;?>libs/scrollbar/js/css.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/overthrow.min.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/jquery.nanoscroller.js"></script>
-<!-- end Scroll bar -->
-<!-- point -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/point.js"></script>
-<!-- end point -->
-<!-- thanh -->
-<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
+	<script src="<?php echo $PATH_ROOT;?>modules/upload/upclick.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/tinybox.js"></script> <!-- for popup -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/warning.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/banner.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/link.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/post.js"></script>
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/comment.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylepopup.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/notify_css.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/tipsy.css" type="text/css" />
+	<!-- Scroll bar -->
+	<link href="<?php echo $PATH_ROOT;?>libs/scrollbar/js/css.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/overthrow.min.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/jquery.nanoscroller.js"></script>
+	<!-- end Scroll bar -->
+	<!-- point -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/point.js"></script>
+	<!-- end point -->
+	<!-- thanh -->
+	<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
-<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
-<link href="<?php echo $PATH_ROOT;?>favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
-<!-- end thanh -->
-<!-- add scroll top comment -->
-<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
-<!-- add scroll top comment -->
-<script type="text/javascript" >	
-// setInterval("autoLoadComment('" + root_path + "content_comment.php',<?php echo (int)($id) ?>)",10000);
-//setInterval("B()",5000);
-setInterval("checkTabsClosed()",5000);
-setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
-setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
-setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
-</script>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=394280457341947";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
+	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<!-- end thanh -->
+	<!-- add scroll top comment -->
+	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
+	<!-- add scroll top comment -->
+	<script type="text/javascript" >	
+	<?php if(LOCAL=="TRUE"): ?>
+	var root_path = "http://localhost/faceseo.vn/";
+	<?php else: ?>
+	var root_path = "http://faceseo.vn/";	
+	<?php endif ?>
+	var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
+	var sidUser="<?php  $id_user!=""? $id_user :-1; $sid_user = MD5(intval($id_user)*1606); echo $sid_user; ?>";
+	var linkLogoFace = "<?php echo $linkLogoFace;?>";
+	var userFace = "<?php echo $userFace;?>";
+	var timeoutStasticClick,setScroll=0;
+	var refreshIntervalId=0;
+	var timetmp=0;
+	
+	setInterval("checkTabsClosed()",5000);
+	setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
+	setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
+	setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
+	setCookie("UIDFACESEO", idUser, 1);
+	getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
+	getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
+	getNumMessage(root_path + 'modules/getNumMessage.php',idUser);
+	</script>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=394280457341947";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+<?php endif ?>
 </head>	
+
+<?php  if ($id_user!=""){
+		$_SESSION['token-user']=md5($id_user);
+		$_SESSION['session-user']=$id_user;
+		$_SESSION['session-name']=$userFace;
+		}
+?>
+
+
+<?php if (!$accountFace): ?>
+<body class="dark ">
+<div id="fb-root"></div>
+<form id="signupForm" name='dangnhap' action='' method='post' >
+  <h1>Start SEO</h1>
+  <fieldset id="message" class="message">
+  </fieldset>
+	<div class="signupwrapper">
+	  <fieldset id="intro">
+		<p>
+		 <a href="<?php echo $loginUrl; ?>"><button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button></a>
+		</p>
+		<p class="or">or</p>
+	  </fieldset>
+	  <fieldset id="emailSignup">
+		<input id="analyticsId" name="analyticsId" type="hidden" value="">
+		<input id="accessToken" name="accessToken" type="hidden" value="coApDOTKi2Ui1kgbhg-QuPig7KVvgXquDnhUNk-QNADtvMnmjsOAhiHSkWtjzD9bpe6YVA" >
+		<input id="reservationToken" name="reservationToken" value="" disabled="disabled" type="hidden">
+		<input id="authMode" name="authMode" value="email" type="hidden">
+		<input id="facebookToken" name="facebookToken" type="hidden">
+		<label for="email"> <span class="text">Email</span>
+		  <input id="email" name="email" type="text" value="" autocomplete="off"  placeholder="Your email address" />
+		</label>
+		<label for="password"> <span class="text">Password</span>
+		  <input id="password" name="passfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
+		</label>
+		
+		<?php  if($_SESSION['messlogin']!='ok' && $_SESSION['messlogin']!=''):?>
+		<div style="width:100%; padding:5px 0; background-color:red;margin: 10px 0 0 0; color:#fff;">	
+			<?php echo $_SESSION['messlogin']; ?>
+		</div>
+		<?php endif ?>
+		<input value="Sign up" type="submit">		
+	  </fieldset>
+	</div>
+		<div class="signinwrapper">
+	<fieldset id="emailSignup">
+		<label for="email"><span class="text">Email</span>
+		  <input id="emailsignin" name="emailsignin" type="text" value="" autocomplete="off"  placeholder="Your email address" />
+		</label>
+		
+		<label for="password"> <span class="text">Password</span>
+		  <input id="passsigninfaceseo" name="passsigninfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
+		</label>
+		<label for="password"> <span class="text">RePass</span>
+		  <input id="repasssigninfaceseo" name="repasssigninfaceseo" value="" autocomplete="off" placeholder="Input a password again" type="password">
+		</label>
+		<input value="Reset Password" type="submit" onclick='return resetPass();'>
+	</fieldset>
+	</div>
+  <fieldset id="quotes">
+    <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
+    <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>
+    <p>Nhiều người đã bị nghiện vì vậy hãy cân nhắc trước khi tham gia hệ thống!</p>
+	<p>Hệ thống đã hoạt động và chính thức phổ biến toàn cộng đồng 1-4-2015!</p>
+  </fieldset>
+</form>
+<div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>
+<footer>
+  <div class="inner"> <menu>
+    <li><a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" style="position: relative;">Giới thiệu <em style="position: absolute; right: -1.6em; bottom: 2em; width: 3.5em; height: 2em; border-radius: 1em; background-color: #a06fda; color: #ffffff; font-size: 65%; font-style: normal; line-height: 2em; text-align: center;">NEW</em></a></li>
+    <li><a href="#">Điều khoản</a></li>
+    <li><a href="#">Bảo mật</a></li>
+    <li><a href="#">Hợp tác</a></li>
+    <li><a href="http://www.giaiphapthuonghieu.net/2014/08/viec-lam-them-cho-sinh-vien-xhnv-tai-hcm.html" ref="nofollow">Tuyển dụng</a></li>
+    </menu> </div>
+</footer>
+<?php exit();endif ?>
+
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
+<div id="UIDHelpYou"></div>
 <!--
 <div style="position:fixed;left:0;top:60px;"><img src="images/phao.gif"></div>
 <div style="position:fixed;right:0;top:60px;"><img src="images/phao.gif"></div>
@@ -116,34 +254,37 @@ if ($infoUser['user_status']!=1)
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div></div></div>';
 exit();
 }
-//include_once("user.php");
 ?>
 <div id="globalContainer" class="uiContextualLayerParent">
 	<div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content">
 		<div>
 		<div id="mainContainer">
-			<div id="leftCol">
+			<div id="leftCol" class="leftCol">
               <ul class="icon-setting">
                 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
-				<li id="icon-firefox"><a href="<?php echo $PATH_ROOT."faceseo1.2.xpi"; ?>" title="Cài đặt Addon FS1.2 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
+				<li id="icon-firefox"><a href="http://giaiphapthuonghieu.vn/faceseo1.3.xpi" title="Cài đặt Addon FS1.3 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
 				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
 <li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://faceseo.vn/modules/upload/banner.php"; ?>');"></span> </li>
 				
-<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."l8vhie102w64.php?idgroup=1"; ?>');"></span> </li>
+<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
 
 				<!-- <li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php //echo $PATH_ROOT."l8vhie102w64.php?idgroup=2"; ?>');"></span> </li>				
 				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
 				-->
 				<li><a onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"><span class="icon-set icon-setpanel"   ></span></a></li>
-			   </ul>
-
+               </ul>
+			  <script>
+				var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+				if (is_firefox!==true)
+					$("li#icon-firefox").hide();
+			  </script>
 			<!-- 
 			<div class="fb-like-box" data-href="http://www.facebook.com/faceseo.vn" data-width="236px" data-height="308px"
 					  data-colorscheme="light" data-show-faces="true" data-header="true"  data-show-border="true"></div>
 			-->
 			</div>
+			
 			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
-				<div class="messagesystem"></div>
 				<div id="contentArea" aria-describedby="pageTitle" role="main">					
 					<div id="infopoint">					
 						<div id="point">Điểm</div>
@@ -160,14 +301,14 @@ exit();
 					<!-- API FACEBOOK GET ID NAM IMG -->					
 <form name="frm" method="post" action="" id="fileupload" enctype="multipart/form-data">
   <div id="thanh" >
-    <div style="width:100%;padding:10px;">
+    <div style="width:94%;padding:10px;">
       <textarea style="border:none; width:100% !important;resize: none; overflow:hidden;vertical-align: bottom;direction: ltr;min-height: 48px;white-space: pre-wrap;word-wrap: break-word;letter-spacing: normal;
 word-spacing: normal;
 text-transform: none;
 text-indent: 0px;
 text-shadow: none;
 display: inline-block;
-text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Mỗi lần đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm" content="Mỗi lần đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm" title="Mỗi lần đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm" ></textarea>
+text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Post bài -20đ. Click link bằng chuột trái 5p  + 5điểm. Click keywords + 50Đ. Click trên kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA." content="Đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm. Click keywords + 50Đ. Click kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA + 50Đ" ></textarea>
     </div>
     <p style="text-align:center;"><span id="cho"></span></p>
     <div id="des"></div>
@@ -234,18 +375,19 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 </div>
 <ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul>
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
+				<div style="color:red" id="message">CÀI ĐẶT <a href="http://faceseo.vn/intro.php">ADDON</a></div>
 				<div id="listUrlViewMore"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
 				<div id="wrappercontentpost">
 					<!--<div style="text-align:center"><img src="images/css/loading-google.gif" /></div>-->
-				</div>				
-				<script >
+				</div>		 				
+				<script>
 					getNewPosts(<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>);		
-				</script >			
+				</script>			
 				
 								
-				<div style="padding:5px; text-align:center; margin: 5 105px; background:#D8DFEA;color:#3B5998;width:528px;"><a onclick="loadOtherPost();">Xem thêm</a></div>					
+				<div style="padding:5px; text-align:center; margin: 5 105px; background:#D8DFEA;color:#3B5998;width:96%;"><a onclick="loadOtherPost();">Xem thêm</a></div>					
 				<div id="last_msg_loader"></div>
 				</div>
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
@@ -257,13 +399,9 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				?>
 				<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
 				<?php } ?>
-				<a href="javascript:confirmshare()"><img src="images/event/share-co-viet-nam.png" width="100%"/></a> 
-			
-				<div class="uiSideHeader"><strong><a rel="ttipsy" title="Đăng kí banner ở menu trái. Hoạt động tích cực thì banner sẽ top">Nhà tài trợ</a></strong></div>
-<div id="sponser">
-</div>
-				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" >Banner miễn phí</a></strong></div><div style="float:right; width:20%"><a href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')">Đăng</a></div></div>
-
+<a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>
+				<!--<a href="javascript:confirmshare()"><img src="images/event/share-faceseo.gif" width="100%"/></a>-->
+				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
@@ -275,9 +413,9 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 						if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 						{
 							if (checkAvailableLinks($row['post_url'],$id_user))
-								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
+								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='width:100%' src='".$row['banner_img']."' /></a><br/>";		
 							else
-								echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
+								echo "<img style='width:100%' src='".$row['banner_img']."' /><br/>";		
 						}	
 						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
 							echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
@@ -290,8 +428,16 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<div id="loadBannerFree"></div>
 				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
 			</div>
-		
-				</div>		
+		</div>		
+<div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;">
+<a target="_blank" href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/" title="QC BANNER 10TR/THÁNG"><img src="images/event/standee-hoi-thao-seo-2015-faceseo-vinalink.jpg" width="100%" /></a>
+<!--
+<a target="_blank" href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/" title="QC BANNER 10TR/THÁNG"><img src="images/event/standee-hoi-thao-seo-2015-faceseo-vinalink.jpg" width="100%" /></a>
+<a target="_blank" href="http://thucphamdouong.net/" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_ruou.jpg" width="100%" /></a>
+<br/><a target="_blank" href="http://inaxgroup.vn" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_inaxgroup.jpg" width="100%" /></a>
+-->
+</div>	
+			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
 		
@@ -313,6 +459,7 @@ foreach ($arrPostDisplay as $itemarray)
 echo $itemarray.",";
 ?></div>	
 <div id="checkLink" style="display:none;">-1</div>
+<div id="mypostid" style="display:none;"></div>
 <div id="idgroup" style="display:none;"><?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?></div>
 <?php 
 
@@ -358,12 +505,18 @@ function initArrayIdPost()
 {
 	
 	arrayIdPost = new Array();
+	strIdPosts  = "";
 	var i=0;
 	$("div[id^='postcontent']").each(function(){
 		var id = parseInt(this.id.substring(11));
 		arrayIdPost[i]=id;
+		if (i===0)
+			strIdPosts = id;
+		else
+			strIdPosts = strIdPosts + "," + id;
 		i=i + 1;
 	});
+	arrayIdPost.sort();
 	idMaxPostOnpage = i;
 }
 function loadComment(url)
@@ -377,6 +530,8 @@ function loadComment(url)
 	}
 }
 setInterval("loadComment('" + root_path + "content_comment.php')",5000);
+/*setInterval("loadNumView()",30000);*/
+setInterval("getListUserViewing()",30000);
 function generateTokenPost()
 {
 	<?php 	
@@ -402,11 +557,14 @@ function generateToken()
 
 </script>
 <script>
+var isEnter=true;
+var clickButtonPush = true;
 $(function(){
 $(document).on('mousedown', function (e) {   	
 	if($(e.target).parents().index($('#notify_content_wrapper')) == -1) {
-        if($('#notify_content_wrapper').is(":visible")) {
+        if($('#notify_content_wrapper').css('display') != 'none' ) {
             $('#notify_content_wrapper').hide();
+			clickButtonPush=false;
         }
     } 
 	
@@ -414,21 +572,136 @@ $(document).on('mousedown', function (e) {
 });
 
 $( "#fbNotificationsJewel" ).click(function() {
-	window.idNotifyStart=0;
-	notifyComment(root_path + "modules/notify.php",idUser,window.idNotifyStart);
-	$("#notify_content_wrapper").slideDown('show');
+	if($('#notify_content_wrapper').css('display') == 'none' && clickButtonPush==true)
+	{
+		window.idNotifyStart=0;
+		notifyComment(root_path + "modules/notify.php",idUser,window.idNotifyStart);
+		$("#notify_content_wrapper").slideDown('show');
+	}
+	else
+	{
+		$('#notify_content_wrapper').hide();
+	}
+	clickButtonPush = true;
 });
 
-$(document).on('click', '.addname', function()
-{
-	var username=$("#nametag").html();
-	username = username.trim(username);
-	var namename = "@" + username + "@";
-	//alert(namename);
-	$('#scriptBox').val(namename);
-	boolStartFindName=false;
-	
+
+$( "#iconemailbutton" ).click(function() {
+	if($('#notify_content_wrapper').css('display') == 'none' && clickButtonPush==true)
+	{
+		window.idNotifyStart=0;
+		notifyEmail(root_path + "modules/notifyemail.php",idUser,window.idNotifyStart);
+		$("#notify_content_wrapper").slideDown('show');
+	}
+	else
+	{
+		$('#notify_content_wrapper').hide();
+	}
+	clickButtonPush = true;
 });
+
+
+$( "#fsAnaylyticsButton" ).click(function() {
+	TINY.box.show({url:'modules/statist_inday.php',width:700,height:500},'Thống kê Click','titlepopup'); refreshIntervalId = setInterval(startTime('modules/statist_inday.php',''), 5000); return false;
+});
+
+$(window).keydown(function(e){
+	var tmp = true;
+	$(".boxtag").each(function(){
+		if ($(this).css('display')!='none')
+			tmp=false;
+	});
+	
+	if(tmp)
+	{
+		isEnter=true;
+		return;
+	}
+	if(e.which === 13){
+		var username = $(".boxtagdivscroll div.selected span.addname").attr('title');
+		var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b></a>· ";
+		var idPost=$(".boxtagdivscroll div.selected span.addname").attr('id');
+		if (idPost!= null && idPost.length>0)
+		{
+			var idP=idPost.substring(7);
+			var curITags=$(".mentionsHidden"+idP).val();
+			var newTagsName = $(".boxtagdivscroll div.selected").data('uid');
+			if (curITags=="")
+				$(".mentionsHidden"+idP).val(newTagsName);
+			else
+				$(".mentionsHidden"+idP).val(curITags + "," + newTagsName);
+				
+			var start=/@/ig;
+			var word=/@(.*)/ig;
+			var old=$("#contentbox"+idP).html();
+			var content=old.replace(word,"");
+			$("#contentbox"+idP).html(content);
+			$("#contentbox"+idP).append(E);
+			$("#contentbox"+idP).focus();
+			$("#display"+idP).hide();
+			$("#msgbox").hide();
+			isEnter=false;
+		}
+		return false;
+	}
+	else 
+	{
+		isEnter=true;
+	}
+	if(e.which === 40){		
+        if(liSelected){
+            liSelected.removeClass('selected');
+            next = liSelected.next();
+            if(next.length > 0){
+                liSelected = next.addClass('selected');
+            }else{
+                liSelected = li.eq(0).addClass('selected');
+            }
+        }else{
+            liSelected = li.eq(0).addClass('selected');
+        }
+    }else if(e.which === 38){
+        if(liSelected){
+            liSelected.removeClass('selected');
+            next = liSelected.prev();
+            if(next.length > 0){
+                liSelected = next.addClass('selected');
+            }else{
+                liSelected = li.last().addClass('selected');
+            }
+        }else{
+            liSelected = li.last().addClass('selected');
+        }
+    }
+})
+
+$(document).on('click', '.display_box', function()
+{	
+	var username=$(this).find('.addname').attr('title');	 
+	var start=/@/ig;
+	var word=/@(.*)/ig;
+	var idPost=$(this).find('.addname').attr('id');
+	var idP=idPost.substring(7);
+	var old=$("#contentbox"+idP).html();
+	var content=old.replace(word,"");
+	$("#contentbox"+idP).html(content);
+	var E="<a class='highlighter' contenteditable='true' href='#' ><b>"+username+"</b>· </a> ";
+	var curITags=$(".mentionsHidden"+idP).val();
+	var newTagsName = $(this).data('uid');
+	if (curITags=="")
+		$(".mentionsHidden"+idP).val(newTagsName);
+	else
+		$(".mentionsHidden"+idP).val(curITags + "," + newTagsName);
+		
+	$("#contentbox"+idP).append(E);	
+	var them=$("#contentbox"+idP).text().length;
+	//$("#contentbox"+idP).focus(them);
+	//$("#contentbox"+idP).setCursorToTextEnd();
+	$("#display"+idP).hide();
+	$("#msgbox").hide();
+	return false;
+});
+
 $(document).on('click','.uploader',function( ) {
 	// alert($(this).id);
 	var id=$(this).attr("id");
@@ -458,8 +731,6 @@ var idCmt = parseFloat(divLikeId);
 divLikeId = '#statuslike' + divLikeId;
 var htmlStr = $(this).html();
 htmlStr=htmlStr.trim(htmlStr);
-//alert(htmlStr);
-//alert(idCmt);
 addLikeToDB('save_like.php',idCmt,<?php echo $id_user; ?>);
 var htmlStr11=htmlStr.substring(0,6);
 if (htmlStr11.search('Like')>-1)
@@ -484,7 +755,6 @@ if (htmlStr11.search('Like')>-1)
 }
 if  (htmlStr11.search("Unlike") >-1)
 {
-		
 		var numlike = 1;
 		var bonus=-1;
 		if (htmlStr.search('numlike')>-1 && parseInt(document.getElementById('numlike'+idCmt).innerHTML)==1)
@@ -513,6 +783,87 @@ $('a[rel=btipsy]').tipsy({gravity: 'n'});
 $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
 
 });
+var li ;
+var liSelected;
+$('body').on('keyup','textarea,.contentbox', function(e) {
+	/*$('textarea').on('keydown',function(e){*/
+	
+	var maxCharLineComment = 50;
+	var maxCharLineComment1 = 61;
+	var lineHeight = 20;
+	var tb = $(this);		
+	$('#comment-content-1').html(tb.text());	
+	if (tb.text().length> maxCharLineComment)
+	{
+		var line= 1 + parseInt(tb.text().length/maxCharLineComment);
+		$( this ).css("height", line*lineHeight + "px");
+		
+		var line1= 1 + parseInt(tb.text().length/maxCharLineComment1);
+		var tenclass=$(this).data('he');
+		$( '.'+tenclass ).css("height", line1*lineHeight + "px");
+		
+	}
+	var charpressed= getChar(e.keyCode);
+	var start=/@/ig;
+	var word=/@(.*)/ig;
+	var content= tb.text();
+	var go= content.match(start);
+	var name= content.match(word);
+	var idTextArea=$(this).attr('id');
+	var idArt=idTextArea.substring(10);
+	var dataString = 'searchword='+ name + '&idPost='+idArt;
+	if(e.keyCode==50)
+	{
+		boolStartFindName=true;	
+	}
+	if (boolStartFindName && go!=null && go.length>0 && name!="@" && name!="@ " && name!="@  " && e.keyCode!=40)
+	{
+		$("#msgbox").slideDown('show');
+		$.ajax({
+					type: "POST",
+					url: "boxsearch.php",
+					data: dataString,
+					cache: false,
+					success: function(html)
+					{
+						var position = $("#contentbox"+idArt).position();
+						var newpos =  position.top + $("#contentbox"+idArt).height();
+						if (html== "" || html.trim(html)=="")
+						{
+							$("#display"+idArt).slideUp('show');
+							$("#display"+idArt ).css("top", line1*lineHeight + "px");
+						}
+						$("#display"+idArt).html(html).show();
+						li = $('.display_box');
+						liSelected = null;
+					}
+					});
+		
+	}
+    if (e.keyCode == 13 && (isEnter==true) && $(this).attr('id')!= "textcomment") {
+		idArt = parseFloat(idArt);
+		var url = root_path + "save_cmt.php";
+		var url1 = root_path + "save_link.php";
+		var url_notify = root_path + "save_notify.php";		
+		var imgLogo = $("#imgLogo").html();
+		var name = $("#name").html();			
+		var token = generateToken();
+		var listTags= $(".mentionsHidden"+idArt).val();
+		var textCmt=tb.text();
+		textCmt=textCmt.replace("###"," ###");
+		addLinkToDb(url1,<?php echo $id_user; ?>,textCmt);
+		addCmtToDb(url,idArt,textCmt, $("#imgSrc"+idArt).html(), imgLogo, name, idUser, token);		
+        subPoint(idUser,sidUser,-5,textCmt);
+		addNotify(url_notify,idUser,name,imgLogo,idArt,0,textCmt + $("#imgSrc"+idArt).html(),0,listTags);
+		$("#imgSrc"+idArt).html("");
+		$(this).html("");	
+		$(this).css("height","20px");
+		boolStartFindName = false;
+		$(this).html("");
+        return false;
+    }
+});
+/*
 	$('body').on('keydown','textarea', function(e) {
 	//$('textarea').on('keydown',function(e){
 	var maxCharLineComment = 50;
@@ -561,7 +912,8 @@ $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
 
 						}
 						$("#display").html(html).show();
-						$("#msgbox").remove();					
+						$("#msgbox").remove();	
+						
 					}
 					});
 		
@@ -582,8 +934,8 @@ $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
 		// idCmtNext= parseInt(numdiv)+1;			
 		var token = generateToken();
 		addLinkToDb(url1,<?php echo $id_user; ?>,tb.val());
-		addCmtToDb(url,idArt,tb.val(), $("#imgSrc"+idArt).html(),imgLogo,name,idUser , token);
-        subPoint(idUser,-5,tb.val());
+		addCmtToDb(url,idArt,tb.val(), $("#imgSrc"+idArt).html(),imgLogo,name,idUser , token);		
+        subPoint(idUser,sidUser,-5,tb.val());
 		addNotify(url_notify,idUser,name,imgLogo,idArt,0,tb.val() + $("#imgSrc"+idArt).html(),0);
 		$("#imgSrc"+idArt).html("");
 		$(this).val("");	
@@ -592,10 +944,10 @@ $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
         return false;
     }
 });
+*/
 function getFile(){
         document.getElementById("upfile").click();
 }
-
 
 function startTime(url,link)
 {
@@ -646,6 +998,22 @@ function initNotifyComment()
 	
 }
 
+function initNotifyEmail()
+{
+	updateNotify(root_path + "modules/update_notify.php",idUser);
+	  $('.notify').nanoScroller({		
+		preventPageScrolling: true
+	  });	  
+	$(".notify").bind("scrollend", function(e){
+		if(!($("#stop").length > 0))
+		{
+		window.idNotifyStart=window.idNotifyStart + 10;
+		notifyEmail(root_path + "modules/notifyemail.php",idUser,window.idNotifyStart);
+		}
+	});
+	
+}
+
 
 function checkTime(i)
 {
@@ -656,6 +1024,13 @@ function checkTime(i)
 </script>
 <script type="text/javascript">
     var r = true;  
+window.onbeforeunload = function() {
+	if (window.iswiewing == true)
+		return "Bạn đang view. Tắt sẽ không được cộng điểm. Bạn có muốn tắt không?";
+	//else
+		//window.close();
+}	
+/*
     $(window).bind('beforeunload', function(){
 			var currentWarningNum = parseInt($("div #numwarning").html());
 				var numwarning = currentWarningNum + 1;				
@@ -676,6 +1051,7 @@ function checkTime(i)
 }
 			
     });
+*/
 	
 function scrolToComment(idPost,idCmt)
 {
@@ -683,12 +1059,43 @@ function scrolToComment(idPost,idCmt)
 	if ($(".commentid"+idCmt).length == 0 )
 		getPostById(idPost);		
 	updateNotify(root_path + "modules/update_notify.php",idUser);
-	$('html, body').stop().animate({
-    'scrollTop': $(".commentid"+idCmt).offset().top - 100
-	}, 600, 'swing', function () {
-		window.location.hash = target;
-	});
+	if ($(".commentid"+idCmt).length > 0 )
+	{
+		
+		$('html, body').stop().animate({
+		'scrollTop': $(".commentid"+idCmt).offset().top - 100
+		}, 600, 'swing', function () {
+			/* var target= $(".commentid"+idCmt).hash;
+			window.location.hash = target;//fix faceseo.vn/#undefine */
+		});
+	}
 }
+function uptoTop()
+{	
+	$('html, body').stop().animate({
+	'scrollTop': $("#contentCol").offset().top - 100
+	}, 600, 'swing', function () {
+		/*$(".btscrolltop").css("display","none");*/
+	});
+};
+function scrolToMessage(idPost,idCmt)
+{
+	$('#notify_content_wrapper').hide();
+	if ($(".commentid"+idCmt).length == 0 )
+		getMessageById(idPost);		
+	updateMessage(root_path + "modules/update_message.php",idUser);
+	getNumMessage(root_path + 'modules/getNumMessage.php',idUser);
+	if ($(".commentid"+idCmt).length > 0 )
+	{
+		$('html, body').stop().animate({
+		'scrollTop': $(".commentid"+idCmt).offset().top - 100
+		}, 600, 'swing', function () {
+			/* var target= $(".commentid"+idCmt).hash;
+			window.location.hash = target;//fix faceseo.vn/#undefine */
+		});
+	}
+};
+
 var currentPagePost = 0;
 var currentPageBanner = 0;
 $(document).ready(function(){			
@@ -700,16 +1107,15 @@ $(document).ready(function(){
 		  }
 		});	
 });
+
 var isloading=false;
 function loadOtherBanner()
 {
 	currentPageBanner = currentPageBanner + 1;
 	isloading = true;
-//alert(currentPageBanner );
 	$.post('modules/advbanner/index.php',{currentPageBanner:currentPageBanner},			
 	function(data){
 		if (data != "") {
-
 			$("#bannerfree").append(data);			
 		};
 		isloading = false;
@@ -720,6 +1126,7 @@ function loadOtherPost()
 	isloading = true;
 	$('div#last_msg_loader').html('<img src="images/css/loading-google.gif" />');
 	getOtherPosts(<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>);
+	$(".btscrolltop").css("display","block");
 };
 $(".postcontent").on('mouseover',function() {
 });
@@ -734,22 +1141,56 @@ $( "#closelink" ).click(function() {
 function confirmlink( link ) {
 	var windowLike=window.open("http://faceseo.vn/confirmlike.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=500, height=400");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
+		getPoint(root_path + "get_point.php",idUser);
 	}
 };
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('4 8(0,9){7 5=b.f("i://g.k/8.3?0="+0,"j","e=6, a=6, c=d, h=1, z=1, v=u, l=1");5.y=4(){t(s+"n.3",m);7 2=o.p(\'r\'+9);2.q.w=2.x}};',36,36,'link|500|iframe|php|function|windowLike|no|var|confirmgplus|id|scrollbars|window|resizable|yes|toolbar|open|faceseo|top|http|_blank|vn|height|idUser|get_point|document|getElementById|contentWindow|iframegplus|root_path|getPoint|550|width|location|src|onbeforeunload|left'.split('|'),0,{}))
 
-
+function confirmgplus(link,id){var windowLike=window.open(root_path + "confirmgplus.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=550, height=500");windowLike.onbeforeunload=function(){getPoint(root_path+"get_point.php",idUser);var iframe=document.getElementById('iframegplus'+id);iframe.contentWindow.location=iframe.src}};
+function fsGShare(url,token) {
+	var resultstart=0;
+	var callAjx=0;
+	var windowLike;
+	$.ajax({
+        url: root_path + 'modules/json_getshareg.php',
+		data: {url:url},
+		type: 'POST',
+        success: function(response) {
+            resultstart = response;
+			
+        }
+    });
+	var windowLike=window.open(url,"_blank","toolbar=no, scrollbars=yes, resizable=yes, top=500, left=400, width=800, height=600");
+	var pollTimer = window.setInterval(function() {
+		if (windowLike.closed !== false && callAjx===0) {
+				callAjx = 1 ;
+				$.ajax({
+				url: root_path+'modules/json_checkshareg.php',
+				data: {url:url,numShare:resultstart,token:token},
+				type: 'POST',
+				success: function(response) {
+					getPoint(root_path + "get_point.php",idUser);
+					window.clearInterval(pollTimer);			
+				}
+			});
+		}
+	}, 3000);
+};
 function confirmshare( ) {
-	var windowLike=window.open("http://faceseo.vn/share-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open(root_path + "share-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
+		getPoint(root_path + "get_point.php",idUser);
+	}
+};
+function fsshare(link,linkimg,token ) {
+	var windowLike=window.open(root_path + "fbshare.php?link="+link+"&linkimg="+linkimg+"&token="+token,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	windowLike.onbeforeunload = function(){ 
+		getPoint(root_path+"get_point.php",idUser);
 	}
 };
 function confirmshareBirthday( ) {
 	var windowLike=window.open("http://faceseo.vn/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);	
+		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	
 	}
 };
@@ -757,31 +1198,20 @@ function confirmshareBirthday( ) {
 function confirmshareBirthday( ) {
 	var windowLike=window.open("http://faceseo.vn/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);	
+		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	
 	}
 };
 
 function confirm83( ) {
-	var windowLike=window.open("http://faceseo.vn/share-8-3-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open(root_path + "share-8-3-faceseo.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
-		getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);	
-		//$("#birthday").remove();	
+		getPoint(root_path + "get_point.php",idUser);	
 	}
 };
-
-
-
 </script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-43211723-5', 'faceseo.vn');
-  ga('send', 'pageview');
-//UA-45049546-1
+<script>
 <?php if ($_SESSION['token-user']!=""){ ?>
 		isUserLogined = true;
 <?php };?>
@@ -841,5 +1271,84 @@ function confirm83( ) {
       //]]>
 </script>
 -->
+<script>
+
+function addPoint(url,linkClicked,idUser,point)
+{	
+	<?php
+		$dm = date("d/m");
+		$s1= intval(date("s")) + 3;
+		$shortDay= str_replace("/","",$dm);
+		$User1=intval($_SESSION['session-user']) * intval($shortDay);
+		$strtoken1=$_SESSION['session-user'].$shortDay.$User1.$s1;
+		$token1 = MD5($strtoken1);
+		
+	?>
+	var tkap="<?php echo $token1;?>";
+	if (FaceSeo.search(domain)<0)
+		return;
+	var xmlhttp;
+	if(window.XMLHttpRequest){
+	  xmlhttp=new XMLHttpRequest();
+	}else{
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	};
+	var params = "idUser=" + idUser + "&point=" +point + "&linkClicked="+ linkClicked+"&token="+tkap;
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader("Content-length", params.length);
+	xmlhttp.setRequestHeader("Connection", "close");
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){		
+			document.getElementById('point').innerHTML="Điểm <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
+		}
+	};
+  xmlhttp.send(params);
+};
+$('body').on("mouseover",".UFIComment",function(){
+	$(".cmtclose").css("display","block");
+})
+$('body').on("mouseout",".UFIComment",function(){
+	$(".cmtclose").css("display","none");
+})
+
+</script>
+<!--
+getOtherUrlsProfile comment.js chưa getidpage, sau khi get về chưa có hàm showlistprofileaddmore
+
+Danh sách link profile chưa hiển thị đúng, chưa kiểm tra những link nào đã view, chưa get được orther link tối phải xong phần này và addon
+Vấn đề hiển thị notify không đúng. Đôi khi người ta like cho những comment cũ thì id của comment đó sẽ nhỏ hơn id comment cũ
+-> lưu vào database của atw_notify sẽ không đúng. [fixed]
+
+Search upclick.js mo rem de su dung upload file 
+Đá banh về xử scrolToComment. Còn bị lỗi khi post đã được user đó click vào rồi thì không thể nào hiện lên được. Giờ cho nó hiện lên và del tất cả link để không view được nữa.
+Một số yêu cầu với sever: chạy được fbapi, chạy được php mới, cân bằng tải load balance
+Trong khi một số link đang view. Post link mới sẽ bị sai id
+When open popup with https function beforeunload not working so using interval to check status share.
+http://stackoverflow.com/questions/3291712/is-it-possible-to-open-a-popup-with-javascript-and-then-detect-when-the-user-clo
+-->
+<style>
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#leftCol { margin-top:65px;  }
+}
+</style>
+<!-- Google Code for Chuy&#7875;n &#273;&#7893;i Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 955236604;
+var google_conversion_language = "en";
+var google_conversion_format = "2";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "DJyXCN2Fi1oQ_IG_xwM";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/955236604/?label=DJyXCN2Fi1oQ_IG_xwM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
 </body>
 </html>
