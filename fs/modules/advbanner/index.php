@@ -2,9 +2,9 @@
 if(!isset($_SESSION)){
     session_start();
 }
-	include_once("../../config.php");
-	include_once("../../user.php");
-	include_once("../../fcomment.php");
+	include_once("../../wn3z74w1oe32.php");
+	include_once("../../d5w8vn0faf138.php");
+	include_once("../../4h5bglkgi850.php");
 	function getBanner()
 	{
 		global $host;

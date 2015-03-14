@@ -11,6 +11,9 @@ require_once('system/function.php');
 		  'secret' => 'd9b93ffc459fb45be9a235bcc05d19b3',
 		));
 		$accountFace = $facebook->getUser();
+		$user_profile = array();
+		$user_profile['id']="";
+		$user_profile['name']="";
 		if ($accountFace) {
 		  try {
 			$user_profile = $facebook->api('/me');
@@ -54,8 +57,8 @@ require_once('system/function.php');
         $emaillogin = preg_replace('/~|`|!|#|%|\^|&|\*|\(|\)|\+|=|\}|\{|\[|\]|:|;|\'|"|<|>|,|\?|\/|\|/', '',$emaillogin);
         if($emaillogin!=''){    
 			$host="localhost";
-			$user="faceseovn";
-			$pass="faceseovn@";
+			$user="root";
+			$pass="rootfaceseo@#";
 			$db="faceseovn";
 			if($_SESSION['messlogin']=='')
 			{
@@ -125,7 +128,7 @@ require_once('system/function.php');
 			$host="localhost";
 			$user="root";
 			$pass="";
-			$db="autoviewsite";
+			$db="faceseovn";
 			if($_SESSION['messlogin']=='')
 			{
 				$_SESSION['messlogin']='invalid';

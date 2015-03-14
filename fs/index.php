@@ -2,13 +2,13 @@
 if(!isset($_SESSION)){
     session_start();
 }
-require_once("definelocal.php");
+include_once("definelocal.php");
 include_once("define.php");
 include_once("time.php");
 include_once("config.php");
 include_once('fcomment.php');
 include_once('user.php');
-require_once('system/function.php');
+include_once('system/function.php');
 global $host;
 global $user;
 global $pass;
@@ -262,7 +262,7 @@ exit();
 			<div id="leftCol" class="leftCol">
               <ul class="icon-setting">
                 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
-				<li id="icon-firefox"><a href="<?php echo $PATH_ROOT."faceseo1.3.xpi"; ?>" title="Cài đặt Addon FS1.3 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
+				<li id="icon-firefox"><a href="http://giaiphapthuonghieu.vn/faceseo1.3.xpi" title="Cài đặt Addon FS1.3 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
 				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
 <li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://faceseo.vn/modules/upload/banner.php"; ?>');"></span> </li>
 				
@@ -272,9 +272,12 @@ exit();
 				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
 				-->
 				<li><a onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"><span class="icon-set icon-setpanel"   ></span></a></li>
-			   
-			   </ul>
-
+               </ul>
+			  <script>
+				var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+				if (is_firefox!==true)
+					$("li#icon-firefox").hide();
+			  </script>
 			<!-- 
 			<div class="fb-like-box" data-href="http://www.facebook.com/faceseo.vn" data-width="236px" data-height="308px"
 					  data-colorscheme="light" data-show-faces="true" data-header="true"  data-show-border="true"></div>
@@ -398,11 +401,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<?php } ?>
 <a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>
 				<!--<a href="javascript:confirmshare()"><img src="images/event/share-faceseo.gif" width="100%"/></a>-->
-				<div class="uiSideHeader"><strong><a rel="ttipsy" title="Đăng kí banner ở menu trái. Hoạt động tích cực thì banner sẽ top">Nhà tài trợ</a></strong></div>
-<div id="sponser">
-</div>
-				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" >Banner miễn phí</a></strong></div><div style="float:right; width:20%"><a href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')">Đăng</a></div></div>
-
+				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
@@ -414,9 +413,9 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 						if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 						{
 							if (checkAvailableLinks($row['post_url'],$id_user))
-								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
+								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='width:100%' src='".$row['banner_img']."' /></a><br/>";		
 							else
-								echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
+								echo "<img style='width:100%' src='".$row['banner_img']."' /><br/>";		
 						}	
 						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
 							echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
@@ -430,10 +429,13 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
 			</div>
 		</div>		
-			<div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;">
+<div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;">
+<a target="_blank" href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/" title="QC BANNER 10TR/THÁNG"><img src="images/event/standee-hoi-thao-seo-2015-faceseo-vinalink.jpg" width="100%" /></a>
+<!--
+<a target="_blank" href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/" title="QC BANNER 10TR/THÁNG"><img src="images/event/standee-hoi-thao-seo-2015-faceseo-vinalink.jpg" width="100%" /></a>
 <a target="_blank" href="http://thucphamdouong.net/" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_ruou.jpg" width="100%" /></a>
 <br/><a target="_blank" href="http://inaxgroup.vn" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_inaxgroup.jpg" width="100%" /></a>
-			</div>
+-->
 </div>	
 			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
@@ -1067,13 +1069,13 @@ function scrolToComment(idPost,idCmt)
 			window.location.hash = target;//fix faceseo.vn/#undefine */
 		});
 	}
-};
+}
 function uptoTop()
 {	
 	$('html, body').stop().animate({
 	'scrollTop': $("#contentCol").offset().top - 100
 	}, 600, 'swing', function () {
-		$(".btscrolltop").css("display","none");
+		/*$(".btscrolltop").css("display","none");*/
 	});
 };
 function scrolToMessage(idPost,idCmt)
@@ -1330,5 +1332,23 @@ http://stackoverflow.com/questions/3291712/is-it-possible-to-open-a-popup-with-j
 	#leftCol { margin-top:65px;  }
 }
 </style>
+<!-- Google Code for Chuy&#7875;n &#273;&#7893;i Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 955236604;
+var google_conversion_language = "en";
+var google_conversion_format = "2";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "DJyXCN2Fi1oQ_IG_xwM";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/955236604/?label=DJyXCN2Fi1oQ_IG_xwM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
 </body>
 </html>
