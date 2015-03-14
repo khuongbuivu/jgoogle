@@ -30,9 +30,9 @@ if(!isset($_SESSION)){
 			if (strpos($row['banner_img'], "faceseo.vn/images")==true)
 			{
 				if (checkAvailableLinks($row['post_url'],$idUser))
-					echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='max-width:100%' src='".$row['banner_img']."' /></a><br/>";		
+					echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='width:100%' src='".$row['banner_img']."' /></a><br/>";		
 				else
-					echo "<img style='max-width:100%' src='".$row['banner_img']."' /><br/>";		
+					echo "<img style='width:100%' src='".$row['banner_img']."' /><br/>";		
 			}
 			if ($row['banner_user_id']==$idUser || $infosUserLog['user_manager']>2)
 				echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
