@@ -62,3 +62,25 @@ http://stackoverflow.com/questions/3291712/is-it-possible-to-open-a-popup-with-j
 
 Link view ko được thống kê
 https://www.google.com.vn/search?q=%C3%81o+liverpool+2015+s%C3%A2n+nh%C3%A0&oq=%C3%81o+liverpool+2015+s%C3%A2n+nh%C3%A0&aqs=chrome..69i57j69i60l2j69i61.862j0j1&sourceid=chrome&es_sm=122&ie=UTF-8#q=%C3%81o+liverpool+2015+s%C3%A2n+nh%C3%A0&start=10
+
+SET CRONJOB /web/cgi-bin/php5 "$HOME/public_html/fs/modules/cronjob/le2qlr1dxp70.php" > /dev/null 2>&1
+
+nguyenminhluan691@gmail.com loi ko load duoc trang
+
+
+Warning: Unknown: write failed: No space left on device (28) in Unknown on line 0 Warning: Unknown: Failed to write session data (files).
+Please verify that the current setting of session.save_path is correct (/var/lib/php/session) in Unknown on line 0
+
+session.save_path = "/var/lib/php/session"
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+chmod 777 /var/www/html/seo
+ls /var/lib/php/session
+
+du -m /var/lib/php/session
+
+df -h xem dung luong partition
+rm -rf * remove thu muc
+du -ks /var/log/* | sort -nr | head  thong ke dung luong tung thu muc
