@@ -281,20 +281,19 @@ function displayBacklinkViewed($bl)
 		$bl['textlink'] = substr($bl['textlink'], 0, 35);
 		$pos = strrpos($bl['textlink'], " ");
 		$bl['textlink'] = substr($bl['textlink'],0,$pos);
-		$html= "<a href='".$bl['link']."' target='_blank'>".$bl['textlink']."</a>";			
+		$html= "<div><a href='".$bl['link']."' target='_blank'>".$bl['textlink']."</a>";			
 		$html=$html."...";
 	}
 	else
 		$html= "<a href='".$bl['link']."' target='_blank'>".$bl['textlink']."</a>";
 	$strTime = substr($bl['timestart'], 0, 8);
-	$html= $html.": ".$strTime;
 	$t1 = strtotime($strTime);
 	$date = date("H:i:s");
 	$currentTime=time($date);
 	$view = $currentTime-$t1;
 	if($bl['status']=='In view')
 	{
-		
+		$html= $html.": ".$strTime;
 		if ($view>620)
 			$html= $html." NO OK";
 		else 
@@ -302,7 +301,7 @@ function displayBacklinkViewed($bl)
 			 
 	} else
 	{
-			$html= $html." -> ".substr($bl['status'], 0, 8);
+			$html= $html."<div style='text-align:right; display:inline-block;width:150px;position:absolute;right:34px;'> View ".$bl['timeviewed']."s";
 	}
 	if ($bl['timeviewed']==0)
 	{
@@ -311,9 +310,9 @@ function displayBacklinkViewed($bl)
 		else 
 		{
 			if($bl['checkkey']==1)
-				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeyok.gif' style='position:absolute;right:34px' />";
+				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeyok.gif'  />";
 			else
-				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeynook.gif' style='position:absolute;right:34px' />";
+				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeynook.gif'  />";
 		}
 	}
 	else
@@ -324,12 +323,17 @@ function displayBacklinkViewed($bl)
 			$pointadd= $minuteView > 10 ? 10 : $minuteView  ;
 			$BACKLINK=$bl['checkkey']==1?10:2;
 			$pointadd = $pointadd*$BACKLINK;
-			$html= $html."       +".($pointadd)."đ";		
+			$html= $html."       +".($pointadd)."đ";
+			if($bl['checkkey']==1)
+				$html= $html." <img title='Đang view' src='images/iconclickkeyok.gif' /></div>";
+			else
+				$html= $html." <img title='Đang view' src='images/iconclickkeynook.gif'  /></div>";
+
 		}
 		else
 			$html= $html." +0đ";
 	}	
-	echo $html."<br/>";
+	echo $html."</div>";
 }
 function removeTag($string)
 {
