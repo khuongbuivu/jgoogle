@@ -1757,9 +1757,9 @@ function getListUserViewing()
 						$("div[id^='IDUFS']").each(function(){							
 							var idu = parseInt(this.id.substring(5));
 							$(this).html('');
-							for(var i=0;i<jsonviewing.length;i++){									
-								if (jsonviewing[i]===idu)
-									$(this).html('<img src="images/loading-google-smaill.gif">');									
+							for(var i=0;i<jsonviewing.length;i++){
+								if (parseInt(jsonviewing[i])===idu)
+									$(this).html('<img src="images/loading-google-smaill.gif" width="10px">');
 							}	
 						});
 				}
