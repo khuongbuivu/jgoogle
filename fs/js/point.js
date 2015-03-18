@@ -18,7 +18,7 @@ function subPointPost(idUser,sidUser,content)
 	xmlhttp1.setRequestHeader("Connection", "close");
 	xmlhttp1.onreadystatechange = function() {
 	if(xmlhttp1.readyState == 4 && xmlhttp1.status == 200){
-		document.getElementById('point').innerHTML="Point <div id='numpoint'>" + xmlhttp1.responseText + "</div>" ;
+		document.getElementById('numpoint').innerHTML=xmlhttp.responseText ;
 	}
   };
   xmlhttp1.send(params);
@@ -40,7 +40,7 @@ function subHackPoint(idUser,sidUser,subpoint)
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-		document.getElementById('point').innerHTML="Point <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
+		document.getElementById('numpoint').innerHTML=xmlhttp.responseText ;
 	}
   };
   xmlhttp.send(params);
@@ -66,7 +66,7 @@ function subPoint(idUser,sidUser,subpoint,content)
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-		document.getElementById('point').innerHTML="Point <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
+		document.getElementById('numpoint').innerHTML=xmlhttp.responseText ;
 	}
   };
   xmlhttp.send(params);

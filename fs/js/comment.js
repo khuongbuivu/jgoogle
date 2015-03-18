@@ -241,7 +241,7 @@ function getPoint(url,idUser)
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){		
-		document.getElementById('point').innerHTML="Điểm <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
+		document.getElementById('numpoint').innerHTML=xmlhttp.responseText ;
 		}
 	};
   xmlhttp.send(params);
@@ -266,7 +266,7 @@ function clickLink(url,idUser,point)
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){		
-		document.getElementById('point').innerHTML="Point <strong style='color:green'>" + xmlhttp.responseText + "</strong>" ;
+		document.getElementById('numpoint').innerHTML=xmlhttp.responseText ;
 	}
   };
   xmlhttp.send(params);
@@ -1142,14 +1142,14 @@ function showPost(json)
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
 								
-								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
+								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ.<br/>Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
 								
 							}									
 							else
-								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
+								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a>";							
 						  
 							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
 							htmlnewpost+="</div>";
@@ -1254,7 +1254,7 @@ function showPostById(json)
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
 								
-								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
+								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' ><a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a></a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
@@ -1362,7 +1362,7 @@ function showMessageById(json)
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
 								
-								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
+								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";

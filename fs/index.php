@@ -287,7 +287,7 @@ exit();
 			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
 				<div id="contentArea" aria-describedby="pageTitle" role="main">					
 					<div id="infopoint">					
-						<div id="point">Điểm</div>
+						<div id="point"><a rel='btipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Điểm</a> <div id='numpoint'></div></div>
 						<div id="warning">
 						Cảnh báo: 
 						</div>
@@ -310,6 +310,7 @@ text-shadow: none;
 display: inline-block;
 text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Post bài -20đ. Click link bằng chuột trái 5p  + 5điểm. Click keywords + 50Đ. Click trên kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA." content="Đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm. Click keywords + 50Đ. Click kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA + 50Đ" ></textarea>
     </div>
+		
     <p style="text-align:center;"><span id="cho"></span></p>
     <div id="des"></div>
     <div id="imgdiv" style="clear:both;">
@@ -1300,7 +1301,7 @@ function addPoint(url,linkClicked,idUser,point)
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){		
-			document.getElementById('point').innerHTML="Điểm <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
+			document.getElementById('point').innerHTML="<a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ.<br/>Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Điểm</a> <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
 		}
 	};
   xmlhttp.send(params);
