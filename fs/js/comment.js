@@ -661,7 +661,6 @@ function checkTabsClosed()
 				if (urlsBanner[j]==false)
 				{		
 					if (isMobile!==true){
-					alert(t);
 					if (t>620)
 						subHackPoint(idUser,sidUser,-100);
 					else
