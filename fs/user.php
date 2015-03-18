@@ -32,7 +32,7 @@ if(!isset($_SESSION)){
 			if ($user_profile['user_ip']!="")
 				mysqli_query($con,"UPDATE atw_user SET user_ip='".$user_profile['user_ip']."' where user_id=".$user_profile[id]);
 			$row = mysqli_fetch_array($result);
-			$timeJoin	=	gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
+			$timeJoin	=	date("Y-m-d h:i:s");
 			if ($row['user_time_join']=="")
 				mysqli_query($con,"UPDATE atw_user SET user_time_join='".$timeJoin."' where user_id=".$user_profile[id]);
 		}
