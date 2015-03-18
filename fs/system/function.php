@@ -285,7 +285,7 @@ function displayBacklinkViewed($bl)
 		$html=$html."...";
 	}
 	else
-		$html= "<a href='".$bl['link']."' target='_blank'>".$bl['textlink']."</a>";
+		$html= "<div><a href='".$bl['link']."' target='_blank'>".$bl['textlink']."</a>";
 	$strTime = substr($bl['timestart'], 0, 8);
 	$t1 = strtotime($strTime);
 	$date = date("H:i:s");
@@ -293,6 +293,8 @@ function displayBacklinkViewed($bl)
 	$view = $currentTime-$t1;
 	if($bl['status']=='In view')
 	{
+		
+		$html= $html."<div style='text-align:right; display:inline-block;width:170px;position:absolute;right:34px;'>";
 		$html= $html.": ".$strTime;
 		if ($view>620)
 			$html= $html." NO OK";
@@ -310,9 +312,9 @@ function displayBacklinkViewed($bl)
 		else 
 		{
 			if($bl['checkkey']==1)
-				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeyok.gif'  />";
+				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeyok.gif'  /></div>";
 			else
-				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeynook.gif'  />";
+				$html= $html." +".$view."s "." <img title='Đang view' src='images/iconclickkeynook.gif'  /></div>";
 		}
 	}
 	else
@@ -325,9 +327,9 @@ function displayBacklinkViewed($bl)
 			$pointadd = $pointadd*$BACKLINK;
 			$html= $html."       +".($pointadd)."đ";
 			if($bl['checkkey']==1)
-				$html= $html." <img title='Đang view' src='images/iconclickkeyok.gif' /></div>";
+				$html= $html." <img title='View đúng keywords' src='images/iconclickkeyok.jpg' /></div>";
 			else
-				$html= $html." <img title='Đang view' src='images/iconclickkeynook.gif'  /></div>";
+				$html= $html." <img title='Click link nháy nháy trước khi click key' src='images/iconclickkeynook.jpg'  /></div>";
 
 		}
 		else
