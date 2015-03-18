@@ -30,17 +30,14 @@ if(!isset($_SESSION)){
         $rowTime=mysqli_fetch_array($resultTime);
         $timeSavedPost=strtotime($rowTime['post_time']);
     } 
-	$timezone =0;
-	$datetime = date("Y-m-d H:i:s");
-    // $datetime = date("h:i:s d-m-y");
-    $timeCurrent = strtotime($datetime);
-	/*
+	$datetime = date("Y-m-d h:i:s");
+    $timeCurrent = strtotime($datetime);	
     if (!checkTimePost($timeCurrent,$timeSavedPost) && $rowTime['post_group']==$idgroup && $IDUSER != "100006661151706")
 	{
 		echo "-1";
 		exit();
 	}
-	*/
+	
 	$idMaxPost = getIdMax("atw_post", "post_id");
 	$idMaxPost = $idMaxPost + 1;
 	$ltv=getListTimesView($textcomment);

@@ -1130,6 +1130,7 @@ function showPost(json)
 						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
+						   htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
 								if (json.post[i].user_id == idUser)
@@ -1140,19 +1141,22 @@ function showPost(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>"
+								
 								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
-								htmlnewpost+="<div  style='display:block'>"+json.post[i].post_time+"</div>";
-								htmlnewpost+="</div>";
-								htmlnewpost+="<div style='clear:both'></div>";
+								
 							}									
 							else
-								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
-						   if (json.post[i].user_point>0)
-						   {
+								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
+						  
+							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
+							htmlnewpost+="</div>";
+							htmlnewpost+="<div style='clear:both'></div>";
+							
+							if (json.post[i].user_point>0)
+							{
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
 							   if(json.post[i].post_image.trim ()!="")
 									htmlnewpost+="<div id='imgPost'>"+json.post[i].post_image+"</div>";						
@@ -1238,6 +1242,7 @@ function showPostById(json)
 						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
+							 htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
 								if (json.post[i].user_id == idUser)
@@ -1248,18 +1253,21 @@ function showPostById(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>"
+								
 								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
-								htmlnewpost+="<div  style='display:block'>"+json.post[i].post_time+"</div>";
-								htmlnewpost+="</div>";
-								htmlnewpost+="<div style='clear:both'></div>";
-							}							
+								
+							}									
 							else
-								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
-						   if (json.post[i].user_point>0)
+								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
+						  
+							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
+							htmlnewpost+="</div>";
+							htmlnewpost+="<div style='clear:both'></div>";
+							
+							if (json.post[i].user_point>0)
 						   {
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
 							   if(json.post[i].post_image.trim ()!="")
@@ -1342,6 +1350,7 @@ function showMessageById(json)
 						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
+							 htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
 								if (json.post[i].user_id == idUser)
@@ -1352,19 +1361,23 @@ function showMessageById(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>"
+								
 								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
-								htmlnewpost+="<div  style='display:block'>"+json.post[i].post_time+"</div>";
-								htmlnewpost+="</div>";
-								htmlnewpost+="<div style='clear:both'></div>";
+								
 							}									
 							else
-								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
-						   if (json.post[i].user_point>0)
-						   {
+								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
+						  
+							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
+							htmlnewpost+="</div>";
+							htmlnewpost+="<div style='clear:both'></div>";
+							
+							
+							if (json.post[i].user_point>0)
+							{
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
 							   if(json.post[i].post_image.trim ()!=="")
 									htmlnewpost+="<div id='imgPost'>"+json.post[i].post_image+"</div>";						
@@ -1448,7 +1461,7 @@ function showFullCommentOfPost(idPost,comment)
 					else
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div>';
-					if (comment[j].cmt_userId === window.idUser || xxyyzz===3)
+					if ((parseInt(comment[j].cmt_userId) === parseInt(window.idUser)) || xxyyzz===3)
 						htmlnewpost+='<div class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
 			   }
@@ -1493,7 +1506,7 @@ function showCommentOfPost(idPost,comment)
 					else
 					htmlnewpost+='Like';
 					htmlnewpost+='</a></div></div></div></div></div>';
-					if (comment[j].cmt_userId === window.idUser || xxyyzz===3)
+					if ((parseInt(comment[j].cmt_userId) === parseInt(window.idUser)) || xxyyzz===3)
 						htmlnewpost+='<div class="cmtclose" onclick="return delComment('+ comment[j].cmt_Id +')" >x</div>';
 					htmlnewpost+='</div></div></li>';					
 			   };

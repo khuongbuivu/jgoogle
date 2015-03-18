@@ -32,9 +32,13 @@
 			{
 				return "hôm kìa";
 			}
-			else
+			else if ($day>2 && $day<7)
 			{
 				return "cách đây ".$day ." ngày";
+			}
+			else
+			{
+				return date("h:i:s d-m-Y",$timeSave);
 			}
 		}
 		

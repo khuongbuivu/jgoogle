@@ -37,7 +37,14 @@
 			$post[$i]['post_content']=$row['post_content'];
 			$post[$i]['post_image']=$row['post_image'];
 			$post[$i]['post_url']=$row['post_url'];
-			$post[$i]['post_full_url']=$row['post_full_url'];			
+			$post[$i]['post_full_url']=$row['post_full_url'];		
+
+			$t=date("h:i:s d-m-Y");
+			$timeCurrent = strtotime($t); $timeSaved=strtotime($row['post_time']);
+			$post[$i]['post_time']	=getTimeString($timeCurrent,$timeSaved);					
+			$post[$i]['post_realtime']	=$row['post_time'];
+					
+			
 			$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			
 			$post[$i]['post_num_view']=getNumView($link);
 			$post[$i]['post_mintimeview']=$row['post_mintimeviewlink'];	

@@ -97,12 +97,13 @@ if(!isset($_SESSION)){
 					$post[$i]['post_content']=$row['post_content'];
 					$post[$i]['post_image']=$row['post_image'];
 					$post[$i]['post_url']=$row['post_url'];
-					$post[$i]['post_full_url']=$row['post_full_url'];		
-					$post[$i]['post_time']=$row['post_time'];				
-					$post[$i]['post_time']				=date("h:i:s d-m-Y",$row['post_time']);
-					// $post[$i]['post_time']				=$row['post_time'];
-					$timezone  = +7; $timeCurrent = time() + 3600*($timezone+date("0")); $timeSaved=strtotime($post[$i]['post_time']);
-					$post[$i]['post_ctime']				=getTimeString($timeCurrent,$timeSaved);
+					$post[$i]['post_full_url']=$row['post_full_url'];					
+					
+
+					$t=date("h:i:s d-m-Y");
+					$timeCurrent = strtotime($t); $timeSaved=strtotime($row['post_time']);
+					$post[$i]['post_time']	=getTimeString($timeCurrent,$timeSaved);					
+					$post[$i]['post_realtime']	=$row['post_time'];
 					
 					$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			
 					$post[$i]['post_num_view']=getNumView($link);			
@@ -120,6 +121,7 @@ if(!isset($_SESSION)){
 					while( ($row1 = mysqli_fetch_array($result)) ){
 						$infosUser1=getUserInfo($row1['userId']);		
 						$comment[$i][$ii]['cmt_Id'] 			=$row1['Id'];
+						$comment[$i][$ii]['cmt_userId'] 			=$row1['userId'];
 						$comment[$i][$ii]['cmt_imgLogo']		=$row1['imgLogo'];
 						$comment[$i][$ii]['cmt_user_link']	=$infosUser1['user_link'];
 						$comment[$i][$ii]['cmt_name']		=$infosUser1['user_name'];
@@ -194,7 +196,14 @@ if(!isset($_SESSION)){
 					$post[$i]['post_content']=$row['post_content'];
 					$post[$i]['post_image']=$row['post_image'];
 					$post[$i]['post_url']=$row['post_url'];
-					$post[$i]['post_full_url']=$row['post_full_url'];			
+					$post[$i]['post_full_url']=$row['post_full_url'];	
+
+					$t=date("h:i:s d-m-Y");
+					$timeCurrent = strtotime($t); $timeSaved=strtotime($row['post_time']);
+					$post[$i]['post_time']	=getTimeString($timeCurrent,$timeSaved);					
+					$post[$i]['post_realtime']	=$row['post_time'];
+					
+					
 					$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			
 					$post[$i]['post_num_view']=getNumView($link);			
 					$post[$i]['post_mintimeview']=$row['post_mintimeviewlink'];	
@@ -211,6 +220,7 @@ if(!isset($_SESSION)){
 					while( ($row1 = mysqli_fetch_array($result)) ){
 						$infosUser1=getUserInfo($row1['userId']);		
 						$comment[$i][$ii]['cmt_Id'] 			=$row1['Id'];
+						$comment[$i][$ii]['cmt_userId'] 			=$row1['userId'];
 						$comment[$i][$ii]['cmt_imgLogo']		=$row1['imgLogo'];
 						$comment[$i][$ii]['cmt_user_link']	=$infosUser1['user_link'];
 						$comment[$i][$ii]['cmt_name']		=$infosUser1['user_name'];
@@ -267,7 +277,14 @@ if(!isset($_SESSION)){
 					$post[$i]['post_content']=$row['post_content'];
 					$post[$i]['post_image']=$row['post_image'];
 					$post[$i]['post_url']=$row['post_url'];
-					$post[$i]['post_full_url']=$row['post_full_url'];			
+					$post[$i]['post_full_url']=$row['post_full_url'];	
+
+					$t=date("h:i:s d-m-Y");
+					$timeCurrent = strtotime($t); $timeSaved=strtotime($row['post_time']);
+					$post[$i]['post_time']	=getTimeString($timeCurrent,$timeSaved);					
+					$post[$i]['post_realtime']	=$row['post_time'];
+					
+					
 					$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			
 					$post[$i]['post_num_view']=getNumView($link);			
 					$post[$i]['post_mintimeview']=$row['post_mintimeviewlink'];	
@@ -284,6 +301,7 @@ if(!isset($_SESSION)){
 					while( ($row1 = mysqli_fetch_array($result)) ){
 						$infosUser1=getUserInfo($row1['userId']);		
 						$comment[$i][$ii]['cmt_Id'] 			=$row1['Id'];
+						$comment[$i][$ii]['cmt_userId'] 			=$row1['userId'];
 						$comment[$i][$ii]['cmt_imgLogo']		=$row1['imgLogo'];
 						$comment[$i][$ii]['cmt_user_link']	=$infosUser1['user_link'];
 						$comment[$i][$ii]['cmt_name']		=$infosUser1['user_name'];

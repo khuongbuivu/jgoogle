@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://faceseo.vn/", null, null);
+		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,8 +53,8 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://faceseo.vn/",
-    BASE_URL: "http://faceseo.vn/fs1.3.php",
+    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
+    BASE_URL: "http://localhost/faceseo.vn/fs1.3.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 301,
@@ -180,7 +180,7 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://faceseo.vn/");
+			gBrowser.addTab("http://localhost/faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
 		};
 		closeAllTab = true;
