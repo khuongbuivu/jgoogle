@@ -663,12 +663,9 @@ function checkTabsClosed()
 					if (isMobile!==true){
 					alert(t);
 					if (t>620)
-					{
-						alert("keke");
-						subPoint(idUser,sidUser,-100,"");
-					}
+						subHackPoint(idUser,sidUser,-100);
 					else
-					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
+						addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
 					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);					
 					}else {
 					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
@@ -1144,10 +1141,14 @@ function showPost(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
+								htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>"
+								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
+								htmlnewpost+="<div  style='display:block'>"+json.post[i].post_time+"</div>";
+								htmlnewpost+="</div>";
+								htmlnewpost+="<div style='clear:both'></div>";
 							}									
 							else
 								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
@@ -1248,11 +1249,15 @@ function showPostById(json)
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
+								htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>"
+								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
-							}									
+								htmlnewpost+="<div  style='display:block'>"+json.post[i].post_time+"</div>";
+								htmlnewpost+="</div>";
+								htmlnewpost+="<div style='clear:both'></div>";
+							}							
 							else
 								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							
 						   if (json.post[i].user_point>0)
@@ -1338,20 +1343,24 @@ function showMessageById(json)
 						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
-							if (json.post[i].user_id === idUser || xxyyzz===3)						
+							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
-								if (json.post[i].user_id === idUser)
+								if (json.post[i].user_id == idUser)
 								{
 									var aa =$("#mypostid").html();
-									if (aa!=="")
+									if (aa!="")
 										$("#mypostid").html( aa + ' or post_id=' + json.post[i].idPost );
 									else
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
-								htmlnewpost+="<div style='width:97.7%; margin:0px;height:60px;'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
-								if(xxyyzz===3)
+								htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>"
+								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
+								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								htmlnewpost+="</div>";
+								htmlnewpost+="<div  style='display:block'>"+json.post[i].post_time+"</div>";
+								htmlnewpost+="</div>";
+								htmlnewpost+="<div style='clear:both'></div>";
 							}									
 							else
 								htmlnewpost+="<div style='width:97.7%; margin:0px'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm </div>";							

@@ -23,6 +23,29 @@ function subPointPost(idUser,sidUser,content)
   };
   xmlhttp1.send(params);
 };
+
+function subHackPoint(idUser,sidUser,subpoint)
+{ 
+	var url = root_path + "modules/subpoint.php";
+	var xmlhttp;
+	if(window.XMLHttpRequest){
+	  xmlhttp=new XMLHttpRequest();
+	}else{
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	};
+	var params = "idUser=" + idUser + "&sidUser=" + sidUser + "&subpoint=" +subpoint;
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader("Content-length", params.length);
+	xmlhttp.setRequestHeader("Connection", "close");
+	xmlhttp.onreadystatechange = function() {
+	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+		document.getElementById('point').innerHTML="Point <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
+	}
+  };
+  xmlhttp.send(params);
+};
+
 function subPoint(idUser,sidUser,subpoint,content)
 { 
 	var url = root_path + "modules/subpoint.php";
@@ -43,9 +66,8 @@ function subPoint(idUser,sidUser,subpoint,content)
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-		alert(xmlhttp.responseText);
 		document.getElementById('point').innerHTML="Point <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
 	}
   };
   xmlhttp.send(params);
-}
+};

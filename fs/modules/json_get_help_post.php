@@ -97,7 +97,13 @@ if(!isset($_SESSION)){
 					$post[$i]['post_content']=$row['post_content'];
 					$post[$i]['post_image']=$row['post_image'];
 					$post[$i]['post_url']=$row['post_url'];
-					$post[$i]['post_full_url']=$row['post_full_url'];			
+					$post[$i]['post_full_url']=$row['post_full_url'];		
+					$post[$i]['post_time']=$row['post_time'];				
+					$post[$i]['post_time']				=date("h:i:s d-m-Y",$row['post_time']);
+					// $post[$i]['post_time']				=$row['post_time'];
+					$timezone  = +7; $timeCurrent = time() + 3600*($timezone+date("0")); $timeSaved=strtotime($post[$i]['post_time']);
+					$post[$i]['post_ctime']				=getTimeString($timeCurrent,$timeSaved);
+					
 					$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			
 					$post[$i]['post_num_view']=getNumView($link);			
 					$post[$i]['post_mintimeview']=$row['post_mintimeviewlink'];	
@@ -136,7 +142,7 @@ if(!isset($_SESSION)){
 						$comment[$i][$ii]['cmt_num_like']	=($num_like==""?0:$num_like);
 						$comment[$i][$ii]['cmt_my_like']		=($num_mylike==""?0:$num_mylike);
 						$comment[$i][$ii]['Time']				=date("h:i:s d-m-Y",$row1['Time']);				
-						$timezone  = +7; $timeCurrent = time() + 3600*($timezone+date("0")); $timeSaved=strtotime($row1['Time']);  getTimeString($timeCurrent,$timeSaved);
+						$timezone  = +7; $timeCurrent = time() + 3600*($timezone+date("0")); $timeSaved=strtotime($row1['Time']);
 						$comment[$i][$ii]['countTime']				=getTimeString($timeCurrent,$timeSaved);				
 						$ii++;
 					}
