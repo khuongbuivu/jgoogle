@@ -33,7 +33,7 @@
 						else
 							$time = $_SESSION['TIMEMAXVIEWMYLINK'];
 						$match1 =$match;
-						if (strpos($match,"www")==0 && strpos($match,"www")!="" && strpos($match,"www")!==null)
+						if (strpos($match,"www")==0)
 							$match1 ="http://".$match;
 						if ($count==$ii || $arrkeys[$ii]!="")
 							$replacement[$ii] = "<a href=".($match1)."  onclick=\"return openUrl(this.href,$time,$idPost,\'$key\');\" >{$shortlink}</a>";
