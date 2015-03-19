@@ -59,7 +59,7 @@ $('.postbutton').click( function(){
 				
 				if(abc.search("POSTWRONGSTRUCT")>-1)
 				{
-					alert("Vui lòng post đúng cấu trúc [URL ###keywords!!! ###300s***]\nVới link search keywords Google thì thay keywords = domain cần click");
+					alert("Vui lòng post đúng cấu trúc [URL ###keywords!!!]\nVới link search keywords Google thì thay keywords = domain cần click");
 					checkpost=false;
 					return;
 				};
