@@ -117,7 +117,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/' target='_blank'><img src='http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/HOI-THAO-SEO-2015-FACESEO-VINALINK.jpg' width='500px'/></a><h2><strong><a href='http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/' target='_blank' title='HỘI THẢO SEO'>ĐĂNG KÍ HỘI THẢO SEO 2015</a></strong><a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/' target='_blank'><img src='http://faceseo.vn/images/advertising/470x245-banner-faceseo.jpg' width='500px'/></a><h2><a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
