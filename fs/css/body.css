@@ -293,7 +293,7 @@ background-color: #D8DFEA;
 margin-top:2px;
 }
 
-.numwarning{
+#numwarning{
 float:left;
 width: 40px;
 }
@@ -689,4 +689,9 @@ background-color: red;
 {
 	position:fixed;bottom:5px;right:3px; width: 16%;
 	display:none;
+}
+#sharepoint
+{
+	padding:5px;
+	display:inline;
 }
