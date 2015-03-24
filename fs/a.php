@@ -188,15 +188,15 @@ function sortArrName($datafiles,$data,$replacdata)
 function obfucate($datafiles,$data,$replacdata,$folder)
 {
 
-	$dir = $_SERVER['DOCUMENT_ROOT'] ."/faceseo.vn/".$folder;
-	echo $dir;
+	$dir = $_SERVER['DOCUMENT_ROOT'] ."faceseo.vn/".$folder;
+	
 	for ($ii=0;$ii<count($datafiles);$ii++)
 	{
 		if (file_exists($dir."/".$datafiles[$ii]))
 		{
 			echo $datafiles[$ii]."<br/>";
 			$handle = fopen($dir."/".$datafiles[$ii], "r");
-			$myfile = fopen($_SERVER['DOCUMENT_ROOT'] ."/obfucate/new/".$folder."/".$replacdata[$ii], "wb") or die("Unable to open file!".$datafiles[$ii-1]);
+			$myfile = fopen($_SERVER['DOCUMENT_ROOT'] ."obfucate/new/".$folder."/".$replacdata[$ii], "wb") or die("Unable to open file!".$datafiles[$ii-1]);
 			if ($handle) {
 				while (($line = fgets($handle)) !== false) {		
 					$line = preg_replace($data, $replacdata, $line);	

@@ -154,7 +154,7 @@ include_once("user.php");
 				<div class="messagesystem"></div>
 				<div id="contentArea" aria-describedby="pageTitle" role="main">					
 					<div id="infopoint">					
-						<div id="point">Point</div>
+						<div id="point"><a rel='btipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Điểm</a> <div id='numpoint'></div></div>
 						<div  id='rule'>
 						Luật chơi
 						</div>

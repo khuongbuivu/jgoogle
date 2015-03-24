@@ -70,6 +70,7 @@ else if ($_SESSION['loginfirsttime']==1)
 	<meta name="og:description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO">
 	<meta name="og:image" content="http://faceseo.vn/index/images/banner-faceseo.jpg">
 	<meta name="author" content="Linh Nguyễn">
+<meta name="google-site-verification" content="r7Jx-qmIt7TNhIU9Da_Y6mxJUsn5oq79ZxRBznJcJ9U" />
 	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon">
 	<link rel="stylesheet" type="text/css" href="index/DZxVCOBqfnMg-r0L7dS-Xw.css">
 	<link rel="stylesheet" type="text/css" href="index/Xqjxjf4xU2G8_Gb-X7tbow.css">
@@ -92,6 +93,7 @@ else if ($_SESSION['loginfirsttime']==1)
 	<title>FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Giải Pháp Thương Hiệu</title>
 	<meta content="731864150162369" property="fb:app_id"/>
 	<meta content="100001707050712" property="fb:admins"/>
+<meta name="google-site-verification" content="r7Jx-qmIt7TNhIU9Da_Y6mxJUsn5oq79ZxRBznJcJ9U" />
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
@@ -376,7 +378,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 </div>
 <ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul>
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
-				<div style="color:red" id="message">CÀI ĐẶT <a href="http://faceseo.vn/intro.php">ADDON</a></div>
+				<div style="color:red" id="message">Thông báo 14/3/2015 - Update <a href="http://giaiphapthuonghieu.vn/faceseo1.3.xpi" >Addon FACESEO 1.3</a></div>
 				<div id="listUrlViewMore"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
@@ -400,8 +402,8 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				?>
 				<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
 				<?php } ?>
-<a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>
-				<!--<a href="javascript:confirmshare()"><img src="images/event/share-faceseo.gif" width="100%"/></a>-->
+				<a href="javascript:confirmshare()"><img src="images/event/share-hoi-seo-seo-banner-event-fs.png" width="100%"/></a>
+<a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>				
 				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>
 				<div id="bannerfree">
 				<?php
@@ -504,7 +506,6 @@ var currentIdLoadPost = idDivPostStart;
 var idMaxPostOnpage = 5;
 function initArrayIdPost()
 {
-	
 	arrayIdPost = new Array();
 	strIdPosts  = "";
 	var i=0;
@@ -1299,13 +1300,38 @@ function addPoint(url,linkClicked,idUser,point)
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.setRequestHeader("Content-length", params.length);
 	xmlhttp.setRequestHeader("Connection", "close");
+	var oldPoint=parseInt($("#numpoint").html());
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){		
-			document.getElementById('point').innerHTML="<a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ.<br/>Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Điểm</a> <div id='numpoint'>" + xmlhttp.responseText + "</div>" ;
+			effectAddPoint(oldPoint,parseInt(xmlhttp.responseText) - oldPoint,0);
 		}
 	};
   xmlhttp.send(params);
 };
+
+function effectSubPoint(pcurrent,psub) {
+	var arr = pcurrent + psub;
+	if (psub < 0) {
+		return;
+	};	
+	$("#numpoint").html(arr);
+	setTimeout(function() {
+		effectSubPoint(pcurrent,--psub);
+	}, 1000/psub);
+};
+function effectAddPoint(pcurrent,time,p) {
+	var arr = pcurrent + p;
+	if (time < 0) {
+		return;
+	};
+	$("#numpoint").html(arr);
+	setTimeout(function() {
+		effectAddPoint(pcurrent,--time,++p);
+	}, 1000/time);
+};
+
+
+
 $('body').on("mouseover",".UFIComment",function(){
 	$(".cmtclose").css("display","block");
 })

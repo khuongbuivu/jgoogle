@@ -30,7 +30,7 @@ if(!isset($_SESSION)){
         $rowTime=mysqli_fetch_array($resultTime);
         $timeSavedPost=strtotime($rowTime['post_time']);
     } 
-	$datetime = date("Y-m-d h:i:s");
+	$datetime = date("Y-m-d H:i:s");
     $timeCurrent = strtotime($datetime);	
     if (!checkTimePost($timeCurrent,$timeSavedPost) && $rowTime['post_group']==$idgroup && $IDUSER != "100006661151706")
 	{

@@ -10,6 +10,9 @@ var x="cccccc"
 
 
 <?php
+echo md5("faceseo");
+exit();
+
 $str="http://http//suanha24h.com.vn/sua-chua-nha/67-cty-sua-nha-uy-tin-chat-luong-va-chuyen-nghiep-nhat.html";
 echo strpos($str,"wwww");
 

@@ -34,8 +34,25 @@ if(!isset($_SESSION)){
 			mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT: DONT ADD POINT SOME UID' where user_id=".$_SESSION['session-user']);
 			exit();
 		};
+		// check xem du thoi gian ko
+		$checkTime = mysqli_query($con," select timestart from atw_click_link where timeview = 0 and idUser=".$idUser." and link like '%".$linkClicked."%'");
+		$view=0;
+		if ($checkTime->num_rows)
+		{
+			$row = mysqli_fetch_array($checkTime)
+			$strTime = substr($row[0], 0, 8);
+			$t1 = strtotime($strTime);
+			$date = date("H:i:s");
+			$currentTime=time($date);
+			$view = $currentTime-$t1;
+			if($view<620 && $point>620)
+				$okap=false;
+			else if ($view>620 && $point>620)
+				exit();
+		}
+		
 		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc limit 2,1");
-		if($ctime->num_rows>0)
+		if(($ctime->num_rows>0) && ($okap==true))
 		{
 			$rts = mysqli_fetch_array($ctime);
 			$timeSaved= substr($rts['timeclose'],0,8);
