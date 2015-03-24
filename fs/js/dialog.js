@@ -6,12 +6,25 @@ $(document).ready(function() {
 	
 	$(".overlayLink").click(function(event){
 		event.preventDefault();
-		var action = $(this).attr('data-action');
-		
-		$.get( "ajax/" + action, function( data ) {
-			$( ".sharepoint-content" ).html( data );
-		});	
-		
+		$(".overlay").fadeToggle("fast");
+	});
+	$(".submit").click(function(){
+	
+		var url=root_path + "modules/share-point.php";
+		var idUserB=$(".mentionsHidden0000").val();
+		var subpoint=$(".numpointshare").val();
+		if (FaceSeo.search(domain)<0)
+		return;
+		$.ajax({
+				url:url,
+				type:'POST',
+				data: {idUserA:idUser,idUserB:idUserB,sidUser:sidUser,subpoint:subpoint},
+				dataType: "json",
+				success: function(result) {
+					if (result.pointShare>0)
+						effectSubPoint(result.pointA,result.pointShare);
+			}
+		}); 		
 		$(".overlay").fadeToggle("fast");
 	});
 	
@@ -26,3 +39,10 @@ $(document).ready(function() {
 		}
 	});
 });
+function displayFormSharePoint(a,b)
+{
+	$(".mentionsHidden0000").val(a);
+	$("#contentbox0000").html(b);
+	$(".overlay").fadeToggle("fast");
+	return false;
+}
