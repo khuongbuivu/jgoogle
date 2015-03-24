@@ -295,8 +295,8 @@ exit();
 						<div id="warning">
 						Cảnh báo: 
 						</div>
-						<div id="numwarning"></div>
-						<div class="clearfix"><a href="register.php" class="overlayLink" data-action="registration-form.html">Register</a></div>
+						<div id="numwarning"></div> <div id="sharepoint"><a href="" class="overlayLink" data-action="" title="Chia sẻ điểm"><img src="images/button/share-point.png"></a></div>
+						<div class="clearfix"></div>
 					</div>
 					<script>
 					 getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
@@ -491,16 +491,16 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 			<h3>CHIA SẺ ĐIỂM</h3>
 			<form method="post" action="sharepoint.php">
 				<label for="username">
-					Nhập tên bắt đầu @:
+					Nhập tên:
 					<!-- <input type="text" name="nametoshare" id="username" placeholder="@Linh Nguyen" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />-->
 					<input type="hidden" class="mentionsHidden0000" value="">
-					<div id="fslisttags0000" class="namereceivepoint"><div class="boxtagfullsecond"><div contenteditable="true" data-ph="Tên cần share điểm..." data-he="cmt-content0000" class="content-namereceivepoint tagnameboxinput" id="contentbox0000"></div><div id="display0000" class="boxtag"></div><div id="msgbox"></div></div></div>
+					<div id="fslisttags0000" class="namereceivepoint"><div class="boxtagfullsecond"><div contenteditable="true" data-ph="@Linh Nguyen" data-he="cmt-content0000" class="content-namereceivepoint tagnameboxinput" id="contentbox0000"></div><div id="display0000" class="boxtag"></div><div id="msgbox"></div></div></div>
 				</label>
 				<label for="password">
 					Số điểm:
-					<input type="text" name="numpointshare" id="password" placeholder="500" pattern="^[0-9]{1,8}$" required="required" value="500" />
+					<input type="text" name="numpointshare" class="numpointshare" id="numpointshare" placeholder="500" pattern="^[0-9]{1,8}$" required="required" value="500" />
 				</label>
-				<button type="submit">Chia sẻ</button>
+				<button type="button" class="submit">Chia sẻ</button>
 				<button type="button" class="close">Hủy</button>
 				
 			</form>
@@ -1354,7 +1354,7 @@ function effectSubPoint(pcurrent,psub) {
 	var arr = pcurrent + psub;
 	if (psub < 0) {
 		return;
-	};	
+	};
 	$("#numpoint").html(arr);
 	setTimeout(function() {
 		effectSubPoint(pcurrent,--psub);
