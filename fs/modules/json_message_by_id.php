@@ -31,7 +31,7 @@
 			$post[$i]['post_url']="";
 			$post[$i]['post_full_url']="";	
 
-			$t=date("h:i:s d-m-Y");
+			$t=date("H:i:s d-m-Y");
 			$timeCurrent = strtotime($t); $timeSaved=strtotime($row['post_time']);
 			$post[$i]['post_time']	=getTimeString($timeCurrent,$timeSaved);					
 			$post[$i]['post_realtime']	=$row['post_time'];
