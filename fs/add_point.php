@@ -46,9 +46,15 @@ if(!isset($_SESSION)){
 			$currentTime=time($date);
 			$view = $currentTime-$t1;
 			if($view<620 && $point>620)
+			{
 				$okap=false;
+				echo "aaaaa";
+			}
 			else if ($view>620 && $point>620)
+			{
+				echo "bbbbb";
 				exit();
+			}
 		}
 		
 		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc limit 2,1");

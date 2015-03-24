@@ -112,6 +112,7 @@ else if ($_SESSION['loginfirsttime']==1)
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylepopup.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/notify_css.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/tipsy.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/dialog.css" type="text/css" />
 	<!-- Scroll bar -->
 	<link href="<?php echo $PATH_ROOT;?>libs/scrollbar/js/css.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/overthrow.min.js"></script>
@@ -119,6 +120,7 @@ else if ($_SESSION['loginfirsttime']==1)
 	<!-- end Scroll bar -->
 	<!-- point -->
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/point.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/dialog.js"></script>
 	<!-- end point -->
 	<!-- thanh -->
 	<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
@@ -294,7 +296,7 @@ exit();
 						Cảnh báo: 
 						</div>
 						<div id="numwarning"></div>
-						<div class="clearfix"></div>
+						<div class="clearfix"><a href="register.php" class="overlayLink" data-action="registration-form.html">Register</a></div>
 					</div>
 					<script>
 					 getPoint("<?php echo $PATH_ROOT;?>get_point.php",idUser);
@@ -481,6 +483,32 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 	<a class="close-linhnguyen-modal">X</a>
 </div>
 <?php }?>
+
+<div class="overlay" style="display: none;">
+	<div class="sharepoint-wrapper">
+		<div class="sharepoint-content">
+			
+			<h3>CHIA SẺ ĐIỂM</h3>
+			<form method="post" action="sharepoint.php">
+				<label for="username">
+					Nhập tên bắt đầu @:
+					<!-- <input type="text" name="nametoshare" id="username" placeholder="@Linh Nguyen" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />-->
+					<input type="hidden" class="mentionsHidden0000" value="">
+					<div id="fslisttags0000" class="namereceivepoint"><div class="boxtagfullsecond"><div contenteditable="true" data-ph="Tên cần share điểm..." data-he="cmt-content0000" class="content-namereceivepoint tagnameboxinput" id="contentbox0000"></div><div id="display0000" class="boxtag"></div><div id="msgbox"></div></div></div>
+				</label>
+				<label for="password">
+					Số điểm:
+					<input type="text" name="numpointshare" id="password" placeholder="500" pattern="^[0-9]{1,8}$" required="required" value="500" />
+				</label>
+				<button type="submit">Chia sẻ</button>
+				<button type="button" class="close">Hủy</button>
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+
 <!--<link rel="stylesheet" href="http://giaiphapthuonghieu.vn/miniapps/popuponload/linhnguyen.css">	-->
 <script type="text/javascript" src="http://giaiphapthuonghieu.vn/miniapps/popuponload/jquery.popup.js"></script>	
 <script type="text/javascript" >
@@ -568,11 +596,21 @@ $(document).on('mousedown', function (e) {
             $('#notify_content_wrapper').hide();
 			clickButtonPush=false;
         }
-    } 
+    };
 	
-	
+	var idP=-1;
+	var idPost=-1;
+	$(".boxtag").each(function(){
+		if ($(this).css('display')!='none')
+			idPost=$(this).find('.addname').attr('id');
+			idP=idPost.substring(7);
+	});
+	if(idP!=-1&& ($(e.target).parents().index($("#display"+idP)) == -1)) {
+        if($("#display"+idP).css('display') != 'none' ) {
+           $("#display"+idP).hide();
+        }
+    }
 });
-
 $( "#fbNotificationsJewel" ).click(function() {
 	if($('#notify_content_wrapper').css('display') == 'none' && clickButtonPush==true)
 	{
@@ -586,8 +624,6 @@ $( "#fbNotificationsJewel" ).click(function() {
 	}
 	clickButtonPush = true;
 });
-
-
 $( "#iconemailbutton" ).click(function() {
 	if($('#notify_content_wrapper').css('display') == 'none' && clickButtonPush==true)
 	{
@@ -787,7 +823,7 @@ $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
 });
 var li ;
 var liSelected;
-$('body').on('keyup','textarea,.contentbox', function(e) {
+$('body').on('keyup','textarea,.contentbox,.content-namereceivepoint', function(e) {
 	/*$('textarea').on('keydown',function(e){*/
 	
 	var maxCharLineComment = 50;
@@ -1302,8 +1338,11 @@ function addPoint(url,linkClicked,idUser,point)
 	xmlhttp.setRequestHeader("Connection", "close");
 	var oldPoint=parseInt($("#numpoint").html());
 	xmlhttp.onreadystatechange = function() {
-		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){		
-			effectAddPoint(oldPoint,parseInt(xmlhttp.responseText) - oldPoint,0);
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			if (parseInt(xmlhttp.responseText) - oldPoint>0)
+				effectAddPoint(oldPoint,parseInt(xmlhttp.responseText) - oldPoint,0);
+			else
+				effectSubPoint(oldPoint,-(parseInt(xmlhttp.responseText) - oldPoint))
 		}
 	};
   xmlhttp.send(params);
@@ -1340,6 +1379,7 @@ $('body').on("mouseout",".UFIComment",function(){
 })
 
 </script>
+
 <!--
 getOtherUrlsProfile comment.js chưa getidpage, sau khi get về chưa có hàm showlistprofileaddmore
 
