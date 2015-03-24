@@ -404,7 +404,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				?>
 				<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
 				<?php } ?>
-				<a href="javascript:confirmshare()"><img src="images/event/share-hoi-seo-seo-banner-event-fs.png" width="100%"/></a>
+				<!--<a href="javascript:confirmshare()"><img src="images/event/share-hoi-seo-seo-banner-event-fs.png" width="100%"/></a>-->
 <a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>				
 				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>
 				<div id="bannerfree">
@@ -433,14 +433,14 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<div id="loadBannerFree"></div>
 				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
 			</div>
-		</div>		
+		</div>	
 <div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;">
-<a target="_blank" href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/" title="QC BANNER 10TR/THÁNG"><img src="images/event/standee-hoi-thao-seo-2015-faceseo-vinalink.jpg" width="100%" /></a>
 <!--
 <a target="_blank" href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/" title="QC BANNER 10TR/THÁNG"><img src="images/event/standee-hoi-thao-seo-2015-faceseo-vinalink.jpg" width="100%" /></a>
 <a target="_blank" href="http://thucphamdouong.net/" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_ruou.jpg" width="100%" /></a>
-<br/><a target="_blank" href="http://inaxgroup.vn" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_inaxgroup.jpg" width="100%" /></a>
+<br/>
 -->
+<a target="_blank" href="http://inaxgroup.vn" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_inaxgroup.jpg" width="100%" /></a>
 </div>	
 			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
@@ -1339,10 +1339,12 @@ function addPoint(url,linkClicked,idUser,point)
 	var oldPoint=parseInt($("#numpoint").html());
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			if (parseInt(xmlhttp.responseText) - oldPoint>0)
-				effectAddPoint(oldPoint,parseInt(xmlhttp.responseText) - oldPoint,0);
+			var padd=parseInt(xmlhttp.responseText) - oldPoint;
+			if (padd>0)
+				effectAddPoint(oldPoint,padd,0);
 			else
-				effectSubPoint(oldPoint,-(parseInt(xmlhttp.responseText) - oldPoint))
+				effectSubPoint(oldPoint + padd,-padd);
+			//effectAddPoint(oldPoint,parseInt(xmlhttp.responseText) - oldPoint,0);
 		}
 	};
   xmlhttp.send(params);
