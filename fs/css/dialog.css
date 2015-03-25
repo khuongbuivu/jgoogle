@@ -37,7 +37,7 @@ div.overlay {
 		background-color: rgba(0,0,0,.25);
 		border-radius: 2px;
 		padding: 6px;
-		width: 524px;
+		width: 520px;
 	}
 	
 		div.overlay > div.sharepoint-wrapper > div.sharepoint-content {
@@ -81,7 +81,7 @@ form label {
 		padding: .8em .50em;	
 		text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
 		transition: all 400ms ease;
-		width: 100%;
+		width: 96%;
 	}
 	.sharepoint-wrapper .namereceivepoint:focus,
 	.sharepoint-wrapper form input[type="text"]:focus, 

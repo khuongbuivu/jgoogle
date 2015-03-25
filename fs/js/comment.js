@@ -1131,6 +1131,7 @@ function showPost(json)
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
 						   htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
+							htmlnewpost+="<div style='display:block'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
 								if (json.post[i].user_id == idUser)
@@ -1142,15 +1143,18 @@ function showPost(json)
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
 								
-								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ.<br/>Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
+								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ.<br/>Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
-									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>:: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm' ><img src='images/button/share-point.png'></a>";
-								htmlnewpost+="</div>";
+									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
+								
+								
 								
 							}									
 							else
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a>";							
-						  
+							htmlnewpost+=":: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm' ><img src='images/button/share-point.png'></a>";
+							htmlnewpost+="</div>";
+							
 							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
 							htmlnewpost+="</div>";
 							htmlnewpost+="<div style='clear:both'></div>";
@@ -1243,6 +1247,7 @@ function showPostById(json)
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
 							 htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
+							 htmlnewpost+="<div style='display:block'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
 								if (json.post[i].user_id == idUser)
@@ -1254,15 +1259,14 @@ function showPostById(json)
 										$("#mypostid").html( ' post_id=' + json.post[i].idPost );
 								};
 								
-								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' ><a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a></a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
+								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' ><a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a></a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
-									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>:: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm'><img src='images/button/share-point.png'></a>";
-								htmlnewpost+="</div>";
-								
+									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";		
 							}									
 							else
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
-						  
+							htmlnewpost+=":: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm' ><img src='images/button/share-point.png'></a>";
+							htmlnewpost+="</div>";
 							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
 							htmlnewpost+="</div>";
 							htmlnewpost+="<div style='clear:both'></div>";
@@ -1351,6 +1355,7 @@ function showMessageById(json)
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
 							 htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
+							 htmlnewpost+="<div style='display:block'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
 								if (json.post[i].user_id == idUser)
@@ -1364,13 +1369,13 @@ function showMessageById(json)
 								
 								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
-									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>:: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm'><img src='images/button/share-point.png'></a>";
-								htmlnewpost+="</div>";
-								
+									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
+
 							}									
 							else
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
-						  
+							htmlnewpost+=":: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm' ><img src='images/button/share-point.png'></a>";
+							htmlnewpost+="</div>";
 							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
 							htmlnewpost+="</div>";
 							htmlnewpost+="<div style='clear:both'></div>";
