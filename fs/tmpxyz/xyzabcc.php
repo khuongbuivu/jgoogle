@@ -28,9 +28,9 @@ $xxyyzz= $infoUser['user_manager']==""?0:$infoUser['user_manager'];
 	<meta content="100001707050712" property="fb:admins"/>
 <script type="text/javascript">
 <?php if(LOCAL=="TRUE"): ?>
-var root_path = "http://localhost/faceseo.vn/";
+var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 <?php else: ?>
-var root_path = "http://faceseo.vn/";	
+var root_path = "http://<?php echo DOMAIN;?>/";	
 <?php endif ?>
 var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
 var sidUser="<?php  $id_user!=""? $id_user :-1; $sid_user = MD5(intval($id_user)*1606); echo $sid_user; ?>";

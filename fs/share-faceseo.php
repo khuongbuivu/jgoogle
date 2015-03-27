@@ -2,6 +2,7 @@
 if(!isset($_SESSION)){
     session_start();
 }
+require_once("definelocal.php");
 require_once("config.php");
 global $host;
 global $user;
@@ -72,7 +73,7 @@ mysqli_close($con);
 	};
 	function addPointShare(idUser)
 	{	
-			var url="http://faceseo.vn/modules/add_point_share.php";
+			var url="http://<?php echo DOMAIN;?>/modules/add_point_share.php";
 			var point = 500;
 			var xmlhttp;
 			if(window.XMLHttpRequest){

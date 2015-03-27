@@ -28,9 +28,9 @@ $result=mysqli_query($con,"select * from atw_cmt_content where IdArticles=$id OR
 
 <script type="text/javascript">
 <?php if(LOCAL=="TRUE"): ?>
-var root_path = "http://localhost/faceseo.vn/";
+var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 <?php else: ?>
-var root_path = "http://faceseo.vn/";	
+var root_path = "http://<?php echo DOMAIN;?>/";	
 <?php endif ?>
 var idUser=<?php echo $id_user; ?>;
 var timeoutStasticClick,setScroll=0;

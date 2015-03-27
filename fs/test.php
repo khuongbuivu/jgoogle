@@ -1,241 +1,223 @@
-<script>
-var a1="D%E1%BB%8ACH%20V%E1%BB%A4%20SEO";
-var a2="D%E1%BB%8ACH%20V%E1%BB%A4%20SEO";
-var a3="HTTP%3A%2F%2FGIAIPHAPTHUONGHIEU.VN%2FDICH-VU-SEO-WEBSITE-TOP-GOOGLE%2F";
-var x="cccccc"
-// if ( ( (a1.search(a2) >-1) || (a3.search(a2)>-1)) && (a2!==""))
-	// alert("xxxxx");
-
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 5, CSS 3, jQuery Log-in & Registration</title>
+<link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script><script>
+$(document).ready(function() {
+	$("#sharepointLink").click(function( event ){
+		event.preventDefault();
+    	$(".overlay").fadeToggle("fast");
+  	});
+	
+	$(".overlayLink").click(function(event){
+		event.preventDefault();
+		var action = $(this).attr('data-action');
+		
+		$.get( "ajax/" + action, function( data ) {
+			$( ".sharepoint-content" ).html( data );
+		});	
+		
+		$(".overlay").fadeToggle("fast");
+	});
+	
+	$(".close").click(function(){
+		$(".overlay").fadeToggle("fast");
+	});
+	
+	$(document).keyup(function(e) {
+		if(e.keyCode == 27 && $(".overlay").css("display") != "none" ) { 
+			event.preventDefault();
+			$(".overlay").fadeToggle("fast");
+		}
+	});
+});
 </script>
-
-
-<?php
-echo md5("faceseo");
-exit();
-
-$str="http://http//suanha24h.com.vn/sua-chua-nha/67-cty-sua-nha-uy-tin-chat-luong-va-chuyen-nghiep-nhat.html";
-echo strpos($str,"wwww");
-
-$match="http://diathe.vn/vi/sieu-thi-dia-oc.re.html";
-$match1 =$match;
-echo strpos($match,"www");
-if (strpos($match,"www")==0 && strpos($match,"www")!="" && strpos($match,"www")!==null)
-	$match1 ="http://".$match;
-echo $match1;
-echo stripos("I love php, I love php too!","PHP1");
-$aaa="http://seomxh.com/";
-function removeSlashEndUrl($url)
-{
-	return rtrim($url, "/");
-}
-echo removeSlashEndUrl($aaa);
-
-$text="http://giaiphapthuonghieu.vn/";
-
-// print_r (getListUrl($text));
-getListUrl($text);
-
-function getListUrl($text)
-{
-	
-	
-		 // The Regular Expression filter
-	   // $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-		$reg_exUrl = "/(http|https|ftp|ftps|www)+(\:\/\/)*\S*/";
-		// The Text you want to filter for urls
-		// Check if there is a url in the text
-		echo $text;
-		if(preg_match_all($reg_exUrl, $text, $url)) {
-			   // make the urls hyper links
-			   $matches = array_unique($url[0]);
-			   print_r( $matches);
-			   return  $matches;
-		}
-		return null;
-
-}
+<style>
 /*
-function getListKeys($text)
-{
-	$reg_exUrl = "/(?<=\#\#\#).*?(?=\*\*\*)/";
-	if(preg_match_all($reg_exUrl, $text, $url)) {
-		return $url[0];
-	}
-	return null;
-	// test http://www.heise.de/download/mouse-recorder-pro-ec216441dbc757d56808a7b076f4de5f-1413478779-2669347.html ###50s***
-}
-$str="http://giaiphapthuonghieu.vn/ ###dịch vụ seo*** http://giaiphapthuonghieu.net/ ###bảng giá seo*** http://giaiphapthuonghieu.org/ ###đào tạo seo***";
-$keys=getListKeys($str);
-print_r($keys);
-
-require_once("config.php");
-global $host;
-global $user;
-global $pass;
-global $db;
-echo file_get_contents("http://dsvn.vn/#/");
-function get_likes($url) {
- 
-    $json_string = getPage('http://graph.facebook.com/?ids=' . $url);
-	print_r($json_string);
-    $json = json_decode($json_string, true);
-	
-    return intval( $json[$url]['shares'] );
-}
-function getPage($url){
-    if(!isset($timeout))
-        $timeout=200;
-    $curl = curl_init(); 
-    curl_setopt ($curl, CURLOPT_URL, $url);
-    curl_setopt ($curl, CURLOPT_USERAGENT, sprintf("Mozilla/%d.0",rand(4,5)));
-    curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt ($curl, CURLOPT_SSL_VERIFYPEER, 0);
-	curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-    $html = curl_exec ($curl);
-    curl_close ($curl);
-    return $html;
-};
-function facebook_count($url){
- 
-    // Query in FQL
-    $fql  = "SELECT share_count, like_count, comment_count ";
-    $fql .= " FROM link_stat WHERE url = '$url'";
- 
-    $fqlURL = "https://api.facebook.com/method/fql.query?format=json&query=" . urlencode($fql);
-	echo  $fqlURL;
-    // Facebook Response is in JSON
-    $response = getPage($fqlURL);
-	echo "response".$response;
-    return json_decode($response);
- 
-}
-echo getPage("http://dsvn.vn/#/");
-
-$fb = get_likes('https://www.facebook.com/digital.inspiration');
- 
-// facebook share count
-echo $fb[0]->share_count;
- 
-// facebook like count
-echo $fb[0]->like_count;
- 
-// facebook comment count
-echo $fb[0]->comment_count;
-
-$con=mysqli_connect($host,$user,$pass,$db);
-$result=mysqli_query($con,"select * from atw_point");
-echo "xxx".$result->num_rows;
-$row = mysqli_fetch_array($result);
-
-$string="             thamtu tu";
-$bbb=trim($string);
-// $bbb=$string;
-echo "ccccc".$bbb."<br/>";
-
-echo strcmp("https://www.google.com.vn/#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+faceseo","https://www.google.com.vn/#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+facese");
-
-echo $host." ".$user." ".$pass;
-$cnn = mysql_connect($host,$user,$pass) or die ("can not connect");
-mysql_select_db($db,$cnn);
-mysql_query("SET NAMES 'utf8'"); 
-$query='select * from atw_point';
-mysql_query($query);
-$row = mysqli_fetch_array($result);
-print_r($row );
-echo "Test connection".$pass;
-
-//mysqli_connect("localhost","faceseovn","faceseovn@","faceseovn");
-
-/*
-$timeSaved= substr("08:38:11 15/11/14",0,8);
-$oldday=substr("08:38:11 27/12/14",9);
-echo $oldday."<br/>";
-echo $timeSaved."<br/>";
-$currentTime=date("H:i:s");
-$dayTime=date("d/m/y");
-echo $dayTime."<br/>";
-echo $currentTime."<br/>";
-$t2 = strtotime($dayTime);
-$t1 = strtotime($oldday);
-$t= $t2 - $t1;
-echo $t;
-if ($oldday==$dayTime)
- echo "xxxxx";
-
-// Remove tag
-// $string = 'Here is your content with an image tag <a href=http://www.giaiphapthuonghieu.vn/dang-ki-khoa-hoc-seo  onclick="return openUrl(this.href,60);" >http://www.giaiphapthuonghieu.vn/dang-ki-khoa-hoc-seo</a><br /><a href=http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html  onclick="return openUrl(this.href,60,90829);" >http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-...</a>' ;
-$string = '<a class="highlighter" href="#" contenteditable="true"><b>Linh Nguyen</b>·cho e xin cái ổi</a>' ;
-$string = preg_replace("/<a[^>]+\>/i", "", $string); 
-echo $string; // will output "Here is your content with an image tag" without the image tag
-
-$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
-$times='2014-12-23 14:15:01,2014-12-15 14:13:36';
-$IDU=1;
-$time	= getTimeSave($times,$IDU);
-$newtimes= insertStrTime($times,$IDU,$datetime);
-echo "<br/>".$time."<br/>";
-echo "<br/>".$datetime."<br/>";
-echo "<br/>".$newtimes."<br/>";
-function find($str,$arr)
-{
-	$l=split(",",$arr);
-	for ($i=0;$i<count($l);$i++)
-	{
-		if($l[$i]==$str)
-			return $i;
-	}
-	return -1;
-}
-function getTimeSave($strtime,$index)
-{
-	$start	=$index*20;
-	$numchar=19;
-	return substr($strtime,$start,$numchar);
-}
-function insertStrTime($strTime,$i,$currentTime)
-{
-	return substr_replace($strTime, "$currentTime,", $i*20, 20);
-}
-
-function generatePassword($length = 8) {
-		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-		$count = mb_strlen($chars);
-
-		for ($i = 0, $result = ''; $i < $length; $i++) {
-			$index = rand(0, $count - 1);
-			$result .= mb_substr($chars, $index, 1);
-		}
-
-		return $result;
-}
-
-//echo "Pass ".generatePassword();
-echo "<br/>".md5('1000000812255751');
-
-
-
-$string="567@";
-$string1="'@";
-$string2="1234";
-echo "<br/>";
-echo md5($string)."<br/>";
-echo md5($string1)."<br/>";
-echo md5($string2)."<br/>";
-$str=1;
-echo "bbbb";
-$arr=split("··",$str);	
-echo count($arr);
-for ($i=0;$i<count($arr);$i++)
-{
-	echo $arr[$i]." :";
-}
-echo "<br/>";
-$mystring = "abcbdddba";
-$pos = strrpos($mystring, "e");
-echo $pos;
-echo substr($mystring,0,$pos);
+*	RESET
 */
+*{
+	box-sizing: border-box;
+	margin: 0;
+	outline: none;
+	padding: 0;
+}
 
-// http://johndyer.name/getting-counts-for-twitter-links-facebook-likesshares-and-google-1-plusones-in-c-or-php/
-// http://stackoverflow.com/questions/8003948/how-can-i-get-the-number-of-share-for-a-post-on-a-fan-page
-?>
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+/*
+*	GLOBAL
+*/
+html {
+	font-size: 16px;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	background-color: #f3f3f3;
+	color: rgb(165,165,165);
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-weight: 400;
+}
+
+a.close {
+	background-color: rgb(204,204,204);
+	border-radius: 50%;
+	color: rgb(255,255,255);
+	display: block;
+	font-family: 'Varela Round', sans-serif;
+	font-size: .8em;
+	padding: .2em .5em;
+	position: absolute;
+	top: 1.25rem;
+	transition: all 400ms ease;
+	right: 1.25rem;
+}
+	
+	a.close:hover {
+		background-color: #1bc5b3;
+		cursor: pointer;
+	}
+
+/*
+*	LOG-IN BOX
+*/
+div.overlay {
+	background-color: rgba(0,0,0,.25);
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+	div.overlay > div.sharepoint-wrapper {
+		align-self: center;
+		background-color: rgba(0,0,0,.25);
+		border-radius: 2px;
+		padding: 6px;
+		width: 450px;
+	}
+	
+		div.overlay > div.sharepoint-wrapper > div.sharepoint-content {
+			background-color: rgb(255,255,255);
+			border-radius: 2px;
+			padding: 24px;	
+			position: relative;
+		}
+		
+			div.overlay > div.sharepoint-wrapper > div.sharepoint-content > h3 {
+				color: rgb(0,0,0);
+				font-family: 'Varela Round', sans-serif;
+				font-size: 1.8em;
+				margin: 0 0 1.25em;
+				padding: 0;
+			}
+/*
+*	FORM
+*/
+form label {
+	color: rgb(0,0,0);
+	display: block;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 1.25em;
+	margin: .75em 0;	
+}
+
+	form input[type="text"],
+	form input[type="email"],
+	form input[type="number"],
+	form input[type="search"],
+	form input[type="password"],
+	form textarea {
+		background-color: rgb(255,255,255);
+		border: 1px solid rgb( 186, 186, 186 );
+		border-radius: 1px;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+		display: block;
+		font-size: .65em;
+		margin: 6px 0 12px 0;
+		padding: .8em .55em;	
+		text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
+		transition: all 400ms ease;
+		width: 90%;
+	}
+	
+	form input[type="text"]:focus,
+	form input[type="email"]:focus,
+	form input[type="number"]:focus,
+	form input[type="search"]:focus,
+	form input[type="password"]:focus,
+	form textarea:focus,
+	form select:focus { 
+		border-color: #4195fc;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4195fc;
+	}
+	
+		form input[type="text"]:invalid:focus,
+		form input[type="email"]:invalid:focus,
+		form input[type="number"]:invalid:focus,
+		form input[type="search"]:invalid:focus,
+		form input[type="password"]:invalid:focus,
+		form textarea:invalid:focus,
+		form select:invalid:focus { 
+			border-color: rgb(248,66,66);
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgb(248,66,66);
+		}
+	
+form button {
+	background-color: #50c1e9;
+	border: 1px solid rgba(0,0,0,.1);
+	color: rgb(255,255,255);
+	font-family: 'Varela Round', sans-serif;
+	font-size: .85em;
+	padding: .55em .9em;
+	transition: all 400ms ease;	
+}
+
+	form button:hover {
+		background-color: #1bc5b3;
+		cursor: pointer;
+	}
+</style>
+</head>
+
+<body>
+<p>Here's some content.</p>
+<a href="sharepoint.php" id="sharepointLink">sharepoint</a>
+<ul>
+	<li><a href="sharepoint.php" class="overlayLink" data-action="sharepoint-form.html">Log-in</a></li>
+	<li><a href="register.php" class="overlayLink" data-action="registration-form.html">Register</a></li>
+</ul>
+<div class="overlay" style="display: none;">
+	<div class="sharepoint-wrapper">
+		<div class="sharepoint-content">
+			
+			<h3>CHIA SẺ ĐIỂM</h3>
+			<form method="post" action="sharepoint.php">
+				<label for="username">
+					Nhập tên bắt đầu @:
+					<input type="text" name="username" id="username" placeholder="@Linh Nguyen" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+				</label>
+				<label for="password">
+					Số điểm:
+					<input type="password" name="password" id="password" placeholder="số điểm cần chia sẻ" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+				</label>
+				<button type="submit">Chia sẻ</button>
+				<button type="button" class="close">Hủy</button>
+				
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

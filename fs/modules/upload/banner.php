@@ -29,9 +29,9 @@ $result=mysqli_query($con,"select * from atw_cmt_content where IdArticles=$id OR
 
 <script type="text/javascript">
 <?php if(LOCAL=="TRUE"): ?>
-var root_path = "http://localhost/faceseo.vn/";
+var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 <?php else: ?>
-var root_path = "http://faceseo.vn/";	
+var root_path = "http://<?php echo DOMAIN;?>/";	
 <?php endif ?>
 var idUser=<?php echo $id_user; ?>;
 var timeoutStasticClick,setScroll=0;
@@ -67,7 +67,7 @@ var timetmp=0;
 <!-- thanh -->
 <link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
-<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<link href="http://<?php echo DOMAIN;?>/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 <!-- end thanh -->
 <!-- add scroll top comment -->
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
@@ -111,7 +111,7 @@ include_once("../../user.php");
 				 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
 				<li id="icon-firefox"><a href="<?php echo $PATH_ROOT."faceseo1.2.xpi"; ?>" title="Cài đặt Addon FS1.2 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
 				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
-<li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://faceseo.vn/modules/upload/banner.php"; ?>');"></span> </li>
+<li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://<?php echo DOMAIN;?>/modules/upload/banner.php"; ?>');"></span> </li>
 				
 <li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."l8vhie102w64.php?idgroup=1"; ?>');"></span> </li>
 
@@ -295,7 +295,7 @@ margin-right:5px;
    <script>
 function sendFileToServer(formData,status)
 {
-    var uploadURL ="http://localhost/faceseo.vn/modules/upload/uploadfile.php"; //Upload URL
+    var uploadURL ="http://localhost/<?php echo DOMAIN;?>/modules/upload/uploadfile.php"; //Upload URL
     var extraData ={}; //Extra Data.
     var jqXHR=$.ajax({
             xhr: function() {

@@ -2,6 +2,7 @@
 if(!isset($_SESSION)){
     session_start();
 }
+require_once("definelocal.php");
 require_once("config.php");
 global $host;
 global $user;
@@ -12,13 +13,13 @@ $idUser=$_SESSION['session-user'];
 if (isset($_GET['link']))
 	$link=$_GET['link'];
 else
-	$link="http://faceseo.vn";
+	$link="http://".DOMAIN;
 if (isset($_GET['linkimg'])&& $_GET['linkimg']!="" && $_GET['linkimg']!=null)
 {
 	$linkimg=$_GET['linkimg'];
 }
 else
-	$linkimg="http://faceseo.vn/background.jpg";
+	$linkimg="http://".DOMAIN."/background.jpg";
 
 ?>
 <!DOCTYPE html>
@@ -93,7 +94,7 @@ mysqli_close($con);
 	};
 	function addPointShare(idUser,link)
 	{	
-			var url="http://faceseo.vn/modules/fbshare.php";
+			var url="http://".<?php echo DOMAIN;?>."/modules/fbshare.php";
 			var point = 20;
 			var xmlhttp;
 			if(window.XMLHttpRequest){

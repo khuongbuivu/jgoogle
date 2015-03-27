@@ -2,19 +2,21 @@
 if(!isset($_SESSION)){
     session_start();
 }
-$PATH_ROOT="http://faceseo.vn/";
+require_once("definelocal.php");
+$PATH_ROOT="http://".DOMAIN."/";
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/i6ptlwq0d278.js"></script>
 <script>
-var root_path = "http://localhost/faceseo.vn/";
+var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 </script>
-<link rel="stylesheet" href="http://faceseo.vn/css/pagesetting.css" type="text/css" />
-<link href="http://faceseo.vn/css/pages/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<link rel="stylesheet" href="http://<?php echo DOMAIN;?>/css/pagesetting.css" type="text/css" />
+<link href="http://<?php echo DOMAIN;?>/css/pages/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="http://<?php echo DOMAIN;?>/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 </head>
 <body class="hasSmurfbar">
 <div id="container">
@@ -22,7 +24,7 @@ var root_path = "http://localhost/faceseo.vn/";
     <div id="blueBarHolder" class="slim">
       <div id="blueBar" class="fixed_elem">
         <div id="pageHead" class="clearfix _5bfg" role="banner">
-          <div id="headleft"> <a href="http://faceseo.vn" > <img src="images/css/logo-faceseo.png"/> </a> </div>
+          <div id="headleft"> <a href="http://<?php echo DOMAIN;?>" > <img src="images/css/logo-faceseo.png"/> </a> </div>
           <div id="headNav" class="clearfix">
             <div class="rfloat">
               <ul id="pageNav" class="clearfix _5bfw" role="navigation">
@@ -60,8 +62,8 @@ var root_path = "http://localhost/faceseo.vn/";
 			<div>Link SEO, Link G+, Link Fanpage FB, Link Youtube<br><span style="font-size: 10pt;"><span style="color: #ff0000;"></span></span></div>
 </div>
 <div class="add-site-form">
-<link type="text/css" rel="stylesheet" href="http://faceseo.vn/css/pages/jquery.multiselect.css">
-<link type="text/css" rel="stylesheet" href="http://faceseo.vn/css/pages/jquery.multiselect.filter.css">
+<link type="text/css" rel="stylesheet" href="http://<?php echo DOMAIN;?>/css/pages/jquery.multiselect.css">
+<link type="text/css" rel="stylesheet" href="http://<?php echo DOMAIN;?>/css/pages/jquery.multiselect.filter.css">
 
 <script type="text/javascript">
 	$(document).ready(function(){

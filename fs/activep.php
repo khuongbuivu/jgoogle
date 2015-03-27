@@ -40,8 +40,8 @@ if(isset($_GET[email]))
 	}
 	mysqli_close($con);
 	if(LOCAL=="TRUE")
-		header('Location: http://localhost/faceseo.vn/');
+		header('Location: http://localhost/'.DOMAIN);
 	else
-		header('Location: http://faceseo.vn/');
-	//test http://localhost/faceseo.vn/activep.php?code=e6053eb8d35e02ae40beeeacef203c1a&email=linh.nguyenhong@gameloft.com&token=ee5d4bcc6dc501c89a9883fcf4429ee7
+		header('Location: http://'.DOMAIN);
+	//test http://localhost/DOMAIN/activep.php?code=e6053eb8d35e02ae40beeeacef203c1a&email=linh.nguyenhong@gameloft.com&token=ee5d4bcc6dc501c89a9883fcf4429ee7
 }

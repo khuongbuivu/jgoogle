@@ -1,7 +1,7 @@
 <?php
+require_once("definelocal.php");
 if (!defined('LOCAL')) 
 define("LOCAL", "TRUE", true);
-// define("LOCAL", "FALSE", true);
 require_once('system/function.php');
 	if(LOCAL!="TRUE")
 	{
@@ -38,7 +38,7 @@ require_once('system/function.php');
 		$userFace=$user_profile['name'];//"Linh Nguyen";  // $user_profile['name']
 		$user_profile['user_ip']=getUserIP();
 		$linkLogoFace="https://graph.facebook.com/$id_user/picture";
-		$PATH_ROOT="http://faceseo.vn/";
+		$PATH_ROOT="http://".DOMAIN."/";
 		$numCmtDisplay = 10;
 		$FOLDERTHUMBANNER = $PATH_ROOT."images/modules/upload/banner/";	
 		
@@ -110,7 +110,7 @@ require_once('system/function.php');
 		$id_user="100005640848020";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
 		$userFace="Tran Lai";//"Linh Nguyen";  // $user_profile['name']
 		$linkLogoFace="https://graph.facebook.com/$id_user/picture";
-		$PATH_ROOT="http://localhost/faceseo.vn/";
+		$PATH_ROOT="http://localhost/".DOMAIN."/";
 		$numCmtDisplay = 10;	
 		$FOLDERTHUMBANNER = $PATH_ROOT."images/modules/upload/banner/";	
 		if($_SESSION['email']==''){ 
@@ -128,7 +128,7 @@ require_once('system/function.php');
 			$host="localhost";
 			$user="root";
 			$pass="";
-			$db="faceseovn";
+			$db="autoviewsite";
 			if($_SESSION['messlogin']=='')
 			{
 				$_SESSION['messlogin']='invalid';

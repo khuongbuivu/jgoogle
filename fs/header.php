@@ -2,6 +2,7 @@
 if(!isset($_SESSION)){
     session_start();
 }
+require_once("definelocal.php");
 require_once("user.php");
 ?>
 
@@ -9,7 +10,7 @@ require_once("user.php");
   <div id="blueBarHolder" class="slim">
     <div id="blueBar" class="fixed_elem">
       <div id="pageHead" class="clearfix _5bfg" role="banner">
-        <div id="headleft"> <a href="http://faceseo.vn"   > <img src="http://faceseo.vn/images/css/logo-faceseo.png"/> </a> </div>        
+        <div id="headleft"> <a href="http://<?php echo DOMAIN;?>"   > <img src="http://<?php echo DOMAIN;?>/images/css/logo-faceseo.png"/> </a> </div>        
         <div id="headNav" class="clearfix">
           <div class="rfloat">
             <ul id="pageNav" class="clearfix _5bfw" role="navigation">

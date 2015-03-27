@@ -36,10 +36,10 @@ if(!isset($_SESSION)){
 		if(LOCAL=="TRUE")
 		{		
 			thumnail($newSubFolder."/".$newPathImage,$thumb."/",300,150);
-			echo $ok ? "http://localhost/faceseo.vn/images/modules/uploadimagecomment/".$currentDay."/".$newPathImage : "FAIL";
+			echo $ok ? "http://localhost/".DOMAIN."/images/modules/uploadimagecomment/".$currentDay."/".$newPathImage : "FAIL";
 		}else {
 			thumnail($newSubFolder."/".$newPathImage,$thumb."/",300,150);
-			echo $ok ? "http://faceseo.vn/images/modules/uploadimagecomment/".$currentDay."/".$newPathImage : "FAIL";
+			echo $ok ? "http://".DOMAIN."/images/modules/uploadimagecomment/".$currentDay."/".$newPathImage : "FAIL";
 		}
 		chmod($newSubFolder,0755);
 		chmod($thumb,0755);

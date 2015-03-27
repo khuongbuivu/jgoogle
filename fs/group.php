@@ -68,9 +68,9 @@ else if ($_SESSION['loginfirsttime']==1)
 	<meta name="viewport" content="maximum-scale=1.0, width=500"/>
 	<meta name="description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO"/>
 	<meta name="og:description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO">
-	<meta name="og:image" content="http://faceseo.vn/index/images/banner-faceseo.jpg">
+	<meta name="og:image" content="http://<?php echo DOMAIN;?>/index/images/banner-faceseo.jpg">
 	<meta name="author" content="Linh Nguyễn">
-	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon">
+	<link href="http://<?php echo DOMAIN;?>/index/images/favicon.ico" rel="shortcut icon">
 	<link rel="stylesheet" type="text/css" href="index/DZxVCOBqfnMg-r0L7dS-Xw.css">
 	<link rel="stylesheet" type="text/css" href="index/Xqjxjf4xU2G8_Gb-X7tbow.css">
 	<script src="index/ua-parser.min.2.js" crossorigin="anonymous"></script>
@@ -79,9 +79,9 @@ else if ($_SESSION['loginfirsttime']==1)
 	</script>
 	<script type="text/javascript" >	
 	<?php if(LOCAL=="TRUE"): ?>
-	var root_path = "http://localhost/faceseo.vn/";
+	var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 	<?php else: ?>
-	var root_path = "http://faceseo.vn/";	
+	var root_path = "http://<?php echo DOMAIN;?>/";	
 	<?php endif ?>
 	</script>
 <?php else: ?>
@@ -122,16 +122,16 @@ else if ($_SESSION['loginfirsttime']==1)
 	<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
 	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
-	<link href="http://faceseo.vn/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<link href="http://<?php echo DOMAIN;?>/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 	<!-- end thanh -->
 	<!-- add scroll top comment -->
 	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
 	<!-- add scroll top comment -->
 	<script type="text/javascript" >	
 	<?php if(LOCAL=="TRUE"): ?>
-	var root_path = "http://localhost/faceseo.vn/";
+	var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 	<?php else: ?>
-	var root_path = "http://faceseo.vn/";	
+	var root_path = "http://<?php echo DOMAIN;?>/";	
 	<?php endif ?>
 	var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
 	var sidUser="<?php  $id_user!=""? $id_user :-1; $sid_user = MD5(intval($id_user)*1606); echo $sid_user; ?>";
@@ -229,7 +229,7 @@ else if ($_SESSION['loginfirsttime']==1)
 <div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>
 <footer>
   <div class="inner"> <menu>
-    <li><a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" style="position: relative;">Giới thiệu <em style="position: absolute; right: -1.6em; bottom: 2em; width: 3.5em; height: 2em; border-radius: 1em; background-color: #a06fda; color: #ffffff; font-size: 65%; font-style: normal; line-height: 2em; text-align: center;">NEW</em></a></li>
+    <li><a href="http://<?php echo DOMAIN;?>/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" style="position: relative;">Giới thiệu <em style="position: absolute; right: -1.6em; bottom: 2em; width: 3.5em; height: 2em; border-radius: 1em; background-color: #a06fda; color: #ffffff; font-size: 65%; font-style: normal; line-height: 2em; text-align: center;">NEW</em></a></li>
     <li><a href="#">Điều khoản</a></li>
     <li><a href="#">Bảo mật</a></li>
     <li><a href="#">Hợp tác</a></li>
@@ -250,7 +250,7 @@ include_once("header.php");
 if ($infoUser['user_status']!=1)
 {
 	echo '<div id="globalContainer" class="uiContextualLayerParent"><div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content"> 		<div>
-		<div id="mainContainer" style="text-align:center; height: 400px;"> <h1> Vui lòng sử dụng tài khoản Facebook khác để đăng nhập. </h1> <br/> <a href="http://faceseo.vn" title="Cộng đồng Seo Việt Nam">Trang chủ</a> </div></div><div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
+		<div id="mainContainer" style="text-align:center; height: 400px;"> <h1> Vui lòng sử dụng tài khoản Facebook khác để đăng nhập. </h1> <br/> <a href="http://'.DOMAIN.'" title="Cộng đồng Seo Việt Nam">Trang chủ</a> </div></div><div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div></div></div>';
 exit();
 }
@@ -264,7 +264,7 @@ exit();
                 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
 				<li id="icon-firefox"><a href="http://giaiphapthuonghieu.vn/faceseo1.3.xpi" title="Cài đặt Addon FS1.3 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
 				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
-<li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://faceseo.vn/modules/upload/banner.php"; ?>');"></span> </li>
+<li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://".DOMAIN."/modules/upload/banner.php"; ?>');"></span> </li>
 				
 <li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
 
@@ -375,7 +375,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 </div>
 <ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul>
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
-				<div style="color:red" id="message">CÀI ĐẶT <a href="http://faceseo.vn/intro.php">ADDON</a></div>
+				<div style="color:red" id="message">CÀI ĐẶT <a href="http://<?php echo DOMAIN;?>/intro.php">ADDON</a></div>
 				<div id="listUrlViewMore"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
@@ -399,9 +399,9 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				?>
 				<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
 				<?php } ?>
-<a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>
+<a href="http://<?php echo DOMAIN;?>/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>
 				<!--<a href="javascript:confirmshare()"><img src="images/event/share-faceseo.gif" width="100%"/></a>-->
-				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://faceseo.vn/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>
+				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://".<?php echo DOMAIN;?>."/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
@@ -410,7 +410,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 					{				
 						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
 						$infosUser=getUserInfo($row['banner_user_id']);
-						if (strpos($row['banner_img'], "faceseo.vn/images")==true)
+						if (strpos($row['banner_img'], DOMAIN."/images")==true)
 						{
 							if (checkAvailableLinks($row['post_url'],$id_user))
 								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='width:100%' src='".$row['banner_img']."' /></a><br/>";		
@@ -431,11 +431,6 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 		</div>		
 <div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;">
 <a target="_blank" href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/" title="QC BANNER 10TR/THÁNG"><img src="images/event/standee-hoi-thao-seo-2015-faceseo-vinalink.jpg" width="100%" /></a>
-<!--
-<a target="_blank" href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/" title="QC BANNER 10TR/THÁNG"><img src="images/event/standee-hoi-thao-seo-2015-faceseo-vinalink.jpg" width="100%" /></a>
-<a target="_blank" href="http://thucphamdouong.net/" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_ruou.jpg" width="100%" /></a>
-<br/><a target="_blank" href="http://inaxgroup.vn" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_inaxgroup.jpg" width="100%" /></a>
--->
 </div>	
 			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
@@ -1065,8 +1060,6 @@ function scrolToComment(idPost,idCmt)
 		$('html, body').stop().animate({
 		'scrollTop': $(".commentid"+idCmt).offset().top - 100
 		}, 600, 'swing', function () {
-			/* var target= $(".commentid"+idCmt).hash;
-			window.location.hash = target;//fix faceseo.vn/#undefine */
 		});
 	}
 }
@@ -1090,8 +1083,6 @@ function scrolToMessage(idPost,idCmt)
 		$('html, body').stop().animate({
 		'scrollTop': $(".commentid"+idCmt).offset().top - 100
 		}, 600, 'swing', function () {
-			/* var target= $(".commentid"+idCmt).hash;
-			window.location.hash = target;//fix faceseo.vn/#undefine */
 		});
 	}
 };
@@ -1139,7 +1130,7 @@ $( "#closelink" ).click(function() {
 <script type="text/javascript" src="js/jquery.fbjlike.1.4.js"></script>
 <script type="text/javascript">
 function confirmlink( link ) {
-	var windowLike=window.open("http://faceseo.vn/confirmlike.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=500, height=400");
+	var windowLike=window.open("http://<?php echo DOMAIN;?>/confirmlike.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=500, height=400");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path + "get_point.php",idUser);
 	}
@@ -1188,7 +1179,7 @@ function fsshare(link,linkimg,token ) {
 	}
 };
 function confirmshareBirthday( ) {
-	var windowLike=window.open("http://faceseo.vn/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open("http://<?php echo DOMAIN;?>/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	
@@ -1196,7 +1187,7 @@ function confirmshareBirthday( ) {
 };
 
 function confirmshareBirthday( ) {
-	var windowLike=window.open("http://faceseo.vn/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open("http://<?php echo DOMAIN;?>/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	

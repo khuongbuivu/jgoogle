@@ -142,3 +142,14 @@ http://myclabs.github.io/jquery.confirm/
 
 Google đã sai lầm khi chọn Faceseo
 Kết quả do cá nhân Linh Nguyễn tạo ra đã khiến nhiều chủ Doanh nghiệp tò mò. Linh Nguyễn đang hướng về thủ đô. Hãy cùng chung sức xây dựng event khủng tại Hà Nội.
+
+
+
+select * from atw_cmt_content where IdArticles = (select IdArticles from  atw_cmt_content where userId=100001707050712 order by IdArticles desc limit 1) order by Id desc limit 1
+select check_notify_id_comment  from fs_check_notify where  check_notify_id_user=100001707050712
+54078
+select notify_id_comment from atw_notify where notify_user_id=100001707050712 order by notify_id_comment desc
+checkNotify() getNumNotify
+54078
+54348
+

@@ -22,10 +22,10 @@ $_SESSION['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
 <title>Like now</title>
 <script type="text/javascript">
 <?php if(LOCAL=="TRUE"): ?>
-var root_path = "http://localhost/faceseo.vn/";
+var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 
 <?php else: ?>
-var root_path = "http://faceseo.vn/";	
+var root_path = "http://<?php echo DOMAIN;?>/";	
 <?php endif ?>
 var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
 var linkLogoFace = "<?php echo $linkLogoFace;?>";
@@ -43,7 +43,7 @@ var timetmp=0;
 if (isset($_GET['link']))
 	$link=$_GET['link'];
 else
-	$link="http://faceseo.vn";
+	$link="http://"<?php echo DOMAIN;?>;
 ?>
 <div id="fbjlike-example1111" class="fbjlike-example" ><fb:like href="<?php echo $link; ?>" layout="standard" show-faces="true" send="true" width="450" action="like" colorscheme="light"></fb:like></div>
 

@@ -16,11 +16,12 @@ global $pass;
 global $db;	
 $urlClicked	=	trim($_GET['urlClicked']);
 $urlClicked=rtrim($urlClicked, "/");
+$urlClicked = "http://faceseo.vn/faceseo1.1.xpi";
 $idUser		=	$_GET['idUser'];
 $timeOpendClient	=	$_GET['timeOpend'];
 $timeOpend 	= 	date("H:i:s d/m/y");
 $timeClose	=	$_GET['timeClose'];
-$linkText	=	$_GET['linkText'];
+$linkText	=	"CLICK UPDATE ADDON FACESEO1.1";
 $parent		=	trim($_GET['parent']);
 $parent = removeSlashEndUrl($parent);
 $BACKLINK		= 1;// HE SO BACKLINK
@@ -69,7 +70,7 @@ else // Close tab
 			$timeClose	=	date("H:i:s d/m/y");
 		if ($_GET['deepbacklink']=="1")
 		{		
-			mysqli_query($con,"UPDATE fs_click_backlink set timeclose = '".$timeClose."' ,timeview=".$timeView.", checkkey=".$checkkey." where iduser='".$idUser."' and link like '%".$urlClicked."%' and timeclienttmp like '%".$currentDay."%'");
+			mysqli_query($con,"UPDATE fs_click_backlink set timeclose = '".$timeClose."' ,timeview=".$timeView." where iduser='".$idUser."' and link like '%".$urlClicked."%' and timeclienttmp like '%".$currentDay."%'");
 		}
 		$resultIP=mysqli_query($con,"select ip_click_link_numview from fs_ip_click_link where ip_click_link_url='".$urlClicked."' and ip_click_link_id_user='".$idUser."' and ip_click_link_ip='".$_SESSION['ip']."'" );
 		if ($resultIP->num_rows>0)

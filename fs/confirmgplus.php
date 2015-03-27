@@ -25,10 +25,10 @@ $_SESSION['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
 <meta http-equiv="refresh" content="8" >
 <script type="text/javascript">
 <?php if(LOCAL=="TRUE"): ?>
-var root_path = "http://localhost/faceseo.vn/";
+var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 
 <?php else: ?>
-var root_path = "http://faceseo.vn/";	
+var root_path = "http://<?php echo DOMAIN;?>/";	
 <?php endif ?>
 var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
 var linkLogoFace = "<?php echo $linkLogoFace;?>";
@@ -46,7 +46,7 @@ var timetmp=0;
 if (isset($_GET['link']))
 	$link=$_GET['link'];
 else
-	$link="http://faceseo.vn";
+	$link="http://".DOMAIN;
 ?>
 
 <div class="gplusone-content" style="display:none;font-size:120%;color:#336633;">Cảm ơn bạn đã G+. Bạn được cộng thêm 10 điểm. Tắt cửa sổ để thấy điểm cộng.</div><div class="gplusone-uncontent" style="display:none;font-size:120%;color:#f00;">Bạn bị trừ 20 điểm</div><div id="gplusone-example"><g:plusone size="standard" callback="gplus_callback" href="<?php echo $link;?>" count="true" width="350px" annotation="inline"></g:plusone></div><div class="gplusone-content remember-state" style="display:none;"></div><script type="text/javascript" src="js/jquery.gplusone.1.1.js"></script>

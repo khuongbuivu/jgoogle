@@ -31,9 +31,9 @@ $xxyyzz= $infoUser['user_manager']==""?0:$infoUser['user_manager'];
 <link href="../css/tagsnameadm.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 <?php if(LOCAL=="TRUE"): ?>
-var root_path = "http://localhost/faceseo.vn/";
+var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 <?php else: ?>
-var root_path = "http://faceseo.vn/";	
+var root_path = "http://<?php echo DOMAIN;?>/";	
 <?php endif ?>
 var idUser=<?php  echo $id_user!=""?$id_user:-1; ?>;
 var sidUser="<?php  $id_user!=""? $id_user :-1; $sid_user = MD5(intval($id_user)*1606); echo $sid_user; ?>";
@@ -56,7 +56,7 @@ var timetmp=0;
     <div id="blueBarHolder" class="slim">
       <div id="blueBar" class="fixed_elem">
         <div id="pageHead" class="clearfix _5bfg" role="banner">
-          <div id="headleft"> <a href="http://faceseo.vn" > <img src="../images/css/logo-faceseo.png"/> </a> </div>
+          <div id="headleft"> <a href=<?php echo DOMAIN;?> > <img src="../images/css/logo-faceseo.png"/> </a> </div>
           <div id="headNav" class="clearfix">
             <div class="rfloat">
               <ul id="pageNav" class="clearfix _5bfw" role="navigation">

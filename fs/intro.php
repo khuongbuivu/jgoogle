@@ -11,7 +11,7 @@
     <div id="blueBarHolder" class="slim">
       <div id="blueBar" class="fixed_elem">
         <div id="pageHead" class="clearfix _5bfg" role="banner">
-          <div id="headleft"> <a href="http://faceseo.vn" > <img src="images/css/logo-faceseo.png"/> </a> </div>
+          <div id="headleft"> <a href="http://<?php echo DOMAIN;?>" > <img src="images/css/logo-faceseo.png"/> </a> </div>
           <div id="headNav" class="clearfix">
             <div class="rfloat">
               <ul id="pageNav" class="clearfix _5bfw" role="navigation">
@@ -50,7 +50,7 @@
           </div>
         </li>
         <li><div class="licon">
-            <div class="licon2"><span class="so">2</span> <span class="textintro1"><a href="http://faceseo.vn">Vào lại FACESEO.VN</a></span></div>
+            <div class="licon2"><span class="so">2</span> <span class="textintro1"><a href="http://<?php echo DOMAIN;?>">Vào lại <?php echo DOMAIN;?></a></span></div>
           </div></li>
         <li><div class="licon">
             <div class="licon2"><span class="so">3</span><span class="textintro1">Post link</span></div>
@@ -118,8 +118,8 @@
 	 });
 	function installAdaon()
 	{
-		window.open("http://faceseo.vn","http://faceseo.vn");
-		window.open("http://faceseo.vn/faceseo1.3.xpi");
+		window.open("http://<?php echo DOMAIN;?>","http://<?php echo DOMAIN;?>");
+		window.open("http://<?php echo DOMAIN;?>/faceseo1.3.xpi");
 		return true;
 	};
 </script>
