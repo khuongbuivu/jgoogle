@@ -106,3 +106,39 @@ http://www.ketoanpro.edu.vn/threads/40374-suc-quyen-ru-cua-mui-thom-sua-tam-hoa.
 http://quyenvo.blogspot.com/2015/03/mo-ban-can-ho-cao-cap-masteri-thao-ien.html
 OK http://www.formget.com/jquery-popup-form/
 http://myclabs.github.io/jquery.confirm/
+
+425 sudo rm /var/cache/apt/archives/*.deb 
+426 du --max-depth=3 / | sort -gr | head -n 30 
+427 cd /dev/sda1 428 cd /dev 429 ls 
+430 df log 431 ls -f 
+432 du -ks / | sort -nr | head 
+433 du -sh | grep [0-9]M | sort -nr 
+434 du -ks / | sort -nr | head 
+435 du -shx 436 ls /proc/21228/task/21228/fd/4 
+437 df -h 438 du -sh / 439 cd /var/log/ 440 du -sh * 
+441 cd .. 
+442 ls 
+443 du -sh * 
+444 cd proc/ 
+445 ls 
+446 du -sh * 
+447 clear 
+448 cd / 
+449 df -h 
+450 du -sh * 
+451 ps aux 
+452 /etc/init.d/httpd restart 
+453 df -h 
+454 vim /etc/httpd/conf/httpd.conf 
+455 du -sh /etc/httpd/logs/* 
+456 history 457 exit 458 df -h 
+459 history 
+460 /etc/init.d/httpd restart 
+461 df -h 
+462 du -sh * 
+463 clear 
+464 history
+
+
+Google đã sai lầm khi chọn Faceseo
+Kết quả do cá nhân Linh Nguyễn tạo ra đã khiến nhiều chủ Doanh nghiệp tò mò. Linh Nguyễn đang hướng về thủ đô. Hãy cùng chung sức xây dựng event khủng tại Hà Nội.
