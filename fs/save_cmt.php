@@ -4,11 +4,13 @@ if(!isset($_SESSION)){
 }
 include("time.php");
 include_once("fcomment.php");
+/*
 if (!isset($_SESSION['token'], $_SESSION['token-user'],$_POST['token-cmt']) || checkToken($_POST['token-cmt'])==false)
 {
 	exit();
 }
 else 
-	saveComment();
+*/
+saveComment();
 
 ?>
