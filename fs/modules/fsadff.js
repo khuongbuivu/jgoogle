@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://faceseo.vn/", null, null);
+		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,8 +53,8 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://faceseo.vn/",
-    BASE_URL: "http://faceseo.vn/fs1.4.php",
+    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
+    BASE_URL: "http://localhost/faceseo.vn/fs1.4.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 301,
@@ -180,7 +180,7 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://faceseo.vn/");
+			gBrowser.addTab("http://localhost/faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
 		};
 		closeAllTab = true;
@@ -694,12 +694,12 @@ var catchAllLinks = {
 	remove_unicode: function(str) 
 	{  
 		str= str.toLowerCase();  
-		str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");  
-		str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");  
-		str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i");  
-		str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");  
-		str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");  
-		str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");  
+		str= str.replace(/à|ậ|à|á|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/gi,"a");  
+		str= str.replace(/ể|ệ|è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/gi,"e");  
+		str= str.replace(/ì|í|ị|ỉ|ĩ/gi,"i");  
+		str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/gi,"o");  
+		str= str.replace(/ứ|ữ|ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/gi,"u");  
+		str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/gi,"y");  
 		str= str.replace(/đ/g,"d");  
 		str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|$|_/g,"-"); 
 		str= str.replace(/-+-/g,"-");
@@ -711,12 +711,14 @@ var catchAllLinks = {
 		var string = catchAllLinks.remove_unicode(a1);
 		a2 =catchAllLinks.remove_unicode(a2.trim());
 		var b=string.split("-");
+		console.log("checkeyAvailable " + a1 + " " + a2);
 		for( var i=0;i< b.length;i++)
 		{
+			
 			b[i]=b[i].trim();
+			console.log("b[i] " + b[i] + " a2 " + a2);
 			if(b[i].search(a2)>-1 || a2.search(b[i])>-1)
 			{
-				
 				return true;
 			}
 		};	
