@@ -6,7 +6,7 @@
 	$host="localhost";
 	$user="root";
 	$pass="";
-	$db="faceseovn";
+	$db="autoviewsite";
 	}else
 	{
 	$host="localhost";

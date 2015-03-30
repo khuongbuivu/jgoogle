@@ -53,15 +53,20 @@ if(!isset($_SESSION)){
 	$description = $_POST['description'];
 	$keyword = $_POST['keyword'];
 	$link = $_POST['link'];
+	$link=rtrim($link, "/");
 	$linkhinh = $_POST['linkhinh'];
 	if($textcomment!="")
 	{
 		$link11=getListUrl($textcomment1);
 	}
 	if (count($link11)>0)
+	{
+		$link11[0]=rtrim($link11[0], "/");
 		$alllink=$link11[0];
+	}
 	for ($jjj=1;$jjj<count($link11);$jjj++)
 	{
+		$link11[$jjj]=rtrim($link11[$jjj], "/");
 		$alllink =$alllink."····".$link11[$jjj];
 	}
 	if ($link=="")
