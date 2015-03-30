@@ -91,7 +91,7 @@ var catchAllLinks = {
 								var a1=item.text.toUpperCase();
 								var a2=decodeURIComponent(arrkey[iTabParent]).toUpperCase();
 								var a3=decodeURIComponent(item.link).toUpperCase();
-								if( ( catchAllLinks.checkeyAvailable(a2,a1) || (a3.search(a2)>-1)) && (arrkey[iTabParent]!==""))
+								if( ( catchAllLinks.checkeyAvailable(a2,a1) || catchAllLinks.checkeyAvailable(a2,a3)) && (arrkey[iTabParent]!==""))
 									catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER,
 										timeOpen, timeClose, timeView, item.text, parentUrl,1);
 								else
@@ -310,7 +310,7 @@ var catchAllLinks = {
 							var a1=item.text.toUpperCase();
 							var a2=decodeURIComponent(arrkey[iTabParent]).toUpperCase();
 							var a3=decodeURIComponent(item.link).toUpperCase();
-							if( ( catchAllLinks.checkeyAvailable(a2,a1) || (a3.search(a2)>-1)) && (arrkey[iTabParent]!==""))								
+							if( ( catchAllLinks.checkeyAvailable(a2,a1) || catchAllLinks.checkeyAvailable(a2,a3)) && (arrkey[iTabParent]!==""))								
 								catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER, timeOpen, timeClose, timeView, item.text, parentUrl,1);
 							else
 								catchAllLinks.updateServerSideWithParams(item.link, catchAllLinks.ID_USER, timeOpen, timeClose, timeView, item.text, parentUrl,0);
@@ -514,10 +514,6 @@ var catchAllLinks = {
 		{
 			if (currentLink.indexOf(catchAllLinks.ORIGINAL_LINK)==-1 &&
 				currentItem !== null && currentItem.origin.indexOf(catchAllLinks.ORIGINAL_LINK)>-1 && urlParents.length>0) {
-				event.preventDefault();
-				gBrowser.addTab(clickedURL);				
-				arrLinks.push(sLinkObject);
-				arrTabActive[arrTabActive.length]=tabs.length - 1;
 				var d = new Date();
 				var timeOpen = d.format("hh:mm:ss dd/MM/yyyy");
 				var timeClose = "In view";
@@ -526,12 +522,29 @@ var catchAllLinks = {
 				var a1=sLinkObject.text.toUpperCase();
 				var a2=decodeURIComponent(arrkey[iTabParent]).toUpperCase();
 				var a3=decodeURIComponent(sLinkObject.link).toUpperCase();
-				if( ( catchAllLinks.checkeyAvailable(a2,a1) || (a3.search(a2)>-1)) && (arrkey[iTabParent]!==""))									
+				if( ( catchAllLinks.checkeyAvailable(a2,a1) || catchAllLinks.checkeyAvailable(a2,a3)) && (arrkey[iTabParent]!==""))									
+				{
+					
 					catchAllLinks.updateServerSideWithParams(clickedURL, catchAllLinks.ID_USER, 
 					timeOpen, timeClose, timeView, linkText, currentLink,1);
+				}
 				else
+				{
+				
+					console.log("aaaaaaaaaaa" + a3);
+					if(a3.search("HTTP://WWW.GOOGLE.COM.VN/URL")>-1)
+					{
+						console.log("Click sai keywords");
+						alert("Click sai keywords");
+						return;
+					}
 					catchAllLinks.updateServerSideWithParams(clickedURL, catchAllLinks.ID_USER, 
 					timeOpen, timeClose, timeView, linkText, currentLink,0);
+				}	
+				event.preventDefault();
+				gBrowser.addTab(clickedURL);				
+				arrLinks.push(sLinkObject);
+				arrTabActive[arrTabActive.length]=tabs.length - 1;
 			}
 		}
     },
@@ -701,7 +714,7 @@ var catchAllLinks = {
 		str= str.replace(/ứ|ữ|ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/gi,"u");  
 		str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/gi,"y");  
 		str= str.replace(/đ/g,"d");  
-		str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|$|_/g,"-"); 
+		str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|$|_/g,"-"); 
 		str= str.replace(/-+-/g,"-");
 		str= str.replace(/^\-+|\-+$/g,""); 
 		return str;  
@@ -710,7 +723,7 @@ var catchAllLinks = {
 	{
 		var string = catchAllLinks.remove_unicode(a1);
 		a2 =catchAllLinks.remove_unicode(a2.trim());
-		var b=string.split("-");
+		var b=string.split(",");
 		console.log("checkeyAvailable " + a1 + " " + a2);
 		for( var i=0;i< b.length;i++)
 		{
@@ -719,6 +732,7 @@ var catchAllLinks = {
 			console.log("b[i] " + b[i] + " a2 " + a2);
 			if(b[i].search(a2)>-1 || a2.search(b[i])>-1)
 			{
+				console.log("OKOKOKOKOKOKOKOKOKOKOKOK  b[i] " + b[i] + " a2 " + a2);
 				return true;
 			}
 		};	
