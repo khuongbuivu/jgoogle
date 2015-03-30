@@ -35,7 +35,7 @@ var closeAllTab = false;
 function getCookie(cname) {
 		var ios = Components.classes["@mozilla.org/network/io-service;1"]
             .getService(Components.interfaces.nsIIOService);
-		var uri = ios.newURI("http://localhost/faceseo.vn/", null, null);
+		var uri = ios.newURI("http://faceseo.vn/", null, null);
 		var cookieSvc = Components.classes["@mozilla.org/cookieService;1"]
 						  .getService(Components.interfaces.nsICookieService);
 		var aa = cookieSvc.getCookieString(uri, null);		
@@ -53,8 +53,8 @@ function getCookie(cname) {
 };
 
 var catchAllLinks = {
-    ORIGINAL_LINK: "http://localhost/faceseo.vn/",
-    BASE_URL: "http://localhost/faceseo.vn/fs1.3.php",
+    ORIGINAL_LINK: "http://faceseo.vn/",
+    BASE_URL: "http://faceseo.vn/fs1.4.php",
     ID_USER: getCookie("UIDFACESEO"),
     COOKIE_NAME: "SID",
     DIFF_TIME: 301,
@@ -180,7 +180,7 @@ var catchAllLinks = {
 			for (var i = tabs.length - 1; i > 0; i--) {
 				gBrowser.removeTab(tabs[i]);
 			}
-			gBrowser.addTab("http://localhost/faceseo.vn/");
+			gBrowser.addTab("http://faceseo.vn/");
 			gBrowser.removeTab(tabs[0]);
 		};
 		closeAllTab = true;
@@ -388,7 +388,7 @@ var catchAllLinks = {
 		{			
 			return;
 		};
-		
+		origEl= catchAllLinks.findUpTag(origEl, "a") || catchAllLinks.findUpTag(origEl, "A");
         if(origEl.tagName === 'A' || origEl.tagName === 'a') {
 			if(gBrowser.currentURI.spec !== "about:blank")
 			{		
@@ -418,38 +418,24 @@ var catchAllLinks = {
 				catchAllLinks.increaseIndexArrTabActive();
 				arrLinks.splice(tabIndex,0,linkObject);
 			};
-        } else if(origEl.parentNode.tagName === 'A' || origEl.parentNode.tagName === 'a') {
-				
-				if (!catchAllLinks.checkUrlAvailable(origEl.toString(), catchAllLinks.removeTag(origEl.parentNode.innerHTML.trim())) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
-				{
-					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
-						alert("Click tối đa 5 keywords");
-					event.preventDefault();
-					return;
-				}
-				else
-				{
-					
-					event.stopPropagation();
-				};
-			catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.parentNode.toString(), catchAllLinks.removeTag(origEl.parentNode.innerHTML.trim()), event);
-        }else if(origEl.parentNode.parentNode.tagName === 'A' || origEl.parentNode.parentNode.tagName === 'a') {		
-				
-				if (!catchAllLinks.checkUrlAvailable(origEl.toString(), catchAllLinks.removeTag(origEl.parentNode.parentNode.innerHTML.trim())) || !(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5) )
-				{
-					if(!(catchAllLinks.getNumChildOfUrl(catchAllLinks.getParentURL(gBrowser.currentURI.spec))<5))
-						alert("Click tối đa 5 keywords");
-					event.preventDefault();
-					return;
-				}
-				else
-				{
-					
-					event.stopPropagation();
-				};
-				catchAllLinks.processURLRequest(gBrowser.currentURI.spec, origEl.parentNode.parentNode.toString(), catchAllLinks.removeTag(origEl.parentNode.parentNode.innerHTML.trim()), event);
-		};
+        }
     },
+	findUpTag: function(el, tag) {
+		if (el.tagName === tag)
+		{
+			return el;
+			
+		}
+		while (el.parentNode) {
+			el = el.parentNode;
+			if (el.tagName === tag)
+			{
+				return el;
+				
+			}	
+		}
+		return null;
+	},
 	checkUrlAvailable: function (url,key) {
 		var tabs = gBrowser.tabs;
 		var urlTabEnd="";
@@ -690,11 +676,19 @@ var catchAllLinks = {
 	},
 	removeTag: function (str)
 	{
-			
-			/*console.log(" removeTag " + str);*/
-			str=catchAllLinks.replaceNbsps(str);
-			var temp = document.createElement("div");
-			temp.innerHTML = str;
+			var temp="";
+			if (str.search("<img")===0 || str.search("<IMG")===0 )
+			{
+				return "Clicked Image";
+			}
+			else
+			{
+				str=str.replace(/<([^\>]*)?>/gi, "");
+				str=str.replace(/<\/([^\>]*)?>/gi, "");
+				str=catchAllLinks.replaceNbsps(str);
+				temp = document.createElement("div");
+				temp.innerHTML = str;
+			}
 			return temp.textContent || temp.innerText;
 	},
 	remove_unicode: function(str) 
