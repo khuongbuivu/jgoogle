@@ -531,13 +531,18 @@ var catchAllLinks = {
 				else
 				{
 				
-					console.log("aaaaaaaaaaa" + a3);
-					if(a3.search("HTTP://WWW.GOOGLE.COM.VN/URL")>-1)
+					console.log("aaaaaaaaaaa" + a3 + " sLinkObject.prev " + sLinkObject.prev);
+					if(sLinkObject.prev.toUpperCase().search(/HTTPS:\/\/WWW.GOOGLE.COM(.*)?#q=/i)>-1)
 					{
-						console.log("Click sai keywords");
+						event.preventDefault();
+						console.log("Click sai keywords & chưa click link nháy nháy gần hết giờ");
 						alert("Click sai keywords");
 						return;
 					}
+					else
+					{
+						event.stopPropagation();
+					};
 					catchAllLinks.updateServerSideWithParams(clickedURL, catchAllLinks.ID_USER, 
 					timeOpen, timeClose, timeView, linkText, currentLink,0);
 				}	
