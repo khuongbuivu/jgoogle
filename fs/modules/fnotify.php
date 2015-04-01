@@ -73,7 +73,6 @@ if(!isset($_SESSION)){
 		$con=mysqli_connect($host,$user,$pass,$db);	
 		mysqli_set_charset($con, "utf8");		
 		$currentDay = date("Y-m-d");
-		$rsAllPostUser=mysqli_query($con,"select post_full_url   from atw_post where  post_iduser=".$idUser." and post_time like '%".$currentDay."%'");	
 		$rsAllPostUser=mysqli_query($con,"select post_full_url   from atw_post where  post_iduser=".$idUser." order by post_id desc limit 50");	
 		$link = "";
 		if($rsAllPostUser->num_rows >0)
