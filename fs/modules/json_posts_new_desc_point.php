@@ -47,6 +47,8 @@ if(!isset($_SESSION)){
 			$post[$i]['user_link']=$infosUser['user_link'];
 			$post[$i]['user_name']=$infosUser['user_name'];
 			$post[$i]['user_point']=$infosUser['user_point'];
+			$post[$i]['leveluser']=$infosUser['leveluser'];
+			$post[$i]['post_userlevel']=$infosUser['user_manager'];
 			$post[$i]['post_content']=$row['post_content'];
 			$post[$i]['post_image']=$row['post_image'];
 			$post[$i]['post_url']=$row['post_url'];

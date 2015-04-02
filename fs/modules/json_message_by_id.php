@@ -26,6 +26,8 @@
 			$post[$i]['user_link']=$infosUser['user_link'];
 			$post[$i]['user_name']=$infosUser['user_name'];
 			$post[$i]['user_point']=$infosUser['user_point'];
+			$post[$i]['leveluser']=$infosUser['leveluser'];
+			$post[$i]['post_userlevel']=$infosUser['user_manager'];
 			$post[$i]['post_content']=$row['msct_content'];
 			$post[$i]['post_image']="";
 			$post[$i]['post_url']="";

@@ -128,7 +128,7 @@ require_once('system/function.php');
 			$host="localhost";
 			$user="root";
 			$pass="";
-			$db="autoviewsite";
+			$db="faceseovn";
 			if($_SESSION['messlogin']=='')
 			{
 				$_SESSION['messlogin']='invalid';

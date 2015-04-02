@@ -1127,7 +1127,9 @@ function showPost(json)
 						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
 						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
-						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
+						   if (json.post[i].leveluser==0)
+								htmlnewpost+='<div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>';
+						   
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
 						   htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
@@ -1146,7 +1148,8 @@ function showPost(json)
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ.<br/>Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
-								
+								if(json.post[i].post_userlevel>1)
+									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
 								
 								
 							}									
@@ -1243,7 +1246,8 @@ function showPostById(json)
 						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
 						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
-						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
+							if (json.post[i].leveluser==0)
+								htmlnewpost+='<div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
 							 htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
@@ -1262,6 +1266,8 @@ function showPostById(json)
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' ><a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a></a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";		
+								if(json.post[i].post_userlevel>1)
+									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
 							}									
 							else
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
@@ -1351,7 +1357,8 @@ function showMessageById(json)
 						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
 						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
-						   htmlnewpost+='<!-- <div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>-->';
+						   if (json.post[i].leveluser==0)
+								htmlnewpost+='<div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
 							 htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
@@ -1370,6 +1377,8 @@ function showMessageById(json)
 								htmlnewpost+="<div style='display:block'><b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a> <a href='' onclick='delPost("+ json.post[i].user_id + "," + json.post[i].idPost + ");return false;'> :: Xóa</a>";
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
+								if(json.post[i].post_userlevel>1)
+									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
 
 							}									
 							else

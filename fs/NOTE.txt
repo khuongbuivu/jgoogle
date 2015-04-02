@@ -85,8 +85,11 @@ df -h xem dung luong partition
 rm -rf * remove thu muc
 du -ks /var/log/* | sort -nr | head  thong ke dung luong tung thu muc
 du -ks /var/log/httpd/* | sort -nr | head
-cd httpd/
+cd /var/log/httpd/
 rm *
+install hàm để cho resize image
+yum install php-gd
+service httpd restart
 
 
 vi /etc/httpd/conf.d/phpmyadmin.conf
@@ -104,6 +107,17 @@ Code cần tối ưu hóa
 http://airasiasaigon.com/ve-may-bay-di-kuala-lumpur
 http://www.ketoanpro.edu.vn/threads/40374-suc-quyen-ru-cua-mui-thom-sua-tam-hoa.html?p=40398#post40398
 http://quyenvo.blogspot.com/2015/03/mo-ban-can-ho-cao-cap-masteri-thao-ien.html
+
+<a data-view-name="snapshot" target="_self" href="?view=snapshot" class="menu-item current">Ảnh chụp nhanh</a> lỗi là do ??view=snapshot Nếu thay bằng đường dẫn tuyệt đối thì hết bị lỗi.
+http://chungnhanhuuco.net/thuc-pham-huu-co-va-thuc-pham-an-toan/nong-san-thuc-pham-huu-co/nong-nghiep-huu-co.html
+http://dichvusuachuadiennuoc.weebly.com/services.html  OK
+
+DEBUG
+http://chungnhanhuuco.net/thuc-pham-huu-co-va-thuc-pham-an-toan/nong-san-thuc-pham-huu-co/nong-nghiep-huu-co.html ###nông nghiệp hữu cơ, trung tâm phát triển và chứng nhận hữu cơ việt nam!!! ###300s* click keyword lấy 50 điểm nhé.
+
+
+
+
 OK http://www.formget.com/jquery-popup-form/
 http://myclabs.github.io/jquery.confirm/
 
@@ -152,4 +166,6 @@ select notify_id_comment from atw_notify where notify_user_id=100001707050712 or
 checkNotify() getNumNotify
 54078
 54348
+
+tar -cvf /var/www/html/bu.tar /var/www/html/
 

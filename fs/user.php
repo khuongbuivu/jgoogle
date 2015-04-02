@@ -33,7 +33,7 @@ if(!isset($_SESSION)){
 				mysqli_query($con,"UPDATE atw_user SET user_ip='".$user_profile['user_ip']."' where user_id=".$user_profile[id]);
 			$row = mysqli_fetch_array($result);
 			$timeJoin	=	date("Y-m-d h:i:s");
-			if ($row['user_time_join']=="")
+			if ($row['user_time_join']=="" || $row['user_time_join']=="0000-00-00 00:00:00")
 				mysqli_query($con,"UPDATE atw_user SET user_time_join='".$timeJoin."' where user_id=".$user_profile[id]);
 		}
 		mysqli_close($con);
@@ -58,6 +58,16 @@ if(!isset($_SESSION)){
 		$userinfo['birthday']=$row['birthday'];
 		$userinfo['user_gender']=$row['user_gender'];
 		$userinfo['user_time_join']=$row['user_time_join'];		
+		$userinfo['leveluser']=1;		
+		$t=date("H:i:s d-m-Y");
+		$timeCurrent = strtotime($t); 
+		$timeSaved=strtotime($row['user_time_join']);	
+		$t=$timeCurrent-$timeSaved;
+		$day=(int)($t/86400);
+		if ($day>7 && $row['user_time_join']!="0000-00-00 00:00:00")
+			$userinfo['leveluser'] = 1;
+		else
+			$userinfo['leveluser'] = 0;		
 		$userinfo['user_atv']=$row['user_atv'];		
 		$result=mysqli_query($con,"select point from atw_point where idUser='".$user_id."'");	
 		if($result->num_rows>0)

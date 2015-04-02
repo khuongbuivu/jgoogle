@@ -35,6 +35,7 @@ $data[32]="/share_birthday.php/" ; $datafiles[32]="share_birthday.php" ; $replac
 $data[33]="/update_message.php/" ; $datafiles[33]="update_message.php" ; $replacdata[33]="6n6bf6dkig135.php";
 $data[34]="/getNumMessage.php/" ; $datafiles[34]="getNumMessage.php" ; $replacdata[34]="o84z3qlkgx61.php";
 $data[35]="/share-faceseo.php/" ; $datafiles[35]="share-faceseo.php" ; $replacdata[35]="ykp5d9d29k118.php";
+$data[35]="/share-point.php/" ; $datafiles[35]="share-faceseo.php" ; $replacdata[35]="1ykp5d9d29k118324.php";
 $data[36]="/ip_click_link.php/" ; $datafiles[36]="ip_click_link.php" ; $replacdata[36]="le2qlr1dxp70.php";
 $data[37]="/statist_click.php/" ; $datafiles[37]="statist_click.php" ; $replacdata[37]="hm2vkrgvlv121.php";
 $data[38]="/statist_inday.php/" ; $datafiles[38]="statist_inday.php" ; $replacdata[38]="38116rtvfs122.php";
@@ -124,6 +125,7 @@ $data[121]="/fsadff.js/" ; $datafiles[121]="fsadff.js" ; $replacdata[121]="ta907
 $data[122]="/group.php/" ; $datafiles[122]="group.php" ; $replacdata[122]="l8vhie102w64.php";
 $data[123]="/banner.js/" ; $datafiles[123]="banner.js" ; $replacdata[123]="1aez7ae2yt19.js";
 $data[124]="/common.js/" ; $datafiles[124]="common.js" ; $replacdata[124]="6dcapq9w9z31.js";
+$data[124]="/dialog.js/" ; $datafiles[124]="common.js" ; $replacdata[124]="6dc5apq9w9z31.js";
 $data[125]="/email.php/" ; $datafiles[125]="email.php" ; $replacdata[125]="48ex2kmwsk47.php";
 $data[126]="/point.js/" ; $datafiles[126]="point.js" ; $replacdata[126]="po18d7jpgj105.js";
 $data[127]="/post.php/" ; $datafiles[127]="post.php" ; $replacdata[127]="x0n3vuajco107.php";

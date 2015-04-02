@@ -15,7 +15,6 @@ if(!isset($_SESSION)){
 		$cmt_img=$_POST['cmt_img'];
 		$imgLogo	=$_POST['imgLogo'];
 		$name	=$_POST['name'];
-		$name	=$_POST['name'];
 		$timezone  = +14;//+7; //(GMT +7:00) 
 		$datetime = gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0")));
 		$con=mysqli_connect($host,$user,$pass,$db);
