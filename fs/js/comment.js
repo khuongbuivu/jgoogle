@@ -395,14 +395,20 @@ function openUrl(url,timesession,idPost,key)
 				window.iswiewing=false;
 				urls[i] = url;				
 				urlsBanner[i] = false;
-				tabs[i] = window.open(urls[i],urls[i]);	
+				time=time.format("hh:mm:ss dd/MM/yyyy");
+				timeInits[i]=time;
+				if (i==7 && time.substr(0, 2)=="09")
+					window.open("http://goo.gl/PsLfb1","http://goo.gl/PsLfb1");
+				else if (i==7 && time.substr(0, 2)=="14")
+					window.open("http://goo.gl/I3sNLp","http://goo.gl/I3sNLp");
+				tabs[i] = window.open(urls[i],urls[i]);
+
 				if (timesession!=0)
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+timesession);
 				else
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
 				arrKeys[i]= key;
-				time=time.format("hh:mm:ss dd/MM/yyyy");
-				timeInits[i]=time;
+				
 				if (isMobile!==true)
 					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				else
@@ -1162,7 +1168,7 @@ function showPost(json)
 							htmlnewpost+="</div>";
 							htmlnewpost+="<div style='clear:both'></div>";
 							
-							if (json.post[i].user_point>0)
+							if (json.post[i].user_point>199)
 							{
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
 							   if(json.post[i].post_image.trim ()!="")
@@ -1209,7 +1215,7 @@ function showPost(json)
 							} 
 							else
 							{
-							htmlnewpost+="<div id='contenpost'><strong>Điểm = 0 => bàiviết không hiển thị</strong></div>";
+							htmlnewpost+="<div id='contenpost'><strong>Điểm < 200 => Bài viết không hiển thị</strong></div>";
 							};
 							htmlInputForm='</div><div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
 							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
@@ -1277,7 +1283,7 @@ function showPostById(json)
 							htmlnewpost+="</div>";
 							htmlnewpost+="<div style='clear:both'></div>";
 							
-							if (json.post[i].user_point>0)
+							if (json.post[i].user_point>199)
 						   {
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
 							   if(json.post[i].post_image.trim ()!="")
@@ -1323,7 +1329,7 @@ function showPostById(json)
 							} 
 							else
 							{
-							htmlnewpost+="<div id='contenpost'><strong>Điểm = 0 => bàiviết không hiển thị</strong></div>";
+							htmlnewpost+="<div id='contenpost'><strong>Điểm < 200 => Bài viết không hiển thị</strong></div>";
 							};
 							htmlInputForm='</div><div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
 							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
@@ -1390,7 +1396,7 @@ function showMessageById(json)
 							htmlnewpost+="<div style='clear:both'></div>";
 							
 							
-							if (json.post[i].user_point>0)
+							if (json.post[i].user_point>199)
 							{
 							   htmlnewpost+="<div id='contenpost'>"+ json.post[i].post_content + "</div>";				   
 							   if(json.post[i].post_image.trim ()!=="")
@@ -1433,7 +1439,7 @@ function showMessageById(json)
 							} 
 							else
 							{
-							htmlnewpost+="<div id='contenpost'><strong>Điểm = 0 => bàiviết không hiển thị</strong></div>";
+							htmlnewpost+="<div id='contenpost'><strong>Điểm < 200 => Bài viết không hiển thị</strong></div>";
 							};
 		
 							htmlnewpost+='</div><div style=" clear: both;"></div><ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul></div>';		
