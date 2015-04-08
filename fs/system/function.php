@@ -343,4 +343,36 @@ function removeTag($string)
 	$string = preg_replace("/<\/a\>/i", "", $string);
 	return $string;
 }
+function checkSharedFs($idUser)
+{
+	global $host;
+	global $user;
+	global $pass;
+	global $db;
+	// echo $idUser;
+	$con=mysqli_connect($host,$user,$pass,$db);
+	$okshare=mysqli_query($con,"select * from fs_share where share_iduser=".$idUser);
+	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
+	$pointOfUser = mysqli_fetch_array($result);
+	$pointCurrent = $pointOfUser['point'];
+	$timezone  = +7;//+7; //(GMT +7:00) 
+	$timeCurrent = time() + 3600*($timezone+date("0"));
+	$share = 0;
+	if($okshare->num_rows>0)
+	{
+		
+		$row = mysqli_fetch_array($okshare);
+		$timeSaved=strtotime($row['share_time']);
+		$t =$timeCurrent - $timeSaved;		
+		$day=0;
+		if ($t>86400 && $t < 86400*12)
+			$day=(int)($t/86400);
+		if ($pointCurrent > -1 && $pointCurrent < 100 && $day > 5 )
+		{
+			$share=1;
+		}
+	}
+	mysqli_close($con);
+	return $share;
+}
 ?>

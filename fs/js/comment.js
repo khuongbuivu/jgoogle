@@ -1128,17 +1128,17 @@ function showPost(json)
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
 						{							
-						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:97.9%" class="postcontent" >';
+						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" class="postcontent" >';
 						   
 						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
-						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
+						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:10% ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
 						   if (json.post[i].leveluser==0)
 								htmlnewpost+='<div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>';
 						   
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
-						   htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
+						   htmlnewpost+="<div style='float: right; width:89%; margin-left:0px;height:60px;'>";
 							htmlnewpost+="<div style='display:block'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
@@ -1218,11 +1218,11 @@ function showPost(json)
 							htmlnewpost+="<div id='contenpost'><strong>Điểm < 200 => Bài viết không hiển thị</strong></div>";
 							};
 							htmlInputForm='</div><div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
-							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
+							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat imgcmt"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
 							if(linkLogoFace.trim()!=="https://graph.facebook.com//picture")
 								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
 							htmlInputForm+='</div></div>';
-							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content" class="cmt-content'+ json.post[i].idPost +'"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden'+ json.post[i].idPost +'" value=""></div></div></div></div></div></li>';						
+							htmlInputForm+='<div class="rfloat cmtinput"><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content" class="cmt-content'+ json.post[i].idPost +'"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden'+ json.post[i].idPost +'" value=""></div></div></div></div></div></li>';						
 							htmlInputForm+='<div class="comment-div comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
 							
 							htmlInputForm+=showCommentOfPost(json.post[i].idPost,json.comment[i]);
@@ -1234,7 +1234,7 @@ function showPost(json)
 							htmlInputForm+='<div id="loadcmtfull' + json.post[i].idPost + '" >no</div>';						
 							htmlInputForm+='</div></div></div>';					
 							htmlnewpost+=htmlInputForm;
-							htmlnewpost+='</div><div style=" clear: both;"></div><ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul></div>';		
+							htmlnewpost+='</div><div style=" clear: both;"></div></div>';		
 					};	
 				};		
 		return 	htmlnewpost;
@@ -1247,16 +1247,16 @@ function showPostById(json)
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id != idUser) )
 						{							
-						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:97.9%" class="postcontent" >';
+						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" class="postcontent" >';
 						   
 						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
-						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
+						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:10% ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
 							if (json.post[i].leveluser==0)
 								htmlnewpost+='<div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
-							 htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
+							 htmlnewpost+="<div style='float: right; width:89%; margin-left:0px;height:60px;'>";
 							 htmlnewpost+="<div style='display:block'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{
@@ -1332,11 +1332,11 @@ function showPostById(json)
 							htmlnewpost+="<div id='contenpost'><strong>Điểm < 200 => Bài viết không hiển thị</strong></div>";
 							};
 							htmlInputForm='</div><div class="comment"><div class="cmt-function"></div><div id="info" ><div id="idArt" class="idArt" >'+ json.post[i].idPost +'</div><div id="name" class="name">'+ userFace +'</div><div id="imgLogo" class="imgLogo">'+ linkLogoFace + '</div></div><div><div id="" class="uiUfi UFIContainer">';
-							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
+							htmlInputForm+='<ul class="UFIList-Cmt" id="UFIList-Cmt"><li  class="UFIRow UFIAddComment UFILastComponent" id="UFIList-Cmt-Input"><div class="clearfix UFIMentionsInputWrap"><div class="lfloat imgcmt"><div class="img _8o _8r UFIImageBlockImage UFIReplyActorPhotoWrapper">';						
 							if(linkLogoFace.trim()!=="https://graph.facebook.com//picture")
 								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
 							htmlInputForm+='</div></div>';
-							htmlInputForm+='<div ><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
+							htmlInputForm+='<div class="rfloat cmtinput"><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
 							htmlInputForm+='<div class="comment-div comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
 							htmlInputForm+=showFullCommentOfPost(json.post[i].idPost,json.comment[i]);
 							htmlInputForm+='</div>';
@@ -1361,13 +1361,13 @@ function showMessageById(json)
 						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:97.9%" class="Message" >';
 						   
 						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
-						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:50px ; margin:0px; position:relative;">';
+						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:10% ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
 						   if (json.post[i].leveluser==0)
 								htmlnewpost+='<div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>';
 						   htmlnewpost+='<div style="position:absolute; bottom: 0px;right:0px" class="IDUFS" id="IDUFS' + json.post[i].user_id + '"></div>';
 						   htmlnewpost+='</div>';
-							 htmlnewpost+="<div style='float: right; width:90%; margin-left:0px;height:60px;'>";
+							 htmlnewpost+="<div style='float: right; width:89%; margin-left:0px;height:60px;'>";
 							 htmlnewpost+="<div style='display:block'>";
 							if (json.post[i].user_id == idUser || xxyyzz==3)						
 							{

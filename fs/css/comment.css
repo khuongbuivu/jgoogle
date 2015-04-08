@@ -24,7 +24,7 @@ div.UFIContainer {
 }
 .UFIContainer {
     margin: 0;
-    width: 99%;
+    width: 100%;
 }
 .UFIArrow > i {
     background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/y7/r/UvyvLtJTQzO.png");
@@ -39,7 +39,6 @@ div.UFIContainer {
 .UFIRow {
     background-color: #EDEFF4;
     margin-top: 1px !important;
-    padding: 4px 0px 4px 4px !important;
 }
 .clearfix:after {
     clear: both;
@@ -184,7 +183,7 @@ textarea, .inputtext, .inputpassword {
 .UFIRow {
     background-color: #EDEFF4;
     margin-top: 1px;
-    padding: 4px;
+    padding: 4px 0 4px 4px;
 }
 .clearfix:after {
     clear: both;
@@ -197,8 +196,6 @@ textarea, .inputtext, .inputpassword {
 }
 .UFIMentionsInputWrap {
     position: relative;
-}
-.clearfix {
 }
 
 .lfloat {
@@ -226,10 +223,6 @@ textarea, .inputtext, .inputpassword {
 img {
     border: 0 none;
 }
-.UFIRow .UFIImageBlockContent {
-    margin: 0;
-    padding: 0 0 0 8px;
-}
 ._42ef {
     overflow: hidden;
 }
@@ -238,8 +231,7 @@ img {
 }
 .UFIRow .UFIImageBlockContent {
     margin: 0;
-    padding: 0 0 0 8px;
-	width:92%;
+    padding: 0 2px 0 8px;
 }
 ._42ef {
     overflow: hidden;
@@ -555,6 +547,17 @@ float:right;position:absolute;top:0px;right:8px;cursor: pointer; cursor: hand;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 #leftCol { margin-top:65px;  }
-.UFIRow .UFIImageBlockContent{width:92%}
+}
+.imgcmt
+{
+	width:6%;
+}
+.cmtinput
+{
+	width:94%;
+}
+#UFIList-Cmt li
+{
+	width:99% !important;
 }
 /*popup */

@@ -9,7 +9,7 @@
     opacity: 0.8;
     padding: 20px 0 0 2px;
     position: relative;
-    width: 8%;
+    width: 6.8%;
     word-wrap: break-word;
 	position: fixed;
 }
@@ -109,13 +109,9 @@ div#contentCol.homeFixedLayout {
 }
 
 #contentCol {
- border-left: 1px solid #cccccc;
- border-bottom: 1px solid #cccccc;
- border-right: 1px solid #cccccc;
-    border-radius: 0 0 5px 5px;
-    margin-left: 9%;
+    margin-left: 6.9%;
     min-height: 600px;
-    width: 74%;
+    width: 93.1%;
 }
 
 #contentCol {
@@ -137,19 +133,18 @@ div#contentCol.homeFixedLayout {
 }
 
 .hasLeftCol #rightCol {
-    padding-right: 20px;
+    padding: 0px;
 }
 
-.hasRightCol #rightCol {
-    margin-top: 0;
-}
+
 #rightCol {
     float: right;
-    margin-top: -10000px;
     padding-right: 0;
-    width: 32%;
+    width: 20%;
+	margin-right: 10px;
+    margin-top: 10px;
     word-wrap: break-word;
-	margin-right:0;
+	margin-right:10px;
 	/*background: url("../images/css/bgleft.png") repeat scroll 0 0 rgba(0, 0, 0, 0);*/
 	min-height:580px;
 }
@@ -163,7 +158,7 @@ div#contentCol.homeFixedLayout {
     opacity: 1;
     padding-left: 10px;
     padding-right: 0;
-    width: 65%;
+    width: 50.3%;
 }
 
 .hasLeftCol .hasRightCol #contentArea {
@@ -216,9 +211,11 @@ div#contentCol.homeFixedLayout {
 body {
     overflow-y: scroll;
 	/*font:15px/1.4 tahoma,Verdana,Arial; background:#eee;*/
-	font:normal 16px arial,tahoma, Verdana, Arial, sans-serif !important;
+	font:normal 14px arial,tahoma, Verdana, Arial, sans-serif !important;
 	color: #333333;
-	background:url("../images/css/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+	background-color:#e9eaec;
+	/*background:url("../images/css/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+	
 	
 }
 
@@ -259,14 +256,16 @@ transition: background-color 0.2s linear 0s, color 0.2s linear 0s !important;
 #point{
 float:left; width:150px;
 display:inline;
+margin-left: 20px;
 }
 #infopoint{
 font: 150%px bold;
 padding:5px;
+border-bottom: 1px solid #ccc;
 }
 #rule,#warning{ 
 float:left;
-width: 100px;
+width: 150px;
 }
 
 .addlink{
@@ -376,16 +375,10 @@ display: none;
     width: 100%;
 }
 
-#pagelet_bluebar{
 
-position:fixed; top:0px; margin:0;padding:0; width:100%; z-index:1111;
-/*background:url('../images/css/xmas_bg_n.gif')!important;*/
-background-color: #475A8E;
-
-}
 .fs #globalContainer {
     position: relative;
-    top: 60px;
+    top: 50px;
     width: 100%;
 }
 ._2yg{
@@ -694,4 +687,18 @@ background-color: red;
 {
 	padding:5px;
 	display:inline;
+}
+.postcontent{
+margin-bottom:10px;
+box-shadow: 2px 3px 6px #ccc;
+}
+.readmore{padding:5px; text-align:center; margin: 5 105px; background:#D8DFEA;color:#3B5998;width:98%;}
+
+.colchat
+{
+	width: 26%;
+	height:400px;
+	background-color:#cddde4;
+	margin-left: 10px;
+	margin-top:10px;
 }

@@ -56,7 +56,7 @@ exit();
 	if ($point>30 && $point<-30 || $_SESSION['session-user'] !=$_POST['idUser'])
 	{
 		mysqli_query($con,"UPDATE atw_user set user_status = 'ADD_POINT_LIKEG: HACK LIKE G' where user_id=".$_SESSION['session-user']);
-		$point=-500;
+		$point=-100;
 	}
 	$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 	$pointOfUser = mysqli_fetch_array($result);

@@ -10,6 +10,21 @@ global $pass;
 global $db;
 $con=mysqli_connect($host,$user,$pass,$db);
 $idUser=$_SESSION['session-user'];
+	$link="http://bit.ly/1Bw3gH7";
+	// $linkimg="http://faceseo.vn/images/advertising/fs_viralfacebook.jpg";
+	$linkimg="http://faceseo.vn/images/advertising/faceseo-ads-fb1.jpg";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<title>Cùng chia sẽ FACESEO đến những ai yêu SEO</title>
+	<meta name="description" content="Faceseo hệ thống tăng traffic keywords, tăng Alexa, tạo Google Searchbox dễ dàng chỉ với vài thao tác đơn giản ai cũng làm được." />
+    <meta name="author" content="Linh Nguyễn">
+	
+</head>
+<body>
+<?php
 $okshare=mysqli_query($con,"select * from fs_share where share_iduser=".$idUser);
 $result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");
 $pointOfUser = mysqli_fetch_array($result);
@@ -36,6 +51,7 @@ else
 }
 mysqli_close($con);
 ?>
+
 <div id="fb-root"></div>
 <script src="http://connect.facebook.com/en_US/all.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -53,18 +69,18 @@ mysqli_close($con);
 				var idUser = response.authResponse.userID;
 				FB.ui(
 					   {
-						 method: 'feed',
-						 name: 'Các bạn có yêu Hoàng Sa không? Tôi ❤ Hòang Sa',
-						 link: 'http://daotaoseo-fs.blogspot.com/2014/05/goc-troi-ay-vung-bien-ay-gio-ang-bi-de-doa-boi-trung-quoc.html',
-						 picture: 'http://1.bp.blogspot.com/-BVKc_sTeKh0/U2p68i1wYMI/AAAAAAAACC8/4rDoA0XsDss/s1600/co-viet-nam.jpg',
-						 caption: 'Hình ảnh Trung Quốc trấn áp tàu Việt Nam',
-						 description: 'Share vì Hòang Sa thân yêu.',
+						method: 'feed',
+						name: '<?php echo $_SESSION['session-name'];?> chia sẻ các bạn link đăng kí hội thảo SEO 2015 do anh Tuấn Hà & Linh Nguyễn chia sẻ!',
+						link: '<?php echo $link; ?>',
+						picture: '<?php echo $linkimg; ?>',
+						caption: '',
+						description: 'Cơ hội dành cho những bạn yêu SEO khám phá những bí quyết đẩy top và giữ top bền vững từ các chuyên gia SEO.',
 					   },
 					   function(response) {
 						 if (response && response.post_id) {
 							addPointShare(idUser);
 						 } else {
-						   alert('Share Faceseo được cộng điểm.');
+						   alert('Share Faceseo được cộng 1000 điểm.');
 						 }
 					   }
 					);		
@@ -73,7 +89,7 @@ mysqli_close($con);
 	};
 	function addPointShare(idUser)
 	{	
-			var url="http://<?php echo DOMAIN;?>/modules/add_point_share.php";
+			var url="http://faceseo.vn/modules/qibhi3hgha11.php";
 			var point = 500;
 			var xmlhttp;
 			if(window.XMLHttpRequest){
@@ -95,12 +111,25 @@ mysqli_close($con);
 	};
 	
 </script>
-Các bạn comment giúp "Hoàng Sa, Trường Sa muôn năm! Đảng Cộng Sản Việt Nam bất tử!"
-<?php
-if ($share==true){
+<div style="margin:20px;background-color:#ccc;height:437px; position: relative;">
+<div style="width:10%;height:40px;float:left; background-color:#435688;text-align:center"><img src="images/button/iconlink.png" /></div>
+<div style="width:90%;float:left;background-color:#435688;color:#fff;font-size:16px;height:30px;text-align:center; padding:5px 0; box-shadow: inset 0px 0px 10px rgba(255,255,255,0.9); overflow: hidden;"><?php echo $link; ?></div>
+<div style="clear:both"></div>
+<div style="width:50%;float:left;height:300px;margin:5px;overflow: hidden;"><img src="<?php echo $linkimg; ?>" width="100%" /></div>
+<div style="width:45%;float:right;height:300px;margin:5px;text-align:center;"> Cơ hội dành cho những bạn yêu SEO khám phá những bí quyết đẩy top và giữ top bền vững từ các chuyên gia SEO.</div>
+<div style="position: absolute;right:0px;bottom:-4px">
+<?php 
+if ($share==true):
 ?>
-<input type="button" value="SHARE VÌ BIỂN ĐẢO VIỆT NAM" onClick="shareOnWall();">
-<?php
-} else
-echo "Quay lại lần sau nhé";
+<a href="#"  onClick="shareOnWall();"> <img src="images/button/fbshare.jpg" /></a>
+<?php 
+else:
+	echo "ĐÃ SHARE";
+endif
 ?>
+</div>
+</div>
+<br/>
+Buổi hội thảo chỉ còn 20 ghế. Hãy share kiếm 1000 điểm & đăng kí nhanh: <a href="http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/">http://faceseo.vn/seo/dang-ki-hoi-thao-seo-2015-hcm/</a>
+</body>
+</html>

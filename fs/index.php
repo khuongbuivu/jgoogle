@@ -35,7 +35,7 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 		saveUser($user_profile);
 		}
 ?>
-<?php 
+<?php
 if ($accountFace && $_SESSION['loginfirsttime']==0)
 {
 	$oklock = md5($infoUser['user_id']."1")==$infoUser['user_atv']?true:false;
@@ -58,6 +58,17 @@ else if ($_SESSION['loginfirsttime']==1)
 	header( 'Location: '.$PATH_ROOT.'intro.php' );
 	exit();
 }
+/*
+
+if (intval(checkSharedFs($id_user))==0)
+{
+	
+	header( 'Location: '.$PATH_ROOT.'sharefullscreen.php' );
+	exit();
+}
+
+*/
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" >
@@ -284,13 +295,16 @@ exit();
 			  </script>
 			
 			</div>
-			
-			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
-				<div id="contentArea" aria-describedby="pageTitle" role="main">					
+			<div style="width:92.1%; margin-left: 6.9%;padding-left:10px;overflow: hidden;display:block; height: 170px;"> 
+			<div style="float:left; width:50.9%; height:160px;">
+			<div style="border:1px solid #ccc; width:99.9%;background-color:#fff;position: relative;box-shadow: 2px 3px 6px #ccc;">
+					<div style="position:absolute;top: 37px; left:30px;"><img src="images/button/uparrow.png" /></div>
 					<div id="infopoint">					
-						<div id="point"><a rel='btipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Điểm</a> <div id='numpoint'></div></div>
+						<div id="point">
+						<img src="images/button/point.png">
+						<a rel='btipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Điểm</a> <div id='numpoint'></div></div>
 						<div id="warning">
-						Cảnh báo: 
+						<img src="images/button/warning.png"> Cảnh báo: 
 						</div>
 						<div id="numwarning"></div> <div id="sharepoint"><a href="" class="overlayLink" data-action="" title="Chia sẻ điểm"><img src="images/button/share-point.png"></a></div>
 						<div class="clearfix"></div>
@@ -300,84 +314,89 @@ exit();
 					 getWarningNumber(root_path+ "modules/get_warning_number.php",idUser,1);
 					</script>
 					<!-- API FACEBOOK GET ID NAM IMG -->					
-<form name="frm" method="post" action="" id="fileupload" enctype="multipart/form-data">
-  <div id="thanh" >
-    <div style="width:94%;padding:10px;">
-      <textarea style="border:none; width:100% !important;resize: none; overflow:hidden;vertical-align: bottom;direction: ltr;min-height: 48px;white-space: pre-wrap;word-wrap: break-word;letter-spacing: normal;
-word-spacing: normal;
-text-transform: none;
-text-indent: 0px;
-text-shadow: none;
-display: inline-block;
-text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Post bài -20đ. Click link bằng chuột trái 5p  + 5điểm. Click keywords + 50Đ. Click trên kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA." content="Đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm. Click keywords + 50Đ. Click kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA + 50Đ" ></textarea>
-    </div>
-		
-    <p style="text-align:center;"><span id="cho"></span></p>
-    <div id="des"></div>
-    <div id="imgdiv" style="clear:both;">
-      <div class="container">
-        <div class="row fileupload-buttonbar">
-          <div class="span5 fileupload-progress fade">
-            <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-              <div class="bar" style="width:0%;"></div>
-            </div>
-            <div class="progress-extended">&nbsp;</div>
-          </div>
-        </div>
-        <table role="presentation" class="table table-striped">
-          <tbody class="files">
-          </tbody>
-        </table>
-        <br>
-      </div>
-    </div>
-    <div id="buttonpos" style="clear:both">
-      <div class="_1dsp _4-">
-        <div class="clearfix">
-          <div class="_52lb _3-7 lfloat">
-            <div>
-              <div id="u_1w_m" class="lfloat"><a id="u_0_z" title="Đánh dấu người trong bài đăng của bạn" aria-label="Đánh dấu người trong bài đăng của bạn" role="button" data-gt="{&quot;composer&quot;:{&quot;comp&quot;:&quot;people&quot;,&quot;ua_id&quot;:&quot;composer:post&quot;}}" href="#" class="_1dsq _1dsv"><span class="_1dsr"><span class="_4-px ellipsis">Đính tên người</span></span></a></div>
-              <div id="u_1w_o" class="lfloat">
-                <div id="composerCityTagger" class="_6a _zg _1dsq"><a id="u_1w_p" aria-label="Thêm địa điểm vào bài đăng" title="Thêm địa điểm vào bài đăng" role="button" href="#" class="_y9"><span class="_1dst"><span class="_4-px ellipsis">Thêm địa điểm vào bài đăng</span></span>
-                  <div class="_6a _1dsu">
-                    <div style="height:30px" class="_6a _6b"></div>
-                    <div class="_6a _6b"><span class="_y8"></span></div>
-                  </div>
-                  </a><a id="u_1w_q" title="Xóa" rel="async-post" ajaxify="/ajax/places/toggle_location_sharing?disable=1&amp;session_id=1376211657" role="button" href="#" class="_4_z3 uiCloseButton uiCloseButtonSmall"></a>
-                  <input type="hidden" id="u_1w_r" name="composertags_city" autocomplete="off">
-                  <input type="hidden" id="u_1w_s" value="false" name="disable_location_sharing" autocomplete="off">
-                  <input type="hidden" value="108458769184495" name="composer_predicted_city" autocomplete="off">
-                </div>
-              </div>
-              <div id="u_1w_n" class="lfloat">
-                <div id="u_0_13" class="_6a _m _1dsq _1dsw"><a id="u_0_14" rel="ignore" role="presentation" class="_1dsr"><span class="_4-px ellipsis">Thêm hình ảnh</span>
-                  <div class="_3jk">                  
-                    <input type="file" name="files[]" class="_n _5f0v" id="fileimg">
-                  </div>
-                  </a></div>
-                <div class="span7" style="display:none;"><span class="fileupload-loading"></span></div>
-              </div>
-            </div>
-          </div>
-          <ul class="uiList _1dso rfloat _509- _4ki _6-h _6-j _6-i">
-            <li>
-              <button type="button" class="_42ft _42fu _11b selected _42g- postbutton" value="1">Đăng</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div id="noidungpost"></div>
-  </div>
-</form>
-
-<div id='wrapperlinkview' class='wrapperlinkview'>
+					<form name="frm" method="post" action="" id="fileupload" enctype="multipart/form-data">
+					  <div id="thanh" >
+						<div style="padding:10px;">
+						  <textarea style="border:none; width:100% !important;resize: none; overflow:hidden;vertical-align: bottom;direction: ltr;min-height: 48px;white-space: pre-wrap;word-wrap: break-word;letter-spacing: normal;
+					word-spacing: normal;
+					text-transform: none;
+					text-indent: 0px;
+					text-shadow: none;
+					display: inline-block;
+					text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Post bài -20đ. Click link bằng chuột trái 5p  + 5điểm. Click keywords + 50Đ. Click trên kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA." content="Đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm. Click keywords + 50Đ. Click kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA + 50Đ" ></textarea>
+						</div>
+							
+						<p style="text-align:center;"><span id="cho"></span></p>
+						<div id="des"></div>
+						<div id="imgdiv" style="clear:both;">
+						  <div class="container">
+							<div class="row fileupload-buttonbar">
+							  <div class="span5 fileupload-progress fade">
+								<div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+								  <div class="bar" style="width:0%;"></div>
+								</div>
+								<div class="progress-extended">&nbsp;</div>
+							  </div>
+							</div>
+							<table role="presentation" class="table table-striped">
+							  <tbody class="files">
+							  </tbody>
+							</table>
+							<br>
+						  </div>
+						</div>
+						<div id="buttonpos" style="clear:both">
+						  <div class="_1dsp _4-">
+							<div class="clearfix">
+							  <div class="_52lb _3-7 lfloat">
+								<div>
+								  <div id="u_1w_m" class="lfloat"><a id="u_0_z" title="Đánh dấu người trong bài đăng của bạn" aria-label="Đánh dấu người trong bài đăng của bạn" role="button" data-gt="{&quot;composer&quot;:{&quot;comp&quot;:&quot;people&quot;,&quot;ua_id&quot;:&quot;composer:post&quot;}}" href="#" class="_1dsq _1dsv"><span class="_1dsr"><span class="_4-px ellipsis">Đính tên người</span></span></a></div>
+								  <div id="u_1w_o" class="lfloat">
+									<div id="composerCityTagger" class="_6a _zg _1dsq"><a id="u_1w_p" aria-label="Thêm địa điểm vào bài đăng" title="Thêm địa điểm vào bài đăng" role="button" href="#" class="_y9"><span class="_1dst"><span class="_4-px ellipsis">Thêm địa điểm vào bài đăng</span></span>
+									  <div class="_6a _1dsu">
+										<div style="height:30px" class="_6a _6b"></div>
+										<div class="_6a _6b"><span class="_y8"></span></div>
+									  </div>
+									  </a><a id="u_1w_q" title="Xóa" rel="async-post" ajaxify="/ajax/places/toggle_location_sharing?disable=1&amp;session_id=1376211657" role="button" href="#" class="_4_z3 uiCloseButton uiCloseButtonSmall"></a>
+									  <input type="hidden" id="u_1w_r" name="composertags_city" autocomplete="off">
+									  <input type="hidden" id="u_1w_s" value="false" name="disable_location_sharing" autocomplete="off">
+									  <input type="hidden" value="108458769184495" name="composer_predicted_city" autocomplete="off">
+									</div>
+								  </div>
+								  <div id="u_1w_n" class="lfloat">
+									<div id="u_0_13" class="_6a _m _1dsq _1dsw"><a id="u_0_14" rel="ignore" role="presentation" class="_1dsr"><span class="_4-px ellipsis">Thêm hình ảnh</span>
+									  <div class="_3jk">                  
+										<input type="file" name="files[]" class="_n _5f0v" id="fileimg">
+									  </div>
+									  </a></div>
+									<div class="span7" style="display:none;"><span class="fileupload-loading"></span></div>
+								  </div>
+								</div>
+							  </div>
+							  <ul class="uiList _1dso rfloat _509- _4ki _6-h _6-j _6-i">
+								<li>
+								  <button type="button" class="_42ft _42fu _11b selected _42g- postbutton" value="1">Đăng</button>
+								</li>
+							  </ul>
+							</div>
+						  </div>
+						</div>
+						<div id="noidungpost"></div>
+					  </div>
+					</form>
+			</div>
+			</div>	
+			<div style="float:left; width:48%;height:160px;margin-left:10px"><img src="images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+			<div class="clearfix"></div>
+ </div>
+			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
+				<div id="contentArea" aria-describedby="pageTitle" role="main">					
+					<div id='wrapperlinkview' class='wrapperlinkview'>
 <div class='linkneedview' id='linkneedview' ></div>
 <div id='closelink' class='closelink' >X</div>
 </div>
-<ul class="uiStream" id="boulder_fixed_header"><li class="mts uiStreamHeader"><span class="plm uiStreamHeaderText fss fwb"></span></li></ul>
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
-				<div style="color:red" id="message">Thông báo 14/3/2015 - Update <a href="http://giaiphapthuonghieu.vn/faceseo1.3.xpi" >Addon FACESEO 1.3</a></div>
+				<div style="color:red" id="message"></div>
 				<div id="listUrlViewMore"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
@@ -389,8 +408,10 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				</script>			
 				
 								
-				<div style="padding:5px; text-align:center; margin: 5 105px; background:#D8DFEA;color:#3B5998;width:96%;"><a onclick="loadOtherPost();">Xem thêm</a></div>					
+				<div class="readmore"><a onclick="loadOtherPost();">Xem thêm</a></div>
 				<div id="last_msg_loader"></div>
+				</div>
+				<div class="lfloat colchat">
 				</div>
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
 				<?php 
@@ -402,7 +423,7 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<div id="birthday"><a href="javascript:confirmshareBirthday();"><img src="images/css/birthday.gif" /></a></div>
 				<?php } ?>
 				<!--<a href="javascript:confirmshare()"><img src="images/event/share-hoi-seo-seo-banner-event-fs.png" width="100%"/></a>-->
-<a href="http://faceseo.vn/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" target="_blank"><img src="images/button/button-huong-dan-faceseo.gif" width="100%" /></a><br/>				
+
 				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://<?php echo DOMAIN;?>/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>
 				<div id="bannerfree">
 				<?php
@@ -430,6 +451,11 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 				<div id="loadBannerFree"></div>
 				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
 			</div>
+				
+				<div class="clearfix"></div>
+				</div>
+				
+				
 		</div>	
 <div style="position:fixed;top:78px;right:3px; background:#fff; width: 16%;">
 <!--
@@ -437,7 +463,6 @@ text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  
 <a target="_blank" href="http://thucphamdouong.net/" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_ruou.jpg" width="100%" /></a>
 <br/>
 -->
-<a target="_blank" href="http://inaxgroup.vn" title="QC BANNER 10TR/THÁNG"><img src="images/advertising/sponsor/banner_inaxgroup.jpg" width="100%" /></a>
 </div>	
 			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
