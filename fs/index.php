@@ -279,15 +279,21 @@ exit();
 			<div id="leftCol" class="leftCol">
               <ul class="icon-setting">
 				 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>
-				<li><span class="icon-set icon-view" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
-				<li><span class="icon-set icon-loa" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
-				<li><span class="icon-set icon-message" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>								
+				<li>
+				<span class="icon-set icon-view" id="fsAnaylyticsButton"></span><a class="jewelButton a-view"><span class="jewelCount" id="anaylyticsCountWrapper" ><span id="anaylyticsCountValue">99</span></span> </a>
+				</li>				
+				<li>
+				<span class="icon-set icon-loa" id="fbNotificationsJewel"></span><a class="jewelButton icon-comment"><span class="jewelCount" id="notificationsCountWrapper" ><span id="notificationsCountValue">1</span></span> </a>				
+				</li>				
+				<li>
+				<span class="icon-set icon-message" id="iconemailbutton"></span><a class="jewelButton icon-email"> <span class="jewelCount" id="emailCountWrapper" ><span id="iconemailCountValue">1</span></span> </a>
+				</li>
 				<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
-				<li id="icon-firefox"><a href="http://giaiphapthuonghieu.vn/faceseo1.4.xpi" title="Cài đặt Addon FS1.4 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
+				<li id="icon-firefox"><span class="icon-set icon-firefox" onclick="return openLinkMenu('http://giaiphapthuonghieu.vn/faceseo1.4.xpi');" title="Cài đặt Addon FS1.4 để clickkeywords được +50Đ"></span></li>
 <li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://".DOMAIN."/modules/upload/banner.php"; ?>');"></span> </li>
 				<li><span class="icon-set icon-setting" onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"></span></li>				
 
-
+				
 				<!-- <li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php //echo $PATH_ROOT."l8vhie102w64.php?idgroup=2"; ?>');"></span> </li>				
 				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
 				-->
@@ -300,10 +306,13 @@ exit();
 			  </script>
 			
 			</div>
-			<div style="width:92.1%; margin-left: 6.9%;padding-left:10px;display:block; height: 170px;"> 
-			<div style="float:left; width:50.9%; height:160px;">
-			<div style="border:1px solid #ccc; width:99.9%;background-color:#fff;position: relative;box-shadow: 2px 3px 6px #ccc;">
-					<div style="position:absolute;top: 37px; left:30px;"><img src="images/button/uparrow.png" /></div>
+			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
+				
+				<div id="contentArea" aria-describedby="pageTitle" role="main">	
+				
+				<div style="float:left; width:100%;margin-bottom:10px">
+					<div style="border:1px solid #ccc; width:99.9%;background-color:#fff;position: relative;box-shadow: 2px 3px 6px #ccc;">
+					<div style="position:absolute;top: 36px; left:30px;"><img src="images/button/uparrow.png" /></div>
 					<div id="infopoint">					
 						<div id="point">
 						<img src="images/button/point.png">
@@ -389,13 +398,11 @@ exit();
 						<div id="noidungpost"></div>
 					  </div>
 					</form>
-			</div>
-			</div>	
-			<div style="float:left; width:47.8%;height:160px;margin-left:10px"><img src="images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
-			<div class="clearfix"></div>
- </div>
-			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
-				<div id="contentArea" aria-describedby="pageTitle" role="main">					
+					</div>
+				</div>	
+			
+				
+				
 					<div id='wrapperlinkview' class='wrapperlinkview'>
 <div class='linkneedview' id='linkneedview' ></div>
 <div id='closelink' class='closelink' >X</div>
@@ -416,6 +423,9 @@ exit();
 				<div class="readmore"><a onclick="loadOtherPost();">Xem thêm</a></div>
 				<div id="last_msg_loader"></div>
 				</div>
+				<div>
+				<div style="float:left; width:47.8%;height:160px;margin:0 0 10px 10px"><img src="images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+				
 				<div class="lfloat colchat" id="colchat">
 				<div class="tchat"><img src="images/button/icongroup.png" /> | Chat group</div>
 				</div>
@@ -430,7 +440,8 @@ exit();
 				<?php } ?>
 				<!--<a href="javascript:confirmshare()"><img src="images/event/share-hoi-seo-seo-banner-event-fs.png" width="100%"/></a>-->
 
-				<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://<?php echo DOMAIN;?>/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>
+				<!--<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://<?php echo DOMAIN;?>/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>-->
+				<div class="tchat">Quảng cáo | <img src="images/css/icon-ads.png" /></div>
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
@@ -457,7 +468,7 @@ exit();
 				<div id="loadBannerFree"></div>
 				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
 			</div>
-				
+				</div>
 				<div class="clearfix"></div>
 				</div>
 				
@@ -646,8 +657,10 @@ $( "#fbNotificationsJewel" ).click(function() {
 	if($('#notify_content_wrapper').css('display') == 'none' && clickButtonPush==true)
 	{
 		window.idNotifyStart=0;
+		$('#notify_content_wrapper').html("");
+		$('.icon-comment').css("display","none");
 		notifyComment(root_path + "modules/notify.php",idUser,window.idNotifyStart);
-		$("#notify_content_wrapper").slideDown('show');
+		$("#notify_content_wrapper").show();
 	}
 	else
 	{
@@ -659,8 +672,10 @@ $( "#iconemailbutton" ).click(function() {
 	if($('#notify_content_wrapper').css('display') == 'none' && clickButtonPush==true)
 	{
 		window.idNotifyStart=0;
+		$('#notify_content_wrapper').html("");		
+		$('.icon-email').css("display","none");
 		notifyEmail(root_path + "modules/notifyemail.php",idUser,window.idNotifyStart);
-		$("#notify_content_wrapper").slideDown('show');
+		$("#notify_content_wrapper").show();
 	}
 	else
 	{
@@ -887,7 +902,7 @@ $('body').on('keyup','textarea,.contentbox,.content-namereceivepoint', function(
 	}
 	if (boolStartFindName && go!=null && go.length>0 && name!="@" && name!="@ " && name!="@  " && e.keyCode!=40)
 	{
-		$("#msgbox").slideDown('show');
+		$("#msgbox").show();
 		$.ajax({
 					type: "POST",
 					url: "boxsearch.php",
