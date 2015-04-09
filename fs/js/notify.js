@@ -41,16 +41,17 @@ function getNumuNotifyComment(url,idUser)
 	xmlhttp_notify.onreadystatechange = function() {
 	if(xmlhttp_notify.readyState == 4 && xmlhttp_notify.status == 200){						
 			$('#numnotify').html(xmlhttp_notify.responseText);
+			
 			if(parseInt(xmlhttp_notify.responseText)!=0)
 			{
-				$('#notificationsCountWrapper').css("display","block");
+				$('.icon-comment').css("display","block");
 				$('#notificationsCountValue').html(xmlhttp_notify.responseText);
 				document.title = "("+xmlhttp_notify.responseText+ ") FaceSeo.Vn Mạng tương tác dành cho Seoer ";
 				
 			}
 			else
 			{
-				$('#notificationsCountWrapper').css("display","none");
+				$('.icon-comment').css("display","none");
 				document.title = "FaceSeo.Vn Mạng tương tác dành cho Seoer ";
 			}			
 		}
@@ -76,15 +77,14 @@ function getNumMessage(url,idUser)
 	if(xmlhttp_notify.readyState == 4 && xmlhttp_notify.status == 200){	
 			if(parseInt(xmlhttp_notify.responseText)!=0)
 			{
-				$('#emailCountWrapper').css("display","block");
-				$('#iconemailCountValue').css("display","block");;
+				$('.icon-email').css("display","block");
 				$('#iconemailCountValue').html(xmlhttp_notify.responseText);
 				document.title = "("+xmlhttp_notify.responseText+ ") FaceSeo.Vn Mạng tương tác dành cho Seoer ";
 				
 			}
 			else
 			{
-				$('#emailCountWrapper').css("display","none");
+				$('.icon-email').css("display","none");
 				document.title = "FaceSeo.Vn Mạng tương tác dành cho Seoer ";
 			}			
 		}
@@ -136,14 +136,12 @@ function getAnalytics(url,idUser)
 		if(xmlhttp_notify.readyState == 4 && xmlhttp_notify.status == 200){	
 			if(parseInt(xmlhttp_notify.responseText)!=0)
 			{
-				$('#anaylyticsCountWrapper').css("display","block");
-				$('#anaylyticsCountValue').css("display","block");
+				$('.a-view').css("display","block");
 				$('#anaylyticsCountValue').html(xmlhttp_notify.responseText);
 			}
 			else
 			{
-				$('#anaylyticsCountWrapper').css("display","none");
-				$('#anaylyticsCountValue').css("display","none");
+				$('.a-view').css("display","none");
 				document.title = "FaceSeo.Vn Mạng tương tác dành cho Seoer ";
 			}			
 		}

@@ -1130,7 +1130,7 @@ function showPost(json)
 						{							
 						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" class="postcontent" >';
 						   
-						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
+						   htmlnewpost+='<div style="float:right; width:100%; margin-bottom:10px;box-shadow: 2px 3px 6px #ccc;">';
 						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:10% ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
 						   if (json.post[i].leveluser==0)

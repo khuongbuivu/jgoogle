@@ -560,4 +560,7 @@ float:right;position:absolute;top:0px;right:8px;cursor: pointer; cursor: hand;
 {
 	width:99% !important;
 }
+.boxtagfullsecond{
+	z-index:0;
+}
 /*popup */

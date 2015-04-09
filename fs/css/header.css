@@ -254,17 +254,12 @@ h1 {
 }
 
 .jewelCount span {					
-	background-color:red;
-	border: medium none;
-    border-radius: 2px 2px 2px 2px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
     font-family: "Helvetica Neue",Helvetica,Arial,"segoe ui",tahoma,sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
-    height: 14px;
-    line-height: 14px;
-    min-width: 12px;
-    padding: 2px;
+    height: 20px;
+    line-height: 20px;
+    min-width: 12px;   
     text-align: center;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -296,23 +291,7 @@ left: 50%;
 #headleft img{
 margin-top:0px;
 }
-span#anaylyticsCountWrapper{
-display:none;
-}
-#anaylyticsCountValue{
-display:none;
-}
-span#notificationsCountWrapper {
-display:none;
-}
 
-
-#iconemailCountValue{
-display:none;
-}
-span#emailCountWrapper {
-display:none;
-}
 #pagelet_bluebar{
 
 position:fixed; top:0px; margin:0;padding:0; width:100%; z-index:1111;

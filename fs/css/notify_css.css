@@ -113,7 +113,7 @@
 	background: #111;
 }
 #notify_content_wrapper{
-position:fixed;top:55px;right:2px; background:#fff;width:500px; height:550px; display:none;
+position:fixed;top:55px;left:7.5%; background:#fff;width:500px; height:550px; display:none;
 }
 #notify_content_wrapper {
     background: none repeat scroll 0 0 padding-box rgba(255, 255, 255, 0.98);
