@@ -189,14 +189,7 @@ li.sbs a.topmn:hover, li.sbs a.topmn.active {
 	z-index: 8;
 	left: 461px;
 }
-.logo {
-	float: left;
-	width: 195px;
-}
-.logo img {
-	position: absolute;
-	left: 80px;
-}
+
 .submenu {
 	background: #1d1d1d;
 	width: 600px;

@@ -117,6 +117,7 @@ if (intval(checkSharedFs($id_user))==0)
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/link.js"></script>
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script>
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/post.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/scriptmenu.js"></script>
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/comment.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
@@ -124,6 +125,7 @@ if (intval(checkSharedFs($id_user))==0)
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/notify_css.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/tipsy.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/dialog.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylesmenu.css" type="text/css" />
 	<!-- Scroll bar -->
 	<link href="<?php echo $PATH_ROOT;?>libs/scrollbar/js/css.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/overthrow.min.js"></script>
@@ -276,17 +278,20 @@ exit();
 		<div id="mainContainer">
 			<div id="leftCol" class="leftCol">
               <ul class="icon-setting">
-                <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
-				<li id="icon-firefox"><a href="http://giaiphapthuonghieu.vn/faceseo1.3.xpi" title="Cài đặt Addon FS1.3 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
-				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
+				 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>
+				<li><span class="icon-set icon-view" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
+				<li><span class="icon-set icon-loa" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
+				<li><span class="icon-set icon-message" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>								
+				<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
+				<li id="icon-firefox"><a href="http://giaiphapthuonghieu.vn/faceseo1.4.xpi" title="Cài đặt Addon FS1.4 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
 <li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://".DOMAIN."/modules/upload/banner.php"; ?>');"></span> </li>
-				
-<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
+				<li><span class="icon-set icon-setting" onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"></span></li>				
+
 
 				<!-- <li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php //echo $PATH_ROOT."l8vhie102w64.php?idgroup=2"; ?>');"></span> </li>				
 				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
 				-->
-				<li><a onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"><span class="icon-set icon-setpanel"   ></span></a></li>
+				
                </ul>
 			  <script>
 				var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -295,7 +300,7 @@ exit();
 			  </script>
 			
 			</div>
-			<div style="width:92.1%; margin-left: 6.9%;padding-left:10px;overflow: hidden;display:block; height: 170px;"> 
+			<div style="width:92.1%; margin-left: 6.9%;padding-left:10px;display:block; height: 170px;"> 
 			<div style="float:left; width:50.9%; height:160px;">
 			<div style="border:1px solid #ccc; width:99.9%;background-color:#fff;position: relative;box-shadow: 2px 3px 6px #ccc;">
 					<div style="position:absolute;top: 37px; left:30px;"><img src="images/button/uparrow.png" /></div>
@@ -386,7 +391,7 @@ exit();
 					</form>
 			</div>
 			</div>	
-			<div style="float:left; width:48%;height:160px;margin-left:10px"><img src="images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+			<div style="float:left; width:47.8%;height:160px;margin-left:10px"><img src="images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 			<div class="clearfix"></div>
  </div>
 			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
@@ -411,7 +416,8 @@ exit();
 				<div class="readmore"><a onclick="loadOtherPost();">Xem thêm</a></div>
 				<div id="last_msg_loader"></div>
 				</div>
-				<div class="lfloat colchat">
+				<div class="lfloat colchat" id="colchat">
+				<div class="tchat"><img src="images/button/icongroup.png" /> | Chat group</div>
 				</div>
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
 				<?php 
@@ -1165,6 +1171,16 @@ $(document).ready(function(){
 			loadOtherBanner();
 		  }
 		});	
+		
+		$(window).bind('scroll', function() {
+	    var navHeight = $( window ).height() - 50;
+			 if ($(window).scrollTop() > navHeight) {
+				 $('#colchat').addClass('fixed');
+			 }
+			 else {
+				 $('#colchat').removeClass('fixed');
+			 }
+		});
 });
 
 var isloading=false;
