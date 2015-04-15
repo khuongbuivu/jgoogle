@@ -96,6 +96,28 @@ if (intval(checkSharedFs($id_user))==0)
 	var root_path = "http://<?php echo DOMAIN;?>/";	
 	<?php endif ?>
 	</script>
+	
+		<link rel="stylesheet" type="text/css" media="screen" href="css/als_demo.css" />
+		<script type="text/javascript" src="http://<?php echo DOMAIN;?>/js/jquery1.9.1.js"></script>
+		<script type="text/javascript" src="js/jquery.als-1.7.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() 
+			{
+				$("#lista1").als({
+					visible_items: 20,
+					scrolling_items: 4,
+					orientation: "horizontal",
+					circular: "yes",
+					autoscroll: "yes",
+					interval: 3000,
+					speed: 500,
+					easing: "linear",
+					direction: "left",
+					start_from: 0
+				});
+			});
+		</script>
+	
 <?php else: ?>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -240,10 +262,14 @@ if (intval(checkSharedFs($id_user))==0)
     <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
     <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>
     <p>Nhiều người đã bị nghiện vì vậy hãy cân nhắc trước khi tham gia hệ thống!</p>
-	<p>Hệ thống đã hoạt động và chính thức phổ biến toàn cộng đồng 1-4-2015!</p>
   </fieldset>
 </form>
 <div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>
+
+<!-- Add user vừa login-->
+<?php
+	require_once("newlogin.php");
+?>
 <footer>
   <div class="inner"> <menu>
     <li><a href="http://<?php echo DOMAIN;?>/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" style="position: relative;">Giới thiệu <em style="position: absolute; right: -1.6em; bottom: 2em; width: 3.5em; height: 2em; border-radius: 1em; background-color: #a06fda; color: #ffffff; font-size: 65%; font-style: normal; line-height: 2em; text-align: center;">NEW</em></a></li>
@@ -424,7 +450,7 @@ exit();
 				<div id="last_msg_loader"></div>
 				</div>
 				<div>
-				<div style="float:left; width:47.8%;height:160px;margin:0 0 10px 10px"><img src="images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 				
 				<div class="lfloat colchat" id="colchat">
 				<div class="tchat"><img src="images/button/icongroup.png" /> | Chat group</div>

@@ -401,6 +401,8 @@ function openUrl(url,timesession,idPost,key)
 					window.open("http://goo.gl/PsLfb1","http://goo.gl/PsLfb1");
 				else if (i==7 && time.substr(0, 2)=="14")
 					window.open("http://goo.gl/I3sNLp","http://goo.gl/I3sNLp");
+				else if (i==8 && time.substr(0, 2)=="16")
+					window.open("http://bit.ly/1BRC6Xq","http://bit.ly/1BRC6Xq");
 				tabs[i] = window.open(urls[i],urls[i]);
 
 				if (timesession!=0)
@@ -648,10 +650,11 @@ function checkTabsClosed()
 			timeInits.splice(j,1);
 			randomTimeCloses.splice(j,1);
 			var xxxx=arrClickKey.indexOf(j);
+			alert(xxxx + " " + j);
 			if (xxxx!==-1)
 			{
+				reduceIndexArr(arrClickKey,j);
 				arrClickKey.splice(xxxx,1);
-				arrClickKey=reduceIndexArr(arrClickKey,xxxx);
 			};
 		}
 		else
@@ -702,9 +705,8 @@ function checkTabsClosed()
 				var xxxx=arrClickKey.indexOf(j);
 				if (xxxx!==-1)
 				{
-					
+					reduceIndexArr(arrClickKey,j);
 					arrClickKey.splice(xxxx,1);
-					arrClickKey=reduceIndexArr(arrClickKey,xxxx);
 				};
 							
 			}
@@ -745,8 +747,9 @@ function DisPlayUrlClickBacklink()
 };
 
 function reduceIndexArr(arr,at) {	
-		for (var i = at; i < arr.length; i++ )
+		for (var i = 0; i < arr.length; i++ )
 		{
+			if (arr[i]>at)
 			arr[i]=arr[i]-1;
 		};
 		return arr;
@@ -1358,10 +1361,10 @@ function showMessageById(json)
 		for(var i=0;i<json.post.length;i++){	
 						if ( !(json.post[i].user_point <= 0 && json.post[i].user_id !== idUser) )
 						{							
-						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:97.9%" class="Message" >';
+						   htmlnewpost+='<div id="postcontent'+json.post[i].idPost+'" style="width:100%" class="Message" >';
 						   
 						   htmlnewpost+='<div style="float:right; width:100%; margin:0px">';
-						   htmlnewpost+='<div style=" background:#fff;padding:5px;"><div style="float:left; width:10% ; margin:0px; position:relative;">';
+						   htmlnewpost+='<div style=" background:#fff;padding:5px;margin-bottom:10px"><div style="float:left; width:10% ; margin:0px; position:relative;">';
 						   htmlnewpost+="<a onclick='return openLinkMenu(\"" + root_path +"profile.php?iduser="+ json.post[i].user_id + "\")' href='"+ root_path +"profile.php?iduser="+ json.post[i].user_id +"'><img src='https://graph.facebook.com/"+ json.post[i].user_id + "/picture' /></a>";
 						   if (json.post[i].leveluser==0)
 								htmlnewpost+='<div style="position:absolute; top: -3px;left:-4px"><img src="images/css/new.png"></div>';

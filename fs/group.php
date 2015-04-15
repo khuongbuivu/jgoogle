@@ -571,7 +571,7 @@ $( "#fbNotificationsJewel" ).click(function() {
 	{
 		window.idNotifyStart=0;
 		notifyComment(root_path + "modules/notify.php",idUser,window.idNotifyStart);
-		$("#notify_content_wrapper").slideDown('show');
+		$("#notify_content_wrapper").show('slide', {direction: 'right'}, 1000);
 	}
 	else
 	{
@@ -586,7 +586,7 @@ $( "#iconemailbutton" ).click(function() {
 	{
 		window.idNotifyStart=0;
 		notifyEmail(root_path + "modules/notifyemail.php",idUser,window.idNotifyStart);
-		$("#notify_content_wrapper").slideDown('show');
+		$("#notify_content_wrapper").show('slide', {direction: 'right'}, 1000);
 	}
 	else
 	{

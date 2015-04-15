@@ -338,7 +338,7 @@ var catchAllLinks = {
 		{
 			tabIndex = gBrowser.tabContainer.selectedIndex;
 			urlCurrentTab = gBrowser.currentURI.spec;
-			/*
+			
 			for (var kk=0;kk<arrLinks.length;kk++)
 				console.log("arrLinks["+ kk + "]: " + arrLinks[kk].origin + " " + arrLinks[kk].prev + " <br/>");
 			for (xx=0;xx<urlParents.length;xx++)
@@ -350,7 +350,7 @@ var catchAllLinks = {
 				if (arrkey[xx]!=="")
 					console.log("arrkey " + xx + " " + arrkey[xx]);
 			};
-			*/
+			
 			
 			
 		};		

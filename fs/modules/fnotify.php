@@ -134,7 +134,7 @@ if(!isset($_SESSION)){
 			$jjj=$ii + 1;
 			if($urls[$ii]!="")
 			{
-				$q='link =\''.$urls[$ii].'\'';
+				$q='link like \'%'.$urls[$ii].'%\'';
 				$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc');		
 				if (strlen($urls[$ii])>60)
 					$urls[$ii] = substr($urls[$ii],0,60)."...";			

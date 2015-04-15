@@ -54,6 +54,7 @@ if(!isset($_SESSION)){
 	$keyword = $_POST['keyword'];
 	$link = $_POST['link'];
 	$link=rtrim($link, "/");
+	$link=addhttp($link);
 	$linkhinh = $_POST['linkhinh'];
 	if($textcomment!="")
 	{

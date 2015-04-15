@@ -33,7 +33,8 @@
 						else
 							$time = $_SESSION['TIMEMAXVIEWMYLINK'];
 						$match1 =$match;
-						if (strpos($match,"www")==0)
+						$isw=strpos($match,"www");
+						if ($isw!== false && strpos($match,"www")==0)
 							$match1 ="http://".$match;
 						if ($count==$ii || $arrkeys[$ii]!="")
 							$replacement[$ii] = "<a href=".($match1)."  onclick=\"return openUrl(this.href,$time,$idPost,\'$key\');\" >{$shortlink}</a>";
@@ -67,11 +68,29 @@
 			// Check if there is a url in the text
 			if(preg_match_all($reg_exUrl, $text, $url)) {
 				   // make the urls hyper links
+				    $match1 =$match;
+					$isw=strpos($match,"www");
+					if ($isw!== false)
+						$match1 ="http://".$match;					
 				   $matches = array_unique($url[0]);
+				   $i=0;
+				   foreach($matches as $match) {
+						$match=addhttp($match);
+						$matches[$i]=$match;
+						$i=$i+1;
+				   }				   
 				   return  $matches;
 			}
 			return null;
 
+	}
+	function addhttp($link)
+	{
+	
+		$isw=strpos($link,"www");
+		if ($isw!== false && strpos($match,"www")==0)
+			$url ="http://".$link;
+		return $url;
 	}
 	function isContentSex($content)
 	{
@@ -360,7 +379,7 @@ function checkSharedFs($idUser)
 	$share = 0;
 	if($okshare->num_rows>0)
 	{
-		
+		$share=1;
 		$row = mysqli_fetch_array($okshare);
 		$timeSaved=strtotime($row['share_time']);
 		$t =$timeCurrent - $timeSaved;		
@@ -369,7 +388,7 @@ function checkSharedFs($idUser)
 			$day=(int)($t/86400);
 		if ($pointCurrent > -1 && $pointCurrent < 100 && $day > 5 )
 		{
-			$share=1;
+			$share=0;
 		}
 	}
 	mysqli_close($con);

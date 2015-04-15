@@ -79,6 +79,7 @@ $data[75]="/save_link.php/" ; $datafiles[75]="save_link.php" ; $replacdata[75]="
 $data[76]="/addbanner.php/" ; $datafiles[76]="addbanner.php" ; $replacdata[76]="nl8ki81x8n3.php";
 $data[77]="/get_point.php/" ; $datafiles[77]="get_point.php" ; $replacdata[77]="xbh4lbf6l562.php";
 $data[78]="/ajaxupload.js/" ; $datafiles[78]="ajaxupload.js" ; $replacdata[78]="754jzp9m4l16.js";
+$data[111]="/scriptmenu.js/" ; $datafiles[111]="scriptmenu.js" ; $replacdata[111]="8vudszl2bs5m134.js";
 $data[79]="/unlockall.php/" ; $datafiles[79]="unlockall.php" ; $replacdata[79]="ddpab165xc132.php";
 $data[80]="/add_point.php/" ; $datafiles[80]="add_point.php" ; $replacdata[80]="8nqek3jl724.php";
 $data[81]="/boxsearch.php/" ; $datafiles[81]="boxsearch.php" ; $replacdata[81]="wk4rg65fot23.php";

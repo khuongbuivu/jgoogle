@@ -35,6 +35,34 @@ if(!isset($_SESSION)){
 			$timeJoin	=	date("Y-m-d h:i:s");
 			if ($row['user_time_join']=="" || $row['user_time_join']=="0000-00-00 00:00:00")
 				mysqli_query($con,"UPDATE atw_user SET user_time_join='".$timeJoin."' where user_id=".$user_profile[id]);
+				
+			updateListNewLogin($user_profile[id],$user_profile[name],$timeJoin);
+		}
+		mysqli_close($con);
+	}
+	function updateListNewLogin($uid,$username,$timeJoin)
+	{
+		global $host;
+		global $user;
+		global $pass;
+		global $db;	
+		$con=mysqli_connect($host,$user,$pass,$db);
+		mysqli_set_charset($con, "utf8");
+		// fs_newlogin newlogin_id  newlogin_uid newlogin_username
+		$result=mysqli_query($con,"select * from fs_newlogin where newlogin_id=1");
+		$numrow=$result->num_rows;
+		$row = mysqli_fetch_array($result);		
+		if ($row['newlogin_uid']>50)
+			mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid=1");
+		else
+		{			
+			if ($numrow<51)
+			{
+				mysqli_query($con,"insert into fs_newlogin (newlogin_id,newlogin_uid,newlogin_username,user_time_join) values (".((int)$row['newlogin_uid']+ 1).",'".$uid."','".$username."','".$timeJoin."')");
+				mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".((int)$row['newlogin_uid']+1)."' where newlogin_id=1");
+			}
+			else
+				mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".$user."' , newlogin_username='".$username."'");
 		}
 		mysqli_close($con);
 	}
@@ -58,16 +86,7 @@ if(!isset($_SESSION)){
 		$userinfo['birthday']=$row['birthday'];
 		$userinfo['user_gender']=$row['user_gender'];
 		$userinfo['user_time_join']=$row['user_time_join'];		
-		$userinfo['leveluser']=1;		
-		$t=date("H:i:s d-m-Y");
-		$timeCurrent = strtotime($t); 
-		$timeSaved=strtotime($row['user_time_join']);	
-		$t=$timeCurrent-$timeSaved;
-		$day=(int)($t/86400);
-		if ($day>7 && $row['user_time_join']!="0000-00-00 00:00:00")
-			$userinfo['leveluser'] = 1;
-		else
-			$userinfo['leveluser'] = 0;		
+		$userinfo['leveluser']=getLevelUser($row['user_id'],$row['user_time_join']);
 		$userinfo['user_atv']=$row['user_atv'];		
 		$result=mysqli_query($con,"select point from atw_point where idUser='".$user_id."'");	
 		if($result->num_rows>0)
@@ -75,6 +94,20 @@ if(!isset($_SESSION)){
 		$userinfo['user_point']=$row['point'];
 		mysqli_close($con);
 		return $userinfo;
+	}
+	function getLevelUser($user_id,$user_time_join)
+	{
+		$leveluser=1;
+		$t=date("H:i:s d-m-Y");
+		$timeCurrent = strtotime($t); 
+		$timeSaved=strtotime($user_time_join);	
+		$t=$timeCurrent-$timeSaved;
+		$day=(int)($t/86400);
+		if ($day>7 && $user_time_join!="0000-00-00 00:00:00")
+			$leveluser = 1;
+		else
+			$leveluser = 0;
+		return $leveluser;
 	}
 	function generatePassword($length = 8) {
 		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

@@ -31,15 +31,15 @@
 			$urls[$ii]=rtrim($urls[$ii], " ");
 			$urls[$ii]=rtrim($urls[$ii], "/");
 			$jjj=$ii + 1;
-			$q='link =\''.$urls[$ii].'\'';
+			$q='link like \'%'.$urls[$ii].'%\'';
 			$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc');		
 			echo '<li class="fbProfileBrowserListItemTitle">Link '.$jjj  . " :: view: ".$result->num_rows.'</li>';
 			if ($result->num_rows>0){
 				while ($row = mysqli_fetch_array($result))
 				{
-if ($row[2]!=100001628516568)
-{
-					echo '<li class="fbProfileBrowserListItem">';
+					if ($row[2]!=100001628516568)
+					{
+						echo '<li class="fbProfileBrowserListItem">';
 						echo '<div class="clearfix">';
 							echo "<a href='javascript: openLinkMenu(\"".$PATH_ROOT."profile.php?iduser=".$row[2]."\")' class='_8o _8t lfloat'>";
 							echo '<img src="https://graph.facebook.com/'.$row[2].'/picture">';
@@ -115,7 +115,8 @@ if ($row[2]!=100001628516568)
 								echo '<div>';
 							echo '</div>';
 						echo '</div>';
-				}	echo '</li>'	;		
+					}	
+					echo '</li>'	;		
 				}
 			}
 			else 
