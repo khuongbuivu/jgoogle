@@ -25,7 +25,7 @@ if ($infoUser['user_manager']!=3 && $okdel==false)
 	exit();
 mysqli_query($con,"DELETE FROM atw_cmt_content WHERE Id=".$idCmt);
 mysqli_query($con,"DELETE FROM atw_notify WHERE notify_id_comment=".$idCmt);
-mysqli_query($con,"DELETE FROM fs_check_notify WHERE check_notify_id_comment=".$idCmt." and check_notify_id_user=".$_SESSION['session-user']);
+mysqli_query($con,"DELETE FROM fs_check_notify WHERE check_notify_id_comment=".$idCmt." and check_notify_id_user=".$row['userId']);
 mysqli_close($con);
 
 // Must check user permission to del comment
