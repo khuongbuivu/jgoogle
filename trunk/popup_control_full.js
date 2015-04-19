@@ -117,7 +117,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://faceseo.vn' target='_blank'><img src='http://faceseo.vn/images/advertising/470x245-banner-faceseo.jpg' width='500px'/></a><h2><a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://faceseo.vn' target='_blank'><img src='https://jgoogle.googlecode.com/svn/trunk/cong-ty-seo.jpg' width='500px'/> Hoi thao seo 2015 HN</a><h2><a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
