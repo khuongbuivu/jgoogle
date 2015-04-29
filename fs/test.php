@@ -2,8 +2,6 @@
 <?php
 $match="http://giaiphapthuonghieu.vn";
 $match1 =$match;
-echo "aaa".strpos($match,"www");
-echo "bbb".strpos($match,"www");
 if(strpos($match,"www")!="")
 	echo "Khac rong"; 
 if(strpos($match,"www")!=null)
