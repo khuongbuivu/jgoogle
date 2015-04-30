@@ -88,7 +88,8 @@
 	{
 	
 		$isw=strpos($link,"www");
-		if ($isw!== false && strpos($match,"www")==0)
+		$url= $link;
+		if ($isw!== false && strpos($link,"www")==0)
 			$url ="http://".$link;
 		return $url;
 	}
