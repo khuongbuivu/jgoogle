@@ -1,0 +1,55 @@
+Cài đặt Addon
+https://chrome.google.com/webstore/developer/dashboard
+
+Document
+https://developer.chrome.com/extensions/packaging#upload
+
+Test 14-4
+
+
+Cài Addon Chrome vào cứ click vào FB là nó ra tab mới ko tài nào logout FB được
+Với những chuỗi keywords= null thì không thống kê đủ số lượng keywords đã click
+Ví dụ trường hợp này
+http://giaiphapthuonghieu.vn ###test!!!
+http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-... ###abc 
+Khi click vào link 2 rồi click tiếp vào 5 keywords nhưng ko thống kê đủ 5 keywords đã click
+Đối với link Search Google. Khi click vào keywords nó mới nháy nháy
+Cái link này nó vẫn không nháy nháy được cụm từ "rèm tre trúc"  http://www.remtretruc.net/ ###rèm tre trúc!!! ###300s***
+
+
+
+Phiên bản Addon Chrome khá hoàn thiện với 1 số tính năng:
+- View keywords với thời gian ngẫu nhiên 5-10p(bản firefox cố định 5p)
+- Nhấp nháy keywords cần view đỡ tốn thời gian tìm
+- Không view lại những link đang view rất tốt cho website
+- View cùng lúc nhiều tab mà ko bị crash trình duyệt
+- Chạy mượt, tính điểm chính xác hơn
+- Click website trong kết quả search Google dùng chuột trái không cần chuột giữa, phải
+Link cài đặt (click vào dòng "Add To Chrome"):
+https://chrome.google.com/webstore/detail/faceseo/eebnclbeehfpllpicofgijicjipmamah ###add to chrome!!!
+
+
+https://docs.google.com/spreadsheets/d/1K6-xuophKiyHDiQSQsYFZRxO2RkjBLkELsWh7aWXorg/edit#gid=0
+
+
+Link lỗi key túi khí http://cachnhietdonga.net/125/tui-khi-cach-nhiet-cho-mai-ton
+
+Lỗi không Update được keywords https://www.google.com.vn/?gws_rd=ssl#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+faceseo ###Faceseo!!!
+https://www.google.com.vn/#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+faceseo ###giaiphapthuonghieu.net,giaiphapthuonghieu.vn!!!
+
+
+SELECT *
+FROM `atw_click_link`
+WHERE `link` LIKE "%https://www.google.com.vn/?gws_rd=ssl#q=%C4%91%C3%A0o+t%E1%BA%A1o+seo+faceseo%"
+ORDER BY `id` DESC
+LIMIT 0 , 30 
+
+SELECT * FROM `fs_click_backlink` WHERE `id` in (1193,1194)
+
+Lỗi 
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=30&cad=rja&uact=8&ved=0CFgQFjAJOBQ&url=http%3A%2F%2Fthucucsaigon.vn%2Ftu-van%2Fchi-phi-triet-long-vinh-vien.html&ei=1ctAVfL_F8LAmwX17oGABQ&usg=AFQjCNF62ueR14UQvr5jGkOwjAACIRXgIQ&bvm=bv.91665533,d.dGY ###triệt lông vĩnh viễn!!!
+
+Debug gúp e. View keywords mà không được thống kê
+https://www.youtube.com/watch?v=tFwNg2ii4EI ###thao lap dieu hoa!!! 
+
+<a href=https://www.google.com.vn/?gws_rd=ssl#q=yen+sao+can+gio+trang+nhi  onclick="return openUrl(this.href,300,107740,'yen sao can gio trang nhi');" >https://www.google.com.vn/?gws_rd=ssl#q=yen+sao+can+gio+trang+nhi</a>  ###yen sao can gio trang nhi!!!  ###300s***
