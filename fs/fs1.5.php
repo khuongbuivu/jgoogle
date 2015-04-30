@@ -89,6 +89,7 @@ else // Close tab
 		if ($_GET['deepbacklink']=="1")
 		{		
 			echo "UPDATE fs_click_backlink set timeclose = '".$timeClose."' ,timeview=".$timeView." where iduser='".$idUser."' and link like '%".$urlClicked."%' and timeclienttmp like '%".$currentDay."%'";
+			if ($UPDATE!=1)
 			mysqli_query($con,"UPDATE fs_click_backlink set timeclose = '".$timeClose."' ,timeview=".$timeView." where iduser='".$idUser."' and link like '%".$urlClicked."%' and timeclienttmp like '%".$currentDay."%'");
 		}
 		$resultIP=mysqli_query($con,"select ip_click_link_numview from fs_ip_click_link where ip_click_link_url='".$urlClicked."' and ip_click_link_id_user='".$idUser."' and ip_click_link_ip='".$_SESSION['ip']."'" );
