@@ -1948,3 +1948,12 @@ function getUrLSharePlus(str)
 	return "";
 	
 };
+processForMobile();
+function processForMobile()
+{
+	if(isMobile==true)
+	{
+		$('.mainright').css("display","none");
+		$('#contentArea').css("width","98%");
+	}
+};
