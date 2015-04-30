@@ -2,12 +2,12 @@
 if(!isset($_SESSION)){
     session_start();
 }
-require_once("../../definelocal.php");
+include_once("../../definelocal.php");
 include_once("../../define.php");
 include_once("../../time.php");
 include_once("../../config.php");
 include_once('../../fcomment.php');
-require_once('../../system/function.php');
+include_once('../../system/function.php');
 global $host;
 global $user;
 global $pass;
@@ -39,40 +39,46 @@ var refreshIntervalId=0;
 var timetmp=0;
 
 </script>
-<?php /*<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>*/?>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="<?php echo $PATH_ROOT;?>modules/upload/upclick.js"></script> <!-- for upload file -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/tinybox.js"></script> <!-- for popup -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/warning.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/banner.js"></script>
-<?php /*?><script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script><?php */?>
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/comment.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylepopup.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/notify_css.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/tipsy.css" type="text/css" />
-
-<!-- Scroll bar -->
-<link href="<?php echo $PATH_ROOT;?>libs/scrollbar/js/css.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/overthrow.min.js"></script>
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/jquery.nanoscroller.js"></script>
-<!-- end Scroll bar -->
-<!-- point -->
-<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/point.js"></script>
-<!-- end point -->
-<!-- thanh -->
-<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
-<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
-<link href="http://<?php echo DOMAIN;?>/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
-<!-- end thanh -->
-<!-- add scroll top comment -->
-<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
-<!-- add scroll top comment -->
-<script type="text/javascript" >	
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/comment.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/var.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
+	<script src="<?php echo $PATH_ROOT;?>modules/upload/upclick.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/tinybox.js"></script> <!-- for popup -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/keycode.js"></script> <!-- add keycode -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/notify.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/warning.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/banner.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/link.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery.tipsy.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/post.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/scriptmenu.js"></script>
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/comment.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylepopup.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/notify_css.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/tipsy.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/dialog.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylesmenu.css" type="text/css" />
+	<!-- Scroll bar -->
+	<link href="<?php echo $PATH_ROOT;?>libs/scrollbar/js/css.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/overthrow.min.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>libs/scrollbar/js/jquery.nanoscroller.js"></script>
+	<!-- end Scroll bar -->
+	<!-- point -->
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/point.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/dialog.js"></script>
+	<!-- end point -->
+	<!-- thanh -->
+	<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
+	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery.carouFredSel.js"></script>
+	<link href="http://<?php echo DOMAIN;?>/index/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<!-- end thanh -->
+	<!-- add scroll top comment -->
+	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
+	<!-- add scroll top comment -->
+	<script type="text/javascript" >	
 setInterval("autoLoadComment('" + root_path + "content_comment.php',<?php echo (int)($id) ?>)",10000);
 setInterval("B()",5000);
 setInterval("checkTabsClosed()",5000);
@@ -105,26 +111,35 @@ include_once("../../user.php");
 	<div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content">
 		<div>
 		<div id="mainContainer">
-			<div id="leftCol">
+			<div id="leftCol" class="leftCol">
               <ul class="icon-setting">
-                
-				 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>				
-				<li id="icon-firefox"><a href="<?php echo $PATH_ROOT."faceseo1.2.xpi"; ?>" title="Cài đặt Addon FS1.2 để clickkeywords được +50Đ"><span class="icon-set icon-firefox"></span></a></li>
-				<li><a onclick="return openLinkMenu('<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>');" href="<?php echo "https://www.youtube.com/watch?v=8Iy0gvcIV64"; ?>" title="Hướng dẫn dùng Faceseo" ><span class="icon-set icon-acong"></span> </a></li>
-<li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://<?php echo DOMAIN;?>/modules/upload/banner.php"; ?>');"></span> </li>
-				
-<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."l8vhie102w64.php?idgroup=1"; ?>');"></span> </li>
+				 <li><span class="icon-set icon-home" onclick="return openLinkMenu('<?php echo $PATH_ROOT; ?>');"></span></li>
+				<li>
+				<span class="icon-set icon-view" id="fsAnaylyticsButton"></span><a class="jewelButton a-view"><span class="jewelCount" id="anaylyticsCountWrapper" ><span id="anaylyticsCountValue">99</span></span> </a>
+				</li>				
+				<li>
+				<span class="icon-set icon-loa" id="fbNotificationsJewel"></span><a class="jewelButton icon-comment"><span class="jewelCount" id="notificationsCountWrapper" ><span id="notificationsCountValue">1</span></span> </a>				
+				</li>				
+				<li>
+				<span class="icon-set icon-message" id="iconemailbutton"></span><a class="jewelButton icon-email"> <span class="jewelCount" id="emailCountWrapper" ><span id="iconemailCountValue">1</span></span> </a>
+				</li>
+				<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."group.php?idgroup=1"; ?>');"></span> </li>
+				<li id="icon-firefox"><span class="icon-set icon-firefox" onclick="return openLinkMenu('http://giaiphapthuonghieu.vn/faceseo1.4.xpi');" title="Cài đặt Addon FS1.4 để clickkeywords được +50Đ"></span></li>
+<li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php echo "http://".DOMAIN."/modules/upload/banner.php"; ?>');"></span> </li>
+				<li><span class="icon-set icon-setting" onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"></span></li>				
 
+				
 				<!-- <li><span class="icon-set icon-connect" onclick="return openLinkMenu('<?php //echo $PATH_ROOT."l8vhie102w64.php?idgroup=2"; ?>');"></span> </li>				
 				<li><a href=""><span class="icon-set icon-share"></span> </a></li>
 				-->
-				<li><a onclick="return openLinkMenu('<?php echo $PATH_ROOT."pagesetting.php"; ?>'); " href="<?php echo $PATH_ROOT."pagesetting.php"; ?>"><span class="icon-set icon-setpanel"   ></span></a></li>
-				</ul>
-
-			<!-- 
-			<div class="fb-like-box" data-href="http://www.facebook.com/faceseo.vn" data-width="236px" data-height="308px"
-					  data-colorscheme="light" data-show-faces="true" data-header="true"  data-show-border="true"></div>
-			-->
+				
+               </ul>
+			  <script>
+				var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+				if (is_firefox!==true)
+					$("li#icon-firefox").hide();
+			  </script>
+			
 			</div>
 			<div id="contentCol" class="clearfix hasRightCol homeFixedLayout homeWiderContent hasExpandedComposer newsFeedComposer">
 				<div class="messagesystem"></div>
