@@ -431,10 +431,10 @@ exit();
 				<div id="last_msg_loader"></div>
 				</div>
 				<div>
-				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 				
 				<div class="lfloat colchat" id="colchat">
-				<div class="tchat"><img src="images/button/icongroup.png" /> | Chat group</div>
+				<div class="tchat"><img src="<?php echo FULLDOMAIN;?>/images/button/icongroup.png" /> | Chat group</div>
 				</div>
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
 				<?php 
@@ -448,7 +448,7 @@ exit();
 				<!--<a href="javascript:confirmshare()"><img src="images/event/share-hoi-seo-seo-banner-event-fs.png" width="100%"/></a>-->
 
 				<!--<div class="uiSideHeader" style="height:20px"><div style="float:left;width:79%"><strong><a rel="ttipsy" href="javascript: openLinkMenu('http://<?php echo DOMAIN;?>/modules/upload/banner.php')" >Banner miễn phí</a></strong></div><div style="float:right; width:20%; position:relative"><div style="position:absolute; top:-10px; right:-10px;"></div></div></div>-->
-				<div class="tchat">Quảng cáo | <img src="images/css/icon-ads.png" /></div>
+				<div class="tchat">Quảng cáo | <img src="<?php echo FULLDOMAIN;?>/images/css/icon-ads.png" /></div>
 				<div id="bannerfree">
 				<?php
 					$con=mysqli_connect($host,$user,$pass,$db);
@@ -488,7 +488,7 @@ exit();
 <br/>
 -->
 </div>	
-			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
+			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="<?php echo FULLDOMAIN;?>/images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
 		
