@@ -245,7 +245,7 @@ if(!isset($_SESSION)){
 		{
 			$urls[$ii]=rtrim($urls[$ii], "/");
 			/* NEU ID CUA CHINH USER DO VAN CHO HIEN LINK */
-			$arruser=mysqli_query($con,"select iduser from awt_list_url where url like '%".$urls[$ii]."%'  limit 100 ");
+			$arruser=mysqli_query($con,"select iduser from awt_list_url where url like '%".$urls[$ii]."%'  limit 10 ");
 			while($row11 = mysqli_fetch_array($arruser))
 			{
 				$idUserOfUrl = $row11[0];
@@ -254,24 +254,13 @@ if(!isset($_SESSION)){
 					return true;
 				}
 			}
-			/*
-			if($arruser->num_rows>0)
-			{
-				$row11 = mysqli_fetch_array($arruser);
-				$idUserOfUrl = $row11[0];
-			}		
-			if ($idUserOfUrl==$idUser)
-			{				
-				return true;
-			}
-			*/
 			
 			/* END NEU ID CUA CHINH USER DO VAN CHO HIEN LINK */
 			$resultPointB=mysqli_query($con,"select * from atw_point where idUser=".$idUserOfUrl." limit 1");
 			if ($resultPointB->num_rows>0)
 			{
 				$row = mysqli_fetch_array($resultPointB);
-				if($row['point']<1)
+				if($row['point']<200)
 					return false;				
 			}
 			
