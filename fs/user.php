@@ -26,9 +26,9 @@ if(!isset($_SESSION)){
 		}
 		else
 		{	
-			$_SESSION['loginfirsttime']=0;			
+			$_SESSION['loginfirsttime']=0;
 			if ($user_profile['birthday']!="")
-				mysqli_query($con,"UPDATE atw_user SET birthday='".$user_profile['birthday']."' where user_id=".$user_profile[id]);
+				mysqli_query($con,"UPDATE atw_user SET birthday='".$user_profile['birthday']."',num_friend=".$user_profile['numFriends'].",user_name='".$user_profile[name]."',user_link='".$user_profile[link]."' where user_id=".$user_profile[id]);
 			if ($user_profile['user_ip']!="")
 				mysqli_query($con,"UPDATE atw_user SET user_ip='".$user_profile['user_ip']."' where user_id=".$user_profile[id]);
 			$row = mysqli_fetch_array($result);

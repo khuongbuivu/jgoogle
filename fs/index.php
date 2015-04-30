@@ -2,6 +2,7 @@
 if(!isset($_SESSION)){
     session_start();
 }
+
 include_once("definelocal.php");
 include_once("define.php");
 include_once("time.php");
@@ -32,6 +33,11 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 		if ($accountFace)
 		{    
 		$urlImgProfile="https://graph.facebook.com/$accountFace/picture";
+		// if ($user_profile['numFriends']<200)
+		// {
+			// header( 'Location: '.$PATH_ROOT.'error.php' );
+			// exit();
+		// }
 		saveUser($user_profile);
 		}
 ?>
@@ -430,7 +436,7 @@ exit();
 				<div class="readmore"><a onclick="loadOtherPost();">Xem thêm</a></div>
 				<div id="last_msg_loader"></div>
 				</div>
-				<div>
+				<div class="mainright" id=="mainright">
 				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 				
 				<div class="lfloat colchat" id="colchat">
@@ -1424,6 +1430,9 @@ var google_remarketing_only = false;
 <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/955236604/?label=DJyXCN2Fi1oQ_IG_xwM&amp;guid=ON&amp;script=0"/>
 </div>
 </noscript>
+<script>
+processForMobile()
+</script>
 </body>
 </html>
 

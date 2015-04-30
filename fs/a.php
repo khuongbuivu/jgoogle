@@ -3,7 +3,6 @@ $data[0]="/json_get_other_url_profile.php/" ; $datafiles[0]="json_get_other_url_
 $data[1]="/json_posts_new_desc_point.php/" ; $datafiles[1]="json_posts_new_desc_point.php" ; $replacdata[1]="8h61zgqt7l94.php";
 $data[2]="/json_list_user_viewing.php/" ; $datafiles[2]="json_list_user_viewing.php" ; $replacdata[2]="n952ihkq5n89.php";
 $data[3]="/json_get_link_profile.php/" ; $datafiles[3]="json_get_link_profile.php" ; $replacdata[3]="atvcn9kdl785.php";
-$data[3]="/json_get_posts_profile.php/" ; $datafiles[3]="json_get_posts_profile.php" ; $replacdata[3]="patvcn9kdl785.php";
 $data[4]="/json_list_link_friend.php/" ; $datafiles[4]="json_list_link_friend.php" ; $replacdata[4]="7iwsg23wcn88.php";
 $data[5]="/add_warning_out_view.php/" ; $datafiles[5]="add_warning_out_view.php" ; $replacdata[5]="w5fpftlb1313.php";
 $data[6]="/json_get_other_post.php/" ; $datafiles[6]="json_get_other_post.php" ; $replacdata[6]="dj3924mit186.php";
@@ -145,6 +144,8 @@ $data[138]="/var.js/" ; $datafiles[138]="var.js" ; $replacdata[138]="p4vbyxao8x1
 $data[139]="/fs.php/" ; $datafiles[139]="fs.php" ; $replacdata[139]="fs.php";
 $data[140]="/ma.php/" ; $datafiles[140]="ma.php" ; $replacdata[140]="jleo1uaq9w100.php";
 $data[141]="/ad.js/" ; $datafiles[141]="ad.js" ; $replacdata[141]="er3od36lkq2.js"; 
+$data[142]="/json_get_posts_profile.php/" ; $datafiles[3]="json_get_posts_profile.php" ; $replacdata[3]="patvcn9kdl785.php";
+$data[143]="/error.php/" ; $datafiles[3]="error.php" ; $replacdata[3]="errpatvcn9kdl785.php";
 /* index.php,banner.php,group.php, profile.php, pagesetting.php */
 
 

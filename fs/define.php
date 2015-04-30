@@ -14,16 +14,20 @@ require_once('system/function.php');
 		$user_profile = array();
 		$user_profile['id']="";
 		$user_profile['name']="";
+		$user_profile['numFriends']=0;
 		if ($accountFace) {
 		  try {
 			$user_profile = $facebook->api('/me');
+			$frnz= $facebook->api('/me/friends');
+			$user_profile['numFriends'] = $frnz['summary']['total_count'];			
 		  } catch (FacebookApiException $e) {
 			error_log($e);
 			$accountFace = null;
 		  }
 		}
 		if ($accountFace) {
-		  $logoutUrl = $facebook->getLogoutUrl();
+		  $logout_params = array('next'=>'http://faceseo.vn/logout.php');
+		  $logoutUrl = $facebook->getLogoutUrl($logout_params);
 		} else {
 		  $loginUrl = $facebook->getLoginUrl(array(
 			'scope' => 'email,user_birthday'

@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION)){
+    session_start();
+}
 require_once("definelocal.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,43 +10,19 @@ require_once("definelocal.php");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery1.9.1.js"></script>
 <link rel="stylesheet" href="css/unloadfs.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/body.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/stylesmenu.css" type="text/css" />
+<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/scriptmenu.js"></script>
+<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>css/header.css" type="text/css" />
+<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="hasSmurfbar">
 <div id="container">
-  <div id="pagelet_bluebar" data-referrer="pagelet_bluebar">
-    <div id="blueBarHolder" class="slim">
-      <div id="blueBar" class="fixed_elem">
-        <div id="pageHead" class="clearfix _5bfg" role="banner">
-          <div id="headleft"> <a href="http://<?php echo DOMAIN;?>" > <img src="images/css/logo-faceseo.png"/> </a> </div>
-          <div id="headNav" class="clearfix">
-            <div class="rfloat">
-              <ul id="pageNav" class="clearfix _5bfw" role="navigation">
-                <li id="navJewels" class="navItem">
-                  <div id="jewelContainer" class="notifNegativeBase notifCentered notifGentleAppReceipt">
-                    <div id="fsAnaylyticsButton" class="uiToggle fbJewel west"> <a class="jewelButton icon-view"> <i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i> <span id="anaylyticsCountWrapper" class="jewelCount"><span id="anaylyticsCountValue">1</span></span> </a>
-                       
-                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng thống kê lượt click trong ngày</div></div>
-                    </div>
-                    <div id="fbNotificationsJewel" class="uiToggle fbJewel west"> <a class="jewelButton icon-comment"> <i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i> <span id="notificationsCountWrapper" class="jewelCount"><span id="notificationsCountValue">1</span></span> </a>
-                   
-                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng thống kê comment mới</div></div>
-                    </div>
-                    <div id="iconmessagebutton" class="uiToggle fbJewel west"> <a class="jewelButton icon-message"> <i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i> <span id="messageCountWrapper" class="jewelCount"><span id="iconmessageCountValue">1</span></span> </a>
-                    
-                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng thống báo tin nhắn mới</div></div>
-                    </div>
-                    <div id="iconemailbutton" class="uiToggle fbJewel west"> <a class="jewelButton icon-email"> <i class="jewelButtonHcm img sp_2al3zc sx_c49c9a"></i> <span id="emailCountWrapper" class="jewelCount"><span id="iconemailCountValue">1</span></span> </a>
-                      <div class="textintro"><div class="textcon"><span class="nutintro"></span>Chức năng thông báo mới của hệ thống</div></div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+ <?php
+	include_once("header.php");
+ ?>
+ 
   <div id="content">
     <div id="showindex" class="ccenter2">
        <div class="textadmin">Contact Admin<br />
@@ -83,8 +62,9 @@ Nguyen Hong Linh</div>
       <div class="noidung"></div>
     </div>
   </div>
-  <div id="footer">
-    <div class="footermenu">
+  <div id="footerOther">  
+	<!--
+	<div class="footermenu">
       <ul>
         <li><span data-show="1" class="liamenu">Giới thiệu</span><span class="subicon">New</span></li>
         <li><span data-show="2" class="liamenu">Điều khoản</span></li>
@@ -92,7 +72,9 @@ Nguyen Hong Linh</div>
         <li><span data-show="4" class="liamenu">Hợp tác</span></li>
         <li><span data-show="5" class="liamenu">Tuyển dụng</span></li>
       </ul>
-    </div>
+	</div>
+	-->
+	Copyright 2013 Faceseo
   </div>
 </div>
 <script src="js/enscroll-0.6.0.min.js"></script> 
