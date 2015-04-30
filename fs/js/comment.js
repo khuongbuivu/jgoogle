@@ -943,6 +943,43 @@ function getOtherPosts(idgroup){
 	getListUserViewing();
 	
 };
+
+function getOtherPostsProfile(idUser)
+{
+	var lastPostDisplay=-1;
+	var url = root_path + "modules/json_get_posts_profile.php";
+	if (FaceSeo.search(domain)<0)
+		return;
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {idUser:idUser,lastPostDisplay:strIdPosts},
+			dataType: "json",
+			success: function(json) {
+				var htmlnewpost='';
+				var htmlInputForm='';
+				var url;
+				var titleStastic='Thống kê Click hôm nay';
+				var classtitlePopup='titlepopup';
+				if(json.post.length>0){
+					htmlnewpost=showPost(json);	
+					if (htmlnewpost != "") {
+					$(htmlnewpost).hide().appendTo("#wrappercontentpost").show('fade');
+					$('div#last_msg_loader').empty();
+					};
+					initArrayIdPost();
+				}
+				else
+				{
+					$('div#last_msg_loader').empty();
+				}
+			}
+					  
+	}); 
+	getListUserViewing();
+};
+
+
 function getOtherUrlsProfile(idUser){
 	
 	var lastPostDisplay=-1;
@@ -1723,7 +1760,50 @@ function loadNumView()
 
 function getprofile(idUser)
 {
-	var url=root_path + "modules/json_get_link_profile.php";
+	var url=root_path + "modules/json_get_posts_profile.php";
+	
+	if (FaceSeo.search(domain)<0)
+		return;
+	var iPageUIDHelpYou = $('div#UIDHelpYou').text();
+	
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {idUser:idUser,lastPostDisplay:-1},
+			dataType: "json",
+			success: function(json) {
+				
+				var htmlnewpost='';
+				var htmlInputForm='';
+				var url;
+				var titleStastic='Thống kê Click hôm nay';
+				var classtitlePopup='titlepopup';
+				$('div#UIDHelpYou').html(json.uidhelpyou);
+				if (json.uidhelpyou=="" || json.post.length===0)
+				{
+					getOtherPosts(idgroup);	
+					$('div#UIDHelpYou').html("");
+					return;
+				};
+				if(json.post.length>0){
+					/*$('div#wrappercontentpost').empty();*/	
+					htmlnewpost=showPost(json);				
+					if (htmlnewpost != "") {
+					$(htmlnewpost).hide().appendTo("#wrappercontentpost").slideDown('slow');			
+					};
+					$('div#last_msg_loader').empty();	
+					numloadPost=0;
+					initArrayIdPost();
+					getListUserViewing();
+					return;
+				}
+				else
+				{				
+					$('div#last_msg_loader').html('');
+				}
+			}					  
+	});
+	/*
 	if (FaceSeo.search(domain)<0)
 		return;
 	$.ajax({
@@ -1756,6 +1836,7 @@ function getprofile(idUser)
 				}
 		}
 	}); 
+	*/
 };
 
 

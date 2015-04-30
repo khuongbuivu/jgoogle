@@ -51,7 +51,7 @@ require_once("user.php");
 		<div class="rfloat usertop">
 				<div class ="rfloat userimgtop">
 					<a class="avataruser" href="<?php echo $logoutUrl; ?>" title="CLICK LOGOUT, TẮT TRÌNH DUYỆT"><img width="95%" src="https://graph.facebook.com/<?php echo $_SESSION['session-user'];?>/picture"></a>
-					<div style="position:absolute;bottom:4px; right:2px;"><img src="images/button/logout.png" ></div>
+					<div style="position:absolute;bottom:4px; right:2px;"><img src="http://<?php echo DOMAIN;?>/images/button/logout.png" ></div>
 				</div>
 				<div class ="rfloat usernametop">
 				<?php echo $_SESSION['session-name'];?>

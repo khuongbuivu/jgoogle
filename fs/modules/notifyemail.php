@@ -1,5 +1,6 @@
 <?php
 //fix
+	include_once("../definelocal.php");
 	include_once("../config.php");
 	include_once("../time.php");
 	global $host;
@@ -11,7 +12,7 @@
 		$idNotifyStart=$_POST['idNotifyStart'];
 		if ($idNotifyStart==0)
 		{
-		echo '<div style="position:absolute;top:150px;left:-12px;"><img src="images/css/arrow-left.png"></div>';
+		echo '<div style="position:absolute;top:150px;left:-12px;"><img src="http://localhost/'.DOMAIN.'/images/css/arrow-left.png"></div>';
 		echo '<div class="notify has-scrollbar"><div class="overthrow content description" tabindex="0" style="right: -17px;">';
 		}
 		$idUser=$_POST['idUser'];

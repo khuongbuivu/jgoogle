@@ -32,6 +32,7 @@
 			$urls[$ii]=rtrim($urls[$ii], "/");
 			$jjj=$ii + 1;
 			$q='link like \'%'.$urls[$ii].'%\'';
+			echo 'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc';
 			$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc');		
 			echo '<li class="fbProfileBrowserListItemTitle">Link '.$jjj  . " :: view: ".$result->num_rows.'</li>';
 			if ($result->num_rows>0){
