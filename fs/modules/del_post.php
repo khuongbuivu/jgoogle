@@ -23,6 +23,7 @@ if (isset($_SESSION['token'], $_SESSION['token-user'],$_POST['idUser'],$_POST['t
 */
 $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_query($con,"DELETE FROM atw_post WHERE post_id=".$post_id." and post_iduser=".$post_iduser);
+mysqli_query($con,"DELETE FROM fs_reported WHERE reported_idPost=".$post_id);
 mysqli_query($con,"DELETE FROM atw_cmt_content WHERE IdArticles=".$post_id);
 mysqli_query($con,"DELETE FROM atw_notify  where notify_id_post=".$post_id);
 mysqli_close($con);

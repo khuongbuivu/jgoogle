@@ -13,7 +13,7 @@
 	$idCurrentPost = $_POST['idCurrentPost'];
 	$con=mysqli_connect($host,$user,$pass,$db);
 	mysqli_set_charset($con, "utf8");
-	$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and post_id >$idCurrentPost  ORDER BY post_id DESC limit 1 " );
+	$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and post_id >$idCurrentPost  and type_invalid=1 ORDER BY post_id DESC limit 1 " );
 	$numPost =  $result_post->num_rows;
 	while ($row = mysqli_fetch_array($result_post))
 	{

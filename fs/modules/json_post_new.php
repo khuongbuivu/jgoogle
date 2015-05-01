@@ -17,7 +17,7 @@
 	$idgroup = 0;
 	if (isset($_GET['idgroup']))
 		$idgroup=$_GET['idgroup'];
-	$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and post_id >$idCurrentPost and post_group=".$idgroup." ORDER BY post_id DESC limit 1 " );	
+	$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and post_id >$idCurrentPost and post_group=".$idgroup." and type_invalid=1 ORDER BY post_id DESC limit 1 " );	
 	$i=0;
 	$posts = array();
 	$posts['post']=array();

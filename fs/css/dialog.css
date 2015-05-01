@@ -21,7 +21,7 @@ a.close {
 /*
 *	LOG-IN BOX
 */
-div.overlay {
+div.overlay, div.formreport {
 	background-color: rgba(0,0,0,.25);
 	bottom: 0;
 	display: flex;
@@ -32,7 +32,7 @@ div.overlay {
 	width: 100%;
 }
 
-	div.overlay > div.sharepoint-wrapper {
+	div.overlay > div.sharepoint-wrapper, div.formreport > div.sharepoint-wrapper {
 		align-self: center;
 		background-color: rgba(0,0,0,.25);
 		border-radius: 2px;
@@ -40,14 +40,14 @@ div.overlay {
 		width: 520px;
 	}
 	
-		div.overlay > div.sharepoint-wrapper > div.sharepoint-content {
+		div.overlay > div.sharepoint-wrapper > div.sharepoint-content,div.formreport > div.sharepoint-wrapper > div.sharepoint-content {
 			background-color: rgb(255,255,255);
 			border-radius: 2px;
 			padding: 24px;	
 			position: relative;
 		}
 		
-			div.overlay > div.sharepoint-wrapper > div.sharepoint-content > h3 {
+			div.overlay > div.sharepoint-wrapper > div.sharepoint-content > h3, div.formreport > div.sharepoint-wrapper > div.sharepoint-content > h3 {
 				color: rgb(0,0,0);
 				font-family: 'Varela Round', sans-serif;
 				font-size: 1.8em;

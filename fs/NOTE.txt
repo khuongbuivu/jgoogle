@@ -19,6 +19,8 @@ new Date change by getTime();
 			});
 		});
 Not change .content. Only change notify	
+Get value ratio jquery example http://jsfiddle.net/RhnvU/
+
 
 CSS
 #anaylyticsCountValue{

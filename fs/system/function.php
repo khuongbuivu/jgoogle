@@ -395,4 +395,28 @@ function checkSharedFs($idUser)
 	mysqli_close($con);
 	return $share;
 }
+function getTypePost($type)
+{
+	$desType = "";
+	switch ($type) {
+		case 0:
+			$desType = "";
+			break;
+		case 1:
+			$desType = "";
+			2;
+		case 2:
+			$desType="Nội dung sex";
+			break;
+		case 3:
+			$desType="Không có keywords";
+			 break;
+		case 4:
+			$desType="Thường xuyên spam";
+			 break;
+		default:
+			$desType="Lỗi";
+	}
+	return $desType;
+}
 ?>

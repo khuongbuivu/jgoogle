@@ -1195,12 +1195,20 @@ function showPost(json)
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								if(json.post[i].post_userlevel>1)
-									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
-								
-								
+									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";								
+								if(json.post[i].user_id == idUser && json.post[i].type_invalid!==null)
+								{
+									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
+								}
+								else if (json.post[i].type_invalid!=null && json.post[i].type_invalid!="undefined" && xxyyzz>2)
+								{
+									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
+								}
 							}									
 							else
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> <a rel='ttipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >điểm</a>";							
+							if(json.post[i].type_invalid ==null || json.post[i].type_invalid=="undefined" )
+								htmlnewpost+=":: <a href='' onclick='return displayFormReport("+ json.post[i].idPost +"," + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\");'>Report</a>";
 							htmlnewpost+=":: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm' ><img src='images/button/share-point.png'></a>";
 							htmlnewpost+="</div>";
 							
@@ -1314,9 +1322,15 @@ function showPostById(json)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";		
 								if(json.post[i].post_userlevel>1)
 									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
+								if(json.post[i].user_id == idUser && json.post[i].type_invalid!==null)
+								{
+									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
+								}
 							}									
 							else
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
+							if(json.post[i].type_invalid ==null || json.post[i].type_invalid=="undefined" )
+								htmlnewpost+=":: <a href='' onclick='return displayFormReport("+ json.post[i].idPost +"," + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\");'>Report</a>";		
 							htmlnewpost+=":: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm' ><img src='images/button/share-point.png'></a>";
 							htmlnewpost+="</div>";
 							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
@@ -1425,10 +1439,16 @@ function showMessageById(json)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								if(json.post[i].post_userlevel>1)
 									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
-
+								if(json.post[i].user_id == idUser && json.post[i].type_invalid!==null)
+								{
+									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
+								}
 							}									
 							else
 								htmlnewpost+="<b><a target='_blank' href='" + json.post[i].user_link+"'>"+ json.post[i].user_name + "</a></b> :: <strong style='color:#008000'>"+ json.post[i].user_point + "</strong> điểm";							
+							if(json.post[i].type_invalid ==null || json.post[i].type_invalid=="undefined" )
+								htmlnewpost+=":: <a href='' onclick='return displayFormReport("+ json.post[i].idPost +"," + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\");'>Report</a>";
+					
 							htmlnewpost+=":: <a href='' onclick='return displayFormSharePoint(" + json.post[i].user_id + ",\"" +  json.post[i].user_name  + "\")' title='Chia sẻ điểm' ><img src='images/button/share-point.png'></a>";
 							htmlnewpost+="</div>";
 							htmlnewpost+="<div  style='display:block'>"+ '<a class="fsm" onClick="return false;"><abbr  class="livetimestamp" content="a few seconds ago" title="'+json.post[i].post_realtime+'">' + json.post[i].post_time+"</<abbr></a></div>";
@@ -1948,7 +1968,6 @@ function getUrLSharePlus(str)
 	return "";
 	
 };
-processForMobile();
 function processForMobile()
 {
 	if(isMobile==true)
@@ -1957,3 +1976,63 @@ function processForMobile()
 		$('#contentArea').css("width","98%");
 	}
 };
+function DisPlayPostReported()
+{
+	var url = root_path + "modules/json_get_num_report.php";
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {},
+			dataType: "json",
+			success: function(json) {
+				if(json.numReport>0)
+				{
+					$('#message_report').css("display","inline-block");
+					$('#message_report').html("<a href='' onclick='return loadPostReport();'>Có "+json.numReport+" tin bị báo cáo vi phạm</a>");
+				}
+				else
+					$('#message_report').css("display","none");
+			}					  
+	});
+};
+function loadPostReport()
+{
+	var url=root_path + "modules/json_post_reported.php";
+	if ($("#wrappercontentpost div:first-child").length <=0)	
+		return false;
+	var idCurrentPost1 = $("#wrappercontentpost div:first-child").attr("id");
+	var idCurrentPost1 = parseInt(idCurrentPost1.substring(11));
+	var idCurrentPost = -1;
+	var i=0;
+	$("div[id^='postcontent']").each(function(){
+		var id = parseInt(this.id.substring(11));
+		if (id>idCurrentPost)
+		idCurrentPost = id;
+		i=i + 1;
+		if (i==10)
+			return false;
+	});
+	if (FaceSeo.search(domain)<0)
+		return false;
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {idCurrentPost:idCurrentPost,lastPostDisplay:strIdPosts},
+			dataType: "json",
+			success: function(json) {
+				var htmlnewpost='';
+				var htmlInputForm='';
+				var url;
+				var titleStastic='Thống kê Click hôm nay';
+				var classtitlePopup='titlepopup';
+				if( json.post!=null && json.post.length>0){
+					htmlnewpost=showPost(json);	
+					var tmp = $(htmlnewpost).hide();			
+					$("#wrappercontentpost #postcontent"+idCurrentPost1).before(htmlnewpost);
+					$("#wrappercontentpost #"+idCurrentPost1).toggle( "scale" );
+					initArrayIdPost();					   
+				}
+		}
+	}); 
+	return false;
+}

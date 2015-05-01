@@ -423,6 +423,7 @@ exit();
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
 				<div style="color:red" id="message"></div>
 				<div id="listUrlViewMore"></div>
+				<div id="message_report"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
 				<div id="wrappercontentpost">
@@ -560,7 +561,9 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 	</div>
 </div>
 
-
+<?php
+include_once('formreport.php');
+?>
 <!--<link rel="stylesheet" href="http://giaiphapthuonghieu.vn/miniapps/popuponload/linhnguyen.css">	-->
 <script type="text/javascript" src="http://giaiphapthuonghieu.vn/miniapps/popuponload/jquery.popup.js"></script>	
 <script type="text/javascript" >
@@ -1431,7 +1434,8 @@ var google_remarketing_only = false;
 </div>
 </noscript>
 <script>
-processForMobile()
+processForMobile();
+DisPlayPostReported();
 </script>
 </body>
 </html>
