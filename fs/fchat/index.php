@@ -4,7 +4,6 @@ if(!isset($_SESSION)){
 }
 // error_reporting(E_ALL);
 // ini_set("display_errors", 1);
-date_default_timezone_set('Asia/Bangkok');
 require_once('classdata.php');
 $fchat=new faceseochat();
 
@@ -50,7 +49,6 @@ if($useridoff>0){
 	?>
 <div class="bodychat">
   <abbd data-ltime="<?php 
-$date = date_create();
 echo date_timestamp_get($date);
 ?>" title="" class="lasttimestamp" data-on='0'></abbd>
   <div id="doan"></div>

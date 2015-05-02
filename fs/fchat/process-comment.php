@@ -1,5 +1,4 @@
-<?php 
-date_default_timezone_set('Asia/Bangkok');
+<?php
 session_start();
 $date = date_create();
 $timestamp=date_timestamp_get($date);
