@@ -144,8 +144,11 @@ $data[138]="/var.js/" ; $datafiles[138]="var.js" ; $replacdata[138]="p4vbyxao8x1
 $data[139]="/fs.php/" ; $datafiles[139]="fs.php" ; $replacdata[139]="fs.php";
 $data[140]="/ma.php/" ; $datafiles[140]="ma.php" ; $replacdata[140]="jleo1uaq9w100.php";
 $data[141]="/ad.js/" ; $datafiles[141]="ad.js" ; $replacdata[141]="er3od36lkq2.js"; 
-$data[142]="/json_get_posts_profile.php/" ; $datafiles[3]="json_get_posts_profile.php" ; $replacdata[3]="patvcn9kdl785.php";
-$data[143]="/error.php/" ; $datafiles[3]="error.php" ; $replacdata[3]="errpatvcn9kdl785.php";
+$data[142]="/json_get_posts_profile.php/" ; $datafiles[142]="json_get_posts_profile.php" ; $replacdata[142]="patvcn9kdl785.php";
+$data[143]="/error.php/" ; $datafiles[3]="error.php" ; $replacdata[143]="errpatvcn9kdl785.php";
+$data[144]="/json_get_num_report.php/" ; $datafiles[144]="json_get_num_report.php" ; $replacdata[144]="jgnrerrpatvcn9kdl785.php";
+$data[145]="/json_post_reported.php/" ; $datafiles[145]="json_post_reported.php" ; $replacdata[145]="jprerrpatvcn9kdl785.php";
+$data[146]="/report_post.php/" ; $datafiles[146]="report_post.php" ; $replacdata[146]="rperrpatvcn9kdl785.php";
 /* index.php,banner.php,group.php, profile.php, pagesetting.php */
 
 
