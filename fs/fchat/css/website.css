@@ -294,10 +294,11 @@ display:block;
 background-repeat: no-repeat;
     display: inline-block;
     float: left;
-    height: 64px;
-    width: 64px;
+    height: 45px;
+    width: 45px;
 	cursor:pointer;
 }
+.icon-class-click img{height:45px}
 .iconchose{
 background: url("../images/iconchose.png") no-repeat scroll 0 -30px;
     display: block;
@@ -319,7 +320,9 @@ background:#fff;
     width: 200px;
     z-index: 1005;
 	display:none;
-	box-shadow:0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.35);}
+	box-shadow:0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.35);
+	overflow-y:scroll;
+	overflow-x:hidden;}
 .acticons .showicons{display:block;}	
 .timeicon{
 background: url("../images/timeicon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -358,7 +361,6 @@ font-size:12px; color:#353535;}
 .blockgroup .chaten{
 	width:85%;
 	border-radius: 2px;
-	border: 1px dotted;
 	margin: 5px;
     padding: 5px;
 }	
@@ -426,4 +428,23 @@ font-size:12px; color:#353535;}
     display:none;
     z-index: 800;
 }
+.offgroup{ display:none;}
+.onoffchatgroup{
+	background: url("icon-onoff.png") no-repeat scroll center -12px rgba(0, 0, 0, 0);
+    height: 12px;
+	cursor:pointer;
+	border-bottom:3px solid #6D9BCA;
+}
+.onoffchatgroupon{
+	background: url("icon-onoff.png") no-repeat scroll center 0px rgba(0, 0, 0, 0);
+    height: 12px;
+	border:none;
+}
+.loadinguser{
+	background: url("loaduser.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 32px;
+	width:32px;
+	text-align:center;
+	}
+.height88{ height:88% !important;}	
 /* endgroup */
