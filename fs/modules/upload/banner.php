@@ -32,6 +32,11 @@ if(!isset($_SESSION['TIMEMAXVIEWMYLINK']))
 		if ($accountFace)
 		{    
 		$urlImgProfile="https://graph.facebook.com/$accountFace/picture";
+		// if ($user_profile['numFriends']<200)
+		// {
+			// header( 'Location: '.$PATH_ROOT.'error.php' );
+			// exit();
+		// }
 		saveUser($user_profile);
 		}
 ?>
@@ -619,7 +624,7 @@ $(document).on('drop', function (e)
 				<!-- end show table edit banner -->
 				<?php /* End Upload Banner */?>
 				</div>
-				<div>
+				<div class="mainright" id=="mainright">
 				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 				
 				<div class="lfloat colchat" id="colchat">
@@ -1626,6 +1631,8 @@ $( ".huongdan" ).click(function() {
 
 </script>
 <script>
+processForMobile();
+DisPlayPostReported();
 <?php if ($_SESSION['token-user']!=""){ ?>
 		isUserLogined = true;
 <?php };?>

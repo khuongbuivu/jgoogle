@@ -1,0 +1,272 @@
+<?php 
+$con=mysqli_connect("localhost","root","","faceseovn") or die("Không kết nối được");
+mysqli_set_charset($con, "utf8");
+class faceseochat{
+ 
+ function getUserOff(){
+	 
+	 
+ }
+ function getUsersOnline(){
+	global $con;
+   $hourdate=date('Y-m-d H:i:s');
+   $ti=strtotime($hourdate)-60; 
+   $query='select user_id,user_name from atw_user,useronline where user_id=iduser and timeonline>='.$ti.' limit 0,30';
+  
+   $data=mysqli_query($con,$query);
+   $i=0;
+   $datas=array();
+  while($row=mysqli_fetch_array($data))
+{ 
+    
+    $datas[$i]['id']=$row[0];
+	$datas[$i]['username']=$row[1];
+	$i=$i+1;
+}
+   
+  return $datas;
+	 
+ }
+ function getUsers($ex=''){
+	global $con;
+   if($ex!='')$query='select user_id,user_name from atw_user where user_id not in('.$ex.')'.' limit 0,30';
+   else $query='select user_id,user_name from atw_user'.' limit 0,30';
+   $data=mysqli_query($con,$query);
+   $i=0;
+   $datas=array();
+  while($row=mysqli_fetch_array($data))
+{ 
+    
+    $datas[$i]['id']=$row[0];
+	$datas[$i]['username']=$row[1];
+	$i=$i+1;
+}
+   
+  return $datas;
+	 
+ }
+ function updatelistuser(){
+	global $con;
+	$html=''; 
+	 $useractive=$_SESSION['useractive'];
+	 $m=array();	
+	 $useronline=$this->getUsersOnline();
+foreach($useronline as $user):
+	if($user['id']!=$useractive['id']){
+		$m[]=$user['id'];
+		$html.='<p><span class="icon-online"></span>';
+		$html.='<img src="https://graph.facebook.com/'.$user['id'].'/picture">';
+		$html.='<a class="usern" rel="ignore" data-username-show="'.$user['username'].'" role="" data-usern="usern_'.$user['id'].'" usern="usern_'.$user['id'].'">';
+	   $html.=$user['username'].'</a></p>';
+	}
+	
+      endforeach;
+	  
+ $listonline=implode(',',$m);
+ $user_all=$this->getUsers($listonline); 
+foreach($user_all as $user):
+	
+	if($user['id']!=$useractive['id']){
+		$html.='<p><span class="icon-offline"></span>';
+		$html.='<img src="https://graph.facebook.com/'.$user['id'].'/picture">';
+		$html.='<a class="usern" rel="ignore" role="" data-username-show="'.$user['username'].'" data-usern="usern_'.$user['id'].'" usern="usern_'.$user['id'].'">';
+	    $html.=$user['username'].'</a></p>';
+	}
+endforeach;
+	 return $html;
+	 }
+ function getUser($id){
+	global $con;
+   $query='select user_id,user_name from atw_user where user_id="'.$id.'"'.' limit 0,30';
+   $data=mysqli_query($con,$query);
+   $row=mysqli_fetch_row($data);
+   $user=array();
+   $user['id']=$row[0];
+   $user['username']=$row[1];
+   return $user;
+ }
+ function getUser2($userinfo){
+	global $con;
+   $query='select user_id,user_name from atw_user where user_id="'.$userinfo['id'].'"'.' limit 0,30';
+   $data=mysqli_query($con,$query);
+   $row=mysqli_fetch_row($data);
+   $user=array();
+   if($row[0]>1){  
+   $user['id']=$row[0];
+   $user['username']=$row[1];
+   }else{
+   $this->insertuser($userinfo);
+   $user['id']=$userinfo['id'];
+   $user['username']=$userinfo['name'];
+   }
+   $timelogin=$_SESSION['timelogin']+60;
+   $hourstimeonline=date('Y-m-d H:i:s');
+   $hientai=strtotime($hourstimeonline);
+   if($_SESSION['timelogin']==0||$hientai>=$timelogin)$this->checkonline($user['id']);
+   
+   return $user;
+ }
+ function getmsg10($id1,$id2,$timese,&$mang=array(),$so){
+	global $con;
+   $datas=array();
+   $query='select * from chattext where timestamp >='.$timese.' and (iduser1='.$id1.' and iduser2='.$id2.' ) or (iduser1='.$id2.' and iduser2='.$id1.') order by id desc' ;
+   $data=mysqli_query($con,$query);
+   $i=0;
+    while($row=mysqli_fetch_array($data))
+{   
+   
+    $u=$this->getUser($row['iduser1']);
+	if($row['iduser1']==$id1){
+		$datas['ib']=$row['iduser2'];
+		$datas['id']='-1';
+	}
+	if($row['iduser2']==$id1){
+		$datas['ib']=$row['iduser1'];
+		$datas['id']=$so;
+	}
+	
+	$thoigianchat=date('H:i',$row['timestamp']);
+	$datas['msg']='<div title="'.$thoigianchat.'">'.$row['msg'].'</div>';
+	$datas['timestamp']=$row['timestamp'];
+	$datas['time_chat']=$row['time_chat'];
+	$thoigianchat=date('H:i A',$row['timestamp']);
+	$datas['giochat']=$thoigianchat;
+
+	$mang[]=$datas;
+	$i=$i+1;
+} 
+   return true;
+ }
+  function getmsg10ajax($id1,$id2,&$mang=array()){
+   global $con;
+   $datas=array();
+   $query='select * from chattext where (iduser1='.$id1.' and iduser2='.$id2.' ) or (iduser1='.$id2.' and iduser2='.$id1.') order by id asc limit 0,10' ;
+
+   $data=mysqli_query($con,$query);
+   $i=0;
+    while($row=mysqli_fetch_array($data))
+{   
+    $u=$this->getUser(@$row['iduser1']);
+	
+		$datas['ib']=$id2;
+		$datas['id']=$row['iduser1'];
+
+		$thoigianchat=date('H:i A',$row['timestamp']);
+	$datas['msg']='<div title="'.$thoigianchat.'">'.$row['msg'].'</div>';
+	$datas['timestamp']=$row['timestamp'];
+	$datas['time_chat']=$row['time_chat'];
+	$datas['giochat']=$thoigianchat;
+	$mang[]=$datas;
+	$i=$i+1;
+} 
+   return true;
+ }
+   function getmsg4ajax($id1,$id2,&$mang=array()){
+   global $con;
+   $datas=array();
+   $query='select * from chattext where (iduser1='.$id1.' and iduser2='.$id2.' ) or (iduser1='.$id2.' and iduser2='.$id1.') order by id desc limit 0,4' ;
+
+   $data=mysqli_query($con,$query);
+   $i=0;
+    while($row=mysqli_fetch_array($data))
+{   
+    $u=$this->getUser(@$row['iduser1']);
+	
+		$datas['ib']=$id2;
+		$datas['id']=$row['iduser1'];
+
+		$thoigianchat=date('H:i A',$row['timestamp']);
+	$datas['msg']='<div title="'.$thoigianchat.'">'.$row['msg'].'</div>';
+	$datas['timestamp']=$row['timestamp'];
+	$datas['time_chat']=$row['time_chat'];
+	$datas['giochat']=$thoigianchat;
+	$mang[]=$datas;
+	$i=$i+1;
+} 
+   return true;
+ }
+ function getmsg10ajaxuser($id1,$id2,&$mang=array(),$timeint){
+	global $con;
+   $datas=array();
+   $query='select * from chattext where ((iduser1='.$id1.' and iduser2='.$id2.') or (iduser1='.$id2.' and iduser2='.$id1.')) and timestamp < '.$timeint.' order by id desc limit 0,1' ;
+   $data=mysqli_query($con,$query);
+   $i=0;
+    while($row=mysqli_fetch_array($data))
+{   
+    $u=$this->getUser(@$row['iduser1']);
+	
+		$datas['ib']=$id2;
+		$datas['id']=$row['iduser1'];
+
+		$thoigianchat=date('H:i A',$row['timestamp']);
+	$datas['msg']='<div title="'.$thoigianchat.'">'.$row['msg'].'</div>';
+	$datas['timestamp']=$row['timestamp'];
+	$datas['time_chat']=$row['time_chat'];
+	$datas['giochat']=$thoigianchat;
+	$mang[]=$datas;
+	$i=$i+1;
+} 
+   return true;
+ }
+ function getmsg10ajaxgroup($id1,$id2,&$mang=array(),$timeint){
+	global $con;
+   $datas=array();
+   $query='select * from chattext where iduser2="group" and timestamp < '.$timeint.' order by id desc limit 0,10' ;
+   $data=mysqli_query($con,$query);
+   $i=0;
+    while($row=mysqli_fetch_array($data))
+{   
+    $u=$this->getUser(@$row['iduser1']);
+	
+		$datas['ib']=$id2;
+		$datas['id']=$row['iduser1'];
+
+		$thoigianchat=date('H:i A',$row['timestamp']);
+	$datas['msg']='<div title="'.$thoigianchat.'">'.$row['msg'].'</div>';
+	$datas['timestamp']=$row['timestamp'];
+	$datas['time_chat']=$row['time_chat'];
+	$datas['giochat']=$thoigianchat;
+	$mang[]=$datas;
+	$i=$i+1;
+} 
+   return true;
+ }
+ function insertuser($userinfo){
+	global $con;
+	 $sql='INSERT INTO atw_user (user_id, user_name, user_link, user_username, user_gender, user_email, user_location, user_work_employer, user_work_position, user_work_description, user_status, user_manager, birthday, user_time_join, user_ip, user_pass, user_tpass, user_atv) VALUES ("'.$userinfo['id'].'", "'.$userinfo['name'].'", "'.$userinfo['name'].'", "'.$userinfo['gender'].'", "'.$userinfo['gender'].'", "t@thanh.com", "'.$userinfo['locale'].'", "nghề nghiệp", "vị trí", "miêu tả công việc", "1", "", "", "", "192.168.1.1", "46a73a4cb402c77c30f660dfb73a26e4", "46a73a4cb402c77c30f660dfb73a26e4", "0")';
+	 mysqli_query($con,$sql);
+    return true;
+	 }
+ function checkonline($userid){
+	global $con;
+   $sql="SELECT id,timeonline FROM useronline WHERE iduser = '$userid' limit 0,1"; 
+   $data=mysqli_query($con,$sql);
+   $row=mysqli_fetch_row($data);
+   $date=date('Y-m-d H:i:s');  
+   if($row[0]>0){
+	    $sql="UPDATE useronline SET timeonline = '".strtotime($date)."',gioonline='".date("Y-m-d H:i:s")."' WHERE iduser = '$userid'";
+		mysqli_query($con,$sql);
+   }else {
+  	 $sql="INSERT INTO useronline (id, iduser, gioonline, timeonline) VALUES (NULL, '".$userid."', '".date("Y-m-d H:i:s")."', '".strtotime($date)."')";
+	 mysqli_query($con,$sql);
+ }
+	 return true;
+	 }	 
+	 
+ function updateonline($userid){
+	global $con;
+   $date=date('Y-m-d H:i:s');
+   $thoigian=  strtotime($date);
+   $sql="UPDATE useronline SET timeonline = '".$thoigian."',gioonline='".date("Y-m-d H:i:s")."' WHERE iduser = '$userid'";
+		mysqli_query($con,$sql);
+	 return true;
+	 }	 
+	 
+ function inserdata($array){
+ global $con;
+	$sql='INSERT INTO chattext (id, iduser1, iduser2, msg, time_chat, timestamp,hit) VALUES (NULL, "'.$array['iduser1'].'", "'.$array['iduser2'].'", "'.$array['msg'].'", "'.date('Y-m-d H:i:s').'", "'.$array['timestamp'].'","0");';
+	mysqli_query($con,$sql);
+  return true;
+ }
+}
+?>

@@ -172,7 +172,11 @@ if (intval(checkSharedFs($id_user))==0)
 	<!-- add scroll top comment -->
 	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
 	<!-- add scroll top comment -->
-	<script type="text/javascript" >	
+	<!-- Add code Chat-->
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>/fchat/css/website.css" type="text/css" media="screen"/>
+	<!-- End Add code Chat-->
+	<script type="text/javascript" >
+	var xxyyzz=<?php echo $xxyyzz;?>;
 	<?php if(LOCAL=="TRUE"): ?>
 	var root_path = "http://localhost/<?php echo DOMAIN;?>/";
 	<?php else: ?>
@@ -442,6 +446,9 @@ exit();
 				
 				<div class="lfloat colchat" id="colchat">
 				<div class="tchat"><img src="<?php echo FULLDOMAIN;?>/images/button/icongroup.png" /> | Chat group</div>
+				<?php 
+				include_once('fchat/index.php');
+				?>
 				</div>
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
 				<?php 
@@ -458,8 +465,10 @@ exit();
 				<div class="tchat">Quảng cáo | <img src="<?php echo FULLDOMAIN;?>/images/css/icon-ads.png" /></div>
 				<div id="bannerfree">
 				<?php
-					$con=mysqli_connect($host,$user,$pass,$db);
+					
+					// $con=mysqli_connect($host,$user,$pass,$db);
 					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
+					
 					while ($row = mysqli_fetch_array($result))
 					{				
 						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
@@ -564,22 +573,7 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 <?php
 include_once('formreport.php');
 ?>
-<!--<link rel="stylesheet" href="http://giaiphapthuonghieu.vn/miniapps/popuponload/linhnguyen.css">	-->
-<script type="text/javascript" src="http://giaiphapthuonghieu.vn/miniapps/popuponload/jquery.popup.js"></script>	
-<script type="text/javascript" >
-	var xxyyzz=<?php echo $xxyyzz;?>;
-	jQuery(window).load(function() {
-		/*if(document.cookie.indexOf("adf") == -1)*/
-		{
-			document.cookie = "popunder1=adf";
-			jQuery('#myModal').linhnguyen(jQuery('#myModal').data());
-		}
-	});
-	
 
-</script>
-
-<!-- add popup -->
 <script>
 // getNumuNotifyComment(root_path + "modules/checkNotify.php",idUser);
 //save post start and post end
@@ -614,7 +608,7 @@ function loadComment(url)
 			currentIdLoadPost = idDivPostStart;	
 	}
 }
-setInterval("loadComment('" + root_path + "content_comment.php')",5000);
+// setInterval("loadComment('" + root_path + "content_comment.php')",5000);
 /*setInterval("loadNumView()",30000);*/
 setInterval("getListUserViewing()",30000);
 function generateTokenPost()
@@ -1204,7 +1198,7 @@ $(document).ready(function(){
 		});	
 		
 		$(window).bind('scroll', function() {
-	    var navHeight = $( window ).height() - 50;
+	    var navHeight = $( window ).height() - 350;
 			 if ($(window).scrollTop() > navHeight) {
 				 $('#colchat').addClass('fixed');
 			 }

@@ -1,0 +1,429 @@
+/* Tiny Scrollbar */
+body{
+	font-family:Arial, Helvetica, sans-serif;
+}
+#scrollbar1 { width: 220px; margin: 20px 0 40px; }
+#scrollbar1 .viewport { width: 206px; height: 240px; overflow: hidden; position: relative; text-align: left;}
+#scrollbar1 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
+#scrollbar1 .scrollbar{ background: transparent url(../images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
+#scrollbar1 .track { background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:13px; position: relative; padding: 0 1px; }
+#scrollbar1 .thumb { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
+#scrollbar1 .thumb .end { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
+#scrollbar1 .disable { display: none; }
+.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
+#sponsorAdDiv {
+	position:absolute;
+	height:1;
+	width:1px;
+	top:0;
+	left:0;
+}
+.scrollbar1 {
+	position:relative;
+	min-height: 250px;
+	height:195px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.viewport {
+ height: 215px;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    width: 250px;
+	padding-right:0px;
+	background:#CCDDE4;
+}
+.borderchat {
+	/*position:absolute;*/
+	position:relative;
+	bottom:0;
+        z-index:1005;
+}
+a.usern{
+	cursor:pointer;
+	color:#006699;
+	font-size: 12px;
+}
+.chatfull{
+    bottom: 0;
+    direction: ltr;
+   /* height: 265px;*/
+    right: 0;
+    position: fixed;
+    right: 45%;
+    
+}
+.blockusers {
+    top: 0;
+    direction: ltr;
+    height: 100%;
+	width:99%;
+    z-index: 300;
+	background:#eee;
+	border-left: 1px solid #CCCCCC;
+}
+.bodychat
+{
+	height:100%;
+}
+.chaten{
+  border-left: medium none;
+    border-right: medium none;
+    border-top: 1px solid #EEEEEE;
+	border-bottom:medium none;
+    height: 15px;
+    resize: none;
+	 outline: medium none;
+	 overflow-y: scroll;
+    width: 224px;
+
+}
+.nameblock{
+   background: none repeat scroll 0 0 #f5f5f5;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+	border-bottom: 3px solid #6a95c2;
+}
+.nameblock a{
+    color: #000;
+    display: block;
+    font-family: arial;
+    font-size: 12px;
+    margin: 3px 7px 4px;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 190px;
+}
+.blockchat{
+ border: 1px solid #EEEEEE;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    margin-right: 2px;
+	transition: all 0.3s linear 0s;
+}
+.closethis{
+	float: right;
+    margin-right: 5px;
+    text-align: right;
+	cursor:pointer;
+}
+/* commentbox    */
+.commentbox{
+ background: none repeat scroll 0 0 #fff;
+    margin: 5px;
+    overflow: hidden;
+    padding: 5px 0;
+    position: relative;
+}
+.commentbox .commentthumb{
+	 float: left;
+    position: relative;
+}
+.commentbox .thumb-right{
+	 float: right;
+}
+.commentbox .commentthumb .commentline{
+    color: #999CA5;
+    display: none;
+    font-size: 11px;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: -9px;
+    white-space: nowrap;
+    width: 200px;
+}
+.commentbox .commentthumb img.thumbimg {
+    display: block;
+    height: 32px;
+    width: 32px;
+}
+.commentbox .messages {
+    margin-left: 40px;
+	width:150px;
+}
+.commentbox .mright {
+    margin-right: 32px;
+	margin-left:0;
+}
+.commentbox .mleft {
+    margin-left: 40px;
+}
+.commentbox .messages .infomsg {
+    background-color: #FFFFFF;
+    padding-left: 3px;
+    position: absolute;
+    right: 0;
+	visibility: hidden;
+    top: 0;
+	 font-size: 10px;
+	 color:#808080;
+}
+.commentbox .messages .timestamp{
+color: #808080;
+}
+.commentbox .messages .msgcontent{
+    margin-bottom: 3px;
+    text-align: left;
+	font-size: 12px;
+	color: #333333;
+}
+.hidden_div {
+    display: none !important;
+}
+.livetimestamp{
+font-size: 9px;font-weight: bold;color: #808080;
+}
+.chattime{
+border-bottom: 1px solid #EEEEEE;
+display:none;
+}
+.anboxchat{ display:inline-block;width: 200px;}
+.boxmini .anboxchat{width:auto}
+.showtimechat .chattime{
+display:block;
+}
+.boxmini .fullchat{
+	display:none;
+}
+.blockusers img{
+ border-radius: 5px;
+    float: left;
+    height: 32px;
+    margin: 1px;
+    padding: 1px;
+}
+.blockusers .userslist,.blockusers .listsearchuser{
+	height:40%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+	width: 100%;
+}
+.blockusers .listsearchuser {
+	display:none;
+}
+.blockusers .searchbox input{
+  -moz-box-sizing: border-box;
+    background-color: #F4F6F9;
+    background-image: url("5tIufPALOY9.png");
+    background-position: left -41px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    box-shadow: 2px 0 0 -1px #E0E2E9 inset, 0 1px #FFFFFF inset;
+    color: #555555;
+    height: 24px;
+    padding-left: 20px;
+    padding-right: 25px;
+	border:none;
+	width:100%;
+}
+.userslist img{
+	height:32px;
+	width:32px;
+}
+.userslist p,.listsearchuser p{
+    height: 35px;
+    line-height: 33px;
+    margin: 0;
+    overflow: hidden;
+    padding: 1px;
+	clear:both;
+	margin:2px 0;
+	border-bottom:1px dashed #ccc;
+}
+
+.reblockuser{
+	position:relative;
+	height:100%;
+}
+.reblockuser .searchbox{
+	
+	bottom:10px;
+	left:0;
+}
+.textright{
+  border: none;
+    padding: 3px 5px;
+    text-align: left;
+	margin-right: 12px;
+	max-width: 110px;
+	word-wrap:break-word;
+}
+.textleft{
+  border: none;
+    border-radius: 5px;
+    display: inline-block;
+    float: left;
+    padding: 3px 5px;
+    text-align: left;
+	margin-left: 4px;
+	max-width: 110px;
+	word-wrap:break-word;
+}
+.commentbox .textleft,.commentbox .textright{ text-align:left}
+.chattime2{
+	display:none;
+}
+.showtimechat .chattime2{display:block}
+.chati2{
+  color: #a3a3a3;
+    font-size: 11px;
+    height: 12px;
+    margin-right: 4px;
+    text-align: right;
+    top: 11px;
+	text-align:left;
+}
+.chati1{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #a3a3a3;
+    font-size: 11px;
+	text-align:right;
+    height: 12px;
+    right: 33px;
+    top: 11px;
+}
+.iconschat{display:none}
+.icon-class-click{
+background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    height: 64px;
+    width: 64px;
+	cursor:pointer;
+}
+.iconchose{
+background: url("../images/iconchose.png") no-repeat scroll 0 -30px;
+    display: block;
+    float: right;
+	cursor:pointer;
+    height: 27px;
+	margin-top:2px;
+    width: 24px;
+}
+.iconchose:hover,.iconchose:active{
+background: url("../images/iconchose.png") no-repeat scroll 0 0 #006699;
+}
+.showicons{ border: 1px solid #eee;
+background:#fff;
+    height: 200px;
+    position: absolute;
+    right: 1px;
+    top: -200px;
+    width: 200px;
+    z-index: 1005;
+	display:none;
+	box-shadow:0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.35);}
+.acticons .showicons{display:block;}	
+.timeicon{
+background: url("../images/timeicon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    float: left;
+    height: 20px;
+    width: 20px;
+	display:none;
+	}
+.timeicon:hover{
+	background-position: 0 -20px;
+	}	
+.waitingsee .nameblock{background:#F93}
+#playsound{ }
+/* end commentbox */
+
+/*group */
+.blockgroup{ background:#fff; width:100%; margin-right:0;}
+.blockgroup .nameblock{ display:none}
+.blockgroup .scrollbar1{
+	 height: 58%;
+	 display:block;
+	}
+.listuseradd{background:#fff;
+font-size:12px; color:#353535;}
+.iconaddgroup{ background: none repeat scroll 0 0 #ccc;
+    border-radius: 2px;
+    cursor: pointer;
+    float: right;
+    text-align: center;
+    width: 15px;}
+.iconaddgroup:hover{
+	background: #006699;  
+	color:#fff;
+	}	
+.blockgroup .chaten{
+	width:85%;
+	border-radius: 2px;
+	border: 1px dotted;
+	margin: 5px;
+    padding: 5px;
+}	
+.blockgroup .viewport{
+	width:100%;
+	height:240px !important;
+	}	
+.blockgroup .textright {
+
+    margin-right: 8px;
+
+}
+.commentright{
+	margin-left: 40px;border-bottom: 2px solid #c6ae5f;
+}
+.commentleft{
+	margin-right: 40px;border-bottom: 2px solid #AAB6B9;
+}
+.content_usern_group .commentright{
+	margin-left: 20px;border-bottom: 2px solid #c6ae5f;
+}
+.content_usern_group .commentleft{
+	margin-right: 20px;border-bottom: 2px solid #AAB6B9;
+}
+.commentright .commentthumb img.thumbimg {
+    margin-right: 5px;
+    
+}
+.commentleft .commentthumb img.thumbimg {
+    margin-left: 5px;
+    
+}
+.icon-offline{background: url("offline.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    float: right;
+    height: 31px;
+    width: 15px;}
+.icon-online{background: url("online.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    float: right;
+    height: 31px;
+    width: 15px;}
+.viewmore{
+	 color: #666;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 5px 0;
+    padding: 5px;
+    text-align: center;
+	}	
+.loading-chat {
+    background: url("loading-chat.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: none;
+    height: 11px;
+    margin: 0 auto;
+    width: 16px;
+}
+#bgiconex{
+    background-color: none;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: 0.6;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display:none;
+    z-index: 800;
+}
+/* endgroup */
