@@ -188,8 +188,10 @@ endforeach;
 </div>
 <div style="clear:both"></div>
 <div class="iconschat">
-  <?php for($i=1;$i<3;$i++){?>
-  <div class="icon-class-click" data-img='<?php echo $homepathchat;?>icon/icon-<?php echo $i?>.png' style="background-image:url('<?php echo $homepathchat;?>icon/icon-<?php echo $i?>.png')"></div>
+  <?php for($i=1;$i<21;$i++){?>
+  <div class="icon-class-click" data-img='<?php echo $homepathchat;?>icon/icon-<?php echo $i?>.png'>
+  <img src="<?php echo $homepathchat;?>icon/icon-<?php echo $i?>.png" />
+  </div>
   <?php }?>
 </div>
  
