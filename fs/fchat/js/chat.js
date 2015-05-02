@@ -269,7 +269,7 @@ html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class
 return html;
 }
 function getcommenttime(a,b){
-return '<div class="chattime"><div class="chattime2"><abbr data-utime="'+a+'" class="livetimestamp">'+b+'</abbr></div></div>';
+return '<div class="chattime"><div class="chattime2"><abbr data-utime="'+a+'" class="chatlivetimestamp">'+b+'</abbr></div></div>';
 }
 function getCommentbox2(a,b,c,t,ti){
 html='<div data-jsid="message" data-utime="'+ti+'" class="msgcontent"><span><div><div>'+c+'</div></div></span></div>';
@@ -291,7 +291,7 @@ function chataddCmtToDb(content,userid,kind){
 	   s=1;
 	   //if(kt>fc){
 	   if(s==1){
-	   var comtime='<div class="chattime"><div class="chattime2"><abbr data-utime="'+json.timestamp+'" class="livetimestamp">'+fss+'</abbr></div></div>';
+	   var comtime='<div class="chattime"><div class="chattime2"><abbr data-utime="'+json.timestamp+'" class="chatlivetimestamp">'+fss+'</abbr></div></div>';
 	   var combox=getCommentbox(json.un,json.timechat,json.msg,idu,json.timestamp,json.giochat);
        $('#cmt_content_'+userid).append(comtime+combox);
 	
@@ -389,7 +389,7 @@ $(document).on('keypress','.searchbox',function( event ) {
 })
 $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 	var parentdiv=$(this).parent();
-	var firstdiv=$('#cmt_content_usern_group .livetimestamp').first();
+	var firstdiv=$('#cmt_content_usern_group .chatlivetimestamp').first();
 	var timeint=firstdiv.data('utime');
 	$(this).css('display','none');
 	var loadingchat=parentdiv.find('.loading-chat');
@@ -442,7 +442,7 @@ $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 })
 $(document).on('click','.blockchatuser .viewmore',function( event ) {
 	var parentdiv=$(this).parent();
-	var firstdiv=$('.blockchatuser .livetimestamp').first();
+	var firstdiv=$('.blockchatuser .chatlivetimestamp').first();
 	var timeint=firstdiv.data('utime');
 	var idu=$(this).data('ipc');
 	$(this).css('display','none');
