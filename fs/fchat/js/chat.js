@@ -19,8 +19,10 @@ function formattime(a){
    t=p+' '+fim+' '+ s +' '+fis+' '+fit;
  }else if(a>3600&&a<86400){
    h=parseInt(a/3600);
-   m=a-h*60; 
-   t=h+' '+fih+' '+ m +' '+fim+' '+fit; 
+   con=a-h*3600;
+   m=parseInt(con/60);
+   s=a-h*3600-m*60; 
+   t=h+' '+fih+' '+ m +' '+fim+' '+s+' '+fis+' '+fit; 
  }else if(a>=86400){
 	h=parseInt(a/86400); 
 	t=h+' '+fid+' '+fit;
@@ -179,7 +181,7 @@ $.ajax({
 	dataType: "json",
     success: function(data) {
 		$('.lasttimestamp').data('ltime',data.timenows);
-		var h = document.getElementsByTagName('abbr');
+		var h = document.getElementsByTagName('abr');
 		if(h.length>0){
 		for(var i=0;i<h.length;i++){
 		k=$(h[i]).data('utime');
@@ -219,11 +221,11 @@ $.ajax({
 				  a=data.msgs[j].id;
 				  b=data.msgs[j].id;
 				if(j!=data.msgs.length-1&&data.msgs[j].timestamp>data.msgs[j+1].timestamp+5){
-				    combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat);
+				    combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat,data.msgs[j].username);
 					$('#cmt_content_usern_'+data.msgs[j].ib).append(comtime+combox);
 				}else{
 					
-			combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat);
+			combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat,data.msgs[j].username);
 					$('#cmt_content_usern_'+data.msgs[j].ib).append(comtime+combox);
 				}
 				//  var psconsole=$('.viewport_usern_'+data.msgs[j].ib);
@@ -254,7 +256,7 @@ var ida=$('.userac').data('ida');
 html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class="commentline"></div><a aria-label="'+a+'" usern="usern_'+t+'" data-username-show="'+a+'" class="usern" data-hover="tooltip" class="profileLink" href="#" role="button"><img src="https://graph.facebook.com/'+t+'/picture" class="thumbimg"></a></div><div class="messages '+l+'"><div class="infomsg"><span class="hidden_div"><a href="#" rel="dialog" role="button"><span class="fcg">Báo sai phạm</span></a></span><span class="timestamp">'+b+'</span></div><div class="msgcontent" data-jsid="message" data-utime="'+ti+'"><span><div>'+c+'</div></span></div></div></div><div class="clearfix"></div>';
 return html;
 }
-function getCommentboxajax(a,b,c,t,ti,giochat){
+function getCommentboxajax(a,b,c,t,ti,giochat,username){
 	
 	
 	var ida=$('.userac').data('ida');
@@ -265,11 +267,11 @@ function getCommentboxajax(a,b,c,t,ti,giochat){
 		l='mright';
 		ben='commentright';
 	}else {c='<div class="chati2">'+giochat+'</div><div class="textleft">'+c+'</div>';l='mleft';ben='commentleft';}
-html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class="commentline"></div><a aria-label="'+a+'" data-hover="tooltip" class="profileLink" href="#" role="button"><img src="https://graph.facebook.com/'+t+'/picture" class="thumbimg"></a></div><div class="messages '+l+'"><div class="infomsg"><span class="hidden_div"><a href="#" rel="dialog" role="button"><span class="fcg">Báo sai phạm</span></a></span><span class="timestamp">'+b+'</span></div><div class="msgcontent" data-jsid="message" data-utime="'+ti+'"><span><div>'+c+'</div></span></div></div></div><div class="clearfix"></div>';
+html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class="commentline"></div><a aria-label="'+a+'" data-hover="tooltip" class="profileLink usern" href="#" usern="usern_'+t+'" data-username-show="'+username+'" role="button"><img src="https://graph.facebook.com/'+t+'/picture" class="thumbimg"></a></div><div class="messages '+l+'"><div class="infomsg"><span class="hidden_div"><a href="#" rel="dialog" role="button"><span class="fcg">Báo sai phạm</span></a></span><span class="timestamp">'+b+'</span></div><div class="msgcontent" data-jsid="message" data-utime="'+ti+'"><span><div>'+c+'</div></span></div></div></div><div class="clearfix"></div>';
 return html;
 }
 function getcommenttime(a,b){
-return '<div class="chattime"><div class="chattime2"><abbr data-utime="'+a+'" class="chatlivetimestamp">'+b+'</abbr></div></div>';
+return '<div class="chattime"><div class="chattime2"><abr data-utime="'+a+'" class="chatlivetimestamp">'+b+'</abr></div></div>';
 }
 function getCommentbox2(a,b,c,t,ti){
 html='<div data-jsid="message" data-utime="'+ti+'" class="msgcontent"><span><div><div>'+c+'</div></div></span></div>';
@@ -291,7 +293,7 @@ function chataddCmtToDb(content,userid,kind){
 	   s=1;
 	   //if(kt>fc){
 	   if(s==1){
-	   var comtime='<div class="chattime"><div class="chattime2"><abbr data-utime="'+json.timestamp+'" class="chatlivetimestamp">'+fss+'</abbr></div></div>';
+	   var comtime='<div class="chattime"><div class="chattime2"><abr data-utime="'+json.timestamp+'" class="chatlivetimestamp">'+fss+'</abr></div></div>';
 	   var combox=getCommentbox(json.un,json.timechat,json.msg,idu,json.timestamp,json.giochat);
        $('#cmt_content_'+userid).append(comtime+combox);
 	
@@ -347,6 +349,8 @@ var chat="";
 $(document).on('click','.closethis',function( event ) {
 	var k=$(this).data('ui');
 	$(".chatfull .blockchat_"+k).remove();
+	if(son>0)son=son-1;
+	
 	}); 
 $(document).on('click','.blockchat',function( event ) {
 	 
@@ -363,8 +367,10 @@ $(document).on('keypress','.searchbox',function( event ) {
 	   listsearchuser.css('display','none');
 		}
 	if ( event.which == 13 && sb!='') {
+	   $('.listsearchuser').html('');	
 	   userslist.css('display','none');
 	   listsearchuser.css('display','block');
+	   $('.listsearchuser').addClass('loadinguser');
 	   $.ajax({
     url:'http://localhost/faceseo.vn/fchat/user.php',
     type:'POST',
@@ -374,7 +380,7 @@ $(document).on('keypress','.searchbox',function( event ) {
 		var cont="";
 	   if(data.users.length>0){
 		for(var i=0;i<data.users.length;i++){
-			cont+='<p><span class="icon-'+data.users[i].onoff+'"></span><img src="https://graph.facebook.com/'+data.users[i].id+'/picture"><a data-usern="usern_'+data.users[i].id+'" role="" rel="ignore" class="usern">'+data.users[i].user_username+'</a></p>';
+			cont+='<p><span class="icon-'+data.users[i].onoff+'"></span><img src="https://graph.facebook.com/'+data.users[i].id+'/picture"><a data-usern="usern_'+data.users[i].id+'" role="" rel="ignore" usern="usern_'+data.users[i].id+'" data-username-show="'+data.users[i].user_username+'" class="usern">'+data.users[i].user_username+'</a></p>';
 			listsearchuser.html(cont);
 			
 			} 
@@ -382,7 +388,7 @@ $(document).on('keypress','.searchbox',function( event ) {
 		    listsearchuser.html('<p>Không có dữ liệu</p>');
 	   }
 		
-		
+		$('.listsearchuser').removeClass('loadinguser');
 		}
 	});	
 	}
@@ -415,12 +421,12 @@ $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 				  a=data.msgs[j].id;
 				  b=data.msgs[j].id;
 				if(j!=data.msgs.length-1&&data.msgs[j].timestamp>data.msgs[j+1].timestamp+5){
-				    combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat);
+				    combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat,data.msgs[j].username);
 					
 					firstdiv2.before(comtime+combox);
 				}else{
 					
-			combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat);
+			combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat,data.msgs[j].username);
 					firstdiv2.before(comtime+combox);
 				}
 			
@@ -560,6 +566,19 @@ $(document).on('click','.iconchose',function( event ) {
                 $('#bgiconex').css('display','block');
 	}
   });
+ $(document).on('click','.onoffchatgroup',function( event ) {
+	 var pa=$('.blockchat_usern_group');
+	 var pa2=$('.onoffchatgroup');
+	if(pa.hasClass('offgroup'))pa.removeClass('offgroup');
+	else pa.addClass('offgroup');
+	 if(pa2.hasClass('onoffchatgroupon')){
+		 pa2.removeClass('onoffchatgroupon');
+	     $('.reblockuser .userslist').removeClass('height88');
+	 }else {
+		 pa2.addClass('onoffchatgroupon');
+		 $('.reblockuser .userslist').addClass('height88');
+	}
+	 }); 
 $(document).on('click','.icon-class-click',function( event ) {
     var parentbox=$(this).parent();
 	var borderchat=parentbox.parent();
@@ -574,7 +593,7 @@ $(document).on('click','#bgiconex',function( event ) {
   });
 
 $(document).on('click','.usern',function( event ) {
-  if(son<4){
+  if(son<2){
   var id=$(this).attr('usern');
   var blockname=$(this).data('username-show');
   var ida=$('.userac').data('ida');

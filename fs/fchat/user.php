@@ -37,5 +37,6 @@ $so=0;
 
 mysqli_close($con);
 }
+sleep(1);
 echo json_encode( $array_content);
 ?>

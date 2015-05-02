@@ -3,15 +3,12 @@ $con=mysqli_connect("localhost","root","","faceseovn") or die("Không kết nố
 mysqli_set_charset($con, "utf8");
 class faceseochat{
  
- function getUserOff(){
-	 
-	 
- }
  function getUsersOnline(){
 	global $con;
    $hourdate=date('Y-m-d H:i:s');
    $ti=strtotime($hourdate)-60; 
    $query='select user_id,user_name from atw_user,useronline where user_id=iduser and timeonline>='.$ti.' limit 0,30';
+   
   
    $data=mysqli_query($con,$query);
    $i=0;
@@ -61,7 +58,7 @@ foreach($useronline as $user):
 	}
 	
       endforeach;
-	  
+	  /*
  $listonline=implode(',',$m);
  $user_all=$this->getUsers($listonline); 
 foreach($user_all as $user):
@@ -72,7 +69,7 @@ foreach($user_all as $user):
 		$html.='<a class="usern" rel="ignore" role="" data-username-show="'.$user['username'].'" data-usern="usern_'.$user['id'].'" usern="usern_'.$user['id'].'">';
 	    $html.=$user['username'].'</a></p>';
 	}
-endforeach;
+endforeach;*/
 	 return $html;
 	 }
  function getUser($id){
@@ -211,12 +208,12 @@ endforeach;
  function getmsg10ajaxgroup($id1,$id2,&$mang=array(),$timeint){
 	global $con;
    $datas=array();
-   $query='select * from chattext where iduser2="group" and timestamp < '.$timeint.' order by id desc limit 0,10' ;
+   $query='select c.*,u.user_name from chattext c,atw_user u where iduser2="group" and iduser1=u.user_id and timestamp < '.$timeint.' order by id desc limit 0,10' ;
    $data=mysqli_query($con,$query);
    $i=0;
     while($row=mysqli_fetch_array($data))
 {   
-    $u=$this->getUser(@$row['iduser1']);
+    //$u=$this->getUser(@$row['iduser1']);
 	
 		$datas['ib']=$id2;
 		$datas['id']=$row['iduser1'];
@@ -226,6 +223,7 @@ endforeach;
 	$datas['timestamp']=$row['timestamp'];
 	$datas['time_chat']=$row['time_chat'];
 	$datas['giochat']=$thoigianchat;
+	$datas['username']=$row['user_name'];
 	$mang[]=$datas;
 	$i=$i+1;
 } 

@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 $date = date_create();
 $timestamp=date_timestamp_get($date);

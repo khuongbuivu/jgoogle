@@ -1,4 +1,5 @@
 <?php
+$homepathchat='http://localhost/faceseo.vn/fchat/';
 if(!isset($_SESSION)){
     session_start();
 }
@@ -38,7 +39,9 @@ if ($user) {
 
 //$user=0;
 // $useridoff=$_GET['userid'];
-$useridoff="1397513203897436";
+$useridoff=$_SESSION['session-user'];
+$_SESSION['useractive']['id']=$_SESSION['session-user'];
+$_SESSION['useractive']['username']=$_SESSION['session-name'];
 if($useridoff>0){
 	$user=1;	
 ?>
@@ -48,6 +51,7 @@ if($useridoff>0){
 	
 	?>
 <div class="bodychat">
+<div data-ida="<?php echo $_SESSION['session-user']; ?>" class="userac"></div>
   <abbd data-ltime="<?php 
 echo date_timestamp_get($date);
 ?>" title="" class="lasttimestamp" data-on='0'></abbd>
@@ -104,7 +108,11 @@ $lr='left';
 	}
 	$idben=$row['id'];
 	$html='<div class="chattime">
+<<<<<<< .mine
+    <div class="chattime2"><abr class="livetimestamp" data-utime="'.$row['timestamp'].'">0</abr></div>
+=======
     <div class="chattime2"><abbr class="chatlivetimestamp" data-utime="'.$row['timestamp'].'">0</abbr></div>
+>>>>>>> .r586
   </div>
   <div class="commentbox comment'.$lr.'">
     <div class="commentthumb thum-'.$lr.'">
@@ -138,7 +146,7 @@ $lr='left';
           </div>
         </div>
       </div>
-    
+      <div class="onoffchatgroup" title="Ẩn hiện khung chat group"></div>
       <div class="userslist">
         <?php 
 	$m=array();	
@@ -154,7 +162,7 @@ foreach($useronline as $user):
 	
 endforeach;
 ?>
-        <?php 
+        <?php /*
  $listonline=implode(',',$m);
  $user_all=$fchat->getUsers($listonline); 
 foreach($user_all as $user):
@@ -167,6 +175,7 @@ foreach($user_all as $user):
 	}
 	
 endforeach;
+*/
 ?>
       </div>
       <div class="listsearchuser"></div>
@@ -180,13 +189,13 @@ endforeach;
 <div style="clear:both"></div>
 <div class="iconschat">
   <?php for($i=1;$i<3;$i++){?>
-  <div class="icon-class-click" data-img='http://faceseo.biz/icon/icon-<?php echo $i?>.png' style="background-image:url('icon/icon-<?php echo $i?>.png')"></div>
+  <div class="icon-class-click" data-img='<?php echo $homepathchat;?>icon/icon-<?php echo $i?>.png' style="background-image:url('<?php echo $homepathchat;?>icon/icon-<?php echo $i?>.png')"></div>
   <?php }?>
 </div>
  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
 <script>$.noConflict();</script> 
-<script src="http://localhost/faceseo.vn/fchat/js/chat.js"></script> 
+<script src="<?php echo $homepathchat;?>js/chat.js"></script> 
 <span id="playsound"></span>
 <div id="bgiconex"></div>
 <?php /*?><script type="text/javascript" src="js/chung.js"></script><?php */?>
