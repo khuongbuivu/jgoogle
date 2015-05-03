@@ -19,6 +19,7 @@ body{
 	left:0;
 }
 .scrollbar1 {
+	background:#fff;
 	position:relative;
 	min-height: 250px;
 	height:195px;
@@ -69,6 +70,7 @@ a.usern{
 	height:100%;
 }
 .chaten{
+	padding: 8px 5px 0 8px;
   border-left: medium none;
     border-right: medium none;
     border-top: 1px solid #EEEEEE;
