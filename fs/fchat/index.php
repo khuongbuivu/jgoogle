@@ -47,6 +47,10 @@ if($useridoff>0){
 ?>
 
 <?php if($user){
+	$setuser=array('id'=>$_SESSION['session-user'],'name'=>$_SESSION['session-name']);
+	$useractive2=$fchat->getUser2($setuser);
+	$hourstimeonline=date('Y-m-d H:i:s');
+    $_SESSION['timelogin']=strtotime($hourstimeonline);
 	$useronline=$fchat->getUsersOnline();
 	
 	?>
@@ -108,11 +112,7 @@ $lr='left';
 	}
 	$idben=$row['id'];
 	$html='<div class="chattime">
-<<<<<<< .mine
     <div class="chattime2"><abr class="livetimestamp" data-utime="'.$row['timestamp'].'">0</abr></div>
-=======
-    <div class="chattime2"><abbr class="chatlivetimestamp" data-utime="'.$row['timestamp'].'">0</abbr></div>
->>>>>>> .r586
   </div>
   <div class="commentbox comment'.$lr.'">
     <div class="commentthumb thum-'.$lr.'">
@@ -202,6 +202,7 @@ endforeach;
 <div id="bgiconex"></div>
 <?php /*?><script type="text/javascript" src="js/chung.js"></script><?php */?>
 <?php } }else{
+ $_SESSION['timelogin']=0;	
  echo 'chưa có ID';	
 	
 }
