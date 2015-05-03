@@ -574,9 +574,11 @@ $(document).on('click','.iconchose',function( event ) {
 	 if(pa2.hasClass('onoffchatgroupon')){
 		 pa2.removeClass('onoffchatgroupon');
 	     $('.reblockuser .userslist').removeClass('height88');
+		 $('.reblockuser .listsearchuser').removeClass('height88');
 	 }else {
 		 pa2.addClass('onoffchatgroupon');
 		 $('.reblockuser .userslist').addClass('height88');
+		 $('.reblockuser .listsearchuser').addClass('height88');
 	}
 	 }); 
 $(document).on('click','.icon-class-click',function( event ) {

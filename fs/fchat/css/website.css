@@ -32,7 +32,7 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
-    width: 250px;
+    width: 260px;
 	padding-right:0px;
 	background:#CCDDE4;
 }
@@ -148,7 +148,7 @@ a.usern{
 }
 .commentbox .messages {
     margin-left: 40px;
-	width:150px;
+	width:80%;
 }
 .commentbox .mright {
     margin-right: 32px;
@@ -254,7 +254,6 @@ display:block;
     padding: 3px 5px;
     text-align: left;
 	margin-right: 12px;
-	max-width: 110px;
 	word-wrap:break-word;
 }
 .textleft{
@@ -265,7 +264,6 @@ display:block;
     padding: 3px 5px;
     text-align: left;
 	margin-left: 4px;
-	max-width: 110px;
 	word-wrap:break-word;
 }
 .commentbox .textleft,.commentbox .textright{ text-align:left}
