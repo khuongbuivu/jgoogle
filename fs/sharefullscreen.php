@@ -151,7 +151,7 @@ mysqli_close($con);
 		?>
 		<div style="text-align:center"><h3><blink>TẶNG NGAY 500Đ KHI SHARE THÔNG ĐIỆP NÀY!</blink></h3><span style="color:red">Bộ phận support vui lòng kiểm tra Facebook của những Bạn đã share.</span><br/>Liên hệ support qua Facebook:<a href="https://www.facebook.com/nhu.dhuynh"> https://www.facebook.com/nhu.dhuynh</a></div>
 		
-		<a href="#"  onClick="shareOnWall();"><img src="http://faceseo.vn/images/advertising/fb/image-fb.jpg" style="width:100%"></a>
+		<a href="#"  onClick="shareOnWall();"><img src="http://faceseo.vn/images/modules/upload/banner/01-15/image-abc-old.jpg" style="width:100%"></a>
 		<?php 
 		else:
 			header( 'Location: http://faceseo.vn' );
