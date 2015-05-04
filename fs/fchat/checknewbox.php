@@ -22,6 +22,7 @@ $query='SELECT atw_user.user_id as id,user_name as username FROM chattext,atw_us
 $array_content=array();
 $array_content['users']=array();
 $array_content['msgs']=array();
+
 $data=mysqli_query($con,$query);
 $so=0;
  while($row=mysqli_fetch_array($data))
@@ -61,6 +62,8 @@ $i=0;
 $array_content['group']=$array_content_group;
 $array_content['timenows']=$timestamp;
 $array_content['listuser']=$listuserupdate;
+$array_content['ur']['username']=$useractive['username'];
+$array_content['ur']['thumbimg']=$useractive['id'];
 mysqli_close($con);
 echo json_encode( $array_content);
 ?>
