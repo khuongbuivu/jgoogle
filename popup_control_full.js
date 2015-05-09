@@ -117,7 +117,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://faceseo.vn' target='_blank'><img src='http://giaiphapthuonghieu.vn/images/banners/bang-gia-seo-web-top.gif' width='500px'/>Faceseo hệ thống tăng traffic textlink duy nhất thế giới</a><h2><a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://faceseo.vn' target='_blank'><img src='http://4.bp.blogspot.com/-bnThrwlVC4I/U-SpLUASTOI/AAAAAAAAAT0/o4AoohBlBrQ/s1600/google-rich-snippets-la-gi.gif' width='500px'/>Faceseo hệ thống tăng traffic textlink duy nhất thế giới</a><h2><a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
