@@ -50,7 +50,9 @@ if(!isset($_SESSION)){
 	$link = "";
 	$linkhinh="";
 	$title = $_POST['title'];
+	$title = str_replace("'","\'",$title);
 	$description = $_POST['description'];
+	$description = str_replace("'","\'",$description);
 	$keyword = $_POST['keyword'];
 	$link = $_POST['link'];
 	$link=rtrim($link, "/");
