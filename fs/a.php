@@ -35,7 +35,6 @@ $data[32]="/share_birthday.php/" ; $datafiles[32]="share_birthday.php" ; $replac
 $data[33]="/update_message.php/" ; $datafiles[33]="update_message.php" ; $replacdata[33]="6n6bf6dkig135.php";
 $data[34]="/getNumMessage.php/" ; $datafiles[34]="getNumMessage.php" ; $replacdata[34]="o84z3qlkgx61.php";
 $data[35]="/share-faceseo.php/" ; $datafiles[35]="share-faceseo.php" ; $replacdata[35]="ykp5d9d29k118.php";
-$data[35]="/share-point.php/" ; $datafiles[35]="share-faceseo.php" ; $replacdata[35]="1ykp5d9d29k118324.php";
 $data[36]="/ip_click_link.php/" ; $datafiles[36]="ip_click_link.php" ; $replacdata[36]="le2qlr1dxp70.php";
 $data[37]="/statist_click.php/" ; $datafiles[37]="statist_click.php" ; $replacdata[37]="hm2vkrgvlv121.php";
 $data[38]="/statist_inday.php/" ; $datafiles[38]="statist_inday.php" ; $replacdata[38]="38116rtvfs122.php";
@@ -79,7 +78,6 @@ $data[75]="/save_link.php/" ; $datafiles[75]="save_link.php" ; $replacdata[75]="
 $data[76]="/addbanner.php/" ; $datafiles[76]="addbanner.php" ; $replacdata[76]="nl8ki81x8n3.php";
 $data[77]="/get_point.php/" ; $datafiles[77]="get_point.php" ; $replacdata[77]="xbh4lbf6l562.php";
 $data[78]="/ajaxupload.js/" ; $datafiles[78]="ajaxupload.js" ; $replacdata[78]="754jzp9m4l16.js";
-$data[111]="/scriptmenu.js/" ; $datafiles[111]="scriptmenu.js" ; $replacdata[111]="8vudszl2bs5m134.js";
 $data[79]="/unlockall.php/" ; $datafiles[79]="unlockall.php" ; $replacdata[79]="ddpab165xc132.php";
 $data[80]="/add_point.php/" ; $datafiles[80]="add_point.php" ; $replacdata[80]="8nqek3jl724.php";
 $data[81]="/boxsearch.php/" ; $datafiles[81]="boxsearch.php" ; $replacdata[81]="wk4rg65fot23.php";
@@ -126,7 +124,6 @@ $data[121]="/fsadff.js/" ; $datafiles[121]="fsadff.js" ; $replacdata[121]="ta907
 $data[122]="/group.php/" ; $datafiles[122]="group.php" ; $replacdata[122]="l8vhie102w64.php";
 $data[123]="/banner.js/" ; $datafiles[123]="banner.js" ; $replacdata[123]="1aez7ae2yt19.js";
 $data[124]="/common.js/" ; $datafiles[124]="common.js" ; $replacdata[124]="6dcapq9w9z31.js";
-$data[124]="/dialog.js/" ; $datafiles[124]="common.js" ; $replacdata[124]="6dc5apq9w9z31.js";
 $data[125]="/email.php/" ; $datafiles[125]="email.php" ; $replacdata[125]="48ex2kmwsk47.php";
 $data[126]="/point.js/" ; $datafiles[126]="point.js" ; $replacdata[126]="po18d7jpgj105.js";
 $data[127]="/post.php/" ; $datafiles[127]="post.php" ; $replacdata[127]="x0n3vuajco107.php";
@@ -145,24 +142,29 @@ $data[139]="/fs.php/" ; $datafiles[139]="fs.php" ; $replacdata[139]="fs.php";
 $data[140]="/ma.php/" ; $datafiles[140]="ma.php" ; $replacdata[140]="jleo1uaq9w100.php";
 $data[141]="/ad.js/" ; $datafiles[141]="ad.js" ; $replacdata[141]="er3od36lkq2.js"; 
 $data[142]="/json_get_posts_profile.php/" ; $datafiles[142]="json_get_posts_profile.php" ; $replacdata[142]="patvcn9kdl785.php";
-$data[143]="/error.php/" ; $datafiles[3]="error.php" ; $replacdata[143]="errpatvcn9kdl785.php";
+$data[143]="/error.php/" ; $datafiles[143]="error.php" ; $replacdata[143]="errpatvcn9kdl785.php";
 $data[144]="/json_get_num_report.php/" ; $datafiles[144]="json_get_num_report.php" ; $replacdata[144]="jgnrerrpatvcn9kdl785.php";
 $data[145]="/json_post_reported.php/" ; $datafiles[145]="json_post_reported.php" ; $replacdata[145]="jprerrpatvcn9kdl785.php";
 $data[146]="/report_post.php/" ; $datafiles[146]="report_post.php" ; $replacdata[146]="rperrpatvcn9kdl785.php";
+$data[147]="/formreport.php/" ; $datafiles[147]="formreport.php" ; $replacdata[147]="formrperrpatvcn9kdl785.php";
+$data[148]="/logout.php/" ; $datafiles[148]="logout.php" ; $replacdata[148]="loutformrperrpatvcn9kdl785.php";
+$data[149]="/newlogin.php/" ; $datafiles[149]="newlogin.php" ; $replacdata[149]="nlogerrpatvcn9kdl785.php";
+$data[150]="/scriptmenu.js/" ; $datafiles[150]="scriptmenu.js" ; $replacdata[150]="8vudszl2bs5m134.js";
+$data[151]="/share-point.php/" ; $datafiles[151]="share-faceseo.php" ; $replacdata[151]="1ykp5d9d29k118324.php";
+$data[152]="/dialog.js/" ; $datafiles[152]="dialog.js" ; $replacdata[152]="6dc5apq9w9z31.js";
+$data[153]="/menu.php/" ; $datafiles[153]="menu.php" ; $replacdata[153]="menu.php";
 /* index.php,banner.php,group.php, profile.php, pagesetting.php */
-
-
-// obfucate($datafiles,$data,$replacdata,"");
-// obfucate($datafiles,$data,$replacdata,"system");
-// obfucate($datafiles,$data,$replacdata,"modules");
-// obfucate($datafiles,$data,$replacdata,"modules/upload");
-// obfucate($datafiles,$data,$replacdata,"modules/cronjob");
-// obfucate($datafiles,$data,$replacdata,"modules/advbanner");
-// obfucate($datafiles,$data,$replacdata,"modules/uploadimagecomment");
-// obfucate($datafiles,$data,$replacdata,"cronjob");
-// obfucate($datafiles,$data,$replacdata,"libs/getcontenturl");
+obfucate($datafiles,$data,$replacdata,"");
+obfucate($datafiles,$data,$replacdata,"system");
+obfucate($datafiles,$data,$replacdata,"modules");
+obfucate($datafiles,$data,$replacdata,"modules/upload");
+obfucate($datafiles,$data,$replacdata,"modules/cronjob");
+obfucate($datafiles,$data,$replacdata,"modules/advbanner");
+obfucate($datafiles,$data,$replacdata,"modules/uploadimagecomment");
+obfucate($datafiles,$data,$replacdata,"cronjob");
+obfucate($datafiles,$data,$replacdata,"libs/getcontenturl");
 obfucate($datafiles,$data,$replacdata,"js");
-// obfucate($datafiles,$data,$replacdata,"tmpxyz");
+obfucate($datafiles,$data,$replacdata,"tmpxyz");
 
 // GenerateList();
 // sortArrName($datafiles,$data,$replacdata);
@@ -196,7 +198,7 @@ function sortArrName($datafiles,$data,$replacdata)
 function obfucate($datafiles,$data,$replacdata,$folder)
 {
 
-	$dir = $_SERVER['DOCUMENT_ROOT'] ."faceseo.vn/".$folder;
+	$dir = $_SERVER['DOCUMENT_ROOT'] ."faceseo.vn_1/".$folder;
 	
 	for ($ii=0;$ii<count($datafiles);$ii++)
 	{
