@@ -12,8 +12,9 @@
 					<div id="fslisttags0000" class="namereceivepoint"><div class="boxtagfullsecond"><div contenteditable="true" data-ph="@Linh Nguyen" data-he="cmt-content0000" class="content-namereceivepoint tagnameboxinput" id="rpcontentbox0000"></div><div id="display0000" class="boxtag"></div><div id="msgbox"></div></div></div>
 				</label>
 				<input type="radio" name="typereport" value="2"> Nội dung Sex<br>
-				<input type="radio" name="typereport" value="3"> Không có keywords<br>				
-				<input type="radio" name="typereport" value="4"> Thường xuyên spam<br><br>
+				<input type="radio" name="typereport" value="3"> Tin liên quan chính trị<br>
+				<input type="radio" name="typereport" value="4"> Không có keywords<br>				
+				<input type="radio" name="typereport" value="5"> Thường xuyên spam<br><br>
 				<button type="button" class="sendreport">Gửi</button>
 				<button type="button" class="closerp">Hủy</button>
 				

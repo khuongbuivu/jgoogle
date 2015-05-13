@@ -409,9 +409,12 @@ function getTypePost($type)
 			$desType="Nội dung sex";
 			break;
 		case 3:
-			$desType="Không có keywords";
+			$desType="Tin liên quan chính trị";
 			 break;
 		case 4:
+			$desType="Không có keywords";
+			 break;
+		case 5:
 			$desType="Thường xuyên spam";
 			 break;
 		default:
