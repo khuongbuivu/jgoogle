@@ -164,8 +164,6 @@ if(!isset($_SESSION)){
 				};
 				$result=mysqli_query($con,"UPDATE atw_point set point = ".$point." where idUser=".$idUser);	
 			}
-			else
-				$result=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUser.",".$point.")");
 		};	
 		updateHelpClickTable($idUserA,$idUserB,$pointHelp);		
 		mysqli_close($con);
