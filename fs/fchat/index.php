@@ -112,7 +112,7 @@ $lr='left';
 	}
 	$idben=$row['id'];
 	$html='<div class="chattime">
-    <div class="chattime2"><abr class="livetimestamp" data-utime="'.$row['timestamp'].'">0</abr></div>
+    <div class="chattime2"><abr class="chatlivetimestamp" data-utime="'.$row['timestamp'].'">0</abr></div>
   </div>
   <div class="commentbox comment'.$lr.'">
     <div class="commentthumb thum-'.$lr.'">
