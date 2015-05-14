@@ -1,9 +1,8 @@
-function addLink(){
-	alert("abc");
+function FSAddOriginalLink(){
     var body_element = document.getElementsByTagName('body')[0];
     var selection;
     selection = window.getSelection();
-    var pagelink = "<br/><br/>Muốn copy thì vào đây : <a href='http://giaiphapthuonghieu.vn'>"+document.location.pathname+"</a>";
+    var pagelink = "<br/><br/>MUON COPY THI VAO DAY : <a href='http://giaiphapthuonghieu.vn'>http://giaiphapthuonghieu.vn"+document.location.pathname+"</a>";
     var copytext = pagelink;
     var newdiv = document.createElement('div');
     newdiv.style.position='absolute';
@@ -15,4 +14,4 @@ function addLink(){
         body_element.removeChild(newdiv);
     },0);
 }
-document.oncopy = addLink;
+document.oncopy = FSAddOriginalLink;
