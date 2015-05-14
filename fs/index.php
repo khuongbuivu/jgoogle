@@ -1043,38 +1043,6 @@ function getFile(){
         document.getElementById("upfile").click();
 }
 
-function startTime(url,link)
-{
-		var today=new Date();
-		var h=today.getHours();
-		var m=today.getMinutes();
-		var s=today.getSeconds();
-		m=checkTime(m);
-		s=checkTime(s);
-		if (s%5==0)
-		{
-			loadStasticLink(url,link);
-		}
-		if (document.getElementById("timeclock"))
-		{	
-			document.getElementById('timeclock').innerHTML=h+":"+m+":"+s;							
-		}
-		else
-		{
-			initScrollbar();
-			setScroll=0;			
-		}	
-		if(setScroll<3)
-			initScrollbar();		
-		timeoutStasticClick=setTimeout(function(){startTime(url,link)},1000);	
-}
-function initScrollbar()
-{
-	setScroll++;
-	$('.nano').nanoScroller({
-		preventPageScrolling: true
-	});
-}
 
 function initNotifyComment()
 {
@@ -1109,12 +1077,6 @@ function initNotifyEmail()
 }
 
 
-function checkTime(i)
-{
-	if (i<10)
-	  i="0" + i;
-	return i;
-}
 </script>
 <script type="text/javascript">
     var r = true;  

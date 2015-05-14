@@ -4,17 +4,21 @@ var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 var is_coccoc = navigator.userAgent.toLowerCase().indexOf('coc_coc') > -1;
 var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
 var typebrowser = "firefox";
-if (is_firefox===true)
-	typebrowser = "firefox";
-else if (is_coccoc===true)
-	typebrowser = "coc_coc";
-else if (is_chrome===true)
-	typebrowser = "chrome";
-else if (is_safari===true)
-	typebrowser = "safari";
+if (isMobile===true)
+	typebrowser="mobile";
 else
-	typebrowser = "explore";
-
+{
+	if (is_firefox===true)
+		typebrowser = "firefox";
+	else if (is_coccoc===true)
+		typebrowser = "coc_coc";
+	else if (is_chrome===true)
+		typebrowser = "chrome";
+	else if (is_safari===true)
+		typebrowser = "safari";
+	else
+		typebrowser = "explore";
+}
 function showAllComment(url,idArt)
 {
 	if (FaceSeo.search(domain)<0)
@@ -295,12 +299,7 @@ function openUrl1(url)
 				randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
-				if (isMobile!==true)
-				{
-					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
-				}
-				else
-					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
+				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				i=i+1;	
 				window.iswiewing=true;				
 				var contentPost="";				
@@ -351,10 +350,7 @@ function openUrl(url,timesession)
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
-				if (isMobile!==true)
-					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
-				else
-					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
+				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);				
 				i=i+1;	
 				window.iswiewing=true;				
 				var contentPost="";				
@@ -411,11 +407,7 @@ function openUrl(url,timesession,idPost,key)
 				else
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
 				arrKeys[i]= key;
-				
-				if (isMobile!==true)
-					timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
-				else
-					timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
+				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);				
 				addListidPostHide(i,idPost);
 				i=i+1;	
 				window.iswiewing=true;				
@@ -478,10 +470,7 @@ function openUrlBanner(url,id)
 			randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
 			time=time.format("hh:mm:ss dd/MM/yyyy");
 			timeInits[i]=time;
-			if (isMobile!==true)
-				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
-			else
-				timetmp=saveClick('save_clickm.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
+			timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 			i=i+1;
 			window.iswiewing=true;
 			arrPostViewNeedRemove[i-1]=	id;
@@ -688,12 +677,11 @@ function checkTabsClosed()
 					if (isMobile!==true)
 					{
 						addPoint('add_point_banner.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-						saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 					}else
 					{
-						addPoint('add_point_bannerm.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-						saveClick('save_clickm.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);									
+						addPoint('add_point_bannerm.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));								
 					}
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 				};								
 				tabs[j].close();	
 				timeInits[j] = "";
@@ -2036,4 +2024,44 @@ function loadPostReport()
 		}
 	}); 
 	return false;
+};
+
+function startTime(url,link)
+{
+		var today=new Date();
+		var h=today.getHours();
+		var m=today.getMinutes();
+		var s=today.getSeconds();
+		m=checkTime(m);
+		s=checkTime(s);
+		if (s%5==0)
+		{
+			loadStasticLink(url,link);
+		}
+		if (document.getElementById("timeclock"))
+		{	
+			document.getElementById('timeclock').innerHTML=h+":"+m+":"+s;							
+		}
+		else
+		{
+			initScrollbar();
+			setScroll=0;			
+		}	
+		if(setScroll<3)
+			initScrollbar();		
+		timeoutStasticClick=setTimeout(function(){startTime(url,link)},1000);	
+};
+function initScrollbar()
+{
+	setScroll++;
+	$('.nano').nanoScroller({
+		preventPageScrolling: true
+	});
+};
+
+function checkTime(i)
+{
+	if (i<10)
+	  i="0" + i;
+	return i;
 }
