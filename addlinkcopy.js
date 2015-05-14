@@ -1,4 +1,5 @@
 function addLink(){
+	alert("abc");
     var body_element = document.getElementsByTagName('body')[0];
     var selection;
     selection = window.getSelection();
