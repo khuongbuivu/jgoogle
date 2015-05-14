@@ -6,10 +6,10 @@ var is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
 var typebrowser = "firefox";
 if (is_firefox===true)
 	typebrowser = "firefox";
-else if (is_chrome===true)
-	typebrowser = "chrome";
 else if (is_coccoc===true)
 	typebrowser = "coc_coc";
+else if (is_chrome===true)
+	typebrowser = "chrome";
 else if (is_safari===true)
 	typebrowser = "safari";
 else
@@ -88,6 +88,7 @@ function addCmtToDb(url, idArt, content,commentImage, imgLogo, name,idUser,  tok
 	xmlhttp.setRequestHeader("Connection", "close");
 	xmlhttp.onreadystatechange = function() {
 	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){ 
+		// alert(xmlhttp.responseText);
 	  $(".mentionsHidden"+idArt).val("");
 	  autoLoadComment(root_path + 'content_comment.php',idArt);
 	}
@@ -650,7 +651,7 @@ function checkTabsClosed()
 			timeInits.splice(j,1);
 			randomTimeCloses.splice(j,1);
 			var xxxx=arrClickKey.indexOf(j);
-			alert(xxxx + " " + j);
+			
 			if (xxxx!==-1)
 			{
 				reduceIndexArr(arrClickKey,j);

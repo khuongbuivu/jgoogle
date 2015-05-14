@@ -23,9 +23,47 @@ if(!isset($_SESSION)){
 		$arrKey = getListKeys($cmt_content);
 		$cmt_content = addLinkUrl($cmt_content,'300',$_POST['idArt'],$arrKey).$cmt_img;	
 		if($cmt_content!="")
+		{
 			mysqli_query($con,"INSERT INTO atw_cmt_content (IdArticles,Content,Time,imgLogo, userId,name) VALUES (".$idArt.",'".$cmt_content."','".$datetime."','".$imgLogo."' , '".$_SESSION['session-user']."', '".$name."')");	
+			updateListUpPost($idArt,1);
+		}
 		mysqli_close($con);
 	}
+	
+	function updateListUpPost($pid,$status)
+	{
+		global $host;
+		global $user;
+		global $pass;
+		global $db;	
+		$MAXPOST = 20;
+		$con=mysqli_connect($host,$user,$pass,$db);
+		mysqli_set_charset($con, "utf8");
+		// fs_up_post(up_post_id,up_post_idPost,up_post_status);
+		$result=mysqli_query($con,"select * from fs_up_post");
+		$row = mysqli_fetch_array($result);	
+		if ($row['up_post_idPost']>$MAXPOST && $row1 = mysqli_fetch_array($result))
+		{
+			mysqli_query($con,"DELETE FROM fs_up_post where up_post_id=2");		
+		}
+		if ($row['up_post_idPost']>$MAXPOST)
+		{
+			while($row=mysqli_fetch_array($result))
+			{
+				mysqli_query($con,"UPDATE fs_up_post SET up_post_id='".((int)$row['up_post_id'] -1)."' where  up_post_id=".$row['up_post_id']);
+			}
+			mysqli_query($con,"insert into fs_up_post (up_post_id,up_post_idPost,up_post_status) values (".($MAXPOST+ 1).",'".$pid."',".$status.")");
+		}
+		else
+		{
+			echo "insert into fs_up_post (up_post_id,up_post_idPost,up_post_status) values (".((int)$row['up_post_idPost']+ 1).",'".$pid."',".$status.")";
+			$res=mysqli_query($con,"insert into fs_up_post (up_post_id,up_post_idPost,up_post_status) values (".((int)$row['up_post_idPost']+ 1).",'".$pid."',".$status.")");
+			if($res)
+				mysqli_query($con,"UPDATE fs_up_post SET up_post_idPost='".((int)$row['up_post_idPost']+1)."' where up_post_id=1");
+		}
+		mysqli_close($con);
+	}
+	
 	function saveLike()
 	{
 		global $host;

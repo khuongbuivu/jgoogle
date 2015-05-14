@@ -49,20 +49,22 @@ if(!isset($_SESSION)){
 		$con=mysqli_connect($host,$user,$pass,$db);
 		mysqli_set_charset($con, "utf8");
 		// fs_newlogin newlogin_id  newlogin_uid newlogin_username
-		$result=mysqli_query($con,"select * from fs_newlogin where newlogin_id=1");
-		$numrow=$result->num_rows;
-		$row = mysqli_fetch_array($result);		
+		$result=mysqli_query($con,"select * from fs_newlogin");
+		$row = mysqli_fetch_array($result);	
+		if ($row1 = mysqli_fetch_array($result))
+			mysqli_query($con,"DELETE FROM fs_newlogin where newlogin_id=2");		
 		if ($row['newlogin_uid']>50)
-			mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid=1");
-		else
-		{			
-			if ($numrow<51)
+		{
+			while($row=mysqli_fetch_array($result))
 			{
-				mysqli_query($con,"insert into fs_newlogin (newlogin_id,newlogin_uid,newlogin_username,user_time_join) values (".((int)$row['newlogin_uid']+ 1).",'".$uid."','".$username."','".$timeJoin."')");
-				mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".((int)$row['newlogin_uid']+1)."' where newlogin_id=1");
+				mysqli_query($con,"UPDATE fs_newlogin SET newlogin_id='".((int)$row['newlogin_id'] -1)."' where  newlogin_id=".$row['newlogin_id']);
 			}
-			else
-				mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".$user."' , newlogin_username='".$username."'");
+			mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".$uid."' , newlogin_username='".$username."', user_time_join='".$timeJoin."' where where  newlogin_id=".$row['newlogin_uid']);
+		}
+		else
+		{
+			mysqli_query($con,"insert into fs_newlogin (newlogin_id,newlogin_uid,newlogin_username,user_time_join) values (".((int)$row['newlogin_uid']+ 1).",'".$uid."','".$username."','".$timeJoin."')");
+			mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".((int)$row['newlogin_uid']+1)."' where newlogin_id=1");
 		}
 		mysqli_close($con);
 	}

@@ -1,4 +1,4 @@
 Options +FollowSymLinks
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www.faceseo.vn
-RewriteRule ^.*$ http://faceseo.vn%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^www.systemforseoer.com
+RewriteRule ^.*$ http://systemforseoer.com%{REQUEST_URI} [R=301,L]

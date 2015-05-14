@@ -753,7 +753,7 @@ background-color: red;
 	position: fixed; 
 	bottom: 10px; 
 	height: 70px; 
-	z-index: 1;
+	z-index: 0;
 	width: 24%;
 	left:54.6%;
 	height:88%;
