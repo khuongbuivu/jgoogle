@@ -9,6 +9,7 @@ var vp='';
 var tai=1;
 var luc=0;
 var son=0;
+var loadm=0;
 function formattime(a){
  var t;
  if(a<60){
@@ -92,12 +93,8 @@ $.ajax({
 			  if(kt==1){			  
 				comtime=getcommenttime(data.msgs[j].timestamp,data.msgs[j].time_chat);
 				if( data.msgs[j].id=='-1'){
-				 
-	              //combox=getCommentbox(data.ur.username,data.msgs[j].time_chat,data.msgs[j].msg,data.ur.thumbimg,data.msgs[j].timestamp);
 				   a=data.ur.username;b=data.ur.thumbimg;
-				  
 				}else{
-	             //combox=getCommentbox(data.users[data.msgs[j].id].username,data.msgs[j].time_chat,data.msgs[j].msg,data.users[data.msgs[j].id].thumbimg,data.msgs[j].timestamp);
 				  a=data.users[data.msgs[j].id].username;b=data.users[data.msgs[j].id].thumbimg;
 				}
 				if(j!=data.msgs.length-1&&data.msgs[j].timestamp>data.msgs[j+1].timestamp+5){
@@ -278,14 +275,24 @@ html='<div data-jsid="message" data-utime="'+ti+'" class="msgcontent"><span><div
 return html;
 }
 
-function chataddCmtToDb(content,userid,kind){ 
-
+function chataddCmtToDb(content,userid,kind,vp){ 
+  if(userid=='usern_group')username2='usern_group';
+  username2=$('.blockchat_'+userid+' .nameblock .anboxchat a').html();
   $.ajax({
     url:'http://localhost/faceseo.vn/fchat/process-comment.php',
     type:'POST',
-    data: {cmt_content:content,userid:userid,kind:kind},
+    data: {cmt_content:content,userid:userid,kind:kind,username2:username2,vp:vp},
 	dataType: "json",
     success: function(json) {
+	   if(json.errorvp=='-1'){
+		    $('.compare-items-wrapper').html('Bạn đã vi phạm <span class="num">nhiều lần</span> về nội dung chat không sạch. Nên tài khoản của bạn tạm khoá chức năng chat. Vui lòng liên hệ admin. Cảm ơn.');
+				$('.modal-overlay').css('display','block');
+			    $('.modal-window').css('display','block');
+		   
+		   
+	   }else{	
+		
+		
 	  idu=$('.userac').data('ida');
 	   pre=$('.blockchat_'+userid+' .chaten').data('itime');
 	   kt=json.timestamp-pre;
@@ -304,12 +311,31 @@ function chataddCmtToDb(content,userid,kind){
 	    var combox=getCommentbox2(json.un,json.timechat,json.msg,idu,json.timestamp,json.giochat);
 		$('#cmt_content_'+userid+' div.messages:last').append(combox)
 	   }
+	   
+	    if(json.co==1){
+	   $('.compare-items-wrapper').html('Vui lòng chat với nội dung sạch.</br> Bạn đã vi phạm <span class="num">'+json.errorvp
++' lần</span>. Nếu cứ tiếp tục xin lỗi chúng tôi sẽ khoá nick của bạn. Hãy vì faceseo trong sạch, văn hoá. Cảm ơn.');
+				$('.modal-overlay').css('display','block');
+			    $('.modal-window').css('display','block');
+		} 
+	   }
+	 
 		}
+		
 });  
 
 }
 
-
+$(document).on('click','.close-btn',function( event ) {
+			   jQuery('.modal-overlay').css('display','none');
+			   jQuery('.modal-window').css('display','none');
+			
+			});
+$(document).on('click','.modal-overlay',function( event ) {
+			   jQuery('.modal-overlay').css('display','none');
+			   jQuery('.modal-window').css('display','none');
+			
+});
 
 
 $(document).on('keypress','.chaten',function( event ) {	
@@ -320,6 +346,7 @@ if(tai>=luc+1){
 var k=$(this).data('ui');	
 var tb = $(this);
 var chat="";
+        vp='';
 		var oldContent = $('#comment_content_'+k).html();		
 		var div, targetElement =$('#cmt_content_'+k);
 		var numdiv= $('#comment_content_num_'+k).html();
@@ -329,11 +356,12 @@ var chat="";
 		var n = chu.length;
 		if(trave[1]!=''){
 		  vp=vp+trave[1];
+		  
 		}
 		//chat=chataddCmtToDb(tb.val(),k,'text');
 		
 		if(n>=2){
-		chat=chataddCmtToDb(trave[0],k,'text');
+		chat=chataddCmtToDb(trave[0],k,'text',vp);
 		$(this).val('');
 		$(this).css('height','15px');
 		var psconsole=$('.viewport_'+k);
@@ -394,6 +422,8 @@ $(document).on('keypress','.searchbox',function( event ) {
 	}
 })
 $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
+	if(loadm==0){
+	loadm=1;	
 	var parentdiv=$(this).parent();
 	var firstdiv=$('#cmt_content_usern_group .chatlivetimestamp').first();
 	var timeint=firstdiv.data('utime');
@@ -414,8 +444,6 @@ $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 			 if(data.msgs.length>0){
 			  for(j=0;j<data.msgs.length;j++){
 			   kt=1;  
-		
-			 
 			  if(kt==1){			  
 				comtime=getcommenttime(data.msgs[j].timestamp,data.msgs[j].time_chat);	
 				  a=data.msgs[j].id;
@@ -438,15 +466,19 @@ $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 			 
 			 }
 		
-		
+		loadm=0;
 	
 
 		
 		}
 	});	
-	
+
+}
+
 })
 $(document).on('click','.blockchatuser .viewmore',function( event ) {
+	if(loadm==0){
+	loadm=1;
 	var parentdiv=$(this).parent();
 	var firstdiv=$('.blockchatuser .chatlivetimestamp').first();
 	var timeint=firstdiv.data('utime');
@@ -494,11 +526,12 @@ $(document).on('click','.blockchatuser .viewmore',function( event ) {
 		
 		
 	
-
+        loadm=0;
 		
 		}
 	});	
 	
+	}
 })
 $(document).on('click','.nameblock .anboxchat',function( event ) {
 	 var par=$(this).parent();
@@ -549,7 +582,7 @@ $(document).on('mouseleave','.blockusers',function( event ) {
 
 function getboxchat(id,blockname){
 var idu = id.substr(6); 
-	html='<div class="blockchat blockchatuser blockchat_'+id+'"><div class="nameblock" data-ui="blockchat_'+id+'"><span title="Hiện thời gian chat" class="timeicon" data-ui="'+id+'"></span><span class="anboxchat"><a href="#">'+blockname+'</a></span><span class="closethis" data-ui="'+id+'">x</span></div><div class="fullchat"><div class="fullchat2"><div class="scrollbar1 content_'+id+'"><div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div><div style="height:215px;overflow: auto;" class="viewport viewport_'+id+'"><div class="overview"><div id="cmt_content_'+id+'"><div id="comment_content_'+id+'"></div><div id="comment_content_num_'+id+'" style="display:none">0</div><div class="ajaxlast"><div class="viewmore" data-ipc="'+idu+'">Xem thêm tin nhắn cũ</div><span class="loading-chat"></span></div></div></div></div><div class="borderchat">   <textarea data-ui="'+id+'" data-itime="0" class="chaten scriptBox"></textarea><div class="showicons" data-ui="'+id+'"></div><div class="iconchose iconchose_'+id+'"></div></div></div></div></div></div>';
+	html='<div class="blockchat blockchatuser blockchat_'+id+'"><div class="nameblock" data-ui="blockchat_'+id+'"><span title="Hiện thời gian chat" class="timeicon" data-ui="'+id+'"></span><span class="anboxchat"><a href="#">'+blockname+'</a></span><span class="closethis" data-ui="'+id+'">x</span></div><div class="fullchat"><div class="fullchat2"><div class="scrollbar1 content_'+id+'"><div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div><div style="height:215px;overflow: auto;" class="viewport viewport_'+id+'"><div class="overview"><div id="cmt_content_'+id+'"><div id="comment_content_'+id+'"></div><div id="comment_content_num_'+id+'" style="display:none">0</div><div class="ajaxlast"><div class="viewmore" data-ipc="'+idu+'">Xem thêm tin nhắn cũ</div><span class="loading-chat"></span></div><div class="chattime"><div class="chattime2"><abr class="chatlivetimestamp"></abr></div></div></div></div></div><div class="borderchat">   <textarea data-ui="'+id+'" data-itime="0" class="chaten scriptBox"></textarea><div class="showicons" data-ui="'+id+'"></div><div class="iconchose iconchose_'+id+'"></div></div></div></div></div></div>';
 return html;
 }
 $(document).on('click','.iconchose',function( event ) {
@@ -586,7 +619,7 @@ $(document).on('click','.icon-class-click',function( event ) {
 	var borderchat=parentbox.parent();
 	var imgurl=$(this).data('img');
 	var iduser=parentbox.data('ui');
-	chataddCmtToDb(imgurl,iduser,'img');
+	chataddCmtToDb(imgurl,iduser,'img','');
 	  borderchat.removeClass('acticons');
   });
 $(document).on('click','#bgiconex',function( event ) {

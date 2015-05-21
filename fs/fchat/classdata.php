@@ -4,13 +4,13 @@ mysqli_set_charset($con, "utf8");
 class faceseochat{
  
  function getUsersOnline(){
-	global $con;
+	 $conuser=mysqli_connect("localhost","root","","tbl_chatreport") or die("Không kết nối được");
+mysqli_set_charset($conuser, "utf8");	
    $hourdate=date('Y-m-d H:i:s');
    $ti=strtotime($hourdate)-60; 
-   $query='select user_id,user_name from atw_user,useronline where user_id=iduser and timeonline>='.$ti.' limit 0,30';
-   
+   $query='select iduser,user_name from useronline where timeonline>='.$ti.' limit 0,30';
   
-   $data=mysqli_query($con,$query);
+   $data=mysqli_query($conuser,$query);
    $i=0;
    $datas=array();
   while($row=mysqli_fetch_array($data))
@@ -20,7 +20,7 @@ class faceseochat{
 	$datas[$i]['username']=$row[1];
 	$i=$i+1;
 }
-   
+   mysqli_close($conuser);
   return $datas;
 	 
  }
@@ -42,7 +42,7 @@ class faceseochat{
   return $datas;
 	 
  }
- function updatelistuser(){
+ function updatelistuser(&$useridonline){
 	global $con;
 	$html=''; 
 	 $useractive=$_SESSION['useractive'];
@@ -50,7 +50,7 @@ class faceseochat{
 	 $useronline=$this->getUsersOnline();
 foreach($useronline as $user):
 	if($user['id']!=$useractive['id']){
-		$m[]=$user['id'];
+		$useridonline[]=$user['id'];
 		$html.='<p><span class="icon-online"></span>';
 		$html.='<img src="https://graph.facebook.com/'.$user['id'].'/picture">';
 		$html.='<a class="usern" rel="ignore" data-username-show="'.$user['username'].'" role="" data-usern="usern_'.$user['id'].'" usern="usern_'.$user['id'].'">';
@@ -58,18 +58,6 @@ foreach($useronline as $user):
 	}
 	
       endforeach;
-	  /*
- $listonline=implode(',',$m);
- $user_all=$this->getUsers($listonline); 
-foreach($user_all as $user):
-	
-	if($user['id']!=$useractive['id']){
-		$html.='<p><span class="icon-offline"></span>';
-		$html.='<img src="https://graph.facebook.com/'.$user['id'].'/picture">';
-		$html.='<a class="usern" rel="ignore" role="" data-username-show="'.$user['username'].'" data-usern="usern_'.$user['id'].'" usern="usern_'.$user['id'].'">';
-	    $html.=$user['username'].'</a></p>';
-	}
-endforeach;*/
 	 return $html;
 	 }
  function getUser($id){
@@ -104,7 +92,9 @@ endforeach;*/
    return $user;
  }
  function getmsg10($id1,$id2,$timese,&$mang=array(),$so){
-	global $con;
+	//global $con;
+$conuser=mysqli_connect("localhost","root","","tbl_chatuser") or die("Không kết nối được");
+mysqli_set_charset($conuser, "utf8");	
    $datas=array();
    $query='select * from chattext where timestamp >='.$timese.' and (iduser1='.$id1.' and iduser2='.$id2.' ) or (iduser1='.$id2.' and iduser2='.$id1.') order by id desc' ;
    $data=mysqli_query($con,$query);
@@ -112,7 +102,7 @@ endforeach;*/
     while($row=mysqli_fetch_array($data))
 {   
    
-    $u=$this->getUser($row['iduser1']);
+    //$u=$this->getUser($row['iduser1']);
 	if($row['iduser1']==$id1){
 		$datas['ib']=$row['iduser2'];
 		$datas['id']='-1';
@@ -132,6 +122,7 @@ endforeach;*/
 	$mang[]=$datas;
 	$i=$i+1;
 } 
+mysqli_close($conuser);
    return true;
  }
   function getmsg10ajax($id1,$id2,&$mang=array()){
@@ -159,7 +150,8 @@ endforeach;*/
    return true;
  }
    function getmsg4ajax($id1,$id2,&$mang=array()){
-   global $con;
+   $conuser=mysqli_connect("localhost","root","","tbl_chatuser") or die("Không kết nối được");
+   mysqli_set_charset($conuser, "utf8");	
    $datas=array();
    $query='select * from chattext where (iduser1='.$id1.' and iduser2='.$id2.' ) or (iduser1='.$id2.' and iduser2='.$id1.') order by id desc limit 0,4' ;
 
@@ -167,7 +159,7 @@ endforeach;*/
    $i=0;
     while($row=mysqli_fetch_array($data))
 {   
-    $u=$this->getUser(@$row['iduser1']);
+   // $u=$this->getUser(@$row['iduser1']);
 	
 		$datas['ib']=$id2;
 		$datas['id']=$row['iduser1'];
@@ -180,6 +172,7 @@ endforeach;*/
 	$mang[]=$datas;
 	$i=$i+1;
 } 
+mysqli_close($conuser);
    return true;
  }
  function getmsg10ajaxuser($id1,$id2,&$mang=array(),$timeint){
@@ -190,7 +183,7 @@ endforeach;*/
    $i=0;
     while($row=mysqli_fetch_array($data))
 {   
-    $u=$this->getUser(@$row['iduser1']);
+    //$u=$this->getUser(@$row['iduser1']);
 	
 		$datas['ib']=$id2;
 		$datas['id']=$row['iduser1'];
@@ -236,34 +229,46 @@ endforeach;*/
     return true;
 	 }
  function checkonline($userid){
-	global $con;
+	 $conuser=mysqli_connect("localhost","root","","tbl_chatreport") or die("Không kết nối được");
+mysqli_set_charset($conuser, "utf8");	
    $sql="SELECT id,timeonline FROM useronline WHERE iduser = '$userid' limit 0,1"; 
-   $data=mysqli_query($con,$sql);
+   $data=mysqli_query($conuser,$sql);
    $row=mysqli_fetch_row($data);
    $date=date('Y-m-d H:i:s');  
    if($row[0]>0){
 	    $sql="UPDATE useronline SET timeonline = '".strtotime($date)."',gioonline='".date("Y-m-d H:i:s")."' WHERE iduser = '$userid'";
-		mysqli_query($con,$sql);
+		mysqli_query($conuser,$sql);
    }else {
-  	 $sql="INSERT INTO useronline (id, iduser, gioonline, timeonline) VALUES (NULL, '".$userid."', '".date("Y-m-d H:i:s")."', '".strtotime($date)."')";
-	 mysqli_query($con,$sql);
+  	 $sql="INSERT INTO useronline (id, iduser,user_name,gioonline, timeonline) VALUES (NULL, '".$userid."', '".$_SESSION['useractive']['username']."','".date("Y-m-d H:i:s")."', '".strtotime($date)."')";
+	 
+	 mysqli_query($conuser,$sql);
  }
+ mysqli_close($conuser);
 	 return true;
 	 }	 
 	 
  function updateonline($userid){
-	global $con;
+	$conuser=mysqli_connect("localhost","root","","tbl_chatreport") or die("Không kết nối được");
+mysqli_set_charset($conuser, "utf8");
    $date=date('Y-m-d H:i:s');
    $thoigian=  strtotime($date);
    $sql="UPDATE useronline SET timeonline = '".$thoigian."',gioonline='".date("Y-m-d H:i:s")."' WHERE iduser = '$userid'";
-		mysqli_query($con,$sql);
+		mysqli_query($conuser,$sql);
+		 mysqli_close($conuser);
 	 return true;
 	 }	 
 	 
  function inserdata($array){
- global $con;
-	$sql='INSERT INTO chattext (id, iduser1, iduser2, msg, time_chat, timestamp,hit) VALUES (NULL, "'.$array['iduser1'].'", "'.$array['iduser2'].'", "'.$array['msg'].'", "'.date('Y-m-d H:i:s').'", "'.$array['timestamp'].'","0");';
+ if($array['iduser2']=='group'){
+	 $con=mysqli_connect("localhost","root","","tbl_chatgroup") or die("Không kết nối được"); 
+ }else{
+	 $con=mysqli_connect("localhost","root","","tbl_chatuser") or die("Không kết nối được"); 
+ }
+ mysqli_set_charset($con, "utf8");
+
+ 	$sql='INSERT INTO chattext (id, iduser1, iduser2,username,msg, time_chat, timestamp,hit) VALUES (NULL, "'.$array['iduser1'].'", "'.$array['iduser2'].'","'.$_SESSION['useractive']['username']. '","'.$array['msg'].'", "'.date('Y-m-d H:i:s').'", "'.$array['timestamp'].'","0");';
 	mysqli_query($con,$sql);
+	mysqli_close($con);
   return true;
  }
 }

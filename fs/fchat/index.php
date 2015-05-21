@@ -1,4 +1,5 @@
 <?php
+
 $homepathchat='http://localhost/faceseo.vn/fchat/';
 if(!isset($_SESSION)){
     session_start();
@@ -53,11 +54,18 @@ if($useridoff>0){
     $_SESSION['timelogin']=strtotime($hourstimeonline);
 	$useronline=$fchat->getUsersOnline();
 	
+	$conreport=mysqli_connect("localhost","root","","tbl_chatreport") or die("Không kết nối được");
+     mysqli_set_charset($conreport, "utf8");	
+    $query='select lanvp from reportuser where iduser="'.$_SESSION['session-user'].'" limit 0,1';
+   $data=mysqli_query($conreport,$query);
+   $row=mysqli_fetch_row($data);
+   $_SESSION['useractive']['vp']=$row[0];
+   mysqli_close($conreport);
 	?>
 <div class="bodychat">
 <div data-ida="<?php echo $_SESSION['session-user']; ?>" class="userac"></div>
   <abbd data-ltime="<?php 
-echo date_timestamp_get($date);
+echo date_timestamp_get(date('Y-m-d H:i:s'));
 ?>" title="" class="lasttimestamp" data-on='0'></abbd>
   <div id="doan"></div>
   <div class="blockusers">
@@ -84,26 +92,18 @@ echo date_timestamp_get($date);
                     <div class="ajaxlast">
                       <div class="viewmore">Xem thêm tin nhắn cũ</div>
                       <span class="loading-chat"></span></div>
+                      <div class="chattime"><div class="chattime2"><abr class="chatlivetimestamp"></abr></div></div>
                     <?php
-				  $query='SELECT atw_user.user_id as id,user_name as username,msg,time_chat,timestamp FROM chattext,atw_user WHERE iduser1=user_id and iduser2 ="group" order by timestamp desc limit 0,10';
-$data=mysqli_query($con,$query);
+$congroup=mysqli_connect("localhost","root","","tbl_chatgroup") or die("Không kết nối được");
+mysqli_set_charset($congroup, "utf8");					
+$query='SELECT iduser1 as id,username1 as username,msg,time_chat,timestamp FROM chattext WHERE iduser1=user_id and iduser2 ="group" order by timestamp desc limit 0,10';
+$data=mysqli_query($congroup,$query);
 $i=0;
 $lr='left';
  $html='';
  while($row=mysqli_fetch_array($data))
 { 
-/*
-	$array_content_group['users'][$i]['id']=$row['id'];
-	$array_content_group['users'][$i]['username']=$row['username'];
-	$array_content_group['users'][$i]['thumbimg']=$row['id'];
-	$array_content_group['msgs'][$i]['ib']=$row['id'];
-	$array_content_group['msgs'][$i]['id']=$i;
-	$array_content_group['msgs'][$i]['msg']=$row['msg'];
-	$array_content_group['msgs'][$i]['timestamp']=$row['timestamp'];
-	$array_content_group['msgs'][$i]['time_chat']=$row['time_chat'];
-	$thoigianchat=date('h:i A',$row['timestamp']);
-	$array_content_group['msgs'][$i]['giochat']=$thoigianchat;
-	$i=$i+1;*/
+
 	$thoigianchat=date('h:i A',$row['timestamp']);
 	
 	if($row['id']!=$idben){
@@ -130,7 +130,7 @@ $lr='left';
   </div>'.$html;
 	?>
                     <?php }
-
+mysqli_close($congroup);
 			echo $html;	  
 				  
 				  ?>
@@ -162,21 +162,7 @@ foreach($useronline as $user):
 	
 endforeach;
 ?>
-        <?php /*
- $listonline=implode(',',$m);
- $user_all=$fchat->getUsers($listonline); 
-foreach($user_all as $user):
-	
-	if($user['id']!=$useractive['id']){
-		echo '<p><span class="icon-offline"></span>';
-		echo '<img src="https://graph.facebook.com/'.$user['id'].'/picture">';
-		echo '<a class="usern" data-username-show="'.$user['username'].'" rel="ignore" role="" data-usern="usern_'.$user['id'].'" usern="usern_'.$user['id'].'">';
-	    echo $user['username'].'</a></p>';
-	}
-	
-endforeach;
-*/
-?>
+        
       </div>
       <div class="listsearchuser"></div>
       <div class="searchbox">
@@ -212,4 +198,7 @@ endforeach;
 // }
 
 ?>
-
+<div style="z-index: 9998; display:none" class="modal-overlay modalOverlay"></div>
+<div style="z-index: 9999; position: fixed; top: 50%; left: 50%; height:150px;width:300px;display:none" class="modal-window modalWindow modalContent modal-compare">
+  <div class="compare-items-wrapper"></div>
+  <span class="close-btn closeButton" style="cursor:pointer"></span> </div>
