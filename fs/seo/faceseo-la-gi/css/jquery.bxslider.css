@@ -1,0 +1,107 @@
+/**
+ * BxSlider v4.1.2 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2014
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+
+
+/** RESET AND LAYOUT
+===================================*/
+
+.bx-wrapper {
+	position: relative;
+	padding: 0;
+	*zoom: 1;
+}
+
+.bx-wrapper img {
+	max-width: 100%;
+	display: block;
+	width:100%;
+}
+
+/** THEME
+===================================*/
+
+.bx-wrapper .bx-viewport {
+	left: 0;
+	
+	/*fix other elements on the page moving (on Chrome)*/
+	-webkit-transform: translatez(0);
+	-moz-transform: translatez(0);
+    	-ms-transform: translatez(0);
+    	-o-transform: translatez(0);
+    	transform: translatez(0);
+}
+
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+	position: absolute;
+	bottom: -30px;
+	width: 100%;}
+
+/* LOADER */
+
+.bx-wrapper .bx-loading {
+	min-height: 50px;
+	background: url(images/bx_loader.gif) center center no-repeat #fff;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+/* PAGER */
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+
+.bx-wrapper .bx-prev {
+	background:url(../images/bnt-prev.png) no-repeat;
+	right:76px;
+}
+.bx-wrapper .bx-prev:hover{
+	background:url(../images/bnt-prev-hover.png) no-repeat;
+}
+.bx-wrapper .bx-next:hover{
+	background:url(../images/bnt-next-hover.png) no-repeat;
+}
+
+.bx-wrapper .bx-next {
+	right: 50px;
+	background:url(../images/bnt-next.png) no-repeat;
+}
+
+.bx-wrapper .bx-prev:hover ,
+.bx-wrapper .bx-next:hover {}
+
+.bx-wrapper .bx-controls-direction a {
+	position: absolute;
+	top:-25px;
+	outline: 0;
+	width:18px;
+	height:18px;
+	text-indent: -9999px;
+	z-index: 9999;
+	
+}
+
+.bx-wrapper .bx-controls-direction a.disabled {
+}
+
+/* AUTO CONTROLS (START / STOP) */
+
+.bx-wrapper .bx-controls-auto {text-align: center;display:none}
+
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {}
+
