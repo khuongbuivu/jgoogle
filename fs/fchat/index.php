@@ -59,7 +59,7 @@ if($useridoff>0){
     $query='select lanvp from reportuser where iduser="'.$_SESSION['session-user'].'" limit 0,1';
    $data=mysqli_query($conreport,$query);
    $row=mysqli_fetch_row($data);
-   $_SESSION['useractive']['vp']=$row[0];
+   $_SESSION['useractive']['vp']=(int)$row[0];
    mysqli_close($conreport);
 	?>
 <div class="bodychat">
