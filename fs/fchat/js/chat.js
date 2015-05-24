@@ -178,7 +178,7 @@ $.ajax({
 	dataType: "json",
     success: function(data) {
 		$('.lasttimestamp').data('ltime',data.timenows);
-		var h = document.getElementsByTagName('abr');
+		var h = document.getElementsByTagName('abbd');
 		if(h.length>0){
 		for(var i=0;i<h.length;i++){
 		k=$(h[i]).data('utime');
@@ -268,7 +268,7 @@ html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class
 return html;
 }
 function getcommenttime(a,b){
-return '<div class="chattime"><div class="chattime2"><abr data-utime="'+a+'" class="chatlivetimestamp">'+b+'</abr></div></div>';
+return '<div class="chattime"><div class="chattime2"><abbd data-utime="'+a+'" class="chatlivetimestamp">'+b+'</abbd></div></div>';
 }
 function getCommentbox2(a,b,c,t,ti){
 html='<div data-jsid="message" data-utime="'+ti+'" class="msgcontent"><span><div><div>'+c+'</div></div></span></div>';
@@ -300,7 +300,7 @@ function chataddCmtToDb(content,userid,kind,vp){
 	   s=1;
 	   //if(kt>fc){
 	   if(s==1){
-	   var comtime='<div class="chattime"><div class="chattime2"><abr data-utime="'+json.timestamp+'" class="chatlivetimestamp">'+fss+'</abr></div></div>';
+	   var comtime='<div class="chattime"><div class="chattime2"><abbd data-utime="'+json.timestamp+'" class="chatlivetimestamp">'+fss+'</abbd></div></div>';
 	   var combox=getCommentbox(json.un,json.timechat,json.msg,idu,json.timestamp,json.giochat);
        $('#cmt_content_'+userid).append(comtime+combox);
 	
@@ -442,7 +442,7 @@ $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 		var firstdiv2=$('#cmt_content_usern_group .chattime').first();
 		
 			 if(data.msgs.length>0){
-			  for(j=0;j<data.msgs.length;j++){
+			  for(j=data.msgs.length-1;j>=0;j--){
 			   kt=1;  
 			  if(kt==1){			  
 				comtime=getcommenttime(data.msgs[j].timestamp,data.msgs[j].time_chat);	
@@ -498,7 +498,7 @@ $(document).on('click','.blockchatuser .viewmore',function( event ) {
 		var firstdiv2=$('.blockchatuser .chattime').first();
 		
 			 if(data.msgs.length>0){
-			  for(j=0;j<data.msgs.length;j++){
+			  for(j=data.msgs.length-1;j>=0;j--){
 			   kt=1;  
 		
 			 
@@ -580,9 +580,10 @@ $(document).on('mouseleave','.blockusers',function( event ) {
 	});  
 */
 
-function getboxchat(id,blockname){
+function getboxchat(id,blockname){	
 var idu = id.substr(6); 
-	html='<div class="blockchat blockchatuser blockchat_'+id+'"><div class="nameblock" data-ui="blockchat_'+id+'"><span title="Hiện thời gian chat" class="timeicon" data-ui="'+id+'"></span><span class="anboxchat"><a href="#">'+blockname+'</a></span><span class="closethis" data-ui="'+id+'">x</span></div><div class="fullchat"><div class="fullchat2"><div class="scrollbar1 content_'+id+'"><div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div><div style="height:215px;overflow: auto;" class="viewport viewport_'+id+'"><div class="overview"><div id="cmt_content_'+id+'"><div id="comment_content_'+id+'"></div><div id="comment_content_num_'+id+'" style="display:none">0</div><div class="ajaxlast"><div class="viewmore" data-ipc="'+idu+'">Xem thêm tin nhắn cũ</div><span class="loading-chat"></span></div><div class="chattime"><div class="chattime2"><abr class="chatlivetimestamp"></abr></div></div></div></div></div><div class="borderchat">   <textarea data-ui="'+id+'" data-itime="0" class="chaten scriptBox"></textarea><div class="showicons" data-ui="'+id+'"></div><div class="iconchose iconchose_'+id+'"></div></div></div></div></div></div>';
+var tai=$('.lasttimestamp').data('tai');
+	html='<div class="blockchat blockchatuser blockchat_'+id+'"><div class="nameblock" data-ui="blockchat_'+id+'"><span title="Hiện thời gian chat" class="timeicon" data-ui="'+id+'"></span><span class="anboxchat"><a href="#">'+blockname+'</a></span><span class="closethis" data-ui="'+id+'">x</span></div><div class="fullchat"><div class="fullchat2"><div class="scrollbar1 content_'+id+'"><div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div><div style="height:215px;overflow: auto;" class="viewport viewport_'+id+'"><div class="overview"><div id="cmt_content_'+id+'"><div id="comment_content_'+id+'"></div><div id="comment_content_num_'+id+'" style="display:none">0</div><div class="ajaxlast"><div class="viewmore" data-ipc="'+idu+'">Xem thêm tin nhắn cũ</div><span class="loading-chat"></span></div><div class="chattime"><div class="chattime2"><abbd class="chatlivetimestamp" data-utime="'+tai+'"></abbd></div></div></div></div></div><div class="borderchat">   <textarea data-ui="'+id+'" data-itime="0" class="chaten scriptBox"></textarea><div class="showicons" data-ui="'+id+'"></div><div class="iconchose iconchose_'+id+'"></div></div></div></div></div></div>';
 return html;
 }
 $(document).on('click','.iconchose',function( event ) {

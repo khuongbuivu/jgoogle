@@ -182,7 +182,7 @@ mysqli_close($conuser);
 	$con=mysqli_connect("localhost","root","","tbl_chatgroup") or die("Không kết nối được");
 	mysqli_set_charset($con, "utf8");
    $datas=array();
-   $query='select c.* from chattext c where iduser2="group" and timestamp < '.$timeint.' order by id desc limit 0,10' ;
+   $query='select c.* from chattext c where iduser2="group" and timestamp <= '.$timeint.' order by id desc limit 0,10' ;
    
    $data=mysqli_query($con,$query);
    $i=0;

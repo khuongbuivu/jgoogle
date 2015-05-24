@@ -5,6 +5,7 @@ session_start();
 $date = date_create();
 $timestamp=date_timestamp_get($date);
 $useractive=$_SESSION['useractive'];
+
 if($_SESSION['useractive']['vp']<10){
 require_once('classdatarieng.php');
 $facechat2=new faceseochatrieng();
@@ -24,7 +25,7 @@ mysqli_set_charset($conreport, "utf8");
   // $row=mysqli_fetch_row($data);
    if($useractive['vp']>0){  
   
-    $lanvp=$useractive['vp']+1; 
+    $lanvp=(int)$useractive['vp']+1; 
 	$_SESSION['useractive']['vp']=$lanvp;
 	
    if($lanvp>10)$cam=1;

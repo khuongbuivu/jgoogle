@@ -59,14 +59,15 @@ if($useridoff>0){
     $query='select lanvp from reportuser where iduser="'.$_SESSION['session-user'].'" limit 0,1';
    $data=mysqli_query($conreport,$query);
    $row=mysqli_fetch_row($data);
-   $_SESSION['useractive']['vp']=(int)$row[0];
+   $_SESSION['useractive']['vp']=$row[0];
    mysqli_close($conreport);
 	?>
 <div class="bodychat">
 <div data-ida="<?php echo $_SESSION['session-user']; ?>" class="userac"></div>
-  <abbd data-ltime="<?php 
-echo date_timestamp_get(date('Y-m-d H:i:s'));
-?>" title="" class="lasttimestamp" data-on='0'></abbd>
+  <abbd data-ltime="<?php $date = date_create();
+$timestamp=date_timestamp_get($date); 
+echo $timestamp;
+?>" title="" class="lasttimestamp" data-on='0' data-tai="<?php echo $timestamp;?>"></abbd>
   <div id="doan"></div>
   <div class="blockusers">
     <div class="reblockuser">
@@ -92,7 +93,7 @@ echo date_timestamp_get(date('Y-m-d H:i:s'));
                     <div class="ajaxlast">
                       <div class="viewmore">Xem thêm tin nhắn cũ</div>
                       <span class="loading-chat"></span></div>
-                      <div class="chattime"><div class="chattime2"><abr class="chatlivetimestamp"></abr></div></div>
+                      <div class="chattime"><div class="chattime2"><abbd class="chatlivetimestamp" data-utime="<?php echo $timestamp; ?>"></abbd></div></div>
                     <?php
 $congroup=mysqli_connect("localhost","root","","tbl_chatgroup") or die("Không kết nối được");
 mysqli_set_charset($congroup, "utf8");					
