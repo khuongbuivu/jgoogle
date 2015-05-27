@@ -117,7 +117,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://faceseo.vn' target='_blank'><img src='http://4.bp.blogspot.com/-bnThrwlVC4I/U-SpLUASTOI/AAAAAAAAAT0/o4AoohBlBrQ/s1600/google-rich-snippets-la-gi.gif' width='500px'/>Faceseo hệ thống tăng traffic textlink duy nhất thế giới</a><h2><a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://www.linhnguyenmmo.com/dao-tao-seo-bphone' target='_blank'><img src='http://www.linhnguyenmmo.com/_/rsrc/1432670988715/dao-tao-seo-bphone/danh-gia-dien-thoai-bphone.jpg' width='500px'/>Điện thoại BPhone</a> thoát y, MMO lên ngôi<h2><a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
