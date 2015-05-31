@@ -1,0 +1,37 @@
+
+<div id="numpoint">1</div>
+ 
+<script language="javascript">
+	var p = 10,
+	random_area = document.getElementById("numpoint"),
+	origin_text = random_area.innerHTML;
+
+function effectSubPoint(pcurrent,psub) {
+	var arr = pcurrent + psub;
+
+	if (psub < 0) {
+		return;
+	}
+	
+	random_area.innerHTML = arr;
+	setTimeout(function() {
+		effectSubPoint(pcurrent,--psub);
+	}, 200/psub);
+}
+//effectSubPoint(100,--p);
+
+function effectAddPoint(pcurrent,time,p) {
+	var arr = pcurrent + p;
+
+	if (time < 0) {
+		return;
+	}
+	
+	random_area.innerHTML = arr;
+	setTimeout(function() {
+		effectAddPoint(pcurrent,--time,++p);
+	}, 200/time);
+}
+
+//effectAddPoint(100,p,0);
+</script>
