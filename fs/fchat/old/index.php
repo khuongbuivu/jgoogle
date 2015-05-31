@@ -1,5 +1,5 @@
 <?php
-$homepathchat='http://localhost/faceseo.vn/fchat/';
+$homepathchat='http://systemforseoer.com/fchat/';
 if(!isset($_SESSION)){
     session_start();
 }

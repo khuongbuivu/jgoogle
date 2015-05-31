@@ -2,12 +2,7 @@
 /********************************
  * generic als elements styling
  ********************************/
-.als-container {
- bottom: 50px;
-    margin: 0 1%;
-    position: fixed;
-    width: 98%;
-}
+
 
 .als-viewport {
 	position: relative;
@@ -18,6 +13,8 @@
 .als-wrapper {
 	position: relative;
 	list-style: none;
+	margin:0px;
+	padding:0px;
 }
 
 .als-item {
@@ -41,11 +38,13 @@
  **************************/
 #lista1{
  z-index: 10;
+ padding:0px !important;
+  background-color: #ccc;
 }
 #lista1 .als-item {
-	margin: 10px 0;
-	min-height: 62px;
-	min-width: 62px;
+	margin-right: 4px;
+	min-height: 70px;
+	min-width: 70px;
 }
 
 #lista1 .als-item img {
@@ -87,7 +86,6 @@
 	position: relative;
 	display: block;
 	vertical-align: middle;
-	margin-bottom: 8px;
 }
 
 #lista2 .als-prev, #lista2 .als-next {
@@ -112,30 +110,9 @@
  * footer style
  ********************/
 
-#footer {
-	width: 928px;
-	margin: 0 auto;
-	padding: 5px 15px;
-	border: 1px dashed #000;
-	border-radius: 10px;
-}
 
-#footer p {
-	position: relative;
-	margin: 5px auto 10px auto;
-	width: 960px;
-	font-size: 12px;
-}
 
-#footer p.ultimo {
-	margin-bottom: 5px;
-}
-.als-container{
-    background: none repeat scroll 0 0 #fafafa;
-    border: 1px dashed #000;
-    border-radius: 10px;
-}
 .als-item a img{
-	width:60px;
-	height:60px;
+	width:70px;
+	height:70px;
 }

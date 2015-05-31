@@ -1,6 +1,6 @@
 <?php
 $timese=$_GET['t'];
-$congroup=mysqli_connect("localhost","root","","tbl_chatgroup") or die("Không kết nối được");
+$congroup=mysqli_connect("localhost","chatgroup","faceseovn@","chatgroup") or die("Không kết nối được");
 mysqli_set_charset($congroup, "utf8");
 $query='SELECT iduser1 as id,username1 as username,msg,time_chat,timestamp FROM chattext WHERE iduser2 ="group" and timestamp >='.$timese.' order by chattext.id asc';
 $array_content_group=array();

@@ -153,6 +153,7 @@ $data[150]="/scriptmenu.js/" ; $datafiles[150]="scriptmenu.js" ; $replacdata[150
 $data[151]="/share-point.php/" ; $datafiles[151]="share-faceseo.php" ; $replacdata[151]="1ykp5d9d29k118324.php";
 $data[152]="/dialog.js/" ; $datafiles[152]="dialog.js" ; $replacdata[152]="6dc5apq9w9z31.js";
 $data[153]="/menu.php/" ; $datafiles[153]="menu.php" ; $replacdata[153]="menu.php";
+$data[153]="/jquery.als-1.7.min.js/" ; $datafiles[153]="jquery.als-1.7.min.js" ; $replacdata[153]="dsfsdfds3922.js";
 /* index.php,banner.php,group.php, profile.php, pagesetting.php */
 obfucate($datafiles,$data,$replacdata,"");
 obfucate($datafiles,$data,$replacdata,"system");

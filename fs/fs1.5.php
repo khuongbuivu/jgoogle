@@ -12,7 +12,7 @@ require_once('system/function.php');
 $_SESSION['ip'] = getUserIP();
 $POINT_BACKLINK=5;
 $MAXMINUTEVIEW_BACKLINK=10;
-$UPDATE=1;
+$UPDATE=0;
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php

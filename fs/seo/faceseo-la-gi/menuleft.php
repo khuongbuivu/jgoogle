@@ -1,6 +1,6 @@
 <?php
-include_once("../../definelocal.php");
-include_once("../../define.php");
+include_once("../../hrb7yfq5yr40.php");
+include_once("../../x8rpwu2qa739.php");
 ?> 
 <ul class="menu-left">
 		<li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>" title="Giới thiệu Faceseo">Giới thiệu</a>

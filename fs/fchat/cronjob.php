@@ -46,9 +46,9 @@ class Fork
  $timese=file_get_contents('time.txt');
 $fork = new Fork;
  
-$output = $fork->add("http://localhost/faceseo.vn/fchat/chatgroup.php?t=".$timese)
-    ->add("http://localhost/faceseo.vn/fchat/onlineuser.php?t=".$timese)
-    ->add("http://localhost/faceseo.vn/fchat/chatuser.php?t=".$timese)
+$output = $fork->add("http://systemforseoer.com/fchat/chatgroup.php?t=".$timese)
+    ->add("http://systemforseoer.com/fchat/onlineuser.php?t=".$timese)
+    ->add("http://systemforseoer.com/fchat/chatuser.php?t=".$timese)
     ->run();
 
 $array_content['group']=$output[0]; 

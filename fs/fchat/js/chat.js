@@ -67,7 +67,7 @@ if(tai>=luc){$(".chaten").attr("disabled", false);}
 if($('.lasttimestamp').data('on')=='0'){
 $('.lasttimestamp').data('on','1');
 $.ajax({
-    url:'http://localhost/faceseo.vn/fchat/checknewbox.php',
+    url:'http://systemforseoer.com/fchat/checknewbox.php',
     type:'POST',
     data: {timese:$('.lasttimestamp').data('ltime')},
 	dataType: "json",
@@ -172,7 +172,7 @@ $.ajax({
 }
 function checkthoigian(){
 $.ajax({
-    url:'http://localhost/faceseo.vn/fchat/chung.php',
+    url:'http://systemforseoer.com/fchat/chung.php',
     type:'POST',
     data: {},
 	dataType: "json",
@@ -199,7 +199,7 @@ html='<div class="commentbox commentright"><div class="commentthumb"><div class=
 
 function addCommentboxajax(id){	
 $.ajax({
-    url:'http://localhost/faceseo.vn/fchat/ajaxcomment.php',
+    url:'http://systemforseoer.com/fchat/ajaxcomment.php',
     type:'POST',
     data: {id:id},
 	dataType: "json",
@@ -279,7 +279,7 @@ function chataddCmtToDb(content,userid,kind,vp){
   if(userid=='usern_group')username2='usern_group';
   username2=$('.blockchat_'+userid+' .nameblock .anboxchat a').html();
   $.ajax({
-    url:'http://localhost/faceseo.vn/fchat/process-comment.php',
+    url:'http://systemforseoer.com/fchat/process-comment.php',
     type:'POST',
     data: {cmt_content:content,userid:userid,kind:kind,username2:username2,vp:vp},
 	dataType: "json",
@@ -400,7 +400,7 @@ $(document).on('keypress','.searchbox',function( event ) {
 	   listsearchuser.css('display','block');
 	   $('.listsearchuser').addClass('loadinguser');
 	   $.ajax({
-    url:'http://localhost/faceseo.vn/fchat/user.php',
+    url:'http://systemforseoer.com/fchat/user.php',
     type:'POST',
     data: {sb:sb},
 	dataType: "json",
@@ -432,7 +432,7 @@ $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 	loadingchat.css('display','block');
 	var p=$(this);
 	   $.ajax({
-    url:'http://localhost/faceseo.vn/fchat/ajaxcomment.php',
+    url:'http://systemforseoer.com/fchat/ajaxcomment.php',
     type:'POST',
     data: {id:'group',timeint:timeint},
 	dataType: "json",
@@ -488,7 +488,7 @@ $(document).on('click','.blockchatuser .viewmore',function( event ) {
 	loadingchat.css('display','block');
 	var p=$(this);
 	   $.ajax({
-    url:'http://localhost/faceseo.vn/fchat/ajaxcomment2.php',
+    url:'http://systemforseoer.com/fchat/ajaxcomment2.php',
     type:'POST',
     data: {id:idu,timeint:timeint},
 	dataType: "json",

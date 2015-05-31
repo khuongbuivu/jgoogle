@@ -2,8 +2,8 @@
 if(!isset($_SESSION)){
     session_start();
 }
-include_once("../../definelocal.php");
-include_once("../../define.php");
+include_once("../../hrb7yfq5yr40.php");
+include_once("../../x8rpwu2qa739.php");
 $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -35,7 +35,7 @@ $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture"
 	
 	<div id="headerTop">
     	<div class="container">
-            <div class="col-sm-3"><a href="#"  class="logo"><img src="images/logo.png" /></a></div>
+            <div class="col-sm-3"><a href="<?php echo FULLDOMAIN;?>"  class="logo"><img src="images/logo.png" /></a></div>
             <div class="col-sm-9">
             	<div class="wp-menu">
                 	<div class="fl avarta">

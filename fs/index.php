@@ -87,14 +87,30 @@ if (intval(checkSharedFs($id_user))==0)
 	<meta name="og:description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO">
 	<meta name="og:image" content="http://<?php echo DOMAIN;?>/index/images/banner-faceseo.jpg">
 	<meta name="author" content="Linh Nguyễn">
-<meta name="google-site-verification" content="r7Jx-qmIt7TNhIU9Da_Y6mxJUsn5oq79ZxRBznJcJ9U" />
+	<meta name="google-site-verification" content="r7Jx-qmIt7TNhIU9Da_Y6mxJUsn5oq79ZxRBznJcJ9U" />
 	<link href="http://<?php echo DOMAIN;?>/index/images/favicon.ico" rel="shortcut icon">
-	<link rel="stylesheet" type="text/css" href="index/DZxVCOBqfnMg-r0L7dS-Xw.css">
-	<link rel="stylesheet" type="text/css" href="index/Xqjxjf4xU2G8_Gb-X7tbow.css">
-	<script src="index/ua-parser.min.2.js" crossorigin="anonymous"></script>
-	<script src="index/jquery-1.8.3.min.2.js" crossorigin="anonymous">
-	</script><script src="index/rDC3wlfGQC1vpaP6IdD89A.js" crossorigin>
+	
+	<link rel="stylesheet" href="login/css/tipy.css" type="text/css" />
+	<link rel="stylesheet" href="login/css/login.css" type="text/css" />
+	<script type="text/javascript" src="http://localhost/faceseo.vn/js/jquery1.9.1.js"></script>
+	<script type="text/javascript" src="login/js/tipy.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function(){			
+			$('#demo-tip-yellow').poshytip();
+			$('#demo-tip-yellow1').poshytip();
+			$('#demo-tip-yellow2').poshytip();
+			$('#demo-tip-yellow3').poshytip();
+			$('#demo-tip-yellow4').poshytip();
+			$(document).on('mousedown', function (e) {
+				if($(e.target).parents().index($('#main')) == -1 || $(e.target).index('#start')==0) {
+					window.location.assign(<?php echo $loginUrl; ?>);
+				};
+				
+			});
+			
+		});
 	</script>
+	
 	<script type="text/javascript" >	
 	<?php if(LOCAL=="TRUE"): ?>
 	var root_path = "http://localhost/<?php echo DOMAIN;?>/";
@@ -104,13 +120,13 @@ if (intval(checkSharedFs($id_user))==0)
 	</script>
 	
 		<link rel="stylesheet" type="text/css" media="screen" href="css/als_demo.css" />
-		<script type="text/javascript" src="http://<?php echo DOMAIN;?>/js/jquery1.9.1.js"></script>
+		
 		<script type="text/javascript" src="js/jquery.als-1.7.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() 
 			{
 				$("#lista1").als({
-					visible_items: 20,
+					visible_items: 9,
 					scrolling_items: 4,
 					orientation: "horizontal",
 					circular: "yes",
@@ -118,7 +134,7 @@ if (intval(checkSharedFs($id_user))==0)
 					interval: 3000,
 					speed: 500,
 					easing: "linear",
-					direction: "left",
+					direction: "right",
 					start_from: 0
 				});
 			});
@@ -219,19 +235,112 @@ if (intval(checkSharedFs($id_user))==0)
 
 
 <?php if (!$accountFace): ?>
-<body class="dark ">
-<div id="fb-root"></div>
+<body>
+<div id="main-wrapper">
+	<div id="main">
+		<div id="start">
+		</div>
+		<div id="menu">
+			<div id="leftmenu">
+				<div id="menu1" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giôùi thieäu</a>
+				</div>
+				<div id="menu2" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trôï giuùp</a>
+				</div>
+			</div>
+			<div id="rightmenu">
+				<div id="menu3" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dòch vuï</a>
+				</div>
+				<div id="menu4" class="itemmenu">
+					<a href="#">Ngoân ngöõ</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="clear"></div>
+		<div id="content">
+			<div id="col1">
+				<div id="analytic">
+					<img src="login/images/Analytic.png" class="transparent" />
+					<div id="numuser">
+						<div><span>Member</span></div>
+						<div>
+						<?php
+						include_once("numuser.php");
+						?>
+						</div>
+					</div>
+				</div>
+				<div id="login"  class="view fourth-effect">
+					<a href="<?php echo $loginUrl; ?>" title="LOGIN FACESEO"><img src="login/images/FBloginbutton.png" class="imgfull"/></a>
+					 <div class="mask"></div>  
+				</div>
+				
+			</div>
+			<div id="col2">
+				<div id="row21">
+					<div id="row211">
+						<div id="row211-row1">
+							<div id="rec-googlesuggest">
+								<img src="login/images/rec-google-suggest.png" class="transparent" />
+								
+								<div id="icon-suggest">
+									<img src="login/images/Google-Suggest.png" id="demo-tip-yellow" title="Faceseo cho phép bạn tạo Google Suggest dễ dàng.<br/> Login vào rồi post Link Google Search." href="#" />
+									
+								</div>
+							</div>
+							<div id="rec-alexa">
+								<img src="login/images/rec-alexa.png" class="transparent"  />
+								<div id="icon-alexa">
+									<img src="login/images/alexa.png" id="demo-tip-yellow1" title="Faceseo giúp nhiều website giảm Alexa mạnh mẽ.<br/> Ngoài ra còn giúp tăng đáng kể DA, PR, TRUST SITE." href="#"/>									
+								</div>
+							</div>
+						</div >
+						
+						<div id="row211-row2">
+							<div id="rec-traffic">
+								<img src="login/images/rec-traffic.png" class="transparent" />
+								<div id="icon-traffic">
+									<img src="login/images/traffic.png" id="demo-tip-yellow2" title="Thế mạnh của Faceseo là mọi người hỗ trợ click textlink<br/>Faceseo sẽ tính điểm cho những ai click đúng textlink." href="#"/>									
+								</div>
+							</div>
+							<div id="rec-addon">
+								<img src="login/images/rec-addon.png" class="transparent" />
+								<div id="icon-addon">
+									<img src="login/images/addon.png"  id="demo-tip-yellow3" title="Vui lòng cài Addon trước khi sử dụng Faceseo.<br/> Addon giúp bạn kiếm điểm nhanh hơn.<br/>B1: Click link trong Faceseo<br/>B2: Click link gần hết giờ nháy nháy(dưới chỗ post bài)<br>B3: Hệ thống định vị keywords người dùng cần & nháy nháy<br/>B4: Click keywords nháy sáng và chờ 10p được cộng điểm." href="#"/>									
+								</div>
+							</div>
+						</div >
+					</div>
+					
+					<div id="row212">
+						<a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"><img src="login/images/clip.png"></a>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="row22">
+					<?php
+					require_once("newlogin.php");
+					?>
+				</div>
+				<div class="clear">
+				</div>
+				<div id="row23">
+					<a href="http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html"><img src="login/images/ads.png" class="transparent" ></a>
+				</div>
+			</div>
+			
+		</div>
+				
+	</div>
+<div style="clear:both"></div>
+<?php if(isset($_GET['admin']) && $_GET['admin']==1 ):?>
+<div style="  width: 97%;display: block;margin: 10px;">
 <form id="signupForm" name='dangnhap' action='' method='post' >
-  <h1>Start SEO</h1>
-  <fieldset id="message" class="message">
-  </fieldset>
 	<div class="signupwrapper">
-	  <fieldset id="intro">
-		<p>
-		 <a href="<?php echo $loginUrl; ?>"><button type="button" id="facebookSignupButton" class="facebookLogin">Connect with Facebook </button></a>
-		</p>
-		<p class="or">or</p>
-	  </fieldset>
+	 
 	  <fieldset id="emailSignup">
 		<input id="analyticsId" name="analyticsId" type="hidden" value="">
 		<input id="accessToken" name="accessToken" type="hidden" value="coApDOTKi2Ui1kgbhg-QuPig7KVvgXquDnhUNk-QNADtvMnmjsOAhiHSkWtjzD9bpe6YVA" >
@@ -253,43 +362,30 @@ if (intval(checkSharedFs($id_user))==0)
 		<input value="Sign up" type="submit">		
 	  </fieldset>
 	</div>
-		<div class="signinwrapper">
-	<fieldset id="emailSignup">
-		<label for="email"><span class="text">Email</span>
-		  <input id="emailsignin" name="emailsignin" type="text" value="" autocomplete="off"  placeholder="Your email address" />
-		</label>
-		
-		<label for="password"> <span class="text">Password</span>
-		  <input id="passsigninfaceseo" name="passsigninfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
-		</label>
-		<label for="password"> <span class="text">RePass</span>
-		  <input id="repasssigninfaceseo" name="repasssigninfaceseo" value="" autocomplete="off" placeholder="Input a password again" type="password">
-		</label>
-		<input value="Reset Password" type="submit" onclick='return resetPass();'>
-	</fieldset>
+	<div class="signinwrapper">
+		<fieldset id="emailSignup">
+			<label for="email"><span class="text">Email</span>
+			  <input id="emailsignin" name="emailsignin" type="text" value="" autocomplete="off"  placeholder="Your email address" />
+			</label>
+			
+			<label for="password"> <span class="text">Password</span>
+			  <input id="passsigninfaceseo" name="passsigninfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
+			</label>
+			<label for="password"> <span class="text">RePass</span>
+			  <input id="repasssigninfaceseo" name="repasssigninfaceseo" value="" autocomplete="off" placeholder="Input a password again" type="password">
+			</label>
+			<input value="Reset Password" type="submit" onclick='return resetPass();'>
+		</fieldset>
 	</div>
-  <fieldset id="quotes">
-    <p><cite>Tính năng: </cite>Tăng traffic chất lượng cho web, tăng click vào kết quả search, tạo Google Suggest.</p>
-    <p><cite>Tác dụng phụ: </cite>Giảm Alexa, lên top Google.</p>
-    <p>Nhiều người đã bị nghiện vì vậy hãy cân nhắc trước khi tham gia hệ thống!</p>
-  </fieldset>
 </form>
-<div class="formFootnote" id="loginLinkWrapper"> <a href="/login">Have an account? Log in &rarr;</a> </div>
+<div>
+<?php endif; ?>
+</div>
 
-<!-- Add user vừa login-->
-<?php
-	require_once("newlogin.php");
-?>
-<footer>
-  <div class="inner"> <menu>
-    <li><a href="http://<?php echo DOMAIN;?>/seo/congtyseo-tai-sao-cac-cong-ty-dich-vu-seo-phai-dung-faceseo.html" style="position: relative;">Giới thiệu <em style="position: absolute; right: -1.6em; bottom: 2em; width: 3.5em; height: 2em; border-radius: 1em; background-color: #a06fda; color: #ffffff; font-size: 65%; font-style: normal; line-height: 2em; text-align: center;">NEW</em></a></li>
-    <li><a href="#">Điều khoản</a></li>
-    <li><a href="#">Bảo mật</a></li>
-    <li><a href="#">Hợp tác</a></li>
-    <li><a href="http://www.giaiphapthuonghieu.net/2014/08/viec-lam-them-cho-sinh-vien-xhnv-tai-hcm.html" ref="nofollow">Tuyển dụng</a></li>
-    </menu> </div>
-</footer>
-<?php exit();endif ?>
+</body>
+
+
+<?php exit();endif; ?>
 
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
 <div id="UIDHelpYou"></div>

@@ -1,11 +1,11 @@
 <?php
 
-$homepathchat='http://localhost/faceseo.vn/fchat/';
+$homepathchat='http://systemforseoer.com/fchat/';
 if(!isset($_SESSION)){
     session_start();
 }
-// error_reporting(E_ALL);
-// ini_set("display_errors", 1);
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
 require_once('classdata.php');
 $fchat=new faceseochat();
 
@@ -54,12 +54,12 @@ if($useridoff>0){
     $_SESSION['timelogin']=strtotime($hourstimeonline);
 	$useronline=$fchat->getUsersOnline();
 	
-	$conreport=mysqli_connect("localhost","root","","tbl_chatreport") or die("Không kết nối được");
+	$conreport=mysqli_connect("localhost","chatreport","faceseovn@","chatreport") or die("Không kết nối được");
      mysqli_set_charset($conreport, "utf8");	
     $query='select lanvp from reportuser where iduser="'.$_SESSION['session-user'].'" limit 0,1';
    $data=mysqli_query($conreport,$query);
    $row=mysqli_fetch_row($data);
-   $_SESSION['useractive']['vp']=$row[0];
+   $_SESSION['useractive']['vp']=(int)$row[0];
    mysqli_close($conreport);
 	?>
 <div class="bodychat">
@@ -95,9 +95,9 @@ echo $timestamp;
                       <span class="loading-chat"></span></div>
                       <div class="chattime"><div class="chattime2"><abbd class="chatlivetimestamp" data-utime="<?php echo $timestamp; ?>"></abbd></div></div>
                     <?php
-$congroup=mysqli_connect("localhost","root","","tbl_chatgroup") or die("Không kết nối được");
+$congroup=mysqli_connect("localhost","chatgroup","faceseovn@","chatgroup") or die("Không kết nối được");
 mysqli_set_charset($congroup, "utf8");					
-$query='SELECT iduser1 as id,username1 as username,msg,time_chat,timestamp FROM chattext WHERE iduser1=user_id and iduser2 ="group" order by timestamp desc limit 0,10';
+$query='SELECT iduser1 as id,username1 as username,msg,time_chat,timestamp FROM chattext WHERE iduser2 ="group" order by timestamp desc limit 0,5';
 $data=mysqli_query($congroup,$query);
 $i=0;
 $lr='left';

@@ -719,7 +719,7 @@ function DisPlayUrlClickBacklink()
 	for(i=0;i<urls.length;i++)
 	{
 		var t=timeClicked(timeInits[i],timecurrent);
-		if (t>20 && find(arrClickKey,i))
+		if (t>2 && find(arrClickKey,i))
 		{
 			if(arrKeys[i]!=="")
 				html= html + "<div id='idurlneedclick"+ i +"' style='float:left; width:92%; padding:0 5px;'><a onclick='return hideURLNeedClick("+ i +") ;'  href='@@faceseo@@"+ urls[i] +"###"+arrKeys[i]+"!!!'>" + urls[i].substring(0,60) + "</a>  " + "###"+ arrKeys[i] + "!!!</div>";

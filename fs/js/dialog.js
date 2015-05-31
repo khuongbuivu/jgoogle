@@ -70,8 +70,10 @@ $(document).ready(function() {
 function displayFormSharePoint(a,b)
 {
 	$(".mentionsHidden0000").val(a);
+	alert("abc");
 	$("#contentbox0000").html(b);
 	$(".overlay").fadeToggle("fast");
+	alert("bcd");
 	return false;
 };
 
