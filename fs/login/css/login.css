@@ -1,0 +1,336 @@
+body{
+	background-color:#2a4886;
+	margin:0px;
+	padding:0px;
+}
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (min-device-width: 320px) and (max-device-width: 361px){
+	#main-wrapper{
+		background:url(../images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -160px;
+		position: absolute; 
+		width: 320px;
+		padding: 0 0;
+	}
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+	
+	#main-wrapper{
+		background:url(../images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -320px;
+		position: absolute; 
+		width: 480px;
+		padding: 0 0;
+	}
+}
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+	
+	#main-wrapper{
+		background:url(../images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -32px;
+		position: absolute; 
+		width: 640px;
+		padding: 0 0;
+	}
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+	#main-wrapper{
+		background:url(../images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -320px;
+		position: absolute; 
+		width: 640px;
+		padding: 0 0;
+	}
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+	#main-wrapper{
+		background:url(../images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -240px;
+		position: absolute; 
+		width: 480px;
+		padding: 0 0;
+	}
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+	#main-wrapper{
+		background:url(../images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -384px;
+		position: absolute; 
+		width: 768px;
+		padding: 0 0;
+	}
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
+  #main-wrapper{
+		background:url(../images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -512px;
+		position: absolute; 
+		width: 1024px;
+		padding: 0 0;
+	}
+}
+
+
+
+#main
+{
+	width:100%;
+	padding:10px;
+}
+
+#start{
+	background:url(../images/start-faceseo.png) no-repeat;
+	height:50px;
+	margin:10px 0 10px 0 ;
+	cursor: pointer;
+	
+}
+#menu{
+	position:relative;
+	height:50px;
+	display:block;
+	margin-bottom:10px
+}
+#leftmenu{
+	display: block;
+    float: left;
+	padding:10px 0;
+}
+
+#rightmenu{
+	display: inline;
+    float: left;
+	display:inline;
+	padding:10px 0;
+	
+}
+.itemmenu{
+	background-color:#c5653f;
+	color:#fff;
+	margin-right:2px;
+	padding: 10px 43px;
+	display: inline;
+}
+#content{
+	width:100%;
+	position: relative;
+	height: 70%;
+}
+#col1{
+	float:left;
+	width:31%;
+	display:inline;
+	margin-right:10px;
+}
+#col2{
+	float:left;
+	width:65%;
+}
+
+
+.clear{
+	clear:both;
+}
+#content #row22 img
+{
+	
+}
+#content #analytic img{
+	width:100%;
+}
+#content #analytic{
+	margin-bottom:10px;
+}
+.imgfull
+{
+	width:100%;
+}
+#col21{
+	width:45%;
+}
+#col21{
+	width:45%;
+}
+
+#col2 #row211
+{
+	float:left;
+	width:48%;
+}
+
+#col2 #row212 
+{
+	float:left;
+	margin-left: 5px;
+    width: 51%;
+	margin-top: -1px;
+}
+#row211-row1,#row211-row2{
+	display:block;
+	width:100%;
+}
+#row211-row1{
+	margin-bottom:5px;
+}
+#rec-googlesuggest,#rec-alexa, #rec-traffic, #rec-addon
+{
+	display:inline;
+	margin-right: 5px;
+	position:relative;
+}
+
+.transparent
+{
+	opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+#content img
+{
+}
+
+#col2 #row22,#col2 #row21
+{
+	margin-bottom:6px;
+}
+#icon-suggest,#icon-alexa
+{
+	position:absolute;
+	top:-110px;
+	left:10px;
+}
+#icon-traffic
+{
+	position:absolute;
+	top:-100px;
+	left:10px;
+}
+#icon-addon
+{
+	position:absolute;
+	top:-110px;
+	left:10px;
+}
+
+a{
+	color:#fff;
+	text-decoration: none;
+	font-family: 'vni-avobold',VNI-Avo,Arial;
+}
+a:hover{
+	color:#ccc;
+	text-decoration: none;
+	font-family: 'vni-avobold',VNI-Avo,Arial;
+
+}	
+
+@font-face {
+    font-family: 'vni-avobold';
+    src: url('VNI-Avo.woff');
+    font-weight: normal;
+    font-style: normal;	
+
+}
+#numuser{
+	position:absolute;
+	top:14px;
+	left:27px;
+	color: #fff;
+	font-size:40px;
+	font-family: 'vni-avobold';
+}
+#numuser span
+{
+	font-size:16px;
+	font-family: 'vni-avobold';
+	font-weight:bold;
+}
+#numuser div
+{
+	margin-bottom:0px;
+	padding:0;
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+   #numuser div
+	{
+		margin-bottom:10px;
+		padding:0;
+	}
+}
+
+.fourth-effect .mask {
+   position:absolute; /* Center the mask */
+   top:50px;
+   left:100px;
+   cursor:pointer;
+   border-radius: 50px;
+   border-width: 50px;
+   display: inline-block;
+   height: 200px;
+   width: 100px;
+   border: 50px solid rgba(0, 0, 0, 0.2);
+   box-sizing:border-box;
+   opacity:1;
+   visibility:visible;
+   transform:scale(4);
+   transition:all 0.6s ease-in-out;
+}
+
+.fourth-effect:hover .mask {
+   opacity: 0;
+   border:0px solid rgba(0,0,0,0.2);
+   visibility:hidden;
+}
+
+
+.view {
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px #aaa;
+    cursor: default;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}

@@ -1,0 +1,368 @@
+<html>
+<head>
+<meta charset="utf-8">
+
+<style>
+body{
+	background-color:#2a4886;
+	margin:0px;
+	padding:0px;
+}
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (min-device-width: 320px) and (max-device-width: 361px){
+	#main-wrapper{
+		background:url(images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -160px;
+		position: absolute; 
+		width: 320px;
+		padding: 0 0;
+	}
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+	
+	#main-wrapper{
+		background:url(images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -320px;
+		position: absolute; 
+		width: 480px;
+		padding: 0 0;
+	}
+}
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+	
+	#main-wrapper{
+		background:url(images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -32px;
+		position: absolute; 
+		width: 640px;
+		padding: 0 0;
+	}
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+	#main-wrapper{
+		background:url(images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -320px;
+		position: absolute; 
+		width: 640px;
+		padding: 0 0;
+	}
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+	#main-wrapper{
+		background:url(images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -240px;
+		position: absolute; 
+		width: 480px;
+		padding: 0 0;
+	}
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+	#main-wrapper{
+		background:url(images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -384px;
+		position: absolute; 
+		width: 768px;
+		padding: 0 0;
+	}
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
+  #main-wrapper{
+		background:url(images/background.png) no-repeat center;
+		height: 100%;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		margin-left: -512px;
+		position: absolute; 
+		width: 1024px;
+		padding: 0 0;
+	}
+}
+
+
+
+#main
+{
+	width:100%;
+	padding:10px;
+}
+
+#start{
+	background:url(images/start-faceseo.png) no-repeat;
+	height:50px;
+	margin:10px 0 20px 0 ;
+	
+}
+#menu{
+	position:relative;
+	height:50px;
+	display:block;
+	margin-bottom:30px
+}
+#leftmenu{
+	display: block;
+    float: left;
+	padding:10px 0;
+}
+
+#rightmenu{
+	display: inline;
+    float: left;
+	display:inline;
+	padding:10px 0;
+	
+}
+.itemmenu{
+	background-color:#c5653f;
+	color:#fff;
+	margin-right:2px;
+	padding: 10px 48px;
+	display: inline;
+}
+#content{
+	width:100%;
+	position: relative;
+	height: 70%;
+}
+#col1{
+	float:left;
+	width:31%;
+	display:inline;
+	margin-right:10px;
+}
+#col2{
+	float:left;
+	width:65%;
+}
+
+
+.clear{
+	clear:both;
+}
+#content #row22 img
+{
+	
+}
+#content #analytic img{
+	width:100%;
+}
+#content #analytic{
+	margin-bottom:10px;
+}
+.imgfull
+{
+	width:100%;
+}
+#col21{
+	width:45%;
+}
+#col21{
+	width:45%;
+}
+
+#col2 #row211
+{
+	float:left;
+	width:48%;
+}
+
+#col2 #row212 
+{
+	float:left;
+	margin-left: 5px;
+    width: 51%;
+}
+#row211-row1,#row211-row2{
+	display:block;
+	width:100%;
+}
+#row211-row1{
+	margin-bottom:5px;
+}
+#rec-googlesuggest,#rec-alexa, #rec-traffic, #rec-addon
+{
+	display:inline;
+	margin-right: 5px;
+	position:relative;
+}
+
+.transparent
+{
+	opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+#content img
+{
+}
+
+#col2 #row22,#col2 #row21
+{
+	margin-bottom:6px;
+}
+#icon-suggest,#icon-traffic,#icon-alexa,#icon-addon
+{
+	position:absolute;
+	top:-100px;
+	left:10px;
+}
+.hover{
+    background-color: #700;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 11px 10px 12px;
+    text-align: center;
+    width: 100px;
+}
+
+</style>
+
+<link rel="stylesheet" href="css/tipy.css" type="text/css" />
+<script type="text/javascript" src="http://localhost/faceseo.vn/js/jquery1.9.1.js"></script>
+<script type="text/javascript" src="js/tipy.js" type="text/javascript"></script>
+<!--<script type="text/javascript" src="js/tooltipsy.min.js" type="text/javascript"></script>-->
+<script type="text/javascript">
+		//<![CDATA[
+		$(function(){			
+			$('#demo-tip-yellow').poshytip();
+			$('#demo-tip-yellow1').poshytip();
+			$('#demo-tip-yellow2').poshytip();
+			$('#demo-tip-yellow3').poshytip();
+			$('#demo-tip-yellow4').poshytip();
+		});
+		//]]>
+	</script>
+
+</head>
+<body>
+
+<div id="main-wrapper">
+	<div id="main">
+		<div id="start">
+		</div>
+		<div id="menu">
+			<div id="leftmenu">
+				<div id="menu1" class="itemmenu">
+					Giới thiệu
+				</div>
+				<div id="menu2" class="itemmenu">
+					Trợ giúp
+				</div>
+			</div>
+			<div id="rightmenu">
+				<div id="menu3" class="itemmenu">
+					Dịch vụ
+				</div>
+				<div id="menu4" class="itemmenu">
+					Ngôn ngữ
+				</div>
+			</div>
+		</div>
+		
+		<div class="clear"></div>
+		<div id="content">
+			<div id="col1">
+				<div id="analytic">
+					<img src="images/Analytic.png" class="transparent" />
+				</div>
+				<div id="login">
+					<a href="<?php echo $loginUrl; ?>"><img src="images/FBloginbutton.png" class="imgfull"/></a>
+				</div>
+			</div>
+			<div id="col2">
+				<div id="row21">
+					<div id="row211">
+						<div id="row211-row1">
+							<div id="rec-googlesuggest">
+								<img src="images/rec-google-suggest.png" class="transparent" />
+								
+								<div id="icon-suggest">
+									<img src="images/Google-Suggest.png" id="demo-tip-yellow" title="Faceseo cho phép bạn tạo Google Suggest dễ dàng.<br/> Login vào rồi post Link Google Search." href="#" />
+									
+								</div>
+							</div>
+							<div id="rec-alexa">
+								<img src="images/rec-alexa.png" class="transparent"  />
+								<div id="icon-alexa">
+									<img src="images/alexa.png" id="demo-tip-yellow1" title="Faceseo giúp nhiều website giảm Alexa mạnh mẽ.<br/> Ngoài ra còn giúp tăng đáng kể DA, PR, TRUST SITE." href="#"/>									
+								</div>
+							</div>
+						</div >
+						
+						<div id="row211-row2">
+							<div id="rec-traffic">
+								<img src="images/rec-traffic.png" class="transparent" />
+								<div id="icon-traffic">
+									<img src="images/traffic.png" id="demo-tip-yellow2" title="Thế mạnh của Faceseo là mọi người hỗ trợ click textlink<br/>Faceseo sẽ tính điểm cho những ai click đúng textlink." href="#"/>									
+								</div>
+							</div>
+							<div id="rec-addon">
+								<img src="images/rec-addon.png" class="transparent" />
+								<div id="icon-addon">
+									<img src="images/addon.png"  id="demo-tip-yellow3" title="Vui lòng cài Addon trước khi sử dụng Faceseo.<br/> Addon giúp bạn kiếm điểm nhanh hơn.<br/>B1: Click link trong Faceseo<br/>B2: Click link gần hết giờ nháy nháy(dưới chỗ post bài)<br>B3: Hệ thống định vị keywords người dùng cần & nháy nháy<br/>B4: Click keywords nháy sáng và chờ 10p được cộng điểm." href="#"/>									
+								</div>
+							</div>
+						</div >
+					</div>
+					
+					<div id="row212">
+						<img src="images/clip.png">				
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="row22">
+					<img src="images/user-online.png" class="transparent">
+				</div>
+				<div id="row23">
+					<img src="images/ads.png" class="transparent" >
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+	<div>
+	</div>
+</div>
+
+</body>
+</html>
