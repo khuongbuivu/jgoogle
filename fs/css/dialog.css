@@ -38,6 +38,7 @@ div.overlay, div.formreport {
 		border-radius: 2px;
 		padding: 6px;
 		width: 520px;
+		z-index: 1;
 	}
 	
 		div.overlay > div.sharepoint-wrapper > div.sharepoint-content,div.formreport > div.sharepoint-wrapper > div.sharepoint-content {

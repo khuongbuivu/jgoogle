@@ -90,11 +90,11 @@
 				$comment[$i][$ii]['countTime']				=getTimeString($timeCurrent,$timeSaved);				
 				$ii++;
 			}
+			$posts['post']=$post;
+			$posts['comment']=$comment;			
+			$i++;
 		}
-		$posts['post']=$post;
-		$posts['comment']=$comment;	
 		
-		$i++;
 	}
 	mysqli_close($con);	
 	// print_r($posts);

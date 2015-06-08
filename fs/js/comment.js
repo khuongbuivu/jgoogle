@@ -1185,11 +1185,11 @@ function showPost(json)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								if(json.post[i].post_userlevel>1)
 									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";								
-								if(json.post[i].user_id == idUser && json.post[i].type_invalid!==null)
+								if(json.post[i].user_id == idUser && json.post[i].type_invalid>1)
 								{
 									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
 								}
-								else if (json.post[i].type_invalid!=null && json.post[i].type_invalid!="undefined" && xxyyzz>2)
+								else if (json.post[i].type_invalid!=null && json.post[i].type_invalid!="undefined" && json.post[i].type_invalid>1 && xxyyzz>2)
 								{
 									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
 								}
@@ -1311,7 +1311,7 @@ function showPostById(json)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";		
 								if(json.post[i].post_userlevel>1)
 									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
-								if(json.post[i].user_id == idUser && json.post[i].type_invalid!==null)
+								if(json.post[i].user_id == idUser && json.post[i].type_invalid>1)
 								{
 									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
 								}
@@ -1428,7 +1428,7 @@ function showMessageById(json)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								if(json.post[i].post_userlevel>1)
 									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
-								if(json.post[i].user_id == idUser && json.post[i].type_invalid!==null)
+								if(json.post[i].user_id == idUser && json.post[i].type_invalid>1)
 								{
 									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
 								}

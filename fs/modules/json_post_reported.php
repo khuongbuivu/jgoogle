@@ -29,7 +29,7 @@
 	{
 		$q = $q. " and post_id != ".$lIdPosts[$ii];
 	}
-	$result_post=mysqli_query($con,"select * from atw_post,atw_user  where post_iduser=user_id and (".$q.") and type_invalid > 1 ORDER BY post_id DESC" );	
+	$result_post=mysqli_query($con,"select * from atw_post,fs_reported,atw_user  where post_iduser=user_id and (".$q.") and reported_idPost = post_id ORDER BY post_id DESC" );	
 	$i=0;
 	$posts = array();
 	$posts['post']=array();
@@ -102,11 +102,11 @@
 				$comment[$i][$ii]['countTime']				=getTimeString($timeCurrent,$timeSaved);				
 				$ii++;
 			}
+			$posts['post']=$post;
+			$posts['comment']=$comment;			
+			$i++;
 		}
-		$posts['post']=$post;
-		$posts['comment']=$comment;	
 		
-		$i++;
 	}
 	mysqli_close($con);	
 	// print_r($posts);
