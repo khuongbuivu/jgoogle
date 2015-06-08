@@ -417,6 +417,13 @@ exit();
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
 				<div style="color:red" id="message"></div>
 				<div id="listUrlViewMore"></div>
+				
+				<?php if ($xxyyzz>2):?>
+				<div id="prof_del_all">
+				<a href='' onclick='return dellAllPost("<?php echo $_GET['iduser'];?>");'>Xóa tất cả link</a>
+				</div>
+				<?php endif;?>
+				
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
 				<div id="wrappercontentpost">

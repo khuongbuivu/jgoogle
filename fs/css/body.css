@@ -703,7 +703,7 @@ background-color: red;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
     width: 20px;
 }
-#listUrlViewMore, #message_report{
+#listUrlViewMore, #message_report, #prof_del_all{
 	border: 2px solid red;
     border-radius: 5px;
 	width: 98%;
@@ -712,13 +712,16 @@ background-color: red;
 	display:none;
 	
 }
-#message_report{
+#prof_del_all{
+	display:inline-block !important;
+}
+#message_report, #prof_del_all{
 	border: 1px solid #6d9bca !important;
 	padding:5px;
 	text-align:center;
 	color:red;
 }
-#message_report >a{
+#message_report >a, #prof_del_all >a{
 	color:red;
 }
 .delBannerById{
