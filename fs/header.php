@@ -19,14 +19,13 @@ require_once("user.php");
           <div class="rfloat menu">
 				<div id='cssmenu'>
 					<ul>
-					   <li><a href='#'>Giới thiệu</a></li>
-					   <li class='active has-sub' ><a href='#'>Trợ giúp</a>
+					   <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</a></li>
+					   <a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trợ giúp</a>
 							<ul>
 									<li><a href='#'>Hotline: 0932523569</a></li>
-									<li><a href='#'>Mail: ndnhu@faceseo.vn</a></li>				
 							</ul>
 						</li>
-					   <li class='has-sub'><a href='#'>Dịch vụ</a>
+					   <li class='has-sub'><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</a>
 						  <ul>
 							  <li><a href='#'>SEO</a></li>
 								   <li><a href='#'>DESIGN</a></li>
