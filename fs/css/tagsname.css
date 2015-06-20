@@ -7,6 +7,7 @@ font-size:14px;
 margin-bottom:6px;
 color:#aaa;
 text-align:left;
+z-index:1;
 }
 .display_box.img
 {

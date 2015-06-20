@@ -294,7 +294,7 @@ margin-top:0px;
 
 #pagelet_bluebar{
 
-position:fixed; top:0px; margin:0;padding:0; width:100%; z-index:1111;
+position:fixed; top:0px; margin:0;padding:0; width:100%; z-index:1;
 /*background:url('../images/css/xmas_bg_n.gif')!important;*/
 background-color: #475A8E;
 height: 50px;
