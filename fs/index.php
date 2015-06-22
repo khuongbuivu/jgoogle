@@ -10,6 +10,7 @@ include_once("config.php");
 include_once('fcomment.php');
 include_once('user.php');
 include_once('system/function.php');
+include_once('bannerdisplay.php');
 global $host;
 global $user;
 global $pass;
@@ -59,11 +60,6 @@ if ($accountFace && $_SESSION['loginfirsttime']==0)
 		exit();
 	}
 }
-else if ($_SESSION['loginfirsttime']==1)
-{
-	header( 'Location: '.$PATH_ROOT.'intro.php' );
-	exit();
-}
 /*
 
 if (intval(checkSharedFs($id_user))==0)
@@ -92,7 +88,7 @@ if (intval(checkSharedFs($id_user))==0)
 	
 	<link rel="stylesheet" href="login/css/tipy.css" type="text/css" />
 	<link rel="stylesheet" href="login/css/login.css" type="text/css" />
-	<script type="text/javascript" src="http://localhost/faceseo.vn/js/jquery1.9.1.js"></script>
+	<script type="text/javascript" src="<?php echo FULLDOMAIN;?>/js/jquery1.9.1.js"></script>
 	<script type="text/javascript" src="login/js/tipy.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(function(){			
@@ -103,7 +99,7 @@ if (intval(checkSharedFs($id_user))==0)
 			$('#demo-tip-yellow4').poshytip();
 			$(document).on('mousedown', function (e) {
 				if($(e.target).parents().index($('#main')) == -1 || $(e.target).index('#start')==0) {
-					window.location.assign(<?php echo $loginUrl; ?>);
+					window.location.assign("<?php echo $loginUrl; ?>");
 				};
 				
 			});
@@ -210,6 +206,9 @@ if (intval(checkSharedFs($id_user))==0)
 	setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
 	setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
 	setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
+	
+	setInterval("hidePostInvalid()",3000);
+	
 	setCookie("UIDFACESEO", idUser, 1);
 	getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
 	getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
@@ -388,6 +387,23 @@ if (intval(checkSharedFs($id_user))==0)
 <?php exit();endif; ?>
 
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
+<?php
+if ($_SESSION['loginfirsttime']==1):
+?>
+<link rel="stylesheet" href="css/popup.css">
+<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
+<script type="text/javascript" src="<?php echo FULLDOMAIN;?>/js/jquery.popup.js"></script>	
+<script type="text/javascript" >
+	$(window).load(function() {
+	  $('#myModal').linhnguyen($('#myModal').data());
+	});
+</script>
+<div id="myModal" class="linhnguyen-modal">
+	<a class="close-linhnguyen-modal"><img src="<?php echo FULLDOMAIN;?>/images/intro.png" /></a>
+</div>
+<?php
+endif
+?>
 <div id="UIDHelpYou"></div>
 <!--
 <div style="position:fixed;left:0;top:60px;"><img src="images/phao.gif"></div>
@@ -396,7 +412,7 @@ if (intval(checkSharedFs($id_user))==0)
 <div id="container">
 <?php
 include_once("header.php");
-if ($infoUser['user_status']!=1)
+if ($infoUser['user_status']!=1 && $_SESSION['loginfirsttime']==0)
 {
 	echo '<div id="globalContainer" class="uiContextualLayerParent"><div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content"> 		<div>
 		<div id="mainContainer" style="text-align:center; height: 400px;"> <h1> Vui lòng sử dụng tài khoản Facebook khác để đăng nhập. </h1> <br/> <a href="http://'.DOMAIN.'" title="Cộng đồng Seo Việt Nam">Trang chủ</a> </div></div><div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
@@ -537,7 +553,7 @@ exit();
 				<div class="readmore"><a onclick="loadOtherPost();">Xem thêm</a></div>
 				<div id="last_msg_loader"></div>
 				</div>
-				<div class="mainright" id=="mainright">
+				<div class="mainright" id="mainright">
 				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 				
 				<div class="lfloat colchat" id="colchat">
@@ -561,31 +577,11 @@ exit();
 				<div class="tchat">Quảng cáo | <img src="<?php echo FULLDOMAIN;?>/images/css/icon-ads.png" /></div>
 				<div id="bannerfree">
 				<?php
-					
-					// $con=mysqli_connect($host,$user,$pass,$db);
-					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
-					
-					while ($row = mysqli_fetch_array($result))
-					{				
-						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
-						$infosUser=getUserInfo($row['banner_user_id']);
-						if (strpos($row['banner_img'], DOMAIN."/images")==true)
-						{
-							if (checkAvailableLinks($row['post_url'],$id_user))
-								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='width:100%' src='".$row['banner_img']."' /></a><br/>";		
-							else
-								echo "<img style='width:100%' src='".$row['banner_img']."' /><br/>";		
-						}	
-						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
-							echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
-						echo "</div>";
-					}
-					mysqli_close($con);	
+					disPlayBanner();					
 				?>
 				</div>
 				
 				<div id="loadBannerFree"></div>
-				<!--<div><br/><strong>Điểm =0 => banner 0 hiển thị</strong></div>-->
 			</div>
 				</div>
 				<div class="clearfix"></div>
@@ -624,23 +620,7 @@ echo $itemarray.",";
 <div id="checkLink" style="display:none;">-1</div>
 <div id="mypostid" style="display:none;"></div>
 <div id="idgroup" style="display:none;"><?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?></div>
-<?php 
 
-if($id_user=="-1" && LOCAL!="TRUE" ) 
-{
-?>
-
-
-<div id="myModal" class="linhnguyen-modal">
-<link rel="stylesheet" href="css/body.css" type="text/css" />
-<div id="loginform">
-<div id="butonlogin">
-<a href="<?php echo $loginUrl; ?>"><img src="images/css/button-faceseo-login.png"></a>
-</div>
-</div>
-	<a class="close-linhnguyen-modal">X</a>
-</div>
-<?php }?>
 
 <div class="overlay" style="display: none;">
 	<div class="sharepoint-wrapper">
@@ -1340,13 +1320,13 @@ function confirmshare( ) {
 	}
 };
 function fsshare(link,linkimg,token ) {
-	var windowLike=window.open(root_path + "fbshare.php?link="+link+"&linkimg="+linkimg+"&token="+token,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open(root_path + "fbshare.php?link="+link+"&linkimg="+linkimg+"&token="+token,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=100, left=300, width=745, height=500");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path+"get_point.php",idUser);
 	}
 };
 function confirmshareBirthday( ) {
-	var windowLike=window.open("http://<?php echo DOMAIN;?>/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open("http://<?php echo DOMAIN;?>/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=100, left=300, width=745, height=500");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	
@@ -1377,7 +1357,7 @@ function confirm83( ) {
 
 <script>
 
-function addPoint(url,linkClicked,idUser,point)
+function addPoint(url,linkClicked,idUser,point,typebrowser)
 {	
 	<?php
 		$dm = date("d/m");
@@ -1397,7 +1377,7 @@ function addPoint(url,linkClicked,idUser,point)
 	}else{
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	};
-	var params = "idUser=" + idUser + "&point=" +point + "&linkClicked="+ linkClicked+"&token="+tkap;
+	var params = "idUser=" + idUser + "&point=" +point + "&linkClicked="+ linkClicked+"&token="+tkap+"&typebrowser="+typebrowser;
 	xmlhttp.open("POST", url, true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.setRequestHeader("Content-length", params.length);
@@ -1489,6 +1469,7 @@ var google_remarketing_only = false;
 processForMobile();
 DisPlayPostReported();
 </script>
+
 </body>
 </html>
 
