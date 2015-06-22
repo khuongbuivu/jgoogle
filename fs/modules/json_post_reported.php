@@ -57,6 +57,7 @@
 			$timeCurrent = strtotime($t); $timeSaved=strtotime($row['post_time']);
 			$post[$i]['post_time']	=getTimeString($timeCurrent,$timeSaved);					
 			$post[$i]['post_realtime']	=$row['post_time'];
+			$post[$i]['id_invalid']		= $row['type_invalid'];
 			$post[$i]['type_invalid']	=getTypePost($row['type_invalid']);		
 			
 			$link=$post[$i]['post_full_url']==""?$post[$i]['post_url']:$post[$i]['post_full_url'];			

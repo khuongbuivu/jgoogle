@@ -12,7 +12,7 @@ function addpointshare()
 	global $db;
 	// $idUser			=	'100001707050712';
 	$idUser			=	$_SESSION['session-user'];	
-	$pointBonus			=	50;
+	$pointBonus			=	100;
 	$dayShare			= 	7;	
 	// $link			= 	'http://giasuminhtri.com/Phu-Huynh-Can-Biet/gia-su-tieu-hoc.html';
 	$link			= 	$_POST['link'];
@@ -57,7 +57,7 @@ function addpointshare()
 				$row = mysqli_fetch_array($resultB)		;
 				$idUserB = $row[0];
 				$resultB=mysqli_query($con,"select * from atw_point where idUser=".$idUserB);
-				$point = 50;
+				$point = 100;
 				if ($resultB->num_rows>0)
 				{
 					$row = mysqli_fetch_array($resultB);
@@ -107,7 +107,7 @@ function addpointshare()
 			$row = mysqli_fetch_array($resultB)		;
 			$idUserB = $row[0];
 			$resultB=mysqli_query($con,"select * from atw_point where idUser=".$idUserB);
-			$point = 50;
+			$point = 100;
 			if ($resultB->num_rows>0)
 			{
 				$row = mysqli_fetch_array($resultB);
