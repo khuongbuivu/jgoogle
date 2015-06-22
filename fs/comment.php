@@ -48,9 +48,7 @@
 									<input type="hidden" class="hiddenInput">
 									<div  class="innerWrap">
 										<div id="cmt-content">
-										<form id="form-cmt" action="" method="get" >
-											<textarea id="scriptBox<?php echo $id ;?>"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea>							
-										</form>
+										
 										</div>
 										<div id="addPhoto">
 										<form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage">
