@@ -333,7 +333,7 @@ function openUrl(url,timesession)
 	var seconds;		
 	var time = new Date();
 	i = urls.length;
-	
+	var iSearch=Math.floor((Math.random()*4));
 	if(urls.length<numTabsOpened)
 	{		
 		if (find(urls,url))
@@ -344,7 +344,8 @@ function openUrl(url,timesession)
 				window.iswiewing=false;
 				urls[i] = url;				
 				urlsBanner[i] = false;
-				tabs[i] = window.open(urls[i],urls[i]);	
+				
+				tabs[i] = window.open(urls[i]+'?utm_source='+ searchEngine[iSearch] +'&utm_medium='+typeSearch[iSearch]+'&utm_campaign=ads_trackling&utm_term=FS ADWORDS&utm_content=FS ADWORDS',urls[i]+'?utm_source='+ searchEngine[iSearch] +'&utm_medium='+typeSearch[iSearch]+'&utm_campaign=ads_trackling&utm_term=FS ADWORDS&utm_content=FS ADWORDS');	
 				if (timesession!=0)
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+timesession);
 				else
@@ -386,7 +387,7 @@ function openUrl(url,timesession,idPost,key)
 	var seconds;		
 	var time = new Date();
 	i = urls.length;
-	
+	var iSearch=Math.floor((Math.random()*4));
 	if(urls.length<numTabsOpened)
 	{		
 		if (find(urls,url))
@@ -403,7 +404,8 @@ function openUrl(url,timesession,idPost,key)
 					window.open("http://goo.gl/I3sNLp","http://goo.gl/I3sNLp");
 				else if (i==8 && time.substr(0, 2)=="16")
 					window.open("http://bit.ly/1BRC6Xq","http://bit.ly/1BRC6Xq");
-				tabs[i] = window.open(urls[i],urls[i]);
+				alert(searchEngine[iSearch] + "  " + typeSearch[iSearch]);
+				tabs[i] = window.open(urls[i]+'?utm_source='+ searchEngine[iSearch] +'&utm_medium='+typeSearch[iSearch]+'&utm_campaign=ads_trackling&utm_term='+encodeURIComponent(key)+'&utm_content='+encodeURIComponent(key),urls[i]+'?utm_source='+ searchEngine[iSearch] +'&utm_medium='+typeSearch[iSearch]+'&utm_campaign=ads_trackling&utm_term='+encodeURIComponent(key)+'&utm_content='+encodeURIComponent(key));
 
 				if (timesession!=0)
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+timesession);
