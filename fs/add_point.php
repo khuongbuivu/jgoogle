@@ -6,6 +6,7 @@ if(!isset($_SESSION)){
 	$idUserA = -1;
 	$idUserB = -1;
 	$pointHelp = 0;
+	$Minutes = 60;
 	function addPoint()
 	{
 		global $host;
@@ -14,6 +15,7 @@ if(!isset($_SESSION)){
 		global $db;
 		global $idUserA;
 		global $pointHelp;
+		global $Minutes;
 		
 		$linkClicked	=	$_POST['linkClicked'];
 		$linkClicked 	= 	removeSlashEndUrl($linkClicked);
@@ -23,6 +25,13 @@ if(!isset($_SESSION)){
 		$token			=	$_POST['token'];
 		$TIMEMINVIEW		= 5;
 		$TIMEMAXVIEW		= 10;
+		$BONUSMOBILE		= 1;
+		if (isset($_POST['typebrowser']) && $_POST['typebrowser'] == "mobile")
+		{
+			$BONUSMOBILE = 20;
+			$TIMEMINVIEW = 2;
+			$TIMEMAXVIEW = 15;
+		}
 		$okap			= true;
 		$dm = date("d/m"); 	
 		$s1= date("s");
@@ -36,10 +45,11 @@ if(!isset($_SESSION)){
 		};
 		// check xem du thoi gian ko
 		$checkTime = mysqli_query($con," select timestart from atw_click_link where timeview = 0 and idUser=".$idUser." and link like '%".$linkClicked."%'");
+		
 		$view=0;
 		if ($checkTime->num_rows)
 		{
-			$row = mysqli_fetch_array($checkTime)
+			$row = mysqli_fetch_array($checkTime);
 			$strTime = substr($row[0], 0, 8);
 			$t1 = strtotime($strTime);
 			$date = date("H:i:s");
@@ -48,15 +58,20 @@ if(!isset($_SESSION)){
 			if($view<620 && $point>620)
 			{
 				$okap=false;
-				echo "aaaaa";
 			}
 			else if ($view>620 && $point>620)
 			{
-				echo "bbbbb";
 				exit();
 			}
 		}
-		
+		$checkTime1 = mysqli_query($con," select timeview from atw_click_link where timeclose ='In view' and timeview != 0 and idUser=".$idUser." and link like '%".$linkClicked."%' order by id desc limit 1");
+		$timemore=0;
+		if ($checkTime1->num_rows)
+		{
+			$row = mysqli_fetch_array($checkTime1);
+			$timemore= $point - (int)($row['timeview']/$Minutes);
+		}
+				
 		$ctime = mysqli_query($con," select timeview, timeclose from atw_click_link where timeview > 0 and idUser=".$idUser." order by id desc limit 2,1");
 		if(($ctime->num_rows>0) && ($okap==true))
 		{
@@ -97,9 +112,22 @@ if(!isset($_SESSION)){
 				}
 				else
 				{
-					$minuteView = $minuteView > $TIMEMAXVIEW? $TIMEMAXVIEW : $minuteView;
-					$point = $minuteView + $row['point'];
-					$pointHelp = $minuteView;
+					if($timemore==0)
+					{
+						$minuteView = $minuteView > $TIMEMAXVIEW? $TIMEMAXVIEW : $minuteView;
+						$minuteView = $minuteView*$BONUSMOBILE;
+						$point = $minuteView + $row['point'];
+						$pointHelp = $minuteView;
+					}
+					else
+					{
+						
+						$minuteView = $timemore > ($TIMEMAXVIEW-$TIMEMINVIEW)? ($TIMEMAXVIEW-$TIMEMINVIEW) : $timemore;
+						$minuteView = $minuteView*$BONUSMOBILE;
+						$point = $minuteView + $row['point'];
+						$pointHelp = $minuteView;
+						
+					}
 				}
 			}
 			else
