@@ -43,11 +43,14 @@ var timetmp=0;
 if (isset($_GET['link']))
 	$link=$_GET['link'];
 else
-	$link="http://"<?php echo DOMAIN;?>;
+	$link=FULLDOMAIN;
 ?>
+<div style="background: url(images/button/likep.jpg) no-repeat; width:600px;height:400px;display:block; margin-left:-300px; top:0px;left:50%;position: absolute;">
+<div style="position:fixed;bottom:10px; left:38px">
 <div id="fbjlike-example1111" class="fbjlike-example" ><fb:like href="<?php echo $link; ?>" layout="standard" show-faces="true" send="true" width="450" action="like" colorscheme="light"></fb:like></div>
-
 <div class="fbjlike-content remember-state" style="display:none;">CONTENT</div>
+</div>
+</div>
 <?php
 $dm = date("d/m");
 $s1= intval(date("s")) + 10;

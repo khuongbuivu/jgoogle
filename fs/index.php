@@ -1277,7 +1277,7 @@ $( "#closelink" ).click(function() {
 <script type="text/javascript" src="js/jquery.fbjlike.1.4.js"></script>
 <script type="text/javascript">
 function confirmlink( link ) {
-	var windowLike=window.open("http://<?php echo DOMAIN;?>/confirmlike.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=500, height=400");
+	var windowLike=window.open("<?php echo FULLDOMAIN;?>/confirmlike.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=600, height=400");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path + "get_point.php",idUser);
 	}
