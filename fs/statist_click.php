@@ -4,12 +4,14 @@
 	include_once("user.php");
 	include_once("system/function.php");
 	$BACKLINK=5;
+	$MOBILE=20;
 	function statistClick()
 	{
 		global $host;
 		global $user;
 		global $pass;
 		global $db;
+		global $MOBILE;
 		if (isset($_GET['link']))
 		{
 			$link	=	$_GET['link'];
@@ -70,31 +72,39 @@
 										$view = $currentTime-$t1;
 										if($row[4]=='In view')
 										{
-											if ($view>620)
+											if ($view>620 && $row[5]>0)
+											{
+												echo "  Closed.<br/>";
+												
+											}
+											else if ($view>620)
+											{
 												echo " Closed:<b style='color:red'>Đang view không được F5, rớt mạng.Nhớ click bằng chuột trái.</b><br/>";
+											}
 											else
 												echo " Closed:<img title='Đang view' src='images/loading-google-smaill.gif' /><br/>";
 										}
 										else
 											echo " Closed: ".$row[4]."<BR/>";
-										if ($row[5]==0)
+										if (($row[5]==0) || ($row[5]>0 && $row[4]=='In view'))
 										{
-											if ($view>620)
-												echo " Bạn không được + điểm.<br/>";
-											else
-												echo " Timeview: ".$view." giây"."<br/>";
+											echo " Timeview: ".$view." giây"."<br/>";
 										}
 										else
 										{
-											if (intval($row[5])>300)
+											if ((intval($row[5])>=300) || (intval($row[5])>=120 && $row[10]=="mobile"))
 											{
 												$minuteView = intval($row[5])/60 ; 
 												$pointadd= $minuteView > 10 ? 10 : $minuteView  ;
 												if (($row[10]!=null || $row[10]!="") && $row[10]=="mobile")
-													echo " Timeview: ".$row[5]." giây + ".(int)($pointadd)*5 ."  điểm(cộng tối đa 50đ).<br/>ĐiểmViewMobile  = SốPhút*5.<BR/>";							
+													echo " Timeview: ".$row[5]." giây + ".(int)($pointadd)*$MOBILE ."  điểm(cộng tối đa 300đ).<br/>ĐiểmViewMobile  = SốPhút*".$MOBILE.".<BR/>";							
 												else
 													echo " Timeview: ".$row[5]." giây + ".(int)($pointadd)."  điểm ( cộng tối đa 10đ cho mỗi lượt view).<BR/>";							
 											}
+											else if ($view>620 && $row[5]==0)
+											{
+												echo " Bạn không được + điểm.<br/>";
+											}	
 											else
 												echo " Timeview: ".$row[5]." giây < 300 giây =>  Bạn không được cộng điểm<BR/>";							
 										}
