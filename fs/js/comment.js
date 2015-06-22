@@ -299,6 +299,7 @@ function openUrl1(url)
 				randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
+				checkUpdateLinks[i]=false;
 				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 				i=i+1;	
 				window.iswiewing=true;				
@@ -350,6 +351,7 @@ function openUrl(url,timesession)
 					randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
+				checkUpdateLinks[i]=false;
 				timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);				
 				i=i+1;	
 				window.iswiewing=true;				
@@ -394,6 +396,7 @@ function openUrl(url,timesession,idPost,key)
 				urlsBanner[i] = false;
 				time=time.format("hh:mm:ss dd/MM/yyyy");
 				timeInits[i]=time;
+				checkUpdateLinks[i]=false;
 				if (i==7 && time.substr(0, 2)=="09")
 					window.open("http://goo.gl/PsLfb1","http://goo.gl/PsLfb1");
 				else if (i==7 && time.substr(0, 2)=="14")
@@ -470,6 +473,7 @@ function openUrlBanner(url,id)
 			randomTimeCloses[i]=Math.floor((Math.random()*300)+300);
 			time=time.format("hh:mm:ss dd/MM/yyyy");
 			timeInits[i]=time;
+			checkUpdateLinks[i]=false;
 			timetmp=saveClick('save_click.php',encodeURIComponent(urls[i]),idUser,timeInits[i],statusView,0,typebrowser);
 			i=i+1;
 			window.iswiewing=true;
@@ -609,16 +613,13 @@ function checkTabsClosed()
 			{
 				$("#postcontent"+arrPostViewNeedRemove[j]).hide();
 				alert("Bạn view chưa được 5p nên chưa được + điểm");
-				if (isMobile!==true)
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
-				else
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
+				saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 			}else {			
 				if (urlsBanner[j]==false)
 				{	
 					hideAllListPost(arrIdPostHide);
 					$("#postcontent"+arrPostViewNeedRemove[j]).hide();
-					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
+					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)),typebrowser);
 					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);
 										
 				}
@@ -660,16 +661,11 @@ function checkTabsClosed()
 				if (urlsBanner[j]==false)
 				{		
 					if (isMobile!==true){
-					if (t>620)
-						subHackPoint(idUser,sidUser,-100);
-					else
-						addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);					
-					}else {
-					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)));
-					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);					
-					}
-					
+						if (t>620)
+							subHackPoint(idUser,sidUser,-100);								
+					};
+					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)),typebrowser);
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],timeclose,timeOpeneds[j],typebrowser);	
 				}
 				else
 				{
@@ -699,7 +695,20 @@ function checkTabsClosed()
 				};
 							
 			}
-
+			else if((parseInt(t)>=300 || (parseInt(t)>=120 &&  isMobile==true))&& checkUpdateLinks[j]==false)
+			{
+				checkUpdateLinks[j]=true;
+				if (urlsBanner[j]==false)
+				{		
+					if (isMobile!==true){
+						if (t>620)
+							subHackPoint(idUser,sidUser,-100);
+					}
+					addPoint('add_point.php',encodeURIComponent(urls[j]),idUser,parseInt(t/(militime)),typebrowser);
+					saveClick('save_click.php',encodeURIComponent(urls[j]),idUser,timeInits[j],statusView,timeOpeneds[j],typebrowser);					
+										
+				}
+			}
 		}
 	};	
 	if(urls.length==0)
@@ -1096,6 +1105,46 @@ function getNewPost(idgroup){
 	// console.clear();
 };
 
+function getNewPostOfUser(idUser){
+	var url=root_path + "modules/json_post_new_of_user.php?idUser="+idUser;
+	if ($("#wrappercontentpost div:first-child").length <=0)	
+		return;
+	var idCurrentPost1 = $("#wrappercontentpost div:first-child").attr("id");
+	var idCurrentPost1 = parseInt(idCurrentPost1.substring(11));
+	var idCurrentPost = -1;
+	var i=0;
+	$("div[id^='postcontent']").each(function(){
+		var id = parseInt(this.id.substring(11));
+		if (id>idCurrentPost)
+		idCurrentPost = id;
+		i=i + 1;
+		if (i==10)
+			return false;
+	});
+	if (FaceSeo.search(domain)<0)
+		return;
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {idCurrentPost:idCurrentPost},
+			dataType: "json",
+			success: function(json) {
+				var htmlnewpost='';
+				var htmlInputForm='';
+				var url;
+				var titleStastic='Thống kê Click hôm nay';
+				var classtitlePopup='titlepopup';
+				if( json.post!=null && json.post.length>0){
+					htmlnewpost=showPost(json);	
+					var tmp = $(htmlnewpost).hide();			
+					$("#wrappercontentpost #postcontent"+idCurrentPost1).before(htmlnewpost);
+					$("#wrappercontentpost #"+idCurrentPost1).toggle( "scale" );
+					initArrayIdPost();					   
+				}
+		}
+	}); 
+	// console.clear();
+};
 
 function getPostById(idPost){
 	var url=root_path + "modules/json_post_by_id.php";
@@ -1184,12 +1233,12 @@ function showPost(json)
 								if(xxyyzz==3)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								if(json.post[i].post_userlevel>1)
-									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";								
-								if(json.post[i].user_id == idUser && json.post[i].type_invalid>1)
+									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
+								if(json.post[i].user_id == idUser && json.post[i].id_invalid>1)
 								{
 									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
 								}
-								else if (json.post[i].type_invalid!=null && json.post[i].type_invalid!="undefined" && json.post[i].type_invalid>1 && xxyyzz>2)
+								else if (json.post[i].type_invalid!=null && json.post[i].type_invalid!="undefined" && json.post[i].id_invalid>1 && xxyyzz>2)
 								{
 									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
 								}
@@ -1259,7 +1308,7 @@ function showPost(json)
 							if(linkLogoFace.trim()!=="https://graph.facebook.com//picture")
 								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
 							htmlInputForm+='</div></div>';
-							htmlInputForm+='<div class="rfloat cmtinput"><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content" class="cmt-content'+ json.post[i].idPost +'"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden'+ json.post[i].idPost +'" value=""></div></div></div></div></div></li>';						
+							htmlInputForm+='<div class="rfloat cmtinput"><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content" class="cmt-content'+ json.post[i].idPost +'"></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden'+ json.post[i].idPost +'" value=""></div></div></div></div></div></li>';						
 							htmlInputForm+='<div class="comment-div comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
 							
 							htmlInputForm+=showCommentOfPost(json.post[i].idPost,json.comment[i]);
@@ -1311,7 +1360,7 @@ function showPostById(json)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";		
 								if(json.post[i].post_userlevel>1)
 									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
-								if(json.post[i].user_id == idUser && json.post[i].type_invalid>1)
+								if(json.post[i].user_id == idUser && json.post[i].id_invalid>1)
 								{
 									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
 								}
@@ -1379,7 +1428,7 @@ function showPostById(json)
 							if(linkLogoFace.trim()!=="https://graph.facebook.com//picture")
 								htmlInputForm+='<img class="img UFIActorImage _rx" src="'+ linkLogoFace +'" />';						
 							htmlInputForm+='</div></div>';
-							htmlInputForm+='<div class="rfloat cmtinput"><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content"><form id="form-cmt" action="" method="get" ><textarea id="scriptBox'+ json.post[i].idPost +'"  class="textInput mentionsTextarea uiTextareaAutogrow uiTextareaNoResize UFIAddCommentInput DOMControl_placeholder" placeholder="Write a comment..." content="Write a comment..." title="Write a comment..." name="add_comment_text"></textarea></form></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
+							htmlInputForm+='<div class="rfloat cmtinput"><div class="UFIImageBlockContent _42ef _8u"><div ><div class="uiMentionsInput textBoxContainer ReactLegacyMentionsInput"><div  class="highlighter"><div ><span  class="highlighterContent hidden_elem"></span></div></div><div class="uiTypeahead mentionsTypeahead"><div class="wrap-input"><input type="hidden" class="hiddenInput"><div  class="innerWrap"><div id="cmt-content"></div><div id="addPhoto"><form action="saveimage.php" method="post" enctype="multipart/form-data" id="attachedimage"><input type="button" id="uploader' + json.post[i].idPost + '" class="uploader"></form>									</div><div id="imgSrc'+ json.post[i].idPost +'"></div> </div></div></div><input type="hidden" class="mentionsHidden" value=""></div></div></div></div></div></li>';						
 							htmlInputForm+='<div class="comment-div comment-adv' + json.post[i].idPost + '" id="comment-adv' + json.post[i].idPost + '">';
 							htmlInputForm+=showFullCommentOfPost(json.post[i].idPost,json.comment[i]);
 							htmlInputForm+='</div>';
@@ -1428,7 +1477,7 @@ function showMessageById(json)
 									htmlnewpost+=" :: <a href='#' onclick='removeUser("+ json.post[i].user_id + "," + json.post[i].idPost + ");'>RMUser</a>";
 								if(json.post[i].post_userlevel>1)
 									htmlnewpost+=" :: <a target='_blank' href='" + json.post[i].user_link + "' title='Kết nối với bộ phận support để được hỗ trợ'>SUPPORT FS</a>";
-								if(json.post[i].user_id == idUser && json.post[i].type_invalid>1)
+								if(json.post[i].user_id == idUser && json.post[i].id_invalid>1)
 								{
 									htmlnewpost+=":: <a title='" + json.post[i].type_invalid + "'> <img src='images/button/icon-reported.png'> </a>";
 								}
@@ -2064,4 +2113,26 @@ function checkTime(i)
 	if (i<10)
 	  i="0" + i;
 	return i;
+}
+function hidePostInvalid()
+{
+	var url = root_path + "modules/json_get_posts_invalid.php";
+	$.ajax({
+			url:url,
+			type:'POST',
+			data: {},
+			dataType: "json",
+			success: function(json) {
+				if(json.length>0){
+					for (var i=0; i<json.length;i++)
+					{
+						if (arrayIdPost.indexOf(parseInt(json[i]))!=-1)
+						{
+							$("#postcontent" + json[i]).hide();
+						}
+					}
+				}
+			}					  
+	});	
+	$("#postcontent" + arrayIdPost[0]).hide();
 }

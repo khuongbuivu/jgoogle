@@ -11,5 +11,6 @@ var randomTimeCloses=new Array();
 var arrIdPostHide=new Array();
 var arrKeys=new Array();
 var arrClickKey=new Array();
+var checkUpdateLinks = new Array();
 var minTimeViewPC = 300;
 var minTimeViewMobile = 120;
