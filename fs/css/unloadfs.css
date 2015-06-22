@@ -530,8 +530,8 @@ div#contentCol.homeFixedLayout {
 body {
     overflow-y: scroll;
 	font:normal 13px arial,tahoma, Verdana, Arial, sans-serif !important;
-	color: #333333;
-	background:url("../images/css/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+	color: #000;
+	background-color:#e7e7e6 !important;
 	
 }
 
@@ -1026,17 +1026,14 @@ background: none repeat scroll 0 0 #43464c;
     width: 800px;
 }
 .ccenter2{
-   background: none repeat scroll 0 0 #475a8e;
-    border-radius: 5px;
-    color: #fff;
     padding: 10px;
-    width: 500px;
-	height:220px;
+    width: 800px;
+	height:534px;
 	position: absolute;
     top: 50%;
 	left: 50%;
-    margin-left: -250px;
-    margin-top: -120px;
+    margin-left: -400px;
+    margin-top: -267px;
 }
 .track3 {
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);
