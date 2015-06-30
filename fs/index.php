@@ -98,7 +98,7 @@ if (intval(checkSharedFs($id_user))==0)
 			$('#demo-tip-yellow3').poshytip();
 			$('#demo-tip-yellow4').poshytip();
 			$(document).on('mousedown', function (e) {
-				if($(e.target).parents().index($('#main')) == -1 || $(e.target).index('#start')==0) {
+				if(($(e.target).parents().index($('#main')) == -1 || $(e.target).index('#start')==0)<?php if($_GET['admin']==1) echo "&& false"; else echo "&& true"; ?>) {
 					window.location.assign("<?php echo $loginUrl; ?>");
 				};
 				
