@@ -24,24 +24,25 @@ $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture"
 				auto: true,
                 autoControls: true,
                 pause: 30000,
-                slideMargin:30,
+                slideMargin:10,
 				pager:false
 		});
 	});
 </script>
+<link rel="stylesheet" type="text/css" href="css/mobile-gioithieu.css"/>
 <title>Home</title>
 </head>
 
-<body class="animsition">
+<body class="animsition ana">
 	<div id="headerTop">
     	<div class="container">
-            <div class="col-sm-3"><a href="<?php echo FULLDOMAIN;?>"  class="logo"><img src="images/logo.png" /></a></div>
-            <div class="col-sm-9">
+            <div class="col-sm-3 m-top-left"><a href="<?php echo FULLDOMAIN;?>"  class="logo"><img src="images/logo.png" /></a></div>
+            <div class="col-sm-9 m-top-right">
             	<div class="wp-menu">
                 	<div class="fl avarta">
 				
 					<?php if ($_SESSION['session-name']!=""):?>
-                    	<a href="#"><span><?echo $_SESSION['session-name'];?></span><img src="<?php echo $linkLogoFace;?>" width="40" height="40" /></a>
+                    	<a href="#"><span class="m-nameuser"><?echo $_SESSION['session-name'];?></span><img src="<?php echo $linkLogoFace;?>" width="40" height="40" /></a>
 					<?php else:?>
 						<a href="<?php echo FULLDOMAIN;?>"><span>Đăng nhập</span><img src="images/avartar.png" /></a>
 					<?php endif;?>
@@ -56,12 +57,12 @@ $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture"
         </div>
 	</div>
     <div class="container">
-        <div class="col-left col-sm-3">
+        <div class="col-left col-sm-3 m-menuleftdiv">
         	<div class="menu-sidebar">
             <?php include_once("menuleft.php");?>    	
             </div>
         </div>
-        <div class="col-right col-sm-9">
+        <div class="col-right col-sm-9 m-descriptiondiv">
             <div class="slider-intro-home">
                 	<ul class="bxslider">
                     	<li>
@@ -96,16 +97,20 @@ $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture"
 								 </p>
                             </div>
                         </li>
-               
+                        <li>
+                   
+                        </li>
                     </ul>
                 </div>
         </div>
 	</div>
+    
 <script type="text/javascript" src="js/jquery.animsition.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-  
-  $(".animsition").animsition({
+ 
+
+	$(".animsition").animsition({
   
     inClass               :   'fade-in-left-sm',
     outClass              :   'fade-out-left',
@@ -128,6 +133,9 @@ $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture"
     overlayClass          :   'animsition-overlay-slide',
     overlayParentElement  :   'body'
   });
+
+
+  
 });
 </script>
 </body>

@@ -113,7 +113,7 @@ $lr='left';
 	}
 	$idben=$row['id'];
 	$html='<div class="chattime">
-    <div class="chattime2"><abr class="chatlivetimestamp" data-utime="'.$row['timestamp'].'">0</abr></div>
+    <div class="chattime2"><abbd class="chatlivetimestamp" data-utime="'.$row['timestamp'].'">0</abbd></div>
   </div>
   <div class="commentbox comment'.$lr.'">
     <div class="commentthumb thum-'.$lr.'">
@@ -138,10 +138,15 @@ mysqli_close($congroup);
                   </div>
                 </div>
               </div>
-              <div class="borderchat">
-                <textarea class="chaten scriptBox" data-itime="0" data-ui="usern_group" placeholder="Viết nội dung chat"></textarea>
+              <div class="borderchat boxchatvip">
+                <div class="chuachat">
+                <textarea class="chaten scriptBox textareanew" data-itime="0" data-ui="usern_group" placeholder="Viết nội dung chat" style="height:15px;direction: ltr;"></textarea>
+                
+                </div>
+                <div style="position:absolute;right:0; bottom:0" class="khungicon">
                 <div data-ui="usern_group" class="showicons"></div>
                 <div class="iconchose iconchose_usern_group"></div>
+                </div>
               </div>
             </div>
           </div>

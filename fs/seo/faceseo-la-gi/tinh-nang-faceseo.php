@@ -29,6 +29,7 @@ $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture"
 		});
 	});
 </script>
+<link rel="stylesheet" type="text/css" href="css/mobile-gioithieu.css"/>
 <title>Home</title>
 </head>
 
@@ -36,12 +37,12 @@ $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture"
 	
 	<div id="headerTop">
     	<div class="container">
-            <div class="col-sm-3"><a href="<?php echo FULLDOMAIN;?>"  class="logo"><img src="images/logo.png" /></a></div>
-            <div class="col-sm-9">
+            <div class="col-sm-3 m-top-left"><a href="<?php echo FULLDOMAIN;?>"  class="logo"><img src="images/logo.png" /></a></div>
+            <div class="col-sm-9 m-top-right">
             	<div class="wp-menu">
                 	<div class="fl avarta">
                     	<?php if ($_SESSION['session-name']!=""):?>
-                    	<a href="#"><span><?echo $_SESSION['session-name'];?></span><img src="<?php echo $linkLogoFace;?>" width="40" height="40" /></a>
+                    	<a href="#"><span class="m-nameuser"><?php echo $_SESSION['session-name'];?></span><img src="<?php echo $linkLogoFace;?>" width="40" height="40" /></a>
 						<?php else:?>
 							<a href="<?php echo FULLDOMAIN;?>"><span>Đăng nhập</span><img src="images/avartar.png" /></a>
 						<?php endif;?>
@@ -56,18 +57,18 @@ $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture"
         </div>
 	</div>
     <div class="container">
-        <div class="col-left col-sm-3">
+        <div class="col-left col-sm-3 m-menuleftdiv">
         	<div class="menu-sidebar">
             <?php include_once("menuleft.php");?>  
                 </div>
         </div>
-        <div class="col-right col-sm-9">
+        <div class="col-right col-sm-9 m-descriptiondiv">
         	<div class="wp-article">
             	<div class="banner"><img src="images/hieu-qua-faceseo-tinh-nang.jpg" width="100%" height="auto" /></div>
             	<div class="content-artilce">
 					<strong><i>
 					Tính năng cơ bản của Faceseo là quản lý việc tương tác trên các website. Mọi hành vi tương tác trên website sẽ được Faceseo thống kê và tính bằng ĐIỂM. Những hành vi có tác dụng SEO mạnh thì được cộng nhiều điểm.
-					</strong></i>
+					</i></strong>
                 	<h2>Các yếu tố hiệu quả cho SEO</h2>
                     <p>1. Tăng traffic từ nhiều IP lớp C</p>
                     <p>2. Click textlink trên website</p>

@@ -89,7 +89,7 @@ if (intval(checkSharedFs($id_user))==0)
 	<link rel="stylesheet" href="login/css/tipy.css" type="text/css" />
 	<link rel="stylesheet" href="login/css/login.css" type="text/css" />
 	<script type="text/javascript" src="<?php echo FULLDOMAIN;?>/js/jquery1.9.1.js"></script>
-	<script type="text/javascript" src="login/js/tipy.js" type="text/javascript"></script>
+	<script src="login/js/tipy.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(function(){			
 			$('#demo-tip-yellow').poshytip();
@@ -116,7 +116,7 @@ if (intval(checkSharedFs($id_user))==0)
 	</script>
 	
 		<link rel="stylesheet" type="text/css" media="screen" href="css/als_demo.css" />
-		
+		<link rel="stylesheet" type="text/css" media="screen" href="css/mobile-index.css" />
 		<script type="text/javascript" src="js/jquery.als-1.7.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() 
@@ -240,23 +240,19 @@ if (intval(checkSharedFs($id_user))==0)
 		<div id="start">
 		</div>
 		<div id="menu">
-			<div id="leftmenu">
-				<div id="menu1" class="itemmenu">
-					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giôùi thieäu</a>
-				</div>
-				<div id="menu2" class="itemmenu">
-					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trôï giuùp</a>
-				</div>
-			</div>
-			<div id="rightmenu">
-				<div id="menu3" class="itemmenu">
-					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dòch vuï</a>
-				</div>
-				<div id="menu4" class="itemmenu">
-					<a href="#">Ngoân ngöõ</a>
-				</div>
-			</div>
-		</div>
+        <ul class="menutop">
+        <li class="firstli"><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</a></li> 
+        <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trôï giuùp</a></li>
+        <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</a></li>
+        <li><a href="#">Ngoân ngöõ</a></li>
+        </ul>
+        <select id="menureponsive" onchange="window.location=this.value">
+        <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</option>
+         <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trôï giuùp</option>
+          <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</option>
+           <option value="#">Ngoân ngöõ</option>
+        </select>
+        </div>
 		
 		<div class="clear"></div>
 		<div id="content">
@@ -273,49 +269,55 @@ if (intval(checkSharedFs($id_user))==0)
 					</div>
 				</div>
 				<div id="login"  class="view fourth-effect">
-					<a href="<?php echo $loginUrl; ?>" title="LOGIN FACESEO"><img src="login/images/FBloginbutton.png" class="imgfull"/></a>
+					<a href="<?php echo $loginUrl; ?>" title="LOGIN FACESEO"><img src="login/images/FBloginbutton.png" class="imgfull loginimg"/><span id="loginicon"> &nbsp </span></a>
 					 <div class="mask"></div>  
 				</div>
-				
 			</div>
 			<div id="col2">
 				<div id="row21">
 					<div id="row211">
 						<div id="row211-row1">
 							<div id="rec-googlesuggest">
-								<img src="login/images/rec-google-suggest.png" class="transparent" />
-								
+								<?php /*?><img src="login/images/rec-google-suggest.png" class="transparent" /><?php */?>
+							   <div class="t-googlesuggest khungchung"></div>	
 								<div id="icon-suggest">
-									<img src="login/images/Google-Suggest.png" id="demo-tip-yellow" title="Faceseo cho phép bạn tạo Google Suggest dễ dàng.<br/> Login vào rồi post Link Google Search." href="#" />
-									
+                                     <span id="demo-tip-yellow" class="thanhad" title="Faceseo cho phép bạn tạo Google Suggest dễ dàng.<br/> Login vào rồi post Link Google Search."> &nbsp </span>
+									<img src="login/images/i-su.png" id="demo-tip-yellow_th" class="thanhadd" title="Faceseo cho phép bạn tạo Google Suggest dễ dàng.<br/> Login vào rồi post Link Google Search." href="#" />
 								</div>
 							</div>
 							<div id="rec-alexa">
-								<img src="login/images/rec-alexa.png" class="transparent"  />
+								<?php /*?><img src="login/images/rec-alexa.png" class="transparent"  /><?php */?>
+                                <div class="t-alexa khungchung"></div>	
 								<div id="icon-alexa">
-									<img src="login/images/alexa.png" id="demo-tip-yellow1" title="Faceseo giúp nhiều website giảm Alexa mạnh mẽ.<br/> Ngoài ra còn giúp tăng đáng kể DA, PR, TRUST SITE." href="#"/>									
+									<img src="login/images/i-ale.png" id="demo-tip-yellow1_th" class="thanhadd" title="Faceseo giúp nhiều website giảm Alexa mạnh mẽ.<br/> Ngoài ra còn giúp tăng đáng kể DA, PR, TRUST SITE." href="#"/>
+                                    <span class="thanhad" id="demo-tip-yellow1" title="Faceseo giúp nhiều website giảm Alexa mạnh mẽ.<br/> Ngoài ra còn giúp tăng đáng kể DA, PR, TRUST SITE."> &nbsp </span>									
 								</div>
 							</div>
 						</div >
 						
 						<div id="row211-row2">
 							<div id="rec-traffic">
-								<img src="login/images/rec-traffic.png" class="transparent" />
+								<?php /*?><img src="login/images/rec-traffic.png" class="transparent" /><?php */?>
+                                <div class="t-traffic khungchung"></div>	
 								<div id="icon-traffic">
-									<img src="login/images/traffic.png" id="demo-tip-yellow2" title="Thế mạnh của Faceseo là mọi người hỗ trợ click textlink<br/>Faceseo sẽ tính điểm cho những ai click đúng textlink." href="#"/>									
+                                <span id="demo-tip-yellow2" class="thanhad" title="Thế mạnh của Faceseo là mọi người hỗ trợ click textlink<br/>Faceseo sẽ tính điểm cho những ai click đúng textlink."> &nbsp </span>
+									<img src="login/images/i-tra.png" id="demo-tip-yellow2_th" class="thanhadd" title="Thế mạnh của Faceseo là mọi người hỗ trợ click textlink<br/>Faceseo sẽ tính điểm cho những ai click đúng textlink." href="#"/>									
 								</div>
 							</div>
 							<div id="rec-addon">
-								<img src="login/images/rec-addon.png" class="transparent" />
+								<?php /*?><img src="login/images/rec-addon.png" class="transparent" /><?php */?>
+                                <div class="t-addon khungchung"></div>	
 								<div id="icon-addon">
-									<img src="login/images/addon.png"  id="demo-tip-yellow3" title="Vui lòng cài Addon trước khi sử dụng Faceseo.<br/> Addon giúp bạn kiếm điểm nhanh hơn.<br/>B1: Click link trong Faceseo<br/>B2: Click link gần hết giờ nháy nháy(dưới chỗ post bài)<br>B3: Hệ thống định vị keywords người dùng cần & nháy nháy<br/>B4: Click keywords nháy sáng và chờ 10p được cộng điểm." href="#"/>									
+                                <span id="demo-tip-yellow3" class="thanhad" title="Vui lòng cài Addon trước khi sử dụng Faceseo.<br/> Addon giúp bạn kiếm điểm nhanh hơn.<br/>B1: Click link trong Faceseo<br/>B2: Click link gần hết giờ nháy nháy(dưới chỗ post bài)<br>B3: Hệ thống định vị keywords người dùng cần & nháy nháy<br/>B4: Click keywords nháy sáng và chờ 10p được cộng điểm."> &nbsp </span>
+									<img src="login/images/i-add.png"  id="demo-tip-yellow3_th" class="thanhadd" title="Vui lòng cài Addon trước khi sử dụng Faceseo.<br/> Addon giúp bạn kiếm điểm nhanh hơn.<br/>B1: Click link trong Faceseo<br/>B2: Click link gần hết giờ nháy nháy(dưới chỗ post bài)<br>B3: Hệ thống định vị keywords người dùng cần & nháy nháy<br/>B4: Click keywords nháy sáng và chờ 10p được cộng điểm." href="#"/>								
 								</div>
 							</div>
 						</div >
 					</div>
 					
 					<div id="row212">
-						<a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"><img src="login/images/clip.png"></a>
+						<?php /*?><a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"></a><?php */?>
+                        <a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"><span id="idvideo"> &nbsp </span><img class="clipimg" src="login/images/clip.png"></a>
 					</div>
 					<div class="clear"></div>
 				</div>

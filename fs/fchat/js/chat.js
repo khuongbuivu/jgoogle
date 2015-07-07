@@ -339,9 +339,25 @@ $(document).on('click','.modal-overlay',function( event ) {
 
 
 $(document).on('keypress','.chaten',function( event ) {	
-$(this).css('height','auto');
+var par=$(this).parent();
+var par2=par.parent();
+var ps=par2.find(".khungicon");
+var str=$(this).val();
+	var len=str.length;
+	var nguyen=parseInt(len/38);
+	var du=len%38;
+	var hcurrent=$(this).height;
+	if(du>0 && nguyen >0)nguyen=nguyen+1;
+	if(nguyen>=6){
+		ps.css('right','20px');
+	}else{
+		ps.css('right','0');
+	}
+	hnew=nguyen*15+'px';
+	if(hcurrent!=hnew)$(this).css('height',hnew);
+
+
 if ( event.which == 13 ) {
-	
 if(tai>=luc+1){	
 var k=$(this).data('ui');	
 var tb = $(this);
