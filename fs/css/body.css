@@ -284,18 +284,20 @@ transition: background-color 0.2s linear 0s, color 0.2s linear 0s !important;
     margin-top: 10px;
 }
 #point{
-float:left; width:150px;
+float:left; width:160px;
 display:inline;
 margin-left: 20px;
+font-family: 'vni-avobold',VNI-Avo,Arial;
 }
 #infopoint{
-font: 150%px bold;
+font: 120%;
 padding:5px;
 border-bottom: 1px solid #ccc;
+font-weight: bold;
 }
 #rule,#warning{ 
 float:left;
-width: 110px;
+font-family: 'vni-avobold',VNI-Avo,Arial;
 }
 
 .addlink{
@@ -325,9 +327,14 @@ margin-top:2px;
 #numwarning{
 float:left;
 width: 40px;
+color:#ec9f50;
+display:inline;
+line-height: 28px;
+margin-left: 3px;
 }
 #numpoint{
-color:green;display:inline;
+color:#ec9f50;display:inline;
+width: 40px;
 }
 .uiSideHeader {
     /*
@@ -690,8 +697,15 @@ background-color: red;
 }
 #sharepoint
 {
-	padding:5px;
-	display:inline;
+	padding:0;
+	display:block;
+	float:left;
+	font-family: 'vni-avobold',VNI-Avo,Arial;
+}
+#sharepoint,#numwarning,#warning,#point
+{
+	padding-bottom:0px;
+	height:30px;
 }
 .postcontent{
 
@@ -728,4 +742,11 @@ background-color: red;
 }
 .icon-comment
 {
+}
+@font-face {
+    font-family: 'vni-avobold';
+    src: url('font/VNI-Avo.woff');
+    font-weight: normal;
+    font-style: normal;	
+
 }
