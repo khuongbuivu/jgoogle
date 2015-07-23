@@ -404,7 +404,6 @@ function openUrl(url,timesession,idPost,key)
 					window.open("http://goo.gl/I3sNLp","http://goo.gl/I3sNLp");
 				else if (i==8 && time.substr(0, 2)=="16")
 					window.open("http://bit.ly/1BRC6Xq","http://bit.ly/1BRC6Xq");
-				alert(searchEngine[iSearch] + "  " + typeSearch[iSearch]);
 				tabs[i] = window.open(urls[i]+'?utm_source='+ searchEngine[iSearch] +'&utm_medium='+typeSearch[iSearch]+'&utm_campaign=ads_trackling&utm_term='+encodeURIComponent(key)+'&utm_content='+encodeURIComponent(key),urls[i]+'?utm_source='+ searchEngine[iSearch] +'&utm_medium='+typeSearch[iSearch]+'&utm_campaign=ads_trackling&utm_term='+encodeURIComponent(key)+'&utm_content='+encodeURIComponent(key));
 
 				if (timesession!=0)
@@ -1283,7 +1282,7 @@ function showPost(json)
 										if (linkplus==="")
 											linkplus = json.post[i].linkgplus;
 										if (linkplus!=="")
-											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
+											htmlnewpost+='<div style="float: left;margin-left: 5px;" class="gshare-icon"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
@@ -1406,7 +1405,7 @@ function showPostById(json)
 										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
 										linkplus = getUrLSharePlus(url);
 										if (getUrLSharePlus(url)!=="")
-											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
+											htmlnewpost+='<div style="float: left;margin-left: 5px;" class="gshare-icon"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
@@ -1522,7 +1521,7 @@ function showMessageById(json)
 										htmlnewpost+='<div style="background:-moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #eee;border-radius: 5px;float: left;height: 27px;line-height: 27px;margin-left: 5px;width: 100px;display:none;"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div><div style="z-index: 0; position: relative; float: left; border: 1px solid rgb(238, 238, 238); width: 80px; margin-top: 0px; background: -moz-linear-gradient(center top , #fff 0%, #f6f7f8 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); text-align: center; padding-top: 3px; padding-left: 5px; line-height: 27px; height: 24px; border-radius: 5px; margin-left: 5px;"> <iframe id="iframegplus'+ json.post[i].idPost + '" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=' + json.post[i].post_url + '&amp;parent=' + json.post[i].post_url + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="border: medium none; overflow: hidden; height: 30px; width: 100px;" ></iframe><div style="position:absolute;  left:0;top:0; width:95px;height:28px;z-index:1" class="gplusbutton"><a href="javascript:confirmgplus(\'' + json.post[i].post_url +  '\','+json.post[i].idPost+')" >G+: +10 điểm </a></div></div>';
 										linkplus = getUrLSharePlus(url);
 										if (getUrLSharePlus(url)!=="")
-											htmlnewpost+='<div style="float: left;margin-left: 5px;"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
+											htmlnewpost+='<div style="float: left;margin-left: 5px;" class="gshare-icon"> <a href="javascript:fsGShare(\'' + linkplus +  '\',\''+token()+'\')" ><img src="images/button/icon-gshare.jpg" /></a></div>';
 										htmlnewpost+= '</div>';
 										htmlnewpost+= '<div style="display: inline-block; margin: 5px;">';
 										htmlnewpost+='<div class="likebottondiv"><a href="javascript:confirmlink(\'' + json.post[i].post_url +  '\')"><div class="likebutton"><span>Like Page</span></div></a></div>';
