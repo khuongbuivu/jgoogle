@@ -41,6 +41,8 @@
 				return date("h:i:s d-m-Y",$timeSave);
 			}
 		}
+		else
+			return date("h:i:s d-m-Y",$timeSave);
 		
 	}
 
