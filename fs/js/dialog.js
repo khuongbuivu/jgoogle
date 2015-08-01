@@ -48,6 +48,7 @@ $(document).ready(function() {
 				data: {idUserA:idUser,idUserB:idUserB,sidUser:sidUser,idPost:idPost,typereport:typereport},
 				dataType: "html",
 				success: function(result) {
+				$("#postcontent"+idPost).fadeToggle("fast");
 			}
 		}); 		
 		$(".formreport").fadeToggle("fast");
