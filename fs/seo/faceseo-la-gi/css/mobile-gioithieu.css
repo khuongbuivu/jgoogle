@@ -1,181 +1,264 @@
-.m-menuleft,.m-menutop{display:none}
-.menu-left li a {
-    padding-right: 7px;
-}
-.ct-fl {
-    width: 31%;
-}
-@media only screen and (max-width: 1024px) {}
-@media only screen and (max-width: 980px) {
-.slider-intro-home {
-
-    padding-top: 50px;
-	padding-left:10px;
-	padding-right:30%;
-   
-}
-.menu-main li {
-
-    padding: 0 12px;
-}
-	.animsition,.animsition-overlay {
-  opacity: 1 !important;
-
-}
-	}
-@media only screen and (max-width: 768px) {
-.menu-main li {
-    padding: 0 4px;
-}
-.description {
-    padding-left: 0;
-}
-.m-menuleftdiv{ padding-left:0; width:23% !important}
-.m-descriptiondiv{ width:77% !important}
-.submenu {
-    width: 120%;
-
-}
-.ct-fl {
-    width: 31%;
-}
-	
-	}
-
-@media only screen and (max-width: 568px) {
-	
-	.avarta img {
-		display:none;
-}
-		.m-img-show { padding:5px 0}
-.m-img-show .ct-fl,.m-img-show .fourth-effect .mask{ width:100%;}
-	.menu-main,.menu-left{ display:none}
-	.m-menuleft,.m-menutop{display:block}
-	.m-top-left{ float:left;width:22%;}
-	.m-top-right{ float: left;
-    padding: 0;
-    width: 77%;}
-	.wp-menu {
-    float: right;
-    width: 100%;
-}
-.flag {
-    width: 60px;
-}
-.m-menuleft{
-background: #444 url("../images/icon-danh-muc.png") no-repeat scroll 0 center;
-    border: medium none;
-    color: #fff;
-    padding: 5px 25px;
-	width:100%;
-}
-.m-menutop{
-background: #47649f url("../images/icon-danh-muc.png") no-repeat scroll 0 center;
-    border: medium none;
-    color: #fff;
-    float: left;
-    margin: 5px;
-    padding: 5px 20px;
-    width: 126px;
-}
-.m-menuleftdiv {
-    margin: 0 auto;
-    padding: 10px 20px;
-    width: 100% !important;
-}
-
-.m-descriptiondiv{ width:100% !important}
-	}
-
-@media only screen and (max-width: 480px) {
-    .avarta span{background: rgba(0, 0, 0, 0) url("../images/m-login.png") no-repeat scroll 0 0;
-    height: 40px;
-    text-indent: -1000px;
-    width: 40px;}
-	.m-nameuser{display:none !important}
-	.m-top-left {
-    float: left;
-    width: 30%;
-}
-.m-top-right {
-    float: left;
-    padding: 0;
-    width: 70%;
-}
-h2, .h2 {
-    font-size: 20px;
-}
-.m-menuleftdiv {
-    margin: 0 auto;
-    padding: 10px 15px;
-    width: 100% !important;
-}
-.m-menuleft {
-    padding: 5px 20px;
-    width: 100%;
-}
-	}
-@media only screen and (max-width: 360px) {
-	.m-top-left {
-   
-    width: 37%;
-     }
-	.m-top-right {
-    width: 61%;
-    }
-	.m-menuleft {
-
-    padding: 5px 61px;
-}
-
-.m-menuleftdiv {
-    margin: 0 auto;
-    padding: 10px 15px;
-    width: 100% !important;
-}
-.m-menutop {
-background-position: center center;
-    padding: 5px 20px;
-    width: 34px;
-}
-	}
-@media only screen and (max-width: 320px) {
-	.m-top-left {
-    float: left;
-    width: 42%;
-}
-.m-top-right {
-    float: left;
-    padding: 0;
-    width: 58%;
-}
-.m-menutop {
-    padding: 5px 5px 0 20px;
-    width: 42px;
-}
-	.avarta {
-    margin-right: 0px;
-}
-.m-descriptiondiv {
-    padding: 0;
-    width: 100% !important;
-}
-.m-menuleft {
-
-    padding: 5px 39px;
-}
-.m-menuleftdiv {
-    margin: 0 auto;
-    padding: 10px 0;
-    width: 100% !important;
-}
-.title-txt .fz-83 {
-	font-size:35px;
-}
-.title-txt .fz-41 {
-    font-size: 30px;
-}
-.flag {
-    padding-top: 7px;
-}
+.m-menuleft,.m-menutop{display:none}
+.menu-left li a {
+    padding-right: 7px;
+}
+.ct-fl {
+    width: 31%;
+}
+.menu-left .nosub a{
+	background:none !important;
+}
+.menu-left li .submenu a{
+	background:none !important;
+}
+.submenu {
+    width: 200px;
+}
+@media only screen and (max-width: 1024px) {.animsition,.animsition-overlay {
+  opacity: 1 !important;
+
+}}
+@media only screen and (max-width: 980px) {
+.slider-intro-home {
+
+    padding-top: 50px;
+	padding-left:10px;
+	padding-right:30%;
+   
+}
+.menu-main li {
+
+    padding: 0 12px;
+}
+	.animsition,.animsition-overlay {
+  opacity: 1 !important;
+
+}
+	}
+@media only screen and (max-width: 768px) {
+.menu-main li {
+    padding: 0 4px;
+}
+.description {
+    padding-left: 0;
+}
+.m-menuleftdiv{ padding-left:0; width:23% !important}
+.m-descriptiondiv{ width:77% !important}
+.submenu {
+    width: 120%;
+
+}
+.ct-fl {
+    width: 31%;
+}
+	
+	}
+
+@media only screen and (max-width: 640px) {
+.avarta {
+    line-height: 34px;
+    margin-right: 20px;
+}
+	
+	.avarta img {
+		display:none;
+}
+		.m-img-show { padding:5px 0}
+.m-img-show .ct-fl,.m-img-show .fourth-effect .mask{ width:100%;}
+	.menu-main,.menu-left{ display:none}
+	.m-menuleft,.m-menutop{display:block}
+	.m-top-left{ float:left;width:22%;}
+	.m-top-right{ float: left;
+    padding: 0;
+    width: 77%;}
+	.wp-menu {
+    float: right;
+    width: 100%;
+}
+.flag {
+    width: 60px;
+}
+.m-menuleft{
+background: #444 url("../images/icon-danh-muc.png") no-repeat scroll 0 center;
+    border: medium none;
+    color: #fff;
+    padding: 5px 25px;
+	width:100%;
+}
+.m-menutop{
+background: #47649f url("../images/icon-danh-muc.png") no-repeat scroll 0 center;
+    border: medium none;
+    color: #fff;
+    float: left;
+    margin: 5px;
+    padding: 5px 20px;
+    width: 126px;
+}
+.m-menuleftdiv {
+    margin: 0 auto;
+    padding: 10px 15px;
+    width: 100% !important;
+}
+
+.m-descriptiondiv{ width:100% !important}
+	
+}
+
+@media only screen and (max-width: 568px) {
+	
+	.avarta img {
+		display:none;
+}
+		.m-img-show { padding:5px 0}
+.m-img-show .ct-fl,.m-img-show .fourth-effect .mask{ width:100%;}
+	.menu-main,.menu-left{ display:none}
+	.m-menuleft,.m-menutop{display:block}
+	.m-top-left{ float:left;width:22%;}
+	.m-top-right{ float: left;
+    padding: 0;
+    width: 77%;}
+	.wp-menu {
+    float: right;
+    width: 100%;
+}
+.flag {
+    width: 60px;
+}
+.m-menuleft{
+background: #444 url("../images/icon-danh-muc.png") no-repeat scroll 12px center;
+    border: medium none;
+    color: #fff;
+    padding: 5px 25px;
+	width:100%;
+}
+.m-menutop{
+background: #47649f url("../images/icon-danh-muc.png") no-repeat scroll 0 center;
+    border: medium none;
+    color: #fff;
+    float: left;
+    margin: 5px;
+    padding: 5px 20px;
+    width: 126px;
+}
+.m-menuleftdiv {
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 100% !important;
+}
+
+.m-descriptiondiv{ width:100% !important}
+	}
+@media only screen and (max-width: 560px) {
+	
+}
+
+@media only screen and (max-width: 500px) {
+	.m-menuleft {
+    padding: 5px 40px;
+}
+}
+@media only screen and (max-width: 480px) {
+    .avarta span{background: rgba(0, 0, 0, 0) url("../images/m-login.png") no-repeat scroll 0 0;
+    height: 40px;
+    text-indent: -1000px;
+    width: 40px;}
+	.m-nameuser{display:none !important}
+	.m-top-left {
+    float: left;
+    width: 30%;
+}
+.m-top-right {
+    float: left;
+    padding: 0;
+    width: 70%;
+}
+h2, .h2 {
+    font-size: 20px;
+}
+.m-menuleftdiv {
+    margin: 0 auto;
+    padding: 10px 15px;
+    width: 100% !important;
+}
+.m-menuleft {
+    padding: 5px 40px;
+    width: 100%;
+}
+
+	}
+@media only screen and (max-width: 390px) {
+	
+	.m-menutop{width:115px;}
+	
+}
+@media only screen and (max-width: 360px) {
+	.m-top-left {
+   
+    width: 37%;
+     }
+	.m-top-right {
+    width: 61%;
+    }
+	.m-menuleft {
+
+    padding: 5px 61px;
+}
+
+.m-menuleftdiv {
+    margin: 0 auto;
+    padding: 10px 15px;
+    width: 100% !important;
+}
+.m-menutop {
+background-position: center center;
+    padding: 5px 20px;
+    width: 34px;
+}
+	}
+@media only screen and (max-width: 320px) {
+	.m-top-left {
+    float: left;
+    width: 42%;
+}
+.m-top-right {
+    float: left;
+    padding: 0;
+    width: 58%;
+}
+.m-menutop {
+    padding: 5px 5px 0 20px;
+    width: 42px;
+}
+	.avarta {
+    margin-right: 0px;
+}
+.m-descriptiondiv {
+    padding: 0;
+    width: 100% !important;
+}
+.m-menuleft {
+
+    padding: 5px 39px;
+}
+.m-menuleftdiv {
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 100% !important;
+}
+.title-txt .fz-83 {
+	font-size:35px;
+}
+.title-txt .fz-41 {
+    font-size: 30px;
+}
+.flag {
+    padding-top: 7px;
+}
+.content-artilce {
+    padding: 25px 20px;
+}
+.content-artilce p {
+    margin-bottom: 5px;
+    text-indent: 15px;
+}
 }
