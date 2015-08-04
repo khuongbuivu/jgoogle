@@ -5,9 +5,9 @@ if(isset($_POST['searchword'])&&$_POST['searchword']!='')
 $q=$_POST['searchword'];
 $idPost=$_POST['idPost'];
 $q=str_replace("@","",$q);
-$sql_res=mysql_query("select * from atw_user where user_name like '%$q%' order by  user_id LIMIT 5");
+$sql_res=mysqli_query($bd,"select * from atw_user where user_name like '%$q%' order by  user_id LIMIT 5");
 echo '<div class="boxtagdivscroll">';
-while($row=mysql_fetch_array($sql_res))
+while($row=mysqli_fetch_array($sql_res))
 {
 $user_name=$row['user_name'];
 $img="https://graph.facebook.com/".$row['user_id']."/picture";
