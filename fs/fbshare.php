@@ -125,7 +125,7 @@ mysqli_close($con);
 	};
 	function addPointShare(idUser,link)
 	{	
-			var url="http://".<?php echo DOMAIN;?>."/modules/fbshare.php";
+			var url="http://<?php echo DOMAIN;?>/modules/fbshare.php";
 			var point = 20;
 			var xmlhttp;
 			if(window.XMLHttpRequest){
