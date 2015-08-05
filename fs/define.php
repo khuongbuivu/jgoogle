@@ -1,8 +1,17 @@
 <?php
+if(!isset($_SESSION)){
+    session_start();
+}
 require_once("definelocal.php");
 if (!defined('LOCAL')) 
 define("LOCAL", "TRUE", true);
 require_once('system/function.php');
+// error_reporting(E_ALL);
+// ini_set("display_errors", 1);
+if((!isset($_SESSION['accountFace'])) || ($_SESSION['countlogfaceseo']<2))
+{
+	$_SESSION['accountFace']="";
+	$_SESSION['user_profile']="";
 	if(LOCAL!="TRUE")
 	{
 		require 'fbapi/facebook.php';
@@ -11,10 +20,12 @@ require_once('system/function.php');
 		  'secret' => 'd9b93ffc459fb45be9a235bcc05d19b3',
 		));
 		$accountFace = $facebook->getUser();
+		
 		$user_profile = array();
 		$user_profile['id']="";
 		$user_profile['name']="";
 		$user_profile['numFriends']=0;
+		
 		if ($accountFace) {
 		  try {
 			$user_profile = $facebook->api('/me');
@@ -33,6 +44,17 @@ require_once('system/function.php');
 			'scope' => 'email,user_birthday'
 		  ));
 		}
+		$_SESSION['accountFace']=$accountFace;
+		$_SESSION['user_profile']=$user_profile;
+		$_SESSION['loginUrl']=$loginUrl;
+		$_SESSION['logoutUrl']=$logoutUrl;
+		if (!isset($_SESSION['countlogfaceseo']))
+		{
+			
+			$_SESSION['countlogfaceseo']=0;
+		}
+		else
+			$_SESSION['countlogfaceseo'] = $_SESSION['countlogfaceseo'] + 1;
 	}     
 	if(LOCAL!="TRUE"){
                
@@ -99,7 +121,9 @@ require_once('system/function.php');
 						$_SESSION['messlogin']="Sai pass. <a href='#' onclick='return changepass();'>Đổi pass mới</a>";
 				}
 				else
+				{
 					$_SESSION['messlogin']="Vui lòng đăng nhập bằng FB";
+				}
 			}
 		}      
 
@@ -114,7 +138,7 @@ require_once('system/function.php');
 		$id_user="100005640848020";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
 		$userFace="Tran Lai";//"Linh Nguyen";  // $user_profile['name']
 		$linkLogoFace="https://graph.facebook.com/$id_user/picture";
-		$PATH_ROOT="http://localhost/".DOMAIN."/";
+		$PATH_ROOT=FULLDOMAIN;
 		$numCmtDisplay = 10;	
 		$FOLDERTHUMBANNER = $PATH_ROOT."images/modules/upload/banner/";	
 		if($_SESSION['email']==''){ 
@@ -172,6 +196,23 @@ require_once('system/function.php');
 		} 
 		
 	}
+}
+else
+{
+	$accountFace=$_SESSION['accountFace'];
+	$user_profile=$_SESSION['user_profile'];
+	$loginUrl=$_SESSION['loginUrl'];
+	$logoutUrl=$_SESSION['logoutUrl'];
+	$id=89;
+	$id_comment=1;	
+	$id_user=$user_profile['id'];
+	$userFace=$user_profile['name'];
+	$user_profile['user_ip']=getUserIP();
+	$linkLogoFace="https://graph.facebook.com/$id_user/picture";
+	$PATH_ROOT="http://".DOMAIN."/";
+	$numCmtDisplay = 10;
+	$FOLDERTHUMBANNER = $PATH_ROOT."images/modules/upload/banner/";	
+}
 	// define some array using in game
 	$arrPostDisplay = array();
 	$i_arrPostDisplay = 0;
