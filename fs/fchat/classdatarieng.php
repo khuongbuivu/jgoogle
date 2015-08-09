@@ -3,7 +3,7 @@ class faceseochatrieng{
  
  function getmsg10($id1,$id2,$timese,&$mang=array(),$so){
 	//global $con;
-$conuser=mysqli_connect("localhost","root","","chatuser") or die("Không kết nối được");
+$conuser=mysqli_connect("localhost","root","rootfaceseo@#","chatuser") or die("Không kết nối được");
 mysqli_set_charset($conuser, "utf8");	
    $datas=array();
    $query='select * from chattext where timestamp >='.$timese.' and (iduser1='.$id1.' and iduser2='.$id2.' ) or (iduser1='.$id2.' and iduser2='.$id1.') order by id desc' ;
@@ -127,7 +127,7 @@ mysqli_close($conuser);
    return true;
  }
    function getmsg4ajax($id1,$id2,&$mang=array()){
-   $conuser=mysqli_connect("localhost","root","","chatuser") or die("Không kết nối được");
+   $conuser=mysqli_connect("localhost","root","rootfaceseo@#","chatuser") or die("Không kết nối được");
    mysqli_set_charset($conuser, "utf8");	
    $datas=array();
    $query='select * from chattext where (iduser1='.$id1.' and iduser2='.$id2.' ) or (iduser1='.$id2.' and iduser2='.$id1.') order by id desc limit 0,4' ;
@@ -153,10 +153,10 @@ mysqli_close($conuser);
    return true;
  }
  function getmsg10ajaxuser($id1,$id2,&$mang=array(),$timeint){
-	$conuser=mysqli_connect("localhost","root","","chatuser") or die("Không kết nối được");
+	$conuser=mysqli_connect("localhost","root","rootfaceseo@#","chatuser") or die("Không kết nối được");
 mysqli_set_charset($conuser, "utf8");
    $datas=array();
-   $query='select * from chattext where ((iduser1='.$id1.' and iduser2='.$id2.') or (iduser1='.$id2.' and iduser2='.$id1.')) and timestamp < '.$timeint.' order by id desc limit 0,1' ;
+   $query='select * from chattext where ((iduser1='.$id1.' and iduser2='.$id2.') or (iduser1='.$id2.' and iduser2='.$id1.')) and timestamp < '.$timeint.' order by id desc limit 0,5' ;
  
    $data=mysqli_query($conuser,$query);
    $i=0;
@@ -179,7 +179,7 @@ mysqli_close($conuser);
    return true;
  }
  function getmsg10ajaxgroup($id1,$id2,&$mang=array(),$timeint){
-	$con=mysqli_connect("localhost","root","","chatgroup") or die("Không kết nối được");
+	$con=mysqli_connect("localhost","root","rootfaceseo@#","chatgroup") or die("Không kết nối được");
 	mysqli_set_charset($con, "utf8");
    $datas=array();
    $query='select c.* from chattext c where iduser2="group" and timestamp <= '.$timeint.' order by id desc limit 0,10' ;
@@ -206,9 +206,9 @@ mysqli_close($con);
  
  function inserdata($array){
  if($array['iduser2']=='group'){
-	 $con=mysqli_connect("localhost","root","","chatgroup") or die("Không kết nối được"); 
+	 $con=mysqli_connect("localhost","root","rootfaceseo@#","chatgroup") or die("Không kết nối được"); 
  }else{
-	 $con=mysqli_connect("localhost","root","","chatuser") or die("Không kết nối được"); 
+	 $con=mysqli_connect("localhost","root","rootfaceseo@#","chatuser") or die("Không kết nối được"); 
  }
  mysqli_set_charset($con, "utf8");
 

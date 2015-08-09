@@ -1,6 +1,6 @@
 <?php
 
-$homepathchat='http://systemforseoer.com/fchat/';
+$homepathchat='http://faceseo.vn/fchat/';
 if(!isset($_SESSION)){
     session_start();
 }
@@ -54,7 +54,7 @@ if($useridoff>0){
     $_SESSION['timelogin']=strtotime($hourstimeonline);
 	$useronline=$fchat->getUsersOnline();
 	
-	$conreport=mysqli_connect("localhost","root","","chatreport") or die("Không kết nối được");
+	$conreport=mysqli_connect("localhost","root","rootfaceseo@#","chatreport") or die("Không kết nối được");
      mysqli_set_charset($conreport, "utf8");	
     $query='select lanvp from reportuser where iduser="'.$_SESSION['session-user'].'" limit 0,1';
    $data=mysqli_query($conreport,$query);
@@ -95,7 +95,7 @@ echo $timestamp;
                       <span class="loading-chat"></span></div>
                       <div class="chattime"><div class="chattime2"><abbd class="chatlivetimestamp" data-utime="<?php echo $timestamp; ?>"></abbd></div></div>
                     <?php
-$congroup=mysqli_connect("localhost","root","","chatgroup") or die("Không kết nối được");
+$congroup=mysqli_connect("localhost","root","rootfaceseo@#","chatgroup") or die("Không kết nối được");
 mysqli_set_charset($congroup, "utf8");					
 $query='SELECT iduser1 as id,username1 as username,msg,time_chat,timestamp FROM chattext WHERE iduser2 ="group" order by timestamp desc limit 0,5';
 $data=mysqli_query($congroup,$query);
@@ -113,7 +113,7 @@ $lr='left';
 	}
 	$idben=$row['id'];
 	$html='<div class="chattime">
-    <div class="chattime2"><abbd class="chatlivetimestamp" data-utime="'.$row['timestamp'].'">0</abbd></div>
+    <div class="chattime2"><abr class="chatlivetimestamp" data-utime="'.$row['timestamp'].'">0</abr></div>
   </div>
   <div class="commentbox comment'.$lr.'">
     <div class="commentthumb thum-'.$lr.'">
@@ -138,10 +138,8 @@ mysqli_close($congroup);
                   </div>
                 </div>
               </div>
-              <div class="borderchat boxchatvip">
-                <div class="chuachat">
-                <textarea class="chaten scriptBox textareanew" data-itime="0" data-ui="usern_group" placeholder="Viết nội dung chat" style="height:15px;direction: ltr;"></textarea>
-                
+              <div class="borderchat boxchatvip"><div class="chuachat">
+                <textarea class="chaten scriptBox textareanew" onkeydown="run_with(this);" data-itime="0" data-ui="usern_group" placeholder="Viết nội dung chat" style="height:15px;direction: ltr;"></textarea>
                 </div>
                 <div style="position:absolute;right:0; bottom:0" class="khungicon">
                 <div data-ui="usern_group" class="showicons"></div>

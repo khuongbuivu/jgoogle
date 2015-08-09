@@ -67,14 +67,15 @@ if(tai>=luc){$(".chaten").attr("disabled", false);}
 if($('.lasttimestamp').data('on')=='0'){
 $('.lasttimestamp').data('on','1');
 $.ajax({
-    url:'http://systemforseoer.com/fchat/checknewbox.php',
+    url:'http://faceseo.vn/fchat/checknewbox.php',
     type:'POST',
     data: {timese:$('.lasttimestamp').data('ltime')},
 	dataType: "json",
     success: function(data) {
 	   $('.lasttimestamp').data('ltime',data.timenows);	
+	   var them='<p><span class="icon-online"></span><img src="https://graph.facebook.com/100006527177929/picture"><a data-usern="usern_100006527177929" role="" rel="ignore" usern="usern_100006527177929" data-username-show="SƠn Lê" title="SƠn Lê" class="usern">SƠn Lê -- <span style="color:#ff0000;font-weight:bold;">Support</span></a></p>';
 	   if(data.listuser!=''){
-		   $('.userslist').html(data.listuser);
+		   $('.userslist').html(them+data.listuser);
 		   }
 	   if(data.users.length>0){
 		for(var i=0;i<data.users.length;i++){	
@@ -172,7 +173,7 @@ $.ajax({
 }
 function checkthoigian(){
 $.ajax({
-    url:'http://systemforseoer.com/fchat/chung.php',
+    url:'http://faceseo.vn/fchat/chung.php',
     type:'POST',
     data: {},
 	dataType: "json",
@@ -199,7 +200,7 @@ html='<div class="commentbox commentright"><div class="commentthumb"><div class=
 
 function addCommentboxajax(id){	
 $.ajax({
-    url:'http://systemforseoer.com/fchat/ajaxcomment.php',
+    url:'http://faceseo.vn/fchat/ajaxcomment.php',
     type:'POST',
     data: {id:id},
 	dataType: "json",
@@ -250,7 +251,7 @@ var ida=$('.userac').data('ida');
 		l='mright';
 		ben='commentright';
 	}else { c='<div class="chati2">'+giochat+'</div><div class="textleft">'+c+'</div>';l='mleft';ben='commentleft';}
-html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class="commentline"></div><a aria-label="'+a+'" usern="usern_'+t+'" data-username-show="'+a+'" class="usern" data-hover="tooltip" class="profileLink" href="#" role="button"><img src="https://graph.facebook.com/'+t+'/picture" class="thumbimg"></a></div><div class="messages '+l+'"><div class="infomsg"><span class="hidden_div"><a href="#" rel="dialog" role="button"><span class="fcg">Báo sai phạm</span></a></span><span class="timestamp">'+b+'</span></div><div class="msgcontent" data-jsid="message" data-utime="'+ti+'"><span><div>'+c+'</div></span></div></div></div><div class="clearfix"></div>';
+html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class="commentline"></div><a aria-label="'+a+'" usern="usern_'+t+'" data-username-show="'+a+'" title="'+a+'" class="usern" data-hover="tooltip" class="profileLink" href="#" role="button"><img src="https://graph.facebook.com/'+t+'/picture" class="thumbimg"></a></div><div class="messages '+l+'"><div class="infomsg"><span class="hidden_div"><a href="#" rel="dialog" role="button"><span class="fcg">Báo sai phạm</span></a></span><span class="timestamp">'+b+'</span></div><div class="msgcontent" data-jsid="message" data-utime="'+ti+'"><span><div>'+c+'</div></span></div></div></div><div class="clearfix"></div>';
 return html;
 }
 function getCommentboxajax(a,b,c,t,ti,giochat,username){
@@ -264,7 +265,7 @@ function getCommentboxajax(a,b,c,t,ti,giochat,username){
 		l='mright';
 		ben='commentright';
 	}else {c='<div class="chati2">'+giochat+'</div><div class="textleft">'+c+'</div>';l='mleft';ben='commentleft';}
-html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class="commentline"></div><a aria-label="'+a+'" data-hover="tooltip" class="profileLink usern" href="#" usern="usern_'+t+'" data-username-show="'+username+'" role="button"><img src="https://graph.facebook.com/'+t+'/picture" class="thumbimg"></a></div><div class="messages '+l+'"><div class="infomsg"><span class="hidden_div"><a href="#" rel="dialog" role="button"><span class="fcg">Báo sai phạm</span></a></span><span class="timestamp">'+b+'</span></div><div class="msgcontent" data-jsid="message" data-utime="'+ti+'"><span><div>'+c+'</div></span></div></div></div><div class="clearfix"></div>';
+html='<div class="commentbox '+ben+'"><div class="commentthumb '+m+'"><div class="commentline"></div><a aria-label="'+a+'" data-hover="tooltip" class="profileLink usern" href="#" usern="usern_'+t+'" data-username-show="'+username+'" title="'+username+'" role="button"><img src="https://graph.facebook.com/'+t+'/picture" class="thumbimg"></a></div><div class="messages '+l+'"><div class="infomsg"><span class="hidden_div"><a href="#" rel="dialog" role="button"><span class="fcg">Báo sai phạm</span></a></span><span class="timestamp">'+b+'</span></div><div class="msgcontent" data-jsid="message" data-utime="'+ti+'"><span><div>'+c+'</div></span></div></div></div><div class="clearfix"></div>';
 return html;
 }
 function getcommenttime(a,b){
@@ -279,7 +280,7 @@ function chataddCmtToDb(content,userid,kind,vp){
   if(userid=='usern_group')username2='usern_group';
   username2=$('.blockchat_'+userid+' .nameblock .anboxchat a').html();
   $.ajax({
-    url:'http://systemforseoer.com/fchat/process-comment.php',
+    url:'http://faceseo.vn/fchat/process-comment.php',
     type:'POST',
     data: {cmt_content:content,userid:userid,kind:kind,username2:username2,vp:vp},
 	dataType: "json",
@@ -312,12 +313,12 @@ function chataddCmtToDb(content,userid,kind,vp){
 		$('#cmt_content_'+userid+' div.messages:last').append(combox)
 	   }
 	   
-	    if(json.co==1){
+	    if(json.co==1){/*
 	   $('.compare-items-wrapper').html('Vui lòng chat với nội dung sạch.</br> Bạn đã vi phạm <span class="num">'+json.errorvp
 +' lần</span>. Nếu cứ tiếp tục xin lỗi chúng tôi sẽ khoá nick của bạn. Hãy vì faceseo trong sạch, văn hoá. Cảm ơn.');
 				$('.modal-overlay').css('display','block');
 			    $('.modal-window').css('display','block');
-		} 
+		*/} 
 	   }
 	 
 		}
@@ -357,7 +358,11 @@ var str=$(this).val();
 	if(hcurrent!=hnew)$(this).css('height',hnew);
 
 
+
+
+
 if ( event.which == 13 ) {
+	
 if(tai>=luc+1){	
 var k=$(this).data('ui');	
 var tb = $(this);
@@ -376,10 +381,11 @@ var chat="";
 		}
 		//chat=chataddCmtToDb(tb.val(),k,'text');
 		
-		if(n>=2){
+		if(n>=1){
 		chat=chataddCmtToDb(trave[0],k,'text',vp);
 		$(this).val('');
 		$(this).css('height','15px');
+		ps.css('right','0');
 		var psconsole=$('.viewport_'+k);
 	    psconsole.scrollTop( psconsole[0].scrollHeight - psconsole.height());	
 		luc=tai;
@@ -416,7 +422,7 @@ $(document).on('keypress','.searchbox',function( event ) {
 	   listsearchuser.css('display','block');
 	   $('.listsearchuser').addClass('loadinguser');
 	   $.ajax({
-    url:'http://systemforseoer.com/fchat/user.php',
+    url:'http://faceseo.vn/fchat/user.php',
     type:'POST',
     data: {sb:sb},
 	dataType: "json",
@@ -424,7 +430,7 @@ $(document).on('keypress','.searchbox',function( event ) {
 		var cont="";
 	   if(data.users.length>0){
 		for(var i=0;i<data.users.length;i++){
-			cont+='<p><span class="icon-'+data.users[i].onoff+'"></span><img src="https://graph.facebook.com/'+data.users[i].id+'/picture"><a data-usern="usern_'+data.users[i].id+'" role="" rel="ignore" usern="usern_'+data.users[i].id+'" data-username-show="'+data.users[i].user_username+'" class="usern">'+data.users[i].user_username+'</a></p>';
+			cont+='<p><span class="icon-'+data.users[i].onoff+'"></span><img src="https://graph.facebook.com/'+data.users[i].id+'/picture"><a data-usern="usern_'+data.users[i].id+'" role="" rel="ignore" usern="usern_'+data.users[i].id+'" data-username-show="'+data.users[i].user_username+'" title="'+data.users[i].user_username+'" class="usern">'+data.users[i].user_username+'</a></p>';
 			listsearchuser.html(cont);
 			
 			} 
@@ -448,7 +454,7 @@ $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 	loadingchat.css('display','block');
 	var p=$(this);
 	   $.ajax({
-    url:'http://systemforseoer.com/fchat/ajaxcomment.php',
+    url:'http://faceseo.vn/fchat/ajaxcomment.php',
     type:'POST',
     data: {id:'group',timeint:timeint},
 	dataType: "json",
@@ -492,26 +498,93 @@ $(document).on('click','#cmt_content_usern_group .viewmore',function( event ) {
 }
 
 })
-$(document).on('click','.blockchatuser .viewmore',function( event ) {
+function load5msg(idu){
+	
 	if(loadm==0){
 	loadm=1;
-	var parentdiv=$(this).parent();
-	var firstdiv=$('.blockchatuser .chatlivetimestamp').first();
+	var parentdiv=$('.blockchat_'+idu+' .ajaxlast').parent();
+	//var idu=$(this).data('ipc');
+	var firstdiv=$('.blockchat_'+idu+' .chatlivetimestamp').first();
 	var timeint=firstdiv.data('utime');
-	var idu=$(this).data('ipc');
+	var id = idu.replace(/usern_/g, "");
 	$(this).css('display','none');
 	var loadingchat=parentdiv.find('.loading-chat');
 	loadingchat.css('display','block');
 	var p=$(this);
 	   $.ajax({
-    url:'http://systemforseoer.com/fchat/ajaxcomment2.php',
+    url:'http://faceseo.vn/fchat/ajaxcomment2.php',
+    type:'POST',
+    data: {id:id,timeint:timeint},
+	dataType: "json",
+    success: function(data) {	
+		p.css('display','block');
+		loadingchat.css('display','none');
+		var firstdiv2=$('.blockchat_'+idu+' .chattime').first();
+		
+			 if(data.msgs.length>0){
+			  for(j=data.msgs.length-1;j>=0;j--){
+			   kt=1;  
+		
+			 
+			  if(kt==1){			  
+				comtime=getcommenttime(data.msgs[j].timestamp,data.msgs[j].time_chat);	
+				  a=data.msgs[j].id;
+				  b=data.msgs[j].id;
+				if(j!=data.msgs.length-1&&data.msgs[j].timestamp>data.msgs[j+1].timestamp+5){
+				    combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat);
+					
+					firstdiv2.before(comtime+combox);
+				}else{
+					
+			combox=getCommentboxajax(a,data.msgs[j].time_chat,data.msgs[j].msg,b,data.msgs[j].timestamp,data.msgs[j].giochat);
+					firstdiv2.before(comtime+combox);
+				}
+			
+			
+                  
+  
+			 }
+			 }
+			 
+			 }
+		
+		
+	
+        loadm=0;
+		
+		}
+	});	
+	
+	}
+
+	
+	
+	
+}
+
+
+
+$(document).on('click','.blockchatuser .viewmore',function( event ) {
+	if(loadm==0){
+	loadm=1;
+	var parentdiv=$(this).parent();
+	var idu=$(this).data('ipc');
+	var firstdiv=$('.blockchat_usern_'+idu+' .chatlivetimestamp').first();
+	var timeint=firstdiv.data('utime');
+	
+	$(this).css('display','none');
+	var loadingchat=parentdiv.find('.loading-chat');
+	loadingchat.css('display','block');
+	var p=$(this);
+	   $.ajax({
+    url:'http://faceseo.vn/fchat/ajaxcomment2.php',
     type:'POST',
     data: {id:idu,timeint:timeint},
 	dataType: "json",
     success: function(data) {	
 		p.css('display','block');
 		loadingchat.css('display','none');
-		var firstdiv2=$('.blockchatuser .chattime').first();
+		var firstdiv2=$('.blockchat_usern_'+idu+' .chattime').first();
 		
 			 if(data.msgs.length>0){
 			  for(j=data.msgs.length-1;j>=0;j--){
@@ -599,7 +672,7 @@ $(document).on('mouseleave','.blockusers',function( event ) {
 function getboxchat(id,blockname){	
 var idu = id.substr(6); 
 var tai=$('.lasttimestamp').data('tai');
-	html='<div class="blockchat blockchatuser blockchat_'+id+'"><div class="nameblock" data-ui="blockchat_'+id+'"><span title="Hiện thời gian chat" class="timeicon" data-ui="'+id+'"></span><span class="anboxchat"><a href="#">'+blockname+'</a></span><span class="closethis" data-ui="'+id+'">x</span></div><div class="fullchat"><div class="fullchat2"><div class="scrollbar1 content_'+id+'"><div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div><div style="height:215px;overflow: auto;" class="viewport viewport_'+id+'"><div class="overview"><div id="cmt_content_'+id+'"><div id="comment_content_'+id+'"></div><div id="comment_content_num_'+id+'" style="display:none">0</div><div class="ajaxlast"><div class="viewmore" data-ipc="'+idu+'">Xem thêm tin nhắn cũ</div><span class="loading-chat"></span></div><div class="chattime"><div class="chattime2"><abbd class="chatlivetimestamp" data-utime="'+tai+'"></abbd></div></div></div></div></div><div class="borderchat">   <textarea data-ui="'+id+'" data-itime="0" class="chaten scriptBox"></textarea><div class="showicons" data-ui="'+id+'"></div><div class="iconchose iconchose_'+id+'"></div></div></div></div></div></div>';
+	html='<div class="blockchat blockchatuser blockchat_'+id+'"><div class="nameblock" data-ui="blockchat_'+id+'"><span title="Hiện thời gian chat" class="timeicon" data-ui="'+id+'"></span><span class="anboxchat"><a href="#">'+blockname+'</a></span><span class="closethis" data-ui="'+id+'">x</span></div><div class="fullchat"><div class="fullchat2"><div class="scrollbar1 content_'+id+'"><div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div><div style="height:215px;overflow: auto;" class="viewport viewport_'+id+'"><div class="overview"><div id="cmt_content_'+id+'"><div id="comment_content_'+id+'"></div><div id="comment_content_num_'+id+'" style="display:none">0</div><div class="ajaxlast"><div class="viewmore" data-ipc="'+idu+'">Xem thêm tin nhắn cũ</div><span class="loading-chat"></span></div><div class="chattime"><div class="chattime2"><abbd class="chatlivetimestamp" data-utime="'+tai+'"></abbd></div></div></div></div></div><div class="borderchat boxchatvip">  <div class="chuachat"> <textarea data-ui="'+id+'" data-itime="0" class="chaten scriptBox textareanew" placeholder="Viết nội dung chat" style="height:15px;direction: ltr;"></textarea></div><div style="position:absolute;right:0; bottom:0" class="khungicon"><div class="showicons" data-ui="'+id+'"></div><div class="iconchose iconchose_'+id+'"></div></div></div></div></div></div></div>';
 return html;
 }
 $(document).on('click','.iconchose',function( event ) {
@@ -654,6 +727,7 @@ $(document).on('click','.usern',function( event ) {
   $(".chatfull" ).append(getboxchat(id,blockname));
   
   addCommentboxajax(id);
+  load5msg(id);
   son=son+1;
   }else{
    //alert("da ton tai");
@@ -662,6 +736,18 @@ $(document).on('click','.usern',function( event ) {
    alert('Max user.');
   }
   });  
+function run_with(a){
+	var str=a.value;
+	var len=str.length;
+	var nguyen=parseInt(len/22);
+	var du=len%22;
+	var hcurrent=a.style.height;
+	if(du>0 && nguyen >0)nguyen=nguyen+1;
+	hnew=nguyen*15+'px';
+	if(hcurrent!=hnew)a.style.height=hnew;
+	
+	
+}
 
 var int=self.setInterval(function(){checkthoigian()},10000);
-var int=self.setInterval(function(){checknewbox()},1000);
+var int=self.setInterval(function(){checknewbox()},5000);

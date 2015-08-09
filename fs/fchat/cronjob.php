@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="1">
+<meta http-equiv="refresh" content="5">
 <?php
 require_once('classdatarieng.php');
 $fchat2=new faceseochatrieng();
@@ -46,9 +46,9 @@ class Fork
  $timese=file_get_contents('time.txt');
 $fork = new Fork;
  
-$output = $fork->add("http://systemforseoer.com/fchat/chatgroup.php?t=".$timese)
-    ->add("http://systemforseoer.com/fchat/onlineuser.php?t=".$timese)
-    ->add("http://systemforseoer.com/fchat/chatuser.php?t=".$timese)
+$output = $fork->add("http://faceseo.vn/fchat/chatgroup.php?t=".$timese)
+    ->add("http://faceseo.vn/fchat/onlineuser.php?t=".$timese)
+    ->add("http://faceseo.vn/fchat/chatuser.php?t=".$timese)
     ->run();
 
 $array_content['group']=$output[0]; 
