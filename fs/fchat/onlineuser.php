@@ -1,7 +1,7 @@
 <?php
 $html=''; 
 $m=array();	
-$conuser=mysqli_connect("localhost","root","rootfaceseo@#","chatreport") or die("Không kết nối được");
+$conuser=mysqli_connect("localhost","root","","chatreport") or die("Không kết nối được");
 mysqli_set_charset($conuser, "utf8");	
 $hourdate=date('Y-m-d H:i:s');
 $ti=strtotime($hourdate)-60; 

@@ -54,7 +54,7 @@ if($useridoff>0){
     $_SESSION['timelogin']=strtotime($hourstimeonline);
 	$useronline=$fchat->getUsersOnline();
 	
-	$conreport=mysqli_connect("localhost","root","rootfaceseo@#","chatreport") or die("Không kết nối được");
+	$conreport=mysqli_connect("localhost","root","","chatreport") or die("Không kết nối được");
      mysqli_set_charset($conreport, "utf8");	
     $query='select lanvp from reportuser where iduser="'.$_SESSION['session-user'].'" limit 0,1';
    $data=mysqli_query($conreport,$query);
@@ -95,7 +95,7 @@ echo $timestamp;
                       <span class="loading-chat"></span></div>
                       <div class="chattime"><div class="chattime2"><abbd class="chatlivetimestamp" data-utime="<?php echo $timestamp; ?>"></abbd></div></div>
                     <?php
-$congroup=mysqli_connect("localhost","root","rootfaceseo@#","chatgroup") or die("Không kết nối được");
+$congroup=mysqli_connect("localhost","root","","chatgroup") or die("Không kết nối được");
 mysqli_set_charset($congroup, "utf8");					
 $query='SELECT iduser1 as id,username1 as username,msg,time_chat,timestamp FROM chattext WHERE iduser2 ="group" order by timestamp desc limit 0,5';
 $data=mysqli_query($congroup,$query);

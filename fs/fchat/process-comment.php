@@ -17,7 +17,7 @@ if($vp!=''){
 	 $co=1;
 	//$date = date_create();
     //$timestamp=date_timestamp_get($date);
-$conreport=mysqli_connect("localhost","root","rootfaceseo@#","chatreport") or die("Không kết nối được");
+$conreport=mysqli_connect("localhost","root","","chatreport") or die("Không kết nối được");
 mysqli_set_charset($conreport, "utf8");	
 
     //$query='select id,lanvp from reportuser where iduser="'.$useractive['id'].'" limit 0,1';

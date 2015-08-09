@@ -1,5 +1,5 @@
 <?php
-$conuser=mysqli_connect("localhost","root","rootfaceseo@#","chatuser") or die("Không kết nối được");
+$conuser=mysqli_connect("localhost","root","","chatuser") or die("Không kết nối được");
 mysqli_set_charset($conuser, "utf8");	
 $timese=$_GET['t'];
  function getmsg102($id2,$timese,&$mang=array(),$so,&$manguser){

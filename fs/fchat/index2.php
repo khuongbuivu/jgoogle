@@ -86,7 +86,7 @@ echo date_timestamp_get(date('Y-m-d H:i:s'));
                       <div class="viewmore">Xem thêm tin nhắn cũ</div>
                       <span class="loading-chat"></span></div>
                     <?php
-$congroup=mysqli_connect("localhost","root","rootfaceseo@#","chatgroup") or die("Không kết nối được");
+$congroup=mysqli_connect("localhost","root","","chatgroup") or die("Không kết nối được");
 mysqli_set_charset($congroup, "utf8");					
 $query='SELECT iduser1 as id,username1 as username,msg,time_chat,timestamp FROM chattext WHERE iduser1=user_id and iduser2 ="group" order by timestamp desc limit 0,10';
 $data=mysqli_query($congroup,$query);
