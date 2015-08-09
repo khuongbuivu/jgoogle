@@ -538,8 +538,7 @@ background: url("../images/css/likebutton.png") no-repeat scroll 5px center rgba
 	border: 1px solid #eee;
 	border-radius: 4px;
 	float: left;
-	height: 27px;
-	padding: 0 5px;
+	padding: 2px 5px;
 	vertical-align: top;
 	width: 45px;
 }

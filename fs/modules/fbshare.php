@@ -66,6 +66,7 @@ function addpointshare()
 				}
 				else
 					$resultB=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUserB.",".$point.")");
+				echo "Share thành công. Tặng Bạn 100 điểm";
 			}
 				
 		}
@@ -116,6 +117,7 @@ function addpointshare()
 			}
 			else
 				$resultB=mysqli_query($con,"insert into atw_point (idUser,point) values (".$idUserB.",".$point.")");
+			echo "Share thành công. Tặng Bạn 100 điểm";
 		}
 	}	
 	mysqli_close($con);	

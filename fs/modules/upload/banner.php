@@ -575,7 +575,15 @@ $(document).on('drop', function (e)
 						<div style="clear:both"></div>
 						</div>
 						<div style="float:right; width:30%;">
-						<div style="text-align:right; padding-right:5px;"><a onclick="addbannerfree('<?php echo $PATH_ROOT;?>modules/upload/addbanner.php','','','','');"><button type="button" class="insertbanner _11b" id="insertbanner">Đăng banner</button></a> </div>
+						<div style="text-align:right; padding-right:5px;">
+						<?php if($infoUser['user_point']>$MINPOSTBANNER):?>
+							<a onclick="addbannerfree('<?php echo $PATH_ROOT;?>modules/upload/addbanner.php','','','','');">
+						<?php else:?>
+							<a onclick="alert('Bạn được đăng banner khi tài khoản được 10.000 điểm.');">
+						<?php endif?>
+						<button type="button" class="insertbanner _11b" id="insertbanner">Đăng banner</button>
+						</a>
+						</div>
 						</div>	
 					</div>	
                     
@@ -624,7 +632,7 @@ $(document).on('drop', function (e)
 				<!-- end show table edit banner -->
 				<?php /* End Upload Banner */?>
 				</div>
-				<div class="mainright" id=="mainright">
+				<div class="mainright" id="mainright">
 				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 				
 				<div class="lfloat colchat" id="colchat">

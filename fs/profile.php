@@ -179,6 +179,9 @@ if (intval(checkSharedFs($id_user))==0)
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/point.js"></script>
 	<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/dialog.js"></script>
 	<!-- end point -->
+	<!-- add chart analytics-->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<!-- end chart analytics-->	
 	<!-- thanh -->
 	<link href="<?php echo $PATH_ROOT;?>css/style.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo $PATH_ROOT;?>css/tagsname.css" rel="stylesheet" type="text/css" />
@@ -209,7 +212,7 @@ if (intval(checkSharedFs($id_user))==0)
 	setInterval("checkTabsClosed()",5000);
 	setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
 	setInterval("getNewPostOfUser('"+idUser+"')",10000);
-	setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
+	// setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
 	setCookie("UIDFACESEO", idUser, 1);
 	getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
 	getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
@@ -425,15 +428,15 @@ exit();
 				
 				<div style="float:left; width:100%;margin-bottom:10px">
 					<div style="border:1px solid #ccc; width:99.9%;background-color:#fff;position: relative;box-shadow: 2px 3px 6px #ccc;">
-					<div style="position:absolute;top: 36px; left:30px;"><img src="images/button/uparrow.png" /></div>
+					<div style="position:absolute;top: 30px; left:26px;"><img src="images/button/uparrow.png" /></div>
 					<div id="infopoint">					
 						<div id="point">
 						<img src="images/button/point.png">
-						<a rel='btipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Điểm</a> <div id='numpoint'></div></div>
+						<a rel='btipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Ñieåm:</a> <div id='numpoint'></div></div>
 						<div id="warning">
-						<img src="images/button/warning.png"> Cảnh báo: 
+						<img src="images/button/warning.png">Caûnh baùo: 
 						</div>
-						<div id="numwarning"></div> <div id="sharepoint"><a href="" class="overlayLink" data-action="" title="Chia sẻ điểm"><img src="images/button/share-point.png"></a></div>
+						<div id="numwarning"></div> <div id="sharepoint"><a href="" class="overlayLink" data-action="" title="Chia sẻ điểm"><img src="images/button/share-point.png"> Share ñieåm</a></div>
 						<div class="clearfix"></div>
 					</div>
 					<script>
@@ -517,19 +520,58 @@ exit();
 				
 				
 					<div id='wrapperlinkview' class='wrapperlinkview'>
-<div class='linkneedview' id='linkneedview' ></div>
-<div id='closelink' class='closelink' >X</div>
-</div>
+						<div class='linkneedview' id='linkneedview' ></div>
+						<div id='closelink' class='closelink' >X</div>
+					</div>
+
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
 				<div style="color:red" id="message"></div>
 				<div id="listUrlViewMore"></div>
 				
-				<?php if ($xxyyzz>2):?>
+				<?php if ($xxyyzz>2 || (isset($_GET['iduser']) && $id_user == $_GET['iduser']) ):?>
 				<div id="prof_del_all">
 				<a href='' onclick='return dellAllPost("<?php echo $_GET['iduser'];?>");'>Xóa tất cả link</a>
 				</div>
 				<?php endif;?>
-				
+				<div id="chart_div"></div>
+				<?php
+					$con=mysqli_connect($host,$user,$pass,$db);
+					$view= mysqli_query($con,'select * from fs_chart_view where chart_view_iduser='.$_GET['iduser']);
+					if ($view->num_rows>0)
+					{
+						$row = mysqli_fetch_array($view);
+						$array=$row['chart_view_num'];
+					}
+				?>
+				<script>
+				google.load('visualization', '1', {packages: ['corechart', 'line']});
+				google.setOnLoadCallback(drawCurveTypes);
+				function drawCurveTypes() {
+					  var data = new google.visualization.DataTable();
+					  data.addColumn('number', 'Y');
+					  data.addColumn('number', 'Lượt view');
+					  data.addColumn('number', 'Lượt Like');
+
+					   var data = google.visualization.arrayToDataTable([
+						  ['Day', 'View'],
+						  <?php echo $array; ?>
+						  
+						]);
+					  var options = {
+						hAxis: {
+						  title: 'Thống kê lượt xem mỗi ngày trong tháng',
+						},
+						vAxis: {
+						  title: 'Lượt xem'
+						},
+						series: {
+						  1: {curveType: 'function'}
+						}
+					  };
+					  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+					  chart.draw(data, options);
+					}
+				</script>
 				<div id="detailpushnotify" class="detailpushnotify">					
 				</div>				
 				<div id="wrappercontentpost">
@@ -544,7 +586,7 @@ exit();
 				<div id="last_msg_loader"></div>
 				</div>
 				<div class="mainright" id="mainright">
-				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+				<div style="float:left; width:48%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 				
 				<div class="lfloat colchat" id="colchat">
 				<div class="tchat"><img src="<?php echo FULLDOMAIN;?>/images/button/icongroup.png" /> | Chat group</div>
@@ -586,7 +628,7 @@ exit();
 <br/>
 -->
 </div>	
-			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="<?php echo FULLDOMAIN;?>/images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
+			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="<?php echo FULLDOMAIN;?>/images/button/up.png" width="100%" style="width:32px; height:32px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
 		

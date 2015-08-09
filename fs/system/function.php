@@ -1,5 +1,5 @@
 <?php
-
+	
 	function addLinkUrl($text,$arrtimes,$idPost,$arrkeys)
 	{
 			if (isContentSex($text))
@@ -422,4 +422,134 @@ function getTypePost($type)
 	}
 	return $desType;
 }
+function getFullViewOfUser($idUser)
+{
+	global $host;
+	global $user;
+	global $pass;
+	global $db;
+	$con=mysqli_connect($host,$user,$pass,$db);
+	/* query url of user */
+	$currentDay = date("d/m/y");
+	$DayPost = date("Y-m-d");
+	
+	$resultListLinks=mysqli_query($con,'select * from atw_post where post_iduser='.$idUser.' and post_time not like "%'.$DayPost.'%" order by post_id desc limit 5');	
+
+	$numClicked = 0;
+	$idChecked="";
+	$kkk = "";
+	$iii=0;
+	while ($row = mysqli_fetch_array($resultListLinks))
+	{
+		$link = $row['post_full_url'];
+		$urls=split("····",$link);
+		if(count($urls)>0)
+		{
+			$urls[0]=rtrim($urls[0], "/");
+			$q='link =\''.$urls[0];
+			if($iii===0)
+				$kkk='link !=\''.$urls[0];
+			for ($ii=1;$ii<count($urls);$ii++)
+			{
+				$urls[$ii]=rtrim($urls[$ii], "/");
+				$q=$q.'\' or link =\''.$urls[$ii];			
+				$kkk=$kkk.'\' and link !=\''.$urls[$ii];			
+			}
+			$q=$q.'\'';
+			$kkk=$kkk.'\'';
+		}
+		else 
+		{
+			$link=rtrim($link, "/");
+			$q=$link;
+		}
+		if($iii===0)
+			$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc');		
+		else
+			$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and ('.$kkk.') and timestart like "%'.$currentDay.'%" order by id desc');		
+		$iii = $iii + 1;
+		$numClicked = $numClicked + ($result->num_rows);
+		if ($result->num_rows > 0)
+		{
+			$row1=mysqli_fetch_array($result);
+			$keys = $row1['idclicked'];
+			if ($keys!="" && $keys!=null)
+			{
+				$arrkeys=split("··",$keys);
+				$numClickKey=count($arrkeys);
+				$numClicked = $numClicked + $numClickKey;
+			}
+			$idChecked = 'id!='.$row1['id'];
+		}
+		
+		while ($row1=mysqli_fetch_array($result))
+		{
+			$keys = $row1['idclicked'];
+			if ($keys!="" && $keys!=null)
+			{
+				$arrkeys=split("··",$keys);
+				$numClickKey=count($arrkeys);
+				$numClicked = $numClicked + $numClickKey;
+				$idChecked = $idChecked.' and id!='.$row1['id'];
+			}
+		}
+		// echo $numClicked;
+	}
+	$resultListLinks=mysqli_query($con,'select * from atw_post where post_iduser='.$idUser.' and post_time like "%'.$DayPost.'%" order by post_id desc');	
+	
+	while ($row = mysqli_fetch_array($resultListLinks))
+	{
+		$link = $row['post_full_url'];
+		$urls=split("····",$link);
+		if(count($urls)>0)
+		{
+			$urls[0]=rtrim($urls[0], "/");
+			$q='link =\''.$urls[0];
+			if($kkk=="")
+				$kkk='link !=\''.$urls[0];
+			for ($ii=1;$ii<count($urls);$ii++)
+			{
+				$urls[$ii]=rtrim($urls[$ii], "/");
+				$q=$q.'\' or link =\''.$urls[$ii];
+				$kkk=$kkk.'\' and link !=\''.$urls[$ii];				
+			}
+			$q=$q.'\'';
+			$kkk=$kkk.'\'';
+		}
+		else 
+		{
+			$link=rtrim($link, "/");
+			$q=$link;
+		}
+		if($kkk=="")
+			$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and timestart like "%'.$currentDay.'%" order by id desc');		
+		else
+			$result=mysqli_query($con,'select * from atw_click_link where ( '.$q.' ) and ('.$kkk.') and timestart like "%'.$currentDay.'%" order by id desc');		
+		
+		$numClicked = $numClicked + ($result->num_rows);
+		while ($row1=mysqli_fetch_array($result))
+		{
+			$keys = $row1['idclicked'];
+			if ($keys!="" && $keys!=null)
+			{
+				$arrkeys=split("··",$keys);
+				$numClickKey=count($arrkeys);
+				$numClicked = $numClicked + $numClickKey;
+			}
+		}
+		echo $numClicked;		
+	}
+	return $numClicked;
+	/* kiem tra truong hop ko post bai moi nhung duoc user click co thong ke khong */
+	mysqli_close($con);
+}
+function getStringView($idUser)
+{
+	/* [01,1000] */
+	$day=date("d");
+	$view = getFullViewOfUser($idUser);
+	$str =  "['".$day."',".$view."]";
+	return $str;
+}
+
 ?>

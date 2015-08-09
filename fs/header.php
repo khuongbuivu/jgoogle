@@ -22,30 +22,26 @@ require_once("user.php");
 					   <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</a></li>
 					   <li>
 					   <a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trợ giúp</a>
-							<ul>
-									<li><a href='#'>Hotline: 0932523569</a></li>
-							</ul>
 						</li>
-					   <li class='has-sub'><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</a>
-						  <ul>
-							  <li><a href='#'>SEO</a></li>
-								   <li><a href='#'>DESIGN</a></li>
-								   <li><a href='#'>ADWORDS</a></li>
-								   <li><a href='#'>FACEBOOK ADS</a></li>
-								   <li><a href='#'>SECURITY WEB</a></li>
-								   <li><a href='#'>TRAINNING SEO</a></li> 
-						  </ul>
+					   <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</a>
 					   </li>
-					   
+					   <li><a href='#'>Ngôn ngữ</a></li>
+					   <!--
 					   <li class='has-sub'><a href='#'>Ngôn ngữ</a>
 							<ul>
 								 <li><a href='#'>Anh</a></li>
-								 <li><a href='#'>Pháp</a></li>
-								 <li><a href='#'>Đức</a></li>
 							</ul>
 					   </li>
+					   -->
 					</ul>
 				</div>
+				<select id="m-menuchinh" onchange="window.location=this.value;">
+                    <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</option>
+                    <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trợ giúp</option>
+                    <option value="#">--Hotline: 0932523569</option>
+                    <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</option>
+                    <option value="#">Ngôn ngữ</option>                   
+                </select>
           </div>
 		
 		<div class="rfloat usertop">

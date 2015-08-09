@@ -153,19 +153,26 @@ $data[150]="/scriptmenu.js/" ; $datafiles[150]="scriptmenu.js" ; $replacdata[150
 $data[151]="/share-point.php/" ; $datafiles[151]="share-faceseo.php" ; $replacdata[151]="1ykp5d9d29k118324.php";
 $data[152]="/dialog.js/" ; $datafiles[152]="dialog.js" ; $replacdata[152]="6dc5apq9w9z31.js";
 $data[153]="/menu.php/" ; $datafiles[153]="menu.php" ; $replacdata[153]="menu.php";
-$data[153]="/jquery.als-1.7.min.js/" ; $datafiles[153]="jquery.als-1.7.min.js" ; $replacdata[153]="dsfsdfds3922.js";
+$data[154]="/jquery.als-1.7.min.js/" ; $datafiles[154]="jquery.als-1.7.min.js" ; $replacdata[154]="dsfsdfds3922.js";
+$data[155]="/numuser.php/" ; $datafiles[155]="numuser.php" ; $replacdata[155]="nusdsfsdfds392dss.php";
+$data[156]="/del_all_post.php/" ; $datafiles[156]="del_all_post.php" ; $replacdata[156]="deldsfdsdfsdfds392dss.php";
+$data[157]="/bannerdisplay.php/" ; $datafiles[157]="bannerdisplay.php" ; $replacdata[157]="34543deldsfdsdfsdfdsdfs4357.php";
+$data[158]="/json_get_posts_invalid.php/" ; $datafiles[158]="json_get_posts_invalid.php" ; $replacdata[158]="sddfs34543deldsfds.php";
+$data[159]="/json_post_new_of_user.php/" ; $datafiles[159]="json_post_new_of_user.php" ; $replacdata[159]="getpostnewuser4543deldsfds.php";
+$data[160]="/sharefullscreen.php/" ; $datafiles[160]="sharefullscreen.php" ; $replacdata[160]="shserer4543deldsfdsdser.php";
+$data[161]="/jquery.popup.js/" ; $datafiles[161]="jquery.popup.js" ; $replacdata[161]="jsshserer4543deldsfdsdser.js";
 /* index.php,banner.php,group.php, profile.php, pagesetting.php */
-obfucate($datafiles,$data,$replacdata,"");
-obfucate($datafiles,$data,$replacdata,"system");
+// obfucate($datafiles,$data,$replacdata,"");
+// obfucate($datafiles,$data,$replacdata,"system");
 obfucate($datafiles,$data,$replacdata,"modules");
-obfucate($datafiles,$data,$replacdata,"modules/upload");
-obfucate($datafiles,$data,$replacdata,"modules/cronjob");
-obfucate($datafiles,$data,$replacdata,"modules/advbanner");
-obfucate($datafiles,$data,$replacdata,"modules/uploadimagecomment");
-obfucate($datafiles,$data,$replacdata,"cronjob");
-obfucate($datafiles,$data,$replacdata,"libs/getcontenturl");
-obfucate($datafiles,$data,$replacdata,"js");
-obfucate($datafiles,$data,$replacdata,"tmpxyz");
+// obfucate($datafiles,$data,$replacdata,"modules/upload");
+// obfucate($datafiles,$data,$replacdata,"modules/cronjob");
+// obfucate($datafiles,$data,$replacdata,"modules/advbanner");
+// obfucate($datafiles,$data,$replacdata,"modules/uploadimagecomment");
+// obfucate($datafiles,$data,$replacdata,"cronjob");
+// obfucate($datafiles,$data,$replacdata,"libs/getcontenturl");
+// obfucate($datafiles,$data,$replacdata,"js");
+// obfucate($datafiles,$data,$replacdata,"tmpxyz");
 
 // GenerateList();
 // sortArrName($datafiles,$data,$replacdata);
@@ -199,7 +206,7 @@ function sortArrName($datafiles,$data,$replacdata)
 function obfucate($datafiles,$data,$replacdata,$folder)
 {
 
-	$dir = $_SERVER['DOCUMENT_ROOT'] ."faceseo.vn_1/".$folder;
+	$dir = $_SERVER['DOCUMENT_ROOT'] ."faceseo.vn/".$folder;
 	
 	for ($ii=0;$ii<count($datafiles);$ii++)
 	{

@@ -87,9 +87,34 @@ $('.postbutton').click( function(){
 		document.getElementById('noidungpost').innerHTML=msg;
 		document.getElementById('des').innerHTML="";
 		document.getElementById('textcomment').value="";
+		getPointAfterPost(root_path + "get_point.php",idUser);
 	}
 });
 });
+
+function getPointAfterPost(url,idUser)
+{
+	if (FaceSeo.search(domain)<0)
+		return;
+	var xmlhttp;
+	if(window.XMLHttpRequest){
+	  xmlhttp=new XMLHttpRequest();
+	}else{
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	};
+	var params = "idUser=" + idUser;
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.setRequestHeader("Content-length", params.length);
+	xmlhttp.setRequestHeader("Connection", "close");
+	xmlhttp.onreadystatechange = function() {
+	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){		
+		document.getElementById('numpoint').innerHTML=xmlhttp.responseText ;
+		}
+	};
+  xmlhttp.send(params);
+};
+
 
 $('#textcomment').keyup(function(e) {
 	var url=$('#textcomment').val();

@@ -78,7 +78,7 @@ if (intval(checkSharedFs($id_user))==0)
 <?php if (!$accountFace): ?>
 	<title>ĐÃ LÀM SEO THÌ PHẢI BIẾT FACESEO</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="maximum-scale=1.0, width=500"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO"/>
 	<meta name="og:description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO">
 	<meta name="og:image" content="http://<?php echo DOMAIN;?>/index/images/banner-faceseo.jpg">
@@ -205,10 +205,10 @@ if (intval(checkSharedFs($id_user))==0)
 	setInterval("checkTabsClosed()",5000);
 	setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
 	setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
-	setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
-	
+	// setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
+	<?php if ($xxyyzz<2): ?>
 	setInterval("hidePostInvalid()",3000);
-	
+	<?php endif ?>
 	setCookie("UIDFACESEO", idUser, 1);
 	getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
 	getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
@@ -443,15 +443,15 @@ exit();
 				
 				<div style="float:left; width:100%;margin-bottom:10px">
 					<div style="border:1px solid #ccc; width:99.9%;background-color:#fff;position: relative;box-shadow: 2px 3px 6px #ccc;">
-					<div style="position:absolute;top: 36px; left:30px;"><img src="images/button/uparrow.png" /></div>
+					<div style="position:absolute;top: 30px; left:26px;"><img src="images/button/uparrow.png" /></div>
 					<div id="infopoint">					
 						<div id="point">
 						<img src="images/button/point.png">
-						<a rel='btipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Điểm</a> <div id='numpoint'></div></div>
+						<a rel='btipsy' title='View 5p + 5đ. View textlink 5p + 50đ. Share FB + 50đ, share G+ + 30đ, G+ & like + 15đ' >Ñieåm:</a> <div id='numpoint'></div></div>
 						<div id="warning">
-						<img src="images/button/warning.png"> Cảnh báo: 
+						<img src="images/button/warning.png">Caûnh baùo: 
 						</div>
-						<div id="numwarning"></div> <div id="sharepoint"><a href="" class="overlayLink" data-action="" title="Chia sẻ điểm"><img src="images/button/share-point.png"></a></div>
+						<div id="numwarning"></div> <div id="sharepoint"><a href="" class="overlayLink" data-action="" title="Chia sẻ điểm"><img src="images/button/share-point.png"> Share ñieåm</a></div>
 						<div class="clearfix"></div>
 					</div>
 					<script>
@@ -556,7 +556,7 @@ exit();
 				<div id="last_msg_loader"></div>
 				</div>
 				<div class="mainright" id="mainright">
-				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+				<div style="float:left; width:48%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
 				
 				<div class="lfloat colchat" id="colchat">
 				<div class="tchat"><img src="<?php echo FULLDOMAIN;?>/images/button/icongroup.png" /> | Chat group</div>
@@ -598,7 +598,7 @@ exit();
 <br/>
 -->
 </div>	
-			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="<?php echo FULLDOMAIN;?>/images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
+			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="<?php echo FULLDOMAIN;?>/images/button/up.png" width="100%" style="width:32px; height:32px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
 		
@@ -686,7 +686,7 @@ function loadComment(url)
 			currentIdLoadPost = idDivPostStart;	
 	}
 }
-// setInterval("loadComment('" + root_path + "content_comment.php')",5000);
+setInterval("loadComment('" + root_path + "content_comment.php')",5000);
 /*setInterval("loadNumView()",30000);*/
 setInterval("getListUserViewing()",30000);
 function generateTokenPost()
@@ -1380,6 +1380,7 @@ function addPoint(url,linkClicked,idUser,point,typebrowser)
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	};
 	var params = "idUser=" + idUser + "&point=" +point + "&linkClicked="+ linkClicked+"&token="+tkap+"&typebrowser="+typebrowser;
+	alert("url" + url + params);
 	xmlhttp.open("POST", url, true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.setRequestHeader("Content-length", params.length);

@@ -4,10 +4,8 @@ if(!isset($_SESSION)){
 }
 // error_reporting(E_ALL);
 // ini_set("display_errors", 1);
-// include("wn3z74w1oe32.php");
-// require_once('system/6dxzm0g3bd57.php');
-include("config.php");
-require_once('system/function.php');
+include("wn3z74w1oe32.php");
+require_once('system/6dxzm0g3bd57.php');
 
 $_SESSION['ip'] = getUserIP();
 $POINT_BACKLINK=5;
@@ -31,7 +29,7 @@ $timeclick = TimeClick();
 $timeClose	=	$_GET['timeClose'];
 $linkText	=	$_GET['linkText'];
 if ($UPDATE==1)
-	$linkText	=	"Cick update Addon Chrome 1.6";
+	$linkText	=	"Cick update Addon Chrome 1.9";
 $parent		=	trim($_GET['parent']);
 $parent = removeSlashEndUrl($parent);
 $BACKLINK		= 2;// HE SO BACKLINK
@@ -150,14 +148,14 @@ $User1=intval($_SESSION['session-user']) * intval($shortDay);
 		else
 		{
 			$okap = false;
-			exit();
-			mysqli_query($con,"UPDATE atw_user set user_status = 'FS: AUTO ADD POINT BANNER' where user_id=".$_SESSION['session-user']);
+			// exit();
+			// mysqli_query($con,"UPDATE atw_user set user_status = 'FS: AUTO ADD POINT BANNER' where user_id=".$_SESSION['session-user']);
 		}
 	}
 	
 	$okap=true;
 	$pointView=0;
-	if (($okap==true) && ($UPDATE==1))
+	if (($okap==true) && ($UPDATE==0))
 	{
 		/* Add Point */
 		$result=mysqli_query($con,"select * from atw_point where idUser=".$idUser." limit 1");

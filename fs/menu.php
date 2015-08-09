@@ -26,6 +26,7 @@
 				</li>
 				<li><span class="icon-set icon-gplus" onclick="return openLinkMenu('<?php echo $PATH_ROOT."index.php?idgroup=1"; ?>');"></span> </li>
 				<li id="icon-firefox"><span class="icon-set icon-firefox" onclick="return openLinkMenu('http://giaiphapthuonghieu.vn/faceseo1.4.xpi');" title="Cài đặt Addon FS1.4 để clickkeywords được +50Đ"></span></li>
+				<li id="icon-chrome"><span class="icon-set icon-chrome" onclick="return openLinkMenu('https://chrome.google.com/webstore/detail/faceseo/eebnclbeehfpllpicofgijicjipmamah');" title="Cài đặt Chrome 1.9"></span></li>
 				<?php if ($point>$MINPOSTBANNER): ?>
 				<li><span class="icon-set icon-upbanner" onclick="return openLinkMenu('<?php if(LOCAL==true ) echo "http://localhost/".DOMAIN."/modules/upload/banner.php"; else echo "http://".DOMAIN."/modules/upload/banner.php"; ?>');"></span> </li>
 				<?php else:?>

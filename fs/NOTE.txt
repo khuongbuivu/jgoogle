@@ -61,10 +61,6 @@ Trong khi một số link đang view. Post link mới sẽ bị sai id
 When open popup with https function beforeunload not working so using interval to check status share.
 http://stackoverflow.com/questions/3291712/is-it-possible-to-open-a-popup-with-javascript-and-then-detect-when-the-user-clo
 -->
-
-Link view ko được thống kê
-https://www.google.com.vn/search?q=%C3%81o+liverpool+2015+s%C3%A2n+nh%C3%A0&oq=%C3%81o+liverpool+2015+s%C3%A2n+nh%C3%A0&aqs=chrome..69i57j69i60l2j69i61.862j0j1&sourceid=chrome&es_sm=122&ie=UTF-8#q=%C3%81o+liverpool+2015+s%C3%A2n+nh%C3%A0&start=10
-
 Link bị lỗi:
 
 
@@ -87,6 +83,7 @@ df -h xem dung luong partition
 rm -rf * remove thu muc
 du -ks /var/log/* | sort -nr | head  thong ke dung luong tung thu muc
 du -ks /var/log/httpd/* | sort -nr | head
+df -h 
 cd /var/log/httpd/
 rm *
 install hàm để cho resize image
@@ -106,17 +103,6 @@ Code cần tối ưu hóa
 					$post[$i]['post_time']	=getTimeString($timeCurrent,$timeSaved);					
 					$post[$i]['post_realtime']	=$row['post_time'];
 					
-http://airasiasaigon.com/ve-may-bay-di-kuala-lumpur
-http://www.ketoanpro.edu.vn/threads/40374-suc-quyen-ru-cua-mui-thom-sua-tam-hoa.html?p=40398#post40398
-http://quyenvo.blogspot.com/2015/03/mo-ban-can-ho-cao-cap-masteri-thao-ien.html
-
-<a data-view-name="snapshot" target="_self" href="?view=snapshot" class="menu-item current">Ảnh chụp nhanh</a> lỗi là do ??view=snapshot Nếu thay bằng đường dẫn tuyệt đối thì hết bị lỗi.
-http://chungnhanhuuco.net/thuc-pham-huu-co-va-thuc-pham-an-toan/nong-san-thuc-pham-huu-co/nong-nghiep-huu-co.html
-http://dichvusuachuadiennuoc.weebly.com/services.html  OK
-
-DEBUG
-http://chungnhanhuuco.net/thuc-pham-huu-co-va-thuc-pham-an-toan/nong-san-thuc-pham-huu-co/nong-nghiep-huu-co.html ###nông nghiệp hữu cơ, trung tâm phát triển và chứng nhận hữu cơ việt nam!!! ###300s* click keyword lấy 50 điểm nhé.
-
 
 
 
@@ -155,19 +141,24 @@ http://myclabs.github.io/jquery.confirm/
 463 clear 
 464 history
 
-
-Google đã sai lầm khi chọn Faceseo
-Kết quả do cá nhân Linh Nguyễn tạo ra đã khiến nhiều chủ Doanh nghiệp tò mò. Linh Nguyễn đang hướng về thủ đô. Hãy cùng chung sức xây dựng event khủng tại Hà Nội.
-
-
-
-select * from atw_cmt_content where IdArticles = (select IdArticles from  atw_cmt_content where userId=100001707050712 order by IdArticles desc limit 1) order by Id desc limit 1
-select check_notify_id_comment  from fs_check_notify where  check_notify_id_user=100001707050712
-54078
-select notify_id_comment from atw_notify where notify_user_id=100001707050712 order by notify_id_comment desc
-checkNotify() getNumNotify
-54078
-54348
-
 tar -cvf /var/www/html/bu.tar /var/www/html/
 
+touch /var/www/html/log/mycron.log
+crontab -e
+
+* 1 * * * /usr/bin/php /var/www/html/modules/cronjob/a.php >> /var/www/html/log/mycron.log 2>&1
+* 2 * * * /usr/bin/php /var/www/html/modules/cronjob/x0n3vuajco107.php >> /var/www/html/log/mycron.log 2>&1
+10 1 * * * /usr/bin/php /var/www/html/modules/cronjob/le2qlr1dxp70.php >> /var/www/html/log/mycron.log 2>&1
+
+/etc/init.d/crond restart
+tail -f /var/log/mycron.log 
+
+SET FCHAT SOME FILE 777
+chmod 777 chat.txt
+chmod 777 time.txt
+
+mysql -u root -p -e "show variables" | grep -i conn // kiem tra thong so mysql
+mysql -u root -p  //login mysql
+set global max_connections = 2800; // mo rong ket noi
+set global max_connect_errors = 2800; // mo rong ket noi
+/etc/init.d/mysqld restart

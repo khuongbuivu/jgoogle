@@ -30,6 +30,7 @@ div.overlay, div.formreport {
 	position: fixed;
 	top: 0;
 	width: 100%;
+	z-index:9999;
 }
 
 	div.overlay > div.sharepoint-wrapper, div.formreport > div.sharepoint-wrapper {

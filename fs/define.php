@@ -138,7 +138,7 @@ if((!isset($_SESSION['accountFace'])) || ($_SESSION['countlogfaceseo']<2))
 		$id_user="100005640848020";//"100001707050719"; //"$int" convert int to string  $user_profile['id']
 		$userFace="Tran Lai";//"Linh Nguyen";  // $user_profile['name']
 		$linkLogoFace="https://graph.facebook.com/$id_user/picture";
-		$PATH_ROOT=FULLDOMAIN;
+		$PATH_ROOT=FULLDOMAIN."/";
 		$numCmtDisplay = 10;	
 		$FOLDERTHUMBANNER = $PATH_ROOT."images/modules/upload/banner/";	
 		if($_SESSION['email']==''){ 
