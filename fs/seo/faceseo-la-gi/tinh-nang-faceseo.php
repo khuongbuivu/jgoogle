@@ -3,8 +3,8 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-include_once("../../hrb7yfq5yr40.php");
-include_once("../../x8rpwu2qa739.php");
+include_once("../../definelocal.php");
+include_once("../../define.php");
 $linkLogoFace="https://graph.facebook.com/".$_SESSION['session-user']."/picture";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

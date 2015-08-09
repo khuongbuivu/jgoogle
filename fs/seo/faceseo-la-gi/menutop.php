@@ -1,6 +1,6 @@
 <?php
-include_once("../../hrb7yfq5yr40.php");
-include_once("../../x8rpwu2qa739.php");
+include_once("../../definelocal.php");
+include_once("../../define.php");
 ?> 
 <ul class="fl menu-main">
 	<li><a href="<?php echo FULLDOMAIN; ?>">Trang chủ</a></li>
