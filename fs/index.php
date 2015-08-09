@@ -140,8 +140,9 @@ if (intval(checkSharedFs($id_user))==0)
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="hệ thống câu view, seo website, giải pháp seo website, phần mềm Seo," />
-	<meta name="description" content="FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Hệ thống câu view, kiểm soát view, chuyển trang, chèn banner quảng cáo, backlink hoàn toàn free." />
-	<title>FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Giải Pháp Thương Hiệu</title>
+	<meta name="description" content="Faceseo.vn Mạng Tương Tác Dành Cho Seoer | Hệ thống câu view, kiểm soát view, chuyển trang, chèn banner quảng cáo, backlink hoàn toàn free." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Faceseo.vn Mạng Tương Tác Dành Cho Seoer Chuyên Nghiệp</title>
 	<meta content="731864150162369" property="fb:app_id"/>
 	<meta content="100001707050712" property="fb:admins"/>
 <meta name="google-site-verification" content="r7Jx-qmIt7TNhIU9Da_Y6mxJUsn5oq79ZxRBznJcJ9U" />
@@ -190,7 +191,7 @@ if (intval(checkSharedFs($id_user))==0)
 	<script type="text/javascript" >
 	var xxyyzz=<?php echo $xxyyzz;?>;
 	<?php if(LOCAL=="TRUE"): ?>
-	var root_path = "http://localhost/<?php echo DOMAIN;?>/";
+	var root_path = "<?php echo FULLDOMAIN;?>/";
 	<?php else: ?>
 	var root_path = "http://<?php echo DOMAIN;?>/";	
 	<?php endif ?>
@@ -239,21 +240,39 @@ if (intval(checkSharedFs($id_user))==0)
 	<div id="main">
 		<div id="start">
 		</div>
+		<?php /*?><div id="menu">
+			<div id="leftmenu">
+				<div id="menu1" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giôùi thieäu</a>
+				</div>
+				<div id="menu2" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trôï giuùp</a>
+				</div>
+			</div>
+			<div id="rightmenu">
+				<div id="menu3" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dòch vuï</a>
+				</div>
+				<div id="menu4" class="itemmenu">
+					<a href="#">Ngoân ngöõ</a>
+				</div>
+			</div>
+		</div><?php */?>
 		<div id="menu">
         <ul class="menutop">
         <li class="firstli"><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</a></li> 
-        <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trôï giuùp</a></li>
+        <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/huong-dan-su-dung-faceseo.php"; ?>">Hướng dẫn</a></li>
         <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</a></li>
-        <li><a href="#">Ngoân ngöõ</a></li>
+        <li><a href="#">Ngôn ngữ</a></li>
         </ul>
         <select id="menureponsive" onchange="window.location=this.value">
+        <option value="#">Menu</option>
         <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</option>
-         <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trôï giuùp</option>
+         <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/huong-dan-su-dung-faceseo.php"; ?>">Hướng dẫn</option>
           <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</option>
-           <option value="#">Ngoân ngöõ</option>
+           <option value="#">Ngôn ngữ</option>
         </select>
         </div>
-		
 		<div class="clear"></div>
 		<div id="content">
 			<div id="col1">
@@ -275,6 +294,12 @@ if (intval(checkSharedFs($id_user))==0)
 			</div>
 			<div id="col2">
 				<div id="row21">
+                <div id="row212">
+						<?php /*?><a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"></a>
+                        <a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"><span id="idvideo"> &nbsp </span><img class="clipimg" src="login/images/clip.png">
+                        </a><?php */?>
+                         <iframe id="frmyoutube" src="https://www.youtube.com/embed/WopZ0011D-4?autoplay=0&rel=0" frameborder="0" allowfullscreen></iframe>
+					</div>
 					<div id="row211">
 						<div id="row211-row1">
 							<div id="rec-googlesuggest">
@@ -314,11 +339,8 @@ if (intval(checkSharedFs($id_user))==0)
 							</div>
 						</div >
 					</div>
+				
 					
-					<div id="row212">
-						<?php /*?><a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"></a><?php */?>
-                        <a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"><span id="idvideo"> &nbsp </span><img class="clipimg" src="login/images/clip.png"></a>
-					</div>
 					<div class="clear"></div>
 				</div>
 				<div id="row22">
@@ -334,8 +356,9 @@ if (intval(checkSharedFs($id_user))==0)
 			</div>
 			
 		</div>
-				
+	
 	</div>
+	
 <div style="clear:both"></div>
 <?php if(isset($_GET['admin']) && $_GET['admin']==1 ):?>
 <div style="  width: 97%;display: block;margin: 10px;">
@@ -434,6 +457,8 @@ exit();
 				var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 				if (is_firefox!==true)
 					$("li#icon-firefox").hide();
+				else
+					$("li#icon-chrome").hide();
 			  </script>
 			
 			</div>
@@ -443,7 +468,7 @@ exit();
 				
 				<div style="float:left; width:100%;margin-bottom:10px">
 					<div style="border:1px solid #ccc; width:99.9%;background-color:#fff;position: relative;box-shadow: 2px 3px 6px #ccc;">
-					<div style="position:absolute;top: 30px; left:26px;"><img src="images/button/uparrow.png" /></div>
+					<div class="m-them" style="position:absolute;top: 30px; left:26px;"><img src="images/button/uparrow.png" /></div>
 					<div id="infopoint">					
 						<div id="point">
 						<img src="images/button/point.png">
@@ -468,7 +493,7 @@ exit();
 					text-indent: 0px;
 					text-shadow: none;
 					display: inline-block;
-					text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Post bài -20đ. Click link bằng chuột trái 5p  + 5điểm. Click keywords + 50Đ. Click trên kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA." content="Đăng bài -20 điểm. Click link bằng chuột trái tối thiểu 5p  + 5điểm. Click keywords + 50Đ. Click kết quả search Google dùng CHUỘT PHẢI + CHUỘT GIỮA + 50Đ" ></textarea>
+					text-align: start;zoom: 1;" role="textbox" name="textcomment" id="textcomment"  placeholder="Dùng Chrome, Cốccốc, cài addon Faceseo(icon Chrome ở menu). View link +5đ, keywords + 50đ, trên mobile +40->300đ, share FB +100đ, share G+ +30đ, like +10đ. Được view bị trừ điểm " content="Dùng Chrome, Cốccốc, cài addon Faceseo(icon chrome ở menu). View link +5đ, keywords + 50đ, trên mobile +40->300đ, share FB +100đ, share G+ +30đ, like +10đ. Được view bị trừ điểm" ></textarea>
 						</div>
 							
 						<p style="text-align:center;"><span id="cho"></span></p>
@@ -539,7 +564,7 @@ exit();
 <div id='closelink' class='closelink' >X</div>
 </div>
 <script language="javascript" src="<?php echo $PATH_ROOT;?>js/common.js"></script> 
-				<div style="color:red" id="message"></div>
+				<div style="color:red; text-align:center" id="message">20/8 Sẽ khóa nick FB ảo. Vui lòng chuyển điểm về nick FB thật.</div>
 				<div id="listUrlViewMore"></div>
 				<div id="message_report"></div>
 				<div id="detailpushnotify" class="detailpushnotify">					
@@ -556,7 +581,8 @@ exit();
 				<div id="last_msg_loader"></div>
 				</div>
 				<div class="mainright" id="mainright">
-				<div style="float:left; width:48%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+				<!-- <div style="float:left; width:48%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div> -->
+				<div style="float:left; width:48%;height:160px;margin:0 0 10px 10px"><a href="http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html?utm_source=google&utm_medium=Kh%C3%B4ng%20ph%E1%BA%A3i%20tr%E1%BA%A3%20ti%E1%BB%81n&utm_campaign=ads_trackling&utm_term=seo&utm_content=seo" target="_blank"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-hoc-seo-linh-nguyen.png"  height="100%" width="100%"/></a></div>
 				
 				<div class="lfloat colchat" id="colchat">
 				<div class="tchat"><img src="<?php echo FULLDOMAIN;?>/images/button/icongroup.png" /> | Chat group</div>
@@ -653,7 +679,7 @@ include_once('formreport.php');
 ?>
 
 <script>
-// getNumuNotifyComment(root_path + "modules/checkNotify.php",idUser);
+// getNumuNotifyComment(root_path + "modules/2tu46z910d25.php",idUser);
 //save post start and post end
 var arrayIdPost = new Array();
 var idDivPostStart = 0;
@@ -686,9 +712,9 @@ function loadComment(url)
 			currentIdLoadPost = idDivPostStart;	
 	}
 }
-setInterval("loadComment('" + root_path + "content_comment.php')",5000);
-/*setInterval("loadNumView()",30000);*/
-setInterval("getListUserViewing()",30000);
+// setInterval("loadComment('" + root_path + "66uh1rn22k38.php')",5000);
+setInterval("loadNumView()",15000);
+// setInterval("getListUserViewing()",30000);
 function generateTokenPost()
 {
 	<?php 	
@@ -1328,7 +1354,7 @@ function fsshare(link,linkimg,token ) {
 	}
 };
 function confirmshareBirthday( ) {
-	var windowLike=window.open("http://<?php echo DOMAIN;?>/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=100, left=300, width=745, height=500");
+	var windowLike=window.open("<?php echo FULLDOMAIN;?>/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=100, left=300, width=745, height=500");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	
