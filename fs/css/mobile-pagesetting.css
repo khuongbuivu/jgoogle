@@ -1,0 +1,146 @@
+/* mobile */
+@media only screen and (max-width: 1024px) {}
+@media only screen and (max-width: 980px) {}
+@media only screen and (max-width: 768px) {
+
+.ccenter2 {
+    padding: 0;
+    width: 100%;
+}
+
+.center {
+    margin-left: 0;
+    width: 100%;
+}
+	}
+
+@media only screen and (max-width: 568px) {
+	#leftCol {
+    position: inherit;
+}
+	#headleft img {
+    margin-top: 10px;
+    width: 100%;height: auto;
+   }
+	
+.add-site-form {
+    padding-left: 0;
+}
+.col1 {
+    width: 120px;
+}
+.footermenu ul li {
+    padding: 5px 20px;
+}
+	}
+
+@media only screen and (max-width: 480px) {
+	#headleft {
+    left: 30px;
+}
+.hasSmurfbar #blueBarHolder #pageHead {
+    width: 100%;
+}
+	.footermenu ul li {
+    padding: 5px 10px;
+}
+.col3 {
+    clear: both;
+    display: block;
+    float: none;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    width: 100%;
+}
+	}
+@media only screen and (max-width: 360px) {
+	.col1 {
+    display: block;
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+.col2 {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #adadad;
+    border-radius: 7px;
+    font-size: 16px;
+    height: 28px;
+    padding-left: 0;
+    width: 95%;
+}
+.col2_wrap {
+    display: block;
+    float: none;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+}
+.col3 {
+    clear: both;
+    display: block;
+    float: none;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+.footermenu ul li {
+    padding: 5px 15px;
+}
+#pagelet_bluebar {
+    background-color: #475a8e;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1111;
+}
+#headleft {
+    float: none;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    top: 0;
+    width: 100%;position: inherit;
+}
+#headleft img {
+    float: none;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+}
+.hasSmurfbar #blueBarHolder #headNav {
+    background: #eee none repeat scroll 0 0;
+    clear: both;
+    display: block;
+    float: none;
+    margin: 0;
+    overflow: hidden;
+}
+#content {
+    margin: 0;
+    min-height: 490px;
+    outline: medium none;
+    padding: 0;
+    width: auto;
+}
+.footermenu ul li {
+    padding: 5px 20px;
+}
+#blueBar {
+	height:auto;
+}
+#pagelet_bluebar {
+    position: static;
+}
+	}
+@media only screen and (max-width: 320px) {}
+
+
+/* end mobile */

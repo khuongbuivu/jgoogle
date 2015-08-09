@@ -1,0 +1,604 @@
+ul.menutop{
+	overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+ul.menutop li{
+ float: left;
+    list-style: outside none none;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    width: 25%;
+    box-sizing: border-box;
+}
+ul.menutop li a{
+	background: #c5653f none repeat scroll 0 0;
+    display: block;
+    line-height: 40px;
+    height: 40px;	
+	 font-family: arial;
+}
+ul.menutop .firstli{
+	padding-left:0;
+}
+#col2 {
+box-sizing: border-box;
+    float: right;
+    padding-right: 5px;
+    width: 68%;
+	overflow: hidden;
+}
+#main{ overflow:hidden; padding: 10px;
+    width: 96%;
+    margin: 0 auto;}
+#col2 #row212{ float:right}	
+
+.t-googlesuggest {
+ background: rgba(0, 0, 0, 0) url("../login/images/rec-google-suggest.png") repeat scroll 0 0;
+
+}
+
+.t-alexa{
+  background: rgba(0, 0, 0, 0) url("../login/images/rec-alexa.png") repeat scroll 0 0;
+
+}
+.t-traffic{
+	  background: rgba(0, 0, 0, 0) url("../login/images/rec-traffic.png") repeat scroll 0 0;
+
+}
+
+.t-addon{
+	  background: rgba(0, 0, 0, 0) url("../login/images/rec-addon.png") repeat scroll 0 0;
+}
+
+#icon-suggest, #icon-alexa,#icon-traffic,#icon-addon {
+left: 7%;
+    position: absolute;
+    top: 10%;
+    z-index: 3;
+}
+
+#icon-suggest span {
+    background: rgba(0, 0, 0, 0) url("../login/images/Google-Suggest.png") repeat scroll 0 0;
+    display: block;
+    height: 107px;
+    width: 133px;
+    overflow: hidden;
+}
+#rec-alexa span {
+    background: rgba(0, 0, 0, 0) url("../login/images/alexa.png") repeat scroll 0 0;
+    width: 121px;
+    height: 104px;
+    display: block;
+    overflow: hidden;
+}
+
+#rec-traffic span {
+    background: rgba(0, 0, 0, 0) url("../login/images/traffic.png") repeat scroll 0 0;
+    height: 99px;
+    width: 123px;
+    display: block;
+    overflow: hidden;
+}
+
+#rec-addon span {
+    background: rgba(0, 0, 0, 0) url("../login/images/addon.png") repeat scroll 0 0;
+    width: 127px;
+    height: 112px;
+    overflow: hidden;
+    display: block;
+}
+#idvideo{
+    background: rgba(0, 0, 0, 0) url("../login/images/clip.png") repeat scroll 0 bottom;
+    display: block;
+    height: 296px;
+    overflow: hidden;
+    width: 338px;
+	
+	}
+#loginicon{
+	    background: rgba(0, 0, 0, 0) url("../login/images/FBloginbutton.png") repeat scroll 0 0;
+    display: block;
+    height: 310px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#rec-googlesuggest, #rec-alexa, #rec-traffic, #rec-addon {
+    float: left;
+    height: 150px;
+    margin-right: 0px;
+    overflow: hidden;
+    position: relative;
+    width: 150px;
+}
+#row211-row1, #row211-row2 {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.khungchung{
+	    height: 142px;
+    position: absolute;
+    width: 150px;
+    z-index: 1;
+	top:0;opacity: 0.6;
+}
+#menureponsive{ display:none}
+#col1 #login{width:100%}
+#row22 #lista1{width:100%;overflow: hidden;}
+#row211-row1 {
+    margin-bottom: 20px;
+}
+#loginicon{display:none}
+#rec-googlesuggest, #rec-alexa, #rec-traffic, #rec-addon {
+    width: 50%;
+}
+#row211-row1 {
+    margin-bottom: 3px;
+}
+
+#col2 #row22, #col2 #row21 {
+    margin-bottom: 3px;
+}
+
+#col1 {
+    display: inline;
+    float: left;
+    margin-right: 0px;
+    width: 31%;
+	box-sizing: border-box;
+}
+.clipimg{display:none}
+.thanhadd{display:none}
+#menu {
+    width: 630px;
+}
+#frmyoutube{
+	width:338px;
+	height:296px;	
+}
+@media only screen and (max-width: 1024px) {
+#frmyoutube {
+    height: 305px;
+    width: 339px;
+}
+	#menu {
+    width: 640px;
+}
+	#row23 img{width:100%}
+	.khungchung {
+
+	display:none;
+}
+#rec-googlesuggest, #rec-alexa, #rec-traffic, #rec-addon {
+    width: 50%;height: 100%;
+}
+#icon-suggest, #icon-alexa, #icon-traffic, #icon-addon{
+	position:inherit;	
+	left:0;
+	top:0;
+}
+	
+	#idvideo{ display:none}
+	.clipimg{display:block;width: 100%;}
+.thanhad{display:none !important}
+.thanhadd{display:block}	
+.thanhadd{width:100%;}
+#main-wrapper {
+
+    bottom: 0;
+    height: 100%;
+    left: 50%;
+    margin-left: 0;
+    padding: 0;
+    position: 0;
+    top: 0;
+	 position: inherit;
+    width: 100%;
+}
+	
+	
+}
+
+@media only screen and (max-width: 980px) {
+#frmyoutube{
+	width:323px;
+	height:292px;	
+}
+	
+}
+
+@media only screen and (max-width: 768px) {
+	#frmyoutube{
+	width:432px;
+	height:292px;	
+}
+	#menu {
+    width: 100%;
+}
+	#main-wrapper{
+		width:100%;	overflow:hidden;
+	}
+	#main{
+	 width: 98%;overflow:hidden; padding:10px; margin:0 auto;
+	}
+	#menu{
+		overflow:hidden; width:100%;
+	}
+	#leftmenu,#rightmenu{width:50%;
+	overflow:hidden;
+	}
+	.itemmenu {
+    padding: 0;
+    width: 49%;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    float: left;
+    padding: 10px 0;
+    line-height: 20px;
+	margin-right: 3px;
+     }
+	#menu1{
+	
+	}
+	#menu2{
+	
+	}
+	#menu3{
+	
+	}
+	#menu4{
+	
+	}
+	
+	 #content{
+		 overflow:hidden;
+		 padding:0px;
+	 
+	 }
+	 #col1{
+		 width: 40%;
+	 }
+	 #col2 {
+    float: right;
+    width: 58%;
+      }
+	 
+    #col2 #row211 {
+    float: left;
+    width: 100%;
+    } 
+#col2 #row212 {
+    display: block;
+    float: left;
+    margin-left: 0;
+    margin-top: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+	#col2 #row22, #col2 #row21 {
+    margin-bottom: 6px;
+}
+   #row211-row1 img,row211-row2 img{
+	  
+	   
+   }
+   #row23 img{
+	   width: 100%;
+   }
+   #rec-googlesuggest{
+   
+   }
+   #rec-alexa{
+   }
+   #rec-traffic{
+	   
+   }
+   #rec-addon{
+   
+   }
+   #icon-suggest{
+   
+   }
+   #demo-tip-yellow_th {
+    float: left;
+    width: 99%;
+}
+#demo-tip-yellow1_th {
+    float: right;
+    width: 99%;
+}
+#demo-tip-yellow2_th {
+    float: left;
+    width: 99%;
+}
+#demo-tip-yellow3_th {
+    float: right;
+    width: 99%;
+}
+}
+
+@media only screen and (max-width: 640px) {
+	
+#frmyoutube {
+    height: 292px;
+    width: 359px;
+}
+	
+}
+@media only screen and (max-width: 568px) {
+
+#frmyoutube {
+    height: 292px;
+    width: 317px;
+}
+#content {
+    overflow: hidden;
+    padding: 0;
+}
+
+#row23 img {
+    width: 100%;
+}
+#demo-tip-yellow_th {
+    float: left;
+    width: 99%;
+}
+#demo-tip-yellow1_th {
+    float: right;
+    width: 99%;
+}
+#demo-tip-yellow2_th {
+    float: left;
+    width: 99%;
+}
+#demo-tip-yellow3_th {
+    float: right;
+    width: 99%;
+}
+
+}
+@media only screen and (max-width: 560px) {
+	
+#frmyoutube {
+    height: 292px;
+    width: 313px;
+}
+	
+}
+
+@media only screen and (max-width: 500px) {
+	
+
+#frmyoutube {
+    height: 278px;
+    width: 278px;
+}
+	
+}
+
+@media only screen and (max-width: 480px) {
+#frmyoutube {
+    height: 292px;
+    width: 320px;
+}
+	.imgfull{ display:none}
+#main {
+    padding: 10px;
+    width: 319px;
+}
+#menu {
+    overflow: hidden;
+    width: 100%;
+}
+ul.menutop {
+    margin: 0;
+    overflow: hidden;
+	display:none;
+    padding: 0;
+}
+#menureponsive {
+background: #c5653f url("../login/images/icon-danh-muc.png") no-repeat 0 center;
+    border: medium none;
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    margin-top: 10px !important;
+    padding: 4px;
+    text-transform: uppercase;
+    width: 319px;
+    padding-left: 20px;
+	cursor: pointer;
+}
+#menureponsive option {
+    background: #eee none repeat scroll 0 0;
+    color: #006699;
+    padding: 5px 0;
+}
+#content {
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+}
+#col1 {
+    margin: 0 auto;
+    width: 319px;
+}
+#content #analytic img {
+    margin: 0 auto;
+    width: 319px;
+}
+
+#col1 #login {
+    width: 317px;
+}
+#content #login {
+    margin-bottom: 10px;
+}
+#loginicon {
+    background: #ccc url("../login/images/FBloginbutton.png") no-repeat scroll center 0;
+    display: block;
+    height: 310px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 319px;
+}
+#col2 {
+    float: none;
+    width: 319px;
+}
+#col2 #row22, #col2 #row21 {
+    margin: 0 auto;
+    width: 319px;
+}
+#col2 #row211 {
+    float: left;
+    width: 100%;
+}
+#row211-row1, #row211-row2 {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+#rec-googlesuggest {
+  
+}
+#rec-alexa {
+    float: left;
+}
+#rec-addon {
+    float: right;
+}
+#col2 #row22, #col2 #row21 {
+    margin: 0 auto;
+    width: 319px;
+}
+#row22 #lista1 {
+    margin: 10px auto 0;
+    overflow: hidden;
+    width: 321px;
+}
+#row23 img {
+    display: block;
+    margin: 10px auto 0;
+    width: 319px;
+}
+#main-wrapper {
+    background: rgba(0, 0, 0, 0) url("../images/background.png") repeat scroll center 0;
+}
+#row22 #lista1 {
+    overflow: hidden;
+    width:100%;
+}
+#demo-tip-yellow_th {
+    float: left;
+    width: 99%;
+}
+#demo-tip-yellow1_th {
+    float: right;
+    width: 99%;
+}
+#demo-tip-yellow2_th {
+    float: left;
+    width: 99%;
+}
+#demo-tip-yellow3_th {
+    float: right;
+    width: 99%;
+}
+	/*#menureponsive {
+    background: #c5653f none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    color: #fff;
+    display: block;
+    margin-top: 10px !important;
+    padding: 0;
+    width: 98%;
+}
+	#menureponsive option{background: #eee;
+    color: #006699;
+    padding: 5px 0;}
+	.menutop{display:none}
+	
+#main {
+    width: 96%;
+	padding:10px;
+}
+#col1 {
+    margin-right: 0;
+    width: 98%;
+}
+#col2 {
+    float: none;
+    width: 98%;
+}
+#content {
+    overflow: hidden;
+    padding: 0;
+}
+
+#content #analytic {
+    margin-bottom: 10px;
+}
+#content #login {
+    margin-bottom: 10px;
+}*/
+}
+@media only screen and (max-width: 360px) {
+	
+#frmyoutube {
+    height: 292px;
+    width: 340px;
+}
+#main {
+    padding: 0;
+    width: 96%;
+}
+#menureponsive {
+
+    width: 99%;
+}
+	
+	
+#content #analytic img {
+    margin: 0 auto;
+    width: 99%;
+}
+#loginicon {
+    width: 100%;
+}
+
+#col1 {
+    margin: 0 auto;
+    width: 100%;
+}
+#col1 #login {
+    width: 98%;
+}
+#col2 {
+    float: none;
+    width: 100%;
+}
+#col2 #row22, #col2 #row21 {
+    margin: 0 auto;
+    width: 100%;
+}
+#row23 img {
+    width: 100%;
+}
+#content #analytic img {
+    margin: 0 auto;
+    width: 99%;
+}
+
+#content {
+    margin-bottom: 10px;
+}
+}
+@media only screen and (max-width: 320px) {
+	
+	
+}

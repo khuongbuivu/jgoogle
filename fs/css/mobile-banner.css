@@ -1,0 +1,162 @@
+/* mobile */
+@media only screen and (max-width: 1024px) {}
+@media only screen and (max-width: 980px) {}
+@media only screen and (max-width: 768px) {
+	#headleft {
+    width: 26%;
+    }
+	#headright {
+   
+    width: 74%;
+     }
+	 
+#headright .menu {
+    width: 350px;
+}
+.hasLeftCol .homeWiderContent div#contentArea {
+    width: 70.3%;
+}
+#mainright {
+    overflow: hidden;
+    width: 27%;
+}
+#colchat {
+    width: 100%;
+}
+#rightCol{width:100%}
+.imgqc{ width:100% !important;}
+
+#headright .menu {
+    width: 320px;
+}
+.colchat {
+    margin-right: 10px;
+	margin-left:0;
+	height:565px;
+}
+#mainright .fixed {
+    left: 74%;
+    right: 0;
+    width: 26%;
+}
+	}
+
+@media only screen and (max-width: 568px) {
+	#leftCol {
+    position: inherit;
+}
+.hasLeftCol .homeWiderContent div#contentArea {
+    width: 97.3%;
+}
+	#headleft {
+    width: 38%;
+}
+#headright {
+    width: 62%;
+}
+#headright .menu {
+    width: 99px;
+}
+
+#mainright {
+    display: none;
+}
+#contentCol {
+    margin-left: 6.9%;
+    min-height: 600px;
+    width: 93.1%;
+}
+.btscrolltop {
+    bottom: 5px;
+    display: none;
+    position: fixed;
+    right: 4px;
+    width: 8%;
+}
+	
+	}
+
+@media only screen and (max-width: 480px) {
+	.logo img {
+    height: 40px;
+    width: 125px;
+}
+	.usertop {
+    width: 170px;
+}
+.hasLeftCol .homeWiderContent div#contentArea {
+    width: 94.3%;
+}
+	.btscrolltop {
+
+    right: 8px;
+}
+.UFIRow .UFIImageBlockContent {
+    width: 87%;
+}
+	}
+@media only screen and (max-width: 360px) {
+	
+.UFIRow .UFIImageBlockContent {
+    width: 100%;
+	padding:0;
+}
+.eg{display:none}
+	.usertop .usernametop,.UFIMentionsInputWrap .lfloat{display:none}
+	.usertop {
+    width: 80px;
+}
+#leftCol {
+    width: 12.8%;
+}
+#contentCol {
+    margin-left: 10.9%;
+    width: 93.1%;
+}
+.btscrolltop {
+    right: 22px;
+}
+.fs #globalContainer {
+    width: 97%;
+}
+#listUrlViewMore, #message_report, #prof_del_all {
+
+    width: 95%;
+}
+.hasLeftCol .homeWiderContent div#contentArea {
+    overflow: hidden;  
+	width:96%;
+}
+#contentCol {
+    margin-left: 10.9%;
+    width: 89.1%;
+}
+.postcontent a img{height: 25px;
+    width: 25px;}
+
+.cmtinput {
+    width: 89%;
+}
+.boxtagfullsecond .contentbox{
+width: 86%;	
+}
+#cmt-content {
+    width: 79%;
+}
+#addPhoto {
+    cursor: pointer;
+    float: right;
+    height: 30px;
+    width: 35px;
+}
+.mhd-left{
+	width:50% !important;
+}
+.mhd-right{
+	width:50% !important;
+}
+	}
+@media only screen and (max-width: 320px) {}
+
+
+/* end mobile */
