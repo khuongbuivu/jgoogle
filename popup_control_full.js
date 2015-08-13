@@ -117,7 +117,7 @@ $(window).load(function() {
 			$(divpopup).attr('id', 'myModal');
 			$(divpopup).attr('class', 'linhnguyen-modal');
 			$( "body" ).append(divpopup);
-			$("#myModal").html("<a href='http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html?utm_source=google&utm_medium=Kh%C3%B4ng%20ph%E1%BA%A3i%20tr%E1%BA%A3%20ti%E1%BB%81n&utm_campaign=ads_trackling&utm_term=seo&utm_content=seo' target='_blank'><img src='http://4.bp.blogspot.com/-MyaSZsYupSU/U8VIF2iaLjI/AAAAAAAAANE/iv93xPOqTtA/s1600/giaiphapthuonghieunet.gif' width='500px'/>Đào tạo seo chuyên sâu</a>. Học tại nhà Linh Nguyễn. <h2><a class='close-linhnguyen-modal'>X</a></h2>");
+			$("#myModal").html("<a href='http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html?utm_source=google&utm_medium=Kh%C3%B4ng%20ph%E1%BA%A3i%20tr%E1%BA%A3%20ti%E1%BB%81n&utm_campaign=ads_trackling&utm_term=seo&utm_content=seo' target='_blank'><img src='https://jgoogle.googlecode.com/svn/trunk/dao-tao-seo-chuyen-sau.jpg' width='500px'/>Đào tạo seo chuyên sâu</a>. Học tại nhà Linh Nguyễn. <h2><a class='close-linhnguyen-modal'>X</a></h2>");
 			$('#myModal').linhnguyen($('#myModal').data());
 		}
 });
