@@ -8,7 +8,7 @@ define("LOCAL", "TRUE", true);
 require_once('system/function.php');
 // error_reporting(E_ALL);
 // ini_set("display_errors", 1);
-if((!isset($_SESSION['accountFace'])) || ($_SESSION['countlogfaceseo']<2))
+if((!isset($_SESSION['accountFace'])) || $_SESSION['accountFace']==null || ($_SESSION['countlogfaceseo']<2))
 {
 	$_SESSION['accountFace']="";
 	$_SESSION['user_profile']="";
