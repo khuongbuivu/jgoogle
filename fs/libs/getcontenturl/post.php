@@ -117,7 +117,9 @@ if(!isset($_SESSION)){
 	mysql_query("SET NAMES 'utf8'"); 
 	if(trim($content)!="" && $link!=''&&$title!=''&&$description!=''&&$keyword!='')
 	{
-		$query='INSERT INTO atw_info_url(id_url, info_url, title_url, des_url, key_url, img_url, pulished_url) VALUES ("", "'.$link.'", "'.$title.'", "'.$description.'", "'.$keyword.'", "'.$linkhinh.'", "1");';
+		$id_url = getIdMax("atw_info_url", "id_url");
+		$id_url = $id_url + 1;
+		$query='INSERT INTO atw_info_url(id_url, info_url, title_url, des_url, key_url, img_url, pulished_url) VALUES ('.$id_url.', "'.$link.'", "'.$title.'", "'.$description.'", "'.$keyword.'", "'.$linkhinh.'", "1");';
 		mysql_query($query);
 	}
 	
