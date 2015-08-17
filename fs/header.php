@@ -11,17 +11,17 @@ require_once("user.php");
     <div id="blueBar" class="fixed_elem">
       <div id="pageHead" class="clearfix _5bfg" role="banner">
         <div id="headleft"> 
-			<div class="logo"><a href="http://localhost/<?php echo DOMAIN;?>"   > <img src="http://localhost/<?php echo DOMAIN;?>/images/css/logo-faceseo.png"/> </a>
+			<div class="logo"><a href="<?php echo FULLDOMAIN;?>"   > <img src="<?php echo FULLDOMAIN;?>/images/css/logo-faceseo.png"/> </a>
 			</div>        
 		</div>        
         <div id="headright">
 			
           <div class="rfloat menu">
-				<div id='cssmenu'>
+				<div id='cssmenu' class="menuchinh">
 					<ul>
 					   <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</a></li>
 					   <li>
-					   <a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trợ giúp</a>
+					   <a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/huong-dan-su-dung-faceseo.php"; ?>">Hướng dẫn</a>
 						</li>
 					   <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</a>
 					   </li>
@@ -37,7 +37,7 @@ require_once("user.php");
 				</div>
 				<select id="m-menuchinh" onchange="window.location=this.value;">
                     <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</option>
-                    <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trợ giúp</option>
+                    <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/huong-dan-su-dung-faceseo.php"; ?>">Hướng dẫn</option>
                     <option value="#">--Hotline: 0932523569</option>
                     <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</option>
                     <option value="#">Ngôn ngữ</option>                   
