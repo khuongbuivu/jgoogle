@@ -46,25 +46,32 @@ if(!isset($_SESSION)){
 		global $user;
 		global $pass;
 		global $db;	
+		$numDisplay=50;
 		$con=mysqli_connect($host,$user,$pass,$db);
 		mysqli_set_charset($con, "utf8");
 		// fs_newlogin newlogin_id  newlogin_uid newlogin_username
-		$result=mysqli_query($con,"select * from fs_newlogin");
-		$row = mysqli_fetch_array($result);	
-		if ($row1 = mysqli_fetch_array($result))
-			mysqli_query($con,"DELETE FROM fs_newlogin where newlogin_id=2");		
-		if ($row['newlogin_uid']>50)
+		$result=mysqli_query($con,"select * from fs_newlogin where newlogin_id!=1 order by newlogin_id desc");
+		$checkid = mysqli_query($con,"select * from fs_newlogin where newlogin_id!=1 AND newlogin_uid='".$uid."'");
+		$numrow=$result->num_rows;				
+		if ($numrow>$numDisplay)
 		{
-			while($row=mysqli_fetch_array($result))
+			if(!($checkid->num_rows>0))
 			{
-				mysqli_query($con,"UPDATE fs_newlogin SET newlogin_id='".((int)$row['newlogin_id'] -1)."' where  newlogin_id=".$row['newlogin_id']);
+				for ($i=0;$i<$numrow;$i++)
+				{
+					$row=mysqli_fetch_array($result); 
+					if ((int)$row['newlogin_id']>$numDisplay)
+						mysqli_query($con,"delete from fs_newlogin where newlogin_id=".$row['newlogin_id']);
+					else
+						mysqli_query($con,"UPDATE fs_newlogin SET newlogin_id='".((int)$row['newlogin_id'] + 1)."' where  newlogin_id=".$row['newlogin_id']);
+				}
+				mysqli_query($con,"insert into fs_newlogin (newlogin_id,newlogin_uid,newlogin_username,user_time_join) values (2,'".$uid."','".$username."','".$timeJoin."')");
 			}
-			mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".$uid."' , newlogin_username='".$username."', user_time_join='".$timeJoin."' where where  newlogin_id=".$row['newlogin_uid']);
 		}
 		else
 		{
-			mysqli_query($con,"insert into fs_newlogin (newlogin_id,newlogin_uid,newlogin_username,user_time_join) values (".((int)$row['newlogin_uid']+ 1).",'".$uid."','".$username."','".$timeJoin."')");
-			mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".((int)$row['newlogin_uid']+1)."' where newlogin_id=1");
+			mysqli_query($con,"insert into fs_newlogin (newlogin_id,newlogin_uid,newlogin_username,user_time_join) values (".((int)$numrow + 2).",'".$uid."','".$username."','".$timeJoin."')");
+			mysqli_query($con,"UPDATE fs_newlogin SET newlogin_uid='".((int)$numrow+1)."' where newlogin_id=1");
 		}
 		mysqli_close($con);
 	}
