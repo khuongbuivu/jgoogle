@@ -679,7 +679,7 @@ include_once('formreport.php');
 ?>
 
 <script>
-// getNumuNotifyComment(root_path + "modules/2tu46z910d25.php",idUser);
+// getNumuNotifyComment(root_path + "modules/checkNotify.php",idUser);
 //save post start and post end
 var arrayIdPost = new Array();
 var idDivPostStart = 0;
@@ -712,7 +712,7 @@ function loadComment(url)
 			currentIdLoadPost = idDivPostStart;	
 	}
 }
-// setInterval("loadComment('" + root_path + "66uh1rn22k38.php')",5000);
+setInterval("loadComment('" + root_path + "content_comment.php')",5000);
 setInterval("loadNumView()",15000);
 // setInterval("getListUserViewing()",30000);
 function generateTokenPost()
@@ -1406,7 +1406,6 @@ function addPoint(url,linkClicked,idUser,point,typebrowser)
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	};
 	var params = "idUser=" + idUser + "&point=" +point + "&linkClicked="+ linkClicked+"&token="+tkap+"&typebrowser="+typebrowser;
-	alert("url" + url + params);
 	xmlhttp.open("POST", url, true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.setRequestHeader("Content-length", params.length);
@@ -1473,7 +1472,7 @@ http://stackoverflow.com/questions/3291712/is-it-possible-to-open-a-popup-with-j
 -->
 <style>
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-	#leftCol { margin-top:65px;  }
+	#leftCol { margin-top:30px;  }
 }
 </style>
 <!-- Google Code for Chuy&#7875;n &#273;&#7893;i Conversion Page -->

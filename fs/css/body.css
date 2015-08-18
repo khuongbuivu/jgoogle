@@ -427,7 +427,7 @@ display: none;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 .fs #globalContainer {
-top: 60px;
+top: 30px;
 }
 }
 
