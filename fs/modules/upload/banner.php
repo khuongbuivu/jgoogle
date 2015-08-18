@@ -9,6 +9,7 @@ include_once("../../config.php");
 include_once('../../fcomment.php');
 include_once('../../user.php');
 include_once('../../system/function.php');
+include_once('../../bannerdisplay.php');
 global $host;
 global $user;
 global $pass;
@@ -59,11 +60,6 @@ if ($accountFace && $_SESSION['loginfirsttime']==0)
 		exit();
 	}
 }
-else if ($_SESSION['loginfirsttime']==1)
-{
-	header( 'Location: '.$PATH_ROOT.'intro.php' );
-	exit();
-}
 /*
 
 if (intval(checkSharedFs($id_user))==0)
@@ -81,7 +77,7 @@ if (intval(checkSharedFs($id_user))==0)
 <?php if (!$accountFace): ?>
 	<title>ĐÃ LÀM SEO THÌ PHẢI BIẾT FACESEO</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="maximum-scale=1.0, width=500"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO"/>
 	<meta name="og:description" content="Bạn cần tăng traffic keywords, giảm Alexa, tạo Google Searchbox, thăng hạng Google nhanh. Khám phá ngay FACESEO">
 	<meta name="og:image" content="http://<?php echo DOMAIN;?>/index/images/banner-faceseo.jpg">
@@ -103,6 +99,7 @@ if (intval(checkSharedFs($id_user))==0)
 	</script>
 	
 		<link rel="stylesheet" type="text/css" media="screen" href="css/als_demo.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/mobile-index.css" />
 		<script type="text/javascript" src="http://<?php echo DOMAIN;?>/js/jquery1.9.1.js"></script>
 		<script type="text/javascript" src="js/jquery.als-1.7.min.js"></script>
 		<script type="text/javascript">
@@ -127,8 +124,9 @@ if (intval(checkSharedFs($id_user))==0)
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="hệ thống câu view, seo website, giải pháp seo website, phần mềm Seo," />
-	<meta name="description" content="FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Hệ thống câu view, kiểm soát view, chuyển trang, chèn banner quảng cáo, backlink hoàn toàn free." />
-	<title>FaceSeo.Vn Mạng Tương Tác Dành Cho Seoer | Giải Pháp Thương Hiệu</title>
+	<meta name="description" content="Faceseo.vn Mạng Tương Tác Dành Cho Seoer | Hệ thống câu view, kiểm soát view, chuyển trang, chèn banner quảng cáo, backlink hoàn toàn free." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Faceseo.vn Mạng Tương Tác Dành Cho Seoer Chuyên Nghiệp</title>
 	<meta content="731864150162369" property="fb:app_id"/>
 	<meta content="100001707050712" property="fb:admins"/>
 <meta name="google-site-verification" content="r7Jx-qmIt7TNhIU9Da_Y6mxJUsn5oq79ZxRBznJcJ9U" />
@@ -171,9 +169,13 @@ if (intval(checkSharedFs($id_user))==0)
 	<!-- add scroll top comment -->
 	<script language="javascript" src="<?php echo $PATH_ROOT;?>js/jquery-scrollto.js"></script>
 	<!-- add scroll top comment -->
-	<script type="text/javascript" >	
+	<!-- Add code Chat-->
+	<link rel="stylesheet" href="<?php echo $PATH_ROOT;?>/fchat/css/website.css" type="text/css" media="screen"/>
+	<!-- End Add code Chat-->
+	<script type="text/javascript" >
+	var xxyyzz=<?php echo $xxyyzz;?>;
 	<?php if(LOCAL=="TRUE"): ?>
-	var root_path = "http://localhost/<?php echo DOMAIN;?>/";
+	var root_path = "<?php echo FULLDOMAIN;?>/";
 	<?php else: ?>
 	var root_path = "http://<?php echo DOMAIN;?>/";	
 	<?php endif ?>
@@ -188,7 +190,10 @@ if (intval(checkSharedFs($id_user))==0)
 	setInterval("checkTabsClosed()",5000);
 	setInterval("getNumuNotifyComment('"+root_path + "modules/checkNotify.php',"+ idUser + ")",8000);
 	setInterval("getNewPost('<?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?>')",10000);
-	setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
+	// setInterval("showbannerfree('"+root_path + "modules/advbanner/index.php'," + idUser + ")",600000);
+	<?php if ($xxyyzz<2): ?>
+	setInterval("hidePostInvalid()",3000);
+	<?php endif ?>
 	setCookie("UIDFACESEO", idUser, 1);
 	getNumuNotifyComment(root_path + 'modules/checkNotify.php',idUser);
 	getAnalytics(root_path + 'modules/getNumAnalytics.php',idUser);
@@ -210,7 +215,197 @@ if (intval(checkSharedFs($id_user))==0)
 		$_SESSION['session-name']=$userFace;
 		}
 ?>
+<?php if (!$accountFace): ?>
+<body>
+<div id="main-wrapper">
+	<div id="main">
+		<div id="start">
+		</div>
+		<?php /*?><div id="menu">
+			<div id="leftmenu">
+				<div id="menu1" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giôùi thieäu</a>
+				</div>
+				<div id="menu2" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/ho-tro-faceseo.php"; ?>">Trôï giuùp</a>
+				</div>
+			</div>
+			<div id="rightmenu">
+				<div id="menu3" class="itemmenu">
+					<a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dòch vuï</a>
+				</div>
+				<div id="menu4" class="itemmenu">
+					<a href="#">Ngoân ngöõ</a>
+				</div>
+			</div>
+		</div><?php */?>
+		<div id="menu">
+        <ul class="menutop">
+        <li class="firstli"><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</a></li> 
+        <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/huong-dan-su-dung-faceseo.php"; ?>">Hướng dẫn</a></li>
+        <li><a href="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</a></li>
+        <li><a href="#">Ngôn ngữ</a></li>
+        </ul>
+        <select id="menureponsive" onchange="window.location=this.value">
+        <option value="#">Menu</option>
+        <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/"; ?>">Giới thiệu</option>
+         <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/huong-dan-su-dung-faceseo.php"; ?>">Hướng dẫn</option>
+          <option value="<?php echo FULLDOMAIN."/seo/faceseo-la-gi/dich-vu-faceseo.php"; ?>">Dịch vụ</option>
+           <option value="#">Ngôn ngữ</option>
+        </select>
+        </div>
+		<div class="clear"></div>
+		<div id="content">
+			<div id="col1">
+				<div id="analytic">
+					<img src="login/images/Analytic.png" class="transparent" />
+					<div id="numuser">
+						<div><span>Member</span></div>
+						<div>
+						<?php
+						include_once("numuser.php");
+						?>
+						</div>
+					</div>
+				</div>
+				<div id="login"  class="view fourth-effect">
+					<a href="<?php echo $loginUrl; ?>" title="LOGIN FACESEO"><img src="login/images/FBloginbutton.png" class="imgfull loginimg"/><span id="loginicon"> &nbsp </span></a>
+					 <div class="mask"></div>  
+				</div>
+			</div>
+			<div id="col2">
+				<div id="row21">
+                <div id="row212">
+						<?php /*?><a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"></a>
+                        <a href="https://www.youtube.com/watch?v=8Iy0gvcIV64"><span id="idvideo"> &nbsp </span><img class="clipimg" src="login/images/clip.png">
+                        </a><?php */?>
+                         <iframe id="frmyoutube" src="https://www.youtube.com/embed/WopZ0011D-4?autoplay=0&rel=0" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div id="row211">
+						<div id="row211-row1">
+							<div id="rec-googlesuggest">
+								<?php /*?><img src="login/images/rec-google-suggest.png" class="transparent" /><?php */?>
+							   <div class="t-googlesuggest khungchung"></div>	
+								<div id="icon-suggest">
+                                     <span id="demo-tip-yellow" class="thanhad" title="Faceseo cho phép bạn tạo Google Suggest dễ dàng.<br/> Login vào rồi post Link Google Search."> &nbsp </span>
+									<img src="login/images/i-su.png" id="demo-tip-yellow_th" class="thanhadd" title="Faceseo cho phép bạn tạo Google Suggest dễ dàng.<br/> Login vào rồi post Link Google Search." href="#" />
+								</div>
+							</div>
+							<div id="rec-alexa">
+								<?php /*?><img src="login/images/rec-alexa.png" class="transparent"  /><?php */?>
+                                <div class="t-alexa khungchung"></div>	
+								<div id="icon-alexa">
+									<img src="login/images/i-ale.png" id="demo-tip-yellow1_th" class="thanhadd" title="Faceseo giúp nhiều website giảm Alexa mạnh mẽ.<br/> Ngoài ra còn giúp tăng đáng kể DA, PR, TRUST SITE." href="#"/>
+                                    <span class="thanhad" id="demo-tip-yellow1" title="Faceseo giúp nhiều website giảm Alexa mạnh mẽ.<br/> Ngoài ra còn giúp tăng đáng kể DA, PR, TRUST SITE."> &nbsp </span>									
+								</div>
+							</div>
+						</div >
+						
+						<div id="row211-row2">
+							<div id="rec-traffic">
+								<?php /*?><img src="login/images/rec-traffic.png" class="transparent" /><?php */?>
+                                <div class="t-traffic khungchung"></div>	
+								<div id="icon-traffic">
+                                <span id="demo-tip-yellow2" class="thanhad" title="Thế mạnh của Faceseo là mọi người hỗ trợ click textlink<br/>Faceseo sẽ tính điểm cho những ai click đúng textlink."> &nbsp </span>
+									<img src="login/images/i-tra.png" id="demo-tip-yellow2_th" class="thanhadd" title="Thế mạnh của Faceseo là mọi người hỗ trợ click textlink<br/>Faceseo sẽ tính điểm cho những ai click đúng textlink." href="#"/>									
+								</div>
+							</div>
+							<div id="rec-addon">
+								<?php /*?><img src="login/images/rec-addon.png" class="transparent" /><?php */?>
+                                <div class="t-addon khungchung"></div>	
+								<div id="icon-addon">
+                                <span id="demo-tip-yellow3" class="thanhad" title="Vui lòng cài Addon trước khi sử dụng Faceseo.<br/> Addon giúp bạn kiếm điểm nhanh hơn.<br/>B1: Click link trong Faceseo<br/>B2: Click link gần hết giờ nháy nháy(dưới chỗ post bài)<br>B3: Hệ thống định vị keywords người dùng cần & nháy nháy<br/>B4: Click keywords nháy sáng và chờ 10p được cộng điểm."> &nbsp </span>
+									<img src="login/images/i-add.png"  id="demo-tip-yellow3_th" class="thanhadd" title="Vui lòng cài Addon trước khi sử dụng Faceseo.<br/> Addon giúp bạn kiếm điểm nhanh hơn.<br/>B1: Click link trong Faceseo<br/>B2: Click link gần hết giờ nháy nháy(dưới chỗ post bài)<br>B3: Hệ thống định vị keywords người dùng cần & nháy nháy<br/>B4: Click keywords nháy sáng và chờ 10p được cộng điểm." href="#"/>								
+								</div>
+							</div>
+						</div >
+					</div>
+				
+					
+					<div class="clear"></div>
+				</div>
+				<div id="row22">
+					<?php
+					require_once("newlogin.php");
+					?>
+				</div>
+				<div class="clear">
+				</div>
+				<div id="row23">
+					<a href="http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html"><img src="login/images/ads.png" class="transparent" ></a>
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+	
+<div style="clear:both"></div>
+<?php if(isset($_GET['admin']) && $_GET['admin']==1 ):?>
+<div style="  width: 97%;display: block;margin: 10px;">
+<form id="signupForm" name='dangnhap' action='' method='post' >
+	<div class="signupwrapper">
+	 
+	  <fieldset id="emailSignup">
+		<input id="analyticsId" name="analyticsId" type="hidden" value="">
+		<input id="accessToken" name="accessToken" type="hidden" value="coApDOTKi2Ui1kgbhg-QuPig7KVvgXquDnhUNk-QNADtvMnmjsOAhiHSkWtjzD9bpe6YVA" >
+		<input id="reservationToken" name="reservationToken" value="" disabled="disabled" type="hidden">
+		<input id="authMode" name="authMode" value="email" type="hidden">
+		<input id="facebookToken" name="facebookToken" type="hidden">
+		<label for="email"> <span class="text">Email</span>
+		  <input id="email" name="email" type="text" value="" autocomplete="off"  placeholder="Your email address" />
+		</label>
+		<label for="password"> <span class="text">Password</span>
+		  <input id="password" name="passfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
+		</label>
+		
+		<?php  if($_SESSION['messlogin']!='ok' && $_SESSION['messlogin']!=''):?>
+		<div style="width:100%; padding:5px 0; background-color:red;margin: 10px 0 0 0; color:#fff;">	
+			<?php echo $_SESSION['messlogin']; ?>
+		</div>
+		<?php endif ?>
+		<input value="Sign up" type="submit">		
+	  </fieldset>
+	</div>
+	<div class="signinwrapper">
+		<fieldset id="emailSignup">
+			<label for="email"><span class="text">Email</span>
+			  <input id="emailsignin" name="emailsignin" type="text" value="" autocomplete="off"  placeholder="Your email address" />
+			</label>
+			
+			<label for="password"> <span class="text">Password</span>
+			  <input id="passsigninfaceseo" name="passsigninfaceseo" value="" autocomplete="off" placeholder="Choose a password" type="password">
+			</label>
+			<label for="password"> <span class="text">RePass</span>
+			  <input id="repasssigninfaceseo" name="repasssigninfaceseo" value="" autocomplete="off" placeholder="Input a password again" type="password">
+			</label>
+			<input value="Reset Password" type="submit" onclick='return resetPass();'>
+		</fieldset>
+	</div>
+</form>
+<div>
+<?php endif; ?>
+</div>
+</body>
+<?php exit();endif; ?>
 <body class="fs hasLeftCol _57_t noFooter hasSmurfbar hasPrivacyLite gecko win Locale_en_US" >
+<?php
+if ($_SESSION['loginfirsttime']==1):
+?>
+<link rel="stylesheet" href="css/popup.css">
+<script type="text/javascript" src="<?php echo $PATH_ROOT;?>js/jquery1.9.1.js"></script>
+<script type="text/javascript" src="<?php echo FULLDOMAIN;?>/js/jquery.popup.js"></script>	
+<script type="text/javascript" >
+	$(window).load(function() {
+	  $('#myModal').linhnguyen($('#myModal').data());
+	});
+</script>
+<div id="myModal" class="linhnguyen-modal">
+	<a class="close-linhnguyen-modal"><img src="<?php echo FULLDOMAIN;?>/images/intro.png" /></a>
+</div>
+<?php
+endif
+?>
 <div id="UIDHelpYou"></div>
 <!--
 <div style="position:fixed;left:0;top:60px;"><img src="images/phao.gif"></div>
@@ -219,7 +414,7 @@ if (intval(checkSharedFs($id_user))==0)
 <div id="container">
 <?php
 include_once("../../header.php");
-if ($infoUser['user_status']!=1)
+if ($infoUser['user_status']!=1 && $_SESSION['loginfirsttime']==0)
 {
 	echo '<div id="globalContainer" class="uiContextualLayerParent"><div id="content" class="fb_content clearfix" style="min-height: 100px;" data-referrer="content"> 		<div>
 		<div id="mainContainer" style="text-align:center; height: 400px;"> <h1> Vui lòng sử dụng tài khoản Facebook khác để đăng nhập. </h1> <br/> <a href="http://'.DOMAIN.'" title="Cộng đồng Seo Việt Nam">Trang chủ</a> </div></div><div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
@@ -239,6 +434,8 @@ exit();
 				var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 				if (is_firefox!==true)
 					$("li#icon-firefox").hide();
+				else
+					$("li#icon-chrome").hide();
 			  </script>
 			
 			</div>
@@ -399,7 +596,7 @@ margin-right:5px;
    <script>
 function sendFileToServer(formData,status)
 {
-    var uploadURL ="http://localhost/<?php echo DOMAIN;?>/modules/upload/uploadfile.php"; //Upload URL
+    var uploadURL ="<?php echo FULLDOMAIN;?>/modules/upload/uploadfile.php"; //Upload URL
     var extraData ={}; //Extra Data.
     var jqXHR=$.ajax({
             xhr: function() {
@@ -633,10 +830,14 @@ $(document).on('drop', function (e)
 				<?php /* End Upload Banner */?>
 				</div>
 				<div class="mainright" id="mainright">
-				<div style="float:left; width:47%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div>
+				<!-- <div style="float:left; width:48%;height:160px;margin:0 0 10px 10px"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-banner-faceseo.jpg"  height="100%" width="100%"/></div> -->
+				<div style="float:left; width:48%;height:160px;margin:0 0 10px 10px"><a href="http://giaiphapthuonghieu.vn/daotaoseo-dao-tao-seo-website-thuc-hanh-du-an-seo-thuc-te.html?utm_source=google&utm_medium=Kh%C3%B4ng%20ph%E1%BA%A3i%20tr%E1%BA%A3%20ti%E1%BB%81n&utm_campaign=ads_trackling&utm_term=seo&utm_content=seo" target="_blank"><img src="<?php echo FULLDOMAIN;?>/images/advertising/784x250-hoc-seo-linh-nguyen.png"  height="100%" width="100%"/></a></div>
 				
 				<div class="lfloat colchat" id="colchat">
 				<div class="tchat"><img src="<?php echo FULLDOMAIN;?>/images/button/icongroup.png" /> | Chat group</div>
+				<?php 
+				include_once('../../fchat/index.php');
+				?>
 				</div>
 				<div id="rightCol" aria-label="Reminders, people you may know, and ads" role="complementary">
 				<?php 
@@ -653,24 +854,7 @@ $(document).on('drop', function (e)
 				<div class="tchat">Quảng cáo | <img src="<?php echo FULLDOMAIN;?>/images/css/icon-ads.png" /></div>
 				<div id="bannerfree">
 				<?php
-					$con=mysqli_connect($host,$user,$pass,$db);
-					$result=mysqli_query($con,"select * from  fs_banner, atw_point where banner_user_id = idUser  order by point desc limit 0,10");	 //idBannerStart		
-					while ($row = mysqli_fetch_array($result))
-					{				
-						echo '<div style="position:relative;" id="dbanner'.$row['banner_id'].'">';
-						$infosUser=getUserInfo($row['banner_user_id']);
-						if (strpos($row['banner_img'], DOMAIN."/images")==true)
-						{
-							if (checkAvailableLinks($row['post_url'],$id_user))
-								echo "<a id='banner".$row['banner_id']."' href='".$row['banner_link']."' title='".$infosUser['user_name']." :: ".$infosUser['user_point']." điểm' onclick='return openUrlBanner(this.href,".$row['banner_id'].");'><img style='width:100%' src='".$row['banner_img']."' /></a><br/>";		
-							else
-								echo "<img style='width:100%' src='".$row['banner_img']."' /><br/>";		
-						}	
-						if ($row['banner_user_id']==$idUser || $infoUser['user_manager']>2)
-							echo '<div class="delBannerById" onclick="return delBannerById('.$row['banner_id'].');">D</div>';
-						echo "</div>";
-					}
-					mysqli_close($con);	
+					disPlayBanner();					
 				?>
 				</div>
 				
@@ -690,7 +874,7 @@ $(document).on('drop', function (e)
 <br/>
 -->
 </div>	
-			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="<?php echo FULLDOMAIN;?>/images/button/up.png" width="100%" style="width:48px; height:48px"/></a></div>
+			<div class="btscrolltop"><a href="javascript:uptoTop();"><img src="<?php echo FULLDOMAIN;?>/images/button/up.png" width="100%" style="width:32px; height:32px"/></a></div>
 			<div id="footer">© Copyright 2013 <a href="http://giaiphapthuonghieu.vn">Giải Pháp Thương Hiệu</a> · Điều khoản · Chính sách · Quảng cáo miễn phí<br/>
 Website đang hoạt động thử nghiệm, chờ giấy phép MXH của Bộ TT & TT  <a title="DMCA" href="http://www.dmca.com/Protection/Status.aspx?ID=262a03ff-722e-4071-b0a3-09259dfc5843"> <img src="images/css/dmca_protected_sml_120m.png" alt="DMCA.com"></a></div>
 		
@@ -714,23 +898,9 @@ echo $itemarray.",";
 <div id="checkLink" style="display:none;">-1</div>
 <div id="mypostid" style="display:none;"></div>
 <div id="idgroup" style="display:none;"><?php if (isset($_GET['idgroup'])) echo $_GET['idgroup']; else echo 0; ?></div>
-<?php 
-
-if($id_user=="-1" && LOCAL!="TRUE" ) 
-{
-?>
 
 
-<div id="myModal" class="linhnguyen-modal">
-<link rel="stylesheet" href="css/body.css" type="text/css" />
-<div id="loginform">
-<div id="butonlogin">
-<a href="<?php echo $loginUrl; ?>"><img src="images/css/button-faceseo-login.png"></a>
-</div>
-</div>
-	<a class="close-linhnguyen-modal">X</a>
-</div>
-<?php }?>
+
 
 <div class="overlay" style="display: none;">
 	<div class="sharepoint-wrapper">
@@ -756,23 +926,10 @@ if($id_user=="-1" && LOCAL!="TRUE" )
 	</div>
 </div>
 
+<?php
+include_once('../../formreport.php');
+?>
 
-<!--<link rel="stylesheet" href="http://giaiphapthuonghieu.vn/miniapps/popuponload/linhnguyen.css">	-->
-<script type="text/javascript" src="http://giaiphapthuonghieu.vn/miniapps/popuponload/jquery.popup.js"></script>	
-<script type="text/javascript" >
-	var xxyyzz=<?php echo $xxyyzz;?>;
-	jQuery(window).load(function() {
-		/*if(document.cookie.indexOf("adf") == -1)*/
-		{
-			document.cookie = "popunder1=adf";
-			jQuery('#myModal').linhnguyen(jQuery('#myModal').data());
-		}
-	});
-	
-
-</script>
-
-<!-- add popup -->
 <script>
 // getNumuNotifyComment(root_path + "modules/checkNotify.php",idUser);
 //save post start and post end
@@ -1397,7 +1554,7 @@ $(document).ready(function(){
 		});	
 		
 		$(window).bind('scroll', function() {
-	    var navHeight = $( window ).height() - 50;
+	    var navHeight = $( window ).height() - 350;
 			 if ($(window).scrollTop() > navHeight) {
 				 $('#colchat').addClass('fixed');
 			 }
@@ -1438,7 +1595,7 @@ $( "#closelink" ).click(function() {
 <script type="text/javascript" src="js/jquery.fbjlike.1.4.js"></script>
 <script type="text/javascript">
 function confirmlink( link ) {
-	var windowLike=window.open("http://<?php echo DOMAIN;?>/confirmlike.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=500, height=400");
+	var windowLike=window.open("http://<?php echo DOMAIN;?>/confirmlike.php?link="+link,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=600, height=400");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path + "get_point.php",idUser);
 	}
@@ -1481,13 +1638,13 @@ function confirmshare( ) {
 	}
 };
 function fsshare(link,linkimg,token ) {
-	var windowLike=window.open(root_path + "fbshare.php?link="+link+"&linkimg="+linkimg+"&token="+token,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open(root_path + "fbshare.php?link="+link+"&linkimg="+linkimg+"&token="+token,"_blank","toolbar=no, scrollbars=no, resizable=yes, top=100, left=300, width=745, height=500");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path+"get_point.php",idUser);
 	}
 };
 function confirmshareBirthday( ) {
-	var windowLike=window.open("http://<?php echo DOMAIN;?>/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=500, left=400, width=650, height=600");
+	var windowLike=window.open("http://<?php echo DOMAIN;?>/share_birthday.php","_blank","toolbar=no, scrollbars=no, resizable=yes, top=100, left=300, width=745, height=500");
 	windowLike.onbeforeunload = function(){ 
 		getPoint(root_path + "get_point.php",idUser);	
 		$("#birthday").remove();	
@@ -1518,7 +1675,7 @@ function confirm83( ) {
 
 <script>
 
-function addPoint(url,linkClicked,idUser,point)
+function addPoint(url,linkClicked,idUser,point,typebrowser)
 {	
 	<?php
 		$dm = date("d/m");
@@ -1538,7 +1695,7 @@ function addPoint(url,linkClicked,idUser,point)
 	}else{
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	};
-	var params = "idUser=" + idUser + "&point=" +point + "&linkClicked="+ linkClicked+"&token="+tkap;
+	var params = "idUser=" + idUser + "&point=" +point + "&linkClicked="+ linkClicked+"&token="+tkap+"&typebrowser="+typebrowser;
 	xmlhttp.open("POST", url, true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.setRequestHeader("Content-length", params.length);
@@ -1794,6 +1951,6 @@ border-bottom: 16px solid #3b5998;
 }
 #bannerfree{text-align:center;}
 </style>
-
+<link href="<?php echo $PATH_ROOT;?>css/mobile-banner.css" rel="stylesheet" type="text/css" />
 </body>
 </html>
