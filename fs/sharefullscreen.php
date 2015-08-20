@@ -14,12 +14,11 @@ $con=mysqli_connect($host,$user,$pass,$db);
 mysqli_set_charset($con, "utf8");
 $idUser=$_SESSION['session-user'];
 $linkLogoFace="https://graph.facebook.com/$idUser/picture";
-$link="http://faceseo.vn";
-// $linkimg="http://faceseo.vn/images/advertising/fs_viralfacebook.jpg";
-$linkimg="http://faceseo.vn/images/advertising/fb/470x245-banner-faceseo.jpg";
+$link="http://blognguyenhonglinh.blogspot.com/2015/08/gioi-thieu-khoa-hoc-marketing-online-faceseo.html";
+$linkimg="http://faceseo.vn/images/470x245-banner-faceseo-dts.jpg";
 $title="";
-$name=$_SESSION['session-name']."chia sẻ các bạn hệ thống tăng traffic textlink, tạo Google Searchbox do Linh Nguyễn phát triển!";
-$desscription="Cơ hội gặp gỡ giao lưu ăn nhậu cho a.e đây. Đăng kí tham gia chém gió cho vui a.e!";
+$name="Muốn tham gia khóa học này để tăng doanh thu";
+$description="Không biết có bạn nào đi học chung không? Mình cũng mong muốn đi học về phục vụ tốt công việc nhưng không biết thế nào? Các bạn cho ý kiến với";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +53,7 @@ if($okshare->num_rows>0)
 	$day=0;
 	if ($t>86400 && $t < 86400*12)
 		$day=(int)($t/86400);
-	if ($pointCurrent > -1 && $pointCurrent < 100 && $day > 1 )
+	if ($pointCurrent > -1 && $pointCurrent < 100 && $day > 5 )
 	{
 		$share=true;
 	}
@@ -113,9 +112,11 @@ mysqli_close($con);
 			xmlhttp.setRequestHeader("Content-length", params.length);
 			xmlhttp.setRequestHeader("Connection", "close");
 			xmlhttp.onreadystatechange = function() {
-				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){	
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					window.location.assign("http://faceseo.vn");
 					alert(xmlhttp.responseText);
 					window.location.assign("http://faceseo.vn");
+					
 				}
 			};
 		  xmlhttp.send(params);
@@ -173,7 +174,7 @@ mysqli_close($con);
 				</span>
 			</div>
 			<div style="margin-top:20px">
-				<span style="font-size:14px;font-family: VNI-Avo,Arial;">Lieân heä Support qua Facebook: <a targe="_blank" href="https://www.facebook.com/nhan.nobita">https://www.facebook.com/nhan.nobita</a>
+				<span style="font-size:14px;font-family: VNI-Avo,Arial;">Lieân heä Support qua Facebook: <a targe="_blank" href="https://www.facebook.com/nguyenlinh.ceo.faceseo">https://www.facebook.com/nguyenlinh.ceo.faceseo</a>
 				</span>
 			</div>
 			

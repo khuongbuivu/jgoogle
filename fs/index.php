@@ -60,16 +60,13 @@ if ($accountFace && $_SESSION['loginfirsttime']==0)
 		exit();
 	}
 }
-/*
 
-if (intval(checkSharedFs($id_user))==0)
-{
-	
+if ($accountFace && intval(checkSharedFs($id_user))==0)
+{	
 	header( 'Location: '.$PATH_ROOT.'sharefullscreen.php' );
 	exit();
 }
 
-*/
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -226,11 +223,12 @@ if (intval(checkSharedFs($id_user))==0)
 <?php endif ?>
 </head>	
 
-<?php  if ($id_user!=""){
+<?php  
+if ($id_user!=""){
 		$_SESSION['token-user']=md5($id_user);
 		$_SESSION['session-user']=$id_user;
 		$_SESSION['session-name']=$userFace;
-		}
+}
 ?>
 
 
@@ -1497,7 +1495,15 @@ var google_remarketing_only = false;
 processForMobile();
 DisPlayPostReported();
 </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-66379982-1', 'auto');
+  ga('send', 'pageview');
+</script>
 </body>
 </html>
 
