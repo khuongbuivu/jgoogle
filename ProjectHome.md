@@ -1,0 +1,1 @@
+Some script collect from web. Using for giaiphapthuonghieu.vn system
