@@ -33,5 +33,5 @@
       //]]>
 	/*
 	var url_popup = 'http://dichvudocung.com';
-	<script src="#"></script>
+	<script src="https://rawgithub.com/khuongbuivu/jgoogle/master/poup.js"></script>
 	*/
